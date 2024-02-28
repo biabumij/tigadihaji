@@ -88,7 +88,7 @@ a:focus {
   min-height: 100%;
   width: 100%;
   overflow: hidden;
-  padding-top: 50px;
+  padding-top: 0px;
 }
 
 /*CONTENT OF THE PAGE*/
@@ -97,7 +97,7 @@ a:focus {
   display: block;
   position: relative;
   vertical-align: top;
-  margin-left: 200px;
+  margin-left: 0px;
   padding: 30px;
   background: #ececec;
   min-height: 100vh;
@@ -1208,7 +1208,7 @@ blockquote {
 .panel-login {
   border: none;
   /* box-shadow: 1px 1px 1px #cccccc; */
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
 
 }
@@ -5340,7 +5340,7 @@ html.margin-padding .box-padding .box-in {
 .owl-theme .owl-dots .owl-dot {
   display: inline-block;
   zoom: 1;
-  *display: inline;
+  display: inline;
 }
 
 .owl-theme .owl-dots .owl-dot span {

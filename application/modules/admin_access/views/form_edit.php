@@ -16,21 +16,12 @@
     <?php echo $this->Templates->PageHeader();?>
 
     <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
         <div class="content">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                        <li><a>Edit Admin Access</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="row animated fadeInUp">
                 <div class="col-sm-12 col-lg-12">
                     <div class="panel">
                         <div class="panel-header">
-                            <h4 class="section-subtitle">Edit Admin Access</h4>
+                            <h4 class="section-subtitle"><b>EDIT ADMIN ACCESS</b></h4>
                             <div class="panel-actions">
                             </div>
                         </div>
@@ -57,7 +48,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-9">
-                                        <button type="submit" name="submit" class="btn btn-success" id="btn-submit" data-loading-text="please wait.." style="font-weight:bold; border-radius:10px;">Kirim</button>
+                                        <button type="submit" name="submit" class="btn btn-success" id="btn-submit" data-loading-text="please wait.." style="font-weight:bold; border-radius:10px;">KIRIM</button>
                                     </div>
                                 </div>
                             </form>

@@ -58,23 +58,18 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader(); ?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar(); ?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-bar-chart" aria-hidden="true"></i>Laporan</li>
-                            <li><a><?php echo $row[0]->menu_name; ?></a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
-                        <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                        <div class="panel">
                             <div class="panel-content">
 								<div class="panel-header">
-									<h3 class="section-subtitle"><?php echo $row[0]->menu_name; ?></h3>
-								</div>
+									<h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
+                                    <div class="text-left">
+                                        <a href="<?php echo site_url('admin');?>">
+                                        <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                                    </div>
+                                </div>
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="pembelian">
                                         <br />
@@ -82,23 +77,23 @@
                                             <div width="100%">
                                                 <div class="panel panel-default">                                            
                                                     <div class="col-sm-5">
-														<p><h5>Penerimaan Pembelian</h5></p>
+														<p><h5><b>Penerimaan Pembelian</b></h5></p>
                                                         <a href="#laporan_penerimaan_pembelian" aria-controls="laporan_penerimaan_pembelian" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
 													</div>
                                                     <div class="col-sm-5">
-														<p><h5>Laporan Hutang</h5></p>
+														<p><h5><b>Laporan Hutang</b></h5></p>
                                                         <a href="#laporan_hutang" aria-controls="laporan_hutang" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
                                                     </div>
                                                     <div class="col-sm-5">
-														<p><h5>Monitoring Hutang</h5></p>
+														<p><h5><b>Monitoring Hutang</b></h5></p>
                                                         <a href="#monitoring_hutang" aria-controls="monitoring_hutang" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
                                                     </div>
                                                     <div class="col-sm-5">
-														<p><h5>Monitoring Hutang Bahan & Alat</h5></p>
+														<p><h5><b>Monitoring Hutang Bahan & Alat</b></h5></p>
                                                         <a href="#monitoring_hutang_bahan_alat" aria-controls="monitoring_hutang_bahan_alat" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
                                                     </div>
                                                     <div class="col-sm-5">
-														<p><h5>Daftar Pembayaran</h5></p>
+														<p><h5><b>Daftar Pembayaran</b></h5></p>
                                                         <a href="#daftar_pembayaran" aria-controls="daftar_pembayaran" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
                                                     </div>
                                                 </div>
@@ -111,7 +106,7 @@
                                         <div class="col-sm-15">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">												
-                                                    <h3 class="panel-title">Laporan Penerimaan Pembelian</h3>
+                                                    <h3 class="panel-title"><b>Laporan Penerimaan Pembelian</b></h3>
 													<a href="laporan_pembelian">Kembali</a>
                                                 </div>
                                                 <div style="margin: 20px">
@@ -179,7 +174,7 @@
                                                             </div>
                                                             <br /><br />
                                                             <div class="col-sm-9 text-left">
-                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
+                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;">PRINT</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -219,7 +214,7 @@
                                         <div class="col-sm-15">
                                             <div class="panel panel-default">  
 												<div class="panel-heading">												
-                                                    <h3 class="panel-title">Laporan Hutang</h3>
+                                                    <h3 class="panel-title"><b>Laporan Hutang</b></h3>
 													<a href="laporan_pembelian">Kembali</a>
                                                 </div>
                                                 <div style="margin: 20px">
@@ -253,7 +248,7 @@
                                                                 </select>
                                                             </div>                                                     
                                                             <div class="col-sm-3">
-                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
+                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;">PRINT</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -296,7 +291,7 @@
                                         <div class="col-sm-15">
                                             <div class="panel panel-default">  
 												<div class="panel-heading">												
-                                                    <h3 class="panel-title">Laporan Monitoring Hutang</h3>
+                                                    <h3 class="panel-title"><b>Laporan Monitoring Hutang</b></h3>
 													<a href="laporan_pembelian">Kembali</a>
                                                 </div>
                                                 <div style="margin: 20px">
@@ -343,7 +338,7 @@
                                                             </div>
                                                             <br /><br />                                           
                                                             <div class="col-sm-3">
-                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
+                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;">PRINT</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -403,7 +398,7 @@
                                         <div class="col-sm-15">
                                             <div class="panel panel-default">  
 												<div class="panel-heading">												
-                                                    <h3 class="panel-title">Laporan Monitoring Hutang Bahan & Alat</h3>
+                                                    <h3 class="panel-title"><b>Laporan Monitoring Hutang Bahan & Alat</b></h3>
 													<a href="laporan_pembelian">Kembali</a>
                                                 </div>
                                                 <div style="margin: 20px">
@@ -450,7 +445,7 @@
                                                             </div>-->
                                                             <br /><br />                                           
                                                             <div class="col-sm-3">
-                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
+                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;">PRINT</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -510,7 +505,7 @@
                                         <div class="col-sm-15">
                                             <div class="panel panel-default">  
 												<div class="panel-heading">												
-                                                    <h3 class="panel-title">Daftar Pembayaran</h3>
+                                                    <h3 class="panel-title"><b>Daftar Pembayaran</b></h3>
 													<a href="laporan_pembelian">Kembali</a>
                                                 </div>
                                                 <div style="margin: 20px">
@@ -520,7 +515,7 @@
                                                                 <input type="text" id="filter_date_pembayaran" name="filter_date" class="form-control dtpicker" autocomplete="off" placeholder="Filter by Date">
                                                             </div>                                                           
                                                             <div class="col-sm-3">
-                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
+                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;">PRINT</button>
                                                             </div>
                                                         </form>
                                                     </div>

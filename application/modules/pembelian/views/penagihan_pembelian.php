@@ -14,23 +14,13 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><a> Pembelian</a></li>
-                            <li><a> Tagihan Pembelian</a></li>
-                            <li><a> Tagihan Pembelian</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header"> 
-                                <div class="">
-                                    <h3 class="">Tagihan Pembelian</h3>
+                                <div>
+                                    <h3><b>TAGIHAN PEMBELIAN</b></h3>
                                 </div>
                             </div>
                             <form id="form-po" action="<?= base_url("pembelian/submit_penagihan_pembelian") ?>" method="post" enctype="multipart/form-data" autocomplete="off">
@@ -328,8 +318,8 @@
                                     </div>
                                     <br /><br />
                                     <div class="text-center">
-                                        <a href="<?= site_url('admin/pembelian');?>" class="btn btn-danger" style="margin-bottom:0px; width:100px; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Batal</a>
-                                        <button type="submit" class="btn btn-success" style="width:100px; font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+                                        <a href="<?= site_url('admin/pembelian');?>" class="btn btn-danger" style="margin-bottom:0px; font-weight:bold; border-radius:10px;"> BATAL</a>
+                                        <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;"> KIRIM</button>
                                     </div>
                                 </form>
                             </div>

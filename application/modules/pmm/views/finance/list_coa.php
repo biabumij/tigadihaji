@@ -20,26 +20,22 @@
     ?>
 
     <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
         <div class="content">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><i class="fa fa-home" aria-hidden="true"></i><a href="<?php echo base_url();?>">Dashboard</a></li>
-                        <li><a >Daftar Akun</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="row animated fadeInUp">
                 <div class="col-sm-12 col-lg-12">
-                    <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                    <div class="panel">
                         <div class="panel-header">
-                            <h3 class="section-subtitle">Daftar Akun</h3>
+                            <h3 class="section-subtitle"><b>DAFTAR AKUN</b></h3>
+                            <div class="text-left">
+                                <a href="<?php echo site_url('admin');?>">
+                                <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                            </div>
                         </div>
                         <div class="panel-content">
                             <div class="row">
                                 <div class="col-sm-2">
-                                    <a href="javascript:void(0);" onclick="OpenForm()" class="btn btn-info" style="border-radius:10px; font-weight:bold;"><i class="fa fa-plus"></i> Buat Daftar Akun</a>
+                                <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT DAFTAR AKUN</a></button>
+                                <br /><br />
                                 </div>
                                 <form method="GET" target="_blank" action="<?php echo site_url('pmm/reports/client_print');?>">
                                     <div class="col-sm-3">
@@ -58,6 +54,7 @@
                                     </div>
                                 </form>
                             </div>
+                            
                             <div class="table-responsive">
                                 <table class="table table-striped table-hover table-center" id="guest-table">
                                     <thead>
@@ -98,7 +95,7 @@
         <div class="modal-dialog" role="document" >
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="modal-title">Buat Daftar Akun</span>
+                    <span class="modal-title"><b>BUAT DAFTAR AKUN</b></span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -140,12 +137,12 @@
                             <input type="text" id="coa_number" name="coa_number" class="form-control"  autocomplete="off" />
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px;">KIRIM</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">CLOSE</button>
                 </div>
             </div>
         </div>
@@ -281,7 +278,7 @@
                         success: function(result) {
                             if (result.output) {
                                 table.ajax.reload();
-                                bootbox.alert('Berhasil menghapus!!');
+                                bootbox.alert('<b>DELETED</b>');
                             } else if (result.err) {
                                 bootbox.alert(result.err);
                             }

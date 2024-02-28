@@ -23,52 +23,35 @@
         <?php echo $this->Templates->PageHeader(); ?>
 
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar(); ?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin'); ?>">Dashboard</a></li>
-                            <li><a><?php echo $row[0]->menu_name; ?></a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
-                        <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                        <div class="panel">
                             <div class="panel-header">
                                 <h3 class="section-subtitle">
-                                    <?php echo $row[0]->menu_name; ?>
-                                    <div class="pull-right">
-                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:10px; font-weight:bold;">
-                                            <i class="fa fa-plus"></i> Buat <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="<?= site_url('rap/form_bahan'); ?>">Bahan</a></li>
-											<li><a href="<?= site_url('rap/form_alat'); ?>">Alat</a></li>
-                                            <li><a href="<?= site_url('rap/form_bua'); ?>">BUA</a></li>
-                                        </ul>
-                                    </div>
+                                    <b style="text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></b>
                                 </h3>
-
+                                <div class="text-left">
+                                    <a href="<?php echo site_url('admin');?>">
+                                    <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                                </div>
                             </div>
                             <div class="panel-content">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#bahan" aria-controls="bahan" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Bahan</a></li>
-                                    <li role="presentation"><a href="#alat" aria-controls="alat" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Alat</a></li>
-                                    <li role="presentation"><a href="#bua" aria-controls="bua" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">BUA</a></li>
+                                    <li role="presentation" class="active"><a href="#bahan" aria-controls="bahan" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">BAHAN</a></li>
+                                    <li role="presentation"><a href="#alat" aria-controls="alat" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">ALAT</a></li>
+                                    <li role="presentation"><a href="#bua" aria-controls="bua" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">BUA</a></li>
                                 </ul>
 
                                 <div class="tab-content">
                                     
                                 <!-- Table Bahan -->
-									
                                 <div role="tabpanel" class="tab-pane active" id="bahan">
 										<div class="col-sm-4">
 											<input type="text" id="filter_date_agregat" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
 										</div>
-										<br />
-										<br />										
+                                        <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('rap/form_bahan'); ?>"><b style="color:white;">BUAT BAHAN</b></a></button>
+                                        <br /><br />										
                                         <div class="table-responsive">
                                             <table class="table table-striped table-hover" id="table_agregat" style="width:100%">
                                                 <thead>
@@ -83,7 +66,6 @@
                                                         <th>Cetak</th>
                                                         <th>Hapus</th>
                                                         <th>Status</th>
-														
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -97,8 +79,9 @@
 									</div>
 										
 									<!-- Table Alat -->
-								
-                                    <div role="tabpanel" class="tab-pane" id="alat">									
+                                    <div role="tabpanel" class="tab-pane" id="alat">
+                                        <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('rap/form_alat'); ?>"><b style="color:white;">BUAT ALAT</b></a></button>
+                                        <br /><br />								
                                         <div class="table-responsive">
                                             <table class="table table-striped table-hover" id="table_rap_alat" style="width:100%">
                                                 <thead>
@@ -123,8 +106,9 @@
 									</div>
 
                                     <!-- Table BUA -->
-								
-                                    <div role="tabpanel" class="tab-pane" id="bua">									
+                                    <div role="tabpanel" class="tab-pane" id="bua">		
+                                        <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('rap/form_bua'); ?>"><b style="color:white;">BUAT BUA</b></a></button>
+                                        <br /><br />							
                                         <div class="table-responsive">
                                             <table class="table table-striped table-hover" id="table_rap_bua" style="width:100%">
                                                 <thead>
@@ -258,7 +242,7 @@
                         success: function(result) {
                             if (result.output) {
                                 table_agregat.ajax.reload();
-                                bootbox.alert('Berhasil menghapus data !!');
+                                bootbox.alert('<b>DELETED</b>');
                             } else if (result.err) {
                                 bootbox.alert(result.err);
                             }
@@ -331,7 +315,7 @@
                         success: function(result) {
                             if (result.output) {
                                 table_rap_alat.ajax.reload();
-                                bootbox.alert('Berhasil menghapus data !!');
+                                bootbox.alert('<b>DELETED</b>');
                             } else if (result.err) {
                                 bootbox.alert(result.err);
                             }
@@ -401,7 +385,7 @@
                         success: function(result) {
                             if (result.output) {
                                 table_rap_bua.ajax.reload();
-                                bootbox.alert('Berhasil menghapus data !!');
+                                bootbox.alert('<b>DELETED</b>');
                             } else if (result.err) {
                                 bootbox.alert(result.err);
                             }

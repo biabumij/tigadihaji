@@ -16,23 +16,13 @@
     <?php echo $this->Templates->PageHeader();?>
 
     <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
         <div class="content">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><a> Pembelian</a></li>
-                        <li><a> Pesanan Pembelian</a></li>
-                        <li><a> Detail Pemesanan Pembelian</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="row animated fadeInUp">
                 <div class="col-sm-12 col-lg-12">
                     <div class="panel">
                         <div class="panel-header">
-                            <div class="">
-                                <h3 class="">Detail Pesanan Pembelian <?php echo $this->pmm_model->GetStatus($data['status']);?></h3>
+                            <div>
+                                <h3><b>DETAIL PESANAN PEMBELIAN <?php echo $this->pmm_model->GetStatus($data['status']);?></b></h3>
                             </div>
                         </div>
                         <div class="panel-content">
@@ -70,7 +60,7 @@
                                         <table class="table table-striped table-bordered" width="100%">
                                             <tr>
                                                 <th width="20%" align="left">No. Pesanan Pembelian</th>
-                                                <th width="80%" align="left"><label class="label label-info" style="font-size:14px;font-weight:normal;"><?php echo $data['no_po'];?></label></th>
+                                                <th width="80%" align="left"><label class="label label-success" style="font-size:14px;font-weight:bold;"><?php echo $data['no_po'];?></label></th>
                                             </tr>
                                             <tr>
                                                 <th>Subjek</th>
@@ -260,18 +250,18 @@
                             </table>
                                 
                             <div class="text-right">
-                                <a href="<?php echo site_url('admin/pembelian');?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                <a href="<?php echo site_url('admin/pembelian');?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
                                 
                                 <?php
                                 if($data['status'] == 'WAITING'){
                                     ?>
-                                    <a href="<?= site_url('pmm/purchase_order/get_pdf_draft/'.$id);?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"><i class="fa fa-print"></i> Print (Draft)</a>
+                                    <a href="<?= site_url('pmm/purchase_order/get_pdf_draft/'.$id);?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PRINT (DRAFT)</a>
                                     
                                     <?php
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 16){
                                         ?>
-                                        <a onclick="CreatePO()" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:10px;"><i class="fa fa-check"></i> Setujui</a>
-                                        <a onclick="ProcessForm('<?php echo site_url('pmm/purchase_order/process/'.$id.'/2');?>')" class="btn btn-danger check-btn" style="width:150px; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Tolak</a>
+                                        <a onclick="CreatePO()" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:10px;"> SETUJUI</a>
+                                        <a onclick="ProcessForm('<?php echo site_url('pmm/purchase_order/process/'.$id.'/2');?>')" class="btn btn-danger check-btn" style="width:150px; font-weight:bold; border-radius:10px;"> TOLAK</a>
                                         <?php
                                     }
                                 }
@@ -280,15 +270,15 @@
                                 <?php
                                 if($data['status'] == 'PUBLISH'){
                                     ?>
-                                    <a href="<?= site_url('pmm/purchase_order/get_pdf/'.$id);?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"><i class="fa fa-print"></i> Print</a>
+                                    <a href="<?= site_url('pmm/purchase_order/get_pdf/'.$id);?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
                                     
-                                    <a href="<?= site_url('pmm/receipt_material/manage/'.$id);?>" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:10px;"><i class="fa fa-truck"></i> Terima Produk</a>
+                                    <a href="<?= site_url('pmm/receipt_material/manage/'.$id);?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> TERIMA PRODUK</a>
                                     
                                     <?php
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 11 || $this->session->userdata('admin_group_id') == 16){
                                         ?>
                                         <form class="form-check" action="<?= base_url("pembelian/closed_po/".$id) ?>">
-                                            <button type="submit" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"><i class="fa fa-briefcase"></i> Closed</button>        
+                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> CLOSED</button>        
                                         </form>	
                                         <?php
                                     }
@@ -298,13 +288,13 @@
                                 
                             
                                 <?php if($data["status"] === "CLOSED") : ?>
-                                    <a href="<?= site_url('pmm/purchase_order/get_pdf/'.$id);?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"><i class="fa fa-print"></i> Print</a>
+                                    <a href="<?= site_url('pmm/purchase_order/get_pdf/'.$id);?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
                                     
                                     <?php
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 11 || $this->session->userdata('admin_group_id') == 16){
                                         ?>
                                         <form class="form-check" action="<?= site_url("pmm/purchase_order/open_pesanan_pembelian/".$id);?>">
-                                            <button type="submit" class="btn btn-success" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"><i class="fa fa-folder-open-o"></i> Publish</button>        
+                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> PUBLISH</button>        
                                         </form>	
                                         <?php
                                     }
@@ -313,7 +303,7 @@
                                     if($this->session->userdata('admin_group_id') == 1){
                                         ?>
                                         <form class="form-check" action="<?= site_url("pmm/purchase_order/delete/".$id);?>">
-                                            <button type="submit" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"><i class="fa fa-trash"></i> Hapus</button>        
+                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> HAPUS</button>        
                                         </form>
                                         <?php
                                     }
@@ -325,7 +315,7 @@
                                     if($this->session->userdata('admin_group_id') == 1){
                                         ?>
                                         <form class="form-check" action="<?= site_url("pmm/purchase_order/delete/".$id);?>">
-                                            <button type="submit" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"><i class="fa fa-trash"></i> Hapus</button>        
+                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> HAPUS</button>        
                                         </form>	
                                         <?php
                                     }
@@ -380,42 +370,54 @@
         }
 
         function CreatePO(){
-            bootbox.confirm("Apakah anda yakin untuk proses data ini ?", function(result){ 
-                if(result){
-                    $('#btn-po').button('loading');
-                    var arr = {
-                        date_po : $('#date_po').val(),
-                        subject : $('#subject').val(),
-                        date_pkp : $('#date_pkp').val(),
-                        supplier_id : $('#supplier_id').val(),
-                        total : $('#total').val(),
-                        ppn : $('#ppn').val(),
-                        pph : $('#pph').val(),
-                        pph : $('#ppn11').val(),
-                        id : $('#purchase_order_id').val()
+            bootbox.confirm({
+                message: "Apakah anda yakin untuk proses data ini ?",
+                buttons: {
+                    confirm: {
+                        label: 'Yes',
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: 'No',
+                        className: 'btn-danger'
                     }
-                    if($('#date_po').val() == '' || $('#subject').val() == '' || $('#date_pkp').val() == '' || $('#supplier').val() == ''){
-                        bootbox.alert('Opps !! Please fill the field first !!');
-                    }else {
+                },
+                callback: function (result) {
+                    if(result){
+                        $('#btn-po').button('loading');
+                        var arr = {
+                            date_po : $('#date_po').val(),
+                            subject : $('#subject').val(),
+                            date_pkp : $('#date_pkp').val(),
+                            supplier_id : $('#supplier_id').val(),
+                            total : $('#total').val(),
+                            ppn : $('#ppn').val(),
+                            pph : $('#pph').val(),
+                            pph : $('#ppn11').val(),
+                            id : $('#purchase_order_id').val()
+                        }
+                        if($('#date_po').val() == '' || $('#subject').val() == '' || $('#date_pkp').val() == '' || $('#supplier').val() == ''){
+                            bootbox.alert('Opps !! Please fill the field first !!');
+                        }else {
 
-                        $.ajax({
-                            type    : "POST",
-                            url     : "<?php echo site_url('pmm/purchase_order/approve_po'); ?>",
-                            dataType : 'json',
-                            data: arr,
-                            success : function(result){
-                                if(result.output){
-                                    // table.ajax.reload();
-                                    // bootbox.alert('Berhasil menghapus!!');
-                                    window.location.href = result.url;
-                                }else if(result.err){
-                                    bootbox.alert(result.err);
+                            $.ajax({
+                                type    : "POST",
+                                url     : "<?php echo site_url('pmm/purchase_order/approve_po'); ?>",
+                                dataType : 'json',
+                                data: arr,
+                                success : function(result){
+                                    if(result.output){
+                                        // table.ajax.reload();
+                                        // bootbox.alert('<b>DELETED</b>');
+                                        window.location.href = result.url;
+                                    }else if(result.err){
+                                        bootbox.alert(result.err);
+                                    }
+                                    $('#btn-po').button('reset');
                                 }
-                                $('#btn-po').button('reset');
-                            }
-                        });
+                            });
+                        }
                     }
-
                 }
             });
         }

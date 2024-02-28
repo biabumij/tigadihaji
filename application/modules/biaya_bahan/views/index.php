@@ -34,22 +34,15 @@
         <?php echo $this->Templates->PageHeader(); ?>
 
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar(); ?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-bar-chart" aria-hidden="true"></i>Laporan</li>
-                            <li><a><?php echo $row[0]->menu_name; ?></a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
-                        <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                        <div class="panel">
                             <div class="panel-content">
-								<div class="panel-header">
-									<h3 class="section-subtitle"><?php echo $row[0]->menu_name; ?></h3>
+								<h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
+								<div class="text-left">
+									<a href="<?php echo site_url('admin');?>">
+									<button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
 								</div>
                                 <div class="tab-content">
 								
@@ -59,51 +52,11 @@
                                         <br />
 											<div class="row">
 												<div width="100%">
-													<div class="panel panel-default">                                            
-														<!--<div class="col-sm-5">
-                                                            <p><h5>Biaya (Bahan)</h5></p>
-                                                            <a href="#biaya_bahan" aria-controls="biaya_bahan" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
-														</div>-->
+													<div class="panel panel-default">
 														<div class="col-sm-5">
-															<p><h5>Pergerakan Bahan Baku</h5></p>
+															<p><h5><b>Pergerakan Bahan Baku</b></h5></p>
 															<a href="#pergerakan_bahan_baku" aria-controls="pergerakan_bahan_baku" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
 														</div>											
-													</div>
-												</div>
-											</div>
-										</div>
-                                    </div>
-
-									<!-- Biaya Bahan -->
-                                    <div role="tabpanel" class="tab-pane" id="biaya_bahan">
-                                        <div class="col-sm-15">
-											<div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title">Biaya (Bahan)</h3>
-													<a href="biaya_bahan">Kembali</a>
-                                                </div>
-												<div style="margin: 20px">
-													<div class="row">
-														<form action="<?php echo site_url('laporan/cetak_biaya_bahan');?>" target="_blank">
-															<div class="col-sm-3">
-																<input type="text" id="filter_date_biaya_bahan" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
-															</div>
-															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i>  Print</button>
-															</div>
-														</form>
-														
-													</div>
-													<br />
-													<div id="wait" style=" text-align: center; align-content: center; display: none;">	
-														<div>Please Wait</div>
-														<div class="fa-3x">
-														  <i class="fa fa-spinner fa-spin"></i>
-														</div>
-													</div>				
-													<div class="table-responsive" id="biaya-bahan">													
-													
-                    
 													</div>
 												</div>
 											</div>
@@ -115,7 +68,7 @@
                                         <div class="col-sm-15">
 											<div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Pergerakan Bahan Baku</h3>
+                                                    <h3 class="panel-title"><b>Pergerakan Bahan Baku</b></h3>
 													<a href="biaya_bahan">Kembali</a>
                                                 </div>
 												<div style="margin: 20px">
@@ -125,7 +78,7 @@
 																<input type="text" id="filter_date_pergerakan_bahan_baku" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
 															</div>
 															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i>  Print</button>
+																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
 															</div>
 														</form>
 														
@@ -137,7 +90,7 @@
 														  <i class="fa fa-spinner fa-spin"></i>
 														</div>
 													</div>				
-													<div class="table-responsive" id="pergerakan-bahan-BAKU">													
+													<div class="table-responsive" id="pergerakan-bahan-baku">													
 													
                     
 													</div>
@@ -164,51 +117,6 @@
         <script src="<?php echo base_url(); ?>assets/back/theme/vendor/bootbox.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/back/theme/vendor/jquery.number.min.js"></script>
         <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
-
-		<!-- Script Biaya Bahan -->
-		<script type="text/javascript">
-			$('#filter_date_biaya_bahan').daterangepicker({
-            autoUpdateInput : false,
-			showDropdowns: true,
-            locale: {
-              format: 'DD-MM-YYYY'
-            },
-            ranges: {
-               'Today': [moment(), moment()],
-               'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-               'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-               'Last 30 Days': [moment().subtract(30, 'days'), moment()],
-               'This Month': [moment().startOf('month'), moment().endOf('month')],
-               'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-            }
-			});
-
-			$('#filter_date_biaya_bahan').on('apply.daterangepicker', function(ev, picker) {
-				  $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
-				  TableBiayaBahan();
-			});
-
-
-			function TableBiayaBahan()
-			{
-				$('#wait').fadeIn('fast');   
-				$.ajax({
-					type    : "POST",
-					url     : "<?php echo site_url('pmm/reports/biaya_bahan'); ?>/"+Math.random(),
-					dataType : 'html',
-					data: {
-						filter_date : $('#filter_date_biaya_bahan').val(),
-					},
-					success : function(result){
-						$('#biaya-bahan').html(result);
-						$('#wait').fadeOut('fast');
-					}
-				});
-			}
-
-			//TableBiayaBahan();
-
-            </script>
 
 			<!-- Script Pergerakan Bahan Baku -->
 			<script type="text/javascript">
@@ -245,7 +153,7 @@
 						filter_date : $('#filter_date_pergerakan_bahan_baku').val(),
 					},
 					success : function(result){
-						$('#pergerakan-bahan-BAKU').html(result);
+						$('#pergerakan-bahan-baku').html(result);
 						$('#wait').fadeOut('fast');
 					}
 				});

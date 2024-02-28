@@ -1,12 +1,13 @@
 <form action="<?php echo site_url('produksi/cetak_stock_opname'); ?>" target="_blank">
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         <input type="text" id="filter_date" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
     </div>
-    <div class="col-sm-2">
-        <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
+    <div class="col-sm-1">
+        <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
     </div>
     <div class="col-sm-2">
-        <a href="javascript:void(0);" onclick="OpenForm()" class="btn btn-info" style="border-radius:10px; font-weight:bold;"><i class="fa fa-plus"></i> Buat Stock Opname</a>
+    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT STOCK OPNAME</a></button>
+        
     </div>
 </form>
 <br />
@@ -36,7 +37,7 @@
     <div class="modal-dialog" role="Dokumen">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="modal-title">Buat Stock Opname</span>
+                <span class="modal-title"><b>EDIT STOCK OPNAME</b></span>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -115,12 +116,12 @@
                         <input type="file" id="file" name="file" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success" id="btn-form" style="border-radius:10px; font-weight:bold;"><i class="fa fa-send"></i> Kirim</button>
+                        <button type="submit" class="btn btn-success" id="btn-form" style="border-radius:10px; font-weight:bold;">KIRIM</button>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius:10px; font-weight:bold;">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius:10px; font-weight:bold;">CLOSE</button>
             </div>
         </div>
     </div>

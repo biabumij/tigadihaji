@@ -17,24 +17,13 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                            <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                            <li>
-                                <a href="<?php echo site_url('admin/jurnal_umum');?>"> <i class="fa fa-calendar" aria-hidden="true"></i> Jurnal Umum</a></li>
-                            <li><a>Buat Jurnal Umum</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header"> 
-                                <div class="">
-                                    <h3 class="">Buat Jurnal Umum</h3>
+                                <div>
+                                    <h3><b>BUAT JURNAL UMUM</b></h3>
                                     
                                 </div>
                             </div>
@@ -96,7 +85,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <button type="button" class="btn btn-primary" onclick="tambahData()" style="font-weight:bold; border-radius:10px;">
-                                                <i class="fa fa-plus"></i> Tambah Data
+                                                <i class="fa fa-plus"></i> TAMBAH DATA
                                             </button>
                                         </div>
                                     </div>
@@ -131,10 +120,11 @@
                                             <input type="hidden" name="total_product" id="total-product" value="1">
                                         </div>
                                     </div>
+                                    <br /><br />
                                     <div class="row">
-                                        <div class="col-sm-12 text-right">
-                                            <a href="<?php echo site_url('admin/jurnal_umum');?>" class="btn btn-danger" style="margin-bottom:0; width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Batal</a>
-                                            <button type="submit" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+                                        <div class="col-sm-12 text-center">
+                                            <a href="<?php echo site_url('admin/jurnal_umum');?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:10px;">BATAL</a>
+                                            <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;">KIRIM</button>
                                         </div>
                                     </div>
                                 </form>

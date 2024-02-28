@@ -258,7 +258,7 @@ class Penjualan extends Secure_Controller
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('notif_error','<b>REJECTED</b>');
+				$this->session->set_flashdata('notif_error','<b>REJECT</b>');
 				redirect('penjualan/penawaran_penjualan');
 			} else {
 				# Everything is Perfect. 
@@ -308,7 +308,7 @@ class Penjualan extends Secure_Controller
 		$this->db->set("status", "REJECT");
 		$this->db->where("id", $id);
 		$this->db->update("pmm_penawaran_penjualan");
-		$this->session->set_flashdata('notif_reject','<b>REJECTED</b>');
+		$this->session->set_flashdata('notif_reject','<b>REJECT</b>');
 		redirect("admin/penjualan");
 	}
 
@@ -327,7 +327,7 @@ class Penjualan extends Secure_Controller
         $this->db->delete('pmm_lampiran_penawaran_penjualan', array('penawaran_penjualan_id' => $id));
 		$this->db->delete('pmm_penawaran_penjualan', array('id' => $id));
 		$this->db->delete('pmm_penawaran_penjualan_detail', array('penawaran_penjualan_id' => $id));
-		$this->session->set_flashdata('notif_success','<b>Berhasil Mengahapus Penawaran Penjualan</b>');
+		$this->session->set_flashdata('notif_success','<b>DELETED</b>');
 		redirect("admin/penjualan");
 	}
 
@@ -584,7 +584,7 @@ class Penjualan extends Secure_Controller
 		$this->db->set("status", "REJECT");
 		$this->db->where("id", $id);
 		$this->db->update("pmm_sales_po");
-		$this->session->set_flashdata('notif_reject','<b>REJECTED</b>');
+		$this->session->set_flashdata('notif_reject','<b>REJECT</b>');
 		redirect("admin/penjualan");
 	}
 	
@@ -1138,7 +1138,7 @@ class Penjualan extends Secure_Controller
 
 					$this->db->insert('pmm_penagihan_penjualan_detail', $arr_detail);
 				} else {
-					$this->session->set_flashdata('notif_error', 'Gagal Menambahkan Tagihan Penjualan');
+					$this->session->set_flashdata('notif_error', ',<b>ERROR</b>');
 					redirect('penjualan/penagihan_penjualan/' . $this->input->post('idSurat'));
 					exit();
 				}
@@ -1155,13 +1155,13 @@ class Penjualan extends Secure_Controller
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.
 			$this->db->trans_rollback();
-			$this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+			$this->session->set_flashdata('notif_error','<b>ERROR</b>');
 			redirect('admin/penjualan#settings');
 		} else {
 			# Everything is Perfect. 
 			# Committing data to the database.
 			$this->db->trans_commit();
-			$this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+			$this->session->set_flashdata('notif_success','<b>SAVED</b>');
 			redirect('admin/penjualan#settings');
 		}
 	}
@@ -1233,13 +1233,13 @@ class Penjualan extends Secure_Controller
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('notif_error','<b>Gagal Menghapus Tagihan Penjualan</b>');
+				$this->session->set_flashdata('notif_error','<b>ERROR</b>');
 				redirect('penjualan/detailPenagihan/' . $id);
 			} else {
 				# Everything is Perfect. 
 				# Committing data to the database.
 				$this->db->trans_commit();
-				$this->session->set_flashdata('notif_success','<b>Berhasil Menghapus Tagihan Penjualan</b>');
+				$this->session->set_flashdata('notif_success','<b>DELETED</b>');
 				redirect('admin/penjualan');
 			}
 		}
@@ -1363,13 +1363,13 @@ class Penjualan extends Secure_Controller
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+				$this->session->set_flashdata('notif_error','<b>ERROR</b>');
 				redirect('penjualan/halaman_pembayaran/' . $this->input->post('id_penagihan'));
 			} else {
 				# Everything is Perfect. 
 				# Committing data to the database.
 				$this->db->trans_commit();
-				$this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+				$this->session->set_flashdata('notif_success','<b>SAVED</b>');
 				redirect('penjualan/detailPenagihan/' . $this->input->post('id_penagihan'));
 			}
 		} catch (Throwable $e) {
@@ -1453,13 +1453,13 @@ class Penjualan extends Secure_Controller
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.
 			$this->db->trans_rollback();
-			$this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+			$this->session->set_flashdata('notif_error','<b>ERROR</b>');
 			redirect('penjualan/halaman_pembayaran/' . $this->input->post('id_penagihan'));
 		} else {
 			# Everything is Perfect. 
 			# Committing data to the database.
 			$this->db->trans_commit();
-			$this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+			$this->session->set_flashdata('notif_success','<b>SAVED</b>');
 			redirect('penjualan/detailPenagihan/' . $this->input->post('id_penagihan'));
 		}
 	}
@@ -1546,7 +1546,7 @@ class Penjualan extends Secure_Controller
 		$this->db->set('status', 'REJECT');
 		$this->db->where('id', $id);
 		$this->db->update('pmm_penagihan_penjualan');
-		$this->session->set_flashdata('notif_reject','<b>REJECTED</b>');
+		$this->session->set_flashdata('notif_reject','<b>REJECT</b>');
 		redirect('admin/penjualan');
 	}
 
@@ -1623,7 +1623,7 @@ class Penjualan extends Secure_Controller
         $this->db->update("pmm_penawaran_penjualan");
 
         $this->db->update('pmm_penawaran_penjualan', array('status' => 'CLOSED'), array('id' => $id));
-        $this->session->set_flashdata('notif_reject', '<b>CLOSED</b>');
+        $this->session->set_flashdata('notif_success', '<b>CLOSED</b>');
         redirect("admin/penjualan");
     }
 
@@ -1634,7 +1634,7 @@ class Penjualan extends Secure_Controller
 		$this->db->set("updated_on", date('Y-m-d H:i:s'));
         $this->db->where("id", $id);
         $this->db->update("pmm_penawaran_penjualan");
-        $this->session->set_flashdata('notif_success', 'Penawaran Open');
+        $this->session->set_flashdata('notif_success', '<b>OPEN</b>');
         redirect("admin/penjualan");
     }
 	
@@ -1719,7 +1719,7 @@ class Penjualan extends Secure_Controller
 		$this->db->set("updated_on", date('Y-m-d H:i:s'));
         $this->db->where("id", $id);
         $this->db->update("pmm_sales_po");
-        $this->session->set_flashdata('notif_reject', '<b>CLOSED</b>');
+        $this->session->set_flashdata('notif_success', '<b>CLOSED</b>');
         redirect("admin/penjualan");
     }
 
@@ -1743,7 +1743,7 @@ class Penjualan extends Secure_Controller
 		$this->db->set("status_umur_hutang", "null", false);
 		$this->db->where("id", $id);
 		$this->db->update("pmm_penagihan_penjualan");
-		$this->session->set_flashdata('notif_reject','<b>CLOSED</b>');
+		$this->session->set_flashdata('notif_success','<b>CLOSED</b>');
 		redirect("penjualan/detailPenagihan/$id");
 	}
 

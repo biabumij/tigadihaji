@@ -15,17 +15,7 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><a> Pembelian</a></li>
-                            <li><a> Verifikasi Tagihan Pembelian</a></li>
-                            <li><a> Edit Verifikasi Tagihan Pembelian</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
@@ -53,7 +43,7 @@
                                 </div>
                                 <br /><br />
                                 <div class="text-center">
-                                    <a href="<?= site_url('pembelian/penagihan_pembelian_detail/'.$row['penagihan_pembelian_id']);?>" class="btn btn-info" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                    <a href="<?= site_url('pembelian/penagihan_pembelian_detail/'.$row['penagihan_pembelian_id']);?>" class="btn btn-info" style="width:15%; font-weight:bold; border-radius:10px;"> KEMBALI</a>
                                 </div>
                             </div>
                         </div>
@@ -282,12 +272,12 @@
                             <tbody>
                         </table>    
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Update Verifikasi</button>
+                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px;"> UPDATE VERIFIKASI</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">CLOSE</button>
                 </div>
             </div>
         </div>

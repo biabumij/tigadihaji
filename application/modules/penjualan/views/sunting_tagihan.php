@@ -15,26 +15,14 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin'); ?>">Dashboard</a></li>
-                            <li><a href="<?php echo site_url('admin/penjualan');?>"> Penjualan</a></li>
-                            <li><a href="<?php echo site_url('admin/penjualan');?>"> Tagihan Penjualan</a></li>
-                            <li><a href="">Detail Tagihan Penjualan</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header">
-                                <div class="">
-                                    <h3 class="">
-                                        Detail Tagihan Penjualan
-                                        <small>(<i><?= $row['status']; ?></i>)</small>
+                                <div>
+                                    <h3>
+                                        <b>DETAIL TAGIHAN PENJUALAN <?php echo $this->pmm_model->GetStatus2($row['status']);?></b>
                                     </h3>
                                 </div>
                             </div>
@@ -57,7 +45,7 @@
                                 </div>
                                 <br /><br />
                                 <div class="text-center">
-                                    <a href="<?= site_url('penjualan/detailPenagihan/'.$row['id']);?>" class="btn btn-info" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                    <a href="<?= site_url('penjualan/detailPenagihan/'.$row['id']);?>" class="btn btn-info" style="width:15%; font-weight:bold; border-radius:10px;"> KEMBALI</a>
                                 </div>
                             </div>
                         </div>

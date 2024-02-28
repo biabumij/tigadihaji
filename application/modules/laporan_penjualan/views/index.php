@@ -58,23 +58,18 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader(); ?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar(); ?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-bar-chart" aria-hidden="true"></i>Laporan</li>
-                            <li><a><?php echo $row[0]->menu_name; ?></a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
-                        <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                        <div class="panel">
                             <div class="panel-content">
-								<div class="panel-header">
-									<h3 class="section-subtitle"><?php echo $row[0]->menu_name; ?></h3>
-								</div>
+                                <div class="panel-header">
+									<h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
+                                    <div class="text-left">
+                                        <a href="<?php echo site_url('admin');?>">
+                                        <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                                    </div>
+                                </div>
                                 <div class="tab-content">					
                                     <div role="tabpanel" class="tab-pane active" id="penjualan">
                                         <br />
@@ -82,19 +77,19 @@
                                             <div width="100%">
                                                 <div class="panel panel-default">                                            
                                                     <div class="col-sm-5">
-														<p><h5>Pengiriman Penjualan</h5></p>
+														<p><h5><b>Pengiriman Penjualan</b></h5></p>
                                                         <a href="#laporan_pengiriman_penjualan" aria-controls="laporan_pengiriman_penjualan" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>									
                                                     </div>
 													<div class="col-sm-5">
-														<p><h5>Laporan Piutang</h5></p>
+														<p><h5><b>Laporan Piutang</b></h5></p>
                                                         <a href="#laporan_piutang" aria-controls="laporan_piutang" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
 													</div>
                                                     <div class="col-sm-5">
-														<p><h5>Monitoring Piutang</h5></p>
+														<p><h5><b>Monitoring Piutang</b></h5></p>
                                                         <a href="#monitoring_piutang" aria-controls="monitoring_piutang" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
 													</div>
                                                     <div class="col-sm-5">
-														<p><h5>Daftar Penerimaan</h5></p>
+														<p><h5><b>Daftar Penerimaan</b></h5></p>
                                                         <a href="#daftar_penerimaan" aria-controls="daftar_penerimaan" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
 													</div>
                                                 </div>
@@ -107,7 +102,7 @@
                                         <div class="col-sm-15">
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Laporan Pengiriman Penjualan</h3>
+                                                    <h3 class="panel-title"><b>Laporan Pengiriman Penjualan</b></h3>
 													<a href="laporan_penjualan">Kembali</a>
                                                 </div>
                                                 <div style="margin: 20px">
@@ -145,7 +140,7 @@
                                                                 </select>
                                                             </div>
                                                             <div class="col-sm-1 text-right">
-                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
+                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;">PRINT</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -183,7 +178,7 @@
                                         <div class="col-sm-15">
                                             <div class="panel panel-default">  
 												<div class="panel-heading">												
-                                                    <h3 class="panel-title">Laporan Piutang</h3>
+                                                    <h3 class="panel-title"><b>Laporan Piutang</b></h3>
 													<a href="laporan_penjualan">Kembali</a>
                                                 </div>
                                                 <div style="margin: 20px">
@@ -193,7 +188,7 @@
                                                                 <input type="text" id="filter_date_piutang" name="filter_date" class="form-control dtpicker" autocomplete="off" placeholder="Filter by Date">
                                                             </div>                                             
                                                             <div class="col-sm-3">
-                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
+                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;">PRINT</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -236,7 +231,7 @@
                                         <div class="col-sm-15">
                                             <div class="panel panel-default">  
 												<div class="panel-heading">												
-                                                    <h3 class="panel-title">Laporan Monitoring Piutang</h3>
+                                                    <h3 class="panel-title"><b>Laporan Monitoring Piutang</b></h3>
 													<a href="laporan_penjualan">Kembali</a>
                                                 </div>
                                                 <?php
@@ -274,7 +269,7 @@
                                                                 </select>
                                                             </div>                                                   
                                                             <div class="col-sm-3">
-                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
+                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;">PRINT</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -326,7 +321,7 @@
                                         <div class="col-sm-15">
                                             <div class="panel panel-default">      
 												<div class="panel-heading">												
-                                                    <h3 class="panel-title">Daftar Penerimaan</h3>
+                                                    <h3 class="panel-title"><b>Daftar Penerimaan</b></h3>
 													<a href="laporan_penjualan">Kembali</a>
                                                 </div>
                                                 <div style="margin: 20px">
@@ -336,7 +331,7 @@
                                                                 <input type="text" id="filter_date_penerimaan" name="filter_date" class="form-control dtpicker" autocomplete="off" placeholder="Filter by Date">
                                                             </div>                                                           
                                                             <div class="col-sm-3">
-                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
+                                                                <button class="btn btn-default" type="submit" id="btn-print" style="border-radius:10px; font-weight:bold;">PRINT</button>
                                                             </div>
                                                         </form>
                                                     </div>

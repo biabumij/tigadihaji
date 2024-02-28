@@ -19,21 +19,16 @@ if($this->session->userdata('admin_group_id') == 1){
     <?php echo $this->Templates->PageHeader();?>
 
     <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
         <div class="content">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                        <li><a><?php echo $row[0]->menu_name;?></a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="row animated fadeInUp">
                 <div class="col-sm-12 col-lg-12">
-                    <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                    <div class="panel">
                         <div class="panel-header">
-                            <h3 class="section-subtitle"><?php echo $row[0]->menu_name;?></h3>
+                            <h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name;?></h3>
+                            <div class="text-left">
+                                <a href="<?php echo site_url('admin');?>">
+                                <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                            </div>
                             <div class="panel-actions">
                                 <ul>
                                     <li class="action"><span class="fa fa-refresh action" onclick="reload_table()" aria-hidden="true"></span></li>
@@ -43,8 +38,8 @@ if($this->session->userdata('admin_group_id') == 1){
                         <div class="panel-content">
                             <div class="leftside-content-header">
                                 <ul class="nav nav-tabs ">
-                                    <li class="active"><a href="#table" data-toggle="tab" aria-expanded="true" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Table</a></li>
-                                    <li class=""><a href="#add" data-toggle="tab" aria-expanded="false" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Add New</a></li>
+                                    <li class="active"><a href="#table" data-toggle="tab" aria-expanded="true" style="border-radius:10px; font-weight:bold;">TABLE</a></li>
+                                    <li class=""><a href="#add" data-toggle="tab" aria-expanded="false" style="border-radius:10px; font-weight:bold;">ADD NEW</a></li>
                                 </ul>
                                 <br />
                                 <div class="tab-content">
@@ -85,7 +80,7 @@ if($this->session->userdata('admin_group_id') == 1){
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-9">
-                                                    <button type="submit" name="submit" class="btn btn-success" id="btn-submit" data-loading-text="please wait.." style="font-weight:bold; border-radius:10px;">Kirim</button>
+                                                    <button type="submit" name="submit" class="btn btn-success" id="btn-submit" data-loading-text="please wait.." style="font-weight:bold; border-radius:10px;">KIRIM</button>
                                                 </div>
                                             </div>
                                         </form>

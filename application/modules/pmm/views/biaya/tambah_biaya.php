@@ -17,24 +17,13 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                            <li>
-                                <a href="<?php echo site_url('admin/biaya');?>"> <i class="fa fa-calendar" aria-hidden="true"></i> Biaya</a></li>
-                            <li><a>Buat Biaya BUA</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header"> 
                                 <div class="">
-                                    <h3 class="">Buat Biaya BUA</h3>
+                                    <h3 class="">BUAT BIAYA BUA</h3>
                                 </div>
                             </div>
                             <div class="panel-content">
@@ -61,7 +50,7 @@
                                         <div class="col-sm-3">
                                             <label>
                                                 Penerima
-                                                <button type="button" class="btn btn-xs btn-info" onclick="TambahPenerima()"><i class="fa fa-plus"></i> Tambah Penerima</button>
+                                                <button type="button" class="btn btn-xs btn-info" onclick="TambahPenerima()"><b><i class="fa fa-plus"></i> TAMBAH PENERIMA</b></button>
                                             </label>
                                             <select id="penerima"  class="form-control form-select2"  name="penerima" required="">
                                                 <option value="">Pilih Penerima</option>
@@ -137,7 +126,7 @@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             <button type="button" class="btn btn-primary" onclick="tambahData()" style="font-weight:bold; border-radius:10px;">
-                                                <i class="fa fa-plus"></i> Tambah Data
+                                                <i class="fa fa-plus"></i> TAMBAH DATA
                                             </button>
                                         </div>
                                     </div>
@@ -167,8 +156,8 @@
                                     <br /><br />
                                     <div class="row">
                                         <div class="col-sm-12 text-center">
-                                            <a href="<?= site_url('admin/biaya_bua');?>" class="btn btn-danger" style="margin-bottom:0; width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Batal</a>
-                                            <button type="submit" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i>  Kirim</button>
+                                            <a href="<?= site_url('admin/biaya_bua');?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:10px;">BATAL</a>
+                                            <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;">KIRIM</button>
                                         </div>
                                     </div>
                                 </form>
@@ -186,7 +175,7 @@
         <div class="modal-dialog" role="document" >
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="modal-title">Tambah Penerima</span>
+                    <span class="modal-title"><b>TAMBAH PENERIMA</b></span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -228,7 +217,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 text-right">
-                                <button type="submit" class="btn btn-success btn-sm" id="btn-form"><i class="fa fa-check"></i> Tambah</button>
+                                <button type="submit" class="btn btn-success btn-sm" id="btn-form">KIRIM</button>
                             </div>  
                         </div>
                     </form>

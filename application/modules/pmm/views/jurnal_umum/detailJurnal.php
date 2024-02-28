@@ -19,23 +19,12 @@
         <?php echo $this->Templates->PageHeader();?>
 
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                            <li>
-                                <a href="<?php echo site_url('admin/jurnal_umum');?>"> Jurnal Umum</a></li>
-                            <li><a>Detail Jurnal</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header"> 
-                                <h3 >Detail Jurnal</h3>
+                                <h3><b>DETAIL JURNAL UMUM</b></h3>
                             </div>
                             <div class="panel-content">
                                 <div class="row">
@@ -143,31 +132,31 @@
                                 <br /><br />
                                 <div class="row">
                                         <div class="col-sm-12 text-center">
-                                            <a href="<?= base_url('admin/jurnal_umum') ?>" class="btn btn-info" style="width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                            <a href="<?= base_url('admin/jurnal_umum') ?>" class="btn btn-info" style="width:10%; font-weight:bold; border-radius:10px;"> KEMBALI</a>
                                             <?php
                                             if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 15){
                                             ?>
                                             <?php if($detail["status"] === "UNPAID") : ?>
-                                                <a href="<?= base_url("pmm/Jurnal_umum/approvalJurnal/".$detail["id"]) ?>" class="btn btn-success"><i class="fa fa-check" style="width:10%; font-weight:bold; border-radius:10px;"></i> Approve</a>
-                                                <a href="<?= base_url("pmm/Jurnal_umum/rejectedJurnal/".$detail["id"]) ?>"class="btn btn-primary"><i class="fa fa-close" style="width:10%; font-weight:bold; border-radius:10px;"></i> Reject</a>
+                                                <a href="<?= base_url("pmm/Jurnal_umum/approvalJurnal/".$detail["id"]) ?>" class="btn btn-success"><i class="fa fa-check" style="width:10%; font-weight:bold; border-radius:10px;"></i> APPROVE</a>
+                                                <a href="<?= base_url("pmm/Jurnal_umum/rejectedJurnal/".$detail["id"]) ?>"class="btn btn-primary"><i class="fa fa-close" style="width:10%; font-weight:bold; border-radius:10px;"></i> REJECT</a>
                                             <?php endif; ?>
                                             <?php
                                             }
                                             ?>
 
                                             <?php if($detail["status"] === "PAID") : ?>
-                                                <a target="_blank" href="<?= base_url('pmm/jurnal_umum/cetakJurnal/'.$detail["id"]) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-print"></i> Print</a>
+                                                <a target="_blank" href="<?= base_url('pmm/jurnal_umum/cetakJurnal/'.$detail["id"]) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:10px;"> PRINT</a>
                                                 <?php
                                                 if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 16){
                                                 ?>
-                                                <a  href="<?= base_url('pmm/jurnal_umum/form/'.$detail['id']) ?>" class="btn btn-primary" style="width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> Edit</a>
+                                                <a  href="<?= base_url('pmm/jurnal_umum/form/'.$detail['id']) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:10px;"> EDIT</a>
                                                 <?php
                                                 }
                                                 ?>
                                                 <?php
                                                 if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 16){
                                                 ?>
-                                                <a class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('pmm/jurnal_umum/delete/'.$detail['id']);?>')"><i class="fa fa-close"></i> Hapus</a>
+                                                <a class="btn btn-default" style="width:10%; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('pmm/jurnal_umum/delete/'.$detail['id']);?>')"> HAPUS</a>
                                                 <?php
                                                 }
                                                 ?>

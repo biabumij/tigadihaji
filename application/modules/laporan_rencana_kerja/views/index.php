@@ -58,22 +58,15 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader(); ?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar(); ?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-bar-chart" aria-hidden="true"></i>Laporan</li>
-                            <li><a><?php echo $row[0]->menu_name; ?></a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
-                        <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                        <div class="panel">
                             <div class="panel-content">
-								<div class="panel-header">
-									<h3 class="section-subtitle"><?php echo $row[0]->menu_name; ?></h3>
+								<h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
+								<div class="text-left">
+									<a href="<?php echo site_url('admin');?>">
+									<button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
 								</div>
                                 <div class="tab-content">
 				
@@ -86,11 +79,11 @@
 												<div width="100%">
 													<div class="panel panel-default">
 													<div class="col-sm-5">
-                                                            <p><h5>Rencana Kerja</h5></p>
+                                                            <p><h5><b>Rencana Kerja</b></h5></p>
                                                             <a href="#rencana_kerja" aria-controls="rencana_kerja" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
 														</div>	                                       
                                                         <div class="col-sm-5">
-                                                            <p><h5>Prognosa Produksi</h5></p>
+                                                            <p><h5><b>Prognosa Produksi</b></h5></p>
                                                             <a href="#prognosa_produksi" aria-controls="prognosa_produksi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
 														</div>											
 													</div>
@@ -104,7 +97,7 @@
                                         <div class="col-sm-15">
 											<div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Rencana Kerja</h3>
+                                                    <h3 class="panel-title"><b>Rencana Kerja</b></h3>
 													<a href="laporan_rencana_kerja">Kembali</a>
                                                 </div>
 												<div style="margin: 20px">
@@ -114,7 +107,7 @@
 																<input type="text" id="filter_date_rencana_kerja" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
 															</div>-->
 															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i>  Print</button>
+																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
 															</div>
 														</form>
 														
@@ -139,7 +132,7 @@
                                         <div class="col-sm-15">
 											<div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Prognosa Produksi</h3>
+                                                    <h3 class="panel-title"><b>Prognosa Produksi</b></h3>
 													<a href="laporan_rencana_kerja">Kembali</a>
                                                 </div>
 												<div style="margin: 20px">
@@ -149,7 +142,7 @@
 																<input type="text" id="filter_date_prognosa_produksi" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
 															</div>-->
 															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i>  Print</button>
+																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
 															</div>
 														</form>
 														

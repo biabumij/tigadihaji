@@ -477,13 +477,13 @@ class Rak extends Secure_Controller {
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.
 			$this->db->trans_rollback();
-			$this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+			$this->session->set_flashdata('notif_error','<b>ERROR</b>');
 			redirect('admin/rencana_kerja');
 		} else {
 			# Everything is Perfect. 
 			# Committing data to the database.
 			$this->db->trans_commit();
-			$this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+			$this->session->set_flashdata('notif_success','<b>SAVED</b>');
 			redirect('admin/rencana_kerja');
 		}
 	}
@@ -993,13 +993,13 @@ class Rak extends Secure_Controller {
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('notif_error', 'Gagal Memperbaharui Rencana Kerja !!');
+				$this->session->set_flashdata('notif_error', '<b>ERROR</b>');
 				redirect('admin/rencana_kerja');
 			} else {
 				# Everything is Perfect. 
 				# Committing data to the database.
 				$this->db->trans_commit();
-				$this->session->set_flashdata('notif_success', 'Berhasil Memperbaharui Rencana Kerja !!');
+				$this->session->set_flashdata('notif_success', '<b>SAVED</b>');
 				redirect('admin/rencana_kerja');
 			}
 	}
@@ -1094,13 +1094,13 @@ class Rak extends Secure_Controller {
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.
 			$this->db->trans_rollback();
-			$this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+			$this->session->set_flashdata('notif_error','<b>ERROR</b>');
 			redirect('admin/rencana_cash_flow');
 		} else {
 			# Everything is Perfect. 
 			# Committing data to the database.
 			$this->db->trans_commit();
-			$this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+			$this->session->set_flashdata('notif_success','<b>SAVED</b>');
 			redirect('admin/rencana_cash_flow');
 		}
 	}
@@ -1238,13 +1238,13 @@ class Rak extends Secure_Controller {
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('notif_error', 'Gagal Memperbaharui Rencana Cash Flow !!');
+				$this->session->set_flashdata('notif_error', '<b>ERROR</b>');
 				redirect('admin/rencana_cash_flow');
 			} else {
 				# Everything is Perfect. 
 				# Committing data to the database.
 				$this->db->trans_commit();
-				$this->session->set_flashdata('notif_success', 'Berhasil Memperbaharui Rencana Cash Flow !!');
+				$this->session->set_flashdata('notif_success', '<b>SAVED</b>');
 				redirect('admin/rencana_cash_flow');
 			}
 	}

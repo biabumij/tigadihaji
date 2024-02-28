@@ -15,24 +15,14 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><a> Pembelian</a></li>
-                            <li><a> Tagihan Pembelian</a></li>
-                            <li><a> Detail Penerimaan Pembelian</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header">
-                                <div class="">
-                                    <h3 class="">
-                                    Detail Penerimaan Pembelian
+                                <div>
+                                    <h3>
+                                        <b>DETAIL PENERIMAAN PEMBELIAN</b>
                                     </h3>
                                 </div>
                             </div>
@@ -160,13 +150,13 @@
                                     </div>
                                     <br /><br />
                                     <div class="text-center">
-                                    <a href="<?= base_url('pembelian/penagihan_pembelian_detail/' . $bayar["penagihan_pembelian_id"]) ?>" class="btn btn-info" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
-                                    <a href="<?= base_url('pembelian/cetak_pembayaran_penagihan_pembelian/' . $bayar["id"]) ?>" target="_blank" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-print"></i> Print</a>
+                                    <a href="<?= base_url('pembelian/penagihan_pembelian_detail/' . $bayar["penagihan_pembelian_id"]) ?>" class="btn btn-info" style="width:15%; font-weight:bold; border-radius:10px;"> KEMBALI</a>
+                                    <a href="<?= base_url('pembelian/cetak_pembayaran_penagihan_pembelian/' . $bayar["id"]) ?>" target="_blank" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> PRINT</a>
                                     
                                     <?php
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 16 || $this->session->userdata('admin_group_id') == 20 || $this->session->userdata('admin_group_id') == 24 || $this->session->userdata('admin_group_id') == 25){
                                     ?>
-                                    <td width="10%"><a href="<?= base_url('pembelian/sunting_pembayaran_pembelian/' . $bayar["id"]) ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> Edit</a></td>
+                                    <td width="10%"><a href="<?= base_url('pembelian/sunting_pembayaran_pembelian/' . $bayar["id"]) ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> EDIT</a></td>
                                     <?php
                                     }
                                     ?>
@@ -174,7 +164,7 @@
                                     <?php
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 16 || $this->session->userdata('admin_group_id') == 20 || $this->session->userdata('admin_group_id') == 24 || $this->session->userdata('admin_group_id') == 25){
                                     ?>
-                                    <button type="button" id="tombol_hapus" class="btn btn-danger"style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-times"></i> Hapus</button>
+                                    <button type="button" id="tombol_hapus" class="btn btn-default"style="width:15%; font-weight:bold; border-radius:10px;"> HAPUS</button>
                                     <?php
                                     }
                                     ?>  

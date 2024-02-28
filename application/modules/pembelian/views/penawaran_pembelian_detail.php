@@ -17,24 +17,12 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><a> Pembelian</a></li>
-                            <li><a> Penawaran Pembelian</a></li>
-                            <li><a> Detail Penawaran Pembelian</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header">
-                                <div class="">
-                                    <h3 class="">Detail Penawaran Pembelian <?php echo $this->pmm_model->GetStatus2($row['status']);?></h3>
-                                </div>
+                                <h3><b>DETAIL PENAWARAN PEMBELIAN <?php echo $this->pmm_model->GetStatus2($row['status']);?></b></h3>
                             </div>
                             <div class="panel-content">
                                 <table class="table table-striped table-bordered" width="100%">
@@ -50,10 +38,10 @@
                                 <table class="table table-striped table-bordered" width="100%">
                                     <tr>
                                         <th width="15%" align="left">Nomor Penawaran</th>
-                                        <th width="85%" align="left"><label class="label label-info" style="font-size:14px;font-weight:normal;"><?= $row['nomor_penawaran'];?></label></th>
+                                        <th width="85%" align="left"><label class="label label-success" style="font-size:14px;font-weight:bold;"><?= $row['nomor_penawaran'];?></label></th>
                                     </tr>
                                     <tr>
-                                        <th>Perihal</th>
+                                        <th>Jenis Pembelian</th>
                                         <th style="font-weight:normal;"><?= $row['jenis_pembelian'];?></th>
                                     </tr>
                                     <tr>
@@ -187,8 +175,8 @@
                                         <?php
                                         if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 11 || $this->session->userdata('admin_group_id') == 16){
                                         ?>
-                                            <a href="<?= site_url('pembelian/approve_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-success" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-check"></i> Setujui</a>
-                                            <a href="<?= site_url('pembelian/reject_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Tolak</a>
+                                            <a href="<?= site_url('pembelian/approve_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-success" style="width:15%; font-weight:bold; border-radius:10px;"> SETUJUI</a>
+                                            <a href="<?= site_url('pembelian/reject_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:15%; font-weight:bold; border-radius:10px;"> TOLAK</a>
                                         <?php
                                         }
                                         ?>
@@ -198,8 +186,8 @@
                                     <?php
                                         if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 11 || $this->session->userdata('admin_group_id') == 16){
                                         ?>
-                                            <a href="<?= site_url('pembelian/closed_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-briefcase"></i> Closed</a>
-                                            <a href="<?= site_url('pembelian/reject_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Reject</a>
+                                            <a href="<?= site_url('pembelian/closed_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> CLOSED</a>
+                                            <a href="<?= site_url('pembelian/reject_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> REJECT</a>
                                         <?php
                                         }
                                         ?>
@@ -209,14 +197,14 @@
                                         <?php
                                         if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 11 || $this->session->userdata('admin_group_id') == 16){
                                         ?>
-                                            <a href="<?= site_url('pembelian/open_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-success" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-folder-open-o"></i> Open</a>
+                                            <a href="<?= site_url('pembelian/open_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> OPEN</a>
                                         <?php
                                         }
                                         ?>
                                         <?php
                                         if($this->session->userdata('admin_group_id') == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-trash"></i> Hapus</a>
+                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> HAPUS</a>
                                         <?php
                                         }
                                         ?>
@@ -226,14 +214,14 @@
                                         <?php
                                         if($this->session->userdata('admin_group_id') == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-trash"></i> Hapus</a>
+                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> HAPUS</a>
                                         <?php
                                         }
                                         ?>
                                     <?php endif; ?>
 
-                                    <br /><br /><br />
-                                    <a href="<?php echo site_url('admin/pembelian');?>" class="btn btn-info" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                    <br /><br />
+                                    <a href="<?php echo site_url('admin/pembelian');?>" class="btn btn-info" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
                                 </div>
                                 
                             </div>

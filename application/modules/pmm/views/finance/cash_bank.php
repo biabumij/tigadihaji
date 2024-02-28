@@ -324,7 +324,7 @@
                         success : function(result){
                             if(result.output){
                                 table.ajax.reload();
-                                bootbox.alert('Berhasil menghapus!!');
+                                bootbox.alert('<b>DELETED</b>');
                             }else if(result.err){
                                 bootbox.alert(result.err);
                             }

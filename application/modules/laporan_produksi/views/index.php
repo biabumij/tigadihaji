@@ -58,22 +58,15 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader(); ?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar(); ?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-bar-chart" aria-hidden="true"></i>Laporan</li>
-                            <li><a><?php echo $row[0]->menu_name; ?></a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
-                        <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                        <div class="panel">
                             <div class="panel-content">
-								<div class="panel-header">
-									<h3 class="section-subtitle"><?php echo $row[0]->menu_name; ?></h3>
+								<h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
+								<div class="text-left">
+									<a href="<?php echo site_url('admin');?>">
+									<button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
 								</div>
                                 <div class="tab-content">
 									
@@ -84,19 +77,19 @@
                                             <div width="100%">
                                                 <div class="panel panel-default">                                            
 													<div class="col-sm-5">
-														<p><h5>Evaluasi Bahan</h5></p>
+														<p><h5><b>Evaluasi Bahan</b></h5></p>
                                                         <a href="#laporan_evaluasi" aria-controls="laporan_evaluasi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
                                                     </div>
 													<div class="col-sm-5">
-														<p><h5>Evaluasi Alat</h5></p>
+														<p><h5><b>Evaluasi Alat</b></h5></p>
                                                         <a href="#evaluasi_alat" aria-controls="evaluasi_alat" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
                                                     </div>
 													<div class="col-sm-5">
-														<p><h5>Evaluasi BUA</h5></p>
+														<p><h5><b>Evaluasi BUA</b></h5></p>
                                                         <a href="#evaluasi_bua" aria-controls="evaluasi_bua" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
                                                     </div>
 													<div class="col-sm-5">
-														<p><h5>Evaluasi Target Produksi</h5></p>
+														<p><h5><b>Evaluasi Target Produksi</b></h5></p>
                                                         <a href="#evaluasi_target_produksi" aria-controls="evaluasi_target_produksi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
                                                     </div>                               													
                                                 </div>
@@ -109,7 +102,7 @@
                                         <div class="col-sm-15">
 										<div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Evaluasi Bahan</h3>
+                                                    <h3 class="panel-title"><b>Evaluasi Bahan</b></h3>
 													<a href="laporan_ev._produksi">Kembali</a>
                                                 </div>
 												<div style="margin: 20px">
@@ -119,7 +112,7 @@
 																<input type="text" id="filter_date_evaluasi_bahan" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
 															</div>
 															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i>  Print</button>
+																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
 															</div>
 														</form>
 														
@@ -146,7 +139,7 @@
                                         <div class="col-sm-15">
 										<div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Evaluasi Alat</h3>
+                                                    <h3 class="panel-title"><b>Evaluasi Alat</b></h3>
 													<a href="laporan_ev._produksi">Kembali</a>
                                                 </div>
 												<div style="margin: 20px">
@@ -156,7 +149,7 @@
 																<input type="text" id="filter_date_evaluasi_alat" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
 															</div>
 															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i>  Print</button>
+																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
 															</div>
 														</form>
 														
@@ -183,7 +176,7 @@
                                         <div class="col-sm-15">
 										<div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Evaluasi BUA</h3>
+                                                    <h3 class="panel-title"><b>Evaluasi BUA</b></h3>
 													<a href="laporan_ev._produksi">Kembali</a>
                                                 </div>
 												<div style="margin: 20px">
@@ -193,7 +186,7 @@
 																<input type="text" id="filter_date_evaluasi_bua" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
 															</div>
 															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i>  Print</button>
+																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
 															</div>
 														</form>
 														
@@ -221,7 +214,7 @@
                                         <div class="col-sm-15">
 											<div class="panel panel-default">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title">Evaluasi Target Produksi</h3>
+                                                    <h3 class="panel-title"><b>Evaluasi Target Produksi</b></h3>
 													<a href="laporan_ev._produksi">Kembali</a>
                                                 </div>
 												<div style="margin: 20px">
@@ -231,7 +224,7 @@
 																<input type="text" id="filter_date_evaluasi_target_produksi" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
 															</div>
 															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i>  Print</button>
+																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
 															</div>
 														</form>
 														

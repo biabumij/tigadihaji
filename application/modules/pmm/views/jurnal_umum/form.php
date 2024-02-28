@@ -19,24 +19,13 @@
         <?php echo $this->Templates->PageHeader();?>
 
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
-            <div class="content" style="padding:0;">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                            <li>
-                                <a href="<?php echo site_url('admin/biaya');?>"> <i class="fa fa-calendar" aria-hidden="true"></i> Jurnal Umum</a></li>
-                            <li><a>Edit Jurnal Umum</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="content">
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header"> 
-                                <div class="">
-                                    <h3 class="">Edit Jurnal Umum</h3>
+                                <div>
+                                    <h3><b>EDIT JURNAL UMUM</b></h3>
                                 </div>
                             </div>
                             <div class="panel-content">
@@ -90,7 +79,7 @@
                                             <input type="text" class="form-control numberformat" name="kredit" placeholder="Kredit">
                                         </div>
                                         <div class="col-sm-3">
-                                            <button type="submit" class="btn btn-warning" id="btn-form" style="font-weight:bold; border-radius:10px;"><i class="fa fa-plus"></i> Tambah</button>
+                                            <button type="submit" class="btn btn-warning" id="btn-form" style="font-weight:bold; border-radius:10px;"><i class="fa fa-plus"></i> TAMBAH</button>
                                         </div>
                                     </div>
                                 </form>
@@ -115,7 +104,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="<?= base_url('admin/jurnal_umum') ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Batal</a>
+                                <a href="<?= base_url('admin/jurnal_umum') ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:10px;"> BATAL</a>
                             </div>
                         </div>
                     </div>
@@ -215,12 +204,12 @@
                             <input type="text" id="total_kredit" name="total_kredit" class="form-control numberformat" required="" autocomplete="off" />
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Update Jurnal Umum</button>
+                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px;">UPDATE JURNAL UMUM</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">CLOSE</button>
                 </div>
             </div>
         </div>
@@ -332,7 +321,7 @@
                         success : function(result){
                             if(result.output){
                                 table.ajax.reload();
-                                bootbox.alert('Berhasil Menghapus!!');
+                                bootbox.alert('<b>DELETED</b>');
                             }else if(result.err){
                                 bootbox.alert(result.err);
                             }

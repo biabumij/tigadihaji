@@ -152,14 +152,14 @@ class Kontak extends Secure_Controller {
 		if ($this->db->trans_status() === FALSE) {
             # Something went wrong.
             $this->db->trans_rollback();
-            $this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+            $this->session->set_flashdata('notif_error','<b>ERROR</b>');
             redirect('kontak/form');
         } 
         else {
             # Everything is Perfect. 
             # Committing data to the database.
             $this->db->trans_commit();
-            $this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+            $this->session->set_flashdata('notif_success','<b>SAVED</b>');
             redirect('admin/kontak');
         }
     }
@@ -173,14 +173,14 @@ class Kontak extends Secure_Controller {
 		if ($this->db->trans_status() === FALSE) {
             # Something went wrong.
             $this->db->trans_rollback();
-            $this->session->set_flashdata('notif_error','Gagal Hapus Kontak');
+            $this->session->set_flashdata('notif_error','<b>ERROR</b>');
             redirect('kontak/detail/'.$id);
         } 
         else {
             # Everything is Perfect. 
             # Committing data to the database.
             $this->db->trans_commit();
-            $this->session->set_flashdata('notif_success','Berhasil Hapus Kontak');
+            $this->session->set_flashdata('notif_success','<b>DELETED</b>');
             redirect('admin/kontak');
         }
     }

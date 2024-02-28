@@ -72,7 +72,7 @@
                 "data": "actions"
             }
         ],
-        pageLength: 50,
+        pageLength: 25,
         "columnDefs": [
             { "width": "5%", "targets": 0, "className": 'text-center'},
             { "targets": 4, "className": 'text-right'},
@@ -180,7 +180,7 @@
                     success: function(result) {
                         if (result.output) {
                             table.ajax.reload();
-                            bootbox.alert('Berhasil menghapus!!');
+                            bootbox.alert('<b>DELETED</b>');
                         } else if (result.err) {
                             bootbox.alert(result.err);
                         }

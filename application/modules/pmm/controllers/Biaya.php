@@ -229,14 +229,14 @@ class Biaya extends CI_Controller {
         if ($this->db->trans_status() === FALSE) {
             # Something went wrong.
             $this->db->trans_rollback();
-            $this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+            $this->session->set_flashdata('notif_error','<b>ERROR</b>');
             redirect('pmm/biaya/tambah_biaya');
         } 
         else {
             # Everything is Perfect. 
             # Committing data to the database.
             $this->db->trans_commit();
-            $this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+            $this->session->set_flashdata('notif_success','<b>SAVED</b>');
             redirect('admin/biaya_bua');
         }
 
@@ -324,14 +324,14 @@ class Biaya extends CI_Controller {
             if ($this->db->trans_status() === FALSE) {
                 # Something went wrong.
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('notif_error','Gagal hapus jurnal !!');
+                $this->session->set_flashdata('notif_error','<b>ERROR</b>');
                 redirect('pmm/biaya/detail_biaya/'.$id);
             } 
             else {
                 # Everything is Perfect. 
                 # Committing data to the database.
                 $this->db->trans_commit();
-                $this->session->set_flashdata('notif_success','Berhasil hapus jurnal !!');
+                $this->session->set_flashdata('notif_success','<b>DELETED</b>');
                 redirect('admin/biaya_bua');
             }
         }
@@ -372,7 +372,7 @@ class Biaya extends CI_Controller {
             $this->db->order_by('nama','asc');
             $query = $this->db->get_where('penerima')->result_array();
             $data = array();
-            $data[0] = array('id'=>'','text'=>'.. Pilih Penerima ..');
+            $data[0] = array('id'=>'','text'=>'Pilih Penerima');
             foreach ($query as $key => $row) {
 
                 $data[] = array('id'=>$row['id'],'text'=>$row['nama']);
@@ -647,7 +647,7 @@ class Biaya extends CI_Controller {
 		$this->db->set("status", "PAID");
 		$this->db->where("id", $id);
 		$this->db->update("pmm_biaya");
-		$this->session->set_flashdata('notif_success', 'Berhasil menyetujui Biaya');
+		$this->session->set_flashdata('notif_success', '<b>APPROVED</b>');
 		redirect("admin/biaya");
 	}
 	
@@ -656,7 +656,7 @@ class Biaya extends CI_Controller {
 		$this->db->set("status", "UNPAID");
 		$this->db->where("id", $id);
 		$this->db->update("pmm_biaya");
-		$this->session->set_flashdata('notif_success', 'Berhasil Menolak Biaya');
+		$this->session->set_flashdata('notif_reject', '<b>REJECTED</b>');
 		redirect("admin/biaya");
 	}
 

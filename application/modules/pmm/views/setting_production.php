@@ -16,21 +16,16 @@
     <?php echo $this->Templates->PageHeader();?>
 
     <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
         <div class="content">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                        <li><a>Setting Production</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="row animated fadeInUp">
                 <div class="col-sm-12 col-lg-12">
-                   <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                   <div class="panel">
                         <div class="panel-header">
-                            <h3 class="section-subtitle">Perusahaan</h3>
+                            <h3 class="section-subtitle"><b>PERUSAHAAN</b></h3>
+                            <div class="text-left">
+                                <a href="<?php echo site_url('admin');?>">
+                                <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                            </div>
                         </div>
                         <div class="panel-content">
                             <form id="inline-validation" method="POST" class="form-horizontal form-stripe form-submit" novalidate="novalidate" data-button="#btn-submit" action="<?php echo site_url('pmm/setting_production');?>" data-redirect="<?php echo site_url('admin/perusahaan');?>" enctype="multipart/form-data">
@@ -80,7 +75,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                      <button type="submit" name="submit" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:10px;" id="btn-submit"><i class="fa fa-send"></i> Kirim</button>
+                                      <button type="submit" name="submit" class="btn btn-success" style="width:100px; font-weight:bold; border-radius:10px;" id="btn-submit">KIRIM</button>
                                     </div>
                                 </div>
                             </form>

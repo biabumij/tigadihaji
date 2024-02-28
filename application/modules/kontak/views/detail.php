@@ -16,18 +16,7 @@
     <?php echo $this->Templates->PageHeader();?>
 
     <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
-        <div class="content" style="padding:0;">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                        <li>
-                            <a href="<?php echo site_url('admin/productions');?>"> <i class="fa fa-calendar" aria-hidden="true"></i> Produk</a></li>
-                        <li><a>Produk Detail</a></li>
-                    </ul>
-                </div>
-            </div>
+        <div class="content">
             <div class="row animated fadeInUp">
                 <div class="col-sm-12 col-lg-12">
                     <div class="panel">
@@ -176,14 +165,14 @@
                                         </tr>
                                     </table>
                                 </div>
-                                
-                                <div class="col-sm-12 text-right">
-                                <a href="<?= base_url('admin/kontak') ?>" class="btn btn-info" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                <br /><br />
+                                <div class="col-sm-12 text-center">
+                                <a href="<?= base_url('admin/kontak') ?>" class="btn btn-info" style="width:100px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
 
                                 <?php
                                 if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 16){
                                 ?>
-                                <a  href="<?= base_url('kontak/form/'.$row['id']) ?>" class="btn btn-primary" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> Edit</a>
+                                <a  href="<?= base_url('kontak/form/'.$row['id']) ?>" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"> EDIT</a>
                                 <?php
                                 }
                                 ?>
@@ -191,11 +180,12 @@
                                 <?php
                                 if($this->session->userdata('admin_group_id') == 1){
                                 ?>
-                                <a class="btn btn-danger" style="width:15%; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('kontak/hapus/'.$row['id']);?>')"><i class="fa fa-close"></i> Hapus</a>
+                                <a class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('kontak/hapus/'.$row['id']);?>')"> HAPUS</a>
                                 <?php
                                 }
                                 ?>
                                 </div>
+                                <br /><br />
                             </div>
                             
                         </div>

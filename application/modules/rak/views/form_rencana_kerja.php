@@ -19,23 +19,13 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><a href="<?php echo site_url('admin/rak#rencana_kerja');?>">RAP</a></li>
-                            <li><a>Buat Rencana Kerja</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header"> 
-                                <div class="">
-                                    <h3 class="">Rencana Kerja</h3>
-                                    
+                                <div>
+                                    <h3><b>RENCANA KERJA</b></h3>
                                 </div>
                             </div>
                             <div class="panel-content">
@@ -842,9 +832,10 @@
                                     </div>
                                     <br /><br />
                                     <div class="text-center">
-                                        <a href="<?= site_url('admin/rencana_kerja#rencana_kerja');?>" class="btn btn-danger" style="margin-bottom:0px; width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Batal</a>
-                                        <button type="submit" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+                                        <a href="<?= site_url('admin/rencana_kerja#rencana_kerja');?>" class="btn btn-danger" style="margin-bottom:0px; width:10%; font-weight:bold; border-radius:10px;">BATAL</a>
+                                        <button type="submit" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:10px;">KIRIM</button>
                                     </div>
+                                    <br /><br />
                                 </form>
                             </div>
                         </div>

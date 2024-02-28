@@ -14,24 +14,13 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                            <li>
-                                <a href="<?php echo site_url('admin/productions');?>"> <i class="fa fa-calendar" aria-hidden="true"></i> Kontak</a></li>
-                            <li><a>Buat Kontak</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header"> 
-                                <div class="">
-                                    <h3 >Kontak</h3>
+                                <div>
+                                    <h3><b>KONTAK</b></h3>
                                 </div>
                             </div>
                             <div class="panel-content">
@@ -116,7 +105,7 @@
                                                 <label class="col-sm-2 control-label">Identitas</label>
                                                 <div class="col-sm-3">
                                                 <select id="tipe_identitas" class="form-control form-select2" name="tipe_identitas">
-                                                        <option value="">Pilih Satuan</option>
+                                                        <option value="">Pilih</option>
                                                         <option value="KTP" <?= (isset($edit) && $edit['tipe_identitas'] == 'KTP') ? 'selected' : '' ;?> >KTP</option>
                                                         <option value="PASSPORT" <?= (isset($edit) && $edit['tipe_identitas'] == 'PASSPORT') ? 'selected' : '' ;?> >PASSPORT</option>
                                                         <option value="SIM" <?= (isset($edit) && $edit['tipe_identitas'] == 'SIM') ? 'selected' : '' ;?> >SIM</option>
@@ -196,13 +185,14 @@
 
                                         </div>
                                     </div>
-                                    <br />
+                                    <br /><br />
                                     <div class="row">
-                                        <div class="col-sm-12 text-right">
-                                            <a href="<?= site_url('admin/kontak');?>" class="btn btn-danger" style="margin-bottom:0; width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Batal</a>
-                                            <button type="submit" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+                                        <div class="col-sm-12 text-center">
+                                            <a href="<?= site_url('admin/kontak');?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:10px;">BATAL</a>
+                                            <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;">KIRIM</button>
                                         </div>
                                     </div>
+                                    <br /><br />
                                 </form>
                             </div>
                         </div>

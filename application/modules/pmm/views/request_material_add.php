@@ -16,23 +16,14 @@
     <?php echo $this->Templates->PageHeader();?>
 
     <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
+        
         <div class="content">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><a> Pembelian</a></li>
-                        <li><a> Permintaan Bahan & Alat</a></li>
-                        <li><a> Detail Permintaan Bahan & Alat</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="row animated fadeInUp">
                 <div class="col-sm-12 col-lg-12">
                     <div class="panel">
                         <div class="panel-header">
-                            <div class="">
-                                <h3 class="">Detail Permintaan Bahan & Alat <?php echo $this->pmm_model->GetStatus($data['status']);?></h3>
+                            <div>
+                                <h3><b>DETAIL PERMINTAAN BAHAN & ALAT <?php echo $this->pmm_model->GetStatus($data['status']);?></b></h3>
                             </div>
                         </div>
                         <div class="panel-content">
@@ -49,7 +40,7 @@
                             <table class="table table-striped table-bordered">
                                 <tr>
                                     <th width="15%" align="left">No. Permintaan</th>
-                                    <td width="85% align="left"><label class="label label-info" style="font-size:14px;font-weight:normal;"><?php echo $data['request_no'];?></label></td>
+                                    <td width="85% align="left"><label class="label label-success" style="font-size:14px;font-weight:bold;"><?php echo $data['request_no'];?></label></td>
                                 </tr>
                                 <tr>
                                     <th>Subjek</th>
@@ -183,7 +174,7 @@
                                             <input type="text" id="volume" name="volume" class="form-control numberformat" required="" autocomplete="off" placeholder="Volume" />
                                         </div>
                                         <div class="col-sm-3">
-                                            <button type="submit" class="btn btn-warning" id="btn-form" style="width:200px; font-weight:bold;"><i class="fa fa-plus"></i> Tambah Produk</button>
+                                            <button type="submit" class="btn btn-warning" id="btn-form" style="width:200px; font-weight:bold; border-radius:10px;"><i class="fa fa-plus"></i> TAMBAH PRODUK</button>
                                         </div>
 
                                         <input type="hidden" id="tax_id" name="tax_id" class="form-control" required="" autocomplete="off" placeholder="Tax ID" readonly=""/>
@@ -226,13 +217,13 @@
                                 <?php
                                 if($data['status'] == 'DRAFT'){
                                     ?>
-                                    <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/3');?>')" class="btn btn-success check-btn" style="width:200px; font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Kirim Permintaan</a>
+                                    <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/3');?>')" class="btn btn-success check-btn" style="width:200px; font-weight:bold; border-radius:10px;"> KIRIM PERMINTAAN</a>
                                     <?php
                                 }else if($data['status'] == 'WAITING'){
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 11 || $this->session->userdata('admin_group_id') == 16){
                                         ?>
-                                        <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/1');?>')" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:10px;"><i class="fa fa-check"></i> Setujui</a>
-                                        <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/2');?>')" class="btn btn-danger check-btn" style="width:150px; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Tolak</a>
+                                        <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/1');?>')" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:10px;"> SETUJUI</a>
+                                        <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/2');?>')" class="btn btn-danger check-btn" style="width:150px; font-weight:bold; border-radius:10px;"> TOLAK</a>
                                         <?php
                                     }
                                 }
@@ -240,7 +231,7 @@
                                 ?>
 
                                 <br /><br /><br />
-                                <a href="<?php echo site_url('admin/pembelian#chart');?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                <a href="<?php echo site_url('admin/pembelian#chart');?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
                             </div>
                             
                         </div>
@@ -331,9 +322,23 @@
 
         function ProcessForm(url){
 
-            bootbox.confirm("Apakah anda yakin untuk proses data ini ?", function(result){ 
-                if(result){
-                    window.location.href = url;
+            bootbox.confirm({
+                message: "Apakah anda yakin untuk proses data ini ?",
+                buttons: {
+                    confirm: {
+                        label: 'Yes',
+                        className: 'btn-success'
+                    },
+                    cancel: {
+                        label: 'No',
+                        className: 'btn-danger'
+                    }
+                },
+                callback: function (result) {
+                    if(result){
+                        window.location.href = url;
+                    }
+                    
                 }
             });
         }
@@ -433,7 +438,7 @@
                         success : function(result){
                             if(result.output){
                                 table.ajax.reload();
-                                // bootbox.alert('Berhasil menghapus!!');
+                                // bootbox.alert('<b>DELETED</b>');
                             }else if(result.err){
                                 bootbox.alert(result.err);
                             }

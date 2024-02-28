@@ -35,7 +35,7 @@
                 </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
-                        <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                        <div class="panel">
                             <div class="panel-header">
                                 <h3 class="section-subtitle">
                                     <?php echo $row[0]->menu_name; ?>
@@ -332,7 +332,7 @@
                     success: function(result) {
                         if (result.output) {
                             table_hpp_bahan_baku.ajax.reload();
-                            bootbox.alert('Berhasil Menghapus !!');
+                            bootbox.alert('<b>DELETED</b>');
                         } else if (result.err) {
                             bootbox.alert(result.err);
                         }
@@ -409,7 +409,7 @@
                     success: function(result) {
                         if (result.output) {
                             table_akumulasi.ajax.reload();
-                            bootbox.alert('Berhasil Menghapus !!');
+                            bootbox.alert('<b>DELETED</b>');
                         } else if (result.err) {
                             bootbox.alert(result.err);
                         }
@@ -479,7 +479,7 @@
                     success: function(result) {
                         if (result.output) {
                             table_approval.ajax.reload();
-                            bootbox.alert('Berhasil Menghapus !!');
+                            bootbox.alert('<b>DELETED</b>');
                         } else if (result.err) {
                             bootbox.alert(result.err);
                         }
@@ -551,7 +551,7 @@
                     success: function(result) {
                         if (result.output) {
                             table_approval_laporan.ajax.reload();
-                            bootbox.alert('Berhasil Menghapus !!');
+                            bootbox.alert('<b>DELETED</b>');
                         } else if (result.err) {
                             bootbox.alert(result.err);
                         }

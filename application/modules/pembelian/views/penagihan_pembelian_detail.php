@@ -15,24 +15,14 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><a> Pembelian</a></li>
-                            <li><a> Tagihan Pembelian</a></li>
-                            <li><a> Detail Tagihan Pembelian</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header">
-                                <div class="">
-                                    <h3 class="">
-                                        Detail Tagihan Pembelian <?php echo $this->pmm_model->GetStatus3($row['status']);?>
+                                <div>
+                                    <h3>
+                                        <b>DETAIL TAGIHAN PEMBALIAN <?php echo $this->pmm_model->GetStatus3($row['status']);?></b>
                                     </h3>
                                 </div>
                             </div>
@@ -58,7 +48,7 @@
                                 <table class="table table-striped table-bordered" width="100%">
                                     <tr>
                                         <th width="20%" align="left">Nomor Invoice</th>
-                                        <th width="80%" align="left" style="font-weight:normal;"><label class="label label-info" style="font-size:14px;"><?= $row['nomor_invoice']; ?></label></th>
+                                        <th width="80%" align="left" style="font-weight:bold;"><label class="label label-success" style="font-size:14px;"><?= $row['nomor_invoice']; ?></label></th>
                                     </tr>
                                     <tr>
                                         <th>Tanggal Invoice</th>
@@ -331,7 +321,7 @@
                                     <?php
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 16 || $this->session->userdata('admin_group_id') == 20 || $this->session->userdata('admin_group_id') == 24 || $this->session->userdata('admin_group_id') == 25){
                                     ?>
-                                    <a class="btn btn-danger" style="width:15%; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')"><i class="fa fa-close"></i> Hapus</a>
+                                    <a class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')"> HAPUS</a>
                                     <?php
                                     }
                                 }
@@ -341,8 +331,8 @@
                                     <?php
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 16 || $this->session->userdata('admin_group_id') == 20 || $this->session->userdata('admin_group_id') == 24 || $this->session->userdata('admin_group_id') == 25){
                                     ?>
-                                    <a href="<?= site_url('pembelian/pembayaran_panagihan/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-money"></i> Kirim Pembayaran</a>
-                                    <a href="<?= site_url('pembelian/closed_pembayaran_penagihan/' . $row['id']); ?>" class="btn btn-success" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-check"></i> Pembayaran Lunas</a>
+                                    <a href="<?= site_url('pembelian/pembayaran_panagihan/' . $row['id']); ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> KIRIM PEMBAYARAN</a>
+                                    <a href="<?= site_url('pembelian/closed_pembayaran_penagihan/' . $row['id']); ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PEMBAYARAN LUNAS</a>
                                     <?php
                                     }
                                     ?>
@@ -350,9 +340,9 @@
                                     <?php
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 16){
                                     ?>
-                                    <a href="<?= base_url('pembelian/sunting_tagihan/' . $row["id"]) ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> Edit Tagihan</a>
-                                    <a href="<?= base_url('pembelian/sunting_verifikasi/' . $row["id"]) ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> Edit Verifikasi</a>
-                                    <a class="btn btn-danger" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')"  style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Hapus</a>
+                                    <a href="<?= base_url('pembelian/sunting_tagihan/' . $row["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> EDIT TAGIHAN</a>
+                                    <a href="<?= base_url('pembelian/sunting_verifikasi/' . $row["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> EDIT VERIFIKASI</a>
+                                    <a class="btn btn-default" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')"  style="width:150px; font-weight:bold; border-radius:10px;"> HAPUS</a>
                                     <?php
                                     }
                                     ?>
@@ -363,7 +353,7 @@
                                     <?php
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 16  || $this->session->userdata('admin_group_id') == 20 || $this->session->userdata('admin_group_id') == 24 || $this->session->userdata('admin_group_id') == 25){
                                     ?>
-                                    <a href="<?= site_url('pembelian/open_penagihan/' . $row['id']); ?>" class="btn btn-success" style="width:20%; font-weight:bold; border-radius:10px;"><i class="fa fa-folder-open-o"></i> Pembayaran Belum Lunas</a>
+                                    <a href="<?= site_url('pembelian/open_penagihan/' . $row['id']); ?>" class="btn btn-default" style="width:20%; font-weight:bold; border-radius:10px;"> PEMBAYARAN BELUM LUNAS</a>
                                     <?php
                                     }
                                     ?>
@@ -371,7 +361,7 @@
                                     <?php
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 16){
                                     ?>
-                                    <a class="btn btn-danger" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Hapus</a>
+                                    <a class="btn btn-default" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')" style="width:150px; font-weight:bold; border-radius:10px;"> HAPUS</a>
                                     <?php
                                     }
                                     ?>
@@ -379,12 +369,12 @@
                                 ?>
                             </div>
                             <div class="text-center">
-                                <a href="<?php echo site_url('admin/pembelian#settings'); ?>" class="btn btn-info" style="width:15%; font-weight:bold; border-radius:10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                <a href="<?php echo site_url('admin/pembelian#settings'); ?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
                             </div>
                             <div class="container-fluid">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#menu1" aria-controls="menu2" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Daftar Surat Jalan</a></li>
-                                    <li role="presentation"><a href="#menu2" aria-controls="menu2" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Daftar Pembayaran</a></li>
+                                    <li role="presentation" class="active"><a href="#menu1" aria-controls="menu2" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">DAFTAR SURAT JALAN</a></li>
+                                    <li role="presentation"><a href="#menu2" aria-controls="menu2" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">DAFTAR PEMBAYARAN</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="menu1">

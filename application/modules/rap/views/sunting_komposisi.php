@@ -42,26 +42,13 @@
     
 
     <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
         
         <div class="content">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><i class="fa fa-home" aria-hidden="true"></i><a href="<?php echo base_url();?>">Dashboard</a></li>
-                        <li><a href="<?= base_url("admin/komposisi/") ?>">Komposisi</a></li>
-                        <li><a href="<?= base_url('komposisi/data_komposisi/' . $agregat["id"]) ?>">Data Komposisi</a></li>
-                        <li><a>Edit Komposisi Agregat</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="row animated fadeInUp">
                 <div class="col-sm-12 col-lg-12">
                     <div class="panel">
                         <div class="panel-header">
-                                <div class="">
-                                    <h3 class="">Detail Komposisi Agregat</h3>
-                                </div>
+                            <h3><b>DETAIL KOMPOSISI AGREGAT</b></h3>
                         </div>
                         <div class="panel-content">
                             <form method="POST" action="<?php echo site_url('rap/submit_sunting_agregat');?>" id="form-po" enctype="multipart/form-data" autocomplete="off">
@@ -173,10 +160,12 @@
 							<br />
                             <div class="row">
                                 <div class="col-sm-12 text-center">
-                                    <a href="<?= base_url('admin/rap/') ?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Batal</a>
-                                    <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+                                    <a href="<?= base_url('admin/rap/') ?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:10px;">BATAL</a>
+                                    <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;">KIRIM</button>
                                 </div>
                             </div>
+                            <br />
+							<br />
                             </form>
                         </div>
                     </div>

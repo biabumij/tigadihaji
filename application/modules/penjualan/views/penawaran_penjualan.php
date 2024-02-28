@@ -15,24 +15,13 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><a> Penjualan</a></li>
-                            <li><a> Penawaran Penjualan</a></li>
-                            <li><a> Buat Penawaran Penjualan Baru</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header"> 
-                                <div class="">
-                                    <h3 class="">Penawaran Penjualan</h3>
-                                    
+                                <div>
+                                    <h3><b>PENAWARAN PENJUALAN</b></h3>
                                 </div>
                             </div>
                             <div class="panel-content">
@@ -203,8 +192,8 @@
                                     </div>
                                     <br /><br />
                                     <div class="text-center">
-                                        <a href="<?php echo site_url('admin/penjualan');?>" class="btn btn-danger" style="margin-bottom:0; width:100px; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Batal</a>
-                                        <button type="submit" class="btn btn-success" style="width:100px; font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i>  Kirim</button>
+                                        <a href="<?php echo site_url('admin/penjualan');?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:10px;"> BATAL</a>
+                                        <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;"> KIRIM</button>
                                     </div>
                                 </form>
                             </div>

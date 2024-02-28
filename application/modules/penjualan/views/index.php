@@ -27,39 +27,25 @@
         <?php include 'lib.php'; ?>
 
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar(); ?>
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-home" aria-hidden="true"></i><a href="<?php echo base_url(); ?>">Dashboard</a></li>
-                            <li><a>Penjualan</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
-                        <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                        <div class="panel">
                             <div class="panel-header">
                                 <h3 class="section-subtitle">
-                                    Penjualan
-                                    <div class="pull-right">
-                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:10px; font-weight:bold;">
-                                            <i class="fa fa-plus"></i> Buat <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="<?= site_url("penjualan/penawaran_penjualan") ?>">Penawaran Penjualan</a></li>
-                                            <li><a href="<?php echo site_url('penjualan/sales_po'); ?>">Sales Order</a></li>
-                                        </ul>
-                                    </div>
+                                    <b>PENJUALAN</b>
                                 </h3>
+                                <div class="text-left">
+                                    <a href="<?php echo site_url('admin');?>">
+                                    <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                                </div>
                             </div>
                             <div class="panel-content">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Penawaran Penjualan</a></li>
-                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Sales Order</a></li>
-                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Pengiriman Penjualan</a></li>
-                                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Tagihan Penjualan</a></li>
+                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PENAWARAN</a></li>
+                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">SALES ORDER</a></li>
+                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PENGIRIMAN</a></li>
+                                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">TAGIHAN</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -70,6 +56,7 @@
                                             <div class="col-sm-3">
                                                 <input type="text" id="filter_date_penawaran" name="filter_date" class="form-control dtpicker input-sm" value="" placeholder="Filter by Date" autocomplete="off">
                                             </div>
+                                            <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('penjualan/penawaran_penjualan'); ?>"><b style="color:white;">BUAT PENAWARAN</b></a></button>
                                             <br />
                                             <br />
                                             <table class="table table-striped table-hover" id="table_penawaran" style="width:100%">
@@ -94,11 +81,12 @@
                                     <!-- Sales Order -->
                                     <div role="tabpanel" class="tab-pane" id="profile">
                                         <div class="table-responsive">
-                                        <div class="col-sm-3">
-											<input type="text" id="filter_date_sales_order" name="filter_date" class="form-control dtpicker input-sm" value="" placeholder="Filter by Date" autocomplete="off">
-                                        </div>
-										<br />
-										<br />
+                                            <div class="col-sm-3">
+                                                <input type="text" id="filter_date_sales_order" name="filter_date" class="form-control dtpicker input-sm" value="" placeholder="Filter by Date" autocomplete="off">
+                                            </div>
+                                            <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('penjualan/sales_po'); ?>"><b style="color:white;">BUAT SALES ORDER</b></a></button>
+                                            <br />
+                                            <br />
                                             <table class="table table-striped table-hover" id="guest-table" style="width:100%">
                                                 <thead>
                                                     <tr>
@@ -109,7 +97,7 @@
                                                         <th>Pelanggan</th>
                                                         <th>Jenis Pekerjaan</th>
 														<th>Vol. Sales Order</th>
-                                                        <th>Presentase Penerimaan Terhadap Vol. Sales Order</th>
+                                                        <th>Presentase Penerimaan</th>
                                                         <th>Kirim</th>
 														<th>Total Sales Order</th>
 														<th>Total Kirim</th>
@@ -169,8 +157,8 @@
                                                 <br />
                                                 <div class="col-sm-6">
                                                     <div class="text-left">
-                                                        <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"><i class="fa fa-print"></i> Print</button>
-                                                        <button type="button" id="btn_production" class="btn btn-success" style="width:200px; font-weight:bold; border-radius:10px;">Penagihan Penjualan</button>
+                                                        <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"> PRINT</button>
+                                                        <button type="button" id="btn_production" class="btn btn-success" style="background-color:#88b93c; border:1px solid black; border-radius:10px;"> BUAT PENAGIHAN</button>
                                                     </div>
                                                 </div>
                                                 <br /><br />
@@ -250,7 +238,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="text-left">
-                                                    <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"><i class="fa fa-print"></i> Print</button>
+                                                    <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"> PRINT</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -558,14 +546,27 @@
             }).data();
             var send_data = '';
             if (data_receipt.length > 0) {
-                bootbox.confirm("Apakah anda yakin untuk proses data ini ?", function(result) {
-                    // console.log('This was logged in the callback: ' + result); 
-                    if (result) {
-                        $.each(data_receipt, function(i, val) {
+                bootbox.confirm({
+                    message: "Apakah anda yakin untuk proses data ini ?",
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        if(result){
+                            $.each(data_receipt, function(i, val) {
                             send_data += val.id + ',';
                         });
 
                         window.location.href = '<?php echo site_url('penjualan/penagihan_penjualan/'); ?>' + send_data;
+                        }
+                        
                     }
                 });
             } else {

@@ -16,42 +16,31 @@
     <?php echo $this->Templates->PageHeader();?>
 
     <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
         <div class="content">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><i class="fa fa-home" aria-hidden="true"></i><a href="<?php echo base_url();?>">Dashboard</a></li>
-                        <li><a >Produk</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="row animated fadeInUp">
                 <div class="col-sm-12 col-lg-12">
-                    <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                    <div class="panel">
                         <div class="panel-header">
                             <h3 class="section-subtitle">
-                            	Produk
-                            	<div class="pull-right">
-                            		<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:10px; font-weight:bold;">
-                                        <i class="fa fa-plus"></i> Buat <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="<?php echo site_url('produk/buat_baru'); ?>">Produk</a></li>
-                                      </ul>
-                            	</div>
+                            	<b>PRODUK</b>
                         	</h3>
+                            <div class="text-left">
+                                <a href="<?php echo site_url('admin');?>">
+                                <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                            </div>
                         </div>
                         <div class="panel-content">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#bahanbaku" aria-controls="bahanbaku" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Bahan Baku</a></li>
-                                <li role="presentation"><a href="#betonreadymix" aria-controls="betonreadymix" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Beton Ready Mix</a></li>
-                                <li role="presentation"><a href="#jasa" aria-controls="jasa" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Jasa</a></li>
-                                <li role="presentation"><a href="#peralatan" aria-controls="peralatan" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Peralatan</a></li>
+                                <li role="presentation" class="active"><a href="#bahanbaku" aria-controls="bahanbaku" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">BAHAN BAKU</a></li>
+                                <li role="presentation"><a href="#betonreadymix" aria-controls="betonreadymix" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">BETON READY MIX</a></li>
+                                <li role="presentation"><a href="#jasa" aria-controls="jasa" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">JASA</a></li>
+                                <li role="presentation"><a href="#peralatan" aria-controls="peralatan" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PERALATAN</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="bahanbaku">
-                                	<br />
+                                    <br />
+                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
+                                	<br /><br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="table-bahanbaku" style="width:100%;">
                                             <thead>
@@ -70,7 +59,9 @@
                             
                                 
                                 <div role="tabpanel" class="tab-pane" id="betonreadymix">
-                                	<br />
+                                    <br />
+                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
+                                	<br /><br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="table-betonreadymix" style="width:100%;">
                                             <thead>
@@ -88,7 +79,9 @@
                                 </div>
                                 
                                 <div role="tabpanel" class="tab-pane" id="jasa">
-                                	<br />
+                                    <br />
+                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
+                                	<br /><br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="table-jasa" style="width:100%;">
                                             <thead>
@@ -106,7 +99,9 @@
                                 </div>
                                 
                                 <div role="tabpanel" class="tab-pane" id="peralatan">
-                                	<br />
+                                    <br />
+                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
+                                	<br /><br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="table-peralatan" style="width:100%;">
                                             <thead>

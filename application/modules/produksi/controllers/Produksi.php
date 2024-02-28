@@ -101,13 +101,13 @@ class Produksi extends Secure_Controller {
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.
 			$this->db->trans_rollback();
-			$this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+			$this->session->set_flashdata('notif_error','<b>ERROR</b>');
 			redirect('/kunci_&_approval/hpp_bahan_baku');
 		} else {
 			# Everything is Perfect. 
 			# Committing data to the database.
 			$this->db->trans_commit();
-			$this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+			$this->session->set_flashdata('notif_success','<b>SAVED</b>');
 			redirect('admin/kunci_&_approval');
 		}
 	}
@@ -203,13 +203,13 @@ class Produksi extends Secure_Controller {
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.
 			$this->db->trans_rollback();
-			$this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+			$this->session->set_flashdata('notif_error','<b>ERROR</b>');
 			redirect('/kunci_&_approval/akumulasi');
 		} else {
 			# Everything is Perfect. 
 			# Committing data to the database.
 			$this->db->trans_commit();
-			$this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+			$this->session->set_flashdata('notif_success','<b>SAVED</b>');
 			redirect('admin/kunci_&_approval');
 		}
 	}
@@ -297,13 +297,13 @@ class Produksi extends Secure_Controller {
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.
 			$this->db->trans_rollback();
-			$this->session->set_flashdata('notif_error', 'Gagal Menyetujui BUA, Diskonto & Persiapan !!');
+			$this->session->set_flashdata('notif_error', '<b>ERROR</b>');
 			redirect('/kunci_&_approval/table_approval');
 		} else {
 			# Everything is Perfect. 
 			# Committing data to the database.
 			$this->db->trans_commit();
-			$this->session->set_flashdata('notif_success', 'Berhasil Menyetujui BUA, Diskonto & Persiapan !!');
+			$this->session->set_flashdata('notif_success', '<b>APPROVED</b>');
 			redirect('admin/kunci_&_approval');
 		}
 	}
@@ -393,13 +393,13 @@ class Produksi extends Secure_Controller {
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.
 			$this->db->trans_rollback();
-			$this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+			$this->session->set_flashdata('notif_error','<b>ERROR</b>');
 			redirect('admin/kunci_&_approval');
 		} else {
 			# Everything is Perfect. 
 			# Committing data to the database.
 			$this->db->trans_commit();
-			$this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+			$this->session->set_flashdata('notif_success','<b>SAVED</b>');
 			redirect('admin/kunci_&_approval');
 		}
 	}

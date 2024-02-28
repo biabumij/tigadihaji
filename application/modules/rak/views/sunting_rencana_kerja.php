@@ -21,25 +21,12 @@
         <?php echo $this->Templates->PageHeader();?>
 
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
-            <div class="content" style="padding:0;">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-money" aria-hidden="true"></i>RAP</li>
-                            
-                            <li><a>Rencana Kerja</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="content">
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header"> 
-                                <div class="">
-                                    <h3 class="">Rencana Kerja</h3>
-                                    
-                                </div>
+                                <h3><b>RENCANA KERJA</b></h3>
                             </div>
                             <div class="panel-content">
                                 <form method="POST" action="<?php echo site_url('rak/submit_sunting_rencana_kerja');?>" id="form-po" enctype="multipart/form-data" autocomplete="off">
@@ -823,8 +810,8 @@
 									<br />
                                     <div class="row">
                                         <div class="col-sm-12 text-center">
-                                            <a href="<?= site_url('admin/rencana_kerja');?>" class="btn btn-danger" style="margin-bottom:0px; width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> Batal</a>
-                                            <button type="submit" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+                                            <a href="<?= site_url('admin/rencana_kerja');?>" class="btn btn-danger" style="margin-bottom:0px; font-weight:bold; border-radius:10px;">BATAL</a>
+                                            <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;">KIRIM</button>
                                         </div>
                                     </div>
                                 </form>

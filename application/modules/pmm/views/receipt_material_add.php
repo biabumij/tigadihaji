@@ -10,25 +10,13 @@
     <?php echo $this->Templates->PageHeader();?>
 
     <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
         <div class="content">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                        <li><a href="<?php echo site_url('admin/pembelian');?>"> Pembelian</a></li>
-                        <li><a href="<?php echo site_url('admin/pembelian'); ?>"> Pesanan Pembelian</a></li>
-                        <li><a>Surat Jalan Penerimaan Pembelian</a></li>
-                    </ul>
-                </div>
-            </div>
             <div class="row animated fadeInUp">
                 <div class="col-sm-12 col-lg-12">
                     <div class="panel">
                         <div class="panel-header">
                             <h4 class="section-subtitle">
-                               Surat Jalan Penerimaan Pembelian
-                                
+                               <b>SURAT JALAN PENERIMAAN PEMBELIAN</b>
                             </h4>
                         </div>
                         <div class="panel-content">
@@ -173,15 +161,15 @@
                                 </div>
                                 <div class="row">
                                         <div class="col-sm-12 text-right">
-                                            <a href="<?php echo site_url('admin/pembelian#profile'); ?>" class="btn btn-info" style="margin-top:10px; width:100px; font-weight:bold; border-radius:10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
-                                            <button type="submit" name="submit" class="btn btn-success" style="width:100px; font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+                                            <a href="<?php echo site_url('pmm/purchase_order/manage/' .$id); ?>" class="btn btn-info" style="margin-top:10px; width:100px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
+                                            <button type="submit" name="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"> KIRIM</button>
                                              <!-- <button type="button" id="btn-unedit" class="btn btn-info" style="display:none"><i class="fa fa-undo" ></i></button> -->
                                         </div>
                                 </div>
                             </form>
                             <br />
                             <div class="text-right">
-                                <button class="btn btn-danger" id="btn-view" style="width:100px; font-weight:bold; font-weight:bold; border-radius:10px;"><i class="fa fa-search"></i> Lihat Data</button>
+                                <button class="btn btn-default" id="btn-view" style="width:100px; font-weight:bold; font-weight:bold; border-radius:10px;"> LIHAT DATA</button>
                             </div>
                             <div id="box-view" style="display:none;">
                                 <div class="row">
@@ -198,7 +186,7 @@
                                             </select>
                                         </div>
                                         <div class="col-sm-6">
-                                            <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"><i class="fa fa-print"></i> Print</button>
+                                            <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;">PRINT</button>
                                         </div>
                                     </form>
                                 </div>
@@ -317,7 +305,7 @@
                             <input type="text" id="edit_memo" name="edit_memo" class="form-control" autocomplete="off" />
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px"><i class="fa fa-send"></i> Kirim</button>
+                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px"> Kirim</button>
                         </div>
                     </form>
                 </div>
@@ -719,8 +707,8 @@
                 success : function(result){
                     $('#btn-form').button('reset');
 					$.toast({
-                            heading: 'Success',
-                            text: 'Berhasil menambahkan data penerimaan',
+                            heading: '<b>Sukses</b>',
+                            text: '<b>SAVED</b>',
                             showHideTransition: 'fade',
                             icon: 'success',
                             position: 'top-right',
@@ -756,7 +744,7 @@
                         success : function(result){
                             if(result.output){
                                 table.ajax.reload();
-                                bootbox.alert('Berhasil Menghapus Data Surat Jalan !!');
+                                bootbox.alert('<b>DELETED</b>');
                             }else if(result.err){
                                 bootbox.alert(result.err);
                             }

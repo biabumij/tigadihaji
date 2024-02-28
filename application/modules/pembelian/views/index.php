@@ -72,32 +72,19 @@
     <div class="wrap">
         <?php echo $this->Templates->PageHeader(); ?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar(); ?>
+            
             <div class="content">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-home" aria-hidden="true"></i><a href="<?php echo base_url(); ?>">Dashboard</a></li>
-                            <li><a>Pembelian</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
-                        <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
+                        <div class="panel">
                             <div class="panel-header">
                                 <h3 class="section-subtitle">
-                                    Pembelian
-                                    <div class="pull-right">
-                                        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:10px; font-weight:bold;">
-                                            <i class="fa fa-plus"></i> Buat <span class="caret"></span>
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="<?php echo site_url('pembelian/penawaran_pembelian'); ?>">Penawaran Pembelian</a></li>
-											 <li><a href="javascript:void(0);" onclick="OpenFormRequest()">Permintaan Bahan & Alat</a></li>
-                                        </ul>
-                                    </div>
+                                    <b>PEMBELIAN</b>
                                 </h3>
+                                <div class="text-left">
+                                    <a href="<?php echo site_url('admin');?>">
+                                    <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                                </div>
                             </div>
                             <div class="panel-content">
                                 <?php
@@ -107,15 +94,15 @@
                                 $kategori  = $this->db->order_by('nama_kategori_produk', 'asc')->select('*')->get_where('kategori_produk', array('status' => 'PUBLISH'))->result_array();
                                 ?>
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Penawaran Pembelian</a></li>
-									<li role="presentation"><a href="#chart" aria-controls="chart" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Permintaan Bahan & Alat</a></li>
-                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Pesanan Pembelian</a></li>
-                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Penerimaan Pembelian</a></li>
-                                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Tagihan Pembelian</a></li>
+                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PENAWARAN</a></li>
+									<li role="presentation"><a href="#chart" aria-controls="chart" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PERMINTAAN BAHAN & ALAT</a></li>
+                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PESANAN</a></li>
+                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PENERIMAAN</a></li>
+                                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">TAGIHAN</a></li>
                                     <?php
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 16){
                                     ?>
-                                        <li role="presentation"><a href="#verifikasi" aria-controls="verifikasi" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Notifikasi 
+                                        <li role="presentation"><a href="#verifikasi" aria-controls="verifikasi" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">NOTIFIKASI 
                                             <blink><b><?php
                                             $query = $this->db->query('SELECT * FROM pmm_verifikasi_penagihan_pembelian where approve_unit_head = "TIDAK DISETUJUI" ');
                                             echo $query->num_rows();
@@ -132,8 +119,9 @@
                                     <div role="tabpanel" class="tab-pane active" id="home">
                                         <div class="table-responsive">
                                             <div class="col-sm-3">
-                                                    <input type="text" id="filter_date_2" name="filter_date" class="form-control dtpicker input-sm" value="" placeholder="Filter by Date" autocomplete="off">
+                                                <input type="text" id="filter_date_2" name="filter_date" class="form-control dtpicker input-sm " value="" placeholder="Filter by Date" autocomplete="off">
                                             </div>
+                                            <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('pembelian/penawaran_pembelian'); ?>"><b style="color:white;">BUAT PENAWARAN</b></a></button>
                                             <br />
                                             <br />
                                             <table class="table table-striped table-hover" id="guest-table" style="width:100%;">
@@ -176,6 +164,7 @@
                                                 ?>
                                             </select>
                                         </div>
+                                        <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenFormRequest()"><b style="color:white;">BUAT PERMINTAAN BAHAN & ALAT</b></a></button>
                                     </div>
                                     <br />
                                     <div class="table-responsive">
@@ -205,7 +194,7 @@
 									<div class="modal-dialog" role="document" >
 										<div class="modal-content">
 											<div class="modal-header">
-												<span class="modal-title">Permintaan Bahan & Alat</span>
+												<span class="modal-title"><b>PERMINTAAN BAHAN & ALAT</b></span>
 												<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 													<span aria-hidden="true">&times;</span>
 												</button>
@@ -269,12 +258,12 @@
 													</div>
 													
 													<div class="form-group">
-														<button type="submit" onclick="tinyMCE.triggerSave(true,true);" class="btn btn-success" id="btn-form" style="font-weight:bold; width;10%; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+														<button type="submit" onclick="tinyMCE.triggerSave(true,true);" class="btn btn-success" id="btn-form" style="font-weight:bold; width;10%; border-radius:10px;"> KIRIM</button>
 													</div>
 												</form>
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; width;10%; border-radius:10px;">Close</button>
+												<button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; width;10%; border-radius:10px;">CLOSE</button>
 											</div>
 										</div>
 									</div>
@@ -284,7 +273,7 @@
                                 <div role="tabpanel" class="tab-pane" id="profile">
                                     <div class="table-responsive">
                                         <div class="col-sm-3">
-                                                <input type="text" id="filter_date_3" name="filter_date" class="form-control dtpicker input-sm" value="" placeholder="Filter by Date" autocomplete="off">
+                                            <input type="text" id="filter_date_3" name="filter_date" class="form-control dtpicker input-sm" value="" placeholder="Filter by Date" autocomplete="off">
                                         </div>
                                         <br />
                                         <br />
@@ -298,12 +287,10 @@
                                                     <th>Nomor</th>
                                                     <th>Subyek</th>
                                                     <th>Vol. PO</th>
-                                                    <th>Presentase Penerimaan Terhadap Vol. PO</th>
+                                                    <th>Presentase Penerimaan</th>
                                                     <th>Terima</th>
                                                     <th>Total Pesanan Pembelian</th>
                                                     <th>Total Terima</th>
-                                                    <th>Lampiran</th>
-                                                    <th>Tindakan</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -330,12 +317,12 @@
                                                         <input type="file" id="file" name="file" class="form-control" required="" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <button type="submit" class="btn btn-success" id="btn-form-doc" style="font-weight:bold; width;10%; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+                                                        <button type="submit" class="btn btn-success" id="btn-form-doc" style="font-weight:bold; width;10%; border-radius:10px;"> KIRIM</button>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; width;10%; border-radius:10px;">Close</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; width;10%; border-radius:10px;">CLOSE</button>
                                             </div>
                                         </div>
                                     </div>
@@ -377,7 +364,7 @@
                                                     ?>
                                                     
                                                     <div class="form-group">
-                                                        <button type="submit" class="btn btn-success" id="btn-no_po"><i class="fa fa-send"></i> Simpan</button>
+                                                        <button type="submit" class="btn btn-success" id="btn-no_po"> Simpan</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -437,8 +424,8 @@
                                             <div class="col-sm-6">
                                                 <div class="text-left">
                                                     <input type="hidden" id="val-receipt-id" name="">
-                                                    <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"><i class="fa fa-print"></i> Print</button>
-                                                    <button type="button" id="btn_production" class="btn btn-success" style="width:200px; font-weight:bold;  border-radius:10px;">Penagihan Pembelian</button>
+                                                    <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;">PRINT</button>
+                                                    <button type="button" id="btn_production" class="btn btn-success" style="background-color:#88b93c; border:1px solid black; border-radius:10px;">BUAT PENAGIHAN</button>
                                                 </div>
                                             </div>
                                             <br />
@@ -487,12 +474,12 @@
                                                         <input type="file" id="file" name="file" class="form-control" required="" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <button type="submit" class="btn btn-success" id="btn-form-doc-surat-jalan" style="font-weight:bold; width;10%; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+                                                        <button type="submit" class="btn btn-success" id="btn-form-doc-surat-jalan" style="font-weight:bold; width;10%; border-radius:10px;"> KKIRIMirim</button>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; width;10%; border-radius:10px;">Close</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; width;10%; border-radius:10px;"> CLOSE</button>
                                             </div>
                                         </div>
                                     </div>
@@ -841,8 +828,8 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 text-right">
-                                <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm" id="btn-form" style="font-weight:bold; width;10%; border-radius:10px;"><i class="fa fa-close"></i> Batal</button>
-                                <button type="submit" class="btn btn-success btn-sm" id="btn-form" style="font-weight:bold; width;10%; border-radius:10px;"><i class="fa fa-send"></i> Kirim</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm" id="btn-form" style="font-weight:bold; width;10%; border-radius:10px;"> BATAL</button>
+                                <button type="submit" class="btn btn-success btn-sm" id="btn-form" style="font-weight:bold; width;10%; border-radius:10px;"> KIRIM</button>
                             </div>
                         </div>
                     </form>
@@ -1269,7 +1256,7 @@
                     success : function(result){
                         if(result.output){
                             table_request.ajax.reload();
-                            bootbox.alert('Berhasil Menghapus !!');
+                            bootbox.alert('<b>DELETED</b>');
                         }else if(result.err){
                             bootbox.alert(result.err);
                         }
@@ -1326,12 +1313,6 @@
             },
             {
                 "data": "total_receipt"
-            },
-            {
-                "data": "document_po"
-            },
-            {
-                "data": "actions"
             },
         ],
         "columnDefs": [
@@ -1561,14 +1542,27 @@
             selected: true
         }).data();
         var send_data = '';
-        bootbox.confirm("Apakah anda yakin untuk proses data ini ?", function(result) {
-            // console.log('This was logged in the callback: ' + result); 
-            if (result) {
-                $.each(data_receipt, function(i, val) {
+        bootbox.confirm({
+            message: "Apakah anda yakin untuk proses data ini ?",
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if(result){
+                    $.each(data_receipt, function(i, val) {
                     send_data += val.id + ',';
                 });
 
                 window.location.href = '<?php echo site_url('pembelian/penagihan_pembelian/'); ?>' + send_data;
+                }
+                
             }
         });
 

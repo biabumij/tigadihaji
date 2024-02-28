@@ -212,14 +212,14 @@ class Jurnal_umum extends CI_Controller {
         if ($this->db->trans_status() === FALSE) {
             # Something went wrong.
             $this->db->trans_rollback();
-            $this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+            $this->session->set_flashdata('notif_error','<b>ERROR</b>');
             redirect('pmm/jurnal_umum/tambah_jurnal');
         } 
         else {
             # Everything is Perfect. 
             # Committing data to the database.
             $this->db->trans_commit();
-            $this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+            $this->session->set_flashdata('notif_success','<b>SAVED</b>');
             redirect('admin/jurnal_umum');
         }
 
@@ -296,14 +296,14 @@ class Jurnal_umum extends CI_Controller {
             if ($this->db->trans_status() === FALSE) {
                 # Something went wrong.
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('notif_error','Gagal hapus jurnal !!');
+                $this->session->set_flashdata('notif_error','ERROR');
                 redirect('pmm/jurnal_umum/detailJurnal/'.$id);
             } 
             else {
                 # Everything is Perfect. 
                 # Committing data to the database.
                 $this->db->trans_commit();
-                $this->session->set_flashdata('notif_success','Berhasil hapus jurnal !!');
+                $this->session->set_flashdata('notif_success','DELETED');
                 redirect('admin/jurnal_umum');
             }
         }
@@ -315,7 +315,7 @@ class Jurnal_umum extends CI_Controller {
 		$this->db->set("status", "PAID");
 		$this->db->where("id", $id);
 		$this->db->update("pmm_jurnal_umum");
-		$this->session->set_flashdata('notif_success', 'Berhasil menyetujui Jurnal Umum');
+		$this->session->set_flashdata('notif_success', 'APPROVED');
 		redirect("admin/biaya");
 	}
 	
@@ -324,7 +324,7 @@ class Jurnal_umum extends CI_Controller {
 		$this->db->set("status", "UNPAID");
 		$this->db->where("id", $id);
 		$this->db->update("pmm_jurnal_umum");
-		$this->session->set_flashdata('notif_success', 'Berhasil Menolak Jurnal Umum');
+		$this->session->set_flashdata('notif_reject', 'REJECT');
 		redirect("admin/biaya");
 	}
 

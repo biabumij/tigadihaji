@@ -161,7 +161,7 @@ class Purchase_order extends CI_Controller {
 			
 		}else if($type == 2){
 			$arr = array('status'=>'REJECTED');
-			$this->session->set_flashdata('notif_reject','<b>REJECTED</b>');
+			$this->session->set_flashdata('notif_reject','<b>DITOLAK</b>');
 		}else {
 			$arr = array('status'=>'WAITING');
 		}
@@ -478,14 +478,14 @@ class Purchase_order extends CI_Controller {
 		if ($this->db->trans_status() === FALSE) {
             # Something went wrong.
             $this->db->trans_rollback();
-            $this->session->set_flashdata('notif_error','<b>Gagal Hapus Pesanan Pembelian</b>');
+            $this->session->set_flashdata('notif_error','<b>ERROR</b>');
             redirect('admin/pembelian');
         } 
         else {
             # Everything is Perfect. 
             # Committing data to the database.
             $this->db->trans_commit();
-            $this->session->set_flashdata('notif_success','<b>Berhasil Hapus Pesanan Pembelian</b>');
+            $this->session->set_flashdata('notif_success','<b><b>DELETED</b></b>');
             redirect('admin/pembelian');
         }
     }
@@ -497,7 +497,7 @@ class Purchase_order extends CI_Controller {
         $this->db->set("updated_on", date('Y-m-d H:i:s'));
         $this->db->where("id", $id);
         $this->db->update("pmm_purchase_order");
-        $this->session->set_flashdata('notif_success', '<b>Pesanan Pembelian Publish</b>');
+        $this->session->set_flashdata('notif_success', '<b>PUBLISH</b>');
         redirect("admin/pembelian");
     }
 	

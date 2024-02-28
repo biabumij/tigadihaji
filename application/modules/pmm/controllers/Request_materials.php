@@ -298,7 +298,7 @@ class Request_materials extends CI_Controller {
 			
 		}else if($type == 2){
 			$arr = array('status'=>'REJECTED');
-			$this->session->set_flashdata('notif_reject','<b>REJECTED</b>');
+			$this->session->set_flashdata('notif_reject','<b>REJECT</b>');
 		}else {
 			$this->session->set_flashdata('notif_success','<b>SAVED</b>');
 			$arr = array('status'=>'WAITING');

@@ -3690,7 +3690,7 @@ class Pmm_model extends CI_Model {
 				$row['total']= number_format($row['total'],0,',','.');
                 $row['memo']= $row['memo'];
                 $row['lampiran'] = "<a href=" . base_url('uploads/biaya/' . $row["lampiran"]) . ">" . $row["lampiran"] . "</a>";  
-                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;">Update Biaya </a>';
+                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;">UPDATE BIAYA</a>';
                 
                 $data[] = $row;
             }
@@ -3761,7 +3761,7 @@ class Pmm_model extends CI_Model {
                 $row['total_kredit']= number_format($row['total_kredit'],0,',','.');
                 $row['memo']= $row['memo'];
                 $row['lampiran'] = "<a href=" . base_url('uploads/jurnal_umum/' . $row["lampiran"]) . ">" . $row["lampiran"] . "</a>";  
-                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;">Update Jutrnal Umum </a>';
+                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;">UPDATE JURNAL UMUM</a>';
                 
                 $data[] = $row;
             }
@@ -3812,7 +3812,7 @@ class Pmm_model extends CI_Model {
                 $row['nama']= $this->crud_global->GetField('penerima',array('id'=>$row['supplier_id']),'nama');
                 $row['tanggal_invoice'] = date('d F Y',strtotime($row['tanggal_invoice']));
                 $row['nomor_invoice']= $row['nomor_invoice'];
-                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;">Update Tagihan </a>';
+                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;">UPDATE TAGIHAN</a>';
                 
                 $data[] = $row;
             }
@@ -3836,7 +3836,7 @@ class Pmm_model extends CI_Model {
                 $row['nama']= $this->crud_global->GetField('penerima',array('id'=>$row['client_id']),'nama');
                 $row['tanggal_invoice'] = date('d F Y',strtotime($row['tanggal_invoice']));
                 $row['nomor_invoice']= $row['nomor_invoice'];
-                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;">Update Tagihan </a>';
+                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;">UPDATE TAGIHAN</a>';
                 
                 $data[] = $row;
             }
@@ -3847,39 +3847,6 @@ class Pmm_model extends CI_Model {
     }
 
     //BATAS RUMUS LAMA//
-
-    function GetReceiptMatBukuBesar($filter_client_id=false,$purchase_order_no=false,$start_date=false,$end_date=false,$filter_product=false)
-    {
-        $output = array();
-
-        $this->db->select('c.coa, t.id as transaction_id, t.akun, t.tanggal_transaksi, t.transaksi, b.nomor_transaksi as no_trx_1, j.nomor_transaksi as no_trx_2, pdb.deskripsi as dex_1, j.memo as dex_2, t.debit as debit, t.kredit as kredit');
-        $this->db->join('pmm_biaya b','t.biaya_id = b.id','left');
-        $this->db->join('pmm_detail_biaya pdb','b.id = pdb.biaya_id','left');
-        $this->db->join('pmm_jurnal_umum j','t.jurnal_id = j.id','left');
-        $this->db->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left');
-        $this->db->join('pmm_coa c','t.akun = c.id','left');
-        if(!empty($start_date) && !empty($end_date)){;
-            $this->db->where('t.tanggal_transaksi >=',$start_date);
-            $this->db->where('t.tanggal_transaksi <=',$end_date);
-        }
-        if(!empty($filter_client_id)){
-            $this->db->where('c.coa',$filter_client_id);
-        }
-        if(!empty($purchase_order_no)){
-            $this->db->where('ppo.id',$purchase_order_no);
-        }
-        if(!empty($filter_product)){
-            $this->db->where_in('pp.product_id',$filter_product);
-        }
-		
-        $this->db->order_by('t.tanggal_transaksi','asc');
-        $this->db->order_by('t.id','asc');
-        $this->db->group_by('t.id');
-        $query = $this->db->get('transactions t');
-        $output = $query->result_array();
-	
-        return $output;
-    }
 
     function GetPenerimaanPembelian($supplier_id=false,$purchase_order_no=false,$start_date=false,$end_date=false,$filter_material=false,$filter_kategori=false,$filter_kategori_bahan=false)
     {
@@ -4394,7 +4361,7 @@ class Pmm_model extends CI_Model {
                 $row['nama']= $this->crud_global->GetField('penerima',array('id'=>$row['supplier_id']),'nama');
                 $row['tanggal_lolos_verifikasi'] = date('d F Y',strtotime($row['tanggal_lolos_verifikasi']));
                 $row['nomor_invoice']= $row['nomor_invoice'];
-                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;"> Update Verifikasi</a>';
+                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;"> UPDATE VERIFIKASI</a>';
                 
                 $data[] = $row;
             }

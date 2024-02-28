@@ -144,13 +144,13 @@ class Rap extends Secure_Controller {
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.
 			$this->db->trans_rollback();
-			$this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+			$this->session->set_flashdata('notif_error','<b>ERROR</b>');
 			redirect('rap/rap');
 		} else {
 			# Everything is Perfect. 
 			# Committing data to the database.
 			$this->db->trans_commit();
-			$this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+			$this->session->set_flashdata('notif_success','<b>SAVED</b>');
 			redirect('admin/rap');
 		}
 	}
@@ -298,13 +298,13 @@ class Rap extends Secure_Controller {
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('notif_error', 'Gagal Memperbaharui RAP Bahan !!');
+				$this->session->set_flashdata('notif_error', '<b>ERROR</b>');
 				redirect('rap/komposisi_agregat/' . $this->input->post('id_penagihan'));
 			} else {
 				# Everything is Perfect. 
 				# Committing data to the database.
 				$this->db->trans_commit();
-				$this->session->set_flashdata('notif_success', 'Berhasil Memperbaharui RAP Bahan !!');
+				$this->session->set_flashdata('notif_success', '<b>SAVED</b>');
 				redirect('admin/rap/' . $this->input->post('id_penagihan'));
 			}
 	}
@@ -337,7 +337,7 @@ class Rap extends Secure_Controller {
         $this->db->set("status", "CLOSED");
         $this->db->where("id", $id);
         $this->db->update("pmm_agregat");
-        $this->session->set_flashdata('notif_success', 'Berhasil Melakukan Closed Komposisi');
+        $this->session->set_flashdata('notif_success', '<b>CLOSED</b>');
         redirect("admin/rap");
     }
 	
@@ -447,13 +447,13 @@ class Rap extends Secure_Controller {
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.
 			$this->db->trans_rollback();
-			$this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+			$this->session->set_flashdata('notif_error','<b>ERROR</b>');
 			redirect('admin/rap');
 		} else {
 			# Everything is Perfect. 
 			# Committing data to the database.
 			$this->db->trans_commit();
-			$this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+			$this->session->set_flashdata('notif_success','<b>SAVED</b>');
 			redirect('admin/rap');
 		}
 	}
@@ -830,13 +830,13 @@ class Rap extends Secure_Controller {
         if ($this->db->trans_status() === FALSE) {
             # Something went wrong.
             $this->db->trans_rollback();
-            $this->session->set_flashdata('notif_error','<b>Data Gagal Disimpan</b>');
+            $this->session->set_flashdata('notif_error','<b>ERROR</b>');
             redirect('rap/rap');
         } else {
             # Everything is Perfect. 
             # Committing data to the database.
             $this->db->trans_commit();
-            $this->session->set_flashdata('notif_success','<b>Data Berhasil Disimpan</b>');
+            $this->session->set_flashdata('notif_success','<b>SAVED</b>');
             redirect('admin/rap');
         }
     }

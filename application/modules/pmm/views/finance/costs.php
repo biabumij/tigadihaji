@@ -17,39 +17,29 @@
     <?php echo $this->Templates->PageHeader();?>
     
     <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
-        <div class="content">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><i class="fa fa-home" aria-hidden="true"></i><a href="<?php echo base_url();?>">Dashboard</a></li>
-                        <li><a >Biaya</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row animated fadeInUp">
-                <div class="col-sm-12 col-lg-12">
-                    <div class="panel" style="background: linear-gradient(90deg, #f8f8f8 20%, #dddddd 40%, #f8f8f8 80%);">
-                        <div class="panel-header">
-                            <h3 class="section-subtitle">Biaya BUA</h3>
+            <div class="content">
+                <div class="row animated fadeInUp">
+                    <div class="col-sm-12 col-lg-12">
+                        <div class="panel">
+                            <div class="panel-header">
+                                <h3 class="section-subtitle"><b>BIAYA BUA</b></h3>
+                                <div class="text-left">
+                                    <a href="<?php echo site_url('admin');?>">
+                                    <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                                </div>
                         </div>
                         <div class="panel-content">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <a href="<?= base_url("pmm/biaya/tambah_biaya") ?>" class="btn btn-info" style="border-radius:10px; font-weight:bold;"><i class="fa fa-plus"></i> Buat Biaya BUA</a>
-                                </div>
-                            </div>
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">Biaya BUA</a></li>
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">BIAYA BUA</a></li>
                             </ul>
-                         
                             <div class="tab-content">
 								<br />
 								<div class="col-sm-4">
 									<input type="text" id="filter_date_biaya" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
 								</div>
-								<br />
-								<br />
+								<button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('pmm/biaya/tambah_biaya'); ?>"><b style="color:white;">BUAT BIAYA BUA</b></a></button>
+                                <br />
+                                <br />
                                 <div role="tabpanel" class="tab-pane active" id="home">
                                     <h3 class="text-center"></h3>
                                     <div class="table-responsive">
@@ -273,7 +263,7 @@
                         success : function(result){
                             if(result.output){
                                 table.ajax.reload();
-                                bootbox.alert('Berhasil menghapus!!');
+                                bootbox.alert('<b>DELETED</b>');
                             }else if(result.err){
                                 bootbox.alert(result.err);
                             }
