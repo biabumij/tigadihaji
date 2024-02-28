@@ -287,6 +287,9 @@
                                 </li>
                             </ul>
                         </th>
+                        <?php
+                        if($this->session->userdata('admin_group_id') == 1 |){
+                        ?>
                         <th width="25%" class="text-center">
                             <ul class="row text-center list-inline  wowload bounceInUp collapse" id="settings">
                                 <li class="text-center" class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
@@ -305,6 +308,9 @@
                                 </li>
                             </ul>
                         </th>
+                        <?php
+                        }
+                        ?>
                     </tr>
                 </table>
             </div>
