@@ -225,6 +225,9 @@
                                 </li>
                             </ul>
                         </th>
+                        <?php
+                        if(in_array($this->session->userdata('admin_group_id'), array(1))){
+                        ?>
                         <th width="25%" class="text-center" data-toggle="collapse" data-target="#settings" aria-expanded="false" aria-controls="beton">
                             <ul class="row text-center list-inline  wowload bounceIn">
                                 <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
@@ -233,6 +236,9 @@
                                 </li>
                             </ul>
                         </th>
+                        <?php
+                        }
+                        ?>
                     </tr>
                 </table>
                 <br />
@@ -288,7 +294,7 @@
                             </ul>
                         </th>
                         <?php
-                        if($this->session->userdata('admin_group_id') == 1 |){
+                        if(in_array($this->session->userdata('admin_group_id'), array(1))){
                         ?>
                         <th width="25%" class="text-center">
                             <ul class="row text-center list-inline  wowload bounceInUp collapse" id="settings">
