@@ -43,7 +43,7 @@
 								
 							</th>
 							<th width="50%" class="text-center">
-								<div class="panel-login mb-none" style="background:linear-gradient(90deg, #ebf3fa 20%, #ebf3fa 40%, #bbd6ee 80%); margin:35px 35px 35px 35px !important; border-radius:10px;">
+								<div class="panel-login mb-none" style="background:linear-gradient(90deg, #ebf3fa 20%, #ebf3fa 40%, #bbd6ee 80%); margin:35px 20px 35px 20px !important; border-radius:10px;">
 									<div class="panel-content-login bg-scale-0">
 										<div class="alert alert-warning" role="alert">
 											<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
