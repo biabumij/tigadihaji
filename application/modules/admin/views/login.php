@@ -28,12 +28,6 @@
 				color: #ffffff;
 				font-weight: bold;
 			}
-			@media only screen and (max-width: 768px) {
-				/* For mobile phones: */
-				[class*="col-"] {
-					width: 100%;
-				}
-			}
 	    	<?php include "assets/back/theme/stylesheets/css/style.css" ?>
 	    </style>
 	</head>
@@ -69,7 +63,7 @@
 												</span>
 											</div>
 											<div class="form-group" style="margin:auto; width:30%; !important;">
-												<button type="submit" name="submit" class="btn btn-primary btn-block" data-loading="Please wait..." style="font-size:10px; font-weight:bold; border-radius:10px"><b>LOGIN</b></button>
+												<button type="submit" name="submit" class="btn btn-primary btn-block" data-loading="Please wait..." style="font-size:80%; font-weight:bold; border-radius:10px"><b>LOGIN</b></button>
 											</div>
 											<div class="form-group site text-center" style="font-weight:bold; color:black;">
 												
