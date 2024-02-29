@@ -106,14 +106,13 @@
                                     </th>
                                 </tr>
                                 <tr>
-                                    <th class="text-center">
+                                    <th colspan="2" class="text-center">
                                         <div class="col-sm-12">
                                             <figure class="highcharts-figure">
                                                 <div id="container_rencana_kerja_perminggu" style="border-radius:10px;"></div>
                                             </figure>
                                         </div>
                                     </th>
-                                    <th class="text-center"></th>
                                 </tr>
                             </table>
                         </div>
@@ -399,20 +398,20 @@
                     chart = new Highcharts.Chart({
                         chart: {
                             renderTo: 'container',
-                            type: 'line',
+                            type: 'column',
                             marginRight: 130,
                             marginBottom: 75,
                             backgroundColor: {
                                 linearGradient: [0, 0, 700, 500],
                                 stops: [
-                                    [0, 'rgb(182,150,119)'],
-                                    [1, 'rgb(182,150,119)']
+                                    [0, 'rgb(255,255,255)'],
+                                    [1, 'rgb(255,255,255)']
                                 ]
                             },
                         },
                         title: {
                             style: {
-                                color: '#ffffff',
+                                color: '#000000',
                                 fontWeight: 'bold',
                                 fontSize: '14px',
                                 fontFamily: 'helvetica'
@@ -422,7 +421,7 @@
                         },
                         subtitle: {
                             style: {
-                                color: '#ffffff',
+                                color: '#000000',
                                 fontWeight: 'bold',
                                 fontSize: '14px',
                                 fontFamily: 'helvetica'
@@ -433,14 +432,13 @@
                         xAxis: { //data bulan
                             labels: {
                                 style: {
-                                    color: '#ffffff',
+                                    color: '#000000',
                                     fontWeight: 'bold',
                                     fontSize: '10px',
                                     fontFamily: 'helvetica'
                                 }
                             },
-                            //categories: ['Feb 22','Mar 22','Apr 22','Mei 22','Jun 22','Jul 22','Agu 22','Sep 22','Okt 22','Nov 22','Des 22','Jan 23','Feb 23','Mar 23','Apr 23','Mei 23','Jun 23','Jul 23','Agu 23','Sep 23','Okt 23','Nov 23','Des 23']
-                            categories: ['Jan 23','Feb 23','Mar 23','Apr 23','Mei 23','Jun 23','Jul 23','Agu 23','Sep 23','Okt 23','Nov 23','Des 23']
+                            categories: ['Apr 24','Mei 24','Juni 24','Juli 24','Agu 24','Sep 24']
                         },
                         yAxis: {
                             //title: {  //label yAxis
@@ -449,7 +447,7 @@
                             //},
                             title: {
                                 style: {
-                                    color: '#ffffff',
+                                    color: '#000000',
                                     fontWeight: 'bold',
                                     fontSize: '10px',
                                     fontFamily: 'helvetica'
@@ -463,7 +461,7 @@
                             }],
                             labels: {
                                 style: {
-                                    color: '#ffffff',
+                                    color: '#000000',
                                     fontWeight: 'bold',
                                     fontSize: '10px',
                                     fontFamily: 'helvetica'
@@ -512,8 +510,7 @@
                         series: [{  
                             name: 'Rencana %',  
                             
-                            //data: [<?php echo json_encode($net_februari_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_maret_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_april_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_mei_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juni_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juli_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_agustus_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_september_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_oktober_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_november_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_desember_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_januari23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_februari23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_maret23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_april23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_mei23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juni23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juli23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_agustus23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_september23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_oktober23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_november23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_desember23_rap, JSON_NUMERIC_CHECK); ?>],
-                            data: [<?php echo json_encode($net_januari23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_februari23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_maret23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_april23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_mei23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juni23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juli23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_agustus23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_september23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_oktober23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_november23_rap, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_desember23_rap, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode(70, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#000000',
                             fontWeight: 'bold',
@@ -523,8 +520,7 @@
                         {  
                             name: 'Realisasi %',  
                             
-                            //data: [<?php echo json_encode($net_februari, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_maret, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_april, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_mei, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juni, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juli, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_agustus, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_september, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_oktober, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_november, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_desember, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_januari23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_februari23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_maret23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_april23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_mei23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juni23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juli23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_agustus23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_september23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_oktober23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_november23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_desember23, JSON_NUMERIC_CHECK); ?>],
-                            data: [<?php echo json_encode($net_januari23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_februari23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_maret23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_april23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_mei23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juni23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_juli23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_agustus23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_september23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_oktober23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_november23, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($net_desember23, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode(80, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#FF0000',
                             fontWeight: 'bold',
@@ -543,7 +539,7 @@
                 
             });
         </script>
-        
+
         <script>
             (function(d, s, id) {
                 if (d.getElementById(id)) {
@@ -568,15 +564,15 @@
                     chart = new Highcharts.Chart({
                         chart: {
                             renderTo: 'container_laba_rugi',
-                            type: 'line',
+                            type: 'column',
                             marginRight: 130,
                             marginBottom: 75,
                             backgroundColor: {
                                 //linearGradient: [500, 0, 0, 700],
                                 linearGradient: [0, 0, 700, 500],
                                 stops: [
-                                    [0, 'rgb(204,204,204)'],
-                                    [1, 'rgb(204,204,204)']
+                                    [0, 'rgb(255,255,255)'],
+                                    [1, 'rgb(255,255,255)']
                                 ]
                             },
                         },
@@ -609,8 +605,7 @@
                                     fontFamily: 'helvetica'
                                 }
                             },
-                            //categories: ['Feb 22','Mar 22','Apr 22','Mei 22','Jun 22','Jul 22','Agu 22','Sep 22','Okt 22','Nov 22','Des 22','Jan 23','Feb 23','Mar 23','Apr 23','Mei 23','Jun 23','Jul 23','Agu 23','Sep 23','Okt 23','Nov 23','Des 23','Akumulasi']
-                            categories: ['Jan 23','Feb 23','Mar 23','Apr 23','Mei 23','Jun 23','Jul 23','Agu 23','Sep 23','Okt 23','Nov 23','Des 23','Akumulasi']
+                            categories: ['Apr 24','Mei 24','Juni 24','Juli 24','Agu 24','Sep 24']
                         },
                         yAxis: {
                             //title: {  //label yAxis
@@ -640,8 +635,8 @@
                                 },
                                 format: '{value} %'
                             },
-                            min: -100,
-                            max: 100,
+                            min: -50,
+                            max: 50,
                             tickInterval: 10,
                         },
                         tooltip: { 
@@ -682,8 +677,7 @@
                         series: [{  
                             name: 'Target %',  
                             
-                            //data: [2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,5.11],
-                            data: [2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,2.96,5.11],
+                            data: [2,2,2,2,2,2],
 
                             color: '#000000',
                             fontWeight: 'bold',
@@ -693,8 +687,7 @@
                         {  
                             name: 'Laba Rugi %',  
                             
-                            //data: [ <?php echo json_encode($presentase_laba_rugi_februari_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_maret_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_april_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_mei_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_juni_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_juli_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_agustus_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_september_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_oktober_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_november_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_desember_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_januari23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_februari23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_maret23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_april23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_mei23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_juni23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_juli23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_agustus23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_september23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_oktober23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_november23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_desember23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_akumulasi_fix, JSON_NUMERIC_CHECK); ?>],
-                            data: [ <?php echo json_encode($presentase_laba_rugi_januari23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_februari23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_maret23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_april23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_mei23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_juni23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_juli23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_agustus23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_september23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_oktober23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_november23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_desember23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($presentase_laba_rugi_akumulasi_fix, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode(10, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#FF0000',
                             fontWeight: 'bold',
@@ -727,8 +720,8 @@
                             backgroundColor: {
                                 linearGradient: [0, 0, 700, 500],
                                 stops: [
-                                    [0, 'rgb(182,150,119)'],
-                                    [1, 'rgb(182,150,119)']
+                                    [0, 'rgb(255,255,255)'],
+                                    [1, 'rgb(255,255,255)']
                                 ]
                             },
                         },
@@ -833,9 +826,9 @@
                         series: [{  
                             name: 'Rencana Kerja',  
                         
-                            data: [<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode(70, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
 
-                            color: '#e69500 ',
+                            color: '#000000 ',
                             fontWeight: 'bold',
                             fontSize: '10px',
                             fontFamily: 'helvetica'
@@ -843,9 +836,9 @@
                         {  
                             name: 'Realisasi',  
                             
-                            data: [ <?php echo json_encode($penjualan_minggu_1_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($penjualan_minggu_2_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($penjualan_minggu_3_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($penjualan_minggu_4_fix, JSON_NUMERIC_CHECK); ?>],
+                            data: [ <?php echo json_encode(80, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
 
-                            color: '#2986CC',
+                            color: '#FF0000',
                             fontWeight: 'bold',
                             fontSize: '10px',
                             fontFamily: 'helvetica',
