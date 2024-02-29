@@ -28,6 +28,12 @@
 				color: #ffffff;
 				font-weight: bold;
 			}
+			@media only screen and (max-width: 768px) {
+				/* For mobile phones: */
+				[class*="col-"] {
+					width: 100%;
+				}
+			}
 	    	<?php include "assets/back/theme/stylesheets/css/style.css" ?>
 	    </style>
 	</head>
@@ -43,7 +49,7 @@
 								
 							</th>
 							<th width="50%" class="text-center">
-								<div class="panel-login mb-none" style="background:linear-gradient(90deg, #ebf3fa 20%, #ebf3fa 40%, #bbd6ee 80%); margin:35px 20px 35px 20px !important; border-radius:50px;">
+								<div class="panel-login mb-none" style="background:linear-gradient(90deg, #ebf3fa 20%, #ebf3fa 40%, #bbd6ee 80%); margin:35px 20px 35px 20px !important; border-radius:10px;">
 									<div class="panel-content-login bg-scale-0">
 										<div class="alert alert-warning" role="alert">
 											<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
@@ -74,7 +80,7 @@
 							</th>
 						</tr>
 						<tr>
-							<th colspan="2" class="text-center">&copy; PT BIA BUMI JAYENDRA, 2024</th>
+							<th colspan="2" class="text-center" style="font-size:90%;">&copy; PT BIA BUMI JAYENDRA, 2024</th>
 						</tr>
 					</table>
 					<!--SIGN IN FORM-->
