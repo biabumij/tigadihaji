@@ -38,9 +38,8 @@
 				<div class="box" style="background-color: rgba(255, 255, 255, 0.9); margin-top:100px;">
 					<table width="100%" border="0">
 						<tr>
-							<th width="50%" class="text-center">
+							<th width="50%" class="text-center" style="border-right:1px solid #cccccc;">
 								<img alt="logo" width="70%" src="<?php echo base_url().$this->m_themes->GetThemes('site_logo');?>" />
-								
 							</th>
 							<th width="50%" class="text-center">
 								<div class="panel-login mb-none" style="background:linear-gradient(90deg, #ebf3fa 20%, #ebf3fa 40%, #bbd6ee 80%); margin:35px 20px 35px 20px !important; border-radius:10px;">
