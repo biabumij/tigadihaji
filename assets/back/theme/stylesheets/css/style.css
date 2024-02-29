@@ -2274,11 +2274,13 @@ input:checked+.slider:before {
 
 label.error {
   color: #d2322d;
+  margin-left: -170px;
   margin-bottom: 0px;
   margin-top: 3px;
   font-size: 11px;
   font-size: 0.84615rem;
   width: 100%;
+  /* border: 1px solid black; */
 }
 
 .message-container {
@@ -3130,9 +3132,9 @@ html.accounts .logo img {
 
 html.accounts .box {
 
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 15px;
-  max-width: 400px;
+  max-width: 80%;
   margin: -20px auto 0px;
 }
 
