@@ -62,7 +62,7 @@
 													<i class="fa fa-key"></i>
 												</span>
 											</div>
-											<div class="form-group" style="margin:auto; width:30%; !important;">
+											<div class="form-group" style="margin:auto; width:auto; !important;">
 												<button type="submit" name="submit" class="btn btn-primary btn-block" data-loading="Please wait..." style="font-size:80%; font-weight:bold; border-radius:10px"><b>LOGIN</b></button>
 											</div>
 											<div class="form-group site text-center" style="font-weight:bold; color:black;">
