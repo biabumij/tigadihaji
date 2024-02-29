@@ -43,13 +43,13 @@
 								
 							</th>
 							<th width="50%" class="text-center">
-								<div class="panel-login mb-none" style="background:linear-gradient(90deg, #ebf3fa 20%, #ebf3fa 40%, #bbd6ee 80%); margin:35px 20px 35px 20px !important; border-radius:10px;">
+								<div class="panel-login mb-none" style="background:linear-gradient(90deg, #ebf3fa 20%, #ebf3fa 40%, #bbd6ee 80%); margin:35px 35px 35px 35px !important; border-radius:10px;">
 									<div class="panel-content-login bg-scale-0">
 										<div class="alert alert-warning" role="alert">
 											<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 											<div class="alert-content"></div>
 										</div>
-										<form id="loginform" action="<?php echo site_url('login_admin');?>" style="margin:auto; width:75%; !important;">
+										<form id="loginform" action="<?php echo site_url('login_admin');?>" style="margin:auto; width:75%;">
 											<div class="form-group mt-md">
 												<span class="input-with-icon">
 													<input type="email" class="form-control-login" id="email" placeholder="Email" name="email" value="<?= $email;?>">
@@ -62,7 +62,7 @@
 													<i class="fa fa-key"></i>
 												</span>
 											</div>
-											<div class="form-group" style="margin:auto; width:auto; !important;">
+											<div class="form-group" style="margin:auto; width:auto;">
 												<button type="submit" name="submit" class="btn btn-primary btn-block" data-loading="Please wait..." style="font-size:80%; font-weight:bold; border-radius:10px"><b>LOGIN</b></button>
 											</div>
 											<div class="form-group site text-center" style="font-weight:bold; color:black;">
