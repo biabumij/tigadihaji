@@ -264,7 +264,7 @@
                                         <ul class="row text-center list-inline  wowload bounceIn">
                                             <li style="background: linear-gradient(110deg, #7163b8 20%, #7163b8 40%, #6252b1 80%);">
                                                 <a>
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-chart-line"></i><b>FORM</b></span></a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-book"></i><b>FORM</b></span></a>
                                             </li>
                                         </ul>
                                     </th>
