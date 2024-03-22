@@ -37,9 +37,9 @@
                                 <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT DAFTAR AKUN</a></button>
                                 <br /><br />
                                 </div>
-                                <form method="GET" target="_blank" action="<?php echo site_url('pmm/reports/client_print');?>">
+                                <form method="GET" target="_blank" action="<?php echo site_url('laporan/list_coa_print');?>">
                                     <div class="col-sm-3">
-                                        <select id="filter_category" name="filter_category" class="form-control select2" required="">
+                                        <select id="filter_category" name="filter_category" class="form-control select2">
                                             <option value="">Pilih Kategori</option>
                                             <?php
                                             if(!empty($coa_category)){
@@ -51,6 +51,9 @@
                                             }
                                             ?>
                                         </select>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <button type="submit" class="btn btn-info" style="border-radius:10px;"><i class="fa fa-print"></i> Print</button>
                                     </div>
                                 </form>
                             </div>

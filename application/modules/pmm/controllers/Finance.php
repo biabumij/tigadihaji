@@ -22,7 +22,6 @@ class Finance extends CI_Controller {
 		$data = array();
 		$filter_category = $this->input->post('filter_category');
 
-
 		$this->db->select('c.*, cc.coa_category as coa_category');
 		$this->db->join('pmm_coa_category cc','c.coa_category = cc.id','left');
 		$this->db->where('c.status','PUBLISH');

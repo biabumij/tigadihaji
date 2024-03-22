@@ -2337,6 +2337,38 @@ class Laporan extends Secure_Controller {
 		}
 	
 	}
+
+	public function list_coa_print()
+	{
+		$this->load->library('pdf');
+	
+
+		$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(true);
+        $pdf->SetFont('helvetica','',7); 
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		        $pdf->AddPage('P');
+
+		$arr_data = array();
+		$filter_category = $this->input->get('filter_category');
+		$this->db->where('status !=','DELETED');
+
+		if(!empty($filter_category) && !empty($filter_category)){
+			$this->db->where_in('coa_category',$filter_category);
+		}
+		
+		$this->db->order_by('coa_number','asc');
+		$query = $this->db->get('pmm_coa');
+		$data['data'] = $query->result_array();
+        $html = $this->load->view('pmm/finance/cetak_list_coa',$data,TRUE);
+
+        
+        $pdf->SetTitle('Daftar Akun');
+        $pdf->nsi_html($html);
+        $pdf->Output('daftar_akun.pdf', 'I');
+	
+	}
 	
 	
 }
