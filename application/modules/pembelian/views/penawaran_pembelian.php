@@ -204,8 +204,8 @@
                                         }
                                     }
                                     ?>
-                                    <input type="hidden" id="total-val" name="total" value="0">
-                                    <input type="hidden" name="total_product" id="total-product" value="1">
+                                    <input type="text" id="total-val" name="total" value="0">
+                                    <input type="text" name="total_product" id="total-product" value="1">
                                     
                                     <br /><br />
                                     <div class="row">

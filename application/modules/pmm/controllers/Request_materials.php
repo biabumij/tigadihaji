@@ -71,7 +71,7 @@ class Request_materials extends CI_Controller {
 				$request_no = "'".$row['request_no']."'";
 				if ($row['status'] == 'DRAFT' || $row['status'] == 'WAITING') { ?>
 					<?php
-					if(in_array($this->session->userdata('admin_group_id'), array(1,5,6,11,16))){
+					if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4))){
 					?>
 					<?php
 						$row['request_no'] = '<a href="'.site_url('pmm/request_materials/get_pdf_draft/'.$row['id']).'" target="_blank" >'.$row['request_no'].'</a>';

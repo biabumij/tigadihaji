@@ -19,7 +19,7 @@
     <style type="text/css">
         body {
             font-family: helvetica;
-            background-color: #fffdd0 !important;
+            background-color: #eeeeee !important;
         }
 
         th, td {
@@ -74,11 +74,11 @@
 
         /* Animation */
         @keyframes Gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-        #flippy{text-align:center;margin:auto;display:inline}#flippy button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#cc0000 0%,#ce7e00 51%,#f44336 100%);background-size:200% auto;color:#fff;display:block;width:100%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy button:hover,#flippy button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
+        #flippy{text-align:center;margin:auto;display:inline}#flippy button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#e69500 0%,#fdcd3b 51%,#e69500 100%);background-size:200% auto;color:#fff;display:block;width:100%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy button:hover,#flippy button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
 
         /* Animation */
         @keyframes Gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-        #flippy_menu{text-align:center;margin:auto;display:inline}#flippy_menu button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#34ea78 0%,#2da7e3 51%,#34ea78 100%);background-size:200% auto;color:#fff;display:block;width:100%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy_menu button:hover,#flippy_menu button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
+        #flippy_menu{text-align:center;margin:auto;display:inline}#flippy_menu button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#e69500 0%,#fdcd3b 51%,#e69500 100%);background-size:200% auto;color:#fff;display:block;width:100%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy_menu button:hover,#flippy_menu button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
     </style>
     <body onload = "JavaScript:AutoRefresh(360000);">
     <body>

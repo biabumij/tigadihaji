@@ -32,7 +32,7 @@ class Produk extends Secure_Controller {
 		}
 		
 		$this->db->where('status','PUBLISH');
-		$this->db->order_by('created_on','desc');
+		$this->db->order_by('id','asc');
 		$query = $this->db->get('produk');
 		if($query->num_rows() > 0){
 			foreach ($query->result_array() as $key => $row) {
