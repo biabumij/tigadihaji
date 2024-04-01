@@ -1045,12 +1045,12 @@ class Finance extends CI_Controller {
 	{
 		$output = array('output'=>false);
 		$id = $this->input->post('id');
-		// $array[] = array('id'=>'','text'=>'.. Pilih Parent ..');
+		// $array[] = array('id'=>'','text'=>'Pilih Parent');
 		$array = $this->db->select('coa as text,id')->get_where('pmm_coa',array('coa_category'=>$id))->result_array();
 		if(!empty($array)){
 			$arr = array();
 			foreach ($array as $key => $row) {
-				$arr[0] = array('id'=>'','text'=>'.. Pilih Parent ..');
+				$arr[0] = array('id'=>'','text'=>'Pilih Parent');
 				$arr[] = array('id'=>$row['id'],'text'=> $row['text']);
 			}
 			$output = array('output'=>$arr);
