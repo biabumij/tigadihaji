@@ -30,7 +30,7 @@
                                 <form method="POST" action="<?php echo site_url('pmm/biaya/submit_biaya');?>" id="form-po" enctype="multipart/form-data" autocomplete="off">
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <label>Bayar Dari</label>
+                                            <label>Bayar Dari<span class="required" aria-required="true">*</span></label>
                                             <select  class="form-control form-select2"  name="bayar_dari" required="">
                                                 <option value="">Pilih Bayar Dari</option>
                                                 <?php
@@ -49,7 +49,7 @@
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <label>
-                                                Penerima
+                                                Penerima<span class="required" aria-required="true">*</span>
                                                 <button type="button" class="btn btn-xs btn-info" onclick="TambahPenerima()"><b><i class="fa fa-plus"></i> TAMBAH PENERIMA</b></button>
                                             </label>
                                             <select id="penerima"  class="form-control form-select2"  name="penerima" required="">
@@ -66,15 +66,15 @@
                                             </select>
                                         </div>
                                         <div class="col-sm-3">
-                                            <label>Tanggal Transaksi</label>
+                                            <label>Tanggal Transaksi<span class="required" aria-required="true">*</span></label>
                                             <input type="text" class="form-control dtpicker" name="tanggal_transaksi" required="">
                                         </div>
                                         <div class="col-sm-3">
-                                            <label>Nomor Transaksi</label>
+                                            <label>Nomor Transaksi<span class="required" aria-required="true">*</span></label>
                                             <input type="text" class="form-control" name="nomor_transaksi" required="">
                                         </div>
                                         <div class="col-sm-3">
-                                            <label>Cara Pembayaran</label>
+                                            <label>Cara Pembayaran<span class="required" aria-required="true">*</span></label>
                                             <?php $pembayaran = ["Transfer","Cash","Cek&Giro"]; ?>
                                             <select name="cara_pembayaran" class="form-control">
                                                 <option value="">Pilih Cara Pembayaran</option>
@@ -116,7 +116,7 @@
                                                         <input type="text" class="form-control" name="deskripsi_1">
                                                     </td>
                                                     <td>
-                                                        <input type="text" class="form-control numberformat jumlah jumlah_input" onKeyup="getJumlah(this)" name="jumlah_1" id="jumlah_1">
+                                                        <input type="text" class="form-control numberformat jumlah jumlah_input text-right" onKeyup="getJumlah(this)" name="jumlah_1" id="jumlah_1">
                                                     </td>
                                                 </tr>
                                             </tbody>

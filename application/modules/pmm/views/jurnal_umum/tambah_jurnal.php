@@ -31,11 +31,11 @@
                                 <form method="POST" action="<?php echo site_url('pmm/jurnal_umum/submit_jurnal');?>" id="form-po" enctype="multipart/form-data" autocomplete="off">
                                     <div class="row">
                                         <div class="col-sm-2">
-                                            <label>Tanggal Transaksi</label>
+                                            <label>Tanggal Transaksi<span class="required" aria-required="true">*</span></label>
                                             <input type="text" class="form-control dtpicker" name="tanggal_transaksi" required="">
                                         </div>
                                         <div class="col-sm-4">
-                                            <label>Nomor Transaksi</label>
+                                            <label>Nomor Transaksi<span class="required" aria-required="true">*</span></label>
                                             <input type="text" class="form-control" name="nomor_transaksi" required="">
                                         </div>
                                     </div>
