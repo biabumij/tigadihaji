@@ -1404,7 +1404,7 @@ class Pembelian extends Secure_Controller
                     $row['action'] = '<a href="' . base_url('pembelian/cetak_pembayaran_penagihan_pembelian/' . $row["id"]) . '" target="_blank" class="btn btn-default" style="font-weight:bold; border-radius:10px;">Print</a>';
                 } else if($row["status"] == 'TIDAK DISETUJUI'){
                     $row['action'] = "BUTUH PERSETUJUAN";
-                    if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 6){
+                    if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 16){
                     $url_approve = "'" . base_url('pembelian/update_status_pembayaran_penagihan_pembelian/' . $row["id"]) . "'";
                     $row['action'] = '<a href="javascript:void(0);" onclick="ApprovePayment(' . $row["id"] . ')" class="btn btn-success" style="font-weight:bold; border-radius:10px;">SETUJUI</a>';
                     }
