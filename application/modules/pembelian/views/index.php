@@ -474,7 +474,7 @@
                                                         <input type="file" id="file" name="file" class="form-control" required="" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <button type="submit" class="btn btn-success" id="btn-form-doc-surat-jalan" style="font-weight:bold; width;10%; border-radius:10px;"> KKIRIMirim</button>
+                                                        <button type="submit" class="btn btn-success" id="btn-form-doc-surat-jalan" style="font-weight:bold; width;10%; border-radius:10px;"> KIRIM</button>
                                                     </div>
                                                 </form>
                                             </div>
