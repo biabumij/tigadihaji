@@ -447,7 +447,7 @@ class Pembelian extends Secure_Controller
 
                         $check_status = $this->crud_global->GetField('pmm_receipt_material', array('id' => $val), 'status_payment');
                         if ($check_status !== 'UNCREATED') {
-                            $this->session->set_flashdata('notif_error', '<b>Status surat jalan harus UNCREATED</b>');
+                            $this->session->set_flashdata('notif_error', '<b>Status Surat Jalan Harus UNCREATED</b>');
                             redirect('admin/pembelian');
                         }
 
