@@ -294,7 +294,7 @@
                                 <tr>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#laporan" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn">
-                                            <li style="background: linear-gradient(110deg, #ce7c56 20%, #ce7c56 40%, #b96f4d 80%);">
+                                            <li style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-line"></i><b>LAPORAN</b></span></a>
                                             </li>
@@ -338,21 +338,21 @@
                                 <tr>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="laporan">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7c56 20%, #ce7c56 40%, #b96f4d 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_keuangan');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>KEUANGAN</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7c56 20%, #ce7c56 40%, #b96f4d 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_pembelian');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>PEMBELIAN</b></span></a>
                                             </li>
                                             <br />
                                             <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7c56 20%, #ce7c56 40%, #b96f4d 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_penjualan');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>PENJUALAN</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7c56 20%, #ce7c56 40%, #b96f4d 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_ev._produksi');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>EVALUASI</b></span></a>
                                             </li>
@@ -361,7 +361,7 @@
                                             ?>
                                             <br />
                                             <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7c56 20%, #ce7c56 40%, #b96f4d 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_rencana_kerja');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>RENCANA KERJA</b></span></a>
                                             </li>
