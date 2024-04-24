@@ -258,6 +258,9 @@
 
                             <table width="100%" style="margin-top:50px;">
                                 <tr>
+                                 <?php
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4))){
+                                    ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#laporan" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn">
                                             <li style="background: linear-gradient(110deg, #ce7c56 20%, #ce7c56 40%, #b96f4d 80%);">
@@ -266,6 +269,9 @@
                                             </li>
                                         </ul>
                                     </th>
+                                    <?php
+                                    }
+                                    ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#pemakaian" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn">
                                             <li style="background: linear-gradient(110deg, #f28111 20%, #f28111 40%, #f28111 80%);">
