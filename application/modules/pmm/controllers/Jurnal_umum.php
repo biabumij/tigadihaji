@@ -123,8 +123,8 @@ class Jurnal_umum extends CI_Controller {
             'total_debit' => $this->input->post('jumlah_debit'),
             'memo' => $this->input->post('memo'),
         	'status' => 'PAID',
-            'unit_head' => 48,
-            'admin' => 36,
+            'unit_head' => 6,
+            'admin' => 9,
         	'created_by' => $this->session->userdata('admin_id'),
         	'created_on' => date('Y-m-d H:i:s')
         );
