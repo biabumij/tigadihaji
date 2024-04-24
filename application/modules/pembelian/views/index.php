@@ -240,8 +240,8 @@
 														<label>Memo<span class="required" aria-required="true">*</span></label>
                                                         <textarea id="about_text" name="memo" class="form-control" data-required="false" rows="20">
 <p style="font-size:6;"><b>Syarat &amp; Ketentuan :</b></p>
-<p style="font-size:6;">1.&nbsp;Waktu Penyerahan : 2 Februari 2023 s/d 8 Februari 2023</p>
-<p style="font-size:6;">2.&nbsp;Tempat Penyerahan : Proyek Bendungan Temef, Desa Konbaki, Kecamatan Polen, KAB. TTS</p>
+<p style="font-size:6;">1.&nbsp;Waktu Penyerahan : 1 Mei 2024 s/d 31 Mei 2024</p>
+<p style="font-size:6;">2.&nbsp;Tempat Penyerahan : Batching Plant, Bia Bumi Jayendra, Desa Sukabumi, Kec. Tigadihaji, Kabupaten Oku Selatan, Sumatera Selatan.</p>
 <p style="font-size:6;">3.&nbsp;Cara Pembayaran : 30 (tiga puluh) hari kerja setelah berkas tagihan dinyatakan lolos verifikasi keuangan PT. Bia Bumi Jayendra, dengan melampirkan</p>
 <p style="font-size:6;">&nbsp;&nbsp;&nbsp; dokumen sebagai berikut :</p>
 <p style="font-size:6;">&nbsp;&nbsp;&nbsp;3.1 Tagihan</p>
@@ -253,7 +253,7 @@
 <p style="font-size:6;">&nbsp;&nbsp;&nbsp;3.7 Faktur Pajak</p>
 <p style="font-size:6;">4. Lain-lain :</p>
 <p style="font-size:6;">&nbsp;&nbsp;&nbsp;4.1 Barang harus dalam kondisi 100% baik</p>
-<p style="font-size:6;">&nbsp;&nbsp;&nbsp;4.2 Barang dikembalikan apabila tidak sesuai dengan pesanan</p></textarea>
+<p style="font-size:6;">&nbsp;&nbsp;&nbsp;4.2 Barang dikembalikan apabila tidak sesuai dengan spesifikasi pesanan</p></textarea>
 														
 													</div>
 													
