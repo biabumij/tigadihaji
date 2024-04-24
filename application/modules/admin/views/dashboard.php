@@ -144,7 +144,7 @@
                                         </ul>
                                     </th>
                                     <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6))){
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6,7,8))){
                                     ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#keuangan" aria-expanded="false" aria-controls="kp">
                                         <ul class="row text-center list-inline  wowload bounceIn">
@@ -159,7 +159,7 @@
                                     ?>
 
                                     <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
                                     ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#rencana" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn">
@@ -197,7 +197,7 @@
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-bag-shopping"></i><b>PENJUALAN</b></span></a>
                                             </li>
                                             <?php
-                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
+                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
                                             ?>
                                             <br />
                                             <br />
@@ -211,7 +211,7 @@
                                         </ul>
                                     </th>
                                     <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6))){
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6,7,8))){
                                     ?>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="keuangan">
@@ -230,7 +230,7 @@
                                     ?>
                                     
                                     <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
                                     ?>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="rencana">
@@ -357,7 +357,7 @@
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>EVALUASI</b></span></a>
                                             </li>
                                             <?php
-                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
+                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
                                             ?>
                                             <br />
                                             <br />
