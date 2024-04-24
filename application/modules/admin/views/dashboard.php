@@ -151,6 +151,9 @@
                                             </li>
                                         </ul>
                                     </th>
+                                    <?php
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4))){
+                                    ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#rencana" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn">
                                             <li class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
@@ -159,6 +162,9 @@
                                             </li>
                                         </ul>
                                     </th>
+                                    <?php
+                                    }
+                                    ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#master" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn">
                                             <li style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
