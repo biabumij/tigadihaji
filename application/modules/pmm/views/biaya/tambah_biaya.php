@@ -183,13 +183,13 @@
                 <div class="modal-body">
                     <form id="form-penerima" class="form-horizontal" action="<?= site_url('pmm/biaya/tambah_penerima');?>" >
                         <div class="form-group">
-                            <label class="col-sm-2">Nama</label>
+                            <label class="col-sm-2">Nama<span class="required" aria-required="true">*</span></label>
                             <div class="col-sm-10">
                               <input type="text" name="nama" class="form-control input-sm" required="" >
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2">Tipe</label>
+                            <label class="col-sm-2">Tipe<span class="required" aria-required="true">*</span></label>
                             <div class="col-sm-3">
                               <input type="checkbox" name="pelanggan" id="pelanggan" value="1" > Pelanggan
                             </div>

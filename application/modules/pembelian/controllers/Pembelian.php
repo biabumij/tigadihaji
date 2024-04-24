@@ -1466,7 +1466,7 @@ class Pembelian extends Secure_Controller
             'tanggal_pembayaran' => date('Y-m-d', strtotime($this->input->post('tanggal_pembayaran'))),
             'nomor_transaksi' => $this->input->post('nomor_transaksi'),
             'cek_nomor' => $this->input->post('cek_nomor'),
-            'status' => 'TIDAK DISETUJUI',
+            'status' => 'DISETUJUI',
             'memo' => $this->input->post('memo'),
             'total' => $pembayaran_pro,
             'created_by' => $this->session->userdata('admin_id'),

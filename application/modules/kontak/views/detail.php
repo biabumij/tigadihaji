@@ -166,7 +166,7 @@
                                     </table>
                                 </div>
                                 <br /><br />
-                                <div class="col-sm-12 text-center">
+                                <div class="col-sm-12 text-left">
                                 <a href="<?= base_url('admin/kontak') ?>" class="btn btn-info" style="width:100px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
 
                                 <?php

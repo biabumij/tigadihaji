@@ -161,7 +161,7 @@
                                 <?= $admin['admin_group_name']?>
                             </td>
                             <td align="center">
-                                Kepala Unit Proyek
+                                Ka. Plant
                             </td>
                             <td align="center">
                                 Penerima

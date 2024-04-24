@@ -985,7 +985,7 @@
 							</td>
 							<td align="center">
 								<b><u><?= $unit_head['admin_name']?></u><br />
-								Kepala Unit Proyek</b>
+								Ka. Plant</b>
 							</td>
 						</tr>
 					</table>

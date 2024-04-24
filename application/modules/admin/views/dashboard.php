@@ -74,11 +74,11 @@
 
         /* Animation */
         @keyframes Gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-        #flippy{text-align:center;margin:auto;display:inline}#flippy button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#FF0000 0%,#000000 51%,#FF0000 100%);background-size:200% auto;color:#fff;display:block;width:100%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy button:hover,#flippy button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
+        #flippy{text-align:center;margin:auto;display:inline}#flippy button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#e69500 0%,#333333 51%,#e69500 100%);background-size:200% auto;color:#fff;display:block;width:80%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy button:hover,#flippy button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
 
         /* Animation */
         @keyframes Gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-        #flippy_menu{text-align:center;margin:auto;display:inline}#flippy_menu button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#008000 0%,#8fce00 51%,#008000 100%);background-size:200% auto;color:#fff;display:block;width:100%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy_menu button:hover,#flippy_menu button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
+        #flippy_menu{text-align:center;margin:auto;display:inline}#flippy_menu button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#333333 0%,#e69500 51%,#333333 100%);background-size:200% auto;color:#fff;display:block;width:80%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy_menu button:hover,#flippy_menu button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
     </style>
     <body onload = "JavaScript:AutoRefresh(360000);">
     <body>
@@ -143,6 +143,9 @@
                                             </li>
                                         </ul>
                                     </th>
+                                    <?php
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6))){
+                                    ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#keuangan" aria-expanded="false" aria-controls="kp">
                                         <ul class="row text-center list-inline  wowload bounceIn">
                                             <li style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 40%, #57d762 80%);">
@@ -151,6 +154,13 @@
                                             </li>
                                         </ul>
                                     </th>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    <?php
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
+                                    ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#rencana" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn">
                                             <li class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
@@ -159,6 +169,9 @@
                                             </li>
                                         </ul>
                                     </th>
+                                    <?php
+                                    }
+                                    ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#master" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn">
                                             <li style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
@@ -183,14 +196,23 @@
                                                 <a href="<?php echo site_url('admin/penjualan');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-bag-shopping"></i><b>PENJUALAN</b></span></a>
                                             </li>
+                                            <?php
+                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
+                                            ?>
                                             <br />
                                             <br />
                                             <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 40%, #2ea4d7 80%);">
                                                 <a href="<?php echo site_url('admin/stock_opname');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-bag-shopping"></i><b>STOCK<br />OPNAME</b></span></a>
                                             </li>
+                                            <?php
+                                            }
+                                            ?>
                                         </ul>
                                     </th>
+                                    <?php
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6))){
+                                    ?>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="keuangan">
                                             <li class="text-center" style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 40%, #57d762 80%);">
@@ -203,8 +225,16 @@
                                             </li>
                                         </ul>
                                     </th>
+                                    <?php
+                                    }
+                                    ?>
+                                    
+                                    <?php
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
+                                    ?>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="rencana">
+                                            
                                             <li class="text-center" class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
                                                 <a href="<?php echo site_url('admin/rap');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-regular fa-calendar-check"></i><b>RAP</b></span></a>
@@ -219,8 +249,12 @@
                                                 <a href="<?php echo site_url('admin/rencana_cash_flow');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cash-register"></i><b>RENCANA<br />CASH FLOW</b></span></a>
                                             </li>
+                                            
                                         </ul>
                                     </th>
+                                    <?php
+                                    }
+                                    ?>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="master">
                                             <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
@@ -322,12 +356,18 @@
                                                 <a href="<?php echo site_url('admin/laporan_ev._produksi');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>EVALUASI</b></span></a>
                                             </li>
+                                            <?php
+                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
+                                            ?>
                                             <br />
                                             <br />
                                             <li class="text-center" style="background: linear-gradient(110deg, #ce7c56 20%, #ce7c56 40%, #b96f4d 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_rencana_kerja');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>RENCANA KERJA</b></span></a>
                                             </li>
+                                            <?php
+                                            }
+                                            ?>
                                         </ul>
                                     </th>
                                     <th width="25%" class="text-center">

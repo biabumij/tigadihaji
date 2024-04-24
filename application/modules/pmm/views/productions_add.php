@@ -116,7 +116,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label for="inputEmail3" class="control-label">Komposisi<span class="required" aria-required="true">*</span></label>
-                                                <select id="komposisi_id" class="form-control input-sm" name="komposisi_id">
+                                                <select id="komposisi_id" class="form-control input-sm" name="komposisi_id" required="">
                                                     <option value="">Pilih Komposisi</option>
                                                     <?php
                                                     if (!empty($komposisi)) {

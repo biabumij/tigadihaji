@@ -281,7 +281,7 @@
 								<b> Keu & SDM</b> 
                             </td>
                             <td align="center">
-								<b>Kepala Unit Proyek</b> 
+								<b>Ka. Plant</b> 
                             </td>
                         </tr>
                     </table>

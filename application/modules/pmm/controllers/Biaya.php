@@ -109,7 +109,7 @@ class Biaya extends CI_Controller {
                 <input type="text" name="deskripsi_<?php echo $no;?>"  class="form-control" />
             </td>
             <td>
-                <input type="text" name="jumlah_<?php echo $no;?>" id="jumlah-<?php echo $no;?>" onKeyup="getJumlah(this)" class="form-control numberformat tex-left jumlah_input" />
+                <input type="text" name="jumlah_<?php echo $no;?>" id="jumlah-<?php echo $no;?>" onKeyup="getJumlah(this)" class="form-control numberformat text-right jumlah_input" />
             </td>
         </tr>
 

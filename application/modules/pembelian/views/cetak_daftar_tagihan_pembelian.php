@@ -210,7 +210,7 @@
 						<tr>
 							<td align="center" >
 								<b><u>Farid F. Fanggi Ello</u><br />
-								Kepala Unit Proyek</b>
+								Ka. Plant</b>
 							</td>
 							<td align="center">
 								<b><u></u><br />

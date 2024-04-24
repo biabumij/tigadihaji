@@ -206,7 +206,7 @@
                                 <a href="<?= base_url("pmm/productions/add?po_id=".$sales_po["id"]) ?>"  class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> KIRIM PRODUK</a>
                                 
                                 <?php
-                                    if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4){
+                                    if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 5){
                                     ?>
                                         <form class="form-approval" action="<?= base_url("penjualan/closed_sales_order/".$sales_po["id"]) ?>">
                                             <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> CLOSED</button>        
@@ -221,7 +221,7 @@
                                 <?php if($sales_po["status"] === "CLOSED") : ?>
                                 <a href="<?= base_url("penjualan/cetak_sales_order/".$sales_po["id"]) ?>" target="_blank" class="btn btn-default" style="margin-bottom:0px; width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
                                     <?php
-                                    if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4){
+                                    if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 5){
                                     ?>
                                         <a class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;" href="<?= base_url("penjualan/open_sales_order/".$sales_po["id"]) ?>"> OPEN</a>
                                     <?php
