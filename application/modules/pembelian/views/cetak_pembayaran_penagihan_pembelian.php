@@ -128,7 +128,7 @@
                                 <b><?= $created_group['admin_group_name']?></b>
                             </td>
                             <td align="center" >
-                                <b>Dir. Keuangan</b>
+                                <b>Dir. Keuangan & SDM</b>
                             </td>
                             <td align="center" >
                                 <b>Direktur Utama</b>
