@@ -67,7 +67,7 @@ class Penjualan extends Secure_Controller
 		$products = $this->db->select('*')
 		->from('produk p')
 		->where("p.status = 'PUBLISH'")
-		->where("p.betonreadymix = 1 ")
+		->where("p.kategori_produk = 2 ")
 		->order_by('nama_produk','asc')
 		->get()->result_array();
 		$taxs = $this->db->select('id,tax_name')->get_where('pmm_taxs', array('status' => 'PUBLISH'))->result_array();
