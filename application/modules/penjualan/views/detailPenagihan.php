@@ -246,7 +246,7 @@
                                     <div class="col-sm-12 text-center">
                                         <?php if ($penagihan["status"] === "DRAFT") : ?>
                                             <?php
-                                            if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 6){
+                                            if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4){
                                             ?>
                                                 <a href="<?= site_url('penjualan/approvePenagihan/' . $penagihan['id']); ?>" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:10px;"> SETUJUI</a>
                                                 <a href="<?= site_url('penjualan/rejectPenagihan/' . $penagihan['id']); ?>" class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:10px;"> TOLAK</a>
