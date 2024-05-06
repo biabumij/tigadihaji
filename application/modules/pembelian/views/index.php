@@ -105,9 +105,10 @@
                                         <li role="presentation"><a href="#verifikasi" aria-controls="verifikasi" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">NOTIFIKASI 
                                             <blink><b><?php
                                             $query1 = $this->db->query('SELECT * FROM pmm_verifikasi_penagihan_pembelian where approve_unit_head = "TIDAK DISETUJUI" ');
+                                            echo $query1->num_rows();
                                             $query2 = $this->db->query('SELECT * FROM pmm_purchase_order where status = "WAITING" ');
-                                            $query = $query1 + $query2;
-                                            echo $query->num_rows();
+                                            echo $query2->num_rows();
+
                                             ?></b></blink>
                                         </a></li>			
                                     <?php
