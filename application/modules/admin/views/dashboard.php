@@ -300,22 +300,6 @@
                                             </li>
                                         </ul>
                                     </th>
-                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#pemakaian" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn">
-                                            <li style="background: linear-gradient(110deg, #f28111 20%, #f28111 40%, #f28111 80%);">
-                                                <a>
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-credit-card"></i><b>PEMAKAIAN</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>
-                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn">
-                                            <li style="background: linear-gradient(110deg, #7163b8 20%, #7163b8 40%, #6252b1 80%);">
-                                                <a>
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-book"></i><b>FORM</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>
                                     <?php
                                     if(in_array($this->session->userdata('admin_group_id'), array(1))){
                                     ?>
@@ -368,18 +352,6 @@
                                             <?php
                                             }
                                             ?>
-                                        </ul>
-                                    </th>
-                                    <th width="25%" class="text-center">
-                                        <ul class="row text-center list-inline  wowload bounceInUp collapse" id="pemakaian">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #f28111 20%, #f28111 40%, #f28111 80%);">
-                                                <a href="<?php echo site_url('admin/biaya_bahan');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-cart-shopping"></i><b>BIAYA<br />BAHAN</b></span></a>
-                                            </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #f28111 20%, #f28111 40%, #f28111 80%);">
-                                                <a href="<?php echo site_url('admin/biaya_alat');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-screwdriver-wrench"></i><b>BIAYA<br />ALAT</b></span></a>
-                                            </li>
                                         </ul>
                                     </th>
                                     <th width="25%" class="text-center">
