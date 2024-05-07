@@ -300,6 +300,14 @@
                                             </li>
                                         </ul>
                                     </th>
+                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="beton">
+                                        <ul class="row text-center list-inline  wowload bounceIn">
+                                            <li style="background: linear-gradient(110deg, #7163b8 20%, #7163b8 40%, #6252b1 80%);">
+                                                <a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-book"></i><b>FORM</b></span></a>
+                                            </li>
+                                        </ul>
+                                    </th>
                                     <?php
                                     if(in_array($this->session->userdata('admin_group_id'), array(1))){
                                     ?>
