@@ -99,161 +99,220 @@
 		
 		<table width="98%" cellpadding="5" border="1">
 		
-			<!--- OPENING BALANCE --->
-			
-			<?php
-			
+		<?php
 			$date1_ago = date('2020-01-01');
 			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+
+			$stock_opname_semen_ago = $this->db->select('pp.vol_nilai_semen as volume')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date = '$tanggal_opening_balance')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
 			
-			//PEMBELIAN SEMEN AGO
-			$pembelian_semen_ago = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
+			$harga_semen = $this->db->select('pp.nilai_semen as nilai_semen')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date3_ago' and '$date2_ago')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
+
+			$pembelian_semen = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1_ago' and '$date2_ago'")
-			->where("prm.material_id = 4")
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("prm.material_id = 1")
 			->group_by('prm.material_id')
 			->get()->row_array();
 
-			$total_volume_pembelian_semen_ago = $pembelian_semen_ago['volume'];
-			$total_volume_pembelian_semen_akhir_ago  = $total_volume_pembelian_semen_ago;
-			
-			$stock_opname_semen_ago = $this->db->select('(cat.display_volume) as volume')
-			->from('pmm_remaining_materials_cat cat ')
-			->where("(cat.date < '$date1')")
-			->where("cat.material_id = 4")
-			->where("cat.status = 'PUBLISH'")
-			->order_by('cat.date','desc')->limit(1)
+			$stok_volume_semen_lalu = $stock_opname_semen_ago['volume'];
+			$stok_nilai_semen_lalu = $harga_semen['nilai_semen'];
+			$stok_harsat_semen_lalu = (round($stok_volume_semen_lalu,2)!=0)?$stok_nilai_semen_lalu / round($stok_volume_semen_lalu,2) * 1:0;
+		
+			$pembelian_volume_semen = $pembelian_semen['volume'];
+			$pembelian_nilai_semen = $pembelian_semen['nilai'];
+			$pembelian_harga_semen = (round($pembelian_volume_semen,2)!=0)?$pembelian_nilai_semen / round($pembelian_volume_semen,2) * 1:0;
+
+			$total_stok_volume_semen = $stok_volume_semen_lalu + $pembelian_volume_semen;
+			$total_stok_nilai_semen = $stok_nilai_semen_lalu + $pembelian_nilai_semen;
+
+			$stock_opname_semen_now = $this->db->select('pp.vol_nilai_semen as volume, pp.nilai_semen as nilai, pp.vol_pemakaian_semen as volume_pemakaian, pp.vol_pemakaian_semen2 as volume_pemakaian2, pp.nilai_pemakaian_semen as nilai_pemakaian, pp.nilai_pemakaian_semen2 as nilai_pemakaian2')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date <= '$date2')")
+			->order_by('pp.date','desc')->limit(1)
 			->get()->row_array();
+			$volume_stock_opname_semen_now = $stock_opname_semen_now['volume'];
+			$nilai_stock_opname_semen_now = $stock_opname_semen_now['nilai'];
+			$vol_pemakaian_semen_now = $stock_opname_semen_now['volume_pemakaian'];
+			$nilai_pemakaian_semen_now = $stock_opname_semen_now['nilai_pemakaian'];
+			$vol_pemakaian_semen_now2 = $stock_opname_semen_now['volume_pemakaian2'];
+			$nilai_pemakaian_semen_now2 = $stock_opname_semen_now['nilai_pemakaian2'];
 
-			$total_volume_stock_semen_ago = $stock_opname_semen_ago['volume'];
+			$pemakaian_volume_semen = $vol_pemakaian_semen_now;
+			$pemakaian_harsat_semen = $nilai_pemakaian_semen_now / $vol_pemakaian_semen_now;
+			$pemakaian_nilai_semen = $nilai_pemakaian_semen_now;
 
-			$harga_hpp_bahan_baku = $this->db->select('pp.date_hpp, pp.semen, pp.pasir, pp.batu1020, pp.batu2030')
-			->from('hpp_bahan_baku pp')
-			->where("(pp.date_hpp < '$date1')")
-			->order_by('pp.date_hpp','desc')->limit(1)
-			->get()->row_array();
-			
-			$volume_opening_balance_semen = round($total_volume_stock_semen_ago,2);
-			$harga_opening_balance_semen = $harga_hpp_bahan_baku['semen'];
-			$nilai_opening_balance_semen = $volume_opening_balance_semen * $harga_opening_balance_semen;
+			$pemakaian_volume_semen2 = $vol_pemakaian_semen_now2;
+			$pemakaian_harsat_semen2 = $nilai_pemakaian_semen_now2 / $vol_pemakaian_semen_now2;
+			$pemakaian_nilai_semen2 = $nilai_pemakaian_semen_now2;
 
-			//PEMBELIAN PASIR AGO
-			$pembelian_pasir_ago = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1_ago' and '$date2_ago'")
-			->where("prm.material_id = 5")
-			->group_by('prm.material_id')
-			->get()->row_array();
+			$total_pemakaian_volume_semen = $pemakaian_volume_semen + $pemakaian_volume_semen2;
+			$total_pemakaian_nilai_semen = $pemakaian_nilai_semen + $pemakaian_nilai_semen2;
 
-			$total_volume_pembelian_pasir_ago = $pembelian_pasir_ago['volume'];
-			$total_volume_pembelian_pasir_akhir_ago  = $total_volume_pembelian_pasir_ago;
-			
-			$stock_opname_pasir_ago = $this->db->select('(cat.display_volume) as volume')
-			->from('pmm_remaining_materials_cat cat ')
-			->where("(cat.date < '$date1')")
-			->where("cat.material_id = 5")
-			->where("cat.status = 'PUBLISH'")
-			->order_by('cat.date','desc')->limit(1)
-			->get()->row_array();
-
-			$total_volume_stock_pasir_ago = $stock_opname_pasir_ago['volume'];
-
-			$volume_opening_balance_pasir = round($total_volume_stock_pasir_ago,2);
-			$harga_opening_balance_pasir = $harga_hpp_bahan_baku['pasir'];
-			$nilai_opening_balance_pasir = $volume_opening_balance_pasir * $harga_opening_balance_pasir;
-
-			//PEMBELIAN BATU1020 AGO
-			$pembelian_batu1020_ago = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1_ago' and '$date2_ago'")
-			->where("prm.material_id = 6")
-			->group_by('prm.material_id')
-			->get()->row_array();
-
-			$total_volume_pembelian_batu1020_ago = $pembelian_batu1020_ago['volume'];
-			$total_volume_pembelian_batu1020_akhir_ago  = $total_volume_pembelian_batu1020_ago;
-			
-			$stock_opname_batu1020_ago = $this->db->select('(cat.display_volume) as volume')
-			->from('pmm_remaining_materials_cat cat ')
-			->where("(cat.date < '$date1')")
-			->where("cat.material_id = 6")
-			->where("cat.status = 'PUBLISH'")
-			->order_by('cat.date','desc')->limit(1)
-			->get()->row_array();
-
-			$total_volume_stock_batu1020_ago = $stock_opname_batu1020_ago['volume'];
-
-			$volume_opening_balance_batu1020 = round($total_volume_stock_batu1020_ago,2);
-			$harga_opening_balance_batu1020 = $harga_hpp_bahan_baku['batu1020'];
-			$nilai_opening_balance_batu1020 = $volume_opening_balance_batu1020 * $harga_opening_balance_batu1020;
-
-			//PEMBELIAN BATU2030 AGO
-			$pembelian_batu2030_ago = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1_ago' and '$date2_ago'")
-			->where("prm.material_id = 7")
-			->group_by('prm.material_id')
-			->get()->row_array();
-
-			$total_volume_pembelian_batu2030_ago = $pembelian_batu2030_ago['volume'];
-			$total_volume_pembelian_batu2030_akhir_ago  = $total_volume_pembelian_batu2030_ago;
-			
-			$stock_opname_batu2030_ago = $this->db->select('(cat.display_volume) as volume')
-			->from('pmm_remaining_materials_cat cat ')
-			->where("(cat.date < '$date1')")
-			->where("cat.material_id = 7")
-			->where("cat.status = 'PUBLISH'")
-			->order_by('cat.date','desc')->limit(1)
-			->get()->row_array();
-
-			$total_volume_stock_batu2030_ago = $stock_opname_batu2030_ago['volume'];
-			
-			$volume_opening_balance_batu2030 = round($total_volume_stock_batu2030_ago,2);
-			$harga_opening_balance_batu2030 = $harga_hpp_bahan_baku['batu2030'];
-			$nilai_opening_balance_batu2030 = $volume_opening_balance_batu2030 * $harga_opening_balance_batu2030;
-
+			$stok_akhir_volume_semen = $volume_stock_opname_semen_now;
+			$stok_akhir_nilai_semen = $nilai_stock_opname_semen_now;
 			?>
 
-			<!--- NOW --->
+			<?php
+			$date1_ago = date('2020-01-01');
+			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+
+			$stock_opname_pasir_ago = $this->db->select('pp.vol_nilai_pasir as volume')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date = '$tanggal_opening_balance')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
+			
+			$harga_pasir = $this->db->select('pp.nilai_pasir as nilai_pasir')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date3_ago' and '$date2_ago')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
+
+			$pembelian_pasir = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("prm.material_id = 2")
+			->group_by('prm.material_id')
+			->get()->row_array();
+
+			$stok_volume_pasir_lalu = $stock_opname_pasir_ago['volume'];
+			$stok_nilai_pasir_lalu = $harga_pasir['nilai_pasir'];
+			$stok_harsat_pasir_lalu = (round($stok_volume_pasir_lalu,2)!=0)?$stok_nilai_pasir_lalu / round($stok_volume_pasir_lalu,2) * 1:0;
+		
+			$pembelian_volume_pasir = $pembelian_pasir['volume'];
+			$pembelian_nilai_pasir = $pembelian_pasir['nilai'];
+			$pembelian_harga_pasir = (round($pembelian_volume_pasir,2)!=0)?$pembelian_nilai_pasir / round($pembelian_volume_pasir,2) * 1:0;
+
+			$total_stok_volume_pasir = $stok_volume_pasir_lalu + $pembelian_volume_pasir;
+			$total_stok_nilai_pasir = $stok_nilai_pasir_lalu + $pembelian_nilai_pasir;
+
+			$stock_opname_pasir_now = $this->db->select('pp.vol_nilai_pasir as volume, pp.nilai_pasir as nilai, pp.vol_pemakaian_pasir as volume_pemakaian, pp.vol_pemakaian_pasir2 as volume_pemakaian2, pp.nilai_pemakaian_pasir as nilai_pemakaian, pp.nilai_pemakaian_pasir2 as nilai_pemakaian2')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date <= '$date2')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
+			$volume_stock_opname_pasir_now = $stock_opname_pasir_now['volume'];
+			$nilai_stock_opname_pasir_now = $stock_opname_pasir_now['nilai'];
+			$vol_pemakaian_pasir_now = $stock_opname_pasir_now['volume_pemakaian'];
+			$nilai_pemakaian_pasir_now = $stock_opname_pasir_now['nilai_pemakaian'];
+			$vol_pemakaian_pasir_now2 = $stock_opname_pasir_now['volume_pemakaian2'];
+			$nilai_pemakaian_pasir_now2 = $stock_opname_pasir_now['nilai_pemakaian2'];
+
+			$pemakaian_volume_pasir = $vol_pemakaian_pasir_now;
+			$pemakaian_harsat_pasir = $nilai_pemakaian_pasir_now / $vol_pemakaian_pasir_now;
+			$pemakaian_nilai_pasir = $nilai_pemakaian_pasir_now;
+
+			$pemakaian_volume_pasir2 = $vol_pemakaian_pasir_now2;
+			$pemakaian_harsat_pasir2 = $nilai_pemakaian_pasir_now2 / $vol_pemakaian_pasir_now2;
+			$pemakaian_nilai_pasir2 = $nilai_pemakaian_pasir_now2;
+
+			$total_pemakaian_volume_pasir = $pemakaian_volume_pasir + $pemakaian_volume_pasir2;
+			$total_pemakaian_nilai_pasir = $pemakaian_nilai_pasir + $pemakaian_nilai_pasir2;
+
+			$stok_akhir_volume_pasir = $volume_stock_opname_pasir_now;
+			$stok_akhir_nilai_pasir = $nilai_stock_opname_pasir_now;
+			?>
 
 			<?php
+			$date1_ago = date('2020-01-01');
+			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+
+			$stock_opname_1020_ago = $this->db->select('pp.vol_nilai_1020 as volume')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date = '$tanggal_opening_balance')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
 			
-			//PEMBELIAN SEMEN PCC
-			$pembelian_semen = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
+			$harga_1020 = $this->db->select('pp.nilai_1020 as nilai_1020')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date3_ago' and '$date2_ago')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
+
+			$pembelian_1020 = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("prm.material_id = 3")
+			->group_by('prm.material_id')
+			->get()->row_array();
+
+			$stok_volume_1020_lalu = $stock_opname_1020_ago['volume'];
+			$stok_nilai_1020_lalu = $harga_1020['nilai_1020'];
+			$stok_harsat_1020_lalu = (round($stok_volume_1020_lalu,2)!=0)?$stok_nilai_1020_lalu / round($stok_volume_1020_lalu,2) * 1:0;
+		
+			$pembelian_volume_1020 = $pembelian_1020['volume'];
+			$pembelian_nilai_1020 = $pembelian_1020['nilai'];
+			$pembelian_harga_1020 = (round($pembelian_volume_1020,2)!=0)?$pembelian_nilai_1020 / round($pembelian_volume_1020,2) * 1:0;
+
+			$total_stok_volume_1020 = $stok_volume_1020_lalu + $pembelian_volume_1020;
+			$total_stok_nilai_1020 = $stok_nilai_1020_lalu + $pembelian_nilai_1020;
+
+			$stock_opname_1020_now = $this->db->select('pp.vol_nilai_1020 as volume, pp.nilai_1020 as nilai, pp.vol_pemakaian_1020 as volume_pemakaian, pp.vol_pemakaian_10202 as volume_pemakaian2, pp.nilai_pemakaian_1020 as nilai_pemakaian, pp.nilai_pemakaian_10202 as nilai_pemakaian2')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date <= '$date2')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
+			$volume_stock_opname_1020_now = $stock_opname_1020_now['volume'];
+			$nilai_stock_opname_1020_now = $stock_opname_1020_now['nilai'];
+			$vol_pemakaian_1020_now = $stock_opname_1020_now['volume_pemakaian'];
+			$nilai_pemakaian_1020_now = $stock_opname_1020_now['nilai_pemakaian'];
+			$vol_pemakaian_1020_now2 = $stock_opname_1020_now['volume_pemakaian2'];
+			$nilai_pemakaian_1020_now2 = $stock_opname_1020_now['nilai_pemakaian2'];
+
+			$pemakaian_volume_1020 = $vol_pemakaian_1020_now;
+			$pemakaian_harsat_1020 = $nilai_pemakaian_1020_now / $vol_pemakaian_1020_now;
+			$pemakaian_nilai_1020 = $nilai_pemakaian_1020_now;
+
+			$pemakaian_volume_10202 = $vol_pemakaian_1020_now2;
+			$pemakaian_harsat_10202 = $nilai_pemakaian_1020_now2 / $vol_pemakaian_1020_now2;
+			$pemakaian_nilai_10202 = $nilai_pemakaian_1020_now2;
+
+			$total_pemakaian_volume_1020 = $pemakaian_volume_1020 + $pemakaian_volume_10202;
+			$total_pemakaian_nilai_1020 = $pemakaian_nilai_1020 + $pemakaian_nilai_10202;
+
+			$stok_akhir_volume_1020 = $volume_stock_opname_1020_now;
+			$stok_akhir_nilai_1020 = $nilai_stock_opname_1020_now;
+			?>
+
+			<?php
+			$date1_ago = date('2020-01-01');
+			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+
+			$stock_opname_2030_ago = $this->db->select('pp.vol_nilai_2030 as volume')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date = '$tanggal_opening_balance')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
+			
+			$harga_2030 = $this->db->select('pp.nilai_2030 as nilai_2030')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date3_ago' and '$date2_ago')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
+
+			$pembelian_2030 = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
@@ -261,298 +320,49 @@
 			->where("prm.material_id = 4")
 			->group_by('prm.material_id')
 			->get()->row_array();
-			
-			$total_volume_pembelian_semen = $pembelian_semen['volume'];
-			$total_nilai_pembelian_semen =  $pembelian_semen['nilai'];
-			$total_harga_pembelian_semen = ($total_volume_pembelian_semen!=0)?$total_nilai_pembelian_semen / $total_volume_pembelian_semen * 1:0;
 
-			$total_volume_pembelian_semen_akhir  = $volume_opening_balance_semen + $total_volume_pembelian_semen;
-			$total_harga_pembelian_semen_akhir = ($total_volume_pembelian_semen_akhir!=0)?($nilai_opening_balance_semen + $total_nilai_pembelian_semen) / $total_volume_pembelian_semen_akhir * 1:0;
-			$total_nilai_pembelian_semen_akhir =  $total_volume_pembelian_semen_akhir * $total_harga_pembelian_semen_akhir;
-
-			$jasa_angkut_semen = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 18")
-			->group_by('prm.material_id')
-			->get()->row_array();
-
-			$total_nilai_jasa_angkut = $jasa_angkut_semen['nilai'];
-			$total_nilai_jasa_angkut_akhir = $total_nilai_jasa_angkut + $total_nilai_pembelian_semen_akhir;
-
-			//PEMBELIAN SEMEN CONS
-			$pembelian_semen_cons = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 19")
-			->group_by('prm.material_id')
-			->get()->row_array();
-
-			$total_volume_pembelian_semen_cons = $pembelian_semen_cons['volume'];
-			$total_nilai_pembelian_semen_cons =  $pembelian_semen_cons['nilai'];
-			$total_harga_pembelian_semen_cons = ($total_volume_pembelian_semen_cons!=0)?$total_nilai_pembelian_semen_cons / $total_volume_pembelian_semen_cons * 1:0;
-
-			$total_volume_pembelian_semen_cons_akhir  = $total_volume_pembelian_semen_akhir + $total_volume_pembelian_semen_cons;
-			$total_harga_pembelian_semen_cons_akhir = ($total_volume_pembelian_semen_cons_akhir!=0)?($total_nilai_pembelian_semen_akhir + $total_nilai_pembelian_semen_cons) / $total_volume_pembelian_semen_cons_akhir * 1:0;
-			$total_nilai_pembelian_semen_cons_akhir =  $total_nilai_pembelian_semen_cons + $total_nilai_jasa_angkut_akhir;
-
-			$jasa_angkut_semen_cons = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 21")
-			->group_by('prm.material_id')
-			->get()->row_array();
-
-			$total_nilai_jasa_angkut_cons = $jasa_angkut_semen_cons['nilai'];
-			$total_nilai_jasa_angkut_cons_akhir = $total_nilai_jasa_angkut_cons + $total_nilai_pembelian_semen_cons_akhir;
-
-			//PEMBELIAN SEMEN OPC
-			$pembelian_semen_opc = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 20")
-			->group_by('prm.material_id')
-			->get()->row_array();
+			$stok_volume_2030_lalu = $stock_opname_2030_ago['volume'];
+			$stok_nilai_2030_lalu = $harga_2030['nilai_2030'];
+			$stok_harsat_2030_lalu = (round($stok_volume_2030_lalu,2)!=0)?$stok_nilai_2030_lalu / round($stok_volume_2030_lalu,2) * 1:0;
 		
-			$total_volume_pembelian_semen_opc = $pembelian_semen_opc['volume'];
-			$total_nilai_pembelian_semen_opc =  $pembelian_semen_opc['nilai'];
-			$total_harga_pembelian_semen_opc = ($total_volume_pembelian_semen_opc!=0)?$total_nilai_pembelian_semen_opc / $total_volume_pembelian_semen_opc * 1:0;
+			$pembelian_volume_2030 = $pembelian_2030['volume'];
+			$pembelian_nilai_2030 = $pembelian_2030['nilai'];
+			$pembelian_harga_2030 = (round($pembelian_volume_2030,2)!=0)?$pembelian_nilai_2030 / round($pembelian_volume_2030,2) * 1:0;
 
-			$total_volume_pembelian_semen_opc_akhir  = $total_volume_pembelian_semen_cons_akhir + $total_volume_pembelian_semen_opc;
-			$total_harga_pembelian_semen_opc_akhir = ($total_volume_pembelian_semen_opc_akhir!=0)?($total_nilai_pembelian_semen_cons_akhir + $total_nilai_pembelian_semen_opc) / $total_volume_pembelian_semen_opc_akhir * 1:0;
-			$total_nilai_pembelian_semen_opc_akhir =  $total_volume_pembelian_semen_opc_akhir * $total_harga_pembelian_semen_opc_akhir;
+			$total_stok_volume_2030 = $stok_volume_2030_lalu + $pembelian_volume_2030;
+			$total_stok_nilai_2030 = $stok_nilai_2030_lalu + $pembelian_nilai_2030;
 
-			$jasa_angkut_semen_opc = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 22")
-			->group_by('prm.material_id')
+			$stock_opname_2030_now = $this->db->select('pp.vol_nilai_2030 as volume, pp.nilai_2030 as nilai, pp.vol_pemakaian_2030 as volume_pemakaian, pp.vol_pemakaian_20302 as volume_pemakaian2, pp.nilai_pemakaian_2030 as nilai_pemakaian, pp.nilai_pemakaian_20302 as nilai_pemakaian2')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date <= '$date2')")
+			->order_by('pp.date','desc')->limit(1)
 			->get()->row_array();
+			$volume_stock_opname_2030_now = $stock_opname_2030_now['volume'];
+			$nilai_stock_opname_2030_now = $stock_opname_2030_now['nilai'];
+			$vol_pemakaian_2030_now = $stock_opname_2030_now['volume_pemakaian'];
+			$nilai_pemakaian_2030_now = $stock_opname_2030_now['nilai_pemakaian'];
+			$vol_pemakaian_2030_now2 = $stock_opname_2030_now['volume_pemakaian2'];
+			$nilai_pemakaian_2030_now2 = $stock_opname_2030_now['nilai_pemakaian2'];
 
-			$total_nilai_jasa_angkut_opc = $jasa_angkut_semen_opc['nilai'];
-			$total_nilai_jasa_angkut_opc_akhir = $total_nilai_jasa_angkut_opc + $total_nilai_pembelian_semen_opc_akhir;
+			$pemakaian_volume_2030 = $vol_pemakaian_2030_now;
+			$pemakaian_harsat_2030 = $nilai_pemakaian_2030_now / $vol_pemakaian_2030_now;
+			$pemakaian_nilai_2030 = $nilai_pemakaian_2030_now;
 
-			$total_volume_pembelian_semen_all = $total_volume_pembelian_semen + $total_volume_pembelian_semen_cons + $total_volume_pembelian_semen_opc;
-			$total_nilai_pembelian_semen_all = $total_nilai_pembelian_semen + $total_nilai_pembelian_semen_cons + $total_nilai_pembelian_semen_opc +  $total_nilai_jasa_angkut + $total_nilai_jasa_angkut_cons + $total_nilai_jasa_angkut_opc;
-			$total_harga_pembelian_semen_all = ($total_volume_pembelian_semen_all!=0)?$total_nilai_pembelian_semen_all / $total_volume_pembelian_semen_all * 1:0;
+			$pemakaian_volume_20302 = $vol_pemakaian_2030_now2;
+			$pemakaian_harsat_20302 = $nilai_pemakaian_2030_now2 / $vol_pemakaian_2030_now2;
+			$pemakaian_nilai_20302 = $nilai_pemakaian_2030_now2;
 
-			$stock_opname_semen = $this->db->select('(cat.display_volume) as volume, `cat`.`price` as price')
-			->from('pmm_remaining_materials_cat cat ')
-			->where("cat.date between '$date1' and '$date2'")
-			->where("cat.material_id = 4")
-			->where("cat.status = 'PUBLISH'")
-			->order_by('cat.date','desc')->limit(1)
-			->get()->row_array();
-			
-			$hpp_bahan_baku = $this->db->select('pp.date_hpp, pp.semen, pp.semen_custom, pp.semen_custom_nilai')
-			->from('hpp_bahan_baku pp')
-			->where("(pp.date_hpp between '$date1' and '$date2')")
-			->order_by('pp.date_hpp','desc')->limit(1)
-			->get()->row_array();
-			
-			$total_volume_stock_semen_akhir = $stock_opname_semen['volume'];
-			$price_stock_opname_semen =  $hpp_bahan_baku['semen'];
+			$total_pemakaian_volume_2030 = $pemakaian_volume_2030 + $pemakaian_volume_20302;
+			$total_pemakaian_nilai_2030 = $pemakaian_nilai_2030 + $pemakaian_nilai_20302;
 
-			$total_volume_pemakaian_semen = $total_volume_pembelian_semen_opc_akhir - $stock_opname_semen['volume'];
+			$stok_akhir_volume_2030 = $volume_stock_opname_2030_now;
+			$stok_akhir_nilai_2030 = $nilai_stock_opname_2030_now;
+			?>
 
-			$total_harga_stock_semen_akhir = round($price_stock_opname_semen,0);
-			$total_nilai_stock_semen_akhir = $total_volume_stock_semen_akhir * $total_harga_stock_semen_akhir;
-
-			$total_nilai_pemakaian_semen = ($nilai_opening_balance_semen + $total_nilai_pembelian_semen  + $total_nilai_jasa_angkut + $total_nilai_pembelian_semen_cons + $total_nilai_jasa_angkut_cons + $total_nilai_pembelian_semen_opc + $total_nilai_jasa_angkut_opc) - $total_nilai_stock_semen_akhir;
-			$total_harga_pemakaian_semen = (($total_volume_pemakaian_semen!=0)?$total_nilai_pemakaian_semen / $total_volume_pemakaian_semen * 1:0) * $hpp_bahan_baku['semen_custom'] + $hpp_bahan_baku['semen_custom_nilai'] ;
-			//$total_harga_pemakaian_semen = $total_harga_pembelian_semen_opc_akhir;
-
-			//PEMBELIAN PASIR
-			$pembelian_pasir = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 5")
-			->group_by('prm.material_id')
-			->get()->row_array();
-			
-			$total_volume_pembelian_pasir = $pembelian_pasir['volume'];
-			$total_nilai_pembelian_pasir =  $pembelian_pasir['nilai'];
-			$total_harga_pembelian_pasir = ($total_volume_pembelian_pasir!=0)?$total_nilai_pembelian_pasir / $total_volume_pembelian_pasir * 1:0;
-
-			$total_volume_pembelian_pasir_akhir  = $volume_opening_balance_pasir + $total_volume_pembelian_pasir;
-			$total_harga_pembelian_pasir_akhir = ($total_volume_pembelian_pasir_akhir!=0)?($nilai_opening_balance_pasir + $total_nilai_pembelian_pasir) / $total_volume_pembelian_pasir_akhir * 1:0;
-			$total_nilai_pembelian_pasir_akhir =  $total_volume_pembelian_pasir_akhir * $total_harga_pembelian_pasir_akhir;
-			
-			$stock_opname_pasir = $this->db->select('(cat.display_volume) as volume')
-			->from('pmm_remaining_materials_cat cat ')
-			->where("cat.date between '$date1' and '$date2'")
-			->where("cat.material_id = 5")
-			->where("cat.status = 'PUBLISH'")
-			->order_by('cat.date','desc')->limit(1)
-			->get()->row_array();
-			
-			$hpp_bahan_baku = $this->db->select('pp.date_hpp, pp.pasir')
-			->from('hpp_bahan_baku pp')
-			->where("(pp.date_hpp between '$date1' and '$date2')")
-			->order_by('pp.date_hpp','desc')->limit(1)
-			->get()->row_array();
-
-			$total_volume_stock_pasir_akhir = $stock_opname_pasir['volume'];
-			$price_stock_opname_pasir =  $hpp_bahan_baku['pasir'];
-
-			$total_volume_pemakaian_pasir = $total_volume_pembelian_pasir_akhir - $stock_opname_pasir['volume'];
-
-			$total_harga_stock_pasir_akhir = round($price_stock_opname_pasir,0);
-			$total_nilai_stock_pasir_akhir = $total_volume_stock_pasir_akhir * $total_harga_stock_pasir_akhir;
-
-			$total_nilai_pemakaian_pasir = ($nilai_opening_balance_pasir + $total_nilai_pembelian_pasir) - $total_nilai_stock_pasir_akhir;
-			//$total_harga_pemakaian_pasir = ($total_volume_pemakaian_pasir!=0)?$total_nilai_pemakaian_pasir / $total_volume_pemakaian_pasir * 1:0;
-			$total_harga_pemakaian_pasir = $total_harga_stock_pasir_akhir;
-
-			//PEMBELIAN BATU1020
-			$pembelian_batu1020 = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("po.status in ('PUBLISH','CLOSED')")
-			->where("prm.material_id = 6")
-			->group_by('prm.material_id')
-			->get()->row_array();
-			
-			$total_volume_pembelian_batu1020 = $pembelian_batu1020['volume'];
-			$total_nilai_pembelian_batu1020 =  $pembelian_batu1020['nilai'];
-			$total_harga_pembelian_batu1020 = ($total_volume_pembelian_batu1020!=0)?$total_nilai_pembelian_batu1020 / $total_volume_pembelian_batu1020 * 1:0;
-
-			$total_volume_pembelian_batu1020_akhir  = $volume_opening_balance_batu1020 + $total_volume_pembelian_batu1020;
-			$total_harga_pembelian_batu1020_akhir = ($nilai_opening_balance_batu1020 + $total_nilai_pembelian_batu1020) / $total_volume_pembelian_batu1020_akhir;
-			$total_nilai_pembelian_batu1020_akhir =  $total_volume_pembelian_batu1020_akhir * $total_harga_pembelian_batu1020_akhir;			
-			
-			$stock_opname_batu1020 = $this->db->select('(cat.display_volume) as volume')
-			->from('pmm_remaining_materials_cat cat ')
-			->where("cat.date between '$date1' and '$date2'")
-			->where("cat.material_id = 6")
-			->where("cat.status = 'PUBLISH'")
-			->order_by('cat.date','desc')->limit(1)
-			->get()->row_array();
-
-			$hpp_bahan_baku = $this->db->select('pp.date_hpp, pp.batu1020')
-			->from('hpp_bahan_baku pp')
-			->where("(pp.date_hpp between '$date1' and '$date2')")
-			->order_by('pp.date_hpp','desc')->limit(1)
-			->get()->row_array();
-
-			$total_volume_stock_batu1020_akhir = $stock_opname_batu1020['volume'];
-			$price_stock_opname_batu1020 =  $hpp_bahan_baku['batu1020'];
-
-			$total_volume_pemakaian_batu1020 = $total_volume_pembelian_batu1020_akhir - $stock_opname_batu1020['volume'];
-
-			$total_harga_stock_batu1020_akhir = round($price_stock_opname_batu1020,0);
-			$total_nilai_stock_batu1020_akhir = $total_volume_stock_batu1020_akhir * $total_harga_stock_batu1020_akhir;
-
-			$total_nilai_pemakaian_batu1020 = ($nilai_opening_balance_batu1020 + $total_nilai_pembelian_batu1020) - $total_nilai_stock_batu1020_akhir;
-			//$total_harga_pemakaian_batu1020 = ($total_volume_pemakaian_batu1020!=0)?$total_nilai_pemakaian_batu1020 / $total_volume_pemakaian_batu1020 * 1:0;
-			$total_harga_pemakaian_batu1020 = $total_harga_stock_batu1020_akhir;
-
-			//PEMBELIAN BATU2030
-			$pembelian_batu2030 = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 7")
-			->group_by('prm.material_id')
-			->get()->row_array();
-			
-			$total_volume_pembelian_batu2030 = $pembelian_batu2030['volume'];
-			$total_nilai_pembelian_batu2030 =  $pembelian_batu2030['nilai'];
-			$total_harga_pembelian_batu2030 = ($total_volume_pembelian_batu2030!=0)?$total_nilai_pembelian_batu2030 / $total_volume_pembelian_batu2030 * 1:0;
-
-			$total_volume_pembelian_batu2030_akhir  = $volume_opening_balance_batu2030 + $total_volume_pembelian_batu2030;
-			$total_harga_pembelian_batu2030_akhir = ($nilai_opening_balance_batu2030 + $total_nilai_pembelian_batu2030) / $total_volume_pembelian_batu2030_akhir;
-			$total_nilai_pembelian_batu2030_akhir =  $total_volume_pembelian_batu2030_akhir * $total_harga_pembelian_batu2030_akhir;			
-			
-			$stock_opname_batu2030 = $this->db->select('(cat.display_volume) as volume')
-			->from('pmm_remaining_materials_cat cat ')
-			->where("cat.date between '$date1' and '$date2'")
-			->where("cat.material_id = 7")
-			->where("cat.status = 'PUBLISH'")
-			->order_by('cat.date','desc')->limit(1)
-			->get()->row_array();
-			
-			$hpp_bahan_baku = $this->db->select('pp.date_hpp, pp.batu2030')
-			->from('hpp_bahan_baku pp')
-			->where("(pp.date_hpp between '$date1' and '$date2')")
-			->order_by('pp.date_hpp','desc')->limit(1)
-			->get()->row_array();
-
-			$total_volume_stock_batu2030_akhir = $stock_opname_batu2030['volume'];
-			$price_stock_opname_batu2030 =  $hpp_bahan_baku['batu2030'];
-
-			$total_volume_pemakaian_batu2030 = $total_volume_pembelian_batu2030_akhir - $stock_opname_batu2030['volume'];
-
-			$total_harga_stock_batu2030_akhir = round($price_stock_opname_batu2030,0);
-			$total_nilai_stock_batu2030_akhir = $total_volume_stock_batu2030_akhir * $total_harga_stock_batu2030_akhir;
-
-			$total_nilai_pemakaian_batu2030 = ($nilai_opening_balance_batu2030 + $total_nilai_pembelian_batu2030) - $total_nilai_stock_batu2030_akhir;
-			//$total_harga_pemakaian_batu2030 = ($total_volume_pemakaian_batu2030!=0)?$total_nilai_pemakaian_batu2030 / $total_volume_pemakaian_batu2030 * 1:0;
-			$total_harga_pemakaian_batu2030 = $total_harga_stock_batu2030_akhir;
-
-			//BAHAN BAKU
-			$total_opening_balance_bahan_baku = $nilai_opening_balance_semen + $nilai_opening_balance_pasir + $nilai_opening_balance_batu1020 + $nilai_opening_balance_batu2030;
-
+			<?php
 			//TOTAL
-			$total_nilai_pembelian = $total_nilai_pembelian_semen_all + $total_nilai_pembelian_pasir + $total_nilai_pembelian_batu1020 + $total_nilai_pembelian_batu2030;
-			$total_nilai_pemakaian = $total_nilai_pemakaian_semen + $total_nilai_pemakaian_pasir + $total_nilai_pemakaian_batu1020 + $total_nilai_pemakaian_batu2030;
-			$total_nilai_akhir = $total_nilai_stock_semen_akhir + $total_nilai_stock_pasir_akhir + $total_nilai_stock_batu1020_akhir + $total_nilai_stock_batu2030_akhir;
-
+			$total_volume_realisasi = $total_volume_pemakaian_semen + $total_volume_pemakaian_pasir + $total_volume_pemakaian_batu1020 + $total_volume_pemakaian_batu2030;
+			$total_nilai_realisasi = $total_pemakaian_nilai_semen + $total_pemakaian_nilai_pasir + $total_pemakaian_nilai_1020 + $total_pemakaian_nilai_2030;
 	        ?>
 			
 			<tr class="table-judul">
@@ -570,37 +380,37 @@
 				<th align="center">1</th>	
 				<th align="left"><b>Semen</b></th>
 				<th align="center">Ton</th>
-				<th align="right"><?php echo number_format($total_volume_pemakaian_semen,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_harga_pemakaian_semen,0,',','.');?></th>
-				<th align="right"><?php echo number_format($total_nilai_pemakaian_semen,0,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_volume_semen,2,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_nilai_semen / $total_pemakaian_volume_semen,0,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_nilai_semen,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center">2</th>
 				<th align="left"><b>Pasir</b></th>
 				<th align="center">M3</th>
-				<th align="right"><?php echo number_format($total_volume_pemakaian_pasir,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_harga_pemakaian_pasir,0,',','.');?></th>
-				<th align="right"><?php echo number_format($total_nilai_pemakaian_pasir,0,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_volume_pasir,2,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_nilai_pasir / $total_pemakaian_volume_pasir,0,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_nilai_pasir,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center">3</th>
 				<th align="left"><b>Batu Split 10-20</b></th>
 				<th align="center">M3</th>
-				<th align="right"><?php echo number_format($total_volume_pemakaian_batu1020,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_harga_pemakaian_batu1020,0,',','.');?></th>
-				<th align="right"><?php echo number_format($total_nilai_pemakaian_batu1020,0,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_volume_1020,2,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_nilai_1020 / $total_pemakaian_volume_1020,0,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_nilai_1020,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center">4</th>
 				<th align="left"><b>Batu Split 20-30</b></th>
 				<th align="center">M3</th>
-				<th align="right"><?php echo number_format($total_volume_pemakaian_batu2030,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_harga_pemakaian_batu2030,0,',','.');?></th>
-				<th align="right"><?php echo number_format($total_nilai_pemakaian_batu2030,0,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_volume_2030,2,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_nilai_2030 / $total_pemakaian_volume_2030,0,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_nilai_2030,0,',','.');?></th>
 	        </tr>
 			<tr class="table-total">
 	            <th align="right" colspan="5">TOTAL</th>
-				<th align="right"><?php echo number_format($total_nilai_pemakaian,0,',','.');?></th>
+				<th align="right"><?php echo number_format($total_nilai_realisasi,0,',','.');?></th>
 	        </tr>
 	    </table>
 		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />

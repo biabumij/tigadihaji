@@ -1,112 +1,105 @@
 <!doctype html>
 <html lang="en" class="fixed">
-
-<head>
-    <?php echo $this->Templates->Header(); ?>
-	<style type="text/css">
-		body {
-            font-family: helvetica;
-        }
-		
-		.mytable thead th {
-		  background-color:	#e69500;
-		  color: #ffffff;
-		  text-align: center;
-		  vertical-align: middle;
-		  padding: 5px;
-		}
-		
-		.mytable tbody td {
-		  padding: 5px;
-		}
-		
-		.mytable tfoot td {
-		  background-color:	#e69500;
-		  color: #FFFFFF;
-		  padding: 5px;
-		}
-    </style>
-</head>
-
-<body>
-    <div class="wrap">
-
-        <?php echo $this->Templates->PageHeader(); ?>
-
-        <div class="page-body">
-            <div class="content">
-                <div class="row animated fadeInUp">
-                    <div class="col-sm-12 col-lg-12">
-                        <div class="panel">
-                            <div class="panel-content">
-							<h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
-								<div class="text-left">
-									<a href="<?php echo site_url('admin');?>">
-									<button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
-								</div>
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="bisnis">
-										<div role="tabpanel" class="tab-pane active" id="pembelian">
-                                        <br />
-											<div class="row">
-												<div width="100%">
-													<div class="panel panel-default">
-														<div class="col-sm-5">
-															<p><h5><b>Pergerakan Bahan Baku (Solar)</b></h5></p>
-															<a href="#pergerakan_bahan_baku_solar" aria-controls="pergerakan_bahan_baku_solar" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
-														</div>												
+	<head>
+		<?php echo $this->Templates->Header(); ?>
+		<style type="text/css">
+			body {
+				font-family: helvetica;
+			}
+			
+			.mytable thead th {
+			background-color:	#e69500;
+			color: #ffffff;
+			text-align: center;
+			vertical-align: middle;
+			padding: 5px;
+			}
+			
+			.mytable tbody td {
+			padding: 5px;
+			}
+			
+			.mytable tfoot td {
+			background-color:	#e69500;
+			color: #FFFFFF;
+			padding: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<?php echo $this->Templates->PageHeader(); ?>
+			<div class="page-body">
+				<div class="content">
+					<div class="row animated fadeInUp">
+						<div class="col-sm-12 col-lg-12">
+							<div class="panel">
+								<div class="panel-content">
+								<h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
+									<div class="text-left">
+										<a href="<?php echo site_url('admin');?>">
+										<button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+									</div>
+									<div class="tab-content">
+										<div role="tabpanel" class="tab-pane active" id="bisnis">
+											<div role="tabpanel" class="tab-pane active" id="pembelian">
+											<br />
+												<div class="row">
+													<div width="100%">
+														<div class="panel panel-default">
+															<div class="col-sm-5">
+																<p><h5><b>Pergerakan Bahan Baku (Solar)</b></h5></p>
+																<a href="#pergerakan_bahan_baku_solar" aria-controls="pergerakan_bahan_baku_solar" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
+															</div>												
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-                                    </div>
 
-									<!-- Pergerakan Bahan Baku Solar -->
-                                    <div role="tabpanel" class="tab-pane" id="pergerakan_bahan_baku_solar">
-                                        <div class="col-sm-15">
-										<div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title"><b>Pergerakan Bahan Baku (Solar)</b></h3>
-													<a href="biaya_alat">Kembali</a>
-                                                </div>
-												<div style="margin: 20px">
-													<div class="row">
-														<form action="<?php echo site_url('laporan/cetak_pergerakan_bahan_baku_solar');?>" target="_blank">
-															<div class="col-sm-3">
-																<input type="text" id="filter_date_bahan_baku_solar" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
-															</div>
-															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
-															</div>
-														</form>
-														
+										<!-- Pergerakan Bahan Baku Solar -->
+										<div role="tabpanel" class="tab-pane" id="pergerakan_bahan_baku_solar">
+											<div class="col-sm-15">
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<h3 class="panel-title"><b>Pergerakan Bahan Baku (Solar)</b></h3>
+														<a href="biaya_alat">Kembali</a>
 													</div>
-													<br />
-													<div id="wait" style=" text-align: center; align-content: center; display: none;">	
-														<div>Please Wait</div>
-														<div class="fa-3x">
-														  <i class="fa fa-spinner fa-spin"></i>
+													<div style="margin: 20px">
+														<div class="row">
+															<form action="<?php echo site_url('laporan/cetak_pergerakan_bahan_baku_solar');?>" target="_blank">
+																<div class="col-sm-3">
+																	<input type="text" id="filter_date_bahan_baku_solar" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
+																</div>
+																<div class="col-sm-3">
+																	<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
+																</div>
+															</form>
+															
 														</div>
-													</div>				
-													<div class="table-responsive" id="pergerakan-bahan-baku-solar">													
-													
-                    
+														<br />
+														<div id="wait" style=" text-align: center; align-content: center; display: none;">	
+															<div>Please Wait</div>
+															<div class="fa-3x">
+															<i class="fa fa-spinner fa-spin"></i>
+															</div>
+														</div>				
+														<div class="table-responsive" id="pergerakan-bahan-baku-solar">													
+														
+						
+														</div>
 													</div>
 												</div>
-										</div>
-										
-										</div>
-                                    </div>
-                                    															
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-	</div>
+											</div>
+										</div>														
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
         <?php echo $this->Templates->Footer(); ?>
 
@@ -160,8 +153,6 @@
 
 			//PergerakanBahanBakuSolar();
 
-            </script>
-
-</body>
-
+        </script>
+	</body>
 </html>

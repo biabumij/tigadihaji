@@ -106,7 +106,7 @@
 		
 		<table width="98%" border="0" cellpadding="3">
 		
-		<?php
+			<?php
 			//PENJUALAN
 			$penjualan = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
 			->from('pmm_productions pp')
@@ -154,9 +154,9 @@
 			//PENJUALAN_2
 
 			//BAHAN		
-			$akumulasi = $this->db->select('pp.date_akumulasi, SUM(pp.total_nilai_keluar) as total_nilai_keluar')
-			->from('akumulasi pp')
-			->where("(pp.date_akumulasi between '$date1' and '$date2')")
+			$akumulasi = $this->db->select('pp.date, SUM(pp.nilai_pemakaian_semen) + SUM(pp.nilai_pemakaian_semen2) + SUM(pp.nilai_pemakaian_pasir) + SUM(pp.nilai_pemakaian_pasir2) + SUM(pp.nilai_pemakaian_1020) + SUM(pp.nilai_pemakaian_10202) + SUM(pp.nilai_pemakaian_2030) + SUM(pp.nilai_pemakaian_20302) as total_nilai_keluar')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date1' and '$date2')")
 			->get()->result_array();
 
 			$total_akumulasi = 0;
@@ -168,10 +168,10 @@
 			$total_nilai = $total_akumulasi;
 			//END BAHAN
 
-			//BAHAN_2		
-			$akumulasi_2 = $this->db->select('pp.date_akumulasi, (pp.total_nilai_keluar) as total_nilai_keluar')
-			->from('akumulasi pp')
-			->where("(pp.date_akumulasi between '$date3' and '$date2')")
+			//BAHAN_2
+			$akumulasi_2 = $this->db->select('pp.date, SUM(pp.nilai_pemakaian_semen) + SUM(pp.nilai_pemakaian_semen2) + SUM(pp.nilai_pemakaian_pasir) + SUM(pp.nilai_pemakaian_pasir2) + SUM(pp.nilai_pemakaian_1020) + SUM(pp.nilai_pemakaian_10202) + SUM(pp.nilai_pemakaian_2030) + SUM(pp.nilai_pemakaian_20302) as total_nilai_keluar')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date3' and '$date2')")
 			->get()->result_array();
 
 			$total_akumulasi_2 = 0;
@@ -189,20 +189,16 @@
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("p.kategori_alat in ('1','2','3','4','5','6','7','8','9','10','11')")
+			->where("p.kategori_alat in ('1','2','3','4','5')")
 			->where("po.status in ('PUBLISH','CLOSED')")
 			->get()->row_array();
 
-			$akumulasi_bbm = $this->db->select('pp.date_akumulasi, SUM(pp.total_nilai_keluar_2) as total_nilai_keluar_2')
-			->from('akumulasi pp')
-			->where("(pp.date_akumulasi between '$date1' and '$date2')")
-			->get()->result_array();
-
-			$total_akumulasi_bbm = 0;
-
-			foreach ($akumulasi_bbm as $b){
-				$total_akumulasi_bbm += $b['total_nilai_keluar_2'];
-			}
+			$pemakaian_bbm = $this->db->select('sum(pp.nilai_pemakaian_bbm) + sum(pp.nilai_pemakaian_bbm_2) as nilai')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date1' and '$date2')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();;
+			$total_akumulasi_bbm = $pemakaian_bbm['nilai'];
 
 			$total_nilai_bbm = $total_akumulasi_bbm;
 
@@ -210,7 +206,7 @@
 			$insentif_tm = $this->db->select('sum(pdb.debit) as total')
 			->from('pmm_jurnal_umum pb ')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->where("pdb.akun = 220")
+			->where("pdb.akun = 124")
 			->where("status = 'PAID'")
 			->where("(tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
@@ -220,7 +216,7 @@
 			$insentif_wl = $this->db->select('sum(pdb.debit) as total')
 			->from('pmm_jurnal_umum pb ')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->where("pdb.akun = 221")
+			->where("pdb.akun = 125")
 			->where("status = 'PAID'")
 			->where("(tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
@@ -235,28 +231,23 @@
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
 			->where("prm.date_receipt between '$date3' and '$date2'")
-			->where("p.kategori_alat in ('1','2','3','4','5','6','7','8','9','10','11')")
+			->where("p.kategori_alat in ('1','2','3','4','5')")
 			->where("po.status in ('PUBLISH','CLOSED')")
 			->get()->row_array();
 
-			$akumulasi_bbm_2 = $this->db->select('pp.date_akumulasi, SUM(pp.total_nilai_keluar_2) as total_nilai_keluar_2')
-			->from('akumulasi pp')
-			->where("(pp.date_akumulasi between '$date3' and '$date2')")
-			->get()->result_array();
-
-			$total_akumulasi_bbm_2 = 0;
-
-			foreach ($akumulasi_bbm_2 as $b){
-				$total_akumulasi_bbm_2 += $b['total_nilai_keluar_2'];
-			}
-
+			$pemakaian_bbm2 = $this->db->select('sum(pp.nilai_pemakaian_bbm) + sum(pp.nilai_pemakaian_bbm_2) as nilai')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date3' and '$date2')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();;
+			$total_akumulasi_bbm_2 = $pemakaian_bbm2['nilai'];
 			$total_nilai_bbm_2 = $total_akumulasi_bbm_2;
 
 			$total_insentif_tm_2 = 0;
 			$insentif_tm_2 = $this->db->select('sum(pdb.debit) as total')
 			->from('pmm_jurnal_umum pb ')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->where("pdb.akun = 220")
+			->where("pdb.akun = 124")
 			->where("status = 'PAID'")
 			->where("(tanggal_transaksi between '$date3' and '$date2')")
 			->get()->row_array();
@@ -266,7 +257,7 @@
 			$insentif_wl_2 = $this->db->select('sum(pdb.debit) as total')
 			->from('pmm_jurnal_umum pb ')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->where("pdb.akun = 221")
+			->where("pdb.akun = 125")
 			->where("status = 'PAID'")
 			->where("(tanggal_transaksi between '$date3' and '$date2')")
 			->get()->row_array();
@@ -348,7 +339,7 @@
 			->from('pmm_biaya pb ')
 			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
 			->join('pmm_coa c','pdb.akun = c.id','left')
-			->where("pdb.akun = 168")
+			->where("pdb.akun = 110")
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
@@ -361,7 +352,7 @@
 			->from('pmm_biaya pb ')
 			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
 			->join('pmm_coa c','pdb.akun = c.id','left')
-			->where("pdb.akun = 168")
+			->where("pdb.akun = 110")
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
 			->get()->row_array();
@@ -636,7 +627,7 @@
 									<span><b>Rp.</b></span>
 								</th>
 								<th align="center" width="80%">
-									<span><b><?php echo number_format($laba_kotor_2,0,',','.');?></b></span>
+									<span><b><?php echo $laba_kotor_2 < 0 ? "(".number_format(-$laba_kotor_2,0,',','.').")" : number_format($laba_kotor_2,0,',','.');?></b></span>
 								</th>
 							</tr>
 					</table>
@@ -696,7 +687,7 @@
 									<span><b>Rp.</b></span>
 								</th>
 								<th align="center" width="80%">
-									<span><b><?php echo number_format($laba_usaha_2,0,',','.');?></b></span>
+									<span><b><?php echo $laba_usaha_2 < 0 ? "(".number_format(-$laba_usaha_2,0,',','.').")" : number_format($laba_usaha_2,0,',','.');?></b></span>
 								</th>
 							</tr>
 					</table>

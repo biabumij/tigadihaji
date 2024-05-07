@@ -959,8 +959,8 @@
 							</td>
 							<?php
 								$create = $this->db->select('*')
-								->from('akumulasi')
-								->where("(date_akumulasi = '$end_date')")
+								->from('kunci_bahan_baku')
+								->where("(date = '$end_date')")
 								->get()->row_array();
 
                                 $this->db->select('g.admin_group_name, a.admin_ttd, a.admin_name');

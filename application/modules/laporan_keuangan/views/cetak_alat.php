@@ -103,9 +103,7 @@
 		
 		<table width="98%" border="0" cellpadding="3" border="0">
 		
-			<!-- Pemakaian Peralatan -->
-			
-			<?php
+		<?php
 			//Batching Plant
 			$pembelian_batching_plant = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
@@ -114,7 +112,7 @@
 			->join('produk p', 'prm.material_id = p.id','left')
 			->join('penerima pn', 'po.supplier_id = pn.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("kategori_alat = '1'")
+			->where("kategori_alat = '11'")
 			->where("po.status in ('PUBLISH','CLOSED')")
 			->group_by('prm.harga_satuan')
 			->order_by('pn.nama','asc')
@@ -133,7 +131,7 @@
 			->join('produk p', 'prm.material_id = p.id','left')
 			->join('penerima pn', 'po.supplier_id = pn.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("kategori_alat = '2'")
+			->where("kategori_alat = '12'")
 			->where("po.status in ('PUBLISH','CLOSED')")
 			->group_by('prm.harga_satuan')
 			->order_by('pn.nama','asc')
@@ -147,7 +145,7 @@
 			$insentif_tm = $this->db->select('pb.memo as memo, sum(pdb.debit) as total')
 			->from('pmm_jurnal_umum pb')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->where("pdb.akun = 220")
+			->where("pdb.akun = 123")
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->group_by('pdb.id')
@@ -166,7 +164,7 @@
 			->join('produk p', 'prm.material_id = p.id','left')
 			->join('penerima pn', 'po.supplier_id = pn.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("kategori_alat = '3'")
+			->where("kategori_alat = '13'")
 			->where("po.status in ('PUBLISH','CLOSED')")
 			->group_by('prm.harga_satuan')
 			->order_by('pn.nama','asc')
@@ -180,8 +178,9 @@
 			$insentif_wl = $this->db->select('pb.memo as memo, sum(pdb.debit) as total')
 			->from('pmm_jurnal_umum pb')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->where("pdb.akun = 221")
+			->where("pdb.akun = 125")
 			->where("pb.status = 'PAID'")
+			->where("pb.memo <> 'SC' ")
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->group_by('pdb.id')
 			->get()->result_array();
@@ -199,7 +198,7 @@
 			->join('produk p', 'prm.material_id = p.id','left')
 			->join('penerima pn', 'po.supplier_id = pn.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("kategori_alat = '4'")
+			->where("kategori_alat = '14'")
 			->where("po.status in ('PUBLISH','CLOSED')")
 			->group_by('prm.harga_satuan')
 			->order_by('pn.nama','asc')
@@ -214,44 +213,102 @@
 			$date1_ago = date('2020-01-01');
 			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 
-			$harga_hpp_bahan_baku = $this->db->select('pp.date_hpp, pp.solar')
-			->from('hpp_bahan_baku pp')
-			->where("(pp.date_hpp < '$date1')")
-			->order_by('pp.date_hpp','desc')->limit(1)
+			$stock_opname_bbm_ago = $this->db->select('pp.vol_nilai_bbm as volume')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date = '$tanggal_opening_balance')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
+			
+			$harga_bbm = $this->db->select('pp.nilai_bbm as nilai_bbm')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date3_ago' and '$date2_ago')")
+			->order_by('pp.date','desc')->limit(1)
 			->get()->row_array();
 
-			//PEMBELIAN SOLAR AGO
-			$pembelian_solar_ago = $this->db->select('
-			p.nama_produk, 
-			prm.display_measure as satuan, 
-			SUM(prm.display_volume) as volume, 
-			SUM(prm.display_price) / SUM(prm.display_volume) as harga, 
-			SUM(prm.display_price) as nilai')
+			$pembelian_bbm = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1_ago' and '$date2_ago'")
-			->where("prm.material_id = 8")
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("prm.material_id = 5")
 			->group_by('prm.material_id')
 			->get()->row_array();
 
-			$total_volume_pembelian_solar_ago = $pembelian_solar_ago['volume'];
-			$total_volume_pembelian_solar_akhir_ago  = $total_volume_pembelian_solar_ago;
-			
-			$stock_opname_solar_ago = $this->db->select('(cat.display_volume) as volume')
-			->from('pmm_remaining_materials_cat cat ')
-			->where("(cat.date < '$date1')")
-			->where("cat.material_id = 8")
-			->where("cat.status = 'PUBLISH'")
-			->order_by('cat.date','desc')->limit(1)
+			$pemakaian_bbm = $this->db->select('sum(pp.vol_pemakaian_bbm) as volume, sum(pp.nilai_pemakaian_bbm) as nilai')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date1' and '$date2')")
+			->order_by('pp.date','desc')->limit(1)
 			->get()->row_array();
+			$vol_pemakaian_bbm = $pemakaian_bbm['volume'];
+			$nilai_pemakaian_bbm = $pemakaian_bbm['nilai'];
+			$harsat_pemakaian_bbm = (round($vol_pemakaian_bbm,2)!=0)?$nilai_pemakaian_bbm / round($vol_pemakaian_bbm,2) * 1:0;
 
-			$total_volume_stock_solar_ago = $stock_opname_solar_ago['volume'];
+			$pemakaian_bbm_2 = $this->db->select('sum(pp.vol_pemakaian_bbm_2) as volume, sum(pp.nilai_pemakaian_bbm_2) as nilai')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date1' and '$date2')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
+			$vol_pemakaian_bbm_2 = $pemakaian_bbm_2['volume'];
+			$nilai_pemakaian_bbm_2 = $pemakaian_bbm_2['nilai'];
+			$harsat_pemakaian_bbm_2 = (round($vol_pemakaian_bbm_2,2)!=0)?$nilai_pemakaian_bbm_2 / round($vol_pemakaian_bbm_2,2) * 1:0;
+
+			$stok_volume_bbm_lalu = $stock_opname_bbm_ago['volume'];
+			$stok_nilai_bbm_lalu = $harga_bbm['nilai_bbm'];
+			$stok_harsat_bbm_lalu = (round($stok_volume_bbm_lalu,2)!=0)?$stok_nilai_bbm_lalu / round($stok_volume_bbm_lalu,2) * 1:0;
+
+			$pembelian_volume = $pembelian_bbm['volume'];
+			$pembelian_harga = $pembelian_bbm['harga'];
+			$pembelian_nilai = $pembelian_bbm['nilai'];
+
+			$total_stok_volume = $stok_volume_bbm_lalu + $pembelian_volume;
+			$total_stok_nilai = $stok_nilai_bbm_lalu + $pembelian_nilai;
+			$total_stok_harsat = (round($total_stok_volume,2)!=0)?$total_stok_nilai / round($total_stok_volume,2) * 1:0;
+
+			$produksi_volume = $vol_pemakaian_bbm;
+			$produksi_harsat = $harsat_pemakaian_bbm;
+			$produksi_nilai = $nilai_pemakaian_bbm;
+
+			$produksi_2_volume = $vol_pemakaian_bbm_2;
+			$produksi_2_harsat = $harsat_pemakaian_bbm_2;
+			$produksi_2_nilai = $nilai_pemakaian_bbm_2;
+
+			$total_produksi_volume = $produksi_volume + $produksi_2_volume;
+			$total_produksi_nilai = $produksi_nilai + $produksi_2_nilai;
+
+			$stok_akhir_volume = $stok_volume_bbm_lalu - $produksi_volume;
+			$stok_akhir_nilai = $stok_nilai_bbm_lalu - $produksi_nilai;
+			$stok_akhir_harsat = (round($stok_akhir_volume,2)!=0)?$stok_akhir_nilai / round($stok_akhir_volume,2) * 1:0;
+
+			$stok_akhir_volume_2 = $pembelian_volume - $produksi_2_volume;
+			$stok_akhir_nilai_2 = $pembelian_nilai - $produksi_2_nilai;
+			$stok_akhir_harsat_2 = (round($stok_akhir_volume_2,2)!=0)?$stok_akhir_nilai_2 / round($stok_akhir_volume_2,2) * 1:0;
+
+			$stok_akhir_volume_total = $stok_akhir_volume + $stok_akhir_volume_2;
+			$stok_akhir_nilai_total = $stok_akhir_nilai + $stok_akhir_nilai_2;
+
+			$vol_bbm_non_produksi = $this->db->select('sum(pp.vol_non_produksi) as volume')
+			->from('kunci_bahan_baku pp')
+			->where("(pp.date between '$date1' and '$date2')")
+			->order_by('pp.date','desc')->limit(1)
+			->get()->row_array();
+			$vol_bbm_non_produksi = $vol_bbm_non_produksi['volume'];
+
+			$nilai_bbm_non_produksi = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->where("pdb.akun = 105")
+			->where("status = 'PAID'")
+			->where("(tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$nilai_bbm_non_produksi = $nilai_bbm_non_produksi['total'];
+
+			$harsat_bbm_non_produksi = (round($vol_bbm_non_produksi,2)!=0)?$nilai_bbm_non_produksi / round($vol_bbm_non_produksi,2) * 1:0;
 			
-			$volume_opening_balance_solar = round($total_volume_stock_solar_ago,2);
-			$harga_opening_balance_solar = $harga_hpp_bahan_baku['solar'];
-			$nilai_opening_balance_solar = $volume_opening_balance_solar * $harga_opening_balance_solar ;
+			$volume_bbm_sisa = $stok_akhir_volume_total - $vol_bbm_non_produksi;
+			$nilai_bbm_sisa = $stok_akhir_nilai_total - $nilai_bbm_non_produksi;
+			
 
 			//PEMBELIAN SOLAR
 			$pembelian_solar = $this->db->select('
@@ -264,7 +321,7 @@
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 8")
+			->where("prm.material_id = 5")
 			->group_by('prm.material_id')
 			->get()->row_array();
 			
@@ -307,7 +364,7 @@
 			foreach ($akumulasi_bbm as $b){
 				$total_akumulasi_bbm += $b['total_nilai_keluar_2'];
 			}
-			
+
 			//PENJUALAN
 			$penjualan = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
 			->from('pmm_productions pp')
@@ -324,182 +381,6 @@
 				$total_volume += $x['volume'];
 			}
 
-			//Excavator
-			$pembelian_exc = $this->db->select('
-			p.nama_produk, pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->join('penerima pn', 'po.supplier_id = pn.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("kategori_alat = '5'")
-			->where("po.status in ('PUBLISH','CLOSED')")
-			->group_by('prm.material_id')
-			->order_by('pn.nama','asc')
-			->get()->result_array();
-
-			$total_nilai_exc = 0;
-			$total_vol_exc = 0;
-			foreach ($pembelian_exc as $x){
-				$total_nilai_exc += $x['price'];
-				$total_vol_exc += $x['volume'];
-				$pembelian_exc_measure = $x['measure'];
-			}
-
-			//Dump Truck 4M3
-			$pembelian_dmp_4m3 = $this->db->select('
-			p.nama_produk, pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->join('penerima pn', 'po.supplier_id = pn.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("kategori_alat = '6'")
-			->where("po.status in ('PUBLISH','CLOSED')")
-			->group_by('prm.material_id')
-			->order_by('pn.nama','asc')
-			->get()->result_array();
-
-			$total_nilai_dmp_4m3 = 0;
-			$total_vol_dmp_4m3 = 0;
-			foreach ($pembelian_dmp_4m3 as $x){
-				$total_nilai_dmp_4m3 += $x['price'];
-				$total_vol_dmp_4m3 += $x['volume'];
-				$pembelian_dmp_4m3_measure = $x['measure'];
-			}
-
-			//Dump Truck 10M3
-			$pembelian_dmp_10m3 = $this->db->select('
-			p.nama_produk, pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->join('penerima pn', 'po.supplier_id = pn.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("kategori_alat = '7'")
-			->where("po.status in ('PUBLISH','CLOSED')")
-			->group_by('prm.material_id')
-			->order_by('pn.nama','asc')
-			->get()->result_array();
-
-			$total_nilai_dmp_10m3 = 0;
-			$total_vol_dmp_10m3 = 0;
-			foreach ($pembelian_dmp_10m3 as $x){
-				$total_nilai_dmp_10m3 += $x['price'];
-				$total_vol_dmp_10m3 += $x['volume'];
-				$pembelian_dmp_10m3_measure = $x['measure'];
-			}
-
-			//SC
-			$pembelian_sc = $this->db->select('
-			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->join('penerima pn', 'po.supplier_id = pn.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("kategori_alat = '8'")
-			->where("po.status in ('PUBLISH','CLOSED')")
-			->group_by('prm.harga_satuan')
-			->order_by('pn.nama','asc')
-			->get()->result_array();
-
-			$total_nilai_sc = 0;
-			$total_vol_sc = 0;
-			foreach ($pembelian_sc as $x){
-				$total_nilai_sc += $x['price'];
-				$total_vol_sc += $x['volume'];
-				$pembelian_sc_measure = $x['measure'];
-			}
-
-			//Genset
-			$pembelian_gns = $this->db->select('
-			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->join('penerima pn', 'po.supplier_id = pn.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("kategori_alat = '9'")
-			->where("po.status in ('PUBLISH','CLOSED')")
-			->group_by('prm.harga_satuan')
-			->order_by('pn.nama','asc')
-			->get()->result_array();
-
-			$total_nilai_gns = 0;
-			$total_vol_gns = 0;
-			foreach ($pembelian_gns as $x){
-				$total_nilai_gns += $x['price'];
-				$total_vol_gns += $x['volume'];
-				$pembelian_gns_measure = $x['measure'];
-			}
-
-			//Wheel Loader SC
-			$pembelian_wl_sc = $this->db->select('
-			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->join('penerima pn', 'po.supplier_id = pn.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("kategori_alat = '10'")
-			->where("po.status in ('PUBLISH','CLOSED')")
-			->group_by('prm.harga_satuan')
-			->order_by('pn.nama','asc')
-			->get()->result_array();
-
-			$total_nilai_wl_sc = 0;
-			$total_vol_wl_sc = 0;
-			foreach ($pembelian_wl_sc as $x){
-				$total_nilai_wl_sc += $x['price'];
-				$total_vol_wl_sc += $x['volume'];
-				$pembelian_wl_sc_measure = $x['measure'];
-			}
-
-			//BBM Solar SC
-			$pembelian_bbm_sc = $this->db->select('
-			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->join('penerima pn', 'po.supplier_id = pn.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("p.id = '59'")
-			->where("po.status in ('PUBLISH','CLOSED')")
-			->group_by('prm.harga_satuan')
-			->order_by('pn.nama','asc')
-			->get()->result_array();
-
-			$total_nilai_bbm_sc = 0;
-			$total_vol_bbm_sc = 0;
-			foreach ($pembelian_bbm_sc as $x){
-				$total_nilai_bbm_sc += $x['price'];
-				$total_vol_bbm_sc += $x['volume'];
-				$pembelian_bbm_sc_measure = $x['measure'];
-			}
-
-			//BBM Solar QUARRY
-			$pembelian_bbm_q = $this->db->select('
-			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->join('penerima pn', 'po.supplier_id = pn.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("p.id = '60'")
-			->where("po.status in ('PUBLISH','CLOSED')")
-			->group_by('prm.harga_satuan')
-			->order_by('pn.nama','asc')
-			->get()->result_array();
-
-			$total_nilai_bbm_q = 0;
-			$total_vol_bbm_q = 0;
-			foreach ($pembelian_bbm_q as $x){
-				$total_nilai_bbm_q += $x['price'];
-				$total_vol_bbm_q += $x['volume'];
-				$pembelian_bbm_q_measure = $x['measure'];
-			}
-
 			$total_vol_batching_plant = $total_volume;
 			$total_vol_truck_mixer = $total_volume;
 			$total_vol_wheel_loader = $total_volume;
@@ -512,8 +393,8 @@
 			$total_pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
 
 			$total_pemakaian_batching_plant = $total_nilai_batching_plant;
-			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer;
-			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader;
+			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_insentif_tm;
+			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_insentif_wl;
 			$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
 			$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
 			$total_pemakaian_exc = $total_nilai_exc;
@@ -521,20 +402,9 @@
 			$total_pemakaian_dmp_10m3 = $total_nilai_dmp_10m3;
 			$total_pemakaian_sc = $total_nilai_sc;
 			$total_pemakaian_gns = $total_nilai_gns;
-			$total_pemakaian_wl_sc = $total_nilai_wl_sc;
+			$total_pemakaian_wl_sc = $total_nilai_wl_sc + $total_insentif_wl_sc;
 			
-			//Rumus BBM SC & QUARRY
-			$harsat_bbm_sc = ($total_pemakaian_bbm_solar / $total_volume_pemakaian_solar);
-			$total_nilai_bbm_sc = $total_vol_bbm_sc * $harsat_bbm_sc;
-
-			$harsat_bbm_q = ($total_pemakaian_bbm_solar / $total_volume_pemakaian_solar);
-			$total_nilai_bbm_q = $total_vol_bbm_q * $harsat_bbm_q;
-			?>
-
-			<!-- RAP Alat -->
-
-			<?php
-
+			//RAP
 			$rap_alat = $this->db->select('rap.*')
 			->from('rap_alat rap')
 			->where("rap.tanggal_rap_alat <= '$date2'")
@@ -580,11 +450,8 @@
 			$harsat_bbm_solar = ($vol_bbm_solar!=0)?$bbm_solar / $vol_bbm_solar * 1:0;
 
 			$total_nilai_rap_alat = $batching_plant + $truck_mixer + $wheel_loader + $bbm_solar;
-			
-			?>
 
-			<!-- Evaluasi -->
-			<?php
+			//EVALUASI
 			$total_vol_evaluasi_batching_plant = ($total_pemakaian_vol_batching_plant!=0)?$vol_batching_plant - $total_pemakaian_vol_batching_plant * 1:0;
 			$total_nilai_evaluasi_batching_plant = ($total_pemakaian_batching_plant!=0)?$batching_plant - $total_pemakaian_batching_plant * 1:0;
 
@@ -596,38 +463,13 @@
 
 			$total_nilai_evaluasi_transfer_semen = ($total_pemakaian_transfer_semen!=0)?$transfer_semen - $total_pemakaian_transfer_semen * 1:0;
 
-			$total_vol_evaluasi_bbm_solar = ($total_pemakaian_vol_bbm_solar!=0)?$vol_bbm_solar - ($total_pemakaian_vol_bbm_solar  - $total_vol_bbm_sc - $total_vol_bbm_q) * 1:0;
-			$total_nilai_evaluasi_bbm_solar = ($total_pemakaian_bbm_solar!=0)?$bbm_solar - ($total_pemakaian_bbm_solar - $total_nilai_bbm_sc - $total_nilai_bbm_q) * 1:0;
+			$total_vol_evaluasi_bbm_solar = ($total_produksi_volume!=0)?$vol_bbm_solar - $total_produksi_volume * 1:0;
+			$total_nilai_evaluasi_bbm_solar = ($total_produksi_nilai!=0)?$bbm_solar - $total_produksi_nilai * 1:0;
 
-			$total_nilai_evaluasi_exc = (0-$total_pemakaian_exc);
-			$total_nilai_evaluasi_dmp_4m3 = (0-$total_pemakaian_dmp_4m3);
-			$total_nilai_evaluasi_dmp_10m3 = (0-$total_pemakaian_dmp_10m3);
-			$total_nilai_evaluasi_sc = (0-$total_pemakaian_sc);
-			$total_nilai_evaluasi_gns = (0-$total_pemakaian_gns);
-			$total_nilai_evaluasi_wl_sc = (0-$total_pemakaian_wl_sc);
-			$total_nilai_evaluasi_bbm_sc = (0-$total_pemakaian_bbm_sc);
-			$total_nilai_evaluasi_bbm_q = (0-$total_pemakaian_bbm_q);
-			?>
-
-			<!-- TOTAL -->
-			<?php
-			$total_nilai_rap_bp = $batching_plant + $truck_mixer + $wheel_loader + $bbm_solar;
-			$total_nilai_realisasi_bp = $total_pemakaian_batching_plant + $total_pemakaian_truck_mixer + $total_pemakaian_wheel_loader + $total_nilai_transfer_semen + $total_pemakaian_bbm_solar - $total_nilai_bbm_sc - $total_nilai_bbm_q;
-			$total_nilai_evaluasi_bp = $total_nilai_evaluasi_batching_plant + $total_nilai_evaluasi_truck_mixer + $total_nilai_evaluasi_wheel_loader + $total_nilai_evaluasi_transfer_semen + $total_nilai_evaluasi_bbm_solar;
-
-			$total_nilai_rap_sc = 0;
-			$total_nilai_realisasi_sc = $total_pemakaian_dmp_10m3 + $total_pemakaian_sc + $total_pemakaian_gns + $total_pemakaian_wl_sc + $total_nilai_bbm_sc;
-			$total_nilai_evaluasi_sc = 0;
-
-			$total_nilai_rap_q = 0;
-			$total_nilai_realisasi_q  = $total_pemakaian_exc + $total_pemakaian_dmp_4m3 + $total_nilai_bbm_q;
-			$total_nilai_evaluasi_q = 0;
-
-			$total_nilai_realisasi_i = $total_insentif_tm + $total_insentif_wl + $total_insentif_wl_sc;
-
-			$total_nilai_rap_all = $total_nilai_rap_bp;
-			$total_nilai_realisasi_all = $total_nilai_realisasi_bp + $total_nilai_realisasi_sc + $total_nilai_realisasi_q + $total_nilai_realisasi_i;
-			$total_nilai_evaluasi_all = $total_nilai_evaluasi_bp;
+			//TOTAL
+			$total_nilai_rap = $batching_plant + $truck_mixer + $wheel_loader + $bbm_solar;
+			$total_nilai_realisasi = $total_pemakaian_batching_plant + $total_pemakaian_truck_mixer + $total_pemakaian_wheel_loader + $total_nilai_transfer_semen + $total_produksi_nilai;
+			$total_nilai_evaluasi = $total_nilai_evaluasi_batching_plant + $total_nilai_evaluasi_truck_mixer + $total_nilai_evaluasi_wheel_loader + $total_nilai_evaluasi_transfer_semen + $total_nilai_evaluasi_bbm_solar;
 			?>
 			
 			<tr class="table-judul">
@@ -641,12 +483,6 @@
 				<th width="15%" align="right" style="border-bottom:1px solid black;">HARSAT</th>
 				<th width="25%" align="right" style="border-bottom:1px solid black; border-right:1px solid black;">NILAI</th>
 	        </tr>
-			<tr class="table-total">
-				<th align="center" colspan="3" style="border-left:1px solid black; border-right:1px solid black;">
-				<div align="left" style="display:block; font-weight:bold; text-transform:uppercase;">A. GROUP BP</div>
-				</th>
-				<th align="center" colspan="3" style="border-right:1px solid black;"></th>	
-			</tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">1.</th>			
 				<th align="left">Batching Plant</th>
@@ -683,214 +519,15 @@
 				<th align="center" style="border-left:1px solid black;">5.</th>			
 				<th align="left">BBM Solar</th>
 				<th align="center" style="border-right:1px solid black;">Liter</th>
-				<th align="right"><?php echo number_format($total_volume_pemakaian_solar - $total_vol_bbm_sc - $total_vol_bbm_q,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_pemakaian_bbm_solar / $total_volume_pemakaian_solar,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_bbm_solar - $total_nilai_bbm_sc - $total_nilai_bbm_q,0,',','.');?></th>
+				<th align="right"><?php echo number_format($total_produksi_volume,2,',','.');?></th>
+				<th align="right"><?php echo number_format($total_produksi_nilai / $total_produksi_volume,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_produksi_nilai,0,',','.');?></th>
 	        </tr>
 			<tr class="table-total">		
-				<th align="right" colspan="3" style="background-color:#FFFF00; border:1px solid black;">TOTAL GROUP BP</th>
+				<th align="right" colspan="3" style="background-color:#FFFF00; border:1px solid black;">TOTAL</th>
 				<th align="right" style="background-color:#FFFF00; border-top:1px solid black; border-bottom:1px solid black;"></th>
 				<th align="right" style="background-color:#FFFF00; border-top:1px solid black; border-bottom:1px solid black;"></th>
-				<th align="right" style="background-color:#FFFF00; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;"><?php echo number_format($total_nilai_realisasi_bp,0,',','.');?></th>
-	        </tr>
-			<tr class="table-total">
-				<th align="center" colspan="3" style="border-left:1px solid black; border-right:1px solid black;">
-				<div align="left" style="display: block;font-weight:bold; text-transform:uppercase;">B. GROUP SC</div>
-				</th>
-				<th align="center" colspan="3" style="border-right:1px solid black;"></th>
-			</tr>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;">1.</th>			
-				<th align="left" colspan="2" style="border-right:1px solid black;">Dump Truck 10 M3</th>
-				<th align="left" colspan="3" style="border-right:1px solid black;"></th>
-	        </tr>
-			<?php
-			$alpha = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
-			$ev_dmp_10m3_price = 0;
-			foreach ($pembelian_dmp_10m3 as $key => $x):
-			$ev_dmp_10m3_price = 0 - $x['price'];
-			$styleColorK = $ev_dmp_10m3_price < 0 ? 'color:red' : 'color:black';
-			?>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;"></th>			
-				<th align="left"><?php echo $alpha[$key++];?>. <?= $x['nama_produk'] ?></th>
-				<th align="center" style="border-right:1px solid black;"><?= $x['measure'] ?></th>
-				<th align="right"><?php echo number_format($x['volume'],2,',','.');?></th>
-				<th align="right"><?php echo number_format($x['price'] / $x['volume'],0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($x['price'],0,',','.');?></th>
-	        </tr>
-			<?php endforeach; ?>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;">2.</th>			
-				<th align="left">Stone Crusher</th>
-				<th align="center" style="border-right:1px solid black;"><?php
-				$null = '-';
-				if (!empty($pembelian_sc_measure)) {
-					echo $pembelian_sc_measure;
-				} else {    
-					echo $null;
-				}
-				?></th>
-				<th align="right"><?php echo number_format($total_vol_sc,2,',','.');?></th>
-				<?php
-				$harsat_sc = ($total_vol_sc!=0)?$total_nilai_sc / $total_vol_sc * 1:0;
-				?>
-				<th align="right"><?php echo number_format($harsat_sc,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_nilai_sc,0,',','.');?></th>
-	        </tr>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;">3.</th>			
-				<th align="left">Genset</th>
-				<th align="center" style="border-right:1px solid black;"><?php
-				$null = '-';
-				if (!empty($pembelian_gns_measure)) {
-					echo $pembelian_gns_measure;
-				} else {    
-					echo $null;
-				}
-				?></th>
-				<th align="right"><?php echo number_format($total_vol_gns,2,',','.');?></th>
-				<?php
-				$harsat_gns = ($total_vol_gns!=0)?$total_nilai_gns / $total_vol_gns * 1:0;
-				?>
-				<th align="right"><?php echo number_format($harsat_gns,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_nilai_gns,0,',','.');?></th>
-	        </tr>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;">4.</th>			
-				<th align="left">Wheel Loader</th>
-				<th align="center" style="border-right:1px solid black;"><?php
-				$null = '-';
-				if (!empty($pembelian_wl_sc_measure)) {
-					echo $pembelian_wl_sc_measure;
-				} else {    
-					echo $null;
-				}
-				?></th>
-				<th align="right"><?php echo number_format($total_vol_wl_sc,2,',','.');?></th>
-				<?php
-				$harsat_wl_sc = ($total_vol_wl_sc!=0)?$total_nilai_wl_sc / $total_vol_wl_sc * 1:0;
-				?>
-				<th align="right"><?php echo number_format($harsat_wl_sc,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_nilai_wl_sc,0,',','.');?></th>
-	        </tr>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;">5.</th>			
-				<th align="left">BBM Solar (SC)</th>
-				<th align="center" style="border-right:1px solid black;"><?php
-				$null = '-';
-				if (!empty($pembelian_bbm_sc_measure)) {
-					echo $pembelian_bbm_sc_measure;
-				} else {    
-					echo $null;
-				}
-				?></th>
-				<th align="right"><?php echo number_format($total_vol_bbm_sc,2,',','.');?></th>
-				<th align="right"><?php echo number_format($harsat_bbm_sc,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_nilai_bbm_sc,0,',','.');?></th>
-	        </tr>
-			<tr class="table-total">		
-				<th align="right" colspan="3" style="background-color:#FFFF00; border:1px solid black;">TOTAL GROUP SC</th>
-				<th align="right" style="background-color:#FFFF00; border-top:1px solid black; border-bottom:1px solid black;"></th>
-				<th align="right" style="background-color:#FFFF00; border-top:1px solid black; border-bottom:1px solid black;"></th>
-				<th align="right" style="background-color:#FFFF00; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;"><?php echo number_format($total_nilai_realisasi_sc,0,',','.');?></th>
-	        </tr>
-			<tr class="table-total">
-				<th align="center" colspan="3" style="border-left:1px solid black; border-right:1px solid black;">
-				<div align="left" style="display: block;font-weight:bold; text-transform:uppercase;">C. GROUP QUARRY</div>
-				</th>
-				<th align="center" colspan="3" style="border-right:1px solid black;"></th>
-			</tr>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;">1.</th>
-				<th align="left" colspan="2" style="border-right:1px solid black;">Excavator</th>
-				<th align="left" colspan="3" style="border-right:1px solid black;"></th>
-	        </tr>
-			<?php
-			$alpha = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
-			$ev_exc_price = 0;
-			foreach ($pembelian_exc as $key => $x):
-			$ev_exc_price = 0 - $x['price'];
-			$styleColorP = $ev_exc_price < 0 ? 'color:red' : 'color:black';
-			?>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;"></th>			
-				<th align="left"><?php echo $alpha[$key++];?>. <?= $x['nama_produk'] ?></th>
-				<th align="center" style="border-right:1px solid black;"><?= $x['measure'] ?></th>
-				<th align="right"><?php echo number_format($x['volume'],2,',','.');?></th>
-				<th align="right"><?php echo number_format($x['price'] / $x['volume'],0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($x['price'],0,',','.');?></th>
-	        </tr>
-			<?php endforeach; ?>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;">2.</th>
-				<th align="left" colspan="2" style="border-right:1px solid black;">Dump Truck 4M3</th>
-				<th align="left" colspan="3" style="border-right:1px solid black;"></th>
-	        </tr>
-			<?php
-			$alpha = array('a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
-			$ev_dmp_4m3_price = 0;
-			foreach ($pembelian_dmp_4m3 as $key => $x):
-			$ev_dmp_4m3_price = 0 - $x['price'];
-			$styleColorQ = $ev_dmp_4m3_price < 0 ? 'color:red' : 'color:black';
-			?>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;"></th>			
-				<th align="left"><?php echo $alpha[$key++];?>. <?= $x['nama_produk'] ?></th>
-				<th align="center" style="border-right:1px solid black;"><?= $x['measure'] ?></th>
-				<th align="right"><?php echo number_format($x['volume'],2,',','.');?></th>
-				<th align="right"><?php echo number_format($x['price'] / $x['volume'],0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($x['price'],0,',','.');?></th>
-	        </tr>
-			<?php endforeach; ?>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;">3.</th>			
-				<th align="left">BBM Solar (QUARRY)</th>
-				<th align="center" style="border-right:1px solid black;"><?php
-				$null = '-';
-				if (!empty($pembelian_bbm_q_measure)) {
-					echo $pembelian_bbm_q_measure;
-				} else {    
-					echo $null;
-				}
-				?></th>
-				<th align="right"><?php echo number_format($total_vol_bbm_q,2,',','.');?></th>
-				<th align="right"><?php echo number_format($harsat_bbm_q,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_nilai_bbm_q,0,',','.');?></th>
-	        </tr>
-			<tr class="table-total">		
-				<th align="right" colspan="3" style="background-color:#FFFF00; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black;">TOTAL GROUP QUARRY</th>
-				<th align="right" style="background-color:#FFFF00; border-top:1px solid black;"></th>
-				<th align="right" style="background-color:#FFFF00; border-top:1px solid black;"></th>
-				<th align="right" style="background-color:#FFFF00; border-top:1px solid black; border-right:1px solid black;"><?php echo number_format($total_nilai_realisasi_q,0,',','.');?></th>
-	        </tr>
-			<tr class="table-total">
-				<th align="center" colspan="3" style="border-left:1px solid black; border-right:1px solid black;">
-				<div align="left" style="display: block;font-weight:bold; text-transform:uppercase;">D. INSENTIF</div>
-				</th>
-				<th align="center" colspan="3" style="border-right:1px solid black;"></th>
-			</tr>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;">1.</th>
-				<th align="left" colspan="2" style="border-right:1px solid black;">Insentif Truck Mixer</th>
-				<th align="right" colspan="3" style="border-right:1px solid black;"><?php echo number_format($total_insentif_tm,0,',','.');?></th>
-	        </tr>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;">2.</th>
-				<th align="left" colspan="2" style="border-right:1px solid black;">Insentif Wheel Loader</th>
-				<th align="right" colspan="3" style="border-right:1px solid black;"><?php echo number_format($total_insentif_wl,0,',','.');?></th>
-	        </tr>
-			<tr class="table-total">		
-				<th align="right" colspan="3" style="background-color:#FFFF00; border-left:1px solid black; border-right:1px solid black; border-top:1px solid black;">TOTAL INSENTIF</th>
-				<th align="right" style="background-color:#FFFF00; border-top:1px solid black;"></th>
-				<th align="right" style="background-color:#FFFF00; border-top:1px solid black;"></th>
-				<th align="right" style="background-color:#FFFF00; border-top:1px solid black; border-right:1px solid black;"><?php echo number_format($total_nilai_realisasi_i,0,',','.');?></th>
-	        </tr>
-			<tr class="table-total">		
-				<th align="right" colspan="3" style="background-color:#FFFF00; border:1px solid black;">TOTAL GROUP A + B + C + D</th>
-				<th align="right" style="background-color:#FFFF00; border-bottom:1px solid black; border-top:1px solid black;"></th>
-				<th align="right" style="background-color:#FFFF00; border-bottom:1px solid black; border-top:1px solid black;"></th>
-				<th align="right" style="background-color:#FFFF00; border-bottom:1px solid black; border-top:1px solid black; border-right:1px solid black;"><?php echo number_format($total_nilai_realisasi_all,0,',','.');?></th>
+				<th align="right" style="background-color:#FFFF00; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;"><?php echo number_format($total_nilai_realisasi,0,',','.');?></th>
 	        </tr>
 	    </table>
 		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -903,9 +540,6 @@
 							<td align="center">
 								Disetujui Oleh
 							</td>
-							<td align="center">
-								Diperiksa Oleh
-							</td>
 							<td align="center" >
 								Dibuat Oleh
 							</td>	
@@ -913,8 +547,8 @@
 						<tr class="">
 							<?php
 								$create = $this->db->select('id, unit_head, logistik, admin')
-								->from('akumulasi')
-								->where("(date_akumulasi between '$start_date' and '$end_date')")
+								->from('kunci_bahan_baku')
+								->where("(date between '$start_date' and '$end_date')")
 								->order_by('id','desc')->limit(1)
 								->get()->row_array();
 
@@ -937,9 +571,6 @@
 								<img src="<?= $unit_head['admin_ttd']?>" width="70px">
 							</td>
 							<td align="center">
-								<img src="<?= $unit_head['admin_ttd']?>" width="70px">
-							</td>
-							<td align="center">
 								<img src="<?= $logistik['admin_ttd']?>" width="70px">
 							</td>
 						</tr>
@@ -947,10 +578,6 @@
 							<td align="center" >
 								<b><u><?php echo $this->crud_global->GetField('tbl_admin',array('admin_id'=>$create['unit_head']),'admin_name');?></u><br />
 								<?= $unit_head['admin_group_name']?></b>
-							</td>
-							<td align="center">
-							<b><u><?php echo $this->crud_global->GetField('tbl_admin',array('admin_id'=>$create['unit_head']),'admin_name');?></u><br />
-								M. Teknik</b>
 							</td>
 							<td align="center" >
 								<b><u><?php echo $this->crud_global->GetField('tbl_admin',array('admin_id'=>$create['logistik']),'admin_name');?></u><br />
