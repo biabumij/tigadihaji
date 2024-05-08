@@ -229,14 +229,6 @@
                                     <?php
                                     }
                                     ?>
-                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#master" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn">
-                                            <li style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
-                                                <a>
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-database"></i><b>MASTER<br />DATA</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>
                                 </tr>
                             </table>
                             <br />
@@ -312,38 +304,6 @@
                                     <?php
                                     }
                                     ?>
-                                    <th width="25%" class="text-center">
-                                        <ul class="row text-center list-inline  wowload bounceInUp collapse" id="master">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
-                                                <a href="<?php echo site_url('admin/kontak');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-address-book"></i><b>KONTAK</b></span></a>
-                                            </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
-                                                <a href="<?php echo site_url('admin/produk');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-cart-flatbed-suitcase"></i><b>PRODUK</b></span></a>
-                                            </li>
-                                            <br />
-                                            <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
-                                                <a href="<?php echo site_url('admin/daftar_akun');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-hand-holding-dollar"></i><b>DAFTAR<br />AKUN</b></span></a>
-                                            </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
-                                                <a href="<?php echo site_url('admin/satuan');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-ruler-vertical"></i><b>SATUAN</b></span></a>
-                                            </li>
-                                            <br />
-                                            <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
-                                                <a href="<?php echo site_url('admin/users');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-users"></i><b>USER</b></span></a>
-                                            </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
-                                                <a href="<?php echo site_url('admin/perusahaan');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-building"></i><b>PERUSAHAAN</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>
                                 </tr>
                             </table>
 
@@ -354,6 +314,14 @@
                                             <li style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-line"></i><b>LAPORAN</b></span></a>
+                                            </li>
+                                        </ul>
+                                    </th>
+                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#master" aria-expanded="false" aria-controls="beton">
+                                        <ul class="row text-center list-inline  wowload bounceIn">
+                                            <li style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
+                                                <a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-database"></i><b>MASTER<br />DATA</b></span></a>
                                             </li>
                                         </ul>
                                     </th>
@@ -417,6 +385,38 @@
                                             <?php
                                             }
                                             ?>
+                                        </ul>
+                                    </th>
+                                    <th width="25%" class="text-center">
+                                        <ul class="row text-center list-inline  wowload bounceInUp collapse" id="master">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
+                                                <a href="<?php echo site_url('admin/kontak');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-address-book"></i><b>KONTAK</b></span></a>
+                                            </li>
+                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
+                                                <a href="<?php echo site_url('admin/produk');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-cart-flatbed-suitcase"></i><b>PRODUK</b></span></a>
+                                            </li>
+                                            <br />
+                                            <br />
+                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
+                                                <a href="<?php echo site_url('admin/daftar_akun');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-hand-holding-dollar"></i><b>DAFTAR<br />AKUN</b></span></a>
+                                            </li>
+                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
+                                                <a href="<?php echo site_url('admin/satuan');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-ruler-vertical"></i><b>SATUAN</b></span></a>
+                                            </li>
+                                            <br />
+                                            <br />
+                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
+                                                <a href="<?php echo site_url('admin/users');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-users"></i><b>USER</b></span></a>
+                                            </li>
+                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
+                                                <a href="<?php echo site_url('admin/perusahaan');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-building"></i><b>PERUSAHAAN</b></span></a>
+                                            </li>
                                         </ul>
                                     </th>
                                     <th width="25%" class="text-center">
