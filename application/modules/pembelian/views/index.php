@@ -99,36 +99,6 @@
                                     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PESANAN</a></li>
                                     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PENERIMAAN</a></li>
                                     <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">TAGIHAN</a></li>
-                                    <?php
-                                    if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 16){
-                                    ?>
-                                        <li role="presentation"><a href="#verifikasi" aria-controls="verifikasi" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">NOTIFIKASI 
-                                            <blink><b><?php
-
-                                        $query1 = $this->db->select('COUNT(pvp.id) as id')
-                                        ->from('pmm_verifikasi_penagihan_pembelian pvp')
-                                        ->where("pvp.approve_unit_head = 'TIDAK DISETUJUI'")
-                                        ->get()->row_array();
-
-                                        $query2 = $this->db->select('COUNT(ppo.id) as id')
-                                        ->from('pmm_purchase_order ppo')
-                                        ->where("ppo.status = 'WAITING'")
-                                        ->get()->row_array();
-
-                                        $query3 = $this->db->select('COUNT(req.id) as id')
-                                        ->from('pmm_request_materials req')
-                                        ->where("req.status = 'WAITING'")
-                                        ->get()->row_array();
-                                        
-                                        $query = $query1['id'] + $query2['id'] + $query3['id'];
-                                        ?></b>
-                                        
-                                        (<?php echo number_format($query,0,',','.');?>)    
-                                        </blink>
-                                        </a></li>			
-                                    <?php
-                                    }
-                                    ?>
                                 </ul>
 
                                 <div class="tab-content">
@@ -551,74 +521,6 @@
                                         </table>
                                     </div>
 
-                                </div>
-
-                                <!-- Verifikasi -->
-                                <div role="tabpanel" class="tab-pane" id="verifikasi">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped table-hover" id="table-verifikasi" style="width:100%;">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center" width="5%">No.</th>
-                                                    <th>Kategori Persetujuan</th>
-                                                    <th>Nomor Dokumen</th>
-                                                    <th>Dibuat Oleh</th>
-                                                    <th>Dibuat Tanggal</th>                                       
-                                                </tr>
-                                            </thead>
-                                            <?php
-                                            $waiting_po = $this->db->select('*')
-                                            ->from('pmm_purchase_order')
-                                            ->where("status = 'WAITING'")
-                                            ->order_by('created_on','desc')
-                                            ->get()->result_array();
-
-                                            $permintaan = $this->db->select('*')
-                                            ->from('pmm_request_materials')
-                                            ->where("status = 'WAITING'")
-                                            ->order_by('created_on','desc')
-                                            ->get()->result_array();
-
-                                            $verifikasi = $this->db->select('v.*, ppp.nomor_invoice')
-                                            ->from('pmm_verifikasi_penagihan_pembelian v')
-                                            ->join('pmm_penagihan_pembelian ppp','v.penagihan_pembelian_id = ppp.id','left')
-                                            ->where("v.approve_unit_head = 'TIDAK DISETUJUI'")
-                                            ->order_by('v.created_on','desc')
-                                            ->get()->result_array();
-                                            ?>
-                                            <tbody>
-                                            <?php $no=1; foreach ($waiting_po as $x): ?>
-                                                <tr>
-                                                    <th width="5%"><?php echo $no++;?></th>
-                                                    <th class="text-left"><?= $x['kategori_persetujuan'] = $this->pmm_model->GetStatusKategoriPersetujuan($x['kategori_persetujuan']); ?></th>
-                                                    <th class="text-left"><?= $x['no_po'] = '<a href="'.site_url('pmm/purchase_order/manage/'.$x['id']).'" target="_blank">'.$x['no_po'].'</a>';?></th>
-                                                    <th class="text-left"><?= $x['created_by'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$x['created_by']),'admin_name'); ?></th>
-                                                    <th class="text-left"><?= $x['created_on'] = date('d/m/Y H:i:s',strtotime($x['created_on'])); ?></th>
-                                                </tr>
-                                                <?php endforeach; ?>
-
-                                                <?php foreach ($permintaan as $x): ?>
-                                                <tr>
-                                                    <th width="5%"><?php echo $no++;?></th>
-                                                    <th class="text-left"><?= $x['kategori_persetujuan'] = $this->pmm_model->GetStatusKategoriPersetujuan($x['kategori_persetujuan']); ?></th>
-                                                    <th class="text-left"><?= $x['request_no'] = '<a href="'.site_url('pmm/request_materials/manage/'.$x['id']).'" target="_blank">'.$x['request_no'].'</a>';?></th>
-                                                    <th class="text-left"><?= $x['created_by'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$x['created_by']),'admin_name'); ?></th>
-                                                    <th class="text-left"><?= $x['created_on'] = date('d/m/Y H:i:s',strtotime($x['created_on'])); ?></th>
-                                                </tr>
-                                                <?php endforeach; ?>
-
-                                                <?php foreach ($verifikasi as $x): ?>
-                                                <tr>
-                                                    <th width="5%"><?php echo $no++;?></th>
-                                                    <th class="text-left"><?= $x['kategori_persetujuan'] = $this->pmm_model->GetStatusKategoriPersetujuan($x['kategori_persetujuan']); ?></th>
-                                                    <th class="text-left"><?= $x['nomor_invoice'] = '<a href="'.base_url('pembelian/read_notification/'.$x['id']).'" target="_blank">'.$x['nomor_invoice'].'</a>';?></th>
-                                                    <th class="text-left"><?= $x['created_by'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$x['created_by']),'admin_name'); ?></th>
-                                                    <th class="text-left"><?= $x['created_on'] = date('d/m/Y H:i:s',strtotime($x['created_on'])); ?></th>
-                                                </tr>
-                                                <?php endforeach; ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
                                 </div>
 
                             </div>

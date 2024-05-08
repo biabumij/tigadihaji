@@ -72,13 +72,41 @@
         background: #f1f7ff;
         }
 
-        /* Animation */
-        @keyframes Gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-        #flippy{text-align:center;margin:auto;display:inline}#flippy button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#e69500 0%,#333333 51%,#e69500 100%);background-size:200% auto;color:#fff;display:block;width:80%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy button:hover,#flippy button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
+        blink {
+        -webkit-animation: 2s linear infinite kedip; /* for Safari 4.0 - 8.0 */
+        animation: 2s linear infinite kedip;
+        }
+        /* for Safari 4.0 - 8.0 */
+        @-webkit-keyframes kedip { 
+        0% {
+            visibility: hidden;
+        }
+        50% {
+            visibility: hidden;
+        }
+        100% {
+            visibility: visible;
+        }
+        }
+        @keyframes kedip {
+        0% {
+            visibility: hidden;
+        }
+        50% {
+            visibility: hidden;
+        }
+        100% {
+            visibility: visible;
+        }
+        }
 
         /* Animation */
         @keyframes Gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-        #flippy_menu{text-align:center;margin:auto;display:inline}#flippy_menu button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#333333 0%,#e69500 51%,#333333 100%);background-size:200% auto;color:#fff;display:block;width:80%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy_menu button:hover,#flippy_menu button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
+        #flippy{text-align:center;margin:auto;display:inline}#flippy button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#FF0000 0%,#333333 51%,#FF0000 100%);background-size:200% auto;color:#fff;display:block;width:80%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy button:hover,#flippy button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
+
+        /* Animation */
+        @keyframes Gradient{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+        #flippy_menu{text-align:center;margin:auto;display:inline}#flippy_menu button{border-color:#fffdd0;background:#fff;background-image:linear-gradient(to right,#40c9fe 0%,#8dea57 51%,#40c9fe 100%);background-size:200% auto;color:#fff;display:block;width:80%;padding:15px;font-weight:700;font-size:14px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;margin:10px auto;border-radius:10px;box-shadow:0 2px 3px rgba(0,0,0,0.06),0 2px 3px rgba(0,0,0,0.1);transition:all .3s}#flippy_menu button:hover,#flippy_menu button:focus{background-position: right center;outline:none;opacity:1;color:#fff}#flippanel{display:none;padding:10px 0;text-align:left;background:#fff;margin:10px 0 0 0}#flippanel img{background:#f5f5f5;margin:10px auto}
     </style>
     <body onload = "JavaScript:AutoRefresh(360000);">
     <body>
@@ -130,6 +158,35 @@
 
                     <div id="flippy_menu">
                         <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler_menu') .style.display=='none') {document.getElementById('spoiler_menu') .style.display=''}else{document.getElementById('spoiler_menu') .style.display='none'}"><i class="fa-regular fa-hand-point-right"></i> MENU</button>
+                    </div>
+                    <?php
+                    if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 16){
+                    ?>
+
+                    <?php
+                    $query1 = $this->db->select('COUNT(pvp.id) as id')
+                    ->from('pmm_verifikasi_penagihan_pembelian pvp')
+                    ->where("pvp.approve_unit_head = 'TIDAK DISETUJUI'")
+                    ->get()->row_array();
+
+                    $query2 = $this->db->select('COUNT(ppo.id) as id')
+                    ->from('pmm_purchase_order ppo')
+                    ->where("ppo.status = 'WAITING'")
+                    ->get()->row_array();
+
+                    $query3 = $this->db->select('COUNT(req.id) as id')
+                    ->from('pmm_request_materials req')
+                    ->where("req.status = 'WAITING'")
+                    ->get()->row_array();
+                    
+                    $query = $query1['id'] + $query2['id'] + $query3['id'];
+                    ?>
+
+                    <?php
+                    }
+                    ?>
+                    <div style="font-weight:bold;">
+                        <center><a target="_blank" href="<?= base_url("pmm/reports/detail_notification/") ?>"><i class="fa-solid fa-envelope"></i> BUTUH PERSETUJUAN KA. PLANT <blink>(<?php echo number_format($query,0,',','.');?>)</a></blink><center>
                     </div> 
                     <div id="spoiler_menu" style="display:block">
                         <div class="process">

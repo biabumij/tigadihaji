@@ -12224,5 +12224,24 @@ class Reports extends CI_Controller {
 		<?php
 	}
 
+	public function detail_notification()
+    {
+        $check = $this->m_admin->check_login();
+        if($check == true){
+
+            $this->db->select('ppo.*');
+			$this->db->where("ppo.status = 'WAITING'");
+			$this->db->group_by('ppo.id');
+			$this->db->order_by('ppo.created_on','desc');
+            $query = $this->db->get('pmm_purchase_order ppo');
+			file_put_contents("D:\\test.txt", $this->db->last_query());
+            $data['row'] = $query->result_array();
+            $this->load->view('admin/detail_notification',$data);
+            
+        }else {
+            redirect('admin');
+        }
+    }
+
 
 }
