@@ -183,12 +183,12 @@
                         $query = $query1['id'] + $query2['id'] + $query3['id'];
                         ?>
 
-                        <?php
-                        }
-                        ?>
                         <div style="font-weight:bold; font-size:14px;">
                             <center><blink><a target="_blank" href="<?= base_url("pmm/reports/detail_notification/") ?>"><i class="fa-solid fa-clipboard-check"></i> BUTUH PERSETUJUAN KA. PLANT (<?php echo number_format($query,0,',','.');?>)</a></blink><center>
                         </div>
+                        <?php
+                        }
+                        ?>
                         <div class="process">
                             <table width="100%" style="margin-top:100px;">
                                 <tr>
