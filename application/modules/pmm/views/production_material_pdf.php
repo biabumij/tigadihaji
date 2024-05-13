@@ -123,9 +123,6 @@
                <input type="hidden" id="total" value="<?php echo $total + $ppn;?>">
            </tr>
 		</table>
-		<?php
-        $ka_logistik = $this->pmm_model->GetNameGroup(11);
-        ?>
 		<table width="98%" border="0" cellpadding="50">
 			<tr >
 				<td width="5%"></td>
@@ -161,7 +158,7 @@
 								
 							</td>
 							<td align="center">
-								<img src="uploads/ttd_agustinus.png" width="100px">
+								<img src="uploads/ttd_rani.png" width="100px">
 							</td>
 						</tr>
 						<tr>
@@ -173,7 +170,7 @@
 								
 							</td>
 							<td align="center" >
-								<u><b><?= $ka_logistik['admin_name'];?></b></u><br />
+								<u><b>Rani Oktavia Rizal</b></u><br />
 								<b><?= $ka_logistik['admin_group_name'];?></b>
 							</td>
 						</tr>

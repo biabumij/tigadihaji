@@ -190,35 +190,25 @@
 								Disetujui Oleh
 							</td>
 							<td align="center">
-								Diperiksa Oleh
-							</td>
-							<td align="center">
 								Dibuat Oleh
 							</td>	
 						</tr>
 						<tr class="">
 							<td align="center" height="55px">
-							
+								<img src="uploads/ttd_novel.png" width="55px">
 							</td>
 							<td align="center">
-								
-							</td>
-							<td align="center">
-								
+								<img src="uploads/ttd_avriani.png" width="55px">
 							</td>
 						</tr>
 						<tr>
 							<td align="center" >
-								<b><u>Farid F. Fanggi Ello</u><br />
+								<b><u>Novel Joko Tri Laksono</u><br />
 								Ka. Plant</b>
 							</td>
 							<td align="center">
-								<b><u></u><br />
-								M. Keuangan & SDM</b>
-							</td>
-							<td align="center">
-								<b><u></u><br />
-								Staff Keuangan & SDM</b>
+								<b><u>Avriani Delia Ika Putri</u><br />
+								Keuangan Proyek</b>
 							</td>
 						</tr>
 					</table>

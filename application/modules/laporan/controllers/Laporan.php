@@ -1844,8 +1844,8 @@ class Laporan extends Secure_Controller {
 		$pdf->setPrintHeader(false);
 
 		//Page2
-		$pdf->AddPage('L', 'A4');
-		$pdf->SetY(30);
+		/*$pdf->AddPage('L', 'A4');
+		$pdf->SetY(23);
 		$pdf->SetX(6);
 		$html =
 		'<style type="text/css">
@@ -1914,7 +1914,7 @@ class Laporan extends Secure_Controller {
 		}
 	 	 </style>
 		<table width="98%" border="0" cellpadding="2">
-			<tr class="table-total">
+			<tr class="table-judul">
 				<th align="center" width="5%" class="table-border-atas-kiri">NO.</th>
 				<th align="center" width="25%" class="table-border-atas-tengah">REKANAN / NOMOR INVOICE</th>
 				<th align="center" width="14%" class="table-border-atas-tengah">TGL. INVOICE</th>
@@ -1926,13 +1926,7 @@ class Laporan extends Secure_Controller {
 				<th align="center" width="10%" class="table-border-atas-kanan">TOTAL</th>
 			</tr>
 		</table>';
-		$pdf->writeHTML($html, true, false, true, false, '');
-
-		//Page3
-		$pdf->AddPage();
-		$pdf->SetY(30);
-		$pdf->SetX(6);
-		$pdf->WriteHTML($html);
+		$pdf->writeHTML($html, true, false, true, false, '');*/
 
 		//Page1
 		$pdf->setPage(1, true);

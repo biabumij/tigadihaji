@@ -286,6 +286,7 @@ class Purchase_order extends CI_Controller {
 		$end_date = $this->db->select('date_receipt')->order_by('date_receipt','desc')->limit(1)->get_where('pmm_receipt_material',array('purchase_order_id'=>$id))->row_array();
 		$data['periode'] = date('d F Y',strtotime($start_date['date_receipt'])).' - '.date('d F Y',strtotime($end_date['date_receipt']));
 		$sp = $this->db->get_where('penerima',array('id'=>$row['supplier_id']))->row_array();
+		file_put_contents("D:\\test.txt", $this->db->last_query());
 		$row['address_supplier'] = $sp['alamat'];
 		$row['npwp_supplier'] = $sp['npwp'];
 		$row['supplier_name'] = $sp['nama'];
