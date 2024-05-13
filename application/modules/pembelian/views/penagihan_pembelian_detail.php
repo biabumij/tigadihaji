@@ -130,7 +130,7 @@
                                                     <td style="text-align: left !important;">
                                                         <?= $material; ?>
                                                     </td>
-                                                    <td><?= $dt['volume']; ?></td>
+                                                    <td><?= number_format($dt['volume'],2,',','.'); ?></td>
                                                     <td><?= $dt['measure']; ?></td>
                                                     <td style="text-align: right !important;"><?= number_format($dt['price'],0,',','.'); ?></td>
                                                     <td> <?= $tax; ?></td>
