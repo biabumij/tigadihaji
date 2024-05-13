@@ -149,7 +149,7 @@
 								
 							</td>
 							<td align="center">
-								<img src="uploads/ttd_avriani.png" width="55px">
+								<img src="uploads/ttd_rani.png" width="55px">
 							</td>
 						</tr>
 						<tr>

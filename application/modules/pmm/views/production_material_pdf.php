@@ -130,10 +130,10 @@
 					<table width="100%" border="0" cellpadding="2">
 						<tr>
 							<td align="center">
-								Pengirim
+								Penerima
 							</td>
 							<td align="center">
-								Penerima
+								Pengirim
 							</td>	
 						</tr>
 						<tr>
@@ -149,7 +149,7 @@
 								
 							</td>
 							<td align="center">
-								<img src="uploads/ttd_avriani.png" width="55px">
+								<img src="uploads/ttd_rani.png" width="55px">
 							</td>
 						</tr>
 						<tr>
