@@ -31,32 +31,32 @@
                                     <div class="col-sm-6">
                                         <table class="table table-bordered table-striped table-condensed">
                                             <tr>
-                                                <th width="30%">Dibayar Kepada</th>
+                                                <th width="30%">DIBAYAR KEPADA</th>
                                                 <th width="2%">:</th>
                                                 <td width="68%"> <?= $row["penerima"] ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Nomor Transaksi</th>
+                                                <th>NO. TRANSAKSI</th>
                                                 <th>:</th>
                                                 <td> <?= $row['nomor_transaksi'] ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Tanggal Transaksi</th>
+                                                <th>TGL. TRANSAKSI</th>
                                                 <th>:</th>
                                                 <td> <?= date('d F Y',strtotime($row["tanggal_transaksi"])) ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Akun Penarikan</th>
+                                                <th>AKUN PERNARIKAN</th>
                                                 <th>:</th>
                                                 <td> <?= $this->crud_global->GetField('pmm_coa',array('id'=>$row["bayar_dari"]),'coa'); ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Dibuat Oleh</th>
+                                                <th>DIBUAT OLEH</th>
                                                 <th>:</th>
                                                 <td><?php echo $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');?></td>
                                             </tr>
                                             <tr>
-                                                <th>Dibuat Tanggal</th>
+                                                <th>DIBUAT TANGGAL</th>
                                                 <th>:</th>
                                                 <td><?= date('d/m/Y H:i:s',strtotime($row['created_on']));?></td>
                                             </tr>
@@ -66,10 +66,10 @@
                                 <table id="table-product" class="table table-bordered table-striped table-condensed">
                                     <thead>
                                         <tr >
-                                            <th width="15%" class="text-center">Kode Akun</th>
-                                            <th width="30%" class="text-center">Nama Akun</th>
-                                            <th width="30%" class="text-center">Deskripsi</th>
-                                            <th width="25%"  class="text-center">Jumlah</th>
+                                            <th width="15%" class="text-center">KODE AKUN</th>
+                                            <th width="30%" class="text-left">NAMA AKUN</th>
+                                            <th width="30%" class="text-left">DESKRIPSI</th>
+                                            <th width="25%" class="text-right">JUMLAH</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -79,10 +79,10 @@
                                             foreach ($detail as $key => $dt) {
                                                 ?>
                                                 <tr>
-                                                    <td><?= $dt['kode_akun'];?></td>
-                                                    <td><?= $dt['akun'];?></td>
-                                                    <td><?= $dt['deskripsi'];?></td>
-                                                    <td class=" text-right">Rp. <?= $this->filter->Rupiah($dt['jumlah']);?></td>    
+                                                    <td class="text-center"><?= $dt['kode_akun'];?></td>
+                                                    <td class="text-left"><?= $dt['akun'];?></td>
+                                                    <td class="text-left"><?= $dt['deskripsi'];?></td>
+                                                    <td class="text-right">Rp. <?php echo number_format($dt['jumlah'],0,',','.');?></td>    
                                                 </tr>
                                                 <?php
                                                 $total += $dt['jumlah'];
@@ -93,7 +93,7 @@
                                     <tfoot>
                                         <tr>
                                             <th colspan="3" class="text-right">TOTAL</th>
-                                            <th class="text-right">Rp. <?= $this->filter->Rupiah($total);?></th>
+                                            <th class="text-right">Rp. <?php echo number_format($total,0,',','.');?></th>
                                         </tr>
                                     </tfoot>
                                 </table>

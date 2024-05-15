@@ -84,17 +84,17 @@
             </tr>
             <?php foreach($detail as $d) : ?>
             <tr>
-                <td><?= $d["coa_number"] ?> </td>
-                <td><?= $d["coa"]; ?></td>
-                <td align="right"><?= number_format($d["debit"],2,',','.'); ?></td>
-                <td align="right"><?= number_format($d['kredit'],2,',','.') ?></td>
+                <td align="center"><?= $d["coa_number"] ?> </td>
+                <td align="left"><?= $d["coa"]; ?></td>
+                <td align="right">Rp. <?= number_format($d["debit"],0,',','.'); ?></td>
+                <td align="right">Rp. <?= number_format($d['kredit'],0,',','.'); ?></td>
             </tr>
             <?php endforeach; ?>
             <tr>
                 <th></th>
                 <th align="right">TOTAL</th>
-                <th align="right">Rp.<?= number_format($biaya['total_debit'],2,',','.') ?></th>
-                <th align="right">Rp.<?= number_format($biaya['total_kredit'],2,',','.') ?></th>
+                <th align="right">Rp. <?= number_format($biaya['total_debit'],0,',','.'); ?></th>
+                <th align="right">Rp. <?= number_format($biaya['total_kredit'],0,',','.'); ?></th>
             </tr>
         </table>
         <br />

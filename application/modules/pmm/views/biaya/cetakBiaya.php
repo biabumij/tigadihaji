@@ -101,10 +101,10 @@
                 foreach ($detail as $key => $row) {
                     ?>
                     <tr >
-                        <td><?=  $row['coa_number'];?></td>
-                        <td><?=  $row['akun'];?></td>
-                        <td><?=  $row['deskripsi'];?></td>
-                        <td align="right">Rp. <?=  $this->filter->Rupiah($row['jumlah']);?></td>
+                        <td align="center"><?=  $row['coa_number'];?></td>
+                        <td align="left"><?=  $row['akun'];?></td>
+                        <td align="left"><?=  $row['deskripsi'];?></td>
+                        <td align="right">Rp. <?= number_format($row['jumlah'],0,',','.'); ?></td>
                     </tr>
                     <?php
                     $total += $row['jumlah'];
@@ -114,7 +114,7 @@
             <tr class="table-akun">
                 <th></th>
                 <th colspan="2" align="right">TOTAL</th>
-                <th align="right">Rp. <?=  $this->filter->Rupiah($total);?></th>
+                <th align="right">Rp. <?= number_format($total,0,',','.'); ?></th>
             </tr>
         </table>
         <br />

@@ -7,9 +7,6 @@
         body{
 			font-family: helvetica;
 	  	}
-        .table-center th, .table-center td{
-            text-align:center;
-        }
     </style>
 </head>
 
@@ -31,22 +28,22 @@
                                     <div class="col-sm-6">
                                         <table class="table table-bordered table-striped table-condensed">
                                             <tr>
-                                                <th width="30%">Nomor Transaksi</th>
+                                                <th width="30%">NO. TRANSAKSI</th>
                                                 <th width="2%">:</th>
                                                 <td width="68%"> <?= $detail["nomor_transaksi"] ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Tanggal Transaksi</th>
+                                                <th>TGL. TRANSAKSI</th>
                                                 <th>:</th>
                                                 <td> <?= date('d F Y',strtotime($detail["tanggal_transaksi"])) ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Dibuat Oleh</th>
+                                                <th>DIBUAT OLEH</th>
                                                 <th>:</th>
                                                 <td><?php echo $this->crud_global->GetField('tbl_admin',array('admin_id'=>$detail['created_by']),'admin_name');?></td>
                                             </tr>
                                             <tr>
-                                                <th>Dibuat Tanggal</th>
+                                                <th>DIBUAT TANGGAL</th>
                                                 <th>:</th>
                                                 <td><?= date('d/m/Y H:i:s',strtotime($detail['created_on']));?></td>
                                             </tr>
@@ -57,11 +54,11 @@
                                     <table id="table-product" class="table table-bordered table-striped table-condensed table-center">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Akun Biaya</th>
-                                                <th>Deskripsi</th>
-                                                <th>Debit</th>
-                                                <th>Kredit</th>
+                                                <th class="text-center" width="5%">NO.</th>
+                                                <th class="text-left">AKUN BIAYA</th>
+                                                <th class="text-left">DESKRIPSI</th>
+                                                <th class="text-right">DEBIT</th>
+                                                <th class="text-right">KREDIT</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -72,19 +69,11 @@
                                             ?>
                                             <?php foreach($detailBiaya as $d) : ?>
                                             <tr>
-                                                <td><?= $no++ ?></td>
-                                                <td class="text-left">
-                                                <?= $d["coa"]; ?>
-                                                </td>
-                                                <td class="text-left">
-                                                <?= $d["deskripsi"]; ?>
-                                                </td>
-                                                <td class="text-right">
-                                                <?= $this->filter->Rupiah($d['debit']);?>
-                                                </td>
-                                                <td class="text-right">
-                                                <?= $this->filter->Rupiah($d['kredit']);?>
-                                                </td>
+                                                <td class="text-center"><?= $no++ ?></td>
+                                                <td class="text-left">(<?= $d["coa_number"]; ?>) - <?= $d["coa"]; ?></td>
+                                                <td class="text-left"><?= $d["deskripsi"]; ?></td>
+                                                <td class="text-right">Rp. <?php echo number_format($d['debit'],0,',','.');?></td>
+                                                <td class="text-right">Rp. <?php echo number_format($d['kredit'],0,',','.');?></td>
                                             </tr>
                                             <?php
                                             $debit += $d['debit'];
@@ -94,9 +83,9 @@
                                         </tbody>
                                         <tfoot style="text-align: right;">
                                             <tr>
-                                                <th colspan="3" align="right">TOTAL</th>
-                                                <th ><?= $this->filter->Rupiah($debit);?></th>
-                                                <th ><?= $this->filter->Rupiah($kredit);?></th>
+                                                <th colspan="3" class="text-right">TOTAL</th>
+                                                <th class="text-right">Rp. <?php echo number_format($debit,0,',','.');?></th>
+                                                <th class="text-right">Rp. <?php echo number_format($kredit,0,',','.');?></th>
                                             </tr>
                                         </tfoot>
                                     </table>    
