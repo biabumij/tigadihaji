@@ -41,7 +41,7 @@
 
                                 <div class="tab-content">
                                     <br />
-								    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('rak/form_rencana_kerja'); ?>"><b style="color:white;">BUAT BAHAN</b></a></button>
+								    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('rak/form_rencana_kerja'); ?>"><b style="color:white;">BUAT RENCANA KERJA</b></a></button>
                                     <div role="tabpanel" class="tab-pane active" id="rencana_kerja">									
                                         <div class="table-responsive">
                                             <table class="table table-striped table-hover" id="table_rak" style="width:100%">
