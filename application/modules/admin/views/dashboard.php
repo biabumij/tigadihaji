@@ -115,12 +115,13 @@
             <div class="page-body">
                 <div id="about" class="container spacer about">
                     <?php
-                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4))){
+                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,7,8))){
                     ?>
                     <div id="flippy">
                         <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}"><i class="fa-regular fa-hand-point-right"></i> GRAFIK</button>
-                    </div> 
-                    <div id="spoiler" style="display:none">
+                    </div>
+                    <!--<div id="spoiler" style="display:none">-->
+                    <div id="spoiler" style="display:block">
                         <?php include_once("script_dashboard.php"); ?>
                         <div class="row animated fadeInUp">
                             <table width="100%" border="0" cellpadding="100px">
