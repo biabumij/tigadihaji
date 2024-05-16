@@ -247,7 +247,7 @@
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-bag-shopping"></i><b>PENJUALAN</b></span></a>
                                             </li>
                                             <?php
-                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
+                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,6,7,8))){
                                             ?>
                                             <br />
                                             <br />

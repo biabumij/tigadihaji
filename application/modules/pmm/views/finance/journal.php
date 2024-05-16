@@ -34,7 +34,7 @@
                             </ul>
                             <div class="tab-content">
 								<br />
-								<div class="col-sm-4">
+								<div class="col-sm-3">
 									<input type="text" id="filter_date_jurnal" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
 								</div>
 								<button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('pmm/jurnal_umum/tambah_jurnal'); ?>"><b style="color:white;">BUAT JURNAL UMUM</b></a></button>
