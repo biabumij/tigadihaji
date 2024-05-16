@@ -273,6 +273,12 @@
                                                 <a href="<?php echo site_url('admin/jurnal_umum');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-scale-balanced"></i><b>JURNAL</b></span></a>
                                             </li>
+                                            <br />
+                                            <br />
+                                            <li class="text-center" style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 40%, #57d762 80%);">
+                                                <a href="<?php echo site_url('admin/rencana_cash_flow');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-cash-register"></i><b>CASH FLOW</b></span></a>
+                                            </li>
                                         </ul>
                                     </th>
                                     <?php
@@ -293,13 +299,6 @@
                                                 <a href="<?php echo site_url('admin/rencana_kerja');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-calendar-days"></i><b>RENCANA<br />KERJA</b></span></a>
                                             </li>
-                                            <br />
-                                            <br />
-                                            <li class="text-center" class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
-                                                <a href="<?php echo site_url('admin/rencana_cash_flow');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-cash-register"></i><b>RENCANA<br />CASH FLOW</b></span></a>
-                                            </li>
-                                            
                                         </ul>
                                     </th>
                                     <?php

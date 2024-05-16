@@ -51,7 +51,7 @@
                                             <div width="100%">
                                                 <div class="panel panel-default">
                                                     <?php
-                                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
+                                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4))){
                                                     ?>                             
                                                     <div class="col-sm-5">
 														<p><h5><b>Laporan Laba Rugi</b></h5></p>
@@ -60,10 +60,17 @@
                                                     <?php
                                                     }
                                                     ?>
+
+                                                    <?php
+                                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6))){
+                                                    ?>
                                                     <div class="col-sm-5">
 														<p><h5><b>Cash Flow</b></h5></p>
                                                         <a href="#cash_flow" aria-controls="cash_flow" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
-                                                    </div>												
+                                                    </div>
+                                                    <?php
+                                                    }
+                                                    ?>											
                                                 </div>
                                             </div>
                                         </div>

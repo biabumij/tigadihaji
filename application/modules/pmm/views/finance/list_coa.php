@@ -33,10 +33,16 @@
                         </div>
                         <div class="panel-content">
                             <div class="row">
+                                <?php
+                                if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,7,8))){
+                                ?>
                                 <div class="col-sm-2">
                                 <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT DAFTAR AKUN</a></button>
-                                <br /><br />
                                 </div>
+                                <br /><br />
+                                <?php
+                                }
+                                ?>
                                 <form method="GET" target="_blank" action="<?php echo site_url('laporan/list_coa_print');?>">
                                     <div class="col-sm-3">
                                         <select id="filter_category" name="filter_category" class="form-control select2">
@@ -55,6 +61,7 @@
                                     <div class="col-sm-2">
                                         <button type="submit" class="btn btn-info" style="border-radius:10px;"><i class="fa fa-print"></i> Print</button>
                                     </div>
+                                    <br /><br />
                                 </form>
                             </div>
                             
