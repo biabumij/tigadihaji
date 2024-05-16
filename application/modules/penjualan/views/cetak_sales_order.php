@@ -229,28 +229,25 @@
 								PT BIA BUMI JAYENDRA
 							</td>
 						</tr>
-						<?php
-							$this->db->select('g.admin_group_name, a.admin_ttd_cap');
-							$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-							$this->db->where('a.admin_id',$row['unit_head']);
-							$created_group = $this->db->get('tbl_admin a')->row_array();
-						?>
 						<tr class="">
 							<td align="center" height="75px">
 								
 							</td>
 							<td align="center">
-								<img src="<?= $created_group['admin_ttd_cap']?>" width="90px">
+							
 							</td>
 						</tr>
-						<?php
-                		    $logistik = $this->pmm_model->GetNameGroup(6);
-                		?>
 						<tr class="table-bold">
 							<td align="center">
 							    <u><?php echo $this->crud_global->GetField('penerima',array('id'=>$row['client_id']),'nama_kontak');?></u><br />
 								<?php echo $this->crud_global->GetField('penerima',array('id'=>$row['client_id']),'posisi');?>
 							</td>
+							<?php
+							$this->db->select('g.admin_group_name');
+							$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
+							$this->db->where('a.admin_id',$row['unit_head']);
+							$created_group = $this->db->get('tbl_admin a')->row_array();
+							?>
 							<td align="center">
 								<u><?= $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['unit_head']),'admin_name'); ?></u><br />
 								<?= $created_group['admin_group_name']?>

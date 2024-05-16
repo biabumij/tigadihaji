@@ -528,7 +528,7 @@ class Laporan extends Secure_Controller {
 		$pdf->AddPage('L');
 		$pdf->setPrintHeader(false);
 
-		//Page2
+		/*//Page2
 		$pdf->AddPage('L', 'A4');
 		$pdf->SetY(23);
 		$pdf->SetX(6);
@@ -653,7 +653,7 @@ class Laporan extends Secure_Controller {
 		$pdf->AddPage();
 		$pdf->SetY(23);
 		$pdf->SetX(6);
-		$pdf->WriteHTML($html);
+		$pdf->WriteHTML($html);*/
 
 		//Page1
 		$pdf->setPage(1, true);
@@ -811,7 +811,7 @@ class Laporan extends Secure_Controller {
 		$pdf->AddPage('L');
 		$pdf->setPrintHeader(false);
 
-		//Page2
+		/*//Page2
 		$pdf->AddPage('L', 'A4');
 		$pdf->SetY(23);
 		$pdf->SetX(6);
@@ -918,7 +918,7 @@ class Laporan extends Secure_Controller {
 		$pdf->AddPage();
 		$pdf->SetY(23);
 		$pdf->SetX(6);
-		$pdf->WriteHTML($html);
+		$pdf->WriteHTML($html);*/
 
 		//Page1
 		$pdf->setPage(1, true);
@@ -2338,11 +2338,18 @@ class Laporan extends Secure_Controller {
 	
 
 		$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-        $pdf->setPrintHeader(true);
-        $pdf->SetFont('helvetica','',7); 
+        $pdf->SetPrintHeader(false);
+		$pdf->SetPrintFooter(false);
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
-		        $pdf->AddPage('P');
+		//$pdf->AddPage('P');
+
+		$pdf->AddPage('P');
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+		$pdf->SetMargins(10, 10);   
 
 		$arr_data = array();
 		$filter_category = $this->input->get('filter_category');

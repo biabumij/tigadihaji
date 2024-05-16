@@ -183,14 +183,14 @@
 						</tr>
 						<tr>
 							<td align="left">
-								<b><u>Nuning Sri Harti Said</u></b><br />
+								<b><u></u></b><br />
 								Logistik
 							</td>
 							<td align="center">
 								
 							</td>
 							<td align="left">
-								<b><u>Agustinus Pakaenoni</u></b><br />
+								<b><u></u></b><br />
 								Logistik
 							</td>
 						</tr>
@@ -253,7 +253,7 @@
 								
 							</td>
 							<td align="center">
-								<b><u>Hermawan Suryo</u></b><br />
+								<b><u></u></b><br />
 								Office Engineering
 							</td>
 							<td align="center">

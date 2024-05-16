@@ -407,7 +407,8 @@ class Penjualan extends Secure_Controller
 				$row['jumlah_total'] = number_format($total_volume['total_tanpa_ppn'],0,',','.');
 				
 				$receipt = $this->db->select('SUM(volume) as volume')->get_where('pmm_productions',array('salesPo_id'=>$row['id'],'status'=>'PUBLISH'))->row_array();
-				$row['receipt'] = '<a href="'.site_url('pmm/purchase_order/production_material_pdf/'.$row['id']).'" target="_blank" >'.number_format($receipt['volume'],2,',','.').'</a>';
+				//$row['receipt'] = '<a href="'.site_url('pmm/purchase_order/production_material_pdf/'.$row['id']).'" target="_blank" >'.number_format($receipt['volume'],2,',','.').'</a>';
+				$row['receipt'] = number_format($receipt['volume'],2,',','.');
 
 				$presentase = ($receipt['volume'] / $total_volume['total']) * 100;
 				$row['presentase'] = number_format($presentase,0,',','.').' %';
@@ -618,7 +619,7 @@ class Penjualan extends Secure_Controller
 			'status' => 'DRAFT',
 			'created_by' => $this->session->userdata('admin_id'),
 			'created_on' => date('Y-m-d H:i:s'),
-			'unit_head' => 48,
+			'unit_head' => 6,
 		);
 
 		if ($this->db->insert('pmm_sales_po', $arr_insert)) {

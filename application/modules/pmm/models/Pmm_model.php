@@ -1631,8 +1631,9 @@ class Pmm_model extends CI_Model {
 
                 $receipt = $this->db->select('SUM(volume) as total')->get_where('pmm_receipt_material',array('purchase_order_id'=>$row['id']))->row_array();
                 $total_receipt = $this->pmm_model->GetTotalReceipt($row['id']);
-                $row['receipt'] = '<a href="'.site_url('pmm/purchase_order/receipt_material_pdf/'.$row['id']).'" target="_blank" >'.number_format($receipt['total'],2,',','.').'</a>';
-
+               //$row['receipt'] = '<a href="'.site_url('pmm/purchase_order/receipt_material_pdf/'.$row['id']).'" target="_blank" >'.number_format($receipt['total'],2,',','.').'</a>';
+                $row['receipt'] = number_format($receipt['total'],2,',','.');
+                
                 $presentase = ($receipt['total'] / $total_volume['total']) * 100;
 				$row['presentase'] = number_format($presentase,0,',','.').' %';
                 

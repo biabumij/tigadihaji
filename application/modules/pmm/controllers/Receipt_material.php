@@ -1591,17 +1591,17 @@ class Receipt_material extends CI_Controller {
 	
 
 		$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-        $pdf->setPrintHeader(true);
+        $pdf->setPrintHeader(false);
         $pdf->SetFont('helvetica','',1); 
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
 
 		// add a page
-		$pdf->AddPage('L');
+		$pdf->AddPage('P');
 		$pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
-		$pdf->SetY(45);
-		$pdf->SetX(6);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
 		$pdf->SetMargins(10, 10);        
 
 		$w_date = $this->input->get('filter_date');

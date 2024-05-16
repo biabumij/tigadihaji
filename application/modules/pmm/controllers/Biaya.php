@@ -730,14 +730,14 @@ class Biaya extends CI_Controller {
 				'akun' => $product,
 				'deskripsi' => $deskripsi,
 				'jumlah' => $jumlah,
-                'transaction_id' => $transaction_id,
 			);
 			if(!empty($biaya_detail_id)){
 				$data_p['updated_by'] = $this->session->userdata('admin_id');
+                $data_p['updated_on'] = date('Y-m-d H:i:s');
 				$this->db->insert('pmm_detail_biaya',$data_p,array('id'=>$biaya_id));
 			}else {	
-				$data_p['created_on'] = date('Y-m-d H:i:s');
-				$data_p['created_by'] = $this->session->userdata('admin_id');
+				//$data_p['created_on'] = date('Y-m-d H:i:s');
+				//$data_p['created_by'] = $this->session->userdata('admin_id');
 				$this->db->insert('pmm_detail_biaya',$data_p,array('id'=>$biaya_id));	
 			}
 

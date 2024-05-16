@@ -70,24 +70,24 @@
                                                 <input type="email" class="form-control input-sm" name="email" value="<?= (isset($edit)) ? $edit['email'] : '' ;?>" placeholder="Isikan Email Kontak / Email Perusahaan"/>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <!--<div class="form-group">
                                                 <label class="col-sm-2 control-label">Fax</label>
                                                 <div class="col-sm-10">
                                                 <input type="number" class="form-control input-sm" name="fax" value="<?= (isset($edit)) ? $edit['fax'] : '' ;?>" placeholder="Fax"/>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">NPWP</label>
                                                 <div class="col-sm-10">
                                                 <input type="text" class="form-control input-sm" name="npwp" value="<?= (isset($edit)) ? $edit['npwp'] : '' ;?>" placeholder="NPWP"/>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
+                                            <!--<div class="form-group">
                                                 <label class="col-sm-2 control-label">Alamat Penagihan</label>
                                                 <div class="col-sm-10">
                                                 <input type="text" class="form-control input-sm" name="alamat_penagihan" value="<?= (isset($edit)) ? $edit['alamat_penagihan'] : '' ;?>" placeholder="Alamat Penagihan"/>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                     <br />

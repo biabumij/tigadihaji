@@ -201,7 +201,7 @@
 					<div style="text-transform: capitalize;"><i>TERBILANG : <?= $this->filter->terbilang($total);?></i></div>
 				</th>
             </tr>
-			<tr>
+			<!--<tr>
 				<th colspan="6" align="left">
 				<b>INFO PEMBAYARAN </b><br />
 				Silahkan transfer ke rekening: <br />
@@ -209,77 +209,7 @@
 				a/n PT. Bia Bumi Jayendra <br />
 				Bank Mandiri
 				</th>
-            </tr>
-           	
+            </tr>-->
 		</table>
-		<br />
-		<br />
-		<br />
-		<br />
-		<br />
-		<table width="98%" border="0" cellpadding="0">
-			<tr >
-				<td width="5%"></td>
-				<td width="90%">
-					<table width="100%" border="0" cellpadding="2">
-						<tr>
-							<td align="center" >
-								Tanda Terima,
-							</td>
-							<td align="center" >
-							
-							</td>
-							<td align="center" >
-							    Hormat Kami,
-							</td>
-						</tr>
-						<tr class="">
-							<td align="center" height="75px">
-								
-							</td>
-							<td align="center">
-								
-							</td>
-							<td align="center">
-								
-							</td>
-						</tr>
-						<?php
-                		    $logistik = $this->pmm_model->GetNameGroup(6);
-                		?>
-						<tr>
-							<td align="center" class="ttd">
-							    	
-							</td>
-							<td align="center">
-							    	
-							</td>
-							<td align="center"  class="ttd">
-								<b><?= $this->crud_global->GetField('tbl_admin',array('admin_id'=>$penagihan['created_by']),'admin_name'); ?></b>
-							</td>
-						</tr>
-						<tr>
-						    <?php
-							$this->db->select('g.admin_group_name');
-							$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-							$this->db->where('a.admin_id',$penagihan['created_by']);
-							$created_group = $this->db->get('tbl_admin a')->row_array();
-							?>
-							<td align="center">
-							    <b><?php echo $this->crud_global->GetField('penerima',array('id'=>$penagihan['client_id']),'nama');?></b>
-							</td>
-							<td align="center">
-								
-							</td>
-							<td align="center">
-								<b><?= $created_group['admin_group_name']?></b>
-							</td>
-						</tr>
-					</table>
-				</td>
-				<td width="5%"></td>
-			</tr>
-		</table>
-
 	</body>
 </html>

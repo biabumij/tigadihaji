@@ -59,7 +59,7 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-2">
-                                        <button type="submit" class="btn btn-info" style="border-radius:10px;"><i class="fa fa-print"></i> Print</button>
+                                        <button type="submit" class="btn btn-info" style="border-radius:10px;"><i class="fa fa-print"></i> <b>Print</b></button>
                                     </div>
                                     <br /><br />
                                 </form>

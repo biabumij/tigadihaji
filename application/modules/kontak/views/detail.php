@@ -170,7 +170,7 @@
                                 <a href="<?= base_url('admin/kontak') ?>" class="btn btn-info" style="width:100px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
 
                                 <?php
-                                if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 16){
+                                if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4){
                                 ?>
                                 <a  href="<?= base_url('kontak/form/'.$row['id']) ?>" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"> EDIT</a>
                                 <?php
