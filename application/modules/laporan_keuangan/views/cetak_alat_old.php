@@ -723,14 +723,14 @@
                                 $admin = $this->db->get('tbl_admin a')->row_array();
                             ?>
 							<td align="center" height="55px">
-								<img src="<?= $unit_head['admin_ttd']?>" width="70px">
+								<!--<img src="<?= $unit_head['admin_ttd']?>" width="70px">-->
 							</td>
 							<td align="center">
-								<img src="<?= $unit_head['admin_ttd']?>" width="70px">
+								<!--<img src="<?= $unit_head['admin_ttd']?>" width="70px">-->
 							</td>
 							<td align="center">
-								<img src="<?= $logistik['admin_ttd']?>" width="70px">
-								<img src="<?= $admin['admin_ttd']?>" width="20px">
+								<!--<img src="<?= $logistik['admin_ttd']?>" width="70px">-->
+								<!--<img src="<?= $admin['admin_ttd']?>" width="20px">-->
 							</td>
 						</tr>
 						<tr>

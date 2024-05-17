@@ -983,16 +983,25 @@ class Receipt_material extends CI_Controller {
 	
 
 		$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-        $pdf->setPrintHeader(true);
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
         $pdf->SetFont('helvetica','',1); 
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
+
+		// add a page
 		$pdf->AddPage('L');
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+		$pdf->SetMargins(10, 10);        
 
 		$w_date = $this->input->get('filter_date');
 		$purchase_order_id = $this->input->get('purchase_order_id');
 		$supplier_id = $this->input->get('supplier_id');
 		$material_id = $this->input->get('filter_material');
+		
 		$this->db->select('prm.*,ppo.no_po, (prm.price  * prm.volume) as biaya, ppo.supplier_id');
 		$this->db->where('ppo.supplier_id',$supplier_id);
 		if(!empty($purchase_order_id || $purchase_order_id != 0)){
@@ -1001,7 +1010,6 @@ class Receipt_material extends CI_Controller {
 		if(!empty($material_id) || $material_id != 0){
 			$this->db->where('prm.material_id',$material_id);
 		}
-		
 		if(!empty($w_date)){
 			$arr_date = explode(' - ', $w_date);
 			$start_date = $arr_date[0];
@@ -1022,7 +1030,6 @@ class Receipt_material extends CI_Controller {
 		$data['data'] = $query->result_array();
         $html = $this->load->view('pmm/receipt_material_print',$data,TRUE);
 
-        
         $pdf->SetTitle($this->input->get('filter_date'));
         $pdf->SetTitle('Rekap Penerimaan');
         $pdf->nsi_html($html);
@@ -1593,7 +1600,6 @@ class Receipt_material extends CI_Controller {
 	public function cetak_surat_jalan()
 	{
 		$this->load->library('pdf');
-	
 
 		$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->setPrintHeader(false);

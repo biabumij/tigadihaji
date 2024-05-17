@@ -4935,7 +4935,7 @@
                                 $logistik = $this->db->get('tbl_admin a')->row_array();
                             ?>
 							<td align="center">
-								<img src="<?= $unit_head['admin_ttd']?>" width="30px">
+								<!--<img src="<?= $unit_head['admin_ttd']?>" width="30px">-->
 							</td>
 						</tr>
 						<tr>

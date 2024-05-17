@@ -136,10 +136,10 @@
                         </tr>
                         <tr class="">
                             <td align="center" height="75px">
-                                <img src="<?= $admin['admin_ttd']?>" width="100px">  
+                                <!--<img src="<?= $admin['admin_ttd']?>" width="100px">-->
                             </td>
                             <td align="center">
-                                <img src="<?= $unit_head['admin_ttd']?>" width="100px">   
+                                <!--<img src="<?= $unit_head['admin_ttd']?>" width="100px">-->
                             </td>
                             <td align="center">
                                 

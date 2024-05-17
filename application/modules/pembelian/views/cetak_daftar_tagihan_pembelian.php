@@ -107,7 +107,7 @@
 				<div align="center" style="display: block;font-weight: bold;font-size: 11px;">DAFTAR TAGIHAN PEMBELIAN</div>
 				<div align="center" style="display: block;font-weight: bold;font-size: 11px;">PROYEK BENDUNGAN TIGA DIHAJI</div>
 				<div align="center" style="display: block;font-weight: bold;font-size: 11px;">PT. BIA BUMI JAYENDRA</div>
-				<div align="center" style="display: block;font-weight: bold;font-size: 11px; text-transform: uppercase;">PERIODE : <?php echo str_replace($search, $replace, $subject);?></div>
+				<div align="center" style="display: block;font-weight: bold;font-size: 11px; text-transform: uppercase;"><?php echo str_replace($search, $replace, $subject);?></div>
 				</td>
 		</tr>
 	</table>
@@ -195,10 +195,10 @@
 						</tr>
 						<tr class="">
 							<td align="center" height="55px">
-								<img src="uploads/ttd_novel.png" width="55px">
+								<!--<img src="uploads/ttd_novel.png" width="55px">-->
 							</td>
 							<td align="center">
-								<img src="uploads/ttd_avriani.png" width="55px">
+								<!--<img src="uploads/ttd_avriani.png" width="55px">-->
 							</td>
 						</tr>
 						<tr>

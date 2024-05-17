@@ -205,10 +205,10 @@
 						?>
 						<tr>
 							<td align="center" height="40px">
-								<img src="<?= $unit_head['admin_ttd']?>" width="90px">	
+								<!--<img src="<?= $unit_head['admin_ttd']?>" width="90px">-->
 							</td>
 							<td align="center">
-								<img src="<?= $admin['admin_ttd']?>" width="90px">	
+								<!--<img src="<?= $admin['admin_ttd']?>" width="90px">-->
 							</td>
 						</tr>
 						<tr>

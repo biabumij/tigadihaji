@@ -399,7 +399,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('laporan-pembelian.pdf', 'I');
 	        
 		}else {
-			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
+			echo '<center><b>(Pilih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -511,7 +511,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('laporan-hutang.pdf', 'I');
 	        
 		}else {
-			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
+			echo '<center><b>(Pilih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -794,7 +794,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('monitoring-hutang.pdf', 'I');
 	        
 		}else {
-			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
+			echo '<center><b>(Pilih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -1061,7 +1061,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('monitoring-hutang.pdf', 'I');
 	        
 		}else {
-			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
+			echo '<center><b>(Pilih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -1160,7 +1160,7 @@ class Laporan extends Secure_Controller {
 		$pdf->Output('laporan-penjualan.pdf', 'I');
 	        
 		}else {
-			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
+			echo '<center><b>(Pilih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -1265,7 +1265,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('laporan-piutang.pdf', 'I');
 	        
 		}else {
-			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
+			echo '<center><b>(Pilih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -1396,7 +1396,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('monitoring-piutang.pdf', 'I');
 	        
 		}else {
-			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
+			echo '<center><b>(Pilih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -1836,12 +1836,19 @@ class Laporan extends Secure_Controller {
 		$this->load->library('pdf');
 	
 		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
-        $pdf->setPrintHeader(true);
-		$pdf->setPrintFooter(true);
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+        $pdf->SetFont('helvetica','',1); 
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
+
+		// add a page
 		$pdf->AddPage('L');
 		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+		$pdf->SetMargins(10, 10); 
 
 		//Page2
 		/*$pdf->AddPage('L', 'A4');
@@ -1930,32 +1937,26 @@ class Laporan extends Secure_Controller {
 
 		//Page1
 		$pdf->setPage(1, true);
-		$pdf->SetY(35);
+		$pdf->SetY(10);
 		$pdf->Cell(0, 0, '', 0, 0, 'C');
 		
 		$arr_data = array();
 		$supplier_id = $this->input->get('supplier_id');
-		$start_date = false;
-		$end_date = false;
 		$total = 0;
 		$jumlah_all = 0;
-		$date = $this->input->get('filter_date');
-		if(!empty($date)){
-			$arr_date = explode(' - ',$date);
-			$start_date = date('Y-m-d',strtotime($arr_date[0]));
-			$end_date = date('Y-m-d',strtotime($arr_date[1]));
-			$filter_date = date('d F Y',strtotime($arr_date[0])).' - '.date('d F Y',strtotime($arr_date[1]));
-			
-			$data['filter_date'] = $filter_date;
+		$w_date = $this->input->get('filter_date');
 
 		$this->db->select('ppp.supplier_id, ps.nama');
-		if(!empty($start_date) && !empty($end_date)){
-            $this->db->where('ppp.created_on >=',$start_date.' 23:59:59');
-            $this->db->where('ppp.created_on <=',$end_date.' 23:59:59');
-        }
         if(!empty($supplier_id)){
             $this->db->where('ppp.supplier_id',$supplier_id);
         }
+		if(!empty($w_date)){
+			$arr_date = explode(' - ', $w_date);
+			$start_date = $arr_date[0];
+			$end_date = $arr_date[1];
+			$this->db->where('ppp.created_on  >=',date('Y-m-d',strtotime($start_date)));	
+			$this->db->where('ppp.created_on <=',date('Y-m-d',strtotime($end_date)));	
+		}
 		
 		$this->db->join('penerima ps', 'ppp.supplier_id = ps.id');
 		$this->db->group_by('ppp.supplier_id');
@@ -2018,10 +2019,6 @@ class Laporan extends Secure_Controller {
 	        $pdf->SetTitle('BBJ - Daftar Tagihan Pembelian');
 	        $pdf->nsi_html($html);
 	        $pdf->Output('daftar-tagihan-pembelian.pdf', 'I');
-	        
-		}else {
-			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
-		}
 	}
 
 	public function cetak_daftar_tagihan_penjualan()
@@ -2029,33 +2026,25 @@ class Laporan extends Secure_Controller {
 		$this->load->library('pdf');
 	
 		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
-        $pdf->setPrintHeader(true);
-		$pdf->setPrintFooter(true);
-		//$pdf->SetMargins(10, 10, 5);
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+        $pdf->SetFont('helvetica','',1); 
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
 
+		// add a page
 		$pdf->AddPage('L');
 		$pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
-		//$pdf->SetY(45);
-		//$pdf->SetX(6);
-		//$pdf->SetMargins(10, 10);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+		$pdf->SetMargins(10, 10); 
 		
 		$arr_data = array();
+		$w_date = $this->input->get('filter_date');
 		$supplier_id = $this->input->get('supplier_id');
-		$start_date = false;
-		$end_date = false;
 		$total = 0;
 		$jumlah_all = 0;
-		$date = $this->input->get('filter_date');
-		if(!empty($date)){
-			$arr_date = explode(' - ',$date);
-			$start_date = date('Y-m-d',strtotime($arr_date[0]));
-			$end_date = date('Y-m-d',strtotime($arr_date[1]));
-			$filter_date = date('d F Y',strtotime($arr_date[0])).' - '.date('d F Y',strtotime($arr_date[1]));
-
-			$data['filter_date'] = $filter_date;
 
 		$this->db->select('ppp.client_id, ps.nama');
 		if(!empty($start_date) && !empty($end_date)){
@@ -2065,12 +2054,18 @@ class Laporan extends Secure_Controller {
         if(!empty($supplier_id)){
             $this->db->where('ppp.client_id',$supplier_id);
         }
+		if(!empty($w_date)){
+			$arr_date = explode(' - ', $w_date);
+			$start_date = $arr_date[0];
+			$end_date = $arr_date[1];
+			$this->db->where('prm.date_receipt  >=',date('Y-m-d',strtotime($start_date)));	
+			$this->db->where('prm.date_receipt <=',date('Y-m-d',strtotime($end_date)));	
+		}
 		
 		$this->db->join('penerima ps', 'ppp.client_id = ps.id');
 		$this->db->group_by('ppp.client_id');
 		$this->db->order_by('ps.nama','asc');
 		$query = $this->db->get('pmm_penagihan_penjualan ppp');
-		
 
 			$no = 1;
 			if($query->num_rows() > 0){
@@ -2113,19 +2108,15 @@ class Laporan extends Secure_Controller {
 				}
 			}
 
-			$data['data'] = $arr_data;
-			$data['total'] = $total;
-			$data['total_2'] = $total_2;
-			$data['total_3'] = $total_3;
-	        $html = $this->load->view('penjualan/cetak_daftar_tagihan_penjualan',$data,TRUE);
+		$data['data'] = $arr_data;
+		$data['total'] = $total;
+		$data['total_2'] = $total_2;
+		$data['total_3'] = $total_3;
+		$html = $this->load->view('penjualan/cetak_daftar_tagihan_penjualan',$data,TRUE);
 
-	        $pdf->SetTitle('BBJ - Daftar Tagihan Penjualan');
-	        $pdf->nsi_html($html);
-	        $pdf->Output('daftar-tagihan-penjualan.pdf', 'I');
-	        
-		}else {
-			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
-		}
+		$pdf->SetTitle('BBJ - Daftar Tagihan Penjualan');
+		$pdf->nsi_html($html);
+		$pdf->Output('daftar-tagihan-penjualan.pdf', 'I');
 	}
 
 	public function cetak_daftar_pembayaran()
@@ -2222,7 +2213,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('daftar-pembayaran.pdf', 'I');
 	        
 		}else {
-			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
+			echo '<center><b>(Pilih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -2327,7 +2318,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('daftar-penerimaan.pdf', 'I');
 	        
 		}else {
-			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
+			echo '<center><b>(Pilih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}

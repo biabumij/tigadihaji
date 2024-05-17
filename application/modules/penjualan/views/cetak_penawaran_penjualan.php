@@ -139,7 +139,7 @@
 			?>
             <tr>
 				<th height="50px">
-					<img src="<?= $created_group['admin_ttd']?>" width="90px">
+					<!--<img src="<?= $created_group['admin_ttd']?>" width="90px">-->
 				</th>
             </tr>
             <tr>
