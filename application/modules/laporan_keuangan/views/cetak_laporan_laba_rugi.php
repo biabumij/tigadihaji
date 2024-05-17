@@ -711,24 +711,7 @@
 							<td align="center" height="55px">
 							
 							</td>
-							<?php
-								$create = $this->db->select('*')
-								->from('akumulasi')
-								->where("(date_akumulasi = '$end_date')")
-								->get()->row_array();
-
-                                $this->db->select('g.admin_group_name, a.admin_ttd, a.admin_name');
-                                $this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-                                $this->db->where('a.admin_id',$create['unit_head']);
-                                $unit_head = $this->db->get('tbl_admin a')->row_array();
-
-								$this->db->select('g.admin_group_name, a.admin_ttd');
-                                $this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-                                $this->db->where('a.admin_id',$create['logistik']);
-                                $logistik = $this->db->get('tbl_admin a')->row_array();
-                            ?>
 							<td align="center">
-								<!--<img src="<?= $unit_head['admin_ttd']?>" width="90px">-->
 							</td>
 						</tr>
 						<tr>
@@ -737,7 +720,7 @@
 								Direktur Utama</b>
 							</td>
 							<td align="center">
-								<b><u><?= $unit_head['admin_name']?></u><br />
+								<b><u>Novel Joko Tri Laksono</u><br />
 								Ka. Plant</b>
 							</td>
 						</tr>
