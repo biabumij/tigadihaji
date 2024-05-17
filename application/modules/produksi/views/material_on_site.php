@@ -5,7 +5,8 @@
     <div class="col-sm-1">
         <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
     </div>
-    <?php
+</form>
+<?php
     if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
     ?>
     <div class="col-sm-2">
@@ -14,7 +15,6 @@
     <?php
     }
     ?>
-</form>
 <br />
 <br />
 <div class="table-responsive">
@@ -42,7 +42,7 @@
     <div class="modal-dialog" role="Dokumen">
         <div class="modal-content">
             <div class="modal-header">
-                <span class="modal-title"><b>EDIT STOCK OPNAME</b></span>
+                <span class="modal-title"><b>STOCK OPNAME</b></span>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -51,11 +51,11 @@
                 <form class="form-horizontal" style="padding: 0 10px 0 20px;">
                     <input type="hidden" name="id" id="id">
                     <div class="form-group">
-                        <label>Tanggal</label>
+                        <label>Tanggal<span class="required" aria-required="true">*</span></label>
                         <input type="text" id="date" name="date" class="form-control dtpicker" value="<?php echo date('d-m-Y'); ?>" required="">
                     </div>
                     <div class="form-group">
-                        <label>Produk</label>
+                        <label>Produk<span class="required" aria-required="true">*</span></label>
                         <select id="material_id" name="material_id" class="form-control" required="">
                             <option value="">Pilih Produk</option>
                             <?php
@@ -70,11 +70,11 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Volume SO *</label>
-                        <input type="text" id="volume" name="volume" class="form-control numberformat" required="" autocomplete="off" required="" />
+                        <label>Volume<span class="required" aria-required="true">*</span></label>
+                        <input type="text" id="volume" name="volume" class="form-control numberformat" autocomplete="off" required=""/>
                     </div>
                     <div class="form-group">
-                        <label>Satuan SO *</label>
+                        <label>Satuan<span class="required" aria-required="true">*</span></label>
                         <select id="measure" name="measure" class="form-control" required="">
                             <option value="">Pilih Satuan</option>
                             <?php
@@ -90,16 +90,16 @@
                     </div>
                     <div class="form-group">
                         <input type="hidden" id="select_operation" name="select_operation" value="*">
-                        <label>Konversi *</label>
-                        <input type="text" id="convert" name="convert" class="form-control numberformat" value="1" required="" autocomplete="off" required="" />
+                        <label>Konversi<span class="required" aria-required="true">*</span></label>
+                        <input type="text" id="convert" name="convert" class="form-control numberformat" value="1" autocomplete="off" required=""/>
                     </div>
                     <div class="form-group">
-                        <label>Volume Konversi *</label>
-                        <input type="text" id="display_volume" name="display_volume" class="form-control numberformat" required="" autocomplete="off" required="" />
+                        <label>Volume Konversi<span class="required" aria-required="true">*</span></label>
+                        <input type="text" id="display_volume" name="display_volume" class="form-control numberformat" autocomplete="off" required=""/>
                     </div>
                     <div class="form-group">
-                        <label>Satuan Konversi *</label>
-                        <select id="display_measure" name="display_measure" class="form-control" required="">
+                        <label>Satuan Konversi<span class="required" aria-required="true">*</span></label>
+                        <select id="display_measure" name="display_measure" class="form-control" autocomplete="off" required="">
                             <option value="">Pilih Satuan</option>
                             <?php
                             $this->db->where('status', 'PUBLISH');
@@ -115,10 +115,6 @@
                     <div class="form-group">
                         <label>Notes</label>
                         <textarea id="notes" name="notes" class="form-control" autocomplete="off" rows="5" data-required="false"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Uploads Document</label>
-                        <input type="file" id="file" name="file" class="form-control" />
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-success" id="btn-form" style="border-radius:10px; font-weight:bold;">KIRIM</button>

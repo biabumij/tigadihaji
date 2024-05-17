@@ -637,7 +637,7 @@
                                     <th>KELENGKAPAN DATA (Lengkap dan Benar)</th>
                                     <th align="center">ADA / TIDAK</th>
                                     <th width="50%">KETERANGAN</th>
-                                    <th>DOKUMEN</th>
+                                    <!--<th>DOKUMEN</th>-->
                                 </tr>
                             </thead>
                             <tbody>
@@ -646,98 +646,98 @@
                                     <td>Invoice</td>
                                     <td align="center"><input type="checkbox" name="invoice" value="1"></td>
                                     <td><input type="text" name="invoice_keterangan" id="invoice_keterangan" class="form-control input-sm"></td>
-                                    <td>
+                                    <!--<td>
                                         <div class="custom-file">
                                             <input type="hidden" class="form-control" name="invoice_file" id="invoice_file">
                                             <input type="file" class="custom-file-input" data-target="invoice_file">
                                             <button type="button" class="btn btn-primary btn-block custom-file-select"><span class="fa fa-upload"></span></button>
                                             <button type="button" class="btn btn-danger btn-block custom-file-remove" style="display:none"><span class="fa fa-times"></span></button>
                                         </div>
-                                    </td>
+                                    </td>-->
                                 </tr>
                                 <tr>
                                     <td>2.</td>
                                     <td>Kwitansi</td>
                                     <td align="center"><input type="checkbox" name="kwitansi" value="1"></td>
                                     <td><input type="text" name="kwitansi_keterangan" id="kwitansi_keterangan" class="form-control input-sm"></td>
-                                    <td>
+                                    <!--<td>
                                         <div class="custom-file">
                                             <input type="hidden" class="form-control" name="kwitansi_file" id="kwitansi_file">
                                             <input type="file" class="custom-file-input" data-target="kwitansi_file">
                                             <button type="button" class="btn btn-primary btn-block custom-file-select"><span class="fa fa-upload"></span></button>
                                             <button type="button" class="btn btn-danger btn-block custom-file-remove" style="display:none"><span class="fa fa-times"></span></button>
                                         </div>
-                                    </td>
+                                    </td>-->
                                 </tr>
                                 <tr>
                                     <td>3.</td>
                                     <td>Faktur Pajak</td>
                                     <td align="center"><input type="checkbox" name="faktur" value="1"></td>
                                     <td><input type="text" name="faktur_keterangan" id="faktur_keterangan" class="form-control input-sm"></td>
-                                    <td>
+                                    <!--<td>
                                         <div class="custom-file">
                                             <input type="hidden" class="form-control" name="faktur_file" id="faktur_file">
                                             <input type="file" class="custom-file-input" data-target="faktur_file">
                                             <button type="button" class="btn btn-primary btn-block custom-file-select"><span class="fa fa-upload"></span></button>
                                             <button type="button" class="btn btn-danger btn-block custom-file-remove" style="display:none"><span class="fa fa-times"></span></button>
                                         </div>
-                                    </td>
+                                    </td>-->
                                 </tr>
                                 <tr>
                                     <td>4.</td>
                                     <td>Berita Acara Pembayaran (BAP)</td>
                                     <td align="center"><input type="checkbox" name="bap" value="1"></td>
                                     <td><input type="text" name="bap_keterangan" class="form-control input-sm"></td>
-                                    <td>
+                                    <!--<td>
                                         <div class="custom-file">
                                             <input type="hidden" class="form-control" name="bap_file" id="bap_file">
                                             <input type="file" class="custom-file-input" data-target="bap_file">
                                             <button type="button" class="btn btn-primary btn-block custom-file-select"><span class="fa fa-upload"></span></button>
                                             <button type="button" class="btn btn-danger btn-block custom-file-remove" style="display:none"><span class="fa fa-times"></span></button>
                                         </div>
-                                    </td>
+                                    </td>-->
                                 </tr>
                                 <tr>
                                     <td>5.</td>
                                     <td>Berita Acara Serah Terima (BAST)</td>
                                     <td align="center"><input type="checkbox" name="bast" value="1"></td>
                                     <td><input type="text" name="bast_keterangan" id="bast_keterangan" class="form-control input-sm"></td>
-                                    <td>
+                                    <!--<td>
                                         <div class="custom-file">
                                             <input type="hidden" class="form-control" name="bast_file" id="bast_file">
                                             <input type="file" class="custom-file-input" data-target="bast_file">
                                             <button type="button" class="btn btn-primary btn-block custom-file-select"><span class="fa fa-upload"></span></button>
                                             <button type="button" class="btn btn-danger btn-block custom-file-remove" style="display:none"><span class="fa fa-times"></span></button>
                                         </div>
-                                    </td>
+                                    </td>-->
                                 </tr>
                                 <tr>
                                     <td>6.</td>
                                     <td>Surat Jalan</td>
                                     <td align="center"><input type="checkbox" name="surat_jalan" value="1"></td>
                                     <td><input type="text" name="surat_jalan_keterangan" class="form-control input-sm"></td>
-                                    <td>
+                                    <!--<td>
                                         <div class="custom-file">
                                             <input type="hidden" class="form-control" name="surat_jalan_file" id="surat_jalan_file">
                                             <input type="file" class="custom-file-input" data-target="surat_jalan_file">
                                             <button type="button" class="btn btn-primary btn-block custom-file-select"><span class="fa fa-upload"></span></button>
                                             <button type="button" class="btn btn-danger btn-block custom-file-remove" style="display:none"><span class="fa fa-times"></span></button>
                                         </div>
-                                    </td>
+                                    </td>-->
                                 </tr>
                                 <tr>
                                     <td>7.</td>
                                     <td>Copy Kontrak/ PO</td>
                                     <td align="center"><input type="checkbox" name="copy_po" value="1"></td>
                                     <td><input type="text" name="copy_po_keterangan" id="copy_po_keterangan" class="form-control input-sm"></td>
-                                    <td>
+                                    <!--<td>
                                         <div class="custom-file">
                                             <input type="hidden" class="form-control" name="copy_po_file" id="copy_po_file">
                                             <input type="file" class="custom-file-input" data-target="copy_po_file">
                                             <button type="button" class="btn btn-primary btn-block custom-file-select"><span class="fa fa-upload"></span></button>
                                             <button type="button" class="btn btn-danger btn-block custom-file-remove" style="display:none"><span class="fa fa-times"></span></button>
                                         </div>
-                                    </td>
+                                    </td>-->
                                 </tr>
                             </tbody>
                         </table>
@@ -853,7 +853,7 @@
                                     <th>KELENGKAPAN DATA<br />(Lengkap dan Benar)</th>
                                     <th>ADA / TIDAK</th>
                                     <th width="25%">KETERANGAN</th>
-                                    <th width="25%">DOKUMEN</th>
+                                    <!--<th width="25%">DOKUMEN</th>-->
                                 </tr>
                             </thead>
                             <tbody>
@@ -862,49 +862,49 @@
                                     <td align="left">Invoice</td>
                                     <td align="center" id="invoice_d"></td>
                                     <td id="invoice_keterangan_d"></td>
-                                    <td id="lampiran_invoice"></td>
+                                    <!--<td id="lampiran_invoice"></td>-->
                                 </tr>
                                 <tr>
                                     <td>2.</td>
                                     <td align="left">Kwitansi</td>
                                     <td align="center" id="kwitansi_d"></td>
                                     <td id="kwitansi_keterangan_d"></td>
-                                    <td id="lampiran_kwitansi"></td>
+                                    <!--<td id="lampiran_kwitansi"></td>-->
                                 </tr>
                                 <tr>
                                     <td>3.</td>
                                     <td align="left">Faktur Pajak</td>
                                     <td align="center" id="faktur_d"></td>
                                     <td id="faktur_keterangan_d"></td>
-                                    <td id="lampiran_faktur"></td>
+                                    <!--<td id="lampiran_faktur"></td>-->
                                 </tr>
                                 <tr>
                                     <td>4.</td>
                                     <td align="left">Berita Acara Pembayaran (BAP)</td>
                                     <td align="center" id="bap_d"></td>
                                     <td id="bap_keterangan_d"></td>
-                                    <td id="lampiran_bap"></td>
+                                    <!--<td id="lampiran_bap"></td>-->
                                 </tr>
                                 <tr>
                                     <td>5.</td>
                                     <td align="left">Berita Acara Serah Terima (BAST)</td>
                                     <td align="center" id="bast_d"></td>
                                     <td id="bast_keterangan_d"></td>
-                                    <td id="lampiran_bast"></td>
+                                    <!--<td id="lampiran_bast"></td>-->
                                 </tr>
                                 <tr>
                                     <td>6.</td>
                                     <td align="left">Surat Jalan</td>
                                     <td align="center" id="surat_jalan_d"></td>
                                     <td id="surat_jalan_keterangan_d"></td>
-                                    <td id="lampiran_surat_jalan"></td>
+                                    <!--<td id="lampiran_surat_jalan"></td>-->
                                 </tr>
                                 <tr>
                                     <td>7.</td>
                                     <td align="left">Copy Kontrak/ PO</td>
                                     <td align="center" id="copy_po_d"></td>
                                     <td id="copy_po_keterangan_d"></td>
-                                    <td id="lampiran_copy_po"></td>
+                                    <!--<td id="lampiran_copy_po"></td>-->
                                 </tr>
                             </tbody>
                         </table>

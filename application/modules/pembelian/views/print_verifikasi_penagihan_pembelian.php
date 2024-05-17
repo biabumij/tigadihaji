@@ -233,55 +233,73 @@
 				<table width="100%" border="1" cellpadding="2">
                         <tr>
                             <td align="center">
-                                Diterima
+                                Dibuat Oleh
                             </td>
                             <td align="center">
-                                Diperiksa & Disetujui
+                                Diperiksa Oleh
+                            </td>
+							<td align="center">
+                                Disetujui Oleh
+                            </td>
+							<td align="center">
+                                Mengetahui
                             </td>
                         </tr>
 						<?php
-							$create = $this->db->select('*')
-							->from('pmm_verifikasi_penagihan_pembelian')
-							->where('id', $row['id'])
-							->where('approve_unit_head', 'SETUJUI')
-							->get()->row_array();
-
 							$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
 							$this->db->where('a.admin_id',$row['keu']);
 							$keu = $this->db->get('tbl_admin a')->row_array();
 
-							$this->db->select('g.admin_group_name, a.admin_ttd');
+							$this->db->select('g.admin_group_name, a.admin_ttd, a.admin_name');
 							$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-							$this->db->where('a.admin_id',$row['m_keu']);
-							$m_keu = $this->db->get('tbl_admin a')->row_array();
+							$this->db->where('a.admin_id',$row['log']);
+							$log = $this->db->get('tbl_admin a')->row_array();
 
 							$this->db->select('g.admin_group_name, a.admin_ttd, a.admin_name');
 							$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-							$this->db->where('a.admin_id',$create['unit_head']);
+							$this->db->where('a.admin_id',$row['unit_head']);
 							$unit_head = $this->db->get('tbl_admin a')->row_array();
 						?>
                         <tr>
                             <td align="center" height="75px">
-								<img src="<?= $keu['admin_ttd']?>" width="90px">	
+								<!--<img src="<?= $keu['admin_ttd']?>" width="90px">-->
                             </td>
                             <td align="center">    
-							<img src="<?= $unit_head['admin_ttd']?>" width="90px">	       
+								<!--<img src="<?= $log['admin_ttd']?>" width="90px">-->	       
+                            </td>
+							<td align="center">    
+								<!--<img src="<?= $unit_head['admin_ttd']?>" width="90px">-->       
+                            </td>
+							<td align="center">    
+							
                             </td>
                         </tr>
                         <tr>
                             <td align="center">
-								Theresia Desitaliana L.
+								<?= $keu['admin_name']?> 
                             </td>
                             <td align="center">
+								<?= $log['admin_name']?> 
+                            </td>
+							<td align="center">
 								<?= $unit_head['admin_name']?> 
                             </td>
+							<td align="center">
+								
+                            </td>
                         </tr>
                         <tr>
                             <td align="center">
-								<b> Keu & SDM</b> 
+								<b><?= $keu['admin_group_name']?></b> 
                             </td>
                             <td align="center">
-								<b>Ka. Plant</b> 
+								<b><?= $log['admin_group_name']?></b> 
+                            </td>
+							<td align="center">
+								<b><?= $unit_head['admin_group_name']?></b> 
+                            </td>
+							<td align="center">
+								<b></b> 
                             </td>
                         </tr>
                     </table>

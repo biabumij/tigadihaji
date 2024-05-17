@@ -65,7 +65,7 @@
             </tr>
             <tr >
                 <th width="25%" ><div style="font-size:8px;font-weight: bold;line-height: 0px;text-align: center;">Terbilang</div></th>
-				<th width="50%" ><div style="font-size:8px;font-style: italic;font-weight: bold;line-height: 0px;text-align: left;text-transform:capitalize;">: <?= $this->filter->terbilang($pembayaran['total']);?></div></th>
+				<th width="75%" ><div style="font-size:8px;font-style: italic;font-weight: bold;line-height: 0px;text-align: left;text-transform:capitalize;">: <?= $this->filter->terbilang($pembayaran['total']);?></div></th>
                 
             </tr>
         </table>

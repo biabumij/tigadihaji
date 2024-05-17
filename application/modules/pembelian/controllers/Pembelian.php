@@ -890,6 +890,7 @@ class Pembelian extends Secure_Controller
             'approve_unit_head' => 'TIDAK DISETUJUI',
             'unit_head' => 6,
             'keu' => 9,
+            'log' => 10,
             'created_by' => $this->session->userdata('admin_id'),
             'created_on' => date('Y-m-d H:i:s'),
         );

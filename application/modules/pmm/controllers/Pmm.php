@@ -1391,7 +1391,7 @@ class Pmm extends CI_Controller {
 				$row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 				
-				if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 16){
+				if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3){
 					$uploads_surat_jalan = '<a href="javascript:void(0);" onclick="UploadDocSuratJalan('.$row['id'].')" class="btn btn-success" title="Upload Lampiran" style="border-radius:10px;"><i class="fa fa-upload"></i> </a>';
 					$row['actions'] = $uploads_surat_jalan. '&nbsp;<a href="javascript:void(0);" onclick="OpenForm('.$row['id'].')" class="btn btn-primary" style="border-radius:10px;"><i class="fa fa-edit"></i> </a> <a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="border-radius:10px;"><i class="fa fa-close"></i> </a>';
 				}else {
@@ -1431,7 +1431,6 @@ class Pmm extends CI_Controller {
 				$mat_id[] = $mat['id'];
 			}
 		}
-
 
 		// Get Cost AVG
 		$price = 0;
@@ -1500,8 +1499,6 @@ class Pmm extends CI_Controller {
 					$this->db->insert('pmm_remaining_materials',$arr_mats);
 				}
 			}
-
-
 
 			$output['output'] = true;
 		}else{

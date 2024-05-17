@@ -399,7 +399,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('laporan-pembelian.pdf', 'I');
 	        
 		}else {
-			echo 'Please Filter Date First';
+			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -511,7 +511,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('laporan-hutang.pdf', 'I');
 	        
 		}else {
-			echo 'Please Filter Date First';
+			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -794,7 +794,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('monitoring-hutang.pdf', 'I');
 	        
 		}else {
-			echo 'Please Filter Date First';
+			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -1061,7 +1061,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('monitoring-hutang.pdf', 'I');
 	        
 		}else {
-			echo 'Please Filter Date First';
+			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -1160,7 +1160,7 @@ class Laporan extends Secure_Controller {
 		$pdf->Output('laporan-penjualan.pdf', 'I');
 	        
 		}else {
-			echo 'Please Filter Date First';
+			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -1265,7 +1265,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('laporan-piutang.pdf', 'I');
 	        
 		}else {
-			echo 'Please Filter Date First';
+			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -1396,7 +1396,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('monitoring-piutang.pdf', 'I');
 	        
 		}else {
-			echo 'Please Filter Date First';
+			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -2020,7 +2020,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('daftar-tagihan-pembelian.pdf', 'I');
 	        
 		}else {
-			echo 'Please Filter Date First';
+			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
 		}
 	}
 
@@ -2124,7 +2124,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('daftar-tagihan-penjualan.pdf', 'I');
 	        
 		}else {
-			echo 'Please Filter Date First';
+			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
 		}
 	}
 
@@ -2222,7 +2222,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('daftar-pembayaran.pdf', 'I');
 	        
 		}else {
-			echo 'Please Filter Date First';
+			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}
@@ -2327,7 +2327,7 @@ class Laporan extends Secure_Controller {
 	        $pdf->Output('daftar-penerimaan.pdf', 'I');
 	        
 		}else {
-			echo 'Please Filter Date First';
+			echo '<center><b>(Plih Filter Tanggal Dulu)<b></center>';
 		}
 	
 	}

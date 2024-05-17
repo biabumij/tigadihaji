@@ -197,7 +197,7 @@
 
     $("#convert, #volume, #select_operation").change(function(){
         getTotalDisplay();
-        });
+    });
 
     function getTotalDisplay()
     {
