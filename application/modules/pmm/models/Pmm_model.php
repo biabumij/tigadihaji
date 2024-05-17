@@ -1657,7 +1657,7 @@ class Pmm_model extends CI_Model {
                 }
                 $edit_no_po = false;
                 $status = "'".$row['status']."'";
-                if(in_array($this->session->userdata('admin_group_id'), array(1,4,11,15,16))){
+                if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4))){
                      $edit_no_po = '<a href="javascript:void(0);" onclick="EditNoPo('.$row['id'].','.$no_po.','.$status.')" class="btn btn-primary" style="border-radius:10px;" title="Edit Nomor PO" ><i class="fa fa-edit"></i> </a>';
                 }   
                 $row['status'] = $this->pmm_model->GetStatus($row['status']);

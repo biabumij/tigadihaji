@@ -66,7 +66,7 @@
                                     <th>Lampiran</th>
                                     <th>
                                         <?php foreach($lampiran as $l) : ?>                                    
-                                        <a href="<?= base_url("uploads/sales_po/".$l["lampiran"]) ?>" target="_blank">Lihat bukti  <?= $l["lampiran"] ?> <br></a></td>
+                                        <a href="<?= base_url("uploads/sales_po/".$l["lampiran"]) ?>" target="_blank"><?= $l["lampiran"] ?><br></a></td>
                                         <?php endforeach; ?>
                                     </th>
                                 </tr>

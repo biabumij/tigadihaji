@@ -172,7 +172,8 @@
                                 <button class="btn btn-default" id="btn-view" style="width:100px; font-weight:bold; font-weight:bold; border-radius:10px;"> LIHAT DATA</button>
                             </div>
                             <div id="box-view" style="display:none;">
-                                <div style="color:red; font-weight:bold;"> * Data yang tampil adalah data surat jalan dengan status UNCREATED / Belum Ditagihkan & Periode Bulan Berjalan (Bisa Dihapus)<br />
+                                <div style="color:red; font-weight:bold;"> * Data yang tampil adalah data surat jalan dengan status UNCREATED / belum ditagihkan.<br />
+                                * Data yang tampil adalah data surat jalan periode berjalan.<br />
                                 * Untuk melihat data surat jalan keseluruhan, bisa lihat di tab penerimaan pembelian.
                                 </div><br />
                                 <div class="row">

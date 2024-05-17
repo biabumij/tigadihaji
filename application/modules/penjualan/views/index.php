@@ -101,12 +101,41 @@
                                                         <th>Kirim</th>
 														<th>Total Sales Order</th>
 														<th>Total Kirim</th>
+                                                        <th>Upload Doc.</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
 
                                                 </tbody>
                                             </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="modal fade bd-example-modal-lg" id="modalDocPO" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <span class="modal-title">Upload Sales Order</span>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form class="form-horizontal" enctype="multipart/form-data" method="POST" style="padding: 0 10px 0 20px;">
+                                                        <input type="hidden" name="id" id="id_doc_po">
+                                                        <div class="form-group">
+                                                            <label>Upload Sales Order</label>
+                                                            <input type="file" id="file" name="file" class="form-control" required="" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn btn-success" id="btn-form-doc-po"><i class="fa fa-send"></i> Kirim</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -383,6 +412,9 @@
                 },
 				{
                     "data": "total_receipt"
+                },
+                {
+                    "data": "uploads_po"
                 },
             ],
             "columnDefs": [
@@ -679,6 +711,46 @@
                         tableProduction.ajax.reload();
 
                         $('#modalDocSuratJalan').modal('hide');
+                    } else if (result.err) {
+                        bootbox.alert(result.err);
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+            event.preventDefault();
+
+        });
+
+        function UploadDocPO(id) {
+
+        $('#modalDocPO').modal('show');
+        $('#id_doc_po').val(id);
+        }
+
+        $('#modalDocPO form').submit(function(event) {
+            $('#btn-form-doc-po').button('loading');
+
+            var form = $(this);
+            var formdata = false;
+            if (window.FormData) {
+                formdata = new FormData(form[0]);
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "<?php echo site_url('penjualan/form_document_po'); ?>/" + Math.random(),
+                dataType: 'json',
+                data: formdata ? formdata : form.serialize(),
+                success: function(result) {
+                    $('#btn-form-doc-po').button('reset');
+                    if (result.output) {
+                        $("#modalDocPO form").trigger("reset");
+                        table_po.ajax.reload();
+
+                        $('#modalDocPO').modal('hide');
                     } else if (result.err) {
                         bootbox.alert(result.err);
                     }

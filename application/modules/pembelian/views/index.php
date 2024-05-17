@@ -279,6 +279,7 @@
                                                     <th>Terima</th>
                                                     <th>Total Pesanan Pembelian</th>
                                                     <th>Total Terima</th>
+                                                    <th>Upload</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -319,7 +320,7 @@
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <span class="modal-title">Edit No. Pesanan Pembelian</span>
+                                                <span class="modal-title"><b>Edit No. Pesanan Pembelian</b></span>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -352,12 +353,12 @@
                                                     ?>
                                                     
                                                     <div class="form-group">
-                                                        <button type="submit" class="btn btn-success" id="btn-no_po"> Simpan</button>
+                                                        <button type="submit" class="btn btn-success" id="btn-no_po"> SIMPAN</button>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><b>CLOSE</b></button>
                                             </div>
                                         </div>
                                     </div>
@@ -1233,6 +1234,9 @@
             },
             {
                 "data": "total_receipt"
+            },
+            {
+                "data": "actions"
             },
         ],
         "columnDefs": [

@@ -418,7 +418,9 @@ class Penjualan extends Secure_Controller
 				$row['status'] = $this->pmm_model->GetStatus2($row['status']);
 				$row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
-				  
+				$uploads_po = '<a href="javascript:void(0);" onclick="UploadDocPO('.$row['id'].')" class="btn btn-primary" style="border-radius:10px;" title="Upload Surat Jalan" ><i class="fa fa-upload"></i> </a>';
+				$row['uploads_po'] = $uploads_po.' ';
+
 				$data[] = $row;
 			}
 		}
@@ -1882,5 +1884,53 @@ class Penjualan extends Secure_Controller
 		}
 		
 		echo json_encode($output);	
+	}
+
+	public function form_document_po()
+	{
+		$output['output'] = false;
+		$id = $this->input->post('id');
+		if(!empty($id)){
+
+			$file = '';
+			$error_file = false;
+
+			if (!file_exists('./uploads/sales_po/')) {
+			    mkdir('./uploads/sales_po/', 0777, true);
+			}
+			// Upload email
+			$config['upload_path']          = './uploads/sales_po/';
+	        $config['allowed_types']        = 'jpg|png|jpeg|JPG|PNG|JPEG|pdf';
+
+	        $this->load->library('upload', $config);
+
+			if($_FILES["file"]["error"] == 0) {
+				if (!$this->upload->do_upload('file'))
+				{
+						$error = $this->upload->display_errors();
+						$file = $error;
+						$error_file = true;
+				}else{
+						$data = $this->upload->data();
+						$file = $data['file_name'];
+				}
+			}
+
+			if($error_file){
+				$output['output'] = false;
+				$output['err'] = $file;
+				echo json_encode($output);
+				exit();
+			}
+
+			$arr_data['id'] = $this->db->insert_id();
+			$arr_data['lampiran'] = $file;
+			$arr_data['sales_po_id'] = $id;
+			
+			if($this->db->insert('pmm_lampiran_sales_po',$arr_data)){
+				$output['output'] = true;
+			}
+		}
+		echo json_encode($output);
 	}
 }
