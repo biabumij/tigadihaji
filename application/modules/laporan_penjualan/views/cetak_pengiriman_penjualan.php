@@ -179,68 +179,28 @@
 					<table width="100%" border="0" cellpadding="2">
 						<tr>
 							<td align="center">
-								Disetujui Oleh
-							</td>
-							<td align="center" colspan="2">
-								Diperiksa Oleh
+								Diperiksa & Disetujui Oleh 
 							</td>
 							<td align="center" >
 								Dibuat Oleh
 							</td>	
 						</tr>
-						<tr class="">
-							<?php
-								$create = $this->db->select('*')
-								->from('akumulasi')
-								->where("(date_akumulasi = '$end_date')")
-								->order_by('id','desc')->limit(1)
-								->get()->row_array();
-
-                                $this->db->select('g.admin_group_name, a.admin_ttd, a.admin_name');
-                                $this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-                                $this->db->where('a.admin_id',$create['unit_head']);
-                                $unit_head = $this->db->get('tbl_admin a')->row_array();
-
-								$this->db->select('g.admin_group_name, a.admin_ttd');
-                                $this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-                                $this->db->where('a.admin_id',$create['logistik']);
-                                $logistik = $this->db->get('tbl_admin a')->row_array();
-
-								$this->db->select('g.admin_group_name, a.admin_ttd');
-                                $this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-                                $this->db->where('a.admin_id',$create['admin']);
-                                $admin = $this->db->get('tbl_admin a')->row_array();
-                            ?>
+						<tr>
 							<td align="center" height="55px">
-								<!--<img src="<?= $unit_head['admin_ttd']?>" width="70px">-->
+								
 							</td>
 							<td align="center">
 								
 							</td>
-							<td align="center">
-								<!--<img src="<?= $unit_head['admin_ttd']?>" width="70px">-->
-							</td>
-							<td align="center">
-								<!--<img src="<?= $logistik['admin_ttd']?>" width="70px">-->
-								<!--<img src="<?= $admin['admin_ttd']?>" width="20px">-->
-							</td>
 						</tr>
 						<tr>
 							<td align="center">
-								<b><u><?= $unit_head['admin_name']?></u><br />
+								<b><u>Novel Joko Tri Laksono</u><br />
 								Ka. Plant</b>
 							</td>
 							<td align="center">
-								<b><u></u><br />
-								M. Keu & SDM</b>
-							</td>
-							<td align="center">
-								<b><u>Agustinus P</u><br />
-								M. Teknik</b>
-							</td>
-							<td align="center">
-								<b><u>Agustinus P</u><br />
-								Pj. Logistik</b>
+								<b><u>Rani Oktavia Rizal</u><br />
+								Adm. Logistik</b>
 							</td>
 						</tr>
 					</table>
