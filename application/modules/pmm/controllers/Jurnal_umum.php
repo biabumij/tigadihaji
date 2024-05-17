@@ -397,14 +397,14 @@ class Jurnal_umum extends CI_Controller {
 				'deskripsi' => $deskripsi,
 				'debit' => $debit,
                 'kredit' => $kredit,
-                'transaction_id' => $transaction_id,
 			);
 			if(!empty($biaya_detail_id)){
 				$data_p['updated_by'] = $this->session->userdata('admin_id');
+                $data_p['updated_on'] = date('Y-m-d H:i:s');
 				$this->db->insert('pmm_detail_jurnal',$data_p,array('id'=>$jurnal_id));
 			}else {	
-				$data_p['created_on'] = date('Y-m-d H:i:s');
-				$data_p['created_by'] = $this->session->userdata('admin_id');
+				//$data_p['created_on'] = date('Y-m-d H:i:s');
+				//$data_p['created_by'] = $this->session->userdata('admin_id');
 				$this->db->insert('pmm_detail_jurnal',$data_p,array('id'=>$jurnal_id));	
 			}
 

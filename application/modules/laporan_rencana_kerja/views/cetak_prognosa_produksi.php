@@ -4900,59 +4900,5 @@
 				<th align="right" class="table-border-spesial-kanan"><?php echo number_format($total_laba_all,0,',','.');?></th>
 			</tr>
 	    </table>
-		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-		<table width="98%" border="0" cellpadding="0">
-			<tr >
-				<td width="5%"></td>
-				<td width="90%">
-					<table width="100%" border="0" cellpadding="2">
-						<tr>
-							<td align="center" >
-								Disetujui Oleh
-							</td>
-							<td align="center">
-								Dibuat Oleh
-							</td>
-						</tr>
-						<tr class="">
-							<td align="center" height="35px">
-							
-							</td>
-							<?php
-								$create = $this->db->select('unit_head, logistik')
-								->from('akumulasi')
-								->order_by('date_akumulasi','desc')->limit(1)
-								->get()->row_array();
-
-                                $this->db->select('g.admin_group_name, a.admin_ttd');
-                                $this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-                                $this->db->where('a.admin_id',$create['unit_head']);
-                                $unit_head = $this->db->get('tbl_admin a')->row_array();
-
-								$this->db->select('g.admin_group_name, a.admin_ttd');
-                                $this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-                                $this->db->where('a.admin_id',$create['logistik']);
-                                $logistik = $this->db->get('tbl_admin a')->row_array();
-                            ?>
-							<td align="center">
-								<!--<img src="<?= $unit_head['admin_ttd']?>" width="30px">-->
-							</td>
-						</tr>
-						<tr>
-							<td align="center">
-								<b><u>Deddy Sarwobiso</u><br />
-								Direktur Utama</b>
-							</td>
-							<td align="center" >
-								<b><u><?php echo $this->crud_global->GetField('tbl_admin',array('admin_id'=>$create['unit_head']),'admin_name');?></u><br />
-								<?= $unit_head['admin_group_name']?></b>
-							</td>
-						</tr>
-					</table>
-				</td>
-				<td width="5%"></td>
-			</tr>
-		</table>
-		
 	</body>
 </html>
