@@ -169,10 +169,10 @@
             }
             ?>	
             <tr class="table-total">
-				<th align="right" colspan="3">TOTAL</th>
-				<th align="right"><?php echo number_format($total_vol,2,',','.');?></th>
-				<th align="right"></th>
-            	<th align="right">
+				<th align="right" colspan="3" width="45%">TOTAL</th>
+				<th align="right" width="15%" ><?php echo number_format($total_vol,2,',','.');?></th>
+				<th align="right" width="15%" ></th>
+            	<th align="right" width="20%" >
             		<table cellpadding="0" width="100%" border="0">
     					<tr>
     						<td width="20%" align="left">Rp.</td>
