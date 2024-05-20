@@ -474,7 +474,7 @@ class Pembelian extends Secure_Controller
                 $data['setor_bank'] = $this->pmm_finance->BankCash();
                 $this->load->view('pembelian/penagihan_pembelian', $data);
             } else {
-                $this->session->set_flashdata('notif_error', 'Silahkan pilih tagihan terlebih pengiriman pembelian terlebih dahulu');
+                $this->session->set_flashdata('notif_error', '<b>Silahkan Pilih Surat Jalan Pembelian Terlebih Dahulu.</b>');
                 redirect('admin/pembelian');
             }
         } else {
