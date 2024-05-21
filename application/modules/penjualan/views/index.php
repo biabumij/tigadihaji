@@ -315,9 +315,10 @@
     <script src="<?php echo base_url(); ?>assets/back/theme/vendor/bootbox.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/back/theme/vendor/jquery.number.min.js"></script>
 
-    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
-    <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/sl-1.2.5/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/css/dataTables.checkboxes.css">-->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/sl-1.2.5/datatables.min.js"></script>
+    <script type="text/javascript" src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
 
     <script type="text/javascript">
         var form_control = '';
@@ -491,11 +492,46 @@
 				{
                     "targets": [0],
                     "orderable": false,
-                    "className": 'select-checkbox',
+                    "checkboxes": {
+                        "selectRow": true
+                    }
                 },
                 { "width": "5%", "targets": 1, "className": 'text-center'},
                 { "targets": 10, "className": 'text-right'},
             ],
+        });
+
+        $('#btn_production').click(function() {
+            var data_receipt = tableProduction.rows({selected: true}).data();
+
+            var send_data = '';
+            if (data_receipt.length > 0) {
+                bootbox.confirm({
+                    message: "Apakah anda yakin untuk proses data ini ?",
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        if(result){
+                            $.each(data_receipt, function(i, val) {
+                            send_data += val.id + ',';
+                        });
+
+                        window.location.href = '<?php echo site_url('penjualan/penagihan_penjualan/'); ?>' + send_data;
+                        }
+                        
+                    }
+                });
+            } else {
+                bootbox.alert('Pilih Surat Jalan Terlebih Dahulu');
+            }
         });
 
         $('#filter_supplier_id').on('select2:select', function(e) {
@@ -570,40 +606,6 @@
 
         $('#product_id').change(function() {
             tableProduction.ajax.reload();
-        });
-
-        $('#btn_production').click(function() {
-            var data_receipt = tableProduction.rows({
-                selected: true
-            }).data();
-            var send_data = '';
-            if (data_receipt.length > 0) {
-                bootbox.confirm({
-                    message: "Apakah anda yakin untuk proses data ini ?",
-                    buttons: {
-                        confirm: {
-                            label: 'Yes',
-                            className: 'btn-success'
-                        },
-                        cancel: {
-                            label: 'No',
-                            className: 'btn-danger'
-                        }
-                    },
-                    callback: function (result) {
-                        if(result){
-                            $.each(data_receipt, function(i, val) {
-                            send_data += val.id + ',';
-                        });
-
-                        window.location.href = '<?php echo site_url('penjualan/penagihan_penjualan/'); ?>' + send_data;
-                        }
-                        
-                    }
-                });
-            } else {
-                bootbox.alert('Pilih Surat Jalan Terlebih Dahulu');
-            }
         });
 
         var table = $('#table-penagihan').DataTable( {"bAutoWidth": false,

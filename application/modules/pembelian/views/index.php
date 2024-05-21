@@ -934,9 +934,10 @@
     <script src="<?php echo base_url(); ?>assets/back/theme/vendor/bootbox.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/back/theme/vendor/jquery.number.min.js"></script>
     
+    <!--<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/sl-1.2.5/datatables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/css/dataTables.checkboxes.css">-->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/sl-1.2.5/datatables.min.js"></script>
     <script type="text/javascript" src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
-    <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
 	
     <script type="text/javascript">
         var form_control = '';
@@ -1318,7 +1319,9 @@
             "columnDefs": [{
                 "targets": [0],
                 "orderable": false,
-                "className": 'select-checkbox',
+                "checkboxes": {
+                    "selectRow": true
+                }
             },
             { "width": "5%", "targets": 1, "className": 'text-center'},
             { "targets": 10, "className": 'text-right'},

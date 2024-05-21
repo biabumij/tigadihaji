@@ -326,7 +326,7 @@
     <script type="text/javascript">
         $('.form-select2').select2();
 
-        $('input.numberformat').number(true, 4, ',', '.');
+        $('input.numberformat').number(true, 2, ',', '.');
         $('.dtpicker').daterangepicker({
             singleDatePicker: true,
             locale: {
