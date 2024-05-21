@@ -486,17 +486,16 @@ class Receipt_material extends CI_Controller {
 
 		$receipt_material = $this->db->select('SUM(volume) as volume')->get_where('pmm_receipt_material',array('purchase_order_id'=>$purchase_order_id,'material_id'=>$material_id))->row_array();
 
-		/*if($receipt_material['volume'] + $volume > $get_po['volume']){
+		if($receipt_material['volume'] + $volume > $get_po['volume']){
 			$output['output'] = false;
-			$output['err'] = 'Mohon maaf Volume Penerimaan sudah melebihi TOTAL PO, Silahkan buat PO baru.';
+			$output['err'] = 'Mohon maaf sudah melebihi volume pesanan pembelian, Silahkan buat pesanan pembelian baru.';
+			//$output['err'] = $this->session->set_flashdata('notif_error', '<b>Mohon maaf sudah melebihi volume pesanan pembelian, Silahkan buat pesanan pembelian baru.</b>');
 			echo json_encode($output);
 			exit();
-		}*/
+		}
 
 		$this->db->trans_start(); # Starting Transaction
 		$this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
-
-		
 
 		$data_p = array(
 			'purchase_order_id' => $purchase_order_id,

@@ -710,14 +710,19 @@
                 data: formdata ? formdata : form.serialize(),
                 success : function(result){
                     $('#btn-form').button('reset');
-					$.toast({
-                            heading: '<b>Sukses</b>',
-                            text: '<b>SAVED</b>',
-                            showHideTransition: 'fade',
-                            icon: 'success',
-                            position: 'top-right',
-                        });
-                    if(result.output){
+                    if (result.output) {
+
+                        table.ajax.reload();
+
+                    $.toast({
+                        heading: '<b>Sukses</b>',
+                        text: '<b>SAVED</b>',
+                        showHideTransition: 'fade',
+                        icon: 'success',
+                        position: 'top-right',
+                    });
+
+                    }if(result.output){
                         $("#form-product").trigger("reset");
                         table.ajax.reload();
                         SelectMatByPo();

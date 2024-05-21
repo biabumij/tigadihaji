@@ -222,6 +222,18 @@ class Productions extends Secure_Controller {
 						$surat_jalan = $data_file['file_name'];
 				}
 			}
+
+			$get_po = $this->db->select('measure,price,qty')->get_where('pmm_sales_po_detail',array('sales_po_id'=>$sales_po_id,'product_id'=>$product_id))->row_array();
+			$productions = $this->db->select('SUM(volume) as volume')->get_where('pmm_productions',array('salesPo_id'=>$sales_po_id,'product_id'=>$product_id))->row_array();
+
+			if($productions['volume'] + $volume > $get_po['qty']){
+				$output['output'] = false;
+				$output['err'] = '<b>Mohon maaf sudah melebihi volume sales order, Silahkan buat sales order baru.</b>';
+				//$output['err'] = $this->session->set_flashdata('notif_error', '<b>Mohon maaf sudah melebihi volume sales order, Silahkan buat sales order baru.</b>');
+				echo json_encode($output);
+				exit();
+			} 
+
 	
 			$data = array(
 				'date_production' => date('Y-m-d',strtotime($this->input->post('date'))),
