@@ -934,7 +934,7 @@
     <script src="<?php echo base_url(); ?>assets/back/theme/vendor/bootbox.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/back/theme/vendor/jquery.number.min.js"></script>
     
-    <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
+    <script type="text/javascript" src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
     <script type="text/javascript" src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
 	
@@ -1462,9 +1462,8 @@
 
 
     $('#btn_production').click(function() {
-        var data_receipt = table_receipt.rows({
-            selected: true
-        }).data();
+        var data_receipt = table_receipt.rows({selected: true}).data();
+        
         var send_data = '';
         bootbox.confirm({
             message: "Apakah anda yakin untuk proses data ini ?",
