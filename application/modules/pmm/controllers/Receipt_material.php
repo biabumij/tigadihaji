@@ -488,7 +488,7 @@ class Receipt_material extends CI_Controller {
 
 		if($receipt_material['volume'] + $volume > $get_po['volume']){
 			$output['output'] = false;
-			$output['err'] = 'Mohon maaf sudah melebihi volume pesanan pembelian, Silahkan buat pesanan pembelian baru.';
+			$output['err'] = '<b>Mohon maaf sudah melebihi volume pesanan pembelian, Silahkan buat pesanan pembelian baru.</b>';
 			//$output['err'] = $this->session->set_flashdata('notif_error', '<b>Mohon maaf sudah melebihi volume pesanan pembelian, Silahkan buat pesanan pembelian baru.</b>');
 			echo json_encode($output);
 			exit();
