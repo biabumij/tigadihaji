@@ -1325,6 +1325,36 @@
         ],
     });
 
+    $('#btn_production').click(function() {
+        var data_receipt = table_receipt.rows({selected: true}).data();
+        
+        var send_data = '';
+        bootbox.confirm({
+            message: "Apakah anda yakin untuk proses data ini ?",
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if(result){
+                    $.each(data_receipt, function(i, val) {
+                    send_data += val.id + ',';
+                });
+
+                window.location.href = '<?php echo site_url('pembelian/penagihan_pembelian/'); ?>' + send_data;
+                }
+                
+            }
+        });
+
+    });
+
     $('#filter_date').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
         table_receipt.ajax.reload();
@@ -1458,37 +1488,6 @@
         ],
         responsive: true,
         pageLength: 25,
-    });
-
-
-    $('#btn_production').click(function() {
-        var data_receipt = table_receipt.rows({selected: true}).data();
-        
-        var send_data = '';
-        bootbox.confirm({
-            message: "Apakah anda yakin untuk proses data ini ?",
-            buttons: {
-                confirm: {
-                    label: 'Yes',
-                    className: 'btn-success'
-                },
-                cancel: {
-                    label: 'No',
-                    className: 'btn-danger'
-                }
-            },
-            callback: function (result) {
-                if(result){
-                    $.each(data_receipt, function(i, val) {
-                    send_data += val.id + ',';
-                });
-
-                window.location.href = '<?php echo site_url('pembelian/penagihan_pembelian/'); ?>' + send_data;
-                }
-                
-            }
-        });
-
     });
     
     $('#filter_date_4').on('apply.daterangepicker', function(ev, picker) {
