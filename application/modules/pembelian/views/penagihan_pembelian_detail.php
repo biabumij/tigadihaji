@@ -96,13 +96,13 @@
                                         <thead>
                                             <tr>
                                                 <th width="5%" class="text-center">No.</th>
-                                                <th width="25%" class="text-left">Produk</th>
-                                                <th width="10%" class="text-right">Volume</th>
-                                                <th width="10%" class="text-center">Satuan</th>
-                                                <th width="10%" class="text-right">Harga Satuan</th>
-                                                <th width="10%" class="text-center">Pajak</th>
-                                                <th width="10%" class="text-center">Pajak (2)</th>
-                                                <th width="20%" class="text-right">Nilai</th>
+                                                <th width="30%" class="text-left">Produk</th>
+                                                <th class="text-right">Volume</th>
+                                                <th class="text-center">Satuan</th>
+                                                <th class="text-right">Harga Satuan</th>
+                                                <th class="text-center">Pajak</th>
+                                                <th class="text-center">Pajak (2)</th>
+                                                <th class="text-right">Nilai</th>
                                             </tr>
                                         </thead>
                                         <tbody>

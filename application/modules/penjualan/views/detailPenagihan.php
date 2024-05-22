@@ -90,12 +90,12 @@
                                         <thead>
                                             <tr>
                                                 <th width="5%" class="text-center">No.</th>
-                                                <th class="text-left">Produk</th>
-                                                <th width="7%" class="text-right">Volume</th>
+                                                <th width="30%" class="text-left">Produk</th>
+                                                <th class="text-right">Volume</th>
                                                 <th class="text-center">Satuan</th>
                                                 <th class="text-right">Harga Satuan</th>
-                                                <th width="10%" class="text-center">Pajak</th>
-                                                <th width="20%" class="text-right">Jumlah</th>
+                                                <th class="text-center">Pajak</th>
+                                                <th class="text-right">Jumlah</th>
                                             </tr>
                                         </thead>
                                         <tbody>
