@@ -92,17 +92,17 @@
                                 </table>
                                 <br />
                                 <div class="table-responsive">
-                                    <table id="table-product" class="table table-bordered table-striped table-condensed text-center">
+                                    <table id="table-product" class="table table-bordered table-striped table-condensed">
                                         <thead>
                                             <tr>
-                                                <th width="5%">No</th>
-                                                <th width="25%">Produk</th>
-                                                <th width="10%">Volume</th>
-                                                <th width="10%">Satuan</th>
-                                                <th width="10%">Harga Satuan</th>
-                                                <th width="10%">Pajak</th>
-                                                <th width="10%">Pajak (2)</th>
-                                                <th width="20%">Nilai</th>
+                                                <th width="5%" class="text-center">No.</th>
+                                                <th width="25%" class="text-left">Produk</th>
+                                                <th width="10%" class="text-right">Volume</th>
+                                                <th width="10%" class="text-center">Satuan</th>
+                                                <th width="10%" class="text-right">Harga Satuan</th>
+                                                <th width="10%" class="text-center">Pajak</th>
+                                                <th width="10%" class="text-center">Pajak (2)</th>
+                                                <th width="20%" class="text-right">Nilai</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -126,18 +126,16 @@
                                                 $pajak = $this->crud_global->GetField('pmm_taxs', array('id' => $dt['pajak_id']), 'tax_name');
                                                 ?>
                                                 <tr>
-                                                    <td><?= $key + 1 ?>.</td>
-                                                    <td style="text-align: left !important;">
-                                                        <?= $material; ?>
-                                                    </td>
-                                                    <td><?= number_format($dt['volume'],2,',','.'); ?></td>
-                                                    <td><?= $dt['measure']; ?></td>
-                                                    <td style="text-align: right !important;"><?= number_format($dt['price'],0,',','.'); ?></td>
-                                                    <td> <?= $tax; ?></td>
+                                                    <td class="text-center"><?= $key + 1 ?>.</td>
+                                                    <td class="text-left"><?= $material; ?></td>
+                                                    <td class="text-right"><?= number_format($dt['volume'],2,',','.'); ?></td>
+                                                    <td class="text-center"><?= $dt['measure']; ?></td>
+                                                    <td class="text-right"><?= number_format($dt['price'],0,',','.'); ?></td>
+                                                    <td class="text-center"><?= $tax; ?></td>
 													<input type="hidden" value="<?= $this->filter->Rupiah($dt['tax_id']); ?>">
-                                                    <td> <?= $pajak; ?></td>
+                                                    <td class="text-center"><?= $pajak; ?></td>
                                                     <input type="hidden" value="<?= $this->filter->Rupiah($dt['pajak_id']); ?>">
-                                                    <td style="text-align: right !important;"><?= number_format($dt['total'],0,',','.'); ?></td>
+                                                    <td class="text-right"><?= number_format($dt['total'],0,',','.'); ?></td>
                                                 </tr>
                                             <?php
                                                 $sub_total += $dt['total'];

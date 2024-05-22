@@ -67,15 +67,15 @@
                                     </table>
                                     <br /><br />
                                     <div class="table-responsive">
-                                        <table id="table-product" class="table table-bordered table-striped table-condensed text-center">
+                                        <table id="table-product" class="table table-bordered table-striped table-condensed">
                                             <thead>
                                                 <tr>
-                                                    <th width="5%">No</th>
-                                                    <th width="20%">Produk</th>
-                                                    <th width="15%">Volume</th>
-                                                    <th width="15%">Satuan</th>
-                                                    <th width="15%">Harga Satuan</th>
-                                                    <th width="25%">Nilai</th>
+                                                    <th width="5%" class="text-center">No.</th>
+                                                    <th width="20%" class="text-left">Produk</th>
+                                                    <th width="15%" class="text-right">Volume</th>
+                                                    <th width="15%" class="text-center">Satuan</th>
+                                                    <th width="15%" class="text-right">Harga Satuan</th>
+                                                    <th width="25%" class="text-right">Nilai</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -97,10 +97,8 @@
                                                     <input type="hidden" name="material_id_<?= $key+1; ?>" value="<?= $row['material_id'];?>"  />
                                                 <tr>
                                                     <td class="text-center"><?= $key+1 ?>.</td>
-                                                    <td class="text-center">
-                                                        <?= $row['material_name']; ?>
-                                                    </td>
-                                                    <td class="text-center">
+                                                    <td class="text-left"><?= $row['material_name']; ?></td>
+                                                    <td class="text-right">
                                                         <?= $this->filter->Rupiah($row['volume']); ?>
                                                         <input type="hidden" min="0" name="qty_<?= $key+1; ?>" id="qty-<?= $key; ?>" value="<?= $row['volume'];?>" class="form-control input-sm text-center" required="" readonly />
                                                     </td>

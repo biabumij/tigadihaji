@@ -86,16 +86,16 @@
                                 </table>
                                 <br /><br />
                                 <div class="table-responsive">
-                                    <table id="table-product" class="table table-bordered table-striped table-condensed text-center">
+                                    <table id="table-product" class="table table-bordered table-striped table-condensed">
                                         <thead>
                                             <tr>
-                                                <th width="5%">No</th>
-                                                <th>Produk</th>
-                                                <th width="7%">Volume</th>
-                                                <th>Satuan</th>
-                                                <th>Harga Satuan</th>
-                                                <th width="10%">Pajak</th>
-                                                <th width="20%">Jumlah</th>
+                                                <th width="5%" class="text-center">No.</th>
+                                                <th class="text-left">Produk</th>
+                                                <th width="7%" class="text-right">Volume</th>
+                                                <th class="text-center">Satuan</th>
+                                                <th class="text-right">Harga Satuan</th>
+                                                <th width="10%" class="text-center">Pajak</th>
+                                                <th width="20%" class="text-right">Jumlah</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -113,13 +113,13 @@
 												$taxs = $this->crud_global->GetField('pmm_taxs', array('id' => $row['tax_id']), 'Tax_name');
                                                 ?>
                                                 <tr>
-                                                    <td><?= $key + 1 ?>.</td>
-                                                    <td style="text-align: left !important;"><?= $product; ?></td>
-                                                    <td><?= $row['qty']; ?></td>
-                                                    <td><?= $row['measure']; ?></td>
-                                                    <td style="text-align: right !important;"><?= number_format($row['price'],0,',','.'); ?></td>
-                                                    <td><?= $taxs; ?></td>
-                                                    <td style="text-align: right !important;"><?= number_format($row['total'],0,',','.'); ?></td>
+                                                    <td class="text-center"><?= $key + 1 ?>.</td>
+                                                    <td class="text-left"><?= $product; ?></td>
+                                                    <td class="text-right"><?= $row['qty']; ?></td>
+                                                    <td class="text-center"><?= $row['measure']; ?></td>
+                                                    <td class="text-right"><?= number_format($row['price'],0,',','.'); ?></td>
+                                                    <td class="text-center"><?= $taxs; ?></td>
+                                                    <td class="text-right"><?= number_format($row['total'],0,',','.'); ?></td>
                                                 </tr>
                                                 <?php
 													$sub_total += ($row['price'] * $row['qty']);
