@@ -947,25 +947,34 @@ class Penjualan extends Secure_Controller
 		if ($check == true) {
 
 			$arr_id = explode(',', $id);
+			$po_1 = '';
 			$id_new = array();
 			foreach ($arr_id as $key => $row) {
 				if (!empty($row)) {
 					$id_new[] = $row;
+
+					$check_po = $this->crud_global->GetField('pmm_productions', array('id' => $row), 'salesPo_id');
+					if (!empty($po_1)) {
+						// echo $check_po.' = '.$po_1.'<br />';
+						if ($po_1 !== $check_po) {
+							$this->session->set_flashdata('notif_error', 'Maaf, Nomor sales order harus sama');
+							redirect('admin/penjualan');
+							exit();
+						}
+					}
 
 					$check_status = $this->crud_global->GetField('pmm_productions', array('id' => $row), 'status_payment');
 					if ($check_status !== 'UNCREATED') {
 						$this->session->set_flashdata('notif_error', '<b>Status Surat Jalan Harus UNCREATED</b>');
 						redirect('admin/penjualan');
 					}
+
+					$po_1 = $check_po;
 				}
 			}
 			// print_r($id_new);
 			$this->db->where_in('id', $id_new);
 			$data['cekSurat'] = $this->db->get('pmm_productions')->result_array();
-
-
-			$data['cekSurat'] = $this->db->get('pmm_productions')->result_array();
-
 
 			$this->db->select('pp.id AS idProduction,
 			pp.salesPo_id AS salesPo_id,
@@ -986,17 +995,11 @@ class Penjualan extends Secure_Controller
 			// return var_dump($data['cekSurat'][0]);
 
 			$data['id'] = $id;
-			
 			$data['id_new'] = $id_new;
-
 			$this->db->where_in('id', $id_new);
-
 			$data['query'] = $this->db->get('pmm_productions')->row_array();
-
 			$data['clients'] = $this->db->select('*')->get_where('penerima', array('id' => $data['query']['client_id']))->row_array();
-
 			$data['produk'] = $this->db->select('*')->get_where('produk', array('status' => 'PUBLISH'))->result_array();
-
 			$data['sales'] = $this->db->get_where('pmm_sales_po', array('id' => $data['cekHarga'][0]['salesPo_id']))->row_array();
 
 			$this->db->select('ppp.syarat_pembayaran as syarat_pembayaran');
@@ -1005,9 +1008,7 @@ class Penjualan extends Secure_Controller
 			$this->db->join('pmm_productions pp', 'ppo.id = pp.salesPo_id', 'left');
 			$this->db->where_in('pp.id', $id_new);
 			$data['syarat_pembayaran'] = $this->db->get_where('pmm_sales_po ppo')->row_array();
-
 			$data['taxs'] = $this->db->select('id,tax_name')->get_where('pmm_taxs', array('status' => 'PUBLISH'))->result_array();
-
 			$data['noInvoice'] = $this->pmm_finance->NoInvoice();
 
 			$this->load->view('penjualan/penagihan_penjualan', $data);

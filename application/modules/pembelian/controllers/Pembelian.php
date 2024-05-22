@@ -439,7 +439,7 @@ class Pembelian extends Secure_Controller
                         if (!empty($po_1)) {
                             // echo $check_po.' = '.$po_1.'<br />';
                             if ($po_1 !== $check_po) {
-                                $this->session->set_flashdata('notif_error', 'Maaf, Nomor pesanan pembelian harus sama');
+                                $this->session->set_flashdata('notif_error', '<b>Maaf, nomor pesanan pembelian harus sama<b>');
                                 redirect('admin/pembelian');
                                 exit();
                             }

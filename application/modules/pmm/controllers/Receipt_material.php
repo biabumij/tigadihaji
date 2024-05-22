@@ -416,8 +416,6 @@ class Receipt_material extends CI_Controller {
 	{
 		$output['output'] = false;
 
-		
-
 		$purchase_order_id = $this->input->post('purchase_order_id');
 		$material_id = $this->input->post('material_id');
 		$tax_id = $this->input->post('tax_id');
@@ -450,7 +448,6 @@ class Receipt_material extends CI_Controller {
 
 		$file = '';
 		$error_file = false;
-
 		
 		if(!empty($surat_jalan)){
 			$new_name = $surat_jalan;
@@ -524,10 +521,9 @@ class Receipt_material extends CI_Controller {
 		$this->db->insert('pmm_receipt_material',$data_p);
 		$no_production = $this->db->insert_id();
 
-		$coa_description = 'Penerimaan Nomor '.$no_production;
-		$this->pmm_finance->InsertTransactions(7,$coa_description,$price * $volume,0);
-
-		$this->pmm_finance->InsertTransactions(39,$coa_description,0,$price * $volume);
+		//$coa_description = 'Penerimaan Nomor '.$no_production;
+		//$this->pmm_finance->InsertTransactions(7,$coa_description,$price * $volume,0);
+		//$this->pmm_finance->InsertTransactions(39,$coa_description,0,$price * $volume);
 		
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.

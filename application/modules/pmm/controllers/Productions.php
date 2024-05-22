@@ -187,7 +187,7 @@ class Productions extends Secure_Controller {
 		$this->load->library('upload', $config);
 		
 
-		if ($production > 1) {
+		if ($production > 0) {
 			$output['output'] = false;
 			$output['err'] = 'No. Surat Jalan Telah Terdaftar !!';
 		}else{
@@ -206,8 +206,6 @@ class Productions extends Secure_Controller {
 					}
 				}
 			}
-			
-	
 			
 			if($_FILES["surat_jalan"]["error"] == 0) {
 				$config['file_name'] = $no_production.'_'.$_FILES["surat_jalan"]['name'];
@@ -233,7 +231,6 @@ class Productions extends Secure_Controller {
 				echo json_encode($output);
 				exit();
 			} 
-
 	
 			$data = array(
 				'date_production' => date('Y-m-d',strtotime($this->input->post('date'))),
@@ -269,11 +266,9 @@ class Productions extends Secure_Controller {
 				if($this->db->insert('pmm_productions',$data)){
 					$production_id = $this->db->insert_id();
 					
-					// Insert COA
-					$coa_description = 'Production Nomor '.$no_production;
-					$this->pmm_finance->InsertTransactions(4,$coa_description,$price,0);
-
-	
+					//Insert COA
+					//$coa_description = 'Production Nomor '.$no_production;
+					//$this->pmm_finance->InsertTransactions(4,$coa_description,$price,0);
 				}
 			}else {
 				$data['updated_by'] = $this->session->userdata('admin_id');
@@ -299,15 +294,9 @@ class Productions extends Secure_Controller {
 				$output['output'] = true;	
 				// $output['no_production'] = $this->pmm_model->ProductionsNo();
 			}
-
-			
 		}
-        
-
-		
 		echo json_encode($output);
 	}
-
 
 	public function approve_po()
 	{
