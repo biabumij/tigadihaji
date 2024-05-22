@@ -12234,7 +12234,6 @@ class Reports extends CI_Controller {
 			$this->db->group_by('ppo.id');
 			$this->db->order_by('ppo.created_on','desc');
             $query = $this->db->get('pmm_purchase_order ppo');
-			file_put_contents("D:\\test.txt", $this->db->last_query());
             $data['row'] = $query->result_array();
             $this->load->view('admin/detail_notification',$data);
             

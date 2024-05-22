@@ -81,8 +81,6 @@ class Productions extends Secure_Controller {
 		$this->db->order_by('created_on','desc');
 		$query = $this->db->get('pmm_productions');
 		
-		file_put_contents("D:\\test.txt", $this->db->last_query());
-		
 		if($query->num_rows() > 0){
 			foreach ($query->result_array() as $key => $row) {
 				$row['no'] = $key+1;
