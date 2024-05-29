@@ -12309,8 +12309,6 @@ class Reports extends CI_Controller {
 				<th class="text-right">SALDO</th>
 	        </tr>
 			<?php
-			
-
 			$akun_1_10002 = $this->db->select('t.akun as id, sum(t.debit) as debit, sum(t.kredit) as kredit')
 			->from('transactions t')
 			->where("t.tanggal_transaksi between '$date1' and '$date2'")
@@ -12351,13 +12349,19 @@ class Reports extends CI_Controller {
 			->get()->row_array();
 			$akun_5_50700 = $akun_5_50700['kredit'];
 			?>
+			<?php
+				$styleColor = $akun_1_10001 < 0 ? 'color:red' : 'color:black';
+			?>
 			<tr class="table-active3">
 	            <th width="10%" class="text-center">1-10001</th>
 				<th class="text-left">Kas Cutting Stone</th>
 				<th class="text-right"></th>
 				<th class="text-right"></th>
-				<th class="text-right"><?php echo $akun_1_10001 < 0 ? "(".number_format(-$akun_1_10001,0,',','.').")" : number_format($akun_1_10001,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_1_10001 < 0 ? "(".number_format(-$akun_1_10001,0,',','.').")" : number_format($akun_1_10001,0,',','.');?></th>
 			</tr>
+			<?php
+				$styleColor = $akun_1_10002 < 0 ? 'color:red' : 'color:black';
+			?>
 			<tr class="table-active3">
 	            <th width="10%" class="text-center">1-10002</th>
 				<th class="text-left">Bank Kantor Pusat</th>
@@ -12366,12 +12370,15 @@ class Reports extends CI_Controller {
 				<th class="text-right"><?php echo $akun_1_10002 < 0 ? "(".number_format(-$akun_1_10002,0,',','.').")" : number_format($akun_1_10002,0,',','.');?><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction/".$date1."/".$date2."/".'1'."") ?>"></a></th>
 				
 			</tr>
+			<?php
+				$styleColor = $akun_5_50700 < 0 ? 'color:red' : 'color:black';
+			?>
 			<tr class="table-active3">
 	            <th width="10%" class="text-center">5-50700</th>
 				<th class="text-left">Biaya Persiapan</th>
 				<th class="text-right"></th>
 				<th class="text-right"></th>
-				<th class="text-right"><?php echo $akun_5_50700 < 0 ? "(".number_format(-$akun_5_50700,0,',','.').")" : number_format($akun_5_50700,0,',','.');?><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction/".$date1."/".$date2."/".'1'."") ?>"></a></th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_5_50700 < 0 ? "(".number_format(-$akun_5_50700,0,',','.').")" : number_format($akun_5_50700,0,',','.');?><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction/".$date1."/".$date2."/".'1'."") ?>"></a></th>
 				
 			</tr>
 	    </table>
@@ -12470,9 +12477,12 @@ class Reports extends CI_Controller {
 				<th class="text-left">Bank Kantor Pusat</th>
 				<th class="text-right"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction2/".$date1."/".$date2."/".'2'."") ?>"><?php echo $akun_1_10002 < 0 ? "(".number_format(-$akun_1_10002,0,',','.').")" : number_format($akun_1_10002,0,',','.');?></a></th>
 	        </tr>
+			<?php
+				$styleColor = $total_aset_lancar < 0 ? 'color:red' : 'color:black';
+			?>
 			<tr class="table-active3">
 	            <th class="text-right" colspan="2">TOTAL ASET LANCAR</th>
-				<th class="text-right"><?php echo number_format($total_aset_lancar,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_aset_lancar < 0 ? "(".number_format(-$total_aset_lancar,0,',','.').")" : number_format($total_aset_lancar,0,',','.');?></th>
 	        </tr>
 			<tr class="table-active4">
 	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;ASET TETAP</th>
