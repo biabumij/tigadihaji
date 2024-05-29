@@ -12242,5 +12242,350 @@ class Reports extends CI_Controller {
         }
     }
 
+	public function buku_besar($arr_date)
+	{
+		$data = array();
+		
+		$arr_date = $this->input->post('filter_date');
+		$arr_filter_date = explode(' - ', $arr_date);
+		$date3 = '';
+		$date1 = '';
+		$date2 = '';
+
+		if(count($arr_filter_date) == 2){
+			$date3 	= date('2023-08-01',strtotime($date3));
+			$date1 	= date('Y-m-d',strtotime($arr_filter_date[0]));
+			$date2 	= date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d/m/Y',strtotime($arr_filter_date[0])).' - '.date('d/m/Y',strtotime($arr_filter_date[1]));
+			$filter_date_2 = date('Y-m-d',strtotime($date3)).' - '.date('Y-m-d',strtotime($arr_filter_date[1]));
+		}
+		
+		?>
+		
+		<table class="table table-bordered" width="100%">
+		 <style type="text/css">
+			body {
+				font-family: helvetica;
+				font-size: 11px;
+			}
+
+			table tr.table-active{
+				background: linear-gradient(90deg, #fdcd3b 20%, #fdcd3b 40%, #e69500 80%);
+				font-size: 11px;
+				font-weight: bold;
+			}
+				
+			table tr.table-active2{
+				background: linear-gradient(90deg, #333333 5%, #696969 50%, #333333 100%);
+				font-size: 11px;
+				font-weight: bold;
+				color: white;
+			}
+				
+			table tr.table-active3{
+				font-size: 11px;
+			}
+				
+			table tr.table-active4{
+				background: linear-gradient(90deg, #eeeeee 5%, #cccccc 50%, #cccccc 100%);
+				font-weight: bold;
+				font-size: 11px;
+				color: black;
+			}
+		 </style>
+	        <tr class="table-active2">
+	            <th colspan="2">PERIODE</th>
+				<th class="text-center" colspan="3"><?php echo $filter_date = $filter_date = date('d/m/Y',strtotime($arr_filter_date[0])).' - '.date('d/m/Y',strtotime($arr_filter_date[1]));?></th>
+	        </tr>
+
+			<tr class="table-active">
+	            <th width="100%" class="text-left" colspan="5">BUKU BESAR</th>
+	        </tr>
+			<tr class="table-active4">
+				<th class="text-center">NO. AKUN</th>
+	            <th class="text-left">NAMA AKUN</th>
+				<th class="text-right">DEBIT</th>
+				<th class="text-right">KREDIT</th>
+				<th class="text-right">SALDO</th>
+	        </tr>
+			<?php
+			
+
+			$akun_1_10002 = $this->db->select('t.akun as id, sum(t.debit) as debit, sum(t.kredit) as kredit')
+			->from('transactions t')
+			->where("t.tanggal_transaksi between '$date1' and '$date2'")
+			->where("t.akun = 2")
+			->group_by('t.akun')
+			->get()->row_array();
+			$akun_1_10002 = $akun_1_10001 + ($akun_1_10002['debit'] - $akun_1_10002['kredit']);
+
+			$total_aset_lancar = $akun_1_10002;
+
+			?>
+			<?php
+			$akun_1_10001 = $this->db->select('t.akun as id, sum(t.debit) as debit, sum(t.kredit) as kredit')
+			->from('transactions t')
+			->where("t.tanggal_transaksi between '$date1' and '$date2'")
+			->where("t.akun = 1")
+			->group_by('t.akun')
+			->get()->row_array();
+			$akun_1_10001_debit = $akun_1_10001['debit'];
+			$akun_1_10001_kredit = $akun_1_10001['kredit'];
+			$akun_1_10001 = $akun_1_10001['debit'] - $akun_1_10001['kredit'];
+
+			$akun_1_10002 = $this->db->select('pdb.akun as id, sum(pdb.debit) as debit, sum(pdb.kredit) as kredit')
+			->from('pmm_jurnal_umum b')
+			->join('pmm_detail_jurnal pdb','b.id = pdb.jurnal_id','left')
+			->where("b.tanggal_transaksi between '$date1' and '$date2'")
+			->where("pdb.akun = 121")
+			->group_by('pdb.akun')
+			->get()->row_array();
+			$akun_1_10002 = $akun_1_10002['kredit'];
+
+			$akun_5_50700 = $this->db->select('pdb.akun as id, sum(pdb.jumlah) as kredit')
+			->from('pmm_biaya b')
+			->join('pmm_detail_biaya pdb','b.id = pdb.biaya_id','left')
+			->where("b.tanggal_transaksi between '$date1' and '$date2'")
+			->where("pdb.akun = 131")
+			->group_by('pdb.akun')
+			->get()->row_array();
+			$akun_5_50700 = $akun_5_50700['kredit'];
+			?>
+			<tr class="table-active3">
+	            <th width="10%" class="text-center">1-10001</th>
+				<th class="text-left">Kas Cutting Stone</th>
+				<th class="text-right"></th>
+				<th class="text-right"></th>
+				<th class="text-right"><?php echo $akun_1_10001 < 0 ? "(".number_format(-$akun_1_10001,0,',','.').")" : number_format($akun_1_10001,0,',','.');?></th>
+			</tr>
+			<tr class="table-active3">
+	            <th width="10%" class="text-center">1-10002</th>
+				<th class="text-left">Bank Kantor Pusat</th>
+				<th class="text-right"></th>
+				<th class="text-right"></th>
+				<th class="text-right"><?php echo $akun_1_10002 < 0 ? "(".number_format(-$akun_1_10002,0,',','.').")" : number_format($akun_1_10002,0,',','.');?><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction/".$date1."/".$date2."/".'1'."") ?>"></a></th>
+				
+			</tr>
+			<tr class="table-active3">
+	            <th width="10%" class="text-center">5-50700</th>
+				<th class="text-left">Biaya Persiapan</th>
+				<th class="text-right"></th>
+				<th class="text-right"></th>
+				<th class="text-right"><?php echo $akun_5_50700 < 0 ? "(".number_format(-$akun_5_50700,0,',','.').")" : number_format($akun_5_50700,0,',','.');?><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction/".$date1."/".$date2."/".'1'."") ?>"></a></th>
+				
+			</tr>
+	    </table>
+		<?php
+	}
+
+	public function neraca($arr_date)
+	{
+		$data = array();
+		
+		$arr_date = $this->input->post('filter_date');
+		$arr_filter_date = explode(' - ', $arr_date);
+		$date3 = '';
+		$date1 = '';
+		$date2 = '';
+
+		if(count($arr_filter_date) == 2){
+			$date3 	= date('2023-08-01',strtotime($date3));
+			$date1 	= date('Y-m-d',strtotime($arr_filter_date[0]));
+			$date2 	= date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d/m/Y',strtotime($arr_filter_date[0])).' - '.date('d/m/Y',strtotime($arr_filter_date[1]));
+			$filter_date_2 = date('Y-m-d',strtotime($date3)).' - '.date('Y-m-d',strtotime($arr_filter_date[1]));
+		}
+		
+		?>
+		
+		<table class="table table-bordered" width="100%">
+		 <style type="text/css">
+			body {
+				font-family: helvetica;
+				font-size: 11px;
+			}
+
+			table tr.table-active{
+				background: linear-gradient(90deg, #fdcd3b 20%, #fdcd3b 40%, #e69500 80%);
+				font-size: 11px;
+				font-weight: bold;
+			}
+				
+			table tr.table-active2{
+				background: linear-gradient(90deg, #333333 5%, #696969 50%, #333333 100%);
+				font-size: 11px;
+				font-weight: bold;
+				color: white;
+			}
+				
+			table tr.table-active3{
+				font-size: 11px;
+			}
+				
+			table tr.table-active4{
+				background: linear-gradient(90deg, #eeeeee 5%, #cccccc 50%, #cccccc 100%);
+				font-weight: bold;
+				font-size: 11px;
+				color: black;
+			}
+		 </style>
+	        <tr class="table-active2">
+	            <th colspan="2">PERIODE</th>
+				<th class="text-center"><?php echo $filter_date = $filter_date = date('d/m/Y',strtotime($arr_filter_date[0])).' - '.date('d/m/Y',strtotime($arr_filter_date[1]));?></th>
+	        </tr>
+
+			<tr class="table-active">
+	            <th width="100%" class="text-left" colspan="3">ASET</th>
+	        </tr>
+			<tr class="table-active4">
+	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;ASET LANCAR</th>
+	        </tr>
+			<?php
+			$akun_1_10001 = $this->db->select('t.akun as id, sum(t.debit) as debit, sum(t.kredit) as kredit')
+			->from('transactions t')
+			->where("t.tanggal_transaksi between '$date1' and '$date2'")
+			->where("t.akun = 1")
+			->group_by('t.akun')
+			->get()->row_array();
+			$akun_1_10001 = $akun_1_10001['debit'] - $akun_1_10001['kredit'] ;
+
+			$akun_1_10002 = $this->db->select('t.akun as id, sum(t.debit) as debit, sum(t.kredit) as kredit')
+			->from('transactions t')
+			->where("t.tanggal_transaksi between '$date1' and '$date2'")
+			->where("t.akun = 121")
+			->group_by('t.akun')
+			->get()->row_array();
+			$akun_1_10002 = $akun_1_10001 + ($akun_1_10002['debit'] - $akun_1_10002['kredit']);
+
+			$total_aset_lancar = $akun_1_10002;
+
+			?>
+			<tr class="table-active3">
+	            <th width="10%" class="text-center">1-10001</th>
+				<th class="text-left">Kas Cutting Stone</th>
+				<th class="text-right"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction/".$date1."/".$date2."/".'1'."") ?>"><?php echo $akun_1_10001 < 0 ? "(".number_format(-$akun_1_10001,0,',','.').")" : number_format($akun_1_10001,0,',','.');?></a></th>
+	        </tr>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10002</th>
+				<th class="text-left">Bank Kantor Pusat</th>
+				<th class="text-right"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction2/".$date1."/".$date2."/".'2'."") ?>"><?php echo $akun_1_10002 < 0 ? "(".number_format(-$akun_1_10002,0,',','.').")" : number_format($akun_1_10002,0,',','.');?></a></th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-right" colspan="2">TOTAL ASET LANCAR</th>
+				<th class="text-right"><?php echo number_format($total_aset_lancar,0,',','.');?></th>
+	        </tr>
+			<tr class="table-active4">
+	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;ASET TETAP</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-right" colspan="2">TOTAL ASET TETAP</th>
+				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+	        </tr>
+			<tr class="table-active4">
+	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;DEPRESIASI & AMORTISASI</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-right" colspan="2">TOTAL DEPRESIASI & AMORTISASI</th>
+				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+	        </tr>
+			<tr class="table-active4">
+	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;LAIN-LAIN</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-right" colspan="2">TOTAL ASET LAIN-LAIN</th>
+				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-right" colspan="2">TOTAL ASET</th>
+				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+	        </tr>
+			<tr class="table-active4">
+	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;LIABILITAS & MODAL</th>
+	        </tr>
+			<tr class="table-active4">
+	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;LIABILITAS JANGKA PENDEK</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-right" colspan="2">TOTAL LIABILITAS JANGKA PENDEK</th>
+				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-right" colspan="2">TOTAL LIABILITAS</th>
+				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+	        </tr>
+			<tr class="table-active4">
+	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;MODAL PEMILIK</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-right" colspan="2">TOTAL MODAL PEMILIK</th>
+				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-right" colspan="2">TOTAL LIABILITAS & MODAL</th>
+				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+	        </tr>
+	    </table>
+		<?php
+	}
+
+	public function detail_transaction($date1,$date2,$id)
+    {
+        $check = $this->m_admin->check_login();
+        if($check == true){
+
+			$this->db->select('t.*, pb.nomor_transaksi as trx_biaya, pj.nomor_transaksi as trx_jurnal, tu.nomor_transaksi as trx_terima, tr.nomor_transaksi as trx_transfer, sum(t.debit) as debit, sum(t.kredit) as kredit');
+			$this->db->join('pmm_biaya pb','t.biaya_id = pb.id','left');
+			$this->db->join('pmm_jurnal_umum pj','t.jurnal_id = pj.id','left');
+			$this->db->join('pmm_terima_uang tu','t.terima_id = tu.id','left');
+			$this->db->join('pmm_transfer tr','t.transfer_id = tr.id','left');
+			$this->db->where('t.tanggal_transaksi >=',$date1);
+            $this->db->where('t.tanggal_transaksi <=',$date2);
+            $this->db->where('t.akun',$id);
+			$this->db->group_by('t.id');
+			$this->db->order_by('t.tanggal_transaksi','asc');
+			$this->db->order_by('t.id','asc');
+            $query = $this->db->get('transactions t');
+            $data['row'] = $query->result_array();
+            $this->load->view('laporan_keuangan/detail_transaction',$data);
+            
+        }else {
+            redirect('admin');
+        }
+    }
+
+	public function detail_transaction2($date1,$date2,$id)
+    {
+        $check = $this->m_admin->check_login();
+        if($check == true){
+
+			$this->db->select('t.*, pb.nomor_transaksi as trx_biaya, pj.nomor_transaksi as trx_jurnal, tu.nomor_transaksi as trx_terima, tr.nomor_transaksi as trx_transfer, sum(t.debit) as debit, sum(t.kredit) as kredit');
+			$this->db->join('pmm_biaya pb','t.biaya_id = pb.id','left');
+			$this->db->join('pmm_jurnal_umum pj','t.jurnal_id = pj.id','left');
+			$this->db->join('pmm_terima_uang tu','t.terima_id = tu.id','left');
+			$this->db->join('pmm_transfer tr','t.transfer_id = tr.id','left');
+			$this->db->where('t.tanggal_transaksi >=',$date1);
+            $this->db->where('t.tanggal_transaksi <=',$date2);
+            $this->db->where('t.akun',$id);
+			$this->db->group_by('t.id');
+			$this->db->order_by('t.tanggal_transaksi','asc');
+			$this->db->order_by('t.id','asc');
+            $query = $this->db->get('transactions t');
+            $data['row'] = $query->result_array();
+
+			$this->db->select('t.*, sum(t.debit) as debit, sum(t.kredit) as kredit');
+			$this->db->where('t.tanggal_transaksi >=',$date1);
+            $this->db->where('t.tanggal_transaksi <=',$date2);
+            $this->db->where('t.akun',1);
+			$this->db->group_by('t.id');
+			$this->db->order_by('t.tanggal_transaksi','asc');
+			$this->db->order_by('t.id','asc');
+            $query = $this->db->get('transactions t');
+            $data['row2'] = $query->result_array();
+            $this->load->view('laporan_keuangan/detail_transaction2',$data);
+            
+        }else {
+            redirect('admin');
+        }
+    }
 
 }

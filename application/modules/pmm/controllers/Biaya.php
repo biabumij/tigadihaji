@@ -797,6 +797,9 @@ class Biaya extends CI_Controller {
             'total' => $total
 		);
 
+        $this->pmm_finance->UpdateTransactionsBiaya($form_id_biaya_main,$bayar_dari,$total,$tanggal_transaksi);
+        $transaction_id = $this->db->insert_id();
+
 		if(!empty($id)){
 			if($this->db->update('pmm_biaya',$data,array('id'=>$form_id_biaya_main))){
 				$output['output'] = true;

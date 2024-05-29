@@ -178,6 +178,7 @@
                 <div class="modal-body">
                     <form class="form-horizontal" style="padding: 0 10px 0 20px;" >
                         <input type="hidden" name="jurnal_umum" id="id" value="<?= $data['id'] ?>">
+                        <input type="hidden" name="akun_jurnal" id="akun_jurnal" value="<?= $data['akun_jurnal'] ?>">
                         <input type="hidden" id="form_id_jurnal_main" name="form_id_jurnal_main" class="form-control" required="" autocomplete="off" />
                         <div class="form-group">
                             <label>Nomor Transaksi</label>

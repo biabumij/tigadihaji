@@ -87,6 +87,40 @@ class Pmm_finance extends CI_Model {
         $this->db->insert('transactions',$data);
     }
 
+    function UpdateTransactionsBiaya($form_id_biaya_main,$bayar_dari,$total,$tanggal_transaksi)
+    {
+        $data = array(
+            'biaya_id' => $form_id_biaya_main,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'akun' => $bayar_dari,
+            'debit' => 0,
+            'kredit' => $total,
+            'tanggal_transaksi' => $tanggal_transaksi,
+            'transaksi' => 'BIAYA'
+        );
+        $this->db->delete('transactions', array('biaya_id' => $form_id_biaya_main));
+        $this->db->insert('transactions',$data);
+    }
+
+    function UpdateTransactionsJurnal($form_id_jurnal_main,$akun_jurnal,$total_debit,$tanggal_transaksi)
+    {
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => $form_id_jurnal_main,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'akun' => $akun_jurnal,
+            'debit' => $total_debit,
+            'kredit' => 0,
+            'tanggal_transaksi' => $tanggal_transaksi,
+            'transaksi' => 'JURNAL UMUM'
+        );
+        $this->db->delete('transactions', array('jurnal_id' => $form_id_jurnal_main));
+        $this->db->insert('transactions',$data);
+    }
+
     function InsertLogs($log_type,$table_name,$table_id,$description)
     {
         $data = array(

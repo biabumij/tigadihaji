@@ -170,6 +170,8 @@
                 <div class="modal-body">
                     <form class="form-horizontal" style="padding: 0 10px 0 20px;" >
                         <input type="hidden" name="biaya_id" id="id" value="<?= $data['id'] ?>">
+                        <input type="hidden" name="bayar_dari" id="id" value="<?= $data['bayar_dari'] ?>">
+                        <input type="hidden" name="tanggal_transaksi" id="id" value="<?= $data['tanggal_transaksi'] ?>">
                         <input type="hidden" id="form_id_biaya_main" name="form_id_biaya_main" class="form-control" required="" autocomplete="off" />
                         <!--<div class="form-group">
                             <label>Dibayar Kepada</label>
