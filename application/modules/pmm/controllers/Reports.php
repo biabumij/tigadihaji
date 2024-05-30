@@ -12475,7 +12475,7 @@ class Reports extends CI_Controller {
 			<tr class="table-active3">
 				<th width="10%" class="text-center">1-10002</th>
 				<th class="text-left">Bank Kantor Pusat</th>
-				<th class="text-right"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction2/".$date1."/".$date2."/".'2'."") ?>"><?php echo $akun_1_10002 < 0 ? "(".number_format(-$akun_1_10002,0,',','.').")" : number_format($akun_1_10002,0,',','.');?></a></th>
+				<th class="text-right"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction2/".$date1."/".$date2."/".'121'."") ?>"><?php echo $akun_1_10002 < 0 ? "(".number_format(-$akun_1_10002,0,',','.').")" : number_format($akun_1_10002,0,',','.');?></a></th>
 	        </tr>
 			<?php
 				$styleColor = $total_aset_lancar < 0 ? 'color:red' : 'color:black';
