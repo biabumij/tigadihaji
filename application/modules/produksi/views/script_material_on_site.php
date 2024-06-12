@@ -3,6 +3,7 @@
     </script>
     <script type="text/javascript">
     $('input.numberformat').number( true, 2,',','.' );
+    $('input.nilaiformat').number( true, 0,',','.' );
     $('.dtpicker').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true,
@@ -12,7 +13,7 @@
     });
     $('.dtpicker').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('DD-MM-YYYY'));
-        // table.ajax.reload();
+        //table.ajax.reload();
     });
 
     $('.dtpickerange').daterangepicker({
@@ -156,6 +157,7 @@
                     $('#volume').val(result.output.volume);
                     $('#display_volume').val(result.output.display_volume);
                     $('#display_measure').val(result.output.display_measure);
+                    $('#price').val(result.output.price);
                     $('#notes').val(result.output.notes);
                     $('#status').val(result.output.status);
                 } else if (result.err) {

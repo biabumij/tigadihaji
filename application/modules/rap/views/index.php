@@ -46,7 +46,7 @@
                                 <div class="tab-content">
                                     
                                 <!-- Table Bahan -->
-                                <div role="tabpanel" class="tab-pane active" id="bahan">
+                                    <div role="tabpanel" class="tab-pane active" id="bahan">
 										<div class="col-sm-3">
 											<input type="text" id="filter_date_agregat" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
 										</div>

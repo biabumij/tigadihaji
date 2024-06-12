@@ -3734,9 +3734,7 @@ class Reports extends CI_Controller {
 			</style>
 
 			<!-- TOTAL PEMAKAIAN KOMPOSISI -->
-
 			<?php
-
 			$komposisi = $this->db->select('pp.date_production, (pp.display_volume) * pk.presentase_a as volume_a, (pp.display_volume) * pk.presentase_b as volume_b, (pp.display_volume) * pk.presentase_c as volume_c, (pp.display_volume) * pk.presentase_d as volume_d, (pp.display_volume * pk.presentase_a) * pk.price_a as nilai_a, (pp.display_volume * pk.presentase_b) * pk.price_b as nilai_b, (pp.display_volume * pk.presentase_c) * pk.price_c as nilai_c, (pp.display_volume * pk.presentase_d) * pk.price_d as nilai_d')
 			->from('pmm_productions pp')
 			->join('pmm_agregat pk', 'pp.komposisi_id = pk.id','left')
@@ -3784,39 +3782,36 @@ class Reports extends CI_Controller {
 			$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d;
 			
 			?>
-
 			<!-- END TOTAL PEMAKAIAN KOMPOSISI -->
 
+			<!-- REALISASI -->
 			<?php
 			$date1_ago = date('2020-01-01');
 			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
 			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 
-			$stock_opname_semen_ago = $this->db->select('pp.vol_nilai_semen as volume')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date = '$tanggal_opening_balance')")
-			->order_by('pp.date','desc')->limit(1)
+			$stock_opname_semen_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 1")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
 			->get()->row_array();
-			
-			$harga_semen = $this->db->select('pp.nilai_semen as nilai_semen')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date between '$date3_ago' and '$date2_ago')")
-			->order_by('pp.date','desc')->limit(1)
-			->get()->row_array();
+
+			$stok_volume_semen_lalu = $stock_opname_semen_ago['volume'];
+			$stok_nilai_semen_lalu = $stock_opname_semen_ago['nilai'];
+			$stok_harsat_semen_lalu = (round($stok_volume_semen_lalu,2)!=0)?$stok_nilai_semen_lalu / round($stok_volume_semen_lalu,2) * 1:0;
 
 			$pembelian_semen = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
+			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 1")
+			->where("p.kategori_bahan = 1")
 			->group_by('prm.material_id')
 			->get()->row_array();
-
-			$stok_volume_semen_lalu = $stock_opname_semen_ago['volume'];
-			$stok_nilai_semen_lalu = $harga_semen['nilai_semen'];
-			$stok_harsat_semen_lalu = (round($stok_volume_semen_lalu,2)!=0)?$stok_nilai_semen_lalu / round($stok_volume_semen_lalu,2) * 1:0;
 		
 			$pembelian_volume_semen = $pembelian_semen['volume'];
 			$pembelian_nilai_semen = $pembelian_semen['nilai'];
@@ -3825,31 +3820,23 @@ class Reports extends CI_Controller {
 			$total_stok_volume_semen = $stok_volume_semen_lalu + $pembelian_volume_semen;
 			$total_stok_nilai_semen = $stok_nilai_semen_lalu + $pembelian_nilai_semen;
 
-			$stock_opname_semen_now = $this->db->select('pp.vol_nilai_semen as volume, pp.nilai_semen as nilai, pp.vol_pemakaian_semen as volume_pemakaian, pp.vol_pemakaian_semen2 as volume_pemakaian2, pp.nilai_pemakaian_semen as nilai_pemakaian, pp.nilai_pemakaian_semen2 as nilai_pemakaian2')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date <= '$date2')")
-			->order_by('pp.date','desc')->limit(1)
+			$stock_opname_semen_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 1")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
 			->get()->row_array();
+
 			$volume_stock_opname_semen_now = $stock_opname_semen_now['volume'];
 			$nilai_stock_opname_semen_now = $stock_opname_semen_now['nilai'];
-			$vol_pemakaian_semen_now = $stock_opname_semen_now['volume_pemakaian'];
-			$nilai_pemakaian_semen_now = $stock_opname_semen_now['nilai_pemakaian'];
-			$vol_pemakaian_semen_now2 = $stock_opname_semen_now['volume_pemakaian2'];
-			$nilai_pemakaian_semen_now2 = $stock_opname_semen_now['nilai_pemakaian2'];
+
+			$vol_pemakaian_semen_now = ($stok_volume_semen_lalu + $pembelian_volume_semen) - $volume_stock_opname_semen_now;
+			$nilai_pemakaian_semen_now = $stock_opname_semen_now['nilai'];
 
 			$pemakaian_volume_semen = $vol_pemakaian_semen_now;
-			$pemakaian_harsat_semen = $nilai_pemakaian_semen_now / $vol_pemakaian_semen_now;
-			$pemakaian_nilai_semen = $nilai_pemakaian_semen_now;
-
-			$pemakaian_volume_semen2 = $vol_pemakaian_semen_now2;
-			$pemakaian_harsat_semen2 = $nilai_pemakaian_semen_now2 / $vol_pemakaian_semen_now2;
-			$pemakaian_nilai_semen2 = $nilai_pemakaian_semen_now2;
-
-			$total_pemakaian_volume_semen = $pemakaian_volume_semen + $pemakaian_volume_semen2;
-			$total_pemakaian_nilai_semen = $pemakaian_nilai_semen + $pemakaian_nilai_semen2;
-
-			$stok_akhir_volume_semen = $volume_stock_opname_semen_now;
-			$stok_akhir_nilai_semen = $nilai_stock_opname_semen_now;
+			$pemakaian_nilai_semen = (($total_stok_nilai_semen - $nilai_stock_opname_semen_now) * $stock_opname_semen_now['reset']) + ($stock_opname_semen_now['pemakaian_custom'] * $stock_opname_semen_now['reset_pemakaian']);
+			$pemakaian_harsat_semen = $pemakaian_nilai_semen / $pemakaian_volume_semen;
 			?>
 
 			<?php
@@ -3858,30 +3845,27 @@ class Reports extends CI_Controller {
 			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
 			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 
-			$stock_opname_pasir_ago = $this->db->select('pp.vol_nilai_pasir as volume')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date = '$tanggal_opening_balance')")
-			->order_by('pp.date','desc')->limit(1)
+			$stock_opname_pasir_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 2")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
 			->get()->row_array();
-			
-			$harga_pasir = $this->db->select('pp.nilai_pasir as nilai_pasir')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date between '$date3_ago' and '$date2_ago')")
-			->order_by('pp.date','desc')->limit(1)
-			->get()->row_array();
+
+			$stok_volume_pasir_lalu = $stock_opname_pasir_ago['volume'];
+			$stok_nilai_pasir_lalu = $stock_opname_pasir_ago['nilai'];
+			$stok_harsat_pasir_lalu = (round($stok_volume_pasir_lalu,2)!=0)?$stok_nilai_pasir_lalu / round($stok_volume_pasir_lalu,2) * 1:0;
 
 			$pembelian_pasir = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
+			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 2")
+			->where("p.kategori_bahan = 2")
 			->group_by('prm.material_id')
 			->get()->row_array();
-
-			$stok_volume_pasir_lalu = $stock_opname_pasir_ago['volume'];
-			$stok_nilai_pasir_lalu = $harga_pasir['nilai_pasir'];
-			$stok_harsat_pasir_lalu = (round($stok_volume_pasir_lalu,2)!=0)?$stok_nilai_pasir_lalu / round($stok_volume_pasir_lalu,2) * 1:0;
 		
 			$pembelian_volume_pasir = $pembelian_pasir['volume'];
 			$pembelian_nilai_pasir = $pembelian_pasir['nilai'];
@@ -3890,31 +3874,23 @@ class Reports extends CI_Controller {
 			$total_stok_volume_pasir = $stok_volume_pasir_lalu + $pembelian_volume_pasir;
 			$total_stok_nilai_pasir = $stok_nilai_pasir_lalu + $pembelian_nilai_pasir;
 
-			$stock_opname_pasir_now = $this->db->select('pp.vol_nilai_pasir as volume, pp.nilai_pasir as nilai, pp.vol_pemakaian_pasir as volume_pemakaian, pp.vol_pemakaian_pasir2 as volume_pemakaian2, pp.nilai_pemakaian_pasir as nilai_pemakaian, pp.nilai_pemakaian_pasir2 as nilai_pemakaian2')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date <= '$date2')")
-			->order_by('pp.date','desc')->limit(1)
+			$stock_opname_pasir_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 2")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
 			->get()->row_array();
+
 			$volume_stock_opname_pasir_now = $stock_opname_pasir_now['volume'];
 			$nilai_stock_opname_pasir_now = $stock_opname_pasir_now['nilai'];
-			$vol_pemakaian_pasir_now = $stock_opname_pasir_now['volume_pemakaian'];
-			$nilai_pemakaian_pasir_now = $stock_opname_pasir_now['nilai_pemakaian'];
-			$vol_pemakaian_pasir_now2 = $stock_opname_pasir_now['volume_pemakaian2'];
-			$nilai_pemakaian_pasir_now2 = $stock_opname_pasir_now['nilai_pemakaian2'];
+
+			$vol_pemakaian_pasir_now = ($stok_volume_pasir_lalu + $pembelian_volume_pasir) - $volume_stock_opname_pasir_now;
+			$nilai_pemakaian_pasir_now = $stock_opname_pasir_now['nilai'];
 
 			$pemakaian_volume_pasir = $vol_pemakaian_pasir_now;
-			$pemakaian_harsat_pasir = $nilai_pemakaian_pasir_now / $vol_pemakaian_pasir_now;
-			$pemakaian_nilai_pasir = $nilai_pemakaian_pasir_now;
-
-			$pemakaian_volume_pasir2 = $vol_pemakaian_pasir_now2;
-			$pemakaian_harsat_pasir2 = $nilai_pemakaian_pasir_now2 / $vol_pemakaian_pasir_now2;
-			$pemakaian_nilai_pasir2 = $nilai_pemakaian_pasir_now2;
-
-			$total_pemakaian_volume_pasir = $pemakaian_volume_pasir + $pemakaian_volume_pasir2;
-			$total_pemakaian_nilai_pasir = $pemakaian_nilai_pasir + $pemakaian_nilai_pasir2;
-
-			$stok_akhir_volume_pasir = $volume_stock_opname_pasir_now;
-			$stok_akhir_nilai_pasir = $nilai_stock_opname_pasir_now;
+			$pemakaian_nilai_pasir = (($total_stok_nilai_pasir - $nilai_stock_opname_pasir_now) * $stock_opname_pasir_now['reset']) + ($stock_opname_pasir_now['pemakaian_custom'] * $stock_opname_pasir_now['reset_pemakaian']);
+			$pemakaian_harsat_pasir = $pemakaian_nilai_pasir / $pemakaian_volume_pasir;
 			?>
 
 			<?php
@@ -3923,30 +3899,27 @@ class Reports extends CI_Controller {
 			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
 			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 
-			$stock_opname_1020_ago = $this->db->select('pp.vol_nilai_1020 as volume')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date = '$tanggal_opening_balance')")
-			->order_by('pp.date','desc')->limit(1)
+			$stock_opname_1020_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 3")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
 			->get()->row_array();
-			
-			$harga_1020 = $this->db->select('pp.nilai_1020 as nilai_1020')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date between '$date3_ago' and '$date2_ago')")
-			->order_by('pp.date','desc')->limit(1)
-			->get()->row_array();
+
+			$stok_volume_1020_lalu = $stock_opname_1020_ago['volume'];
+			$stok_nilai_1020_lalu = $stock_opname_1020_ago['nilai'];
+			$stok_harsat_1020_lalu = (round($stok_volume_1020_lalu,2)!=0)?$stok_nilai_1020_lalu / round($stok_volume_1020_lalu,2) * 1:0;
 
 			$pembelian_1020 = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
+			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 3")
+			->where("p.kategori_bahan = 3")
 			->group_by('prm.material_id')
 			->get()->row_array();
-
-			$stok_volume_1020_lalu = $stock_opname_1020_ago['volume'];
-			$stok_nilai_1020_lalu = $harga_1020['nilai_1020'];
-			$stok_harsat_1020_lalu = (round($stok_volume_1020_lalu,2)!=0)?$stok_nilai_1020_lalu / round($stok_volume_1020_lalu,2) * 1:0;
 		
 			$pembelian_volume_1020 = $pembelian_1020['volume'];
 			$pembelian_nilai_1020 = $pembelian_1020['nilai'];
@@ -3955,31 +3928,23 @@ class Reports extends CI_Controller {
 			$total_stok_volume_1020 = $stok_volume_1020_lalu + $pembelian_volume_1020;
 			$total_stok_nilai_1020 = $stok_nilai_1020_lalu + $pembelian_nilai_1020;
 
-			$stock_opname_1020_now = $this->db->select('pp.vol_nilai_1020 as volume, pp.nilai_1020 as nilai, pp.vol_pemakaian_1020 as volume_pemakaian, pp.vol_pemakaian_10202 as volume_pemakaian2, pp.nilai_pemakaian_1020 as nilai_pemakaian, pp.nilai_pemakaian_10202 as nilai_pemakaian2')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date <= '$date2')")
-			->order_by('pp.date','desc')->limit(1)
+			$stock_opname_1020_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 3")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
 			->get()->row_array();
+
 			$volume_stock_opname_1020_now = $stock_opname_1020_now['volume'];
 			$nilai_stock_opname_1020_now = $stock_opname_1020_now['nilai'];
-			$vol_pemakaian_1020_now = $stock_opname_1020_now['volume_pemakaian'];
-			$nilai_pemakaian_1020_now = $stock_opname_1020_now['nilai_pemakaian'];
-			$vol_pemakaian_1020_now2 = $stock_opname_1020_now['volume_pemakaian2'];
-			$nilai_pemakaian_1020_now2 = $stock_opname_1020_now['nilai_pemakaian2'];
+
+			$vol_pemakaian_1020_now = ($stok_volume_1020_lalu + $pembelian_volume_1020) - $volume_stock_opname_1020_now;
+			$nilai_pemakaian_1020_now = $stock_opname_1020_now['nilai'];
 
 			$pemakaian_volume_1020 = $vol_pemakaian_1020_now;
-			$pemakaian_harsat_1020 = $nilai_pemakaian_1020_now / $vol_pemakaian_1020_now;
-			$pemakaian_nilai_1020 = $nilai_pemakaian_1020_now;
-
-			$pemakaian_volume_10202 = $vol_pemakaian_1020_now2;
-			$pemakaian_harsat_10202 = $nilai_pemakaian_1020_now2 / $vol_pemakaian_1020_now2;
-			$pemakaian_nilai_10202 = $nilai_pemakaian_1020_now2;
-
-			$total_pemakaian_volume_1020 = $pemakaian_volume_1020 + $pemakaian_volume_10202;
-			$total_pemakaian_nilai_1020 = $pemakaian_nilai_1020 + $pemakaian_nilai_10202;
-
-			$stok_akhir_volume_1020 = $volume_stock_opname_1020_now;
-			$stok_akhir_nilai_1020 = $nilai_stock_opname_1020_now;
+			$pemakaian_nilai_1020 = (($total_stok_nilai_1020 - $nilai_stock_opname_1020_now) * $stock_opname_1020_now['reset']) + ($stock_opname_1020_now['pemakaian_custom'] * $stock_opname_1020_now['reset_pemakaian']);
+			$pemakaian_harsat_1020 = $pemakaian_nilai_1020 / $pemakaian_volume_1020;
 			?>
 
 			<?php
@@ -3988,30 +3953,27 @@ class Reports extends CI_Controller {
 			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
 			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 
-			$stock_opname_2030_ago = $this->db->select('pp.vol_nilai_2030 as volume')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date = '$tanggal_opening_balance')")
-			->order_by('pp.date','desc')->limit(1)
+			$stock_opname_2030_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 4")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
 			->get()->row_array();
-			
-			$harga_2030 = $this->db->select('pp.nilai_2030 as nilai_2030')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date between '$date3_ago' and '$date2_ago')")
-			->order_by('pp.date','desc')->limit(1)
-			->get()->row_array();
+
+			$stok_volume_2030_lalu = $stock_opname_2030_ago['volume'];
+			$stok_nilai_2030_lalu = $stock_opname_2030_ago['nilai'];
+			$stok_harsat_2030_lalu = (round($stok_volume_2030_lalu,2)!=0)?$stok_nilai_2030_lalu / round($stok_volume_2030_lalu,2) * 1:0;
 
 			$pembelian_2030 = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
+			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("prm.material_id = 4")
+			->where("p.kategori_bahan = 4")
 			->group_by('prm.material_id')
 			->get()->row_array();
-
-			$stok_volume_2030_lalu = $stock_opname_2030_ago['volume'];
-			$stok_nilai_2030_lalu = $harga_2030['nilai_2030'];
-			$stok_harsat_2030_lalu = (round($stok_volume_2030_lalu,2)!=0)?$stok_nilai_2030_lalu / round($stok_volume_2030_lalu,2) * 1:0;
 		
 			$pembelian_volume_2030 = $pembelian_2030['volume'];
 			$pembelian_nilai_2030 = $pembelian_2030['nilai'];
@@ -4020,48 +3982,41 @@ class Reports extends CI_Controller {
 			$total_stok_volume_2030 = $stok_volume_2030_lalu + $pembelian_volume_2030;
 			$total_stok_nilai_2030 = $stok_nilai_2030_lalu + $pembelian_nilai_2030;
 
-			$stock_opname_2030_now = $this->db->select('pp.vol_nilai_2030 as volume, pp.nilai_2030 as nilai, pp.vol_pemakaian_2030 as volume_pemakaian, pp.vol_pemakaian_20302 as volume_pemakaian2, pp.nilai_pemakaian_2030 as nilai_pemakaian, pp.nilai_pemakaian_20302 as nilai_pemakaian2')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date <= '$date2')")
-			->order_by('pp.date','desc')->limit(1)
+			$stock_opname_2030_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 4")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
 			->get()->row_array();
+
 			$volume_stock_opname_2030_now = $stock_opname_2030_now['volume'];
 			$nilai_stock_opname_2030_now = $stock_opname_2030_now['nilai'];
-			$vol_pemakaian_2030_now = $stock_opname_2030_now['volume_pemakaian'];
-			$nilai_pemakaian_2030_now = $stock_opname_2030_now['nilai_pemakaian'];
-			$vol_pemakaian_2030_now2 = $stock_opname_2030_now['volume_pemakaian2'];
-			$nilai_pemakaian_2030_now2 = $stock_opname_2030_now['nilai_pemakaian2'];
+
+			$vol_pemakaian_2030_now = ($stok_volume_2030_lalu + $pembelian_volume_2030) - $volume_stock_opname_2030_now;
+			$nilai_pemakaian_2030_now = $stock_opname_2030_now['nilai'];
 
 			$pemakaian_volume_2030 = $vol_pemakaian_2030_now;
-			$pemakaian_harsat_2030 = $nilai_pemakaian_2030_now / $vol_pemakaian_2030_now;
-			$pemakaian_nilai_2030 = $nilai_pemakaian_2030_now;
+			$pemakaian_nilai_2030 = (($total_stok_nilai_2030 - $nilai_stock_opname_2030_now) * $stock_opname_2030_now['reset']) + ($stock_opname_2030_now['pemakaian_custom'] * $stock_opname_2030_now['reset_pemakaian']);
+			$pemakaian_harsat_2030 = $pemakaian_nilai_2030 / $pemakaian_volume_2030;
 
-			$pemakaian_volume_20302 = $vol_pemakaian_2030_now2;
-			$pemakaian_harsat_20302 = $nilai_pemakaian_2030_now2 / $vol_pemakaian_2030_now2;
-			$pemakaian_nilai_20302 = $nilai_pemakaian_2030_now2;
-
-			$total_pemakaian_volume_2030 = $pemakaian_volume_2030 + $pemakaian_volume_20302;
-			$total_pemakaian_nilai_2030 = $pemakaian_nilai_2030 + $pemakaian_nilai_20302;
-
-			$stok_akhir_volume_2030 = $volume_stock_opname_2030_now;
-			$stok_akhir_nilai_2030 = $nilai_stock_opname_2030_now;
+			//TOTAL
+			$total_volume_realisasi = $pemakaian_volume_semen + $pemakaian_volume_pasir + $pemakaian_volume_1020 + $pemakaian_volume_2030;
+			$total_nilai_realisasi = $pemakaian_nilai_semen + $pemakaian_nilai_pasir + $pemakaian_nilai_1020 + $pemakaian_nilai_2030;
 			?>
 
 			<?php
-			//TOTAL
-			$total_volume_realisasi = $total_volume_pemakaian_semen + $total_volume_pemakaian_pasir + $total_volume_pemakaian_batu1020 + $total_volume_pemakaian_batu2030;
-			$total_nilai_realisasi = $total_pemakaian_nilai_semen + $total_pemakaian_nilai_pasir + $total_pemakaian_nilai_1020 + $total_pemakaian_nilai_2030;
+			$evaluasi_volume_a = round($volume_a - $pemakaian_volume_semen,2);
+			$evaluasi_volume_b = round($volume_b - $pemakaian_volume_pasir,2);
+			$evaluasi_volume_c = round($volume_c - $pemakaian_volume_1020,2);
+			$evaluasi_volume_d = round($volume_d - $pemakaian_volume_2030,2);
 
-			$evaluasi_volume_a = round($volume_a - $total_pemakaian_volume_semen,2);
-			$evaluasi_volume_b = round($volume_b - $total_pemakaian_volume_pasir,2);
-			$evaluasi_volume_c = round($volume_c - $total_pemakaian_volume_1020,2);
-			$evaluasi_volume_d = round($volume_d - $total_pemakaian_volume_2030,2);
+			$evaluasi_nilai_a = round($nilai_a - $pemakaian_nilai_semen,0);
+			$evaluasi_nilai_b = round($nilai_b - $pemakaian_nilai_pasir,0);
+			$evaluasi_nilai_c = round($nilai_c - $pemakaian_nilai_1020,0);
+			$evaluasi_nilai_d = round($nilai_d - $pemakaian_nilai_2030,0);
 
-			$evaluasi_nilai_a = round($nilai_a - $total_pemakaian_nilai_semen,0);
-			$evaluasi_nilai_b = round($nilai_b - $total_pemakaian_nilai_pasir,0);
-			$evaluasi_nilai_c = round($nilai_c - $total_pemakaian_nilai_1020,0);
-			$evaluasi_nilai_d = round($nilai_d - $total_pemakaian_nilai_2030,0);
-
+			$total_volume_evaluasi = round($total_volume_komposisi - $total_volume_realisasi,2);
 			$total_nilai_evaluasi = round($evaluasi_nilai_a + $evaluasi_nilai_b + $evaluasi_nilai_c + $evaluasi_nilai_d,0);
 	        ?>
 			
@@ -4071,7 +4026,7 @@ class Reports extends CI_Controller {
 				<th class="text-center" rowspan="2" style="vertical-align:middle">SATUAN</th>
 				<th class="text-center" colspan="3">KOMPOSISI</th>
 				<th class="text-center" colspan="3">REALISASI</th>
-				<th class="text-center" colspan="2">EVALUASI</th>
+				<th class="text-center" colspan="2">DEVIASI</th>
 	        </tr>
 			<tr class="table-active4">
 				<th class="text-center">VOLUME</th>
@@ -4102,11 +4057,11 @@ class Reports extends CI_Controller {
 				<th class="text-right"><?php echo number_format($volume_a,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($price_a,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($nilai_a,0,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_volume_semen,2,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_nilai_semen / $total_pemakaian_volume_semen,0,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_nilai_semen,0,',','.');?></th>
-				<th class="text-right" style="<?php echo $styleColorA ?>"><?php echo number_format($evaluasi_volume_a,2,',','.');?></th>
-				<th class="text-right" style="<?php echo $styleColorAA ?>"><?php echo number_format($evaluasi_nilai_a,0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_volume_semen,2,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_nilai_semen / $pemakaian_volume_semen,0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_nilai_semen,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColorA ?>"><?php echo $evaluasi_volume_a < 0 ? "(".number_format(-$evaluasi_volume_a,2,',','.').")" : number_format($evaluasi_volume_a,2,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColorAA ?>"><?php echo $evaluasi_nilai_a < 0 ? "(".number_format(-$evaluasi_nilai_a,0,',','.').")" : number_format($evaluasi_nilai_a,0,',','.');?></th>
 	        </tr>
 			<tr class="table-active3">
 				<th class="text-center" style="vertical-align:middle">2.</th>			
@@ -4115,11 +4070,11 @@ class Reports extends CI_Controller {
 				<th class="text-right"><?php echo number_format($volume_b,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($price_b,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($nilai_b,0,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_volume_pasir,2,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_nilai_pasir / $total_pemakaian_volume_pasir,0,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_nilai_pasir,0,',','.');?></th>
-				<th class="text-right" style="<?php echo $styleColorB ?>"><?php echo number_format($evaluasi_volume_b,2,',','.');?></th>
-				<th class="text-right" style="<?php echo $styleColorBB ?>"><?php echo number_format($evaluasi_nilai_b,0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_volume_pasir,2,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_nilai_pasir / $pemakaian_volume_pasir,0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_nilai_pasir,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColorB ?>"><?php echo $evaluasi_volume_b < 0 ? "(".number_format(-$evaluasi_volume_b,2,',','.').")" : number_format($evaluasi_volume_b,2,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColorBB ?>"><?php echo $evaluasi_nilai_b < 0 ? "(".number_format(-$evaluasi_nilai_b,0,',','.').")" : number_format($evaluasi_nilai_b,0,',','.');?></th>
 	        </tr>
 			<tr class="table-active3">
 				<th class="text-center" style="vertical-align:middle">3.</th>			
@@ -4128,11 +4083,11 @@ class Reports extends CI_Controller {
 				<th class="text-right"><?php echo number_format($volume_c,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($price_c,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($nilai_c,0,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_volume_1020,2,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_nilai_1020 /$total_pemakaian_volume_1020,0,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_nilai_1020,0,',','.');?></th>
-				<th class="text-right" style="<?php echo $styleColorC ?>"><?php echo number_format($evaluasi_volume_c,2,',','.');?></th>
-				<th class="text-right" style="<?php echo $styleColorCC ?>"><?php echo number_format($evaluasi_nilai_c,0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_volume_1020,2,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_nilai_1020 /$pemakaian_volume_1020,0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_nilai_1020,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColorC ?>"><?php echo $evaluasi_volume_c < 0 ? "(".number_format(-$evaluasi_volume_c,2,',','.').")" : number_format($evaluasi_volume_c,2,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColorCC ?>"><?php echo $evaluasi_nilai_c < 0 ? "(".number_format(-$evaluasi_nilai_c,0,',','.').")" : number_format($evaluasi_nilai_c,0,',','.');?></th>
 	        </tr>
 			<tr class="table-active3">
 				<th class="text-center" style="vertical-align:middle">4.</th>			
@@ -4141,11 +4096,11 @@ class Reports extends CI_Controller {
 				<th class="text-right"><?php echo number_format($volume_d,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($price_d,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($nilai_d,0,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_volume_2030,2,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_nilai_2030 / $total_pemakaian_volume_2030,0,',','.');?></th>
-				<th class="text-right"><?php echo number_format($total_pemakaian_nilai_2030,0,',','.');?></th>
-				<th class="text-right" style="<?php echo $styleColorD ?>"><?php echo number_format($evaluasi_volume_d,2,',','.');?></th>
-				<th class="text-right" style="<?php echo $styleColorDD ?>"><?php echo number_format($evaluasi_nilai_d,0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_volume_2030,2,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_nilai_2030 / $pemakaian_volume_2030,0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($pemakaian_nilai_2030,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColorD ?>"><?php echo $evaluasi_volume_d < 0 ? "(".number_format(-$evaluasi_volume_d,2,',','.').")" : number_format($evaluasi_volume_d,2,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColorDD ?>"><?php echo $evaluasi_nilai_d < 0 ? "(".number_format(-$evaluasi_nilai_d,0,',','.').")" : number_format($evaluasi_nilai_d,0,',','.');?></th>
 	        </tr>
 			<tr class="table-active5">		
 				<th class="text-right" colspan="3">TOTAL</th>
@@ -4156,7 +4111,7 @@ class Reports extends CI_Controller {
 				<th class="text-right"></th>
 				<th class="text-right"><?php echo number_format($total_nilai_realisasi,0,',','.');?></th>
 				<th class="text-right"></th>
-				<th class="text-right" style="<?php echo $styleColorEE ?>"><?php echo number_format($total_nilai_evaluasi,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColorEE ?>"><?php echo $total_nilai_evaluasi < 0 ? "(".number_format(-$total_nilai_evaluasi,0,',','.').")" : number_format($total_nilai_evaluasi,0,',','.');?></th>
 	        </tr>
 	    </table>
 
@@ -4183,28 +4138,16 @@ class Reports extends CI_Controller {
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_semen,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Semen Bulan Ini (1)</th>
+				<th class="text-left" style="font-weight:bold; background-color:orange; color:black;">&nbsp;&nbsp;Stok Semen Akhir</th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($volume_stock_opname_semen_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"></th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($nilai_stock_opname_semen_now,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Semen Bulan Ini</th>
 				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_semen,2,',','');?> (Ton)</th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_semen,0,',','.');?></th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_semen,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Semen Bulan Ini (2)</th>
-				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_semen2,2,',','');?> (Ton)</th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_semen2,0,',','.');?></th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_semen2,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Total Pemakaian Semen Bulan Ini</th>
-				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($total_pemakaian_volume_semen,2,',','');?> (Ton)</th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"></th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($total_pemakaian_nilai_semen,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:orange; color:black;">&nbsp;&nbsp;Stok Semen Akhir</th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($stok_akhir_volume_semen,2,',','');?> (Ton)</th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"></th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($stok_akhir_nilai_semen,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 		</table>
 		<br />
@@ -4217,39 +4160,27 @@ class Reports extends CI_Controller {
 			</tr>
 			<tr>
 				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Pembelian Pasir Bulan Ini</th>
-				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_pasir,2,',','');?> (M3)</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_pasir,2,',','');?> (Ton)</th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_harga_pasir,0,',','.');?></th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_nilai_pasir,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
 				<th class="text-left" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Total Stok Pasir Bulan Ini</th>
-				<th class="text-right" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_volume_pasir,2,',','');?> (M3)</th>
+				<th class="text-right" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_volume_pasir,2,',','');?> (Ton)</th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"></th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_pasir,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Pasir Bulan Ini (1)</th>
-				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_pasir,2,',','');?> (M3)</th>
+				<th class="text-left" style="font-weight:bold; background-color:orange; color:black;">&nbsp;&nbsp;Stok Pasir Akhir</th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($volume_stock_opname_pasir_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"></th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($nilai_stock_opname_pasir_now,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Pasir Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_pasir,2,',','');?> (Ton)</th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_pasir,0,',','.');?></th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_pasir,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Pasir Bulan Ini (2)</th>
-				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_pasir2,2,',','');?> (M3)</th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_pasir2,0,',','.');?></th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_pasir2,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Total Pemakaian Pasir Bulan Ini</th>
-				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($total_pemakaian_volume_pasir,2,',','');?> (M3)</th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"></th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($total_pemakaian_nilai_pasir,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:orange; color:black;">&nbsp;&nbsp;Stok Pasir Akhir</th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($stok_akhir_volume_pasir,2,',','');?> (M3)</th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"></th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($stok_akhir_nilai_pasir,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 		</table>
 		<br />
@@ -4262,39 +4193,27 @@ class Reports extends CI_Controller {
 			</tr>
 			<tr>
 				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Pembelian 1020 Bulan Ini</th>
-				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_1020,2,',','');?> (M3)</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_1020,2,',','');?> (Ton)</th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_harga_1020,0,',','.');?></th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_nilai_1020,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
 				<th class="text-left" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Total Stok 1020 Bulan Ini</th>
-				<th class="text-right" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_volume_1020,2,',','');?> (M3)</th>
+				<th class="text-right" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_volume_1020,2,',','');?> (Ton)</th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"></th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_1020,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian 1020 Bulan Ini (1)</th>
-				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_1020,2,',','');?> (M3)</th>
+				<th class="text-left" style="font-weight:bold; background-color:orange; color:black;">&nbsp;&nbsp;Stok 1020 Akhir</th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($volume_stock_opname_1020_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"></th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($nilai_stock_opname_1020_now,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian 1020 Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_1020,2,',','');?> (Ton)</th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_1020,0,',','.');?></th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_1020,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian 1020 Bulan Ini (2)</th>
-				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_10202,2,',','');?> (M3)</th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_10202,0,',','.');?></th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_10202,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Total Pemakaian 1020 Bulan Ini</th>
-				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($total_pemakaian_volume_1020,2,',','');?> (M3)</th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"></th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($total_pemakaian_nilai_1020,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:orange; color:black;">&nbsp;&nbsp;Stok 1020 Akhir</th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($stok_akhir_volume_1020,2,',','');?> (M3)</th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"></th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($stok_akhir_nilai_1020,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 		</table>
 		<br />
@@ -4307,39 +4226,27 @@ class Reports extends CI_Controller {
 			</tr>
 			<tr>
 				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Pembelian 2030 Bulan Ini</th>
-				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_2030,2,',','');?> (M3)</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_2030,2,',','');?> (Ton)</th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_harga_2030,0,',','.');?></th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_nilai_2030,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
 				<th class="text-left" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Total Stok 2030 Bulan Ini</th>
-				<th class="text-right" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_volume_2030,2,',','');?> (M3)</th>
+				<th class="text-right" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_volume_2030,2,',','');?> (Ton)</th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"></th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_2030,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian 2030 Bulan Ini (1)</th>
-				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_2030,2,',','');?> (M3)</th>
+				<th class="text-left" style="font-weight:bold; background-color:orange; color:black;">&nbsp;&nbsp;Stok 2030 Akhir</th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($volume_stock_opname_2030_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"></th>
+				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($nilai_stock_opname_2030_now,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian 2030 Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_2030,2,',','');?> (Ton)</th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_2030,0,',','.');?></th>
 				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_2030,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian 2030 Bulan Ini (2)</th>
-				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_20302,2,',','');?> (M3)</th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_20302,0,',','.');?></th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_20302,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Total Pemakaian 2030 Bulan Ini</th>
-				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($total_pemakaian_volume_2030,2,',','');?> (M3)</th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"></th>
-				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($total_pemakaian_nilai_2030,0,',','.');?>&nbsp;&nbsp;</th>
-			</tr>
-			<tr>
-				<th class="text-left" style="font-weight:bold; background-color:orange; color:black;">&nbsp;&nbsp;Stok 2030 Akhir</th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($stok_akhir_volume_2030,2,',','');?> (M3)</th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"></th>
-				<th class="text-right" style="font-weight:bold; background-color:orange; color:black;"><?php echo number_format($stok_akhir_nilai_2030,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 		</table>
 		<?php
@@ -12597,5 +12504,444 @@ class Reports extends CI_Controller {
             redirect('admin');
         }
     }
+
+	public function laporan_evaluasi_biaya_produksi($arr_date)
+	{
+		$data = array();
+		
+		$arr_date = $this->input->post('filter_date');
+		$arr_filter_date = explode(' - ', $arr_date);
+		$date3 = '';
+		$date1 = '';
+		$date2 = '';
+
+		if(count($arr_filter_date) == 2){
+			$date3 	= date('2023-08-01',strtotime($date3));
+			$date1 	= date('Y-m-d',strtotime($arr_filter_date[0]));
+			$date2 	= date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d/m/Y',strtotime($arr_filter_date[0])).' - '.date('d/m/Y',strtotime($arr_filter_date[1]));
+			$filter_date_2 = date('Y-m-d',strtotime($date3)).' - '.date('Y-m-d',strtotime($arr_filter_date[1]));
+		}
+		
+		?>
+		
+		<table class="table table-bordered" width="100%">
+		 <style type="text/css">
+			body {
+				font-family: helvetica;
+				font-size: 11px;
+			}
+
+			table tr.table-active{
+				background: linear-gradient(90deg, #fdcd3b 20%, #fdcd3b 40%, #e69500 80%);
+				font-size: 11px;
+				font-weight: bold;
+			}
+				
+			table tr.table-active2{
+				background: linear-gradient(90deg, #333333 5%, #696969 50%, #333333 100%);
+				font-size: 11px;
+				font-weight: bold;
+				color: white;
+			}
+				
+			table tr.table-active3{
+				font-size: 11px;
+			}
+				
+			table tr.table-active4{
+				background: linear-gradient(90deg, #eeeeee 5%, #cccccc 50%, #cccccc 100%);
+				font-weight: bold;
+				font-size: 11px;
+				color: black;
+			}
+		 </style>
+			<!-- TOTAL PEMAKAIAN KOMPOSISI -->
+			<?php
+			$komposisi = $this->db->select('pp.date_production, (pp.display_volume) * pk.presentase_a as volume_a, (pp.display_volume) * pk.presentase_b as volume_b, (pp.display_volume) * pk.presentase_c as volume_c, (pp.display_volume) * pk.presentase_d as volume_d, (pp.display_volume * pk.presentase_a) * pk.price_a as nilai_a, (pp.display_volume * pk.presentase_b) * pk.price_b as nilai_b, (pp.display_volume * pk.presentase_c) * pk.price_c as nilai_c, (pp.display_volume * pk.presentase_d) * pk.price_d as nilai_d')
+			->from('pmm_productions pp')
+			->join('pmm_agregat pk', 'pp.komposisi_id = pk.id','left')
+			->where("pp.date_production between '$date1' and '$date2'")
+			->get()->result_array();
+
+			$total_volume_a = 0;
+			$total_volume_b = 0;
+			$total_volume_c = 0;
+			$total_volume_d = 0;
+
+			$total_nilai_a = 0;
+			$total_nilai_b = 0;
+			$total_nilai_c = 0;
+			$total_nilai_d = 0;
+
+			foreach ($komposisi as $x){
+				$total_volume_a += $x['volume_a'];
+				$total_volume_b += $x['volume_b'];
+				$total_volume_c += $x['volume_c'];
+				$total_volume_d += $x['volume_d'];
+				$total_nilai_a += $x['nilai_a'];
+				$total_nilai_b += $x['nilai_b'];
+				$total_nilai_c += $x['nilai_c'];
+				$total_nilai_d += $x['nilai_d'];
+				
+			}
+
+			$volume_a = $total_volume_a;
+			$volume_b = $total_volume_b;
+			$volume_c = $total_volume_c;
+			$volume_d = $total_volume_d;
+
+			$nilai_a = $total_nilai_a;
+			$nilai_b = $total_nilai_b;
+			$nilai_c = $total_nilai_c;
+			$nilai_d = $total_nilai_d;
+
+			$price_a = ($total_volume_a!=0)?$total_nilai_a / $total_volume_a * 1:0;
+			$price_b = ($total_volume_b!=0)?$total_nilai_b / $total_volume_b * 1:0;
+			$price_c = ($total_volume_c!=0)?$total_nilai_c / $total_volume_c * 1:0;
+			$price_d = ($total_volume_d!=0)?$total_nilai_d / $total_volume_d * 1:0;
+
+			$total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d;
+			$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d;
+			
+			?>
+			<!-- END TOTAL PEMAKAIAN KOMPOSISI -->
+
+			<!-- REALISASI -->
+			<?php
+			$date1_ago = date('2020-01-01');
+			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+
+			$stock_opname_semen_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 1")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$stok_volume_semen_lalu = $stock_opname_semen_ago['volume'];
+			$stok_nilai_semen_lalu = $stock_opname_semen_ago['nilai'];
+			$stok_harsat_semen_lalu = (round($stok_volume_semen_lalu,2)!=0)?$stok_nilai_semen_lalu / round($stok_volume_semen_lalu,2) * 1:0;
+
+			$pembelian_semen = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("p.kategori_bahan = 1")
+			->group_by('prm.material_id')
+			->get()->row_array();
+		
+			$pembelian_volume_semen = $pembelian_semen['volume'];
+			$pembelian_nilai_semen = $pembelian_semen['nilai'];
+			$pembelian_harga_semen = (round($pembelian_volume_semen,2)!=0)?$pembelian_nilai_semen / round($pembelian_volume_semen,2) * 1:0;
+
+			$total_stok_volume_semen = $stok_volume_semen_lalu + $pembelian_volume_semen;
+			$total_stok_nilai_semen = $stok_nilai_semen_lalu + $pembelian_nilai_semen;
+
+			$stock_opname_semen_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 1")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$volume_stock_opname_semen_now = $stock_opname_semen_now['volume'];
+			$nilai_stock_opname_semen_now = $stock_opname_semen_now['nilai'];
+
+			$vol_pemakaian_semen_now = ($stok_volume_semen_lalu + $pembelian_volume_semen) - $volume_stock_opname_semen_now;
+			$nilai_pemakaian_semen_now = $stock_opname_semen_now['nilai'];
+
+			$pemakaian_volume_semen = $vol_pemakaian_semen_now;
+			$pemakaian_nilai_semen = (($total_stok_nilai_semen - $nilai_stock_opname_semen_now) * $stock_opname_semen_now['reset']) + ($stock_opname_semen_now['pemakaian_custom'] * $stock_opname_semen_now['reset_pemakaian']);
+			$pemakaian_harsat_semen = $pemakaian_nilai_semen / $pemakaian_volume_semen;
+			?>
+
+			<?php
+			$date1_ago = date('2020-01-01');
+			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+
+			$stock_opname_pasir_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 2")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$stok_volume_pasir_lalu = $stock_opname_pasir_ago['volume'];
+			$stok_nilai_pasir_lalu = $stock_opname_pasir_ago['nilai'];
+			$stok_harsat_pasir_lalu = (round($stok_volume_pasir_lalu,2)!=0)?$stok_nilai_pasir_lalu / round($stok_volume_pasir_lalu,2) * 1:0;
+
+			$pembelian_pasir = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("p.kategori_bahan = 2")
+			->group_by('prm.material_id')
+			->get()->row_array();
+		
+			$pembelian_volume_pasir = $pembelian_pasir['volume'];
+			$pembelian_nilai_pasir = $pembelian_pasir['nilai'];
+			$pembelian_harga_pasir = (round($pembelian_volume_pasir,2)!=0)?$pembelian_nilai_pasir / round($pembelian_volume_pasir,2) * 1:0;
+
+			$total_stok_volume_pasir = $stok_volume_pasir_lalu + $pembelian_volume_pasir;
+			$total_stok_nilai_pasir = $stok_nilai_pasir_lalu + $pembelian_nilai_pasir;
+
+			$stock_opname_pasir_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 2")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$volume_stock_opname_pasir_now = $stock_opname_pasir_now['volume'];
+			$nilai_stock_opname_pasir_now = $stock_opname_pasir_now['nilai'];
+
+			$vol_pemakaian_pasir_now = ($stok_volume_pasir_lalu + $pembelian_volume_pasir) - $volume_stock_opname_pasir_now;
+			$nilai_pemakaian_pasir_now = $stock_opname_pasir_now['nilai'];
+
+			$pemakaian_volume_pasir = $vol_pemakaian_pasir_now;
+			$pemakaian_nilai_pasir = (($total_stok_nilai_pasir - $nilai_stock_opname_pasir_now) * $stock_opname_pasir_now['reset']) + ($stock_opname_pasir_now['pemakaian_custom'] * $stock_opname_pasir_now['reset_pemakaian']);
+			$pemakaian_harsat_pasir = $pemakaian_nilai_pasir / $pemakaian_volume_pasir;
+			?>
+
+			<?php
+			$date1_ago = date('2020-01-01');
+			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+
+			$stock_opname_1020_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 3")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$stok_volume_1020_lalu = $stock_opname_1020_ago['volume'];
+			$stok_nilai_1020_lalu = $stock_opname_1020_ago['nilai'];
+			$stok_harsat_1020_lalu = (round($stok_volume_1020_lalu,2)!=0)?$stok_nilai_1020_lalu / round($stok_volume_1020_lalu,2) * 1:0;
+
+			$pembelian_1020 = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("p.kategori_bahan = 3")
+			->group_by('prm.material_id')
+			->get()->row_array();
+		
+			$pembelian_volume_1020 = $pembelian_1020['volume'];
+			$pembelian_nilai_1020 = $pembelian_1020['nilai'];
+			$pembelian_harga_1020 = (round($pembelian_volume_1020,2)!=0)?$pembelian_nilai_1020 / round($pembelian_volume_1020,2) * 1:0;
+
+			$total_stok_volume_1020 = $stok_volume_1020_lalu + $pembelian_volume_1020;
+			$total_stok_nilai_1020 = $stok_nilai_1020_lalu + $pembelian_nilai_1020;
+
+			$stock_opname_1020_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 3")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$volume_stock_opname_1020_now = $stock_opname_1020_now['volume'];
+			$nilai_stock_opname_1020_now = $stock_opname_1020_now['nilai'];
+
+			$vol_pemakaian_1020_now = ($stok_volume_1020_lalu + $pembelian_volume_1020) - $volume_stock_opname_1020_now;
+			$nilai_pemakaian_1020_now = $stock_opname_1020_now['nilai'];
+
+			$pemakaian_volume_1020 = $vol_pemakaian_1020_now;
+			$pemakaian_nilai_1020 = (($total_stok_nilai_1020 - $nilai_stock_opname_1020_now) * $stock_opname_1020_now['reset']) + ($stock_opname_1020_now['pemakaian_custom'] * $stock_opname_1020_now['reset_pemakaian']);
+			$pemakaian_harsat_1020 = $pemakaian_nilai_1020 / $pemakaian_volume_1020;
+			?>
+
+			<?php
+			$date1_ago = date('2020-01-01');
+			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+
+			$stock_opname_2030_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 4")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$stok_volume_2030_lalu = $stock_opname_2030_ago['volume'];
+			$stok_nilai_2030_lalu = $stock_opname_2030_ago['nilai'];
+			$stok_harsat_2030_lalu = (round($stok_volume_2030_lalu,2)!=0)?$stok_nilai_2030_lalu / round($stok_volume_2030_lalu,2) * 1:0;
+
+			$pembelian_2030 = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("p.kategori_bahan = 4")
+			->group_by('prm.material_id')
+			->get()->row_array();
+		
+			$pembelian_volume_2030 = $pembelian_2030['volume'];
+			$pembelian_nilai_2030 = $pembelian_2030['nilai'];
+			$pembelian_harga_2030 = (round($pembelian_volume_2030,2)!=0)?$pembelian_nilai_2030 / round($pembelian_volume_2030,2) * 1:0;
+
+			$total_stok_volume_2030 = $stok_volume_2030_lalu + $pembelian_volume_2030;
+			$total_stok_nilai_2030 = $stok_nilai_2030_lalu + $pembelian_nilai_2030;
+
+			$stock_opname_2030_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 4")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$volume_stock_opname_2030_now = $stock_opname_2030_now['volume'];
+			$nilai_stock_opname_2030_now = $stock_opname_2030_now['nilai'];
+
+			$vol_pemakaian_2030_now = ($stok_volume_2030_lalu + $pembelian_volume_2030) - $volume_stock_opname_2030_now;
+			$nilai_pemakaian_2030_now = $stock_opname_2030_now['nilai'];
+
+			$pemakaian_volume_2030 = $vol_pemakaian_2030_now;
+			$pemakaian_nilai_2030 = (($total_stok_nilai_2030 - $nilai_stock_opname_2030_now) * $stock_opname_2030_now['reset']) + ($stock_opname_2030_now['pemakaian_custom'] * $stock_opname_2030_now['reset_pemakaian']);
+			$pemakaian_harsat_2030 = $pemakaian_nilai_2030 / $pemakaian_volume_2030;
+
+			//TOTAL
+			$total_volume_realisasi = $pemakaian_volume_semen + $pemakaian_volume_pasir + $pemakaian_volume_1020 + $pemakaian_volume_2030;
+			$total_nilai_realisasi = $pemakaian_nilai_semen + $pemakaian_nilai_pasir + $pemakaian_nilai_1020 + $pemakaian_nilai_2030;
+			?>
+
+			<?php
+			$evaluasi_volume_a = round($volume_a - $pemakaian_volume_semen,2);
+			$evaluasi_volume_b = round($volume_b - $pemakaian_volume_pasir,2);
+			$evaluasi_volume_c = round($volume_c - $pemakaian_volume_1020,2);
+			$evaluasi_volume_d = round($volume_d - $pemakaian_volume_2030,2);
+
+			$evaluasi_nilai_a = round($nilai_a - $pemakaian_nilai_semen,0);
+			$evaluasi_nilai_b = round($nilai_b - $pemakaian_nilai_pasir,0);
+			$evaluasi_nilai_c = round($nilai_c - $pemakaian_nilai_1020,0);
+			$evaluasi_nilai_d = round($nilai_d - $pemakaian_nilai_2030,0);
+
+			$total_volume_evaluasi = round($total_volume_komposisi - $total_volume_realisasi,2);
+			$total_nilai_evaluasi = round($evaluasi_nilai_a + $evaluasi_nilai_b + $evaluasi_nilai_c + $evaluasi_nilai_d,0);
+	        ?>
+			<tr class="table-active">
+	            <th class="text-center" rowspan="2" style="vertical-align:middle;">NO.</th>
+				<th class="text-center" rowspan="2" style="vertical-align:middle;">URAIAN</th>
+				<th class="text-center" colspan="3">KOMPOSISI</th>
+				<th class="text-center" colspan="3">REALISASI</th>
+				<th class="text-center" colspan="3">DEVIASI</th>
+	        </tr>
+			<tr class="table-active">
+	            <th class="text-center">VOL.</th>
+				<th class="text-center">HARSAT</th>
+				<th class="text-center">NILAI</th>
+				<th class="text-center">VOL.</th>
+				<th class="text-center">HARSAT</th>
+				<th class="text-center">NILAI</th>
+				<th class="text-center">VOL.</th>
+				<th class="text-center">NILAI</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-center">1</th>
+				<th class="text-left">BAHAN</th>
+				<th class="text-right"><?php echo number_format($total_volume_komposisi,2,',','.');?></th>
+				<th class="text-right"><?php echo number_format($total_nilai_komposisi / $total_volume_komposisi,0,',','.');?></th>
+				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_evaluasi_bahan?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_komposisi,0,',','.');?></a></th>
+				<th class="text-right"><?php echo number_format($total_volume_realisasi,2,',','.');?></th>
+				<th class="text-right"><?php echo number_format($total_nilai_realisasi / $total_volume_realisasi,0,',','.');?></th>
+				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_evaluasi_bahan?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_realisasi,0,',','.');?></a></th>
+				<?php
+				$styleColor = $total_volume_evaluasi < 0 ? 'color:red' : 'color:black';
+				?>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_volume_evaluasi < 0 ? "(".number_format(-$total_volume_evaluasi,2,',','.').")" : number_format($total_volume_evaluasi,2,',','.');?></th>
+				<?php
+				$styleColor = $total_nilai_evaluasi < 0 ? 'color:red' : 'color:black';
+				?>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_nilai_evaluasi < 0 ? "(".number_format(-$total_nilai_evaluasi,0,',','.').")" : number_format($total_nilai_evaluasi,0,',','.');?></th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-center">2</th>
+				<th class="text-left">ALAT</th>
+				<th class="text-right"><?php echo number_format($total_rekapitulasi_produksi_harian,2,',','.');?></th>
+				<?php
+				$harsat_rap_alat = (round($total_rekapitulasi_produksi_harian,2)!=0)?(($nilai_tangki_ton + $nilai_sc_ton + $nilai_gns_ton + $nilai_wl_ton + $nilai_timbangan_ton + $nilai_bbm_solar_ton) * round($total_rekapitulasi_produksi_harian,2)) / round($total_rekapitulasi_produksi_harian,2) * 1:0;
+				?>
+				<th class="text-right"><?php echo number_format($harsat_rap_alat ,0,',','.');?></th>
+				<th class="text-right"><?php echo number_format(($nilai_tangki_ton + $nilai_sc_ton + $nilai_gns_ton + $nilai_wl_ton + $nilai_timbangan_ton + $nilai_bbm_solar_ton) * round($total_rekapitulasi_produksi_harian,2),0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($total_rekapitulasi_produksi_harian,2,',','.');?></th>
+				<?php
+				$harsat_realisasi_alat = (round($total_rekapitulasi_produksi_harian,2)!=0)?($total_biaya_peralatan + $total_nilai_produksi_solar) / round($total_rekapitulasi_produksi_harian,2) * 1:0;
+				?>
+				<th class="text-right"><?php echo number_format($harsat_realisasi_alat,0,',','.');?></th>
+				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_alat?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_biaya_peralatan + $total_nilai_produksi_solar,0,',','.');?></a></th>
+				<th class="text-right"><?php echo number_format($total_rekapitulasi_produksi_harian,2,',','.');?></th>
+				<?php
+				$styleColor = $nilai_evaluasi_alat < 0 ? 'color:red' : 'color:black';
+				?>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $nilai_evaluasi_alat < 0 ? "(".number_format(-$nilai_evaluasi_alat,0,',','.').")" : number_format($nilai_evaluasi_alat,0,',','.');?></th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-center">3</th>
+				<th class="text-left">OVERHEAD</th>
+				<th class="text-right"><?php echo number_format($total_rekapitulasi_produksi_harian,2,',','.');?></th>
+				<?php
+				$harsat_rap_overhead = (round($total_rekapitulasi_produksi_harian,2)!=0)?($overhead_ton * round($total_rekapitulasi_produksi_harian,2)) / round($total_rekapitulasi_produksi_harian,2) * 1:0;
+				?>
+				<th class="text-right"><?php echo number_format($harsat_rap_overhead,0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($overhead_ton * round($total_rekapitulasi_produksi_harian,2),0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($total_rekapitulasi_produksi_harian,2,',','.');?></th>
+				<?php
+				$harsat_realisasi_overhead = (round($total_rekapitulasi_produksi_harian,2)!=0)?$total_operasional / round($total_rekapitulasi_produksi_harian,2) * 1:0;
+				?>
+				<th class="text-right"><?php echo number_format($harsat_realisasi_overhead,0,',','.');?></th>
+				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_overhead?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_operasional,0,',','.');?></a></th>
+				<th class="text-right"><?php echo number_format($total_rekapitulasi_produksi_harian,2,',','.');?></th>
+				<?php
+				$styleColor = $nilai_evaluasi_overhead < 0 ? 'color:red' : 'color:black';
+				?>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $nilai_evaluasi_overhead < 0 ? "(".number_format(-$nilai_evaluasi_overhead,0,',','.').")" : number_format($nilai_evaluasi_overhead,0,',','.');?></th>
+	        </tr>
+			<tr class="table-active4">
+				<th class="text-right" colspan="2">TOTAL</th>
+				<th class="text-right"></th>
+				<th class="text-right"></th>
+				<?php
+				$total_rap = ($nilai_boulder_ton * round($total_rekapitulasi_produksi_harian,2)) + (($nilai_tangki_ton + $nilai_sc_ton + $nilai_gns_ton + $nilai_wl_ton + $nilai_timbangan_ton + $nilai_bbm_solar_ton) * round($total_rekapitulasi_produksi_harian,2)) + ($overhead_ton * round($total_rekapitulasi_produksi_harian,2));
+				?>
+				<th class="text-right"><?php echo number_format($total_rap,0,',','.');?></th>
+				<th class="text-right"></th>
+				<th class="text-right"></th>
+				<?php
+				$total_realisasi = ($total_nilai_produksi_boulder) + ($total_biaya_peralatan + $total_nilai_produksi_solar) + ($total_operasional);
+				?>
+				<th class="text-right"><?php echo number_format($total_realisasi,0,',','.');?></th>
+				<th class="text-right"></th>
+				<?php
+				$total_evaluasi = ($total_rap) - ($total_realisasi);
+				$styleColor = $total_evaluasi < 0 ? 'color:red' : 'color:black';
+				?>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_evaluasi < 0 ? "(".number_format(-$total_evaluasi,0,',','.').")" : number_format($total_evaluasi,0,',','.');?></th>
+			</tr>
+	    </table>
+		<?php
+	}
 
 }

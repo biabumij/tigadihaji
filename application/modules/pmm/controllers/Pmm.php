@@ -1413,42 +1413,15 @@ class Pmm extends CI_Controller {
 
 		$id = $this->input->post('id');
 		$date = date('Y-m-d',strtotime($this->input->post('date')));
+		$material_id = $this->input->post('material_id');
 		$volume = $this->input->post('volume');
 		$measure = $this->input->post('measure');
 		$convert = $this->input->post('convert');
 		$display_volume = $this->input->post('display_volume');
 		$display_measure = $this->input->post('display_measure');
+		$price = $this->input->post('price');
 		$notes = $this->input->post('notes');
 		$status = $this->input->post('status');
-		$material_id = $this->input->post('material_id');
-		$get_m = $this->crud_global->GetField('produk',array('id'=>$material_id,'status'=>'PUBLISH'),'satuan');
-		$last_remaining = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('pmm_remaining_materials_cat',array('status'=>'PUBLISH','material_id'=>$material_id,'date <'=>$date))->row_array();
-
-		$mat_id = array();
-		$mats = $this->db->select('id')->get_where('pmm_penawaran_pembelian_detail',array('material_id'=>$material_id))->result_array();
-		if(!empty($mats)){
-			foreach ($mats as $mat) {
-				$mat_id[] = $mat['id'];
-			}
-		}
-
-		// Get Cost AVG
-		$price = 0;
-		
-		$query = $this->db->query("SELECT display_harga_satuan from pmm_receipt_material prm 
-		where material_id = $material_id
-		order by date_receipt desc 
-		limit 1;")->first_row("array");
-
-		$price = intval($query['display_harga_satuan']);
-        
-		// Get All Material
-		$this->db->select('SUM(pm.volume) as volume');	
-		if(!empty($last_remaining)){
-			$this->db->where('date_receipt >',$last_remaining['date']);	
-		}
-		$this->db->where('date_receipt <=',$date);
-		$all_mats = $this->db->get('pmm_receipt_material pm')->row_array();
 
 		$arr = array(
 			'material_id' => $material_id,
@@ -1459,10 +1432,10 @@ class Pmm extends CI_Controller {
 			'display_volume' => $display_volume,
 			'display_measure' => $display_measure,
 			'notes' => $notes,
-			//'price' => $price,
-			//'total' => $volume * $price,
-			'price' => 0,
-			'total' => 0,
+			'price' => $price,
+			'total' => $volume * $price,
+			'pemakaian_custom' => 0,
+			'reset' => 1,
 			'status' => 'PUBLISH'
 		);
 
@@ -1470,66 +1443,13 @@ class Pmm extends CI_Controller {
 			$arr['updated_by'] = $this->session->userdata('admin_id');
 			$arr['updated_on'] = date('Y-m-d H:i:s');
 			$this->db->update('pmm_remaining_materials_cat',$arr,array('id'=>$id));
-
-			$this->db->delete('pmm_remaining_materials',array('cat_id'=>$id));
-
-			if(!empty($get_mats)){
-				foreach ($get_mats as $mat_receipt) {
-
-					$percen = round(($mat_receipt['volume'] / $all_mats['volume']) * 100);
-					$vol_supp = ($percen * $volume ) / 100;
-					$total_supp = ($percen * ($volume * $price)) / 100;
-
-					$arr_mats = array(
-						'cat_id' => $id,
-						'date' => $date,
-						'measure' => $measure,
-						'material_id' => $mat_receipt['material_id'],
-						'supplier_id' => $mat_receipt['supplier_id'],
-						'penawaran_material_id' => $mat_receipt['penawaran_material_id'],
-						'notes' => $notes,
-						'price' => $mat_receipt['cost'],
-						'volume' => $vol_supp,
-						'display_measure' => $display_measure,
-						'total_price' => $total_supp,
-						'status' => 'PUBLISH'
-					);
-					$arr_mats['created_by'] = $this->session->userdata('admin_id');
-					$arr_mats['updated_by'] = $this->session->userdata('admin_id');
-					$this->db->insert('pmm_remaining_materials',$arr_mats);
-				}
-			}
-
 			$output['output'] = true;
 		}else{
 			$arr['created_by'] = $this->session->userdata('admin_id');
 			$arr['created_on'] = date('Y-m-d H:i:s');
 			$this->db->insert('pmm_remaining_materials_cat',$arr);
 			$id = $this->db->insert_id();
-			if(!empty($get_mats) && !empty($all_mats['volume'])){
-				foreach ($get_mats as $mat_receipt) {
-					$percen = round(($mat_receipt['volume'] / $all_mats['volume']) * 100);
-					$vol_supp = ($percen * $volume ) / 100;
-					$total_supp = ($percen * ($volume * $price)) / 100;
-					$arr_mats = array(
-						'cat_id' => $id,
-						'date' => $date,
-						'measure' => $get_m,
-						'material_id' => $mat_receipt['material_id'],
-						'supplier_id' => $mat_receipt['supplier_id'],
-						'penawaran_material_id' => $mat_receipt['penawaran_material_id'],
-						'price' => $mat_receipt['cost'],
-						'volume' => $vol_supp,
-						'display_measure' => $display_measure,
-						'total_price' => $total_supp,
-						'notes' => $notes,
-						'status' => 'PUBLISH'
-					);
-					$arr_mats['created_by'] = $this->session->userdata('admin_id');
-					$arr_mats['updated_by'] = $this->session->userdata('admin_id');
-					$this->db->insert('pmm_remaining_materials',$arr_mats);
-				}
-			}
+			
 
 			$output['output'] = true;
 		}

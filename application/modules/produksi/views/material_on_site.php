@@ -113,6 +113,10 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Harsat<span class="required" aria-required="true">*</span></label>
+                        <input type="text" id="price" name="price" class="form-control nilaiformat" autocomplete="off" required=""/>
+                    </div>
+                    <div class="form-group">
                         <label>Notes</label>
                         <textarea id="notes" name="notes" class="form-control" autocomplete="off" rows="5" data-required="false"></textarea>
                     </div>

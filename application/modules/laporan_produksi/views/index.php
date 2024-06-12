@@ -78,7 +78,17 @@
                                                 <div class="panel panel-default">
 													<?php
                                                     if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,6,7,8))){
-                                                    ?>                                          
+                                                    ?>  
+													<div class="col-sm-5">
+														<p><b><h5>Laporan Evaluasi Biaya Produksi</h5></b></p>
+                                                        <a href="#laporan_evaluasi_biaya_produksi" aria-controls="laporan_evaluasi_biaya_produksi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
+													</div>
+													<?php
+                                                    }
+                                                    ?>
+													<?php
+                                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,6,7,8))){
+                                                    ?>                                     
 													<div class="col-sm-5">
 														<p><h5><b>Evaluasi Bahan</b></h5></p>
                                                         <a href="#laporan_evaluasi" aria-controls="laporan_evaluasi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
@@ -122,6 +132,42 @@
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+
+									<!-- Laporan Evaluasi Biaya Produksi -->
+									<div role="tabpanel" class="tab-pane" id="laporan_evaluasi_biaya_produksi">
+                                        <div class="col-sm-15">
+										<div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><b>Laporan Evaluasi Biaya Produksi</b></h3>
+													<a href="laporan_ev._produksi">Kembali</a>
+                                                </div>
+												<div style="margin: 20px">
+													<div class="row">
+														<form action="<?php echo site_url('laporan/laporan_evaluasi_biaya_produksi_print');?>" target="_blank">
+															<div class="col-sm-3">
+																<input type="text" id="filter_date_evaluasi_biaya_produksi" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
+															</div>
+															<div class="col-sm-3">
+																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i>  Print</button>
+															</div>
+														</form>
+														
+													</div>
+													<br />
+													<div id="wait" style=" text-align: center; align-content: center; display: none;">	
+														<div>Mohon Tunggu</div>
+														<div class="fa-3x">
+														  <i class="fa fa-spinner fa-spin"></i>
+														</div>
+													</div>				
+													<div class="table-responsive" id="box-evaluasi">													
+													
+                    
+													</div>
+												</div>
+										    </div>
+										</div>
                                     </div>
 
 									<!-- Evaluasi Bahan -->
@@ -287,6 +333,50 @@
         <script src="<?php echo base_url(); ?>assets/back/theme/vendor/bootbox.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/back/theme/vendor/jquery.number.min.js"></script>
         <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
+
+		<!-- Script Laporan Evaluasi Biaya Produksi -->
+		<script type="text/javascript">
+			$('#filter_date_evaluasi_biaya_produksi').daterangepicker({
+				autoUpdateInput : false,
+				showDropdowns: true,
+				locale: {
+				format: 'DD-MM-YYYY'
+				},
+				minDate: new Date(2023, 07, 01),
+				ranges: {
+				'Today': [moment(), moment()],
+				'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+				'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+				'Last 30 Days': [moment().subtract(30, 'days'), moment()],
+				'This Month': [moment().startOf('month'), moment().endOf('month')],
+				'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+				}
+			});
+
+			$('#filter_date_evaluasi_biaya_produksi').on('apply.daterangepicker', function(ev, picker) {
+				$(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+				TableEvaluasiBiayaProduksi();
+			});
+
+			function TableEvaluasiBiayaProduksi()
+			{
+				$('#wait').fadeIn('fast');   
+				$.ajax({
+					type    : "POST",
+					url     : "<?php echo site_url('pmm/reports/laporan_evaluasi_biaya_produksi'); ?>/"+Math.random(),
+					dataType : 'html',
+					data: {
+						filter_date : $('#filter_date_evaluasi_biaya_produksi').val(),
+					},
+					success : function(result){
+						$('#box-evaluasi').html(result);
+						$('#wait').fadeOut('fast');
+					}
+				});
+			}
+
+			//TableEvaluasiBiayaProduksi();
+		</script>
 
 		<!-- Script Evaluasi Bahan -->
 		<script type="text/javascript">
