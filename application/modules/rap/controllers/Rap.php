@@ -365,14 +365,20 @@ class Rap extends Secure_Controller {
 		$vol_batching_plant =  str_replace('.', '', $this->input->post('vol_batching_plant'));
 		$vol_truck_mixer =  str_replace('.', '', $this->input->post('vol_truck_mixer'));
 		$vol_wheel_loader =  str_replace('.', '', $this->input->post('vol_wheel_loader'));
+		$vol_excavator =  str_replace('.', '', $this->input->post('vol_excavator'));
+		$vol_transfer_semen =  str_replace('.', '', $this->input->post('vol_transfer_semen'));
 		$vol_bbm_solar =  str_replace('.', '', $this->input->post('vol_bbm_solar'));
 		$harsat_batching_plant =  str_replace('.', '', $this->input->post('harsat_batching_plant'));
 		$harsat_truck_mixer =  str_replace('.', '', $this->input->post('harsat_truck_mixer'));
 		$harsat_wheel_loader =  str_replace('.', '', $this->input->post('harsat_wheel_loader'));
+		$harsat_excavator =  str_replace('.', '', $this->input->post('harsat_excavator'));
+		$harsat_transfer_semen =  str_replace('.', '', $this->input->post('harsat_transfer_semen'));
 		$harsat_bbm_solar =  str_replace('.', '', $this->input->post('harsat_bbm_solar'));
 		$batching_plant =  str_replace('.', '', $this->input->post('batching_plant'));
 		$truck_mixer =  str_replace('.', '', $this->input->post('truck_mixer'));
 		$wheel_loader =  str_replace('.', '', $this->input->post('wheel_loader'));
+		$excavator =  str_replace('.', '', $this->input->post('excavator'));
+		$transfer_semen =  str_replace('.', '', $this->input->post('transfer_semen'));
 		$bbm_solar =  str_replace('.', '', $this->input->post('bbm_solar'));
 
 		$this->db->trans_start(); # Starting Transaction
@@ -385,14 +391,20 @@ class Rap extends Secure_Controller {
 			'vol_batching_plant' => $vol_batching_plant,
 			'vol_truck_mixer' => $vol_truck_mixer,
 			'vol_wheel_loader' => $vol_wheel_loader,
+			'vol_excavator' => $vol_excavator,
+			'vol_transfer_semen' => $vol_transfer_semen,
 			'vol_bbm_solar' => $vol_bbm_solar,
 			'harsat_batching_plant' => $harsat_batching_plant,
 			'harsat_truck_mixer' => $harsat_truck_mixer,
 			'harsat_wheel_loader' => $harsat_wheel_loader,
+			'harsat_excavator' => $harsat_excavator,
+			'harsat_transfer_semen' => $harsat_transfer_semen,
 			'harsat_bbm_solar' => $harsat_bbm_solar,
 			'batching_plant' => $batching_plant,
 			'truck_mixer' => $truck_mixer,
 			'wheel_loader' => $wheel_loader,
+			'excavator' => $excavator,
+			'transfer_semen' => $transfer_semen,
 			'bbm_solar' => $bbm_solar,
 			
 			'status' => 'PUBLISH',

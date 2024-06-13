@@ -128,7 +128,6 @@
 
 			$total_penjualan_all = 0;
 			$total_penjualan_all = $total_penjualan;
-			//PENJUALAN
 
 			//PENJUALAN_2
 			$penjualan_2 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
@@ -151,120 +150,26 @@
 
 			$total_penjualan_all_2 = 0;
 			$total_penjualan_all_2 = $total_penjualan_2;
-			//PENJUALAN_2
 
-			//BAHAN		
-			$akumulasi = $this->db->select('pp.date, SUM(pp.nilai_pemakaian_semen) + SUM(pp.nilai_pemakaian_semen2) + SUM(pp.nilai_pemakaian_pasir) + SUM(pp.nilai_pemakaian_pasir2) + SUM(pp.nilai_pemakaian_1020) + SUM(pp.nilai_pemakaian_10202) + SUM(pp.nilai_pemakaian_2030) + SUM(pp.nilai_pemakaian_20302) as total_nilai_keluar')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date between '$date1' and '$date2')")
-			->get()->result_array();
-
-			$total_akumulasi = 0;
-
-			foreach ($akumulasi as $a){
-				$total_akumulasi += $a['total_nilai_keluar'];
-			}
-
-			$total_nilai = $total_akumulasi;
-			//END BAHAN
+			//BAHAN
+			$bahan = $this->pmm_model->getBahan($date1,$date2);
+			$total_nilai = $bahan;
 
 			//BAHAN_2
-			$akumulasi_2 = $this->db->select('pp.date, SUM(pp.nilai_pemakaian_semen) + SUM(pp.nilai_pemakaian_semen2) + SUM(pp.nilai_pemakaian_pasir) + SUM(pp.nilai_pemakaian_pasir2) + SUM(pp.nilai_pemakaian_1020) + SUM(pp.nilai_pemakaian_10202) + SUM(pp.nilai_pemakaian_2030) + SUM(pp.nilai_pemakaian_20302) as total_nilai_keluar')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date between '$date3' and '$date2')")
-			->get()->result_array();
-
-			$total_akumulasi_2 = 0;
-
-			foreach ($akumulasi_2 as $a){
-				$total_akumulasi_2 += $a['total_nilai_keluar'];
-			}
-
-			$total_nilai_2 = $total_akumulasi_2;
-			//END BAHAN_2
+			$bahan_2 = $this->db->select('date, SUM(nilai_semen + nilai_pasir + nilai_1020 + nilai_2030) as total')
+			->from('kunci_bahan_baku')
+			->where("(date between '$date3' and '$date2')")
+			->get()->row_array();
+			$total_nilai_2 = 0;
+			$total_nilai_2= $bahan_2['total'];
 
 			//ALAT
-			$nilai_alat = $this->db->select('SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("p.kategori_alat in ('1','2','3','4','5')")
-			->where("po.status in ('PUBLISH','CLOSED')")
-			->get()->row_array();
-
-			$pemakaian_bbm = $this->db->select('sum(pp.nilai_pemakaian_bbm) + sum(pp.nilai_pemakaian_bbm_2) as nilai')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date between '$date1' and '$date2')")
-			->order_by('pp.date','desc')->limit(1)
-			->get()->row_array();;
-			$total_akumulasi_bbm = $pemakaian_bbm['nilai'];
-
-			$total_nilai_bbm = $total_akumulasi_bbm;
-
-			$total_insentif_tm = 0;
-			$insentif_tm = $this->db->select('sum(pdb.debit) as total')
-			->from('pmm_jurnal_umum pb ')
-			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->where("pdb.akun = 124")
-			->where("status = 'PAID'")
-			->where("(tanggal_transaksi between '$date1' and '$date2')")
-			->get()->row_array();
-			$total_insentif_tm = $insentif_tm['total'];
-
-			$total_insentif_wl = 0;
-			$insentif_wl = $this->db->select('sum(pdb.debit) as total')
-			->from('pmm_jurnal_umum pb ')
-			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->where("pdb.akun = 125")
-			->where("status = 'PAID'")
-			->where("(tanggal_transaksi between '$date1' and '$date2')")
-			->get()->row_array();
-			$total_insentif_wl = $insentif_wl['total'];
-
-			$alat = $nilai_alat['nilai'] + $total_akumulasi_bbm + $total_insentif_tm + $total_insentif_wl;
-			//END ALAT
+			$alat = $this->pmm_model->getAlat($date1,$date2);
+			$alat = $alat;
 
 			//ALAT_2
-			$nilai_alat_2 = $this->db->select('SUM(prm.display_price) as nilai')
-			->from('pmm_receipt_material prm')
-			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-			->join('produk p', 'prm.material_id = p.id','left')
-			->where("prm.date_receipt between '$date3' and '$date2'")
-			->where("p.kategori_alat in ('1','2','3','4','5')")
-			->where("po.status in ('PUBLISH','CLOSED')")
-			->get()->row_array();
-
-			$pemakaian_bbm2 = $this->db->select('sum(pp.nilai_pemakaian_bbm) + sum(pp.nilai_pemakaian_bbm_2) as nilai')
-			->from('kunci_bahan_baku pp')
-			->where("(pp.date between '$date3' and '$date2')")
-			->order_by('pp.date','desc')->limit(1)
-			->get()->row_array();;
-			$total_akumulasi_bbm_2 = $pemakaian_bbm2['nilai'];
-			$total_nilai_bbm_2 = $total_akumulasi_bbm_2;
-
-			$total_insentif_tm_2 = 0;
-			$insentif_tm_2 = $this->db->select('sum(pdb.debit) as total')
-			->from('pmm_jurnal_umum pb ')
-			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->where("pdb.akun = 124")
-			->where("status = 'PAID'")
-			->where("(tanggal_transaksi between '$date3' and '$date2')")
-			->get()->row_array();
-			$total_insentif_tm_2 = $insentif_tm_2['total'];
-
-			$total_insentif_wl_2 = 0;
-			$insentif_wl_2 = $this->db->select('sum(pdb.debit) as total')
-			->from('pmm_jurnal_umum pb ')
-			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->where("pdb.akun = 125")
-			->where("status = 'PAID'")
-			->where("(tanggal_transaksi between '$date3' and '$date2')")
-			->get()->row_array();
-			$total_insentif_wl_2 = $insentif_wl_2['total'];
-
-			$alat_2 = $nilai_alat_2['nilai'] + $total_akumulasi_bbm_2 + $total_insentif_tm_2 + $total_insentif_wl_2;
-			//END_ALAT_2
+			$alat_2 = $this->pmm_model->getAkumulasiAlat($date1,$date2);
+			$alat_2 = $alat_2;
 
 			//OVERHEAD
 			$overhead_15 = $this->db->select('sum(pdb.jumlah) as total')

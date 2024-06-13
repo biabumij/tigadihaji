@@ -100,7 +100,7 @@
 		<table width="98%" cellpadding="5" border="1">
 		
 		<!-- TOTAL PEMAKAIAN KOMPOSISI -->
-		<?php
+			<?php
 			$komposisi = $this->db->select('pp.date_production, (pp.display_volume) * pk.presentase_a as volume_a, (pp.display_volume) * pk.presentase_b as volume_b, (pp.display_volume) * pk.presentase_c as volume_c, (pp.display_volume) * pk.presentase_d as volume_d, (pp.display_volume * pk.presentase_a) * pk.price_a as nilai_a, (pp.display_volume * pk.presentase_b) * pk.price_b as nilai_b, (pp.display_volume * pk.presentase_c) * pk.price_c as nilai_c, (pp.display_volume * pk.presentase_d) * pk.price_d as nilai_d')
 			->from('pmm_productions pp')
 			->join('pmm_agregat pk', 'pp.komposisi_id = pk.id','left')
@@ -173,7 +173,6 @@
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
-			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
 			->where("p.kategori_bahan = 1")
 			->group_by('prm.material_id')
@@ -227,7 +226,6 @@
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
-			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
 			->where("p.kategori_bahan = 2")
 			->group_by('prm.material_id')
@@ -281,7 +279,6 @@
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
-			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
 			->where("p.kategori_bahan = 3")
 			->group_by('prm.material_id')
@@ -335,7 +332,6 @@
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
-			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
 			->where("p.kategori_bahan = 4")
 			->group_by('prm.material_id')

@@ -87,30 +87,16 @@
                                                     }
                                                     ?>
 													<?php
-                                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,6,7,8))){
+                                                    if(in_array($this->session->userdata('admin_group_id'), array(1))){
                                                     ?>                                     
 													<div class="col-sm-5">
 														<p><h5><b>Evaluasi Bahan</b></h5></p>
                                                         <a href="#laporan_evaluasi" aria-controls="laporan_evaluasi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
                                                     </div>
-													<?php
-                                                    }
-                                                    ?>
-
-													<?php
-                                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,6,7,8))){
-                                                    ?>
 													<div class="col-sm-5">
 														<p><h5><b>Evaluasi Alat</b></h5></p>
                                                         <a href="#evaluasi_alat" aria-controls="evaluasi_alat" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
                                                     </div>
-													<?php
-                                                    }
-                                                    ?>
-
-													<?php
-                                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,6,7,8))){
-                                                    ?>
 													<div class="col-sm-5">
 														<p><h5><b>Evaluasi BUA</b></h5></p>
                                                         <a href="#evaluasi_bua" aria-controls="evaluasi_bua" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										

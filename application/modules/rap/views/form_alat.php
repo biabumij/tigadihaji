@@ -103,6 +103,34 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center">4.</td>
+                                                    <td>EXCAVATOR</td>
+													<td>
+                                                    <input type="text" id="vol_excavator" name="vol_excavator" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
+                                                    </td>
+                                                    <td class="text-center">M3</td>
+                                                    <td>
+                                                    <input type="text" name="harsat_excavator" id="harsat_excavator" class="form-control rupiahformat text-right" onchange="changeData(1)"  required="" autocomplete="off"/>
+                                                    </td>
+                                                    <td>
+                                                    <input type="text" name="excavator" id="excavator" class="form-control rupiahformat text-right" readonly="" value="" required="" autocomplete="off"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">5.</td>
+                                                    <td>TRANSFER SEMEN</td>
+													<td>
+                                                    <input type="text" id="vol_transfer_semen" name="vol_transfer_semen" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
+                                                    </td>
+                                                    <td class="text-center">M3</td>
+                                                    <td>
+                                                    <input type="text" name="harsat_transfer_semen" id="harsat_transfer_semen" class="form-control rupiahformat text-right" onchange="changeData(1)"  required="" autocomplete="off"/>
+                                                    </td>
+                                                    <td>
+                                                    <input type="text" name="transfer_semen" id="transfer_semen" class="form-control rupiahformat text-right" readonly="" value="" required="" autocomplete="off"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">6.</td>
                                                     <td>BBM SOLAR</td>
 													<td>
                                                     <input type="text" id="vol_bbm_solar" name="vol_bbm_solar" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
@@ -212,11 +240,15 @@
 			var vol_batching_plant = $('#vol_batching_plant').val();
             var vol_truck_mixer = $('#vol_truck_mixer').val();
             var vol_wheel_loader = $('#vol_wheel_loader').val();
+            var vol_excavator = $('#vol_excavator').val();
+            var vol_transfer_semen = $('#vol_transfer_semen').val();
             var vol_bbm_solar = $('#vol_bbm_solar').val();
 
 			var harsat_batching_plant = $('#harsat_batching_plant').val();
             var harsat_truck_mixer = $('#harsat_truck_mixer').val();
             var harsat_wheel_loader = $('#harsat_wheel_loader').val();
+            var harsat_excavator = $('#harsat_excavator').val();
+            var harsat_transfer_semen = $('#harsat_transfer_semen').val();
             var harsat_bbm_solar = $('#harsat_bbm_solar').val();
             				
 			batching_plant = ( vol_batching_plant * harsat_batching_plant );
@@ -225,6 +257,10 @@
             $('#truck_mixer').val(truck_mixer);
             wheel_loader = ( vol_wheel_loader * harsat_wheel_loader );
             $('#wheel_loader').val(wheel_loader);
+            excavator = ( vol_excavator * harsat_excavator );
+            $('#excavator').val(excavator);
+            transfer_semen = ( vol_transfer_semen * harsat_transfer_semen );
+            $('#transfer_semen').val(transfer_semen);
             bbm_solar = ( vol_bbm_solar * harsat_bbm_solar );
             $('#bbm_solar').val(bbm_solar);
             getTotal();
@@ -234,7 +270,7 @@
         {
             var sub_total = $('#sub-total-val').val();
 
-            sub_total = parseInt($('#batching_plant').val()) + parseInt($('#truck_mixer').val()) + parseInt($('#wheel_loader').val()) + parseInt($('#bbm_solar').val());
+            sub_total = parseInt($('#batching_plant').val()) + parseInt($('#truck_mixer').val()) + parseInt($('#wheel_loader').val()) + parseInt($('#excavator').val()) + parseInt($('#transfer_semen').val()) + parseInt($('#bbm_solar').val());
             
             $('#sub-total-val').val(sub_total);
             $('#sub-total').text($.number( sub_total, 0,',','.' ));

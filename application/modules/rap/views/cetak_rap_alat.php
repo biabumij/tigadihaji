@@ -83,7 +83,7 @@
 					$total = 0;
 					?>
 					<?php
-					$total = $rap_alat['batching_plant'] + $rap_alat['truck_mixer'] + $rap_alat['wheel_loader'] + $rap_alat['bbm_solar'];
+					$total = $rap_alat['batching_plant'] + $rap_alat['truck_mixer'] + $rap_alat['wheel_loader'] + $rap_alat['excavator'] + $rap_alat['transfer_semen'] + $rap_alat['bbm_solar'];
 				?>
                 <th width="5%" align="center">NO.</th>
                 <th width="20%" align="center">URAIAN</th>
@@ -118,6 +118,22 @@
 			</tr>
 			<tr class="table-baris1">
 				<td align="center">4.</td>
+				<td align="left">EXCAVATOR</td>
+				<td align="center"><?= number_format($rap_alat['vol_excavator'],0,',','.'); ?></td>
+				<td align="center">M3</td>
+				<td align="right"><?= number_format($rap_alat['harsat_excavator'],0,',','.'); ?></td>
+				<td align="right"><?= number_format($rap_alat['excavator'],0,',','.'); ?></td>
+			</tr>
+			<tr class="table-baris1">
+				<td align="center">5.</td>
+				<td align="left">TRANSFER SEMEN</td>
+				<td align="center"><?= number_format($rap_alat['vol_transfer_semen'],0,',','.'); ?></td>
+				<td align="center">M3</td>
+				<td align="right"><?= number_format($rap_alat['harsat_transfer_semen'],0,',','.'); ?></td>
+				<td align="right"><?= number_format($rap_alat['transfer_semen'],0,',','.'); ?></td>
+			</tr>
+			<tr class="table-baris1">
+				<td align="center">6.</td>
 				<td align="left">BBM SOLAR</td>
 				<td align="center"><?= number_format($rap_alat['vol_bbm_solar'],0,',','.'); ?></td>
 				<td align="center">Liter</td>

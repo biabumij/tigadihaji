@@ -102,7 +102,6 @@
 		
 		<table width="98%" cellpadding="5">
 		
-			<!-- TOTAL PEMAKAIAN KOMPOSISI -->
 			<?php
 			$komposisi = $this->db->select('pp.date_production, (pp.display_volume) * pk.presentase_a as volume_a, (pp.display_volume) * pk.presentase_b as volume_b, (pp.display_volume) * pk.presentase_c as volume_c, (pp.display_volume) * pk.presentase_d as volume_d, (pp.display_volume * pk.presentase_a) * pk.price_a as nilai_a, (pp.display_volume * pk.presentase_b) * pk.price_b as nilai_b, (pp.display_volume * pk.presentase_c) * pk.price_c as nilai_c, (pp.display_volume * pk.presentase_d) * pk.price_d as nilai_d')
 			->from('pmm_productions pp')
@@ -150,11 +149,6 @@
 			$total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d;
 			$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d;
 			
-			?>
-			<!-- END TOTAL PEMAKAIAN KOMPOSISI -->
-
-			<!-- REALISASI -->
-			<?php
 			$date1_ago = date('2020-01-01');
 			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
@@ -176,7 +170,6 @@
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
-			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
 			->where("p.kategori_bahan = 1")
 			->group_by('prm.material_id')
@@ -206,14 +199,7 @@
 			$pemakaian_volume_semen = $vol_pemakaian_semen_now;
 			$pemakaian_nilai_semen = (($total_stok_nilai_semen - $nilai_stock_opname_semen_now) * $stock_opname_semen_now['reset']) + ($stock_opname_semen_now['pemakaian_custom'] * $stock_opname_semen_now['reset_pemakaian']);
 			$pemakaian_harsat_semen = $pemakaian_nilai_semen / $pemakaian_volume_semen;
-			?>
-
-			<?php
-			$date1_ago = date('2020-01-01');
-			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
-			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
-			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
-
+			
 			$stock_opname_pasir_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
 			->from('pmm_remaining_materials_cat cat ')
 			->where("(cat.date <= '$tanggal_opening_balance')")
@@ -230,7 +216,6 @@
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
-			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
 			->where("p.kategori_bahan = 2")
 			->group_by('prm.material_id')
@@ -260,13 +245,6 @@
 			$pemakaian_volume_pasir = $vol_pemakaian_pasir_now;
 			$pemakaian_nilai_pasir = (($total_stok_nilai_pasir - $nilai_stock_opname_pasir_now) * $stock_opname_pasir_now['reset']) + ($stock_opname_pasir_now['pemakaian_custom'] * $stock_opname_pasir_now['reset_pemakaian']);
 			$pemakaian_harsat_pasir = $pemakaian_nilai_pasir / $pemakaian_volume_pasir;
-			?>
-
-			<?php
-			$date1_ago = date('2020-01-01');
-			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
-			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
-			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 
 			$stock_opname_1020_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
 			->from('pmm_remaining_materials_cat cat ')
@@ -284,7 +262,6 @@
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
-			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
 			->where("p.kategori_bahan = 3")
 			->group_by('prm.material_id')
@@ -314,13 +291,6 @@
 			$pemakaian_volume_1020 = $vol_pemakaian_1020_now;
 			$pemakaian_nilai_1020 = (($total_stok_nilai_1020 - $nilai_stock_opname_1020_now) * $stock_opname_1020_now['reset']) + ($stock_opname_1020_now['pemakaian_custom'] * $stock_opname_1020_now['reset_pemakaian']);
 			$pemakaian_harsat_1020 = $pemakaian_nilai_1020 / $pemakaian_volume_1020;
-			?>
-
-			<?php
-			$date1_ago = date('2020-01-01');
-			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
-			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
-			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 
 			$stock_opname_2030_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
 			->from('pmm_remaining_materials_cat cat ')
@@ -338,7 +308,6 @@
 			->from('pmm_receipt_material prm')
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
-			->join('kategori_bahan kb', 'p.kategori_bahan = kb.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
 			->where("p.kategori_bahan = 4")
 			->group_by('prm.material_id')
@@ -368,13 +337,10 @@
 			$pemakaian_volume_2030 = $vol_pemakaian_2030_now;
 			$pemakaian_nilai_2030 = (($total_stok_nilai_2030 - $nilai_stock_opname_2030_now) * $stock_opname_2030_now['reset']) + ($stock_opname_2030_now['pemakaian_custom'] * $stock_opname_2030_now['reset_pemakaian']);
 			$pemakaian_harsat_2030 = $pemakaian_nilai_2030 / $pemakaian_volume_2030;
-			
-			//TOTAL
+
 			$total_volume_realisasi = $pemakaian_volume_semen + $pemakaian_volume_pasir + $pemakaian_volume_1020 + $pemakaian_volume_2030;
 			$total_nilai_realisasi = $pemakaian_nilai_semen + $pemakaian_nilai_pasir + $pemakaian_nilai_1020 + $pemakaian_nilai_2030;
-			?>
-
-			<?php
+			
 			$evaluasi_volume_a = round($volume_a - $pemakaian_volume_semen,2);
 			$evaluasi_volume_b = round($volume_b - $pemakaian_volume_pasir,2);
 			$evaluasi_volume_c = round($volume_c - $pemakaian_volume_1020,2);
