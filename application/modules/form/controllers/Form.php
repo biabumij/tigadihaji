@@ -64,6 +64,7 @@ class Form extends Secure_Controller {
 			'unit_head' => 48,
 			'status' => 'UNPUBLISH',
 			'status_permintaan' => 'MENUNGGU',
+			'kategori_persetujuan' => 'PERUBAHAN SISTEM',
 			'created_by' => $this->session->userdata('admin_id'),
 			'created_on' => date('Y-m-d H:i:s')
 		);

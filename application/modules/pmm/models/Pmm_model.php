@@ -841,7 +841,10 @@ class Pmm_model extends CI_Model {
             return '<button type="button" class="btn btn-success" style="font-weight:bold; border-radius:10px;">'.$status.'</button>';
         }else if($status == 'PERMINTAAN BAHAN & ALAT'){
             return '<button type="button" class="btn btn-warning" style="font-weight:bold; border-radius:10px;">'.$status.'</button>';
+        }else if($status == 'PERUBAHAN SISTEM'){
+            return '<button type="button" class="btn btn-info" style="font-weight:bold; border-radius:10px;">'.$status.'</button>';
         }
+        
     }
 	
 	function StatusPayment($status)

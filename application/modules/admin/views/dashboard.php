@@ -185,7 +185,16 @@
                         ?>
 
                         <div style="font-weight:bold; font-size:14px;">
-                            <center><blink><a target="_blank" href="<?= base_url("pmm/reports/detail_notification/") ?>"><i class="fa-solid fa-clipboard-check"></i> BUTUH PERSETUJUAN KA. PLANT (<?php echo number_format($query,0,',','.');?>)</a></blink><center>
+                            <center><a target="_blank" href="<?= base_url("pmm/reports/detail_notification/") ?>"><i class="fa-solid fa-clipboard-check"></i> BUTUH PERSETUJUAN KA. PLANT (<blink><?php echo number_format($query,0,',','.');?></blink>)</a><center>
+                            <?php
+                            $query = $this->db->select('COUNT(id) as id')
+                            ->from('perubahan_sistem')
+                            ->where("status = 'UNPUBLISH'")
+                            ->get()->row_array();
+                            
+                            $query = $query['id'];
+                            ?>
+                            <center><a target="_blank" href="<?= base_url("pmm/reports/detail_notification_2/") ?>"><i class="fa-solid fa-clipboard-check"></i> FORM PERUBAHAN APLIKASI (<blink><?php echo number_format($query,0,',','.');?></blink>)</a><center>
                         </div>
                         <?php
                         }
