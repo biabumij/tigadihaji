@@ -253,7 +253,7 @@
                                             <br />
                                             <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 40%, #2ea4d7 80%);">
                                                 <a href="<?php echo site_url('admin/stock_opname');?>">
-                                                <span style="color:#fffdd0;"><i class="fa fa-check-square"></i><b>STOCK<br />OPNAME</b></span></a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-cubes"></i><b>STOCK<br />OPNAME</b></span></a>
                                             </li>
                                             <?php
                                             }
