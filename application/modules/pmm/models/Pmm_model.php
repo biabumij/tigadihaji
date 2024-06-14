@@ -844,7 +844,6 @@ class Pmm_model extends CI_Model {
         }else if($status == 'PERUBAHAN SISTEM'){
             return '<button type="button" class="btn btn-info" style="font-weight:bold; border-radius:10px;">'.$status.'</button>';
         }
-        
     }
 	
 	function StatusPayment($status)
