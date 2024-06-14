@@ -42,7 +42,6 @@
                                             ->where("status = 'WAITING'")
                                             ->order_by('created_on','desc')
                                             ->get()->result_array();
-                                            file_put_contents("D:\\test.txt", $this->db->last_query());
 
                                             $permintaan = $this->db->select('*')
                                             ->from('pmm_request_materials')
