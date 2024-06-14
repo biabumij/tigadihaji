@@ -190,7 +190,7 @@
                             }
                             ?>
                             <?php
-                            if(in_array($this->session->userdata('admin_group_id'), array(1,5,6))){
+                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3))){
                             ?>
                             <?php
                             $query = $this->db->select('COUNT(id) as id')
