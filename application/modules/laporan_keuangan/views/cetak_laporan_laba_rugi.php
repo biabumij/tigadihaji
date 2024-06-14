@@ -168,76 +168,16 @@
 			$alat = $alat;
 
 			//ALAT_2
-			$alat_2 = $this->pmm_model->getAkumulasiAlat($date1,$date2);
+			$alat_2 = $this->pmm_model->getAkumulasiAlat($date3,$date2);
 			$alat_2 = $alat_2;
 
 			//OVERHEAD
-			$overhead_15 = $this->db->select('sum(pdb.jumlah) as total')
-			->from('pmm_biaya pb ')
-			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
-			->join('pmm_coa c','pdb.akun = c.id','left')
-			->where('c.coa_category',15)
-			->where("c.id <> 168 ") //Biaya Diskonto Bank
-			->where("c.id <> 219 ") //Biaya Alat Batching Plant 
-			->where("c.id <> 220 ") //Biaya Alat Truck Mixer
-			->where("c.id <> 221 ") //Biaya Alat Wheel Loader
-			->where("c.id <> 228 ") //Biaya Persiapan
-			->where("c.id <> 505 ") //Biaya Oli
-			->where("pb.status = 'PAID'")
-			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
-			->get()->row_array();
+			$overhead = $this->pmm_model->getOverheadLabaRugi($date1,$date2);
+			$overhead = $overhead;
 
-			$overhead_jurnal_15 = $this->db->select('sum(pdb.debit) as total')
-			->from('pmm_jurnal_umum pb ')
-			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->join('pmm_coa c','pdb.akun = c.id','left')
-			->where('c.coa_category',15)
-			->where("c.id <> 168 ") //Biaya Diskonto Bank
-			->where("c.id <> 219 ") //Biaya Alat Batching Plant 
-			->where("c.id <> 220 ") //Biaya Alat Truck Mixer
-			->where("c.id <> 221 ") //Biaya Alat Wheel Loader
-			->where("c.id <> 228 ") //Biaya Persiapan
-			->where("c.id <> 505 ") //Biaya Oli
-			->where("pb.status = 'PAID'")
-			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
-			->get()->row_array();
-
-			$overhead =  $overhead_15['total'] + $overhead_jurnal_15['total'];
-			//END OVERHEAD
-
-			//OVERHEAD_2
-			$overhead_15_2 = $this->db->select('sum(pdb.jumlah) as total')
-			->from('pmm_biaya pb ')
-			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
-			->join('pmm_coa c','pdb.akun = c.id','left')
-			->where('c.coa_category',15)
-			->where("c.id <> 168 ") //Biaya Diskonto Bank
-			->where("c.id <> 219 ") //Biaya Alat Batching Plant 
-			->where("c.id <> 220 ") //Biaya Alat Truck Mixer
-			->where("c.id <> 221 ") //Biaya Alat Wheel Loader
-			->where("c.id <> 228 ") //Biaya Persiapan
-			->where("c.id <> 505 ") //Biaya Oli
-			->where("pb.status = 'PAID'")
-			->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
-			->get()->row_array();
-
-			$overhead_jurnal_15_2 = $this->db->select('sum(pdb.debit) as total')
-			->from('pmm_jurnal_umum pb ')
-			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
-			->join('pmm_coa c','pdb.akun = c.id','left')
-			->where('c.coa_category',15)
-			->where("c.id <> 168 ") //Biaya Diskonto Bank
-			->where("c.id <> 219 ") //Biaya Alat Batching Plant 
-			->where("c.id <> 220 ") //Biaya Alat Truck Mixer
-			->where("c.id <> 221 ") //Biaya Alat Wheel Loader
-			->where("c.id <> 228 ") //Biaya Persiapan
-			->where("c.id <> 505 ") //Biaya Oli
-			->where("pb.status = 'PAID'")
-			->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
-			->get()->row_array();
-
-			$overhead_2 =  $overhead_15_2['total'] + $overhead_jurnal_15_2['total'];
-			//END_OVERHEAD_2
+			//OVERHEAD
+			$overhead_2 = $this->pmm_model->getOverheadAkumulasiLabaRugi($date3,$date2);
+			$overhead_2 = $overhead_2;
 
 			//DISKONTO
 			$diskonto = $this->db->select('sum(pdb.jumlah) as total')
@@ -248,9 +188,7 @@
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
-
 			$diskonto = $diskonto['total'];
-			//END DISKONTO
 
 			//DISKONTO_2
 			$diskonto_2 = $this->db->select('sum(pdb.jumlah) as total')
@@ -261,9 +199,7 @@
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
 			->get()->row_array();
-
 			$diskonto_2 = $diskonto_2['total'];
-			//END_DISKONTO_2
 
 			$bahan = $total_nilai;
 			$alat = $alat;

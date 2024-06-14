@@ -47,12 +47,8 @@ class Jurnal_umum extends CI_Controller {
 			$this->db->where('b.tanggal_transaksi >=',date('Y-m-d',strtotime($arr_date[0])));
 			$this->db->where('b.tanggal_transaksi <=',date('Y-m-d',strtotime($arr_date[1])));
 		}
-		
-        $date_kunci = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('kunci_bahan_baku')->row_array();
-        $last_opname = date('Y-m-d', strtotime('0 days', strtotime($date_kunci['date'])));
 
 		$this->db->select('b.*');
-        $this->db->where("b.tanggal_transaksi >= '$last_opname'");
         $this->db->order_by('b.tanggal_transaksi','desc');
         $this->db->order_by('b.created_on','desc');
 		$query = $this->db->get('pmm_jurnal_umum b');

@@ -176,19 +176,16 @@
 														
 													</div>
 													<br />
-													<div id="wait" style=" text-align: center; align-content: center; display: none;">	
-														<div>Please Wait</div>
+													<div id="wait-bahan" style=" text-align: center; align-content: center; display: none;">	
+														<div>Mohon Tunggu</div>
 														<div class="fa-3x">
 														  <i class="fa fa-spinner fa-spin"></i>
 														</div>
 													</div>				
-													<div class="table-responsive" id="evaluasi-bahan">													
-													
-                    
+													<div class="table-responsive" id="evaluasi-bahan">
 													</div>
 												</div>
-										</div>
-										
+											</div>
 										</div>
                                     </div>
 
@@ -213,19 +210,16 @@
 														
 													</div>
 													<br />
-													<div id="wait" style=" text-align: center; align-content: center; display: none;">	
-														<div>Please Wait</div>
+													<div id="wait-alat" style=" text-align: center; align-content: center; display: none;">	
+														<div>Mohon Tungg</div>
 														<div class="fa-3x">
 														  <i class="fa fa-spinner fa-spin"></i>
 														</div>
 													</div>				
 													<div class="table-responsive" id="evaluasi-alat">													
-													
-                    
 													</div>
 												</div>
-										</div>
-										
+											</div>
 										</div>
                                     </div>
 
@@ -250,19 +244,16 @@
 														
 													</div>
 													<br />
-													<div id="wait" style=" text-align: center; align-content: center; display: none;">	
-														<div>Please Wait</div>
+													<div id="wait-bua" style=" text-align: center; align-content: center; display: none;">	
+														<div>Mohon Tunggu</div>
 														<div class="fa-3x">
 														  <i class="fa fa-spinner fa-spin"></i>
 														</div>
 													</div>				
 													<div class="table-responsive" id="evaluasi-bua">													
-													
-                    
 													</div>
 												</div>
-										</div>
-										
+											</div>
 										</div>
                                     </div>
 
@@ -288,8 +279,8 @@
 														
 													</div>
 													<br />
-													<div id="wait" style=" text-align: center; align-content: center; display: none;">	
-														<div>Please Wait</div>
+													<div id="wait-evaluasi" style=" text-align: center; align-content: center; display: none;">	
+														<div>Mohon Tunggu</div>
 														<div class="fa-3x">
 														  <i class="fa fa-spinner fa-spin"></i>
 														</div>
@@ -382,14 +373,14 @@
 			});
 
 			$('#filter_date_evaluasi_bahan').on('apply.daterangepicker', function(ev, picker) {
-				  $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
-				  EvaluasiBahan();
+				$(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+				EvaluasiBahan();
 			});
 
 
 			function EvaluasiBahan()
 			{
-				$('#wait').fadeIn('fast');   
+				$('#wait-bahan').fadeIn('fast');   
 				$.ajax({
 					type    : "POST",
 					url     : "<?php echo site_url('pmm/reports/evaluasi_bahan'); ?>/"+Math.random(),
@@ -399,7 +390,7 @@
 					},
 					success : function(result){
 						$('#evaluasi-bahan').html(result);
-						$('#wait').fadeOut('fast');
+						$('#wait-bahan').fadeOut('fast');
 					}
 				});
 			}
@@ -426,14 +417,13 @@
 			});
 
 			$('#filter_date_evaluasi_alat').on('apply.daterangepicker', function(ev, picker) {
-				  $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
-				  EvaluasiAlat();
+				$(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+				EvaluasiAlat();
 			});
-
 
 			function EvaluasiAlat()
 			{
-				$('#wait').fadeIn('fast');   
+				$('#wait-alat').fadeIn('fast');   
 				$.ajax({
 					type    : "POST",
 					url     : "<?php echo site_url('pmm/reports/evaluasi_alat'); ?>/"+Math.random(),
@@ -443,7 +433,7 @@
 					},
 					success : function(result){
 						$('#evaluasi-alat').html(result);
-						$('#wait').fadeOut('fast');
+						$('#wait-alat').fadeOut('fast');
 					}
 				});
 			}
@@ -470,14 +460,13 @@
 			});
 
 			$('#filter_date_evaluasi_bua').on('apply.daterangepicker', function(ev, picker) {
-				  $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
-				  EvaluasiBUA();
+				$(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+				EvaluasiBUA();
 			});
-
 
 			function EvaluasiBUA()
 			{
-				$('#wait').fadeIn('fast');   
+				$('#wait-bua').fadeIn('fast');   
 				$.ajax({
 					type    : "POST",
 					url     : "<?php echo site_url('pmm/reports/evaluasi_bua'); ?>/"+Math.random(),
@@ -487,7 +476,7 @@
 					},
 					success : function(result){
 						$('#evaluasi-bua').html(result);
-						$('#wait').fadeOut('fast');
+						$('#wait-bua').fadeOut('fast');
 					}
 				});
 			}
@@ -518,10 +507,9 @@
 				EvaluasiTargetProduksi();
 			});
 
-
 			function EvaluasiTargetProduksi()
 			{
-				$('#wait').fadeIn('fast');   
+				$('#wait-evaluasi').fadeIn('fast');   
 				$.ajax({
 					type    : "POST",
 					url     : "<?php echo site_url('pmm/reports/evaluasi_target_produksi'); ?>/"+Math.random(),
@@ -531,7 +519,7 @@
 					},
 					success : function(result){
 						$('#evaluasi-target-produksi').html(result);
-						$('#wait').fadeOut('fast');
+						$('#wait-evaluasi').fadeOut('fast');
 					}
 				});
 			}
