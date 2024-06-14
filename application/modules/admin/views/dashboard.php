@@ -253,7 +253,7 @@
                                             <br />
                                             <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 40%, #2ea4d7 80%);">
                                                 <a href="<?php echo site_url('admin/stock_opname');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-bag-shopping"></i><b>STOCK<br />OPNAME</b></span></a>
+                                                <span style="color:#fffdd0;"><i class="fa fa-check-square"></i><b>STOCK<br />OPNAME</b></span></a>
                                             </li>
                                             <?php
                                             }
@@ -357,17 +357,17 @@
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="laporan">
                                             <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_keuangan');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>KEUANGAN</b></span></a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-dollar-sign"></i><b>KEUANGAN</b></span></a>
                                             </li>
                                             <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_pembelian');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>PEMBELIAN</b></span></a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-cart-shopping"></i><b>PEMBELIAN</b></span></a>
                                             </li>
                                             <br />
                                             <br />
                                             <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_penjualan');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>PENJUALAN</b></span></a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-bag-shopping"></i><b>PENJUALAN</b></span></a>
                                             </li>
                                             <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_ev._produksi');?>">
@@ -380,7 +380,7 @@
                                             <br />
                                             <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_rencana_kerja');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>RENCANA KERJA</b></span></a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-calendar-week"></i><b>RENCANA KERJA</b></span></a>
                                             </li>
                                             <?php
                                             }
