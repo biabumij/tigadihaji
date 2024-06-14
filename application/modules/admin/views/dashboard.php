@@ -187,6 +187,12 @@
                         <div style="font-weight:bold; font-size:14px;">
                             <center><a target="_blank" href="<?= base_url("pmm/reports/detail_notification/") ?>"><i class="fa-solid fa-clipboard-check"></i> BUTUH PERSETUJUAN KA. PLANT (<blink><?php echo number_format($query,0,',','.');?></blink>)</a><center>
                             <?php
+                            }
+                            ?>
+                            <?php
+                            if(in_array($this->session->userdata('admin_group_id'), array(1,5,6))){
+                            ?>
+                            <?php
                             $query = $this->db->select('COUNT(id) as id')
                             ->from('perubahan_sistem')
                             ->where("status = 'UNPUBLISH'")
@@ -195,10 +201,11 @@
                             $query = $query['id'];
                             ?>
                             <center><a target="_blank" href="<?= base_url("pmm/reports/detail_notification_2/") ?>"><i class="fa-solid fa-clipboard-check"></i> FORM PERUBAHAN APLIKASI (<blink><?php echo number_format($query,0,',','.');?></blink>)</a><center>
+                            <?php
+                            }
+                            ?>
                         </div>
-                        <?php
-                        }
-                        ?>
+                        
                         <div class="process">
                             <table width="100%" style="margin-top:100px;">
                                 <tr>
