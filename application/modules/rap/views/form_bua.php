@@ -250,7 +250,7 @@
 
         $(document).ready(function() {
             setTimeout(function(){
-                $('#satuan-1').prop('selectedIndex', 8).trigger('change');
+                $('#satuan-1').prop('selectedIndex', 2).trigger('change');
             }, 1000);
         });
 
