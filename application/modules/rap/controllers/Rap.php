@@ -558,7 +558,8 @@ class Rap extends Secure_Controller {
 			$data['coa'] =  $this->db->select('*')
 			->from('pmm_coa c')
 			->where("c.status = 'PUBLISH'")
-			->where("c.coa_category = 15")
+			//->where("c.coa_category = 15")
+			->where("c.coa_category in ('15','16')")
 			->order_by('c.coa','asc')
 			->get()->result_array();
 			$data['satuan'] = $this->db->order_by('measure_name', 'asc')->select('*')->get_where('pmm_measures', array('status' => 'PUBLISH'))->result_array();
@@ -626,7 +627,7 @@ class Rap extends Secure_Controller {
             $('input.numberformat').number( true, 2,',','.' );
 			$('input.rupiahformat').number( true, 0,',','.' );
 
-			$(document).ready(function() {
+		/*$(document).ready(function() {
         setTimeout(function(){
             $('#satuan-2').prop('selectedIndex', 8).trigger('change');
         }, 1000);
@@ -738,7 +739,7 @@ class Rap extends Secure_Controller {
         setTimeout(function(){
             $('#satuan-20').prop('selectedIndex', 8).trigger('change');
         }, 1000);
-        });
+        });*/
         </script>
     <?php
     }
