@@ -53,7 +53,7 @@
                                             <tr>
                                                 <th>Jumlah</th>
                                                 <th>:</th>
-                                                <td> Rp. <?= $this->filter->Rupiah($detail['jumlah']) ?></td>
+                                                <td> Rp. <?php echo number_format($detail['jumlah'],0,',','.');?></td>
                                             </tr>
                                             <tr>
                                                 <th>Memo</th>
