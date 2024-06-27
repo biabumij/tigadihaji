@@ -14,27 +14,14 @@
 </head>
 
 <body>
-    <div class="wrap">
-
-        <?php echo $this->Templates->PageHeader();?>
-
+<div class="wrap">
+    <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
-            <div class="content" style="padding:0;">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                            <li>
-                                <a href="<?php echo site_url('admin/kas_&_bank');?>"> <i class="fa fa-calendar" aria-hidden="true"></i> Kas & Bank</a></li>
-                            <li><a>Terima Uang</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="content">
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
-                            <div class="panel-header"> 
+                            <div class="panel-header">
                                 <div class="text-right">
                                     <h3 class="pull-left">Terima Uang</h3>
                                 </div>
@@ -133,7 +120,7 @@
 
         $('.form-select2').select2();
 
-        $('input.numberformat').number( true, 2,',','.' );
+        $('input.numberformat').number( true, 0,',','.' );
         $('.dtpicker').daterangepicker({
             singleDatePicker: true,
             showDropdowns : true,

@@ -1169,14 +1169,14 @@ class Finance extends CI_Controller {
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('notif_error','Gagal Membuat terima uang !!');
+				$this->session->set_flashdata('notif_error', '<b>ERROR</b>');
 				redirect('pmm/finance/terima_uang');
 			} 
 			else {
 				# Everything is Perfect. 
 				# Committing data to the database.
 				$this->db->trans_commit();
-				$this->session->set_flashdata('notif_success','Berhasil Membuat terima uang !!');
+				$this->session->set_flashdata('notif_success', '<b>SAVED</b>');
 				redirect('admin/kas_&_bank');
 			}
 		}
@@ -1293,14 +1293,14 @@ class Finance extends CI_Controller {
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.
 				$this->db->trans_rollback();
-				$this->session->set_flashdata('notif_error','Gagal Membuat Transfer !!');
+				$this->session->set_flashdata('notif_error', '<b>ERROR</b>');
 				redirect('pmm/finance/transfer_uang');
 			} 
 			else {
 				# Everything is Perfect. 
 				# Committing data to the database.
 				$this->db->trans_commit();
-				$this->session->set_flashdata('notif_success','Berhasil Membuat Transfer !!');
+				$this->session->set_flashdata('notif_success', '<b>SAVED</b>');
 				redirect('admin/kas_&_bank');
 			}
 		}
@@ -1449,14 +1449,14 @@ class Finance extends CI_Controller {
             if ($this->db->trans_status() === FALSE) {
                 # Something went wrong.
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('notif_error','Gagal hapus jurnal !!');
+                $this->session->set_flashdata('notif_error','<b>ERROR</b>');
                 redirect('pmm/jurnal_umum/detailTerima/'.$id);
             } 
             else {
                 # Everything is Perfect. 
                 # Committing data to the database.
                 $this->db->trans_commit();
-                $this->session->set_flashdata('notif_success','Berhasil hapus Terima Bank & Kas !!');
+				$this->session->set_flashdata('notif_success','<b>DELETED</b>');
                 redirect('admin/kas_&_bank');
             }
         }
@@ -1481,14 +1481,14 @@ class Finance extends CI_Controller {
             if ($this->db->trans_status() === FALSE) {
                 # Something went wrong.
                 $this->db->trans_rollback();
-                $this->session->set_flashdata('notif_error','Gagal hapus jurnal !!');
+                $this->session->set_flashdata('notif_error','<b>ERROR</b>');
                 redirect('pmm/jurnal_umum/detailTransfer/'.$id);
             } 
             else {
                 # Everything is Perfect. 
                 # Committing data to the database.
                 $this->db->trans_commit();
-                $this->session->set_flashdata('notif_success','Berhasil hapus Transfer Bank & Kas !!');
+                $this->session->set_flashdata('notif_success','<b>DELETED</b>');
                 redirect('admin/kas_&_bank');
             }
         }

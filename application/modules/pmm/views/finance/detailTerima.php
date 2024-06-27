@@ -14,27 +14,14 @@
 </head>
 
 <body>
-    <div class="wrap">
-
-        <?php echo $this->Templates->PageHeader();?>
-
+<div class="wrap">
+    <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar();?>
-            <div class="content" style="padding:0;">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin');?>">Dashboard</a></li>
-                            <li>
-                                <a href="<?php echo site_url('admin/kas_&_bank');?>"> Kas & Bank</a></li>
-                            <li><a>Terima Uang</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="content">
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
-                            <div class="panel-header"> 
+                            <div class="panel-header">
                                 <div class="">
                                     <h3 class="">Terima Uang</h3>
                                 </div>
@@ -91,13 +78,12 @@
                                         </table>
                                     </div>
                                     <div class="col-sm-12 text-right">
-                                        <a href="<?= base_url('admin/kas_&_bank') ?>" class="btn btn-info"><i class="fa fa-arrow-left"></i> Kembali</a>
-                                        <a target="_blank" href="<?= base_url('pmm/finance/cetakTerimaCoa/'.$detail["id"]) ?>" class="btn btn-success"><i class="fa fa-print"></i> Cetak</a>
+                                        <a href="<?= base_url('admin/kas_&_bank') ?>" class="btn btn-info" style="border-radius:10px; font-weight:bold;">KEMBALI</a>
+                                        <a target="_blank" href="<?= base_url('pmm/finance/cetakTerimaCoa/'.$detail["id"]) ?>" class="btn btn-default" style="border-radius:10px; font-weight:bold;">CETAK</a>
                                         <?php
-                                        if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 10 || $this->session->userdata('admin_group_id') == 16 || $this->session->userdata('admin_group_id') == 20 || $this->session->userdata('admin_group_id') == 24 || $this->session->userdata('admin_group_id') == 25){
+                                        if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 6){
                                             ?>
-                                            <a class="btn btn-danger" onclick="DeleteData('<?= site_url('pmm/finance/deleteTerimaCoa/'.$detail['id']);?>')"><i class="fa fa-close"></i> Hapus</a>
-                                            <!-- <a  class="btn btn-primary"><i class="fa fa-edit"></i> Ubah</a> -->
+                                            <a class="btn btn-default" style="border-radius:10px; font-weight:bold;" onclick="DeleteData('<?= site_url('pmm/finance/deleteTerimaCoa/'.$detail['id']);?>')">HAPUS</a>
                                             <?php
                                         }
                                         ?>
@@ -116,17 +102,16 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        var form_control = '';
-    </script>
-    <?php echo $this->Templates->Footer();?>
-
+   <?php echo $this->Templates->Footer();?>
     <script src="<?php echo base_url();?>assets/back/theme/vendor/jquery.number.min.js"></script>
-
     <script src="<?php echo base_url();?>assets/back/theme/vendor/daterangepicker/moment.min.js"></script>
     <script src="<?php echo base_url();?>assets/back/theme/vendor/daterangepicker/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/back/theme/vendor/daterangepicker/daterangepicker.css">
     <script src="<?php echo base_url();?>assets/back/theme/vendor/bootbox.min.js"></script>
+    
+    <script type="text/javascript">
+        var form_control = '';
+    </script>
 
     <script type="text/javascript">
         function DeleteData(href)

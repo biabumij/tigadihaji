@@ -12,28 +12,16 @@
 
 <body>
 <div class="wrap">
-    
-    <?php echo $this->Templates->PageHeader();?>
-    
-
-    <div class="page-body">
-        <?php echo $this->Templates->LeftBar();?>
-        <div class="content">
-            <div class="content-header">
-                <div class="leftside-content-header">
-                    <ul class="breadcrumbs">
-                        <li><i class="fa fa-home" aria-hidden="true"></i><a href="<?php echo base_url();?>">Dashboard</a></li>
-                        <li><a >Kas & Bank</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row animated fadeInUp">
-                <div class="col-sm-12 col-lg-12">
-                    <div class="panel">
+        <?php echo $this->Templates->PageHeader();?>
+        <div class="page-body">
+            <div class="content">
+                <div class="row animated fadeInUp">
+                    <div class="col-sm-12 col-lg-12">
+                        <div class="panel">
                         <div class="panel-header">
                             <h3 class="section-subtitle">
                                 Kas & Bank
-                                <div class="pull-right">
+                                <!--<div class="pull-right">
                                     <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa fa-plus"></i> Buat Tranksaksi <span class="caret"></span>
                                     </button>
@@ -41,20 +29,20 @@
                                         <li><a href="<?= site_url("pmm/finance/transfer_uang") ?>">Transfer Uang</a></li>
                                         <li><a href="<?php echo site_url('pmm/finance/terima_uang');?>">Terima Uang</a></li>
                                     </ul>
-                                </div>
+                                </div>-->
                             </h3>
                             
                         </div>
                         <div class="panel-content">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Daftar Akun</a></li>
-                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Transfer Uang</a></li>
-                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Diterima Uang</a></li>
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">DAFTAR AKUN</a></li>
+                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">TRANSFER UANG</a></li>
+                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">DITERIMA UANG</a></li>
                             </ul>
                          
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="home">
-                                    <br>
+                                    <br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="guest-table" width="100%">
                                             <thead>
@@ -75,6 +63,9 @@
 
                                 <div role="tabpanel" class="tab-pane" id="profile">
                                     <br>
+                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?= site_url("pmm/finance/transfer_uang") ?>"><b style="color:white;">BUAT TRANSFER UANG</b></a></button>
+                                    <br />
+                                    <br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="table-transfer" width="100%">
                                             <thead>
@@ -94,6 +85,9 @@
 
                                 <div role="tabpanel" class="tab-pane" id="messages">
                                     <br>
+                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?= site_url("pmm/finance/terima_uang") ?>"><b style="color:white;">BUAT TERIMA UANG</b></a></button>
+                                    <br />
+                                    <br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="table-terima" width="100%">
                                             <thead>
