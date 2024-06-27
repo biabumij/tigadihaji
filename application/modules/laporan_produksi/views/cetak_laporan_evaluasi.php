@@ -403,7 +403,7 @@
 				<th align="left">Pasir</th>
 				<th align="center">M3</th>
 				<th align="right"><?php echo number_format($volume_b,2,',','.');?></th>
-				<th align="right"><?php echo number_format($price_b,2,',','.');?></th>
+				<th align="right"><?php echo number_format($price_b,0,',','.');?></th>
 				<th align="right"><?php echo number_format($nilai_b,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_volume_pasir,2,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_pasir / $pemakaian_volume_pasir,0,',','.');?></th>
@@ -429,7 +429,7 @@
 				<th align="left">Batu Split 20-30</th>
 				<th align="center">M3</th>
 				<th align="right"><?php echo number_format($volume_d,2,',','.');?></th>
-				<th align="right"><?php echo number_format($price_d,2,',','.');?></th>
+				<th align="right"><?php echo number_format($price_d,0,',','.');?></th>
 				<th align="right"><?php echo number_format($nilai_d,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_volume_2030,2,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_2030 / $pemakaian_volume_2030,0,',','.');?></th>

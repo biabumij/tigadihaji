@@ -13353,7 +13353,7 @@ class Reports extends CI_Controller {
 	        </tr>
 			<tr class="table-active3">
 	            <th class="text-center">3</th>
-				<th class="text-left">OVERHEAD</th>
+				<th class="text-left">BUA</th>
 				<th class="text-right"><?php echo number_format($total_volume_rap_bua,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_harsat_rap_bua,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_nilai_rap_bua,0,',','.');?></th>

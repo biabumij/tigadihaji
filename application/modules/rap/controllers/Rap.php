@@ -22,6 +22,12 @@ class Rap extends Secure_Controller {
 			$data['mutu_beton'] = $this->db->select('*')->get_where('produk', array('status' => 'PUBLISH', 'kategori_produk' => 2))->result_array();
 			$data['measures'] = $this->db->select('*')->get_where('pmm_measures', array('status' => 'PUBLISH'))->result_array();
 			$data['slump'] = $this->db->select('*')->get_where('pmm_slump', array('status' => 'PUBLISH'))->result_array();
+			$data['semen'] = $this->pmm_model->getMatByPenawaranSemen();
+			$data['pasir'] = $this->pmm_model->getMatByPenawaranPasir();
+			$data['split_1020'] = $this->pmm_model->getMatByPenawaran1020();
+			$data['split_2030'] = $this->pmm_model->getMatByPenawaran2030();
+			$data['alat'] = $this->pmm_model->getRAPAlat();
+			$data['bua'] = $this->pmm_model->getRAPBUA();
 			$this->load->view('rap/form_bahan', $data);
 		} else {
 			redirect('admin');
@@ -30,12 +36,10 @@ class Rap extends Secure_Controller {
 	
 	public function submit_agregat()
 	{
-		$date_agregat = $this->input->post('date_agregat');
-		$jobs_type = $this->input->post('jobs_type');
 		$mutu_beton = $this->input->post('mutu_beton');
 		$volume = str_replace(',', '.', $this->input->post('volume'));
 		$measure = $this->input->post('measure');
-		$tes = $this->input->post('tes');
+		$jobs_type = $this->input->post('jobs_type');
 		$measure_a = $this->input->post('measure_a');
 		$measure_b = $this->input->post('measure_b');
 		$measure_c = $this->input->post('measure_c');
@@ -48,6 +52,10 @@ class Rap extends Secure_Controller {
 		$presentase_b = str_replace(',', '.', $this->input->post('presentase_b'));
 		$presentase_c = str_replace(',', '.', $this->input->post('presentase_c'));
 		$presentase_d = str_replace(',', '.', $this->input->post('presentase_d'));
+		$penawaran_semen = $this->input->post('penawaran_semen');
+		$penawaran_pasir = $this->input->post('penawaran_pasir');
+		$penawaran_1020 = $this->input->post('penawaran_1020');
+		$penawaran_2030 = $this->input->post('penawaran_2030');
 		$price_a = str_replace('.', '', $this->input->post('price_a'));
 		$price_b = str_replace('.', '', $this->input->post('price_b'));
 		$price_c = str_replace('.', '', $this->input->post('price_c'));
@@ -56,6 +64,8 @@ class Rap extends Secure_Controller {
 		$total_b = str_replace('.', '', $this->input->post('total_b'));
 		$total_c = str_replace('.', '', $this->input->post('total_c'));
 		$total_d = str_replace('.', '', $this->input->post('total_d'));
+		$rap_alat = $this->input->post('rap_alat');
+		$rap_bua = $this->input->post('rap_bua');
 		$memo = $this->input->post('memo');
 		$attach = $this->input->post('files[]');
 
@@ -63,12 +73,10 @@ class Rap extends Secure_Controller {
 		$this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
 
 		$arr_insert = array(
-			'date_agregat' => date('Y-m-d', strtotime($date_agregat)),	
-			'jobs_type' => $jobs_type,
 			'mutu_beton' => $mutu_beton,
 			'volume' => $volume,
 			'measure' => $measure,
-			'tes' => $tes,
+			'jobs_type' => $jobs_type,
 			'measure_a' => $measure_a,
 			'measure_b' => $measure_b,
 			'measure_c' => $measure_c,
@@ -81,6 +89,10 @@ class Rap extends Secure_Controller {
 			'presentase_b' => $presentase_b,
 			'presentase_c' => $presentase_c,
 			'presentase_d' => $presentase_d,
+			'penawaran_semen' => $penawaran_semen,
+			'penawaran_pasir' => $penawaran_pasir,
+			'penawaran_1020' => $penawaran_1020,
+			'penawaran_2030' => $penawaran_2030,
 			'price_a' => $price_a,
 			'price_b' => $price_b,
 			'price_c' => $price_c,
@@ -89,6 +101,8 @@ class Rap extends Secure_Controller {
 			'total_b' => $total_b,
 			'total_c' => $total_c,
 			'total_d' => $total_d,
+			'rap_alat' => $rap_alat,
+			'rap_bua' => $rap_bua,
 			'memo' => $memo,
 			'attach' => $attach,
 			'status' => 'PUBLISH',
@@ -161,14 +175,14 @@ class Rap extends Secure_Controller {
 		$filter_date = $this->input->post('filter_date');
 		if(!empty($filter_date)){
 			$arr_date = explode(' - ', $filter_date);
-			$this->db->where('ag.date_agregat >=',date('Y-m-d',strtotime($arr_date[0])));
-			$this->db->where('ag.date_agregat <=',date('Y-m-d',strtotime($arr_date[1])));
+			$this->db->where('ag.created_on >=',date('Y-m-d',strtotime($arr_date[0])));
+			$this->db->where('ag.created_on <=',date('Y-m-d',strtotime($arr_date[1])));
 		}
-        $this->db->select('ag.id, ag.jobs_type, ag.date_agregat, p.nama_produk as mutu_beton, lk.agregat_id, lk.lampiran, ag.status, ag.created_by, ag.created_on');
+        $this->db->select('ag.id, ag.jobs_type, p.nama_produk as mutu_beton, lk.agregat_id, lk.lampiran, ag.status, ag.created_by, ag.created_on');
 		$this->db->join('pmm_lampiran_agregat lk', 'ag.id = lk.agregat_id','left');
 		$this->db->join('produk p', 'ag.mutu_beton = p.id','left');
 		$this->db->where("ag.status = 'PUBLISH'");
-		$this->db->order_by('ag.date_agregat','desc');	
+		$this->db->order_by('ag.created_on','desc');	
 		$this->db->order_by('p.nama_produk','desc');	
 		$query = $this->db->get('pmm_agregat ag');
 		
@@ -176,7 +190,6 @@ class Rap extends Secure_Controller {
 			foreach ($query->result_array() as $key => $row) {
                 $row['no'] = $key+1;
 				$row['jobs_type'] = $row['jobs_type'];
-                $row['date_agregat'] = date('d F Y',strtotime($row['date_agregat']));
 				$row['mutu_beton'] = $row['mutu_beton'];
 				$row['lampiran'] = '<a href="' . base_url('uploads/agregat/' . $row['lampiran']) .'" target="_blank">' . $row['lampiran'] . '</a>';           
                 $row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
@@ -207,7 +220,7 @@ class Rap extends Secure_Controller {
 		$id = $this->input->post('id');
 		if(!empty($id)){
 
-			$file = $this->db->select('ag.lampiran')
+			$file = $this->db->select('ag.id as agregat_id, ag.lampiran')
 			->from('pmm_lampiran_agregat ag')
 			->where("ag.agregat_id = $id")
 			->get()->row_array();
@@ -245,6 +258,12 @@ class Rap extends Secure_Controller {
 			$data['tes'] = '';
 			$data['agregat'] = $this->db->get_where("pmm_agregat", ["id" => $id])->row_array();
 			$data['lampiran'] = $this->db->get_where("pmm_lampiran_agregat", ["agregat_id" => $id])->result_array();
+			$data['semen'] = $this->pmm_model->getMatByPenawaranSemen();
+			$data['pasir'] = $this->pmm_model->getMatByPenawaranPasir();
+			$data['split_1020'] = $this->pmm_model->getMatByPenawaran1020();
+			$data['split_2030'] = $this->pmm_model->getMatByPenawaran2030();
+			$data['alat'] = $this->pmm_model->getRAPAlat();
+			$data['bua'] = $this->pmm_model->getRAPBUA();
 			$this->load->view('rap/sunting_komposisi', $data);
 		} else {
 			redirect('admin');
@@ -365,20 +384,14 @@ class Rap extends Secure_Controller {
 		$vol_batching_plant =  str_replace(',', '.', $this->input->post('vol_batching_plant'));
 		$vol_truck_mixer =  str_replace(',', '.', $this->input->post('vol_truck_mixer'));
 		$vol_wheel_loader =  str_replace(',', '.', $this->input->post('vol_wheel_loader'));
-		$vol_excavator =  str_replace(',', '.', $this->input->post('vol_excavator'));
-		$vol_transfer_semen =  str_replace(',', '.', $this->input->post('vol_transfer_semen'));
 		$vol_bbm_solar =  str_replace(',', '.', $this->input->post('vol_bbm_solar'));
 		$harsat_batching_plant =  str_replace('.', '', $this->input->post('harsat_batching_plant'));
 		$harsat_truck_mixer =  str_replace('.', '', $this->input->post('harsat_truck_mixer'));
 		$harsat_wheel_loader =  str_replace('.', '', $this->input->post('harsat_wheel_loader'));
-		$harsat_excavator =  str_replace('.', '', $this->input->post('harsat_excavator'));
-		$harsat_transfer_semen =  str_replace('.', '', $this->input->post('harsat_transfer_semen'));
 		$harsat_bbm_solar =  str_replace('.', '', $this->input->post('harsat_bbm_solar'));
 		$batching_plant =  str_replace('.', '', $this->input->post('batching_plant'));
 		$truck_mixer =  str_replace('.', '', $this->input->post('truck_mixer'));
 		$wheel_loader =  str_replace('.', '', $this->input->post('wheel_loader'));
-		$excavator =  str_replace('.', '', $this->input->post('excavator'));
-		$transfer_semen =  str_replace('.', '', $this->input->post('transfer_semen'));
 		$bbm_solar =  str_replace('.', '', $this->input->post('bbm_solar'));
 
 		$this->db->trans_start(); # Starting Transaction
@@ -391,20 +404,14 @@ class Rap extends Secure_Controller {
 			'vol_batching_plant' => $vol_batching_plant,
 			'vol_truck_mixer' => $vol_truck_mixer,
 			'vol_wheel_loader' => $vol_wheel_loader,
-			'vol_excavator' => $vol_excavator,
-			'vol_transfer_semen' => $vol_transfer_semen,
 			'vol_bbm_solar' => $vol_bbm_solar,
 			'harsat_batching_plant' => $harsat_batching_plant,
 			'harsat_truck_mixer' => $harsat_truck_mixer,
 			'harsat_wheel_loader' => $harsat_wheel_loader,
-			'harsat_excavator' => $harsat_excavator,
-			'harsat_transfer_semen' => $harsat_transfer_semen,
 			'harsat_bbm_solar' => $harsat_bbm_solar,
 			'batching_plant' => $batching_plant,
 			'truck_mixer' => $truck_mixer,
 			'wheel_loader' => $wheel_loader,
-			'excavator' => $excavator,
-			'transfer_semen' => $transfer_semen,
 			'bbm_solar' => $bbm_solar,
 			
 			'status' => 'PUBLISH',
@@ -621,12 +628,12 @@ class Rap extends Secure_Controller {
 		</tr>
 
         <script type="text/javascript">
-            $('.form-select2').select2();
-			
-            $('input.numberformat').number( true, 2,',','.' );
-			$('input.rupiahformat').number( true, 0,',','.' );
+		$('.form-select2').select2();
+		
+		$('input.numberformat').number( true, 2,',','.' );
+		$('input.rupiahformat').number( true, 0,',','.' );
 
-		$(document).ready(function() {
+		/*$(document).ready(function() {
         setTimeout(function(){
             $('#satuan-2').prop('selectedIndex', 2).trigger('change');
         }, 1000);
@@ -738,7 +745,7 @@ class Rap extends Secure_Controller {
         setTimeout(function(){
             $('#satuan-20').prop('selectedIndex', 2).trigger('change');
         }, 1000);
-        });
+        });*/
         </script>
     <?php
     }

@@ -5921,5 +5921,95 @@ class Pmm_model extends CI_Model {
         return $total;
     }
 
+    function getMatByPenawaranSemen()
+    {
+
+        $this->db->select('pp.id as penawaran_id, p.nama as nama, pp.supplier_id as supplier_id, pp.jenis_pembelian, pm.nama_produk as material_name, ppd.measure,ppd.material_id, ppd.id, pms.measure_name, ppd.price, pp.nomor_penawaran, pp.id, ppd.tax_id, ppd.tax, ppd.pajak_id, ppd.pajak');
+        $this->db->join('pmm_penawaran_pembelian pp','ppd.penawaran_pembelian_id = pp.id','left');
+        $this->db->join('produk pm','ppd.material_id = pm.id','left');
+        $this->db->join('penerima p','pp.supplier_id = p.id','left');
+        $this->db->join('pmm_measures pms','ppd.measure = pms.id','left');
+        $this->db->where("pm.kategori_bahan = '1' ");
+        $this->db->where('pp.status','OPEN');
+        $this->db->group_by('ppd.penawaran_pembelian_id');
+		$this->db->order_by('p.nama','asc');
+        $data = $this->db->get('pmm_penawaran_pembelian_detail ppd')->result_array();
+
+        return $data;
+    }
+
+    function getMatByPenawaranPasir()
+    {
+
+        $this->db->select('pp.id as penawaran_id, p.nama as nama, pp.supplier_id as supplier_id, pp.jenis_pembelian, pm.nama_produk as material_name, ppd.measure,ppd.material_id, ppd.id, pms.measure_name, ppd.price, pp.nomor_penawaran, pp.id, ppd.tax_id, ppd.tax, ppd.pajak_id, ppd.pajak');
+        $this->db->join('pmm_penawaran_pembelian pp','ppd.penawaran_pembelian_id = pp.id','left');
+        $this->db->join('produk pm','ppd.material_id = pm.id','left');
+        $this->db->join('penerima p','pp.supplier_id = p.id','left');
+        $this->db->join('pmm_measures pms','ppd.measure = pms.id','left');
+        $this->db->where("pm.kategori_bahan = '2' ");
+        $this->db->where('pp.status','OPEN');
+        $this->db->group_by('ppd.penawaran_pembelian_id');
+		$this->db->order_by('p.nama','asc');
+        $data = $this->db->get('pmm_penawaran_pembelian_detail ppd')->result_array();
+
+        return $data;
+    }
+
+    function getMatByPenawaran1020()
+    {
+
+        $this->db->select('pp.id as penawaran_id, p.nama as nama, pp.supplier_id as supplier_id, pp.jenis_pembelian, pm.nama_produk as material_name, ppd.measure,ppd.material_id, ppd.id, pms.measure_name, ppd.price, pp.nomor_penawaran, pp.id, ppd.tax_id, ppd.tax, ppd.pajak_id, ppd.pajak');
+        $this->db->join('pmm_penawaran_pembelian pp','ppd.penawaran_pembelian_id = pp.id','left');
+        $this->db->join('produk pm','ppd.material_id = pm.id','left');
+        $this->db->join('penerima p','pp.supplier_id = p.id','left');
+        $this->db->join('pmm_measures pms','ppd.measure = pms.id','left');
+        $this->db->where("pm.kategori_bahan = '3' ");
+        $this->db->where('pp.status','OPEN');
+        $this->db->group_by('ppd.penawaran_pembelian_id');
+		$this->db->order_by('p.nama','asc');
+        $data = $this->db->get('pmm_penawaran_pembelian_detail ppd')->result_array();
+
+        return $data;
+    }
+
+    function getMatByPenawaran2030()
+    {
+
+        $this->db->select('pp.id as penawaran_id, p.nama as nama, pp.supplier_id as supplier_id, pp.jenis_pembelian, pm.nama_produk as material_name, ppd.measure,ppd.material_id, ppd.id, pms.measure_name, ppd.price, pp.nomor_penawaran, pp.id, ppd.tax_id, ppd.tax, ppd.pajak_id, ppd.pajak');
+        $this->db->join('pmm_penawaran_pembelian pp','ppd.penawaran_pembelian_id = pp.id','left');
+        $this->db->join('produk pm','ppd.material_id = pm.id','left');
+        $this->db->join('penerima p','pp.supplier_id = p.id','left');
+        $this->db->join('pmm_measures pms','ppd.measure = pms.id','left');
+        $this->db->where("pm.kategori_bahan = '4' ");
+        $this->db->where('pp.status','OPEN');
+        $this->db->group_by('ppd.penawaran_pembelian_id');
+		$this->db->order_by('p.nama','asc');
+        $data = $this->db->get('pmm_penawaran_pembelian_detail ppd')->result_array();
+
+        return $data;
+    }
+
+    function getRAPAlat()
+    {
+
+        $this->db->select('rap.id as rap_id, rap.nomor_rap_alat as nomor_rap_alat');
+        $this->db->group_by('rap.id');
+		$this->db->order_by('rap.nomor_rap_alat','asc');
+        $data = $this->db->get('rap_alat rap')->result_array();
+
+        return $data;
+    }
+
+    function getRAPBUA()
+    {
+
+        $this->db->select('rap.id as rap_id, rap.nomor_rap_bua as nomor_rap_bua');
+        $this->db->group_by('rap.id');
+		$this->db->order_by('rap.nomor_rap_bua','asc');
+        $data = $this->db->get('rap_bua rap')->result_array();
+
+        return $data;
+    }
+
 }
 ?>

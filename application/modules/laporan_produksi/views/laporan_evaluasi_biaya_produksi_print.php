@@ -1227,7 +1227,7 @@
 	        </tr>
 			<tr class="table-active3">
 	            <th align="center"><b>3</b></th>
-				<th align="left"><b>OVERHEAD</b></th>
+				<th align="left"><b>BUA</b></th>
 				<th align="right"><?php echo number_format($total_rekapitulasi_produksi_harian,2,',','.');?></th>
 				<?php
 				$harsat_rap_overhead = (round($total_rekapitulasi_produksi_harian,2)!=0)?($overhead_ton * round($total_rekapitulasi_produksi_harian,2)) / round($total_rekapitulasi_produksi_harian,2) * 1:0;

@@ -163,7 +163,7 @@
 			?>
 			<tr class="table-active2">
 				<td width="80%" style="padding-left:20px;"><b>Total Biaya Operasional Produksi</b></td>
-				<td width="20%" align="right"><b><a target="_BLANK" href="<?= base_url("laporan/laporan_biaya?filter_date=".$filter_date = date('d-m-Y',strtotime($start_date)).' - '.date('d-m-Y',strtotime($end_date))) ?>"><?php echo number_format($total_a,0,',','.');?></b></a></td>
+				<td width="20%" align="right"><b><?php echo number_format($total_a,0,',','.');?></b></td>
 			</tr>
 		</table>
 		<br />

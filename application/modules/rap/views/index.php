@@ -57,7 +57,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th>No</th>
-														<th>Tanggal</th>
 														<th>Mutu Beton</th>
                                                         <th>Judul</th>
 														<th>Lampiran</th>
@@ -108,7 +107,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>No.</th>
-														<th>Tanggal</th>
+														<th>Dibuat Tanggal</th>
 														<th>Nomor</th>
                                                         <th>Masa Kontrak</th>
                                                         <th>Lampiran</th>
@@ -180,9 +179,6 @@
             columns: [
 				{
                     "data": "no"
-                },
-				{
-                    "data": "date_agregat"
                 },
 				{
                     "data": "mutu_beton"
