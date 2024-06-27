@@ -47,9 +47,9 @@
                                     
                                 <!-- Table Bahan -->
                                     <div role="tabpanel" class="tab-pane active" id="bahan">
-										<div class="col-sm-3">
+										<!--<div class="col-sm-3">
 											<input type="text" id="filter_date_agregat" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
-										</div>
+										</div>-->
                                         <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('rap/form_bahan'); ?>"><b style="color:white;">BUAT BAHAN</b></a></button>
                                         <br /><br />										
                                         <div class="table-responsive">
