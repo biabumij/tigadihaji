@@ -297,7 +297,7 @@
                                             </li>
                                             <li class="text-center" style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 40%, #57d762 80%);">
                                                 <a href="<?php echo site_url('admin/kas_&_bank');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-building-columns"></i><b>CASH & BANK</b></span></a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-building-columns"></i><b>KAS & BANK</b></span></a>
                                             </li>
                                         </ul>
                                     </th>
