@@ -68,7 +68,7 @@
                                                     if(!empty($dataLampiran)){
                                                         foreach ($dataLampiran as $key => $lampiran) {
                                                             ?>
-                                                            <a href=""><?= $lampiran['lampiran'];?></a><br />
+                                                            <div><a href="<?= base_url().'uploads/transfer/'.$lampiran['lampiran'];?>" target="_blank"><?= $lampiran['lampiran'];?></a></div>
                                                             <?php
                                                         }
                                                     }
