@@ -24,7 +24,7 @@ class Productions extends Secure_Controller {
 			$client_id = $this->input->get('client_id');
 			$data['client_id'] = $client_id;
 			$data['clients'] = $this->db->select('id,nama')->order_by('nama','asc')->get_where('penerima',array('pelanggan'=>1))->result_array();
-			$data['komposisi'] = $this->db->select('ag.id, ag.jobs_type, ag.date_agregat, p.nama_produk')
+			$data['komposisi'] = $this->db->select('ag.id, ag.jobs_type, p.nama_produk')
 			->from('pmm_agregat ag')
 			->join('produk p', 'ag.mutu_beton = p.id','left')
 			->where("ag.status = 'PUBLISH'")
