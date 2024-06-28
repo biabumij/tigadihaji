@@ -449,6 +449,144 @@
 				<th align="right" class="table-border-spesial-kanan" style="<?php echo $styleColorEE ?>"><?php echo $total_nilai_evaluasi < 0 ? "(".number_format(-$total_nilai_evaluasi,0,',','.').")" : number_format($total_nilai_evaluasi,0,',','.');?></th>
 	        </tr>
 	    </table>
+		<?php
+		if(in_array($this->session->userdata('admin_group_id'), array(1))){
+		?>
+		<br /><br />
+		<table width="98%" style="font-size:8px;">
+			<tr>
+				<th class="text-left" width="25%" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Stok Semen Bulan Lalu</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_volume_semen_lalu,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_harsat_semen_lalu,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_nilai_semen_lalu,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Pembelian Semen Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_semen,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_harga_semen,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_nilai_semen,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Total Stok Semen Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_volume_semen,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_semen,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Stok Semen Akhir</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_semen_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"></th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_semen_now,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Semen Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_semen,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_semen,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_semen,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+		</table>
+		<br /><br />
+		<table width="98%" style="font-size:8px;">
+			<tr>
+				<th class="text-left" width="25%" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Stok Pasir Bulan Lalu</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_volume_pasir_lalu,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_harsat_pasir_lalu,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_nilai_pasir_lalu,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Pembelian Pasir Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_pasir,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_harga_pasir,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_nilai_pasir,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Total Stok Pasir Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_volume_pasir,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_pasir,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Stok Pasir Akhir</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_pasir_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"></th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_pasir_now,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Pasir Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_pasir,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_pasir,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_pasir,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+		</table>
+		<br /><br />
+		<table width="98%" style="font-size:8px;">
+			<tr>
+				<th class="text-left" width="25%" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Stok 1020 Bulan Lalu</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_volume_1020_lalu,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_harsat_1020_lalu,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_nilai_1020_lalu,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Pembelian 1020 Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_1020,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_harga_1020,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_nilai_1020,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Total Stok 1020 Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_volume_1020,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_1020,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Stok 1020 Akhir</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_1020_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"></th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_1020_now,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian 1020 Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_1020,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_1020,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_1020,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+		</table>
+		<br /><br />
+		<table width="98%" style="font-size:8px;">
+			<tr>
+				<th class="text-left" width="25%" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Stok 2030 Bulan Lalu</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_volume_2030_lalu,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_harsat_2030_lalu,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_nilai_2030_lalu,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Pembelian 2030 Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_2030,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_harga_2030,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_nilai_2030,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Total Stok 2030 Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_volume_2030,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_2030,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Stok 2030 Akhir</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_2030_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"></th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_2030_now,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian 2030 Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_2030,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_2030,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_2030,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+		</table>
+		<?php
+		}
+		?>
 		<table width="98%" border="0" cellpadding="30">
 			<tr >
 				<td width="5%"></td>

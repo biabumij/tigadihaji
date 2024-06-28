@@ -598,6 +598,45 @@
 				<th align="right" style="<?php echo $styleColorJ ?>;border-right:1px solid black; border-top:1px solid black; border-bottom:1px solid black;"><?php echo $total_nilai_evaluasi_alat < 0 ? "(".number_format(-$total_nilai_evaluasi_alat,0,',','.').")" : number_format($total_nilai_evaluasi_alat,0,',','.');?></th>
 	        </tr>
 	    </table>
+		<?php
+		if(in_array($this->session->userdata('admin_group_id'), array(1))){
+		?>
+		<br /><br />
+		<table width="98%" style="font-size:8px;">
+			<tr>
+				<th class="text-left" width="25%" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Stok Solar Bulan Lalu</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_volume_solar_lalu,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_harsat_solar_lalu,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($stok_nilai_solar_lalu,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Pembelian Solar Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_solar,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_harga_solar,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($pembelian_nilai_solar,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:grey; color:white;">&nbsp;&nbsp;Total Stok Solar Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_volume_solar,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_solar,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:yellow; color:black;">&nbsp;&nbsp;Stok Solar Akhir</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_solar_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"></th>
+				<th class="text-right" style="font-weight:bold; background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_solar_now,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="font-weight:bold; background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Solar Bulan Ini</th>
+				<th class="text-right" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_solar,2,',','');?> (Ton)</th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_solar,0,',','.');?></th>
+				<th class="text-right" width="10%" style="font-weight:bold; background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_solar,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+		</table>
+		<?php
+		}
+		?>
 		<br /><br /><br /><br /><br /><br /><br /><br /><br />
 		<table width="98%" border="0" cellpadding="30">
 			<tr >

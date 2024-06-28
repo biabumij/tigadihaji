@@ -1393,7 +1393,6 @@ class Reports extends CI_Controller {
 
 			//OVERHEAD
 			$overhead = $this->pmm_model->getOverheadLabaRugi($date1,$date2);
-			file_put_contents("D:\\test.txt", $this->db->last_query());
 			$overhead = $overhead;
 
 			//OVERHEAD
