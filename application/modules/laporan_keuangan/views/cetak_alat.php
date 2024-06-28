@@ -290,21 +290,25 @@
 			}
 
 			$total_vol_batching_plant = $total_volume;
+			$total_vol_pemeliharaan_batching_plant = $total_volume;
 			$total_vol_truck_mixer = $total_volume;
 			$total_vol_wheel_loader = $total_volume;
+			$total_vol_pemeliharaan_wheel_loader = $total_volume;
 			$total_vol_excavator = $pembelian_excavator['volume'];
 			$total_vol_transfer_semen = $pembelian_transfer_semen['volume'];
 			$total_vol_bbm_solar = $total_volume;
 
 			$total_pemakaian_vol_batching_plant = $total_vol_batching_plant;
+			$total_pemakaian_vol_pemeliharaan_batching_plant = $total_vol_pemeliharaan_batching_plant;
 			$total_pemakaian_vol_truck_mixer = $total_vol_truck_mixer;
 			$total_pemakaian_vol_wheel_loader = $total_vol_wheel_loader;
+			$total_pemakaian_vol_pemeliharaan_wheel_loader = $total_vol_pemeliharaan_wheel_loader;
 			$total_pemakaian_vol_excavator = $total_vol_excavator;
 			$total_pemakaian_vol_transfer_semen = $total_vol_transfer_semen;
 			$total_pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
 
 			$total_pemakaian_batching_plant = $total_nilai_batching_plant;
-			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_insentif_tm;
+			$total_pemakaian_truck_mixer = ($total_nilai_truck_mixer + $total_insentif_tm) / 60;
 			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_insentif_wl;
 			$total_pemakaian_excavator = $total_nilai_excavator;
 			$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
@@ -316,30 +320,22 @@
 			->where('rap.status','PUBLISH')
 			->get()->result_array();
 
-			$total_vol_rap_batching_plant = 0;
-			$total_vol_rap_truck_mixer = 0;
-			$total_vol_rap_wheel_loader = 0;
-			$total_vol_rap_excavator = 0;
-			$total_vol_rap_transfer_semen = 0;
-			$total_vol_rap_bbm_solar = 0;
-
-			$total_batching_plant = 0;
-			$total_truck_mixer = 0;
-			$total_wheel_loader = 0;
-			$total_excavator = 0;
-			$total_transfer_semen = 0;
-			$total_bbm_solar = 0;
-
 			foreach ($rap_alat as $x){
 				$total_vol_rap_batching_plant += $x['vol_batching_plant'];
+				$total_vol_rap_pemeliharaan_batching_plant += $x['vol_pemeliharaan_batching_plant'];
 				$total_vol_rap_truck_mixer += $x['vol_truck_mixer'];
 				$total_vol_rap_wheel_loader += $x['vol_wheel_loader'];
+				$total_vol_rap_pemeliharaan_wheel_loader += $x['vol_pemeliharaan_wheel_loader'];
 				$total_vol_rap_excavator += $x['vol_excavator'];
 				$total_vol_rap_transfer_semen += $x['vol_transfer_semen'];
 				$total_vol_rap_bbm_solar += $x['vol_bbm_solar'];
 				$total_batching_plant = $x['harsat_batching_plant'];
+				$total_pemeliharaan_batching_plant = $x['harsat_pemeliharaan_batching_plant'];
+				$total_penyusutan_batching_plant = $x['harsat_batching_plant'] - $x['harsat_pemeliharaan_batching_plant'];
 				$total_truck_mixer = $x['harsat_truck_mixer'];
 				$total_wheel_loader = $x['harsat_wheel_loader'];
+				$total_pemeliharaan_wheel_loader = $x['harsat_pemeliharaan_wheel_loader'];
+				$total_penyusutan_wheel_loader = $x['harsat_wheel_loader'] - $x['harsat_pemeliharaan_wheel_loader'];
 				$total_excavator = $x['harsat_excavator'];
 				$total_transfer_semen = $x['harsat_transfer_semen'];
 				$total_bbm_solar = $x['harsat_bbm_solar'];
@@ -347,15 +343,23 @@
 			}
 
 			$vol_batching_plant = $total_vol_rap_batching_plant * $total_pemakaian_vol_batching_plant;
+			$vol_pemeliharaan_batching_plant = $total_vol_rap_pemeliharaan_batching_plant * $total_pemakaian_vol_pemeliharaan_batching_plant;
+			$vol_penyusutan_batching_plant = $vol_pemeliharaan_batching_plant;
 			$vol_truck_mixer = $total_vol_rap_truck_mixer * $total_pemakaian_vol_truck_mixer;
 			$vol_wheel_loader = $total_vol_rap_wheel_loader * $total_pemakaian_vol_wheel_loader;
+			$vol_pemeliharaan_wheel_loader = $total_vol_rap_pemeliharaan_wheel_loader * $total_pemakaian_vol_pemeliharaan_wheel_loader;
+			$vol_penyusutan_wheel_loader = $vol_pemeliharaan_wheel_loader;
 			$vol_excavator = $total_vol_rap_excavator * $total_pemakaian_vol_excavator;
 			$vol_transfer_semen = $total_vol_rap_transfer_semen * $total_pemakaian_vol_transfer_semen;
 			$vol_bbm_solar = $total_vol_rap_bbm_solar * $total_vol_bbm_solar;
 
 			$batching_plant = $total_batching_plant * $vol_batching_plant;
+			$pemeliharaan_batching_plant = $total_pemeliharaan_batching_plant * $vol_pemeliharaan_batching_plant;
+			$penyusutan_batching_plant = $batching_plant - $pemeliharaan_batching_plant;
 			$truck_mixer = $total_truck_mixer * $vol_truck_mixer;
 			$wheel_loader = $total_wheel_loader * $vol_wheel_loader;
+			$pemeliharaan_wheel_loader = $total_pemeliharaan_wheel_loader * $vol_pemeliharaan_wheel_loader;
+			$penyusutan_wheel_loader = $wheel_loader - $pemeliharaan_wheel_loader;
 			$excavator = $total_excavator * $vol_excavator;
 			$transfer_semen = $total_transfer_semen * $vol_transfer_semen;
 			$bbm_solar = $total_bbm_solar * $vol_bbm_solar;
@@ -409,19 +413,19 @@
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">2.</th>			
-				<th align="left">Truck Mixer + Insentif</th>
-				<th align="center" style="border-right:1px solid black;">M3</th>
-				<th align="right"><?php echo number_format($total_pemakaian_vol_truck_mixer,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_pemakaian_truck_mixer / $total_pemakaian_vol_truck_mixer,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_truck_mixer,0,',','.');?></th>
-	        </tr>
-			<tr class="table-baris1">
-				<th align="center" style="border-left:1px solid black;">3.</th>			
-				<th align="left">Wheel Loader + Insentif</th>
+				<th align="left">Wheel Loader</th>
 				<th align="center" style="border-right:1px solid black;">M3</th>
 				<th align="right"><?php echo number_format($total_pemakaian_vol_wheel_loader,2,',','.');?></th>
 				<th align="right"><?php echo number_format($total_pemakaian_wheel_loader / $total_pemakaian_vol_wheel_loader,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_wheel_loader,0,',','.');?></th>
+	        </tr>
+			<tr class="table-baris1">
+				<th align="center" style="border-left:1px solid black;">3.</th>			
+				<th align="left">Truck Mixer</th>
+				<th align="center" style="border-right:1px solid black;">M3</th>
+				<th align="right"><?php echo number_format($total_pemakaian_vol_truck_mixer,2,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_truck_mixer / $total_pemakaian_vol_truck_mixer,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_truck_mixer,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">4.</th>			
