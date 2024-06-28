@@ -252,22 +252,10 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
 		$data['date1'] = date('Y-m-d',strtotime($arr_filter_date[0]));
 		$data['date2'] = date('Y-m-d',strtotime($arr_filter_date[1]));
-		$data['biaya_langsung_parent'] = $this->m_laporan->biaya_langsung_print_parent($arr_date);
-		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
-		$data['biaya_langsung_jurnal_parent'] = $this->m_laporan->biaya_langsung_jurnal_print_parent($arr_date);
-		$data['biaya_langsung_jurnal'] = $this->m_laporan->biaya_langsung_jurnal_print($arr_date);
-		$data['biaya_parent'] = $this->m_laporan->showBiaya_print_parent($arr_date);
-        $data['biaya'] = $this->m_laporan->showBiaya_print($arr_date);
-		$data['biaya_jurnal_parent'] = $this->m_laporan->showBiayaJurnal_print_parent($arr_date);
-		$data['biaya_jurnal'] = $this->m_laporan->showBiayaJurnal_print($arr_date);
-		$data['biaya_lainnya_parent'] = $this->m_laporan->showBiayaLainnya_print_parent($arr_date);
-        $data['biaya_lainnya'] = $this->m_laporan->showBiayaLainnya_print($arr_date);
-		$data['biaya_lainnya_jurnal_parent'] = $this->m_laporan->showBiayaLainnyaJurnal_print_parent($arr_date);
-		$data['biaya_lainnya_jurnal'] = $this->m_laporan->showBiayaLainnyaJurnal_print($arr_date);
-		$data['biaya_persiapan_parent'] = $this->m_laporan->showPersiapanBiaya_print_parent($arr_date);
-		$data['biaya_persiapan'] = $this->m_laporan->showPersiapanBiaya_print($arr_date);
-		$data['biaya_persiapan_jurnal_parent'] = $this->m_laporan->showPersiapanJurnal_print_parent($arr_date);
-		$data['biaya_persiapan_jurnal'] = $this->m_laporan->showPersiapanJurnal($arr_date);
+		$data['biaya_lainnya_parent'] = $this->m_laporan->biaya_lainnya_parent($arr_date);
+		$data['biaya_lainnya'] = $this->m_laporan->biaya_lainnya($arr_date);
+		$data['biaya_lainnya_jurnal_parent'] = $this->m_laporan->biaya_lainnya_jurnal_parent($arr_date);
+		$data['biaya_lainnya_jurnal'] = $this->m_laporan->biaya_lainnya_jurnal($arr_date);
         $html = $this->load->view('laporan_keuangan/cetak_diskonto',$data,TRUE);
 
         $pdf->SetTitle('BBJ - Diskonto');

@@ -1270,9 +1270,6 @@ class Reports extends CI_Controller {
 	}
 
 	//BATAS RUMUS LAMA//
-
-	
-
 	public function laba_rugi($arr_date)
 	{
 		$data = array();
@@ -1396,6 +1393,7 @@ class Reports extends CI_Controller {
 
 			//OVERHEAD
 			$overhead = $this->pmm_model->getOverheadLabaRugi($date1,$date2);
+			file_put_contents("D:\\test.txt", $this->db->last_query());
 			$overhead = $overhead;
 
 			//OVERHEAD
@@ -1579,7 +1577,7 @@ class Reports extends CI_Controller {
 	        </tr>
 			<tr class="table-active3">
 	            <th class="text-center"></th>
-				<th class="text-left" colspan="2">Overhead</th>
+				<th class="text-left" colspan="2">BUA</th>
 				<th class="text-right">
 					<table width="100%" border="0" cellpadding="0">
 						<tr>
@@ -10826,7 +10824,7 @@ class Reports extends CI_Controller {
 			$total_pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
 
 			$total_pemakaian_batching_plant = $total_nilai_batching_plant;
-			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_insentif_tm;
+			$total_pemakaian_truck_mixer = ($total_nilai_truck_mixer + $total_insentif_tm) / 60;
 			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_insentif_wl;
 			$total_pemakaian_excavator = $total_nilai_excavator;
 			$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
@@ -11539,7 +11537,7 @@ class Reports extends CI_Controller {
 				<th class="text-right"></th>
 				<th class="text-right"></th>
 				<?php
-				$total_nilai_realisasi = $total_nilai_realisasi + $total_nilai_realisasi_alat;
+				$total_nilai_realisasi = $total_nilai_realisasi + $total_nilai_realisasi_alat + $total_nilai_realisasi_bua;
 				?>
 				<th class="text-right"><?php echo number_format($total_nilai_realisasi,0,',','.');?></th>
 				<th class="text-right"></th>
