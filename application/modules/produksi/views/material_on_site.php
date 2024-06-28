@@ -113,8 +113,8 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Harsat<span class="required" aria-required="true">*</span></label>
-                        <input type="text" id="price" name="price" class="form-control nilaiformat" autocomplete="off" required=""/>
+                        <label>Harsat</label>
+                        <input type="text" id="price" name="price" class="form-control nilaiformat" autocomplete="off"/>
                     </div>
                     <div class="form-group">
                         <label>Notes</label>

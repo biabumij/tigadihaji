@@ -51,11 +51,11 @@
                                             <thead>
                                                 <tr class="text-center">
                                                     <th width="5%">NO.</th>
-                                                    <th width="20%">URAIAN</th>
-                                                    <th width="20%">VOLUME</th>
-                                                    <th width="15%">SATUAN</th>
-                                                    <th width="20%">HARGA SATUAN</th>
-													<th width="20%">TOTAL</th>                                    
+                                                    <th width="25%">URAIAN</th>
+                                                    <th>VOLUME</th>
+                                                    <th>SATUAN</th>
+                                                    <th>HARGA SATUAN</th>
+													<th>TOTAL</th>                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -72,23 +72,23 @@
                                                     <td>
                                                     <input type="text" name="batching_plant" id="batching_plant" class="form-control rupiahformat text-right" readonly="" value="" required=""  autocomplete="off"/>
                                                     </td>
-                                                </tr>	
+                                                </tr>
                                                 <tr>
-                                                    <td class="text-center">2.</td>
-                                                    <td>TRUCK MIXER</td>
+                                                    <td class="text-center"></td>
+                                                    <td>PEMELIHARAAN BATCHING PLANT + GENSET</td>
 													<td>
-                                                    <input type="text" id="vol_truck_mixer" name="vol_truck_mixer" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
+                                                    <input type="text" id="vol_pemeliharaan_batching_plant" name="vol_pemeliharaan_batching_plant" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
                                                     </td>
                                                     <td class="text-center">M3</td>
                                                     <td>
-                                                    <input type="text" name="harsat_truck_mixer" id="harsat_truck_mixer" class="form-control rupiahformat text-right" onchange="changeData(1)" required="" autocomplete="off"/>
+                                                    <input type="text" name="harsat_pemeliharaan_batching_plant" id="harsat_pemeliharaan_batching_plant" class="form-control rupiahformat text-right" onchange="changeData(1)"  required=""  autocomplete="off"/>
                                                     </td>
                                                     <td>
-                                                    <input type="text" name="truck_mixer" id="truck_mixer" class="form-control rupiahformat text-right" readonly="" value="" required="" autocomplete="off"/>
+                                                    <input type="text" name="pemeliharaan_batching_plant" id="pemeliharaan_batching_plant" class="form-control rupiahformat text-right" readonly="" value="" required=""  autocomplete="off"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="text-center">3.</td>
+                                                    <td class="text-center">2.</td>
                                                     <td>WHEEL LOADER</td>
 													<td>
                                                     <input type="text" id="vol_wheel_loader" name="vol_wheel_loader" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
@@ -102,7 +102,35 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="text-center">6.</td>
+                                                    <td class="text-center"></td>
+                                                    <td>PEMELIHARAAN WHEEL LOADER</td>
+													<td>
+                                                    <input type="text" id="vol_pemeliharaan_wheel_loader" name="vol_pemeliharaan_wheel_loader" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
+                                                    </td>
+                                                    <td class="text-center">M3</td>
+                                                    <td>
+                                                    <input type="text" name="harsat_pemeliharaan_wheel_loader" id="harsat_pemeliharaan_wheel_loader" class="form-control rupiahformat text-right" onchange="changeData(1)"  required=""  autocomplete="off"/>
+                                                    </td>
+                                                    <td>
+                                                    <input type="text" name="pemeliharaan_wheel_loader" id="pemeliharaan_wheel_loader" class="form-control rupiahformat text-right" readonly="" value="" required=""  autocomplete="off"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">3.</td>
+                                                    <td>TRUCK MIXER</td>
+													<td>
+                                                    <input type="text" id="vol_truck_mixer" name="vol_truck_mixer" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
+                                                    </td>
+                                                    <td class="text-center">M3</td>
+                                                    <td>
+                                                    <input type="text" name="harsat_truck_mixer" id="harsat_truck_mixer" class="form-control rupiahformat text-right" onchange="changeData(1)" required="" autocomplete="off"/>
+                                                    </td>
+                                                    <td>
+                                                    <input type="text" name="truck_mixer" id="truck_mixer" class="form-control rupiahformat text-right" readonly="" value="" required="" autocomplete="off"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">4.</td>
                                                     <td>BBM SOLAR</td>
 													<td>
                                                     <input type="text" id="vol_bbm_solar" name="vol_bbm_solar" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
@@ -210,21 +238,29 @@
         function changeData(id)
         {
 			var vol_batching_plant = $('#vol_batching_plant').val();
-            var vol_truck_mixer = $('#vol_truck_mixer').val();
+            var vol_pemeliharaan_batching_plant = $('#vol_pemeliharaan_batching_plant').val();
             var vol_wheel_loader = $('#vol_wheel_loader').val();
+            var vol_pemeliharaan_wheel_loader = $('#vol_pemeliharaan_wheel_loader').val();
+            var vol_truck_mixer = $('#vol_truck_mixer').val();
             var vol_bbm_solar = $('#vol_bbm_solar').val();
 
 			var harsat_batching_plant = $('#harsat_batching_plant').val();
-            var harsat_truck_mixer = $('#harsat_truck_mixer').val();
+            var harsat_pemeliharaan_batching_plant = $('#harsat_pemeliharaan_batching_plant').val();
             var harsat_wheel_loader = $('#harsat_wheel_loader').val();
+            var harsat_pemeliharaan_wheel_loader = $('#harsat_pemeliharaan_wheel_loader').val();
+            var harsat_truck_mixer = $('#harsat_truck_mixer').val();
             var harsat_bbm_solar = $('#harsat_bbm_solar').val();
             				
 			batching_plant = ( vol_batching_plant * harsat_batching_plant );
             $('#batching_plant').val(batching_plant);
-            truck_mixer = ( vol_truck_mixer * harsat_truck_mixer );
-            $('#truck_mixer').val(truck_mixer);
+            pemeliharaan_batching_plant = ( vol_pemeliharaan_batching_plant * harsat_pemeliharaan_batching_plant );
+            $('#pemeliharaan_batching_plant').val(pemeliharaan_batching_plant);
             wheel_loader = ( vol_wheel_loader * harsat_wheel_loader );
             $('#wheel_loader').val(wheel_loader);
+            pemeliharaan_wheel_loader = ( vol_pemeliharaan_wheel_loader * harsat_pemeliharaan_wheel_loader );
+            $('#pemeliharaan_wheel_loader').val(pemeliharaan_wheel_loader);
+            truck_mixer = ( vol_truck_mixer * harsat_truck_mixer );
+            $('#truck_mixer').val(truck_mixer);
             bbm_solar = ( vol_bbm_solar * harsat_bbm_solar );
             $('#bbm_solar').val(bbm_solar);
             getTotal();
@@ -234,7 +270,7 @@
         {
             var sub_total = $('#sub-total-val').val();
 
-            sub_total = parseInt($('#batching_plant').val()) + parseInt($('#truck_mixer').val()) + parseInt($('#wheel_loader').val()) + parseInt($('#bbm_solar').val());
+            sub_total = parseInt($('#batching_plant').val()) + parseInt($('#wheel_loader').val()) + parseInt($('#truck_mixer').val()) + parseInt($('#bbm_solar').val());
             
             $('#sub-total-val').val(sub_total);
             $('#sub-total').text($.number( sub_total, 0,',','.' ));

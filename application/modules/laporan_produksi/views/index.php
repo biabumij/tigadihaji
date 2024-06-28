@@ -87,24 +87,6 @@
                                                     }
                                                     ?>
 													<?php
-                                                    if(in_array($this->session->userdata('admin_group_id'), array(1))){
-                                                    ?>                                     
-													<div class="col-sm-5">
-														<p><h5><b>Evaluasi Bahan</b></h5></p>
-                                                        <a href="#laporan_evaluasi" aria-controls="laporan_evaluasi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
-                                                    </div>
-													<div class="col-sm-5">
-														<p><h5><b>Evaluasi Alat</b></h5></p>
-                                                        <a href="#evaluasi_alat" aria-controls="evaluasi_alat" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
-                                                    </div>
-													<div class="col-sm-5">
-														<p><h5><b>Evaluasi BUA</b></h5></p>
-                                                        <a href="#evaluasi_bua" aria-controls="evaluasi_bua" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
-                                                    </div>
-													<?php
-                                                    }
-                                                    ?>
-													<?php
                                                     if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
                                                     ?>
 													<div class="col-sm-5">
@@ -155,110 +137,7 @@
 										</div>
                                     </div>
 
-									<!-- Evaluasi Bahan -->
-									<div role="tabpanel" class="tab-pane" id="laporan_evaluasi">
-                                        <div class="col-sm-15">
-										<div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title"><b>Evaluasi Bahan</b></h3>
-													<a href="laporan_ev._produksi">Kembali</a>
-                                                </div>
-												<div style="margin: 20px">
-													<div class="row">
-														<form action="<?php echo site_url('laporan/cetak_evaluasi_bahan');?>" target="_blank">
-															<div class="col-sm-3">
-																<input type="text" id="filter_date_evaluasi_bahan" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
-															</div>
-															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
-															</div>
-														</form>
-														
-													</div>
-													<br />
-													<div id="wait-bahan" style=" text-align: center; align-content: center; display: none;">	
-														<div>Mohon Tunggu</div>
-														<div class="fa-3x">
-														  <i class="fa fa-spinner fa-spin"></i>
-														</div>
-													</div>				
-													<div class="table-responsive" id="evaluasi-bahan">
-													</div>
-												</div>
-											</div>
-										</div>
-                                    </div>
-
-									<!-- Evaluasi Alat -->
-									<div role="tabpanel" class="tab-pane" id="evaluasi_alat">
-                                        <div class="col-sm-15">
-										<div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title"><b>Evaluasi Alat</b></h3>
-													<a href="laporan_ev._produksi">Kembali</a>
-                                                </div>
-												<div style="margin: 20px">
-													<div class="row">
-														<form action="<?php echo site_url('laporan/cetak_laporan_evaluasi_alat');?>" target="_blank">
-															<div class="col-sm-3">
-																<input type="text" id="filter_date_evaluasi_alat" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
-															</div>
-															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
-															</div>
-														</form>
-														
-													</div>
-													<br />
-													<div id="wait-alat" style=" text-align: center; align-content: center; display: none;">	
-														<div>Mohon Tungg</div>
-														<div class="fa-3x">
-														  <i class="fa fa-spinner fa-spin"></i>
-														</div>
-													</div>				
-													<div class="table-responsive" id="evaluasi-alat">													
-													</div>
-												</div>
-											</div>
-										</div>
-                                    </div>
-
-									<!-- Evaluasi BUA -->
-									<div role="tabpanel" class="tab-pane" id="evaluasi_bua">
-                                        <div class="col-sm-15">
-										<div class="panel panel-default">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title"><b>Evaluasi BUA</b></h3>
-													<a href="laporan_ev._produksi">Kembali</a>
-                                                </div>
-												<div style="margin: 20px">
-													<div class="row">
-														<form action="<?php echo site_url('laporan/cetak_laporan_evaluasi_bua');?>" target="_blank">
-															<div class="col-sm-3">
-																<input type="text" id="filter_date_evaluasi_bua" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
-															</div>
-															<div class="col-sm-3">
-																<button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
-															</div>
-														</form>
-														
-													</div>
-													<br />
-													<div id="wait-bua" style=" text-align: center; align-content: center; display: none;">	
-														<div>Mohon Tunggu</div>
-														<div class="fa-3x">
-														  <i class="fa fa-spinner fa-spin"></i>
-														</div>
-													</div>				
-													<div class="table-responsive" id="evaluasi-bua">													
-													</div>
-												</div>
-											</div>
-										</div>
-                                    </div>
-
 									<!-- Laporan Evaluasi Target Produksi -->
-
                                     <div role="tabpanel" class="tab-pane" id="evaluasi_target_produksi">
                                         <div class="col-sm-15">
 											<div class="panel panel-default">

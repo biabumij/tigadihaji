@@ -100,21 +100,22 @@
 				<td align="right"><?= number_format($rap_alat['harsat_batching_plant'],0,',','.'); ?></td>
 				<td align="right"><?= number_format($rap_alat['batching_plant'],0,',','.'); ?></td>
 			</tr>
+			
 			<tr class="table-baris1">
 				<td align="center">2.</td>
-				<td align="left">TRUCK MIXER</td>
-				<td align="center"><?= number_format($rap_alat['vol_truck_mixer'],4,',','.'); ?></td>
-				<td align="center">M3</td>
-				<td align="right"><?= number_format($rap_alat['harsat_truck_mixer'],0,',','.'); ?></td>
-				<td align="right"><?= number_format($rap_alat['truck_mixer'],0,',','.'); ?></td>
-			</tr>
-			<tr class="table-baris1">
-				<td align="center">3.</td>
 				<td align="left">WHEEL LOADER</td>
 				<td align="center"><?= number_format($rap_alat['vol_wheel_loader'],4,',','.'); ?></td>
 				<td align="center">M3</td>
 				<td align="right"><?= number_format($rap_alat['harsat_wheel_loader'],0,',','.'); ?></td>
 				<td align="right"><?= number_format($rap_alat['wheel_loader'],0,',','.'); ?></td>
+			</tr>
+			<tr class="table-baris1">
+				<td align="center">3.</td>
+				<td align="left">TRUCK MIXER</td>
+				<td align="center"><?= number_format($rap_alat['vol_truck_mixer'],4,',','.'); ?></td>
+				<td align="center">M3</td>
+				<td align="right"><?= number_format($rap_alat['harsat_truck_mixer'],0,',','.'); ?></td>
+				<td align="right"><?= number_format($rap_alat['truck_mixer'],0,',','.'); ?></td>
 			</tr>
 			<tr class="table-baris1">
 				<td align="center">4.</td>
