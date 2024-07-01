@@ -1322,25 +1322,22 @@
 				<th align="right" style="<?php echo $styleColor ?>"><?php echo $total_nilai_evaluasi_alat < 0 ? "(".number_format(-$total_nilai_evaluasi_alat,0,',','.').")" : number_format($total_nilai_evaluasi_alat,0,',','.');?></th>
 	        </tr>
 			<tr class="table-active3">
-	            <th align="center"><b>3</b></th>
-				<th align="left"><b>BUA</b></th>
-				<th align="right"><?php echo number_format($total_rekapitulasi_produksi_harian,2,',','.');?></th>
+	            <th align="center">3</th>
+				<th align="left">BUA</th>
+				<th align="right"><?php echo number_format($total_volume_rap_bua,2,',','.');?></th>
+				<th align="right"><?php echo number_format($total_harsat_rap_bua,0,',','.');?></th>
+				<th align="right"><a target="_blank" href="<?= base_url("rap/cetak_rap_bua/".'1') ?>"><?php echo number_format($total_nilai_rap_bua,0,',','.');?></a></th>
+				<th align="right"><?php echo number_format($total_volume_realisasi_bua,2,',','.');?></th>
+				<th align="right"><?php echo number_format($total_harsat_realisasi_bua,0,',','.');?></th>
+				<th align="right"><a target="_blank" href="<?= base_url("laporan/cetak_overhead?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_realisasi_bua,0,',','.');?></a></th>
 				<?php
-				$harsat_rap_overhead = (round($total_rekapitulasi_produksi_harian,2)!=0)?($overhead_ton * round($total_rekapitulasi_produksi_harian,2)) / round($total_rekapitulasi_produksi_harian,2) * 1:0;
+				$styleColor = $total_volume_evaluasi_bua < 0 ? 'color:red' : 'color:black';
 				?>
-				<th align="right"><?php echo number_format($harsat_rap_overhead,0,',','.');?></th>
-				<th align="right"><?php echo number_format($overhead_ton * round($total_rekapitulasi_produksi_harian,2),0,',','.');?></th>
-				<th align="right"><?php echo number_format($total_rekapitulasi_produksi_harian,2,',','.');?></th>
+				<th align="right" style="<?php echo $styleColor ?>"><?php echo number_format($total_volume_evaluasi_bua,2,',','.');?></th>
 				<?php
-				$harsat_realisasi_overhead = (round($total_rekapitulasi_produksi_harian,2)!=0)?$total_operasional / round($total_rekapitulasi_produksi_harian,2) * 1:0;
+				$styleColor = $total_nilai_evaluasi_bua < 0 ? 'color:red' : 'color:black';
 				?>
-				<th align="right"><?php echo number_format($harsat_realisasi_overhead,0,',','.');?></th>
-				<th align="right"><?php echo number_format($total_nilai_realisasi_bua,0,',','.');?></th>
-				<th align="right"><?php echo number_format($total_rekapitulasi_produksi_harian,2,',','.');?></th>
-				<?php
-				$styleColor = $nilai_evaluasi_overhead < 0 ? 'color:red' : 'color:black';
-				?>
-				<th align="right" style="<?php echo $styleColor ?>"><?php echo $nilai_evaluasi_overhead < 0 ? "(".number_format(-$nilai_evaluasi_overhead,0,',','.').")" : number_format($nilai_evaluasi_overhead,0,',','.');?></th>
+				<th align="right" style="<?php echo $styleColor ?>"><?php echo $total_nilai_evaluasi_bua < 0 ? "(".number_format(-$total_nilai_evaluasi_bua,0,',','.').")" : number_format($total_nilai_evaluasi_bua,0,',','.');?></th>
 	        </tr>
 			<tr class="table-active4">
 				<th align="right" colspan="2">TOTAL</th>
