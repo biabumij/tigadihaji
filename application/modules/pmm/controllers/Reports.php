@@ -1344,6 +1344,7 @@ class Reports extends CI_Controller {
 			foreach ($penjualan as $x){
 				$total_penjualan += $x['price'];
 				$total_volume += $x['volume'];
+				$satuan = $x['measure'];
 			}
 
 			$total_penjualan_all = 0;
@@ -1357,15 +1358,16 @@ class Reports extends CI_Controller {
 			->where("pp.date_production between '$date3' and '$date2'")
 			->where("pp.status = 'PUBLISH'")
 			->where("ppo.status in ('OPEN','CLOSED')")
-			->group_by("pp.client_id")
+			//->group_by("pp.client_id")
 			->get()->result_array();
-			
+
 			$total_penjualan_2 = 0;
 			$total_volume_2 = 0;
 
 			foreach ($penjualan_2 as $x){
 				$total_penjualan_2 += $x['price'];
 				$total_volume_2 += $x['volume'];
+				$satuan_2 = $x['measure'];
 			}
 
 			$total_penjualan_all_2 = 0;
@@ -1465,7 +1467,7 @@ class Reports extends CI_Controller {
 					</table>
 				</th>
 			<?php endforeach; ?>
-			<?php foreach ($penjualan_2 as $x): ?>
+			<!--<?php foreach ($penjualan_2 as $x): ?>
 				<th width="12%" class="text-right"><?php echo number_format($x['volume'],2,',','.');?> (<?= $x['measure'];?>)</th>
 				<th width="18%" class="text-right">
 					<table width="100%" border="0" cellpadding="0">
@@ -1478,12 +1480,12 @@ class Reports extends CI_Controller {
 								</th>
 							</tr>
 					</table>
-				</th>
+				</th>-->
 	        </tr>
 			<?php endforeach; ?>
 			<tr class="table-active3">
 				<th class="text-left" colspan="2">Total Pendapatan</th>
-				<th class="text-right"></th>
+				<th class="text-right"><?php echo number_format($total_volume,2,',','.');?> (<?= $satuan;?>)</th>
 	            <th class="text-right">
 					<table width="100%" border="0" cellpadding="0">
 						<tr>
@@ -1496,7 +1498,7 @@ class Reports extends CI_Controller {
 							</tr>
 					</table>
 				</th>
-				<th class="text-right"></th>
+				<th class="text-right"><?php echo number_format($total_volume_2,2,',','.');?> (<?= $satuan_2;?>)</th>
 				<th class="text-right">
 					<table width="100%" border="0" cellpadding="0">
 						<tr>

@@ -124,6 +124,7 @@
 			foreach ($penjualan as $x){
 				$total_penjualan += $x['price'];
 				$total_volume += $x['volume'];
+				$satuan = $x['measure'];
 			}
 
 			$total_penjualan_all = 0;
@@ -137,15 +138,16 @@
 			->where("pp.date_production between '$date3' and '$date2'")
 			->where("pp.status = 'PUBLISH'")
 			->where("ppo.status in ('OPEN','CLOSED')")
-			->group_by("pp.client_id")
+			//->group_by("pp.client_id")
 			->get()->result_array();
-			
+
 			$total_penjualan_2 = 0;
 			$total_volume_2 = 0;
 
 			foreach ($penjualan_2 as $x){
 				$total_penjualan_2 += $x['price'];
 				$total_volume_2 += $x['volume'];
+				$satuan_2 = $x['measure'];
 			}
 
 			$total_penjualan_all_2 = 0;
