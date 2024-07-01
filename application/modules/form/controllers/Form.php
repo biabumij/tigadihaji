@@ -61,7 +61,7 @@ class Form extends Secure_Controller {
 			'lain_lain' => $lain_lain,
 			'deskripsi' => $deskripsi,
 			'memo' => $memo,
-			'unit_head' => 48,
+			'unit_head' => 6,
 			'status' => 'UNPUBLISH',
 			'status_permintaan' => 'MENUNGGU',
 			'kategori_persetujuan' => 'PERUBAHAN SISTEM',
