@@ -194,7 +194,8 @@
 
     $('#material_id').change(function() {
         var measure = $(this).find(':selected').data('measure');
-        $('#measure_id').val(measure);
+        $('#measure').val(measure);
+        $('#display_measure').val(measure);
     });
 
     $("#convert, #volume, #select_operation").change(function(){

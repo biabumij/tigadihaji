@@ -59,11 +59,11 @@
                         <select id="material_id" name="material_id" class="form-control" required="">
                             <option value="">Pilih Produk</option>
                             <?php
-                             $this->db->where('status', 'PUBLISH');
-                             $materials = $this->db->select('*')->get_where('produk', array('status' => 'PUBLISH', 'kategori_produk' => 1))->result_array();
+                            $this->db->where('status', 'PUBLISH');
+                            $materials = $this->db->select('*')->get_where('produk', array('status' => 'PUBLISH', 'kategori_produk' => 1))->result_array();
                             foreach ($materials as $mat) {
                             ?>
-                                <option value="<?php echo $mat['id']; ?>"><?php echo $mat['nama_produk']; ?></option>
+                                <option value="<?php echo $mat['id']; ?>" data-measure="<?php echo $mat['satuan'];?>"><?php echo $mat['nama_produk']; ?></option>
                             <?php
                             }
                             ?>
@@ -88,18 +88,18 @@
                             ?>
                         </select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display: none;">
                         <input type="hidden" id="select_operation" name="select_operation" value="*">
                         <label>Konversi<span class="required" aria-required="true">*</span></label>
-                        <input type="text" id="convert" name="convert" class="form-control numberformat" value="1" autocomplete="off" required=""/>
+                        <input type="text" id="convert" name="convert" class="form-control numberformat" value="1" autocomplete="off"/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display: none;">
                         <label>Volume Konversi<span class="required" aria-required="true">*</span></label>
-                        <input type="text" id="display_volume" name="display_volume" class="form-control numberformat" autocomplete="off" required=""/>
+                        <input type="text" id="display_volume" name="display_volume" class="form-control numberformat" autocomplete="off"/>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="display: none;">
                         <label>Satuan Konversi<span class="required" aria-required="true">*</span></label>
-                        <select id="display_measure" name="display_measure" class="form-control" autocomplete="off" required="">
+                        <select id="display_measure" name="display_measure" class="form-control" autocomplete="off">
                             <option value="">Pilih Satuan</option>
                             <?php
                             $this->db->where('status', 'PUBLISH');
