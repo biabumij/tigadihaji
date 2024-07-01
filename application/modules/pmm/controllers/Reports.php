@@ -10449,7 +10449,7 @@ class Reports extends CI_Controller {
 			$total_stok_nilai_semen = $stok_nilai_semen_lalu + $pembelian_nilai_semen;
 
 			$stock_opname_semen_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
-			->from('pmm_remaining_materials_cat cat ')
+			->from('pmm_remaining_materials_cat cat')
 			->where("(cat.date <= '$date2')")
 			->where("cat.material_id = 1")
 			->where("cat.status = 'PUBLISH'")
