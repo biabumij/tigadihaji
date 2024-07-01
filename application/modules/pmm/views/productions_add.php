@@ -122,7 +122,7 @@
                                                     if (!empty($komposisi)) {
                                                         foreach ($komposisi as $kom) {
                                                     ?>
-                                                            <option value="<?php echo $kom['id']; ?>"><?php echo $kom['jobs_type']; ?> - (<?= date('d/F/Y',strtotime($kom['date_agregat']));?>)</option>
+                                                            <option value="<?php echo $kom['id']; ?>"><?php echo $kom['jobs_type']; ?><!-- - (<?= date('d/F/Y',strtotime($kom['date_agregat']));?>)--></option>
                                                     <?php
                                                         }
                                                     }
