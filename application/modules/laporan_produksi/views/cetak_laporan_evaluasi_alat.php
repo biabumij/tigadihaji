@@ -386,7 +386,7 @@
 				$harsat_truck_mixer = $x['truck_mixer'];
 				$harsat_excavator = $x['excavator'];
 				$harsat_transfer_semen = $x['transfer_semen'];
-				$harsat_bbm_solar = $x['harsat_bbm_solar'];
+				$harsat_bbm_solar = $x['vol_bbm_solar'] * $x['harsat_bbm_solar'];
 				
 			}
 
@@ -399,7 +399,7 @@
 			$vol_truck_mixer = $total_volume;
 			$vol_excavator = $total_volume;
 			$vol_transfer_semen = $total_volume;
-			$vol_bbm_solar = $vol_rap_bbm_solar * $total_volume;
+			$vol_bbm_solar = $total_volume;
 
 			$batching_plant = $harsat_batching_plant * $total_volume;
 			$pemeliharaan_batching_plant = $harsat_pemeliharaan_batching_plant * $total_volume;
