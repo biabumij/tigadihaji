@@ -421,11 +421,11 @@
 			$total_nilai_rap_alat = $batching_plant + $truck_mixer + $wheel_loader + $excavator + $transfer_semen + $bbm_solar;
 
 			$pemakaian_vol_batching_plant = $total_volume;
-			$pemakaian_vol_pemeliharaan_batching_plant = $total_volume;
+			$pemakaian_vol_pemeliharaan_batching_plant = 0;
 			$pemakaian_vol_penyusutan_batching_plant = $total_volume;
 			$pemakaian_vol_truck_mixer = $total_vol_truck_mixer;
 			$pemakaian_vol_wheel_loader =  $total_volume;
-			$pemakaian_vol_pemeliharaan_wheel_loader = $total_volume;
+			$pemakaian_vol_pemeliharaan_wheel_loader = 0;
 			$pemakaian_vol_penyusutan_wheel_loader = $pemakaian_vol_pemeliharaan_wheel_loader;
 			$pemakaian_vol_excavator = $total_vol_excavator;
 			$pemakaian_vol_transfer_semen = $total_vol_transfer_semen;
@@ -433,11 +433,11 @@
 
 			$total_pemakaian_batching_plant = $total_nilai_batching_plant;
 			$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
-			$total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
+			$total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
 			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer;
 			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader;
 			$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
-			$total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
+			$total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
 			$total_pemakaian_excavator = $total_nilai_excavator;
 			$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
 			$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
