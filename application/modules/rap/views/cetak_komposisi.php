@@ -113,22 +113,21 @@
 			</tr>
 			<tr>
 				<td align="center">2.</td>
-				<td align="left"><?= $row['produk_c'] = $this->crud_global->GetField('produk',array('id'=>$row['produk_c']),'nama_produk'); ?></td>
-				<td align="center"><?= $row['measure_c']  = $this->crud_global->GetField('pmm_measures',array('id'=>$row['measure_c']),'measure_name'); ?></td>
-				<td align="center"><?= $row['presentase_c']; ?></td>
-				<td align="right"><?php echo number_format($row['price_c'],0,',','.');?></td>
-				<td align="right"></td>
-				<td align="right"><?php echo number_format($row['total_c'],0,',','.');?></td>
-			</tr>
-			
-			<tr>
-				<td align="center">3.</td>
 				<td align="left"><?= $row['produk_b'] = $this->crud_global->GetField('produk',array('id'=>$row['produk_b']),'nama_produk'); ?></td>
 				<td align="center"><?= $row['measure_b']  = $this->crud_global->GetField('pmm_measures',array('id'=>$row['measure_b']),'measure_name'); ?></td>
 				<td align="center"><?= $row['presentase_b']; ?></td>
 				<td align="right"><?php echo number_format($row['price_b'],0,',','.');?></td>
 				<td align="right"></td>
 				<td align="right"><?php echo number_format($row['total_b'],0,',','.');?></td>
+			</tr>
+			<tr>
+				<td align="center">3.</td>
+				<td align="left"><?= $row['produk_c'] = $this->crud_global->GetField('produk',array('id'=>$row['produk_c']),'nama_produk'); ?></td>
+				<td align="center"><?= $row['measure_c']  = $this->crud_global->GetField('pmm_measures',array('id'=>$row['measure_c']),'measure_name'); ?></td>
+				<td align="center"><?= $row['presentase_c']; ?></td>
+				<td align="right"><?php echo number_format($row['price_c'],0,',','.');?></td>
+				<td align="right"></td>
+				<td align="right"><?php echo number_format($row['total_c'],0,',','.');?></td>
 			</tr>
 			<tr>
 				<td align="center">4.</td>
@@ -170,21 +169,22 @@
 			</tr>
 			<tr>
 				<td align="center">2.</td>
-				<td align="left">Truck Mixer</td>
-				<td align="center">Jam</td>
-				<td align="center"><?php echo number_format($row['vol_truck_mixer'],4,',','.');?></td>
-				<td align="right"><?php echo number_format($row['harsat_truck_mixer'],0,',','.');?></td>
-				<td align="right"></td>
-				<td align="right"><?php echo number_format($row['truck_mixer'],0,',','.');?></td>
-			</tr>
-			<tr>
-				<td align="center">3.</td>
 				<td align="left">Wheel Loader</td>
 				<td align="center">Jam</td>
 				<td align="center"><?php echo number_format($row['vol_wheel_loader'],4,',','.');?></td>
 				<td align="right"><?php echo number_format($row['harsat_wheel_loader'],0,',','.');?></td>
 				<td align="right"></td>
 				<td align="right"><?php echo number_format($row['wheel_loader'],0,',','.');?></td>
+			</tr>
+			
+			<tr>
+				<td align="center">3.</td>
+				<td align="left">Truck Mixer</td>
+				<td align="center">Jam</td>
+				<td align="center"><?php echo number_format($row['vol_truck_mixer'],4,',','.');?></td>
+				<td align="right"><?php echo number_format($row['harsat_truck_mixer'],0,',','.');?></td>
+				<td align="right"></td>
+				<td align="right"><?php echo number_format($row['truck_mixer'],0,',','.');?></td>
 			</tr>
 			<tr>
 				<td align="center">4.</td>
