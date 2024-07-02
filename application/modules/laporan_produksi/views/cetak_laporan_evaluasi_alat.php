@@ -421,11 +421,11 @@
 			$total_nilai_rap_alat = $batching_plant + $truck_mixer + $wheel_loader + $excavator + $transfer_semen + $bbm_solar;
 
 			$pemakaian_vol_batching_plant = $total_volume;
-			$pemakaian_vol_pemeliharaan_batching_plant = $total_volume;
+			$pemakaian_vol_pemeliharaan_batching_plant = 0;
 			$pemakaian_vol_penyusutan_batching_plant = $total_volume;
 			$pemakaian_vol_truck_mixer = $total_vol_truck_mixer;
 			$pemakaian_vol_wheel_loader =  $total_volume;
-			$pemakaian_vol_pemeliharaan_wheel_loader = $total_volume;
+			$pemakaian_vol_pemeliharaan_wheel_loader = 0;
 			$pemakaian_vol_penyusutan_wheel_loader = $pemakaian_vol_pemeliharaan_wheel_loader;
 			$pemakaian_vol_excavator = $total_vol_excavator;
 			$pemakaian_vol_transfer_semen = $total_vol_transfer_semen;
@@ -433,11 +433,11 @@
 
 			$total_pemakaian_batching_plant = $total_nilai_batching_plant;
 			$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
-			$total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
+			$total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
 			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer;
 			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader;
 			$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
-			$total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
+			$total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
 			$total_pemakaian_excavator = $total_nilai_excavator;
 			$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
 			$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
@@ -508,7 +508,7 @@
 				?>
 				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black;"><?php echo $total_nilai_evaluasi_batching_plant < 0 ? "(".number_format(-$total_nilai_evaluasi_batching_plant,0,',','.').")" : number_format($total_nilai_evaluasi_batching_plant,0,',','.');?></th>
 	        </tr>
-			<!--<tr class="table-baris1">
+			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;"></th>			
 				<th align="left">&nbsp;&nbsp;Pemeliharaan</th>
 				<th align="center" style="border-right:1px solid black;">M3</th>
@@ -516,7 +516,7 @@
 				<th align="right"><?php echo number_format($harsat_pemeliharaan_batching_plant,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($pemeliharaan_batching_plant,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_vol_pemeliharaan_batching_plant,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_pemakaian_pemeliharaan_batching_plant / $pemakaian_vol_pemeliharaan_batching_plant,0,',','.');?></th>
+				<th align="right"><?php echo number_format(0,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_pemeliharaan_batching_plant,0,',','.');?></th>
 				<?php
 				$styleColor = $total_vol_evaluasi_pemeliharaan_batching_plant < 0 ? 'color:red' : 'color:black';
@@ -535,7 +535,7 @@
 				<th align="right"><?php echo number_format($harsat_penyusutan_batching_plant,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($penyusutan_batching_plant,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_vol_penyusutan_batching_plant,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_pemakaian_penyusutan_batching_plant / $pemakaian_vol_penyusutan_batching_plant,0,',','.');?></th>
+				<th align="right"><?php echo number_format($harsat_penyusutan_batching_plant,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_penyusutan_batching_plant,0,',','.');?></th>
 				<?php
 				$styleColor = $total_vol_evaluasi_penyusutan_batching_plant < 0 ? 'color:red' : 'color:black';
@@ -545,7 +545,7 @@
 				$styleColor = $total_nilai_evaluasi_penyusutan_batching_plant < 0 ? 'color:red' : 'color:black';
 				?>
 				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black;"><?php echo $total_nilai_evaluasi_penyusutan_batching_plant < 0 ? "(".number_format(-$total_nilai_evaluasi_penyusutan_batching_plant,0,',','.').")" : number_format($total_nilai_evaluasi_penyusutan_batching_plant,0,',','.');?></th>
-	        </tr>-->
+	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">2.</th>			
 				<th align="left">Wheel Loader</th>
@@ -567,7 +567,7 @@
 				<th align="right"><?php echo number_format($harsat_pemeliharaan_wheel_loader,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($pemeliharaan_wheel_loader,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_vol_pemeliharaan_wheel_loader,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_pemakaian_pemeliharaan_wheel_loader / $pemakaian_vol_pemeliharaan_wheel_loader,0,',','.');?></th>
+				<th align="right"><?php echo number_format(0,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_pemeliharaan_wheel_loader,0,',','.');?></th>
 				<?php
 				$styleColor = $total_vol_evaluasi_pemeliharaan_wheel_loader < 0 ? 'color:red' : 'color:black';
@@ -586,7 +586,7 @@
 				<th align="right"><?php echo number_format($harsat_penyusutan_wheel_loader,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($penyusutan_wheel_loader,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_vol_penyusutan_wheel_loader,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_pemakaian_penyusutan_wheel_loader / $pemakaian_vol_penyusutan_wheel_loader,0,',','.');?></th>
+				<th align="right"><?php echo number_format($harsat_penyusutan_wheel_loader,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_penyusutan_wheel_loader,0,',','.');?></th>
 				<?php
 				$styleColor = $total_vol_evaluasi_penyusutan_wheel_loader < 0 ? 'color:red' : 'color:black';
