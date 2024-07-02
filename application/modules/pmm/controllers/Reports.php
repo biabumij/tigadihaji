@@ -1325,7 +1325,7 @@ class Reports extends CI_Controller {
 	            <th class="text-right" colspan="2"><?php echo $filter_date = $filter_date = date('d/m/Y',strtotime($arr_filter_date[0])).' - '.date('d/m/Y',strtotime($arr_filter_date[1]));?></th>
 				<th class="text-right" colspan="2">SD. <?php echo $filter_date_2 = date('d/m/Y',strtotime($arr_filter_date[1]));?></th>
 	        </tr>
-
+			
 			<?php
 			//PENJUALAN
 			$penjualan = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
@@ -1358,7 +1358,7 @@ class Reports extends CI_Controller {
 			->where("pp.date_production between '$date3' and '$date2'")
 			->where("pp.status = 'PUBLISH'")
 			->where("ppo.status in ('OPEN','CLOSED')")
-			//->group_by("pp.client_id")
+			->group_by("pp.client_id")
 			->get()->result_array();
 
 			$total_penjualan_2 = 0;
@@ -1449,11 +1449,11 @@ class Reports extends CI_Controller {
 	            <th width="10%" class="text-center">4-40000</th>
 				<th width="90%" class="text-left" colspan="5">Pendapatan</th>
 	        </tr>
-			<?php foreach ($penjualan as $x): ?>
+			<?php foreach ($penjualan_2 as $i=>$x): ?>
 			<tr class="table-active3">
 	            <th width="10%"></th>
-				<th width="30%"><?= $x['nama'] ?></th>
-				<th width="12%" class="text-right"><?php echo number_format($x['volume'],2,',','.');?> (<?= $x['measure'];?>)</th>
+				<th width="30%"><?= $penjualan[$i]['nama'] ?></th>
+				<th width="12%" class="text-right"><?php echo number_format($penjualan[$i]['volume'],2,',','.');?> (<?= $penjualan[$i]['measure'];?>)</th>
 	            <th width="18%" class="text-right">
 					<table width="100%" border="0" cellpadding="0">
 						<tr>
@@ -1461,26 +1461,26 @@ class Reports extends CI_Controller {
 									<span>Rp.</span>
 								</th>
 								<th class="text-right" width="90%">
-									<span><a target="_blank" href="<?= base_url("laporan/cetak_pengiriman_penjualan?filter_date=".$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($x['price'],0,',','.');?></a></span>
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_pengiriman_penjualan?filter_date=".$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($penjualan[$i]['price'],0,',','.');?></a></span>
 								</th>
 							</tr>
 					</table>
 				</th>
-			<?php endforeach; ?>
-			<!--<?php foreach ($penjualan_2 as $x): ?>
-				<th width="12%" class="text-right"><?php echo number_format($x['volume'],2,',','.');?> (<?= $x['measure'];?>)</th>
-				<th width="18%" class="text-right">
+
+				<th width="12%" class="text-right"><?php echo number_format($penjualan_2[$i]['volume'],2,',','.');?> (<?= $penjualan_2[$i]['measure'];?>)</th>
+				
+				<th width="18%" class="text-right xxx">
 					<table width="100%" border="0" cellpadding="0">
 						<tr>
 								<th class="text-left" width="10%">
 									<span>Rp.</span>
 								</th>
 								<th class="text-right" width="90%">
-									<span><a target="_blank" href="<?= base_url("laporan/cetak_pengiriman_penjualan?filter_date=".$filter_date_2 = date('d F Y',strtotime($date3)).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($x['price'],0,',','.');?></a></span>
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_pengiriman_penjualan?filter_date=".$filter_date_2 = date('d F Y',strtotime($date3)).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($penjualan_2[$i]['price'],0,',','.');?></a></span>
 								</th>
 							</tr>
 					</table>
-				</th>-->
+				</th>
 	        </tr>
 			<?php endforeach; ?>
 			<tr class="table-active3">

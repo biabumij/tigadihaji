@@ -106,7 +106,7 @@
 		
 		<table width="98%" border="0" cellpadding="3">
 		
-			<?php
+		<?php
 			//PENJUALAN
 			$penjualan = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
 			->from('pmm_productions pp')
@@ -138,7 +138,7 @@
 			->where("pp.date_production between '$date3' and '$date2'")
 			->where("pp.status = 'PUBLISH'")
 			->where("ppo.status in ('OPEN','CLOSED')")
-			//->group_by("pp.client_id")
+			->group_by("pp.client_id")
 			->get()->result_array();
 
 			$total_penjualan_2 = 0;
