@@ -370,6 +370,8 @@ class Rap extends Secure_Controller {
 			->where("p.kategori_produk = 5 ")
 			->order_by('nama_produk','asc')
 			->get()->result_array();
+			$data['truck_mixer'] = $this->pmm_model->getMatByTrucMixer();
+			$data['bbm_solar'] = $this->pmm_model->getMatByBBM();
 			$this->load->view('rap/form_alat', $data);
 		} else {
 			redirect('admin');
@@ -400,6 +402,9 @@ class Rap extends Secure_Controller {
 		$pemeliharaan_wheel_loader =  str_replace('.', '', $this->input->post('pemeliharaan_wheel_loader'));
 		$bbm_solar =  str_replace('.', '', $this->input->post('bbm_solar'));
 
+		$penawaran_truck_mixer = $this->input->post('penawaran_truck_mixer');
+		$penawaran_bbm_solar = $this->input->post('penawaran_bbm_solar');
+
 		$this->db->trans_start(); # Starting Transaction
 		$this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
 
@@ -425,6 +430,9 @@ class Rap extends Secure_Controller {
 			'pemeliharaan_wheel_loader' => $pemeliharaan_wheel_loader,
 			'truck_mixer' => $truck_mixer,
 			'bbm_solar' => $bbm_solar,
+
+			'penawaran_truck_mixer' => $penawaran_truck_mixer,
+			'penawaran_bbm_solar' => $penawaran_bbm_solar,
 			
 			'status' => 'PUBLISH',
 			'created_by' => $this->session->userdata('admin_id'),
