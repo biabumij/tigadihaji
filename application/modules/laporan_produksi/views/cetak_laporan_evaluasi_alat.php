@@ -497,7 +497,7 @@
 				<th align="right"><?php echo number_format($harsat_batching_plant,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_bp?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($batching_plant,0,',','.');?></a></th>
 				<th align="right"><?php echo number_format($pemakaian_vol_batching_plant,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_pemakaian_batching_plant / $pemakaian_vol_batching_plant,0,',','.');?></th>
+				<th align="right"><?php echo number_format(0,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_bp?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_pemakaian_batching_plant,0,',','.');?></a></th>
 				<?php
 				$styleColor = $total_vol_evaluasi_batching_plant < 0 ? 'color:red' : 'color:black';
@@ -554,7 +554,7 @@
 				<th align="right"><?php echo number_format($harsat_wheel_loader,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_wl?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($wheel_loader,0,',','.');?></a></th>
 				<th align="right"><?php echo number_format($pemakaian_vol_wheel_loader,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_pemakaian_wheel_loader / $pemakaian_vol_wheel_loader,0,',','.');?></th>
+				<th align="right"><?php echo number_format(0,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_wl?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_pemakaian_wheel_loader,0,',','.');?></a></th>
 				<th align="right" style="<?php echo $styleColorE ?>"><?php echo $total_vol_evaluasi_wheel_loader < 0 ? "(".number_format(-$total_vol_evaluasi_wheel_loader,2,',','.').")" : number_format($total_vol_evaluasi_wheel_loader,2,',','.');?></th>
 				<th align="right" style="<?php echo $styleColorF ?>; border-right:1px solid black;"><?php echo $total_nilai_evaluasi_wheel_loader < 0 ? "(".number_format(-$total_nilai_evaluasi_wheel_loader,0,',','.').")" : number_format($total_nilai_evaluasi_wheel_loader,0,',','.');?></th>

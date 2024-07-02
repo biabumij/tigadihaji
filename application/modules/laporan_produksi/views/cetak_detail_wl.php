@@ -510,7 +510,7 @@
 				<th align="right"><?php echo number_format($harsat_pemeliharaan_wheel_loader,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($pemeliharaan_wheel_loader,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_vol_pemeliharaan_wheel_loader,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_pemakaian_pemeliharaan_wheel_loader / $pemakaian_vol_pemeliharaan_wheel_loader,0,',','.');?></th>
+				<th align="right"><?php echo number_format(0,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_pemeliharaan_wheel_loader,0,',','.');?></th>
 				<?php
 				$styleColor = $total_vol_evaluasi_pemeliharaan_wheel_loader < 0 ? 'color:red' : 'color:black';
