@@ -158,7 +158,6 @@
 		$total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d + $volume_e;
 		$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d + $nilai_e;
 		
-		
 		$date1_ago = date('2020-01-01');
 		$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 		$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));

@@ -103,51 +103,58 @@
 		<table width="98%" cellpadding="5">
 		
 			<?php
-			$komposisi = $this->db->select('pp.date_production, (pp.display_volume) * pk.presentase_a as volume_a, (pp.display_volume) * pk.presentase_b as volume_b, (pp.display_volume) * pk.presentase_c as volume_c, (pp.display_volume) * pk.presentase_d as volume_d, (pp.display_volume * pk.presentase_a) * pk.price_a as nilai_a, (pp.display_volume * pk.presentase_b) * pk.price_b as nilai_b, (pp.display_volume * pk.presentase_c) * pk.price_c as nilai_c, (pp.display_volume * pk.presentase_d) * pk.price_d as nilai_d')
+			$komposisi = $this->db->select('pp.date_production, (pp.display_volume) * pk.presentase_a as volume_a, (pp.display_volume) * pk.presentase_b as volume_b, (pp.display_volume) * pk.presentase_c as volume_c, (pp.display_volume) * pk.presentase_d as volume_d, (pp.display_volume) * pk.presentase_e as volume_e, (pp.display_volume * pk.presentase_a) * pk.price_a as nilai_a, (pp.display_volume * pk.presentase_b) * pk.price_b as nilai_b, (pp.display_volume * pk.presentase_c) * pk.price_c as nilai_c, (pp.display_volume * pk.presentase_d) * pk.price_d as nilai_d, (pp.display_volume * pk.presentase_e) * pk.price_e as nilai_e')
 			->from('pmm_productions pp')
 			->join('pmm_agregat pk', 'pp.komposisi_id = pk.id','left')
 			->where("pp.date_production between '$date1' and '$date2'")
 			->get()->result_array();
-
+	
 			$total_volume_a = 0;
 			$total_volume_b = 0;
 			$total_volume_c = 0;
 			$total_volume_d = 0;
-
+			$total_volume_e = 0;
+	
 			$total_nilai_a = 0;
 			$total_nilai_b = 0;
 			$total_nilai_c = 0;
 			$total_nilai_d = 0;
-
+			$total_nilai_e = 0;
+	
 			foreach ($komposisi as $x){
 				$total_volume_a += $x['volume_a'];
 				$total_volume_b += $x['volume_b'];
 				$total_volume_c += $x['volume_c'];
 				$total_volume_d += $x['volume_d'];
+				$total_volume_e += $x['volume_e'];
 				$total_nilai_a += $x['nilai_a'];
 				$total_nilai_b += $x['nilai_b'];
 				$total_nilai_c += $x['nilai_c'];
 				$total_nilai_d += $x['nilai_d'];
+				$total_nilai_e += $x['nilai_e'];
 				
 			}
-
+	
 			$volume_a = $total_volume_a;
 			$volume_b = $total_volume_b;
 			$volume_c = $total_volume_c;
 			$volume_d = $total_volume_d;
-
+			$volume_e = $total_volume_e;
+	
 			$nilai_a = $total_nilai_a;
 			$nilai_b = $total_nilai_b;
 			$nilai_c = $total_nilai_c;
 			$nilai_d = $total_nilai_d;
-
+			$nilai_e = $total_nilai_e;
+	
 			$price_a = ($total_volume_a!=0)?$total_nilai_a / $total_volume_a * 1:0;
 			$price_b = ($total_volume_b!=0)?$total_nilai_b / $total_volume_b * 1:0;
 			$price_c = ($total_volume_c!=0)?$total_nilai_c / $total_volume_c * 1:0;
 			$price_d = ($total_volume_d!=0)?$total_nilai_d / $total_volume_d * 1:0;
-
-			$total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d;
-			$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d;
+			$price_e = ($total_volume_e!=0)?$total_nilai_e / $total_volume_e * 1:0;
+	
+			$total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d + $volume_e;
+			$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d + $nilai_e;
 			
 			$date1_ago = date('2020-01-01');
 			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
