@@ -1383,7 +1383,7 @@
 				<th align="right"><?php echo number_format($total_nilai_realisasi,0,',','.');?></th>
 				<th align="right"></th>
 				<?php
-				$total_nilai_evaluasi = $total_nilai_evaluasi + $total_nilai_evaluasi_alat;
+				$total_nilai_evaluasi = $total_nilai_evaluasi + $total_nilai_evaluasi_alat$total_nilai_evaluasi = $total_nilai_evaluasi + $total_nilai_evaluasi_alat + $total_nilai_evaluasi_bua;;
 				$styleColor = $total_nilai_evaluasi < 0 ? 'color:red' : 'color:black';
 				?>
 				<th align="right" style="<?php echo $styleColor ?>"><?php echo $total_nilai_evaluasi < 0 ? "(".number_format(-$total_nilai_evaluasi,0,',','.').")" : number_format($total_nilai_evaluasi,0,',','.');?></th>

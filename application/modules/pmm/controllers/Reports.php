@@ -11620,7 +11620,7 @@ class Reports extends CI_Controller {
 				<th class="text-right"><?php echo number_format($total_nilai_realisasi,0,',','.');?></th>
 				<th class="text-right"></th>
 				<?php
-				$total_nilai_evaluasi = $total_nilai_evaluasi + $total_nilai_evaluasi_alat;
+				$total_nilai_evaluasi = $total_nilai_evaluasi + $total_nilai_evaluasi_alat + $total_nilai_evaluasi_bua;
 				$styleColor = $total_nilai_evaluasi < 0 ? 'color:red' : 'color:black';
 				?>
 				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_nilai_evaluasi < 0 ? "(".number_format(-$total_nilai_evaluasi,0,',','.').")" : number_format($total_nilai_evaluasi,0,',','.');?></th>
