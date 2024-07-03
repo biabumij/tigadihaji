@@ -494,9 +494,9 @@
 				<th align="right"><?php echo number_format($volume_e,2,',','.');?></th>
 				<th align="right"><?php echo number_format($price_e,0,',','.');?></th>
 				<th align="right"><?php echo number_format($nilai_e,0,',','.');?></th>
-				<th align="right"><?php echo number_format($pemakaian_volume_2030,2,',','.');?></th>
-				<th align="right"><?php echo number_format($pemakaian_nilai_2030 / $pemakaian_volume_2030,0,',','.');?></th>
-				<th align="right"><?php echo number_format($pemakaian_nilai_2030,0,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_volume_additive,2,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_nilai_additive / $pemakaian_volume_additive,0,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_nilai_additive,0,',','.');?></th>
 				<th align="right" style="<?php echo $styleColorE ?>"><?php echo $evaluasi_volume_e < 0 ? "(".number_format(-$evaluasi_volume_e,2,',','.').")" : number_format($evaluasi_volume_e,2,',','.');?></th>
 				<th align="right" style="<?php echo $styleColorFF ?>"><?php echo $evaluasi_nilai_e < 0 ? "(".number_format(-$evaluasi_nilai_e,0,',','.').")" : number_format($evaluasi_nilai_e,0,',','.');?></th>
 	        </tr>
