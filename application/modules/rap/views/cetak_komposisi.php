@@ -138,6 +138,15 @@
 				<td align="right"></td>
 				<td align="right"><?php echo number_format($row['total_d'],0,',','.');?></td>
 			</tr>
+			<tr>
+				<td align="center">5.</td>
+				<td align="left"><?= $row['produk_e'] = $this->crud_global->GetField('produk',array('id'=>$row['produk_e']),'nama_produk'); ?></td>
+				<td align="center"><?= $row['measure_e']  = $this->crud_global->GetField('pmm_measures',array('id'=>$row['measure_e']),'measure_name'); ?></td>
+				<td align="center"><?= $row['presentase_e']; ?></td>
+				<td align="right"><?php echo number_format($row['price_e'],0,',','.');?></td>
+				<td align="right"></td>
+				<td align="right"><?php echo number_format($row['total_e'],0,',','.');?></td>
+			</tr>
 				<?php
 				$row = $this->db->select('*')
 				->from('rap_alat')

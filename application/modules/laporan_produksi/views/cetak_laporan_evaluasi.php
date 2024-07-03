@@ -338,21 +338,69 @@
 			$pemakaian_nilai_2030 = (($total_stok_nilai_2030 - $nilai_stock_opname_2030_now) * $stock_opname_2030_now['reset']) + ($stock_opname_2030_now['pemakaian_custom'] * $stock_opname_2030_now['reset_pemakaian']);
 			$pemakaian_harsat_2030 = $pemakaian_nilai_2030 / $pemakaian_volume_2030;
 
-			$total_volume_realisasi = $pemakaian_volume_semen + $pemakaian_volume_pasir + $pemakaian_volume_1020 + $pemakaian_volume_2030;
-			$total_nilai_realisasi = $pemakaian_nilai_semen + $pemakaian_nilai_pasir + $pemakaian_nilai_1020 + $pemakaian_nilai_2030;
+			$stock_opname_additive_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 19")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$stok_volume_additive_lalu = $stock_opname_additive_ago['volume'];
+			$stok_nilai_additive_lalu = $stock_opname_additive_ago['nilai'];
+			$stok_harsat_additive_lalu = (round($stok_volume_additive_lalu,2)!=0)?$stok_nilai_additive_lalu / round($stok_volume_additive_lalu,2) * 1:0;
+
+			$pembelian_additive = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("p.kategori_bahan = 4")
+			->group_by('prm.material_id')
+			->get()->row_array();
+		
+			$pembelian_volume_additive = $pembelian_additive['volume'];
+			$pembelian_nilai_additive = $pembelian_additive['nilai'];
+			$pembelian_harga_additive = (round($pembelian_volume_additive,2)!=0)?$pembelian_nilai_additive / round($pembelian_volume_additive,2) * 1:0;
+
+			$total_stok_volume_additive = $stok_volume_additive_lalu + $pembelian_volume_additive;
+			$total_stok_nilai_additive = $stok_nilai_additive_lalu + $pembelian_nilai_additive;
+
+			$stock_opname_additive_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 4")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$volume_stock_opname_additive_now = $stock_opname_additive_now['volume'];
+			$nilai_stock_opname_additive_now = $stock_opname_additive_now['nilai'];
+
+			$vol_pemakaian_additive_now = ($stok_volume_additive_lalu + $pembelian_volume_additive) - $volume_stock_opname_additive_now;
+			$nilai_pemakaian_additive_now = $stock_opname_additive_now['nilai'];
+
+			$pemakaian_volume_additive = $vol_pemakaian_additive_now;
+			$pemakaian_nilai_additive = (($total_stok_nilai_additive - $nilai_stock_opname_additive_now) * $stock_opname_additive_now['reset']) + ($stock_opname_additive_now['pemakaian_custom'] * $stock_opname_additive_now['reset_pemakaian']);
+			$pemakaian_harsat_additive = $pemakaian_nilai_additive / $pemakaian_volume_additive;
+
+			$total_volume_realisasi = $pemakaian_volume_semen + $pemakaian_volume_pasir + $pemakaian_volume_1020 + $pemakaian_volume_2030 + $pemakaian_volume_additive;
+			$total_nilai_realisasi = $pemakaian_nilai_semen + $pemakaian_nilai_pasir + $pemakaian_nilai_1020 + $pemakaian_nilai_2030 + $pemakaian_nilai_additive;
 			
 			$evaluasi_volume_a = round($volume_a - $pemakaian_volume_semen,2);
 			$evaluasi_volume_b = round($volume_b - $pemakaian_volume_pasir,2);
 			$evaluasi_volume_c = round($volume_c - $pemakaian_volume_1020,2);
 			$evaluasi_volume_d = round($volume_d - $pemakaian_volume_2030,2);
+			$evaluasi_volume_e = round($volume_e - $pemakaian_volume_additive,2);
 
 			$evaluasi_nilai_a = round($nilai_a - $pemakaian_nilai_semen,0);
 			$evaluasi_nilai_b = round($nilai_b - $pemakaian_nilai_pasir,0);
 			$evaluasi_nilai_c = round($nilai_c - $pemakaian_nilai_1020,0);
 			$evaluasi_nilai_d = round($nilai_d - $pemakaian_nilai_2030,0);
+			$evaluasi_nilai_e = round($nilai_e - $pemakaian_nilai_additive,0);
 
 			$total_volume_evaluasi = round($total_volume_komposisi - $total_volume_realisasi,2);
-			$total_nilai_evaluasi = round($evaluasi_nilai_a + $evaluasi_nilai_b + $evaluasi_nilai_c + $evaluasi_nilai_d,0);
+			$total_nilai_evaluasi = round($evaluasi_nilai_a + $evaluasi_nilai_b + $evaluasi_nilai_c + $evaluasi_nilai_d + $evaluasi_nilai_e,0);
 	        ?>
 			
 			<tr class="table-judul">
@@ -378,12 +426,14 @@
 				$styleColorB = $evaluasi_volume_b < 0 ? 'color:red' : 'color:black';
 				$styleColorC = $evaluasi_volume_c < 0 ? 'color:red' : 'color:black';
 				$styleColorD = $evaluasi_volume_d < 0 ? 'color:red' : 'color:black';
+				$styleColorE = $evaluasi_volume_d < 0 ? 'color:red' : 'color:black';
 
 				$styleColorAA = $evaluasi_nilai_a < 0 ? 'color:red' : 'color:black';
 				$styleColorBB = $evaluasi_nilai_b < 0 ? 'color:red' : 'color:black';
 				$styleColorCC = $evaluasi_nilai_c < 0 ? 'color:red' : 'color:black';
 				$styleColorDD = $evaluasi_nilai_d < 0 ? 'color:red' : 'color:black';
 				$styleColorEE = $total_nilai_evaluasi < 0 ? 'color:red' : 'color:black';
+				$styleColorFF = $evaluasi_nilai_d < 0 ? 'color:red' : 'color:black';
 			?>
 			<tr class="table-baris1">
 				<th align="center" style="vertical-align:middle">1.</th>			
@@ -436,6 +486,19 @@
 				<th align="right"><?php echo number_format($pemakaian_nilai_2030,0,',','.');?></th>
 				<th align="right" style="<?php echo $styleColorD ?>"><?php echo $evaluasi_volume_d < 0 ? "(".number_format(-$evaluasi_volume_d,2,',','.').")" : number_format($evaluasi_volume_d,2,',','.');?></th>
 				<th align="right" style="<?php echo $styleColorDD ?>"><?php echo $evaluasi_nilai_d < 0 ? "(".number_format(-$evaluasi_nilai_d,0,',','.').")" : number_format($evaluasi_nilai_d,0,',','.');?></th>
+	        </tr>
+			<tr class="table-baris1">
+				<th align="center" style="vertical-align:middle">4.</th>			
+				<th align="left">Additive</th>
+				<th align="center">Litter</th>
+				<th align="right"><?php echo number_format($volume_e,2,',','.');?></th>
+				<th align="right"><?php echo number_format($price_e,0,',','.');?></th>
+				<th align="right"><?php echo number_format($nilai_e,0,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_volume_2030,2,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_nilai_2030 / $pemakaian_volume_2030,0,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_nilai_2030,0,',','.');?></th>
+				<th align="right" style="<?php echo $styleColorE ?>"><?php echo $evaluasi_volume_e < 0 ? "(".number_format(-$evaluasi_volume_e,2,',','.').")" : number_format($evaluasi_volume_e,2,',','.');?></th>
+				<th align="right" style="<?php echo $styleColorFF ?>"><?php echo $evaluasi_nilai_e < 0 ? "(".number_format(-$evaluasi_nilai_e,0,',','.').")" : number_format($evaluasi_nilai_e,0,',','.');?></th>
 	        </tr>
 			<tr class="table-total">		
 				<th align="right" colspan="3">TOTAL</th>
