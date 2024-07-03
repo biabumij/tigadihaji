@@ -9,7 +9,7 @@
 		<th width="10%">PERIODE</th>
 		<th width="90%" colspan="7" class="text-right"><?= $filter_date;?></th>
 	</tr>
-	<tr style="color:white; background: linear-gradient(90deg, #333333 5%, #696969 50%, #333333 100%);">
+	<tr style="color:white; background-color: #e69500;">
 		<th class="text-left" width="5%">Tanggal</th>
 		<th class="text-left" width="5%">Transaksi</th>
 		<th class="text-left" width="8%">COA</th>

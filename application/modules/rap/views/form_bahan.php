@@ -344,11 +344,11 @@
 																<input type="text" id="presentase_e" name="presentase_e" class="form-control numberformat text-center" value="" onchange="changeData(1)" required="" autocomplete="off">
 															</td>
 															<td class="text-center">
-																<select id="penawaran_semen" name="penawaran_semen" class="form-control" required="">
+																<select id="penawaran_additive" name="penawaran_additive" class="form-control" required="">
 																<option value="">Pilih Penawaran</option>
 																<?php
 
-																foreach ($semen as $key => $sm) {
+																foreach ($additive as $key => $sm) {
 																	?>
 																	<option value="<?php echo $sm['penawaran_id'];?>" data-supplier_id="<?php echo $sm['supplier_id'];?>" data-measure="<?php echo $sm['measure'];?>" data-price="<?php echo $sm['price'];?>" data-tax_id="<?php echo $sm['tax_id'];?>" data-tax="<?php echo $sm['tax'];?>" data-pajak_id="<?php echo $sm['pajak_id'];?>" data-pajak="<?php echo $sm['pajak'];?>" data-penawaran_id="<?php echo $sm['penawaran_id'];?>" data-id_penawaran="<?php echo $sm['id_penawaran'];?>"><?php echo $sm['nama'];?> - <?php echo $sm['nomor_penawaran'];?></option>
 																	<?php
@@ -534,6 +534,11 @@
         });
 		$(document).ready(function() {
             setTimeout(function(){
+                $('#produk_e').prop('selectedIndex', 7).trigger('change');
+            }, 1000);
+        });
+		$(document).ready(function() {
+            setTimeout(function(){
                 $('#measure_a').prop('selectedIndex', 1).trigger('change');
             }, 1000);
         });
@@ -552,6 +557,11 @@
                 $('#measure_d').prop('selectedIndex', 4).trigger('change');
             }, 1000);
         });
+		$(document).ready(function() {
+            setTimeout(function(){
+                $('#measure_e').prop('selectedIndex', 3).trigger('change');
+            }, 1000);
+        });
 
 		function changeData(id)
         {
@@ -559,11 +569,13 @@
 			var presentase_b = $('#presentase_b').val();
 			var presentase_c = $('#presentase_c').val();
 			var presentase_d = $('#presentase_d').val();
+			var presentase_e = $('#presentase_e').val();
 
 			var price_a = $('#price_a').val();
 			var price_b = $('#price_b').val();
 			var price_c = $('#price_c').val();
 			var price_d = $('#price_d').val();
+			var price_e = $('#price_e').val();
             				
 			total_a = ( presentase_a * price_a );
 			$('#total_a').val(total_a);
@@ -573,6 +585,8 @@
 			$('#total_c').val(total_c);
 			total_d = ( presentase_d * price_d );
 			$('#total_d').val(total_d);
+			total_e = ( presentase_e * price_e );
+			$('#total_e').val(total_e);
 			getTotal();
         }
 
@@ -580,14 +594,14 @@
         {
             var sub_total = $('#sub-total-val').val();
 
-            sub_total = parseInt($('#total_a').val()) + parseInt($('#total_b').val()) + parseInt($('#total_c').val()) + parseInt($('#total_d').val());
+            sub_total = parseInt($('#total_a').val()) + parseInt($('#total_b').val()) + parseInt($('#total_c').val()) + parseInt($('#total_d').val()) + parseInt($('#total_e').val());
             
             $('#sub-total-val').val(sub_total);
             $('#sub-total').text($.number( sub_total, 0,',','.' ));
 
             total_total = parseInt(sub_total);
             $('#total-val').val(total_total);
-            $('#total').text($.number( total_total, total_d,',','.' ));
+            $('#total').text($.number( total_total, total_e,',','.' ));
         }
 
 		$('#penawaran_semen').change(function(){
@@ -656,6 +670,23 @@
 			$('#pajak_id_2030').val(pajak_id);
 			var id_penawaran = $(this).find(':selected').data('id_penawaran');
 			$('#penawaran_id_2030').val(penawaran_id);
+		});
+
+		$('#penawaran_additive').change(function(){
+			var penawaran_id = $(this).find(':selected').data('penawaran_id');
+			$('#penawaran_additive').val(penawaran_id);
+			var price = $(this).find(':selected').data('price');
+			$('#price_d').val(price);
+			var supplier_id = $(this).find(':selected').data('supplier_id');
+			$('#supplier_id_additive').val(supplier_id);
+			var measure = $(this).find(':selected').data('measure');
+			$('#measure_additive').val(measure);
+			var tax_id = $(this).find(':selected').data('tax_id');
+			$('#tax_id_additive').val(tax_id);
+			var pajak_id = $(this).find(':selected').data('pajak_id');
+			$('#pajak_id_additive').val(pajak_id);
+			var id_penawaran = $(this).find(':selected').data('id_penawaran');
+			$('#penawaran_id_additive').val(penawaran_id);
 		});
 		
     </script>
