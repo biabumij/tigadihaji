@@ -275,6 +275,7 @@ class Rap extends Secure_Controller {
 			$data['pasir'] = $this->pmm_model->getMatByPenawaranPasir();
 			$data['split_1020'] = $this->pmm_model->getMatByPenawaran1020();
 			$data['split_2030'] = $this->pmm_model->getMatByPenawaran2030();
+			$data['additive'] = $this->pmm_model->getMatByPenawaranAdditive();
 			$data['alat'] = $this->pmm_model->getRAPAlat();
 			$data['bua'] = $this->pmm_model->getRAPBUA();
 			$this->load->view('rap/sunting_komposisi', $data);

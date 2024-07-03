@@ -676,7 +676,7 @@
 			var penawaran_id = $(this).find(':selected').data('penawaran_id');
 			$('#penawaran_additive').val(penawaran_id);
 			var price = $(this).find(':selected').data('price');
-			$('#price_d').val(price);
+			$('#price_e').val(price);
 			var supplier_id = $(this).find(':selected').data('supplier_id');
 			$('#supplier_id_additive').val(supplier_id);
 			var measure = $(this).find(':selected').data('measure');

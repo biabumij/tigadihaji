@@ -208,7 +208,7 @@
                                                 <option value="">Pilih Penawaran</option>
                                                 <?php
 
-                                                foreach ($split_2030 as $key => $sm) {
+                                                foreach ($additive as $key => $sm) {
                                                     ?>
                                                     <option value="<?php echo $sm['penawaran_id'];?>" data-supplier_id="<?php echo $sm['supplier_id'];?>" data-measure="<?php echo $sm['measure'];?>" data-price="<?php echo $sm['price'];?>" data-tax_id="<?php echo $sm['tax_id'];?>" data-tax="<?php echo $sm['tax'];?>" data-pajak_id="<?php echo $sm['pajak_id'];?>" data-pajak="<?php echo $sm['pajak'];?>" data-penawaran_id="<?php echo $sm['penawaran_id'];?>" data-id_penawaran="<?php echo $sm['id_penawaran'];?>"><?php echo $sm['nama'];?> - <?php echo $sm['nomor_penawaran'];?></option>
                                                     <?php
@@ -332,7 +332,7 @@
 
             total_total = parseInt(sub_total);
             $('#total-val').val(total_total);
-            $('#total').text($.number( total_total, total_e,',','.' ));
+            $('#total').text($.number( total_total,',','.' ));
         }
 
         $('#penawaran_semen').change(function(){
@@ -407,7 +407,7 @@
 			var penawaran_id = $(this).find(':selected').data('penawaran_id');
 			$('#penawaran_additive').val(penawaran_id);
 			var price = $(this).find(':selected').data('price');
-			$('#price_d').val(price);
+			$('#price_e').val(price);
 			var supplier_id = $(this).find(':selected').data('supplier_id');
 			$('#supplier_id_additive').val(supplier_id);
 			var measure = $(this).find(':selected').data('measure');
