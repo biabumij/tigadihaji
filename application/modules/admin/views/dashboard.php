@@ -231,7 +231,6 @@
                                     <?php
                                     }
                                     ?>
-
                                     <?php
                                     if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
                                     ?>
@@ -315,10 +314,10 @@
                                                 <a href="<?php echo site_url('admin/rap');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-regular fa-calendar-check"></i><b>RAP</b></span></a>
                                             </li>
-                                            <li class="text-center" class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
+                                            <!--<li class="text-center" class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
                                                 <a href="<?php echo site_url('admin/rencana_kerja');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-calendar-days"></i><b>RENCANA<br />KERJA</b></span></a>
-                                            </li>
+                                            </li>-->
                                         </ul>
                                     </th>
                                     <?php
