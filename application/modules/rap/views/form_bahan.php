@@ -313,7 +313,7 @@
 														<tr>
 															<td>5.</td>
 															<td>														
-																<select id="produk_e" class="form-control form-select2" name="produk_e" required="" >
+																<select id="produk_e" class="form-control form-select2" name="produk_e">
 																	<option value="">Pilih Produk</option>
 																	<?php
 																	if(!empty($products)){
@@ -327,7 +327,7 @@
 																</select>
 															</td>
 															<td>
-																<select id="measure_e" class="form-control form-select2" name="measure_e" required="" >
+																<select id="measure_e" class="form-control form-select2" name="measure_e">
 																	<option value="">Pilih Satuan</option>
 																	<?php
 																	if(!empty($measures)){
@@ -341,10 +341,10 @@
 																</select>
 															</td>
 															<td>
-																<input type="text" id="presentase_e" name="presentase_e" class="form-control numberformat text-center" value="" onchange="changeData(1)" required="" autocomplete="off">
+																<input type="text" id="presentase_e" name="presentase_e" class="form-control numberformat text-center" value="" onchange="changeData(1)" autocomplete="off">
 															</td>
 															<td class="text-center">
-																<select id="penawaran_additive" name="penawaran_additive" class="form-control" required="">
+																<select id="penawaran_additive" name="penawaran_additive" class="form-control">
 																<option value="">Pilih Penawaran</option>
 																<?php
 
@@ -357,10 +357,10 @@
 															</select>
 															</td>
 															<td>
-																<input type="text" id="price_e" name="price_e" class="form-control rupiahformat text-right" value="" onchange="changeData(1)" required="" readonly="" autocomplete="off">
+																<input type="text" id="price_e" name="price_e" class="form-control rupiahformat text-right" value="" onchange="changeData(1)" readonly="" autocomplete="off">
 															</td>
 															<td>
-																<input type="text" id="total_e" name="total_e" class="form-control rupiahformat text-right" value="" required="" readonly="" autocomplete="off">
+																<input type="text" id="total_e" name="total_e" class="form-control rupiahformat text-right" value="" readonly="" autocomplete="off">
 															</td>
 														</tr>
 													</tbody>

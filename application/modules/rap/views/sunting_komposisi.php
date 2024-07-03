@@ -204,7 +204,7 @@
 											<td class="text-center"><?= $agregat["measure_e"]  = $this->crud_global->GetField('pmm_measures',array('id'=>$agregat['measure_e']),'measure_name'); ?></td>
 											<td class="text-center"><input type="text" id="presentase_e" name="presentase_e" class="form-control text-center" value="<?= $agregat['presentase_e'] ?>" onchange="changeData(1)" required="" autocomplete="off"></td>
                                             <td class="text-center">
-                                                <select id="penawaran_additive" name="penawaran_additive" class="form-control" required="">
+                                                <select id="penawaran_additive" name="penawaran_additive" class="form-control">
                                                 <option value="">Pilih Penawaran</option>
                                                 <?php
 
@@ -216,8 +216,8 @@
                                                 ?>
                                                 </select>
                                             </td>
-                                            <td class="text-right"><input type="text" id="price_e" name="price_e" class="form-control rupiahformat text-right" value="<?= $agregat['price_e'] ?>" onchange="changeData(1)" required="" readonly="" autocomplete="off"></td>
-                                            <td class="text-right"><input type="text" id="total_e" name="total_e" class="form-control rupiahformat text-right" value="<?= $agregat['total_e'] ?>" onkeyup="sum();" required="" readonly="" autocomplete="off"></td>
+                                            <td class="text-right"><input type="text" id="price_e" name="price_e" class="form-control rupiahformat text-right" value="<?= $agregat['price_e'] ?>" onchange="changeData(1)" readonly="" autocomplete="off"></td>
+                                            <td class="text-right"><input type="text" id="total_e" name="total_e" class="form-control rupiahformat text-right" value="<?= $agregat['total_e'] ?>" onkeyup="sum();" readonly="" autocomplete="off"></td>
                                         </tr>
                                 </tbody>
                                 <tfoot>
