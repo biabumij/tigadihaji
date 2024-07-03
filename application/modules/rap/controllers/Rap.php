@@ -196,7 +196,7 @@ class Rap extends Secure_Controller {
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 				$row['closed'] = '<a href="'.site_url().'rap/closed_komposisi/'.$row['id'].'" class="btn btn-danger" style="border-radius:10px;"><i class="fa fa-briefcase"></i> </a>';
 				$row['status'] = $this->pmm_model->GetStatus4($row['status']);
-				if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 16){
+				if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4){
 				$row['edit'] = '<a href="'.site_url().'rap/sunting_komposisi/'.$row['id'].'" class="btn btn-warning" style="border-radius:10px;"><i class="fa fa-edit"></i> </a>';
 				}else {
 					$row['edit'] = '<button type="button" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-ban"></i> No Access</button>';
