@@ -355,7 +355,7 @@
 			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
 			->join('produk p', 'prm.material_id = p.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
-			->where("p.kategori_bahan = 4")
+			->where("p.kategori_bahan = 6")
 			->group_by('prm.material_id')
 			->get()->row_array();
 		
@@ -369,7 +369,7 @@
 			$stock_opname_additive_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
 			->from('pmm_remaining_materials_cat cat ')
 			->where("(cat.date <= '$date2')")
-			->where("cat.material_id = 4")
+			->where("cat.material_id = 19")
 			->where("cat.status = 'PUBLISH'")
 			->order_by('date','desc')->limit(1)
 			->get()->row_array();
