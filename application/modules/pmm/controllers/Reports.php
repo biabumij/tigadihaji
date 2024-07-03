@@ -11005,7 +11005,7 @@ class Reports extends CI_Controller {
 			$pemakaian_vol_transfer_semen = $total_vol_transfer_semen;
 			$pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
 
-			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $batching_plant;
+			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $penyusutan_batching_plant;
 			$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
 			$total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
 			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer;

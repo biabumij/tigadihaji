@@ -102,7 +102,7 @@
 		<table width="98%" cellpadding="5" border="1">
 		
 			<?php
-			$row = $this->db->select('date, sum(vol_semen) as vol_semen, sum(vol_pasir) as vol_pasir, sum(vol_1020) as vol_1020, sum(vol_2030) as vol_2030, sum(nilai_semen) as nilai_semen, sum(nilai_pasir) as nilai_pasir, sum(nilai_1020) as nilai_1020, sum(nilai_2030) as nilai_2030')
+			$row = $this->db->select('date, sum(vol_semen) as vol_semen, sum(vol_pasir) as vol_pasir, sum(vol_1020) as vol_1020, sum(vol_2030) as vol_2030, sum(vol_additive) as vol_additive, sum(nilai_semen) as nilai_semen, sum(nilai_pasir) as nilai_pasir, sum(nilai_1020) as nilai_1020, sum(nilai_2030) as nilai_2030, sum(nilai_additive) as nilai_additive')
 			->from('kunci_bahan_baku')
 			->where("(date between '$date3' and '$date2')")
 			->get()->row_array();
@@ -122,8 +122,12 @@
 			$pemakaian_volume_2030 = $row['vol_2030'];
 			$pemakaian_nilai_2030 = $row['nilai_2030'];
 			$pemakaian_harsat_2030 = $pemakaian_nilai_2030 / $pemakaian_volume_2030;
+			
+			$pemakaian_volume_additive = $row['vol_additive'];
+			$pemakaian_nilai_additive = $row['nilai_additive'];
+			$pemakaian_harsat_additive = $pemakaian_nilai_additive / $pemakaian_volume_additive;
 
-			$total_bahan= $pemakaian_nilai_semen + $pemakaian_nilai_pasir + $pemakaian_nilai_1020 + $pemakaian_nilai_2030;
+			$total_bahan= $pemakaian_nilai_semen + $pemakaian_nilai_pasir + $pemakaian_nilai_1020 + $pemakaian_nilai_2030 + $pemakaian_nilai_additive;
 			?>
 			
 			<tr class="table-judul">
@@ -138,7 +142,7 @@
 				<th align="center" width="20%">NILAI</th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center">1</th>	
+				<th align="center">1.</th>	
 				<th align="left"><b>Semen</b></th>
 				<th align="center">Ton</th>
 				<th align="right"><?php echo number_format($pemakaian_volume_semen,2,',','.');?></th>
@@ -146,7 +150,7 @@
 				<th align="right"><?php echo number_format($pemakaian_nilai_semen,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center">2</th>
+				<th align="center">2.</th>
 				<th align="left"><b>Pasir</b></th>
 				<th align="center">M3</th>
 				<th align="right"><?php echo number_format($pemakaian_volume_pasir,2,',','.');?></th>
@@ -154,7 +158,7 @@
 				<th align="right"><?php echo number_format($pemakaian_nilai_pasir,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center">3</th>
+				<th align="center">3.</th>
 				<th align="left"><b>Batu Split 10-20</b></th>
 				<th align="center">M3</th>
 				<th align="right"><?php echo number_format($pemakaian_volume_1020,2,',','.');?></th>
@@ -162,12 +166,20 @@
 				<th align="right"><?php echo number_format($pemakaian_nilai_1020,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center">4</th>
+				<th align="center">4.</th>
 				<th align="left"><b>Batu Split 20-30</b></th>
 				<th align="center">M3</th>
 				<th align="right"><?php echo number_format($pemakaian_volume_2030,2,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_2030 / $pemakaian_volume_2030,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_2030,0,',','.');?></th>
+	        </tr>
+			<tr class="table-baris1">
+				<th align="center">5.</th>
+				<th align="left"><b>Additive</b></th>
+				<th align="center">M3</th>
+				<th align="right"><?php echo number_format($pemakaian_volume_additive,2,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_nilai_additive / $pemakaian_volume_additive,0,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_nilai_additive,0,',','.');?></th>
 	        </tr>
 			<tr class="table-total">
 	            <th align="right" colspan="5">TOTAL</th>
