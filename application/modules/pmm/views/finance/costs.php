@@ -13,10 +13,8 @@
 
 <body>
 <div class="wrap">
-    
-    <?php echo $this->Templates->PageHeader();?>
-    
-    <div class="page-body">
+        <?php echo $this->Templates->PageHeader();?>
+        <div class="page-body">
             <div class="content">
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
