@@ -143,7 +143,6 @@
                                 </tr>
                                 <tr>
                                     <th colspan="2" class="text-center">
-                                    <?php echo number_format($realisasi_produksi_juni24,0,',','.');?>
                                         <div class="col-sm-12">
                                             <figure class="highcharts-figure">
                                                 <div id="container_rencana_kerja_perminggu" style="border-radius:10px;"></div>
