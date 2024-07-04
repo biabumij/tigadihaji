@@ -144,7 +144,7 @@
 			$awal = date('Y-m-d',strtotime($date1));
 			$akhir = date('Y-m-d',strtotime($date2));
 			
-			$stock_opname_semen = $this->db->select('cat.*')
+			$stock_opname_semen = $this->db->select('cat.*, sum(cat.total) as nilai')
 			->from('pmm_remaining_materials_cat cat')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 1")
@@ -152,14 +152,12 @@
 			->group_by('cat.id')
 			->order_by('cat.material_id','asc')
 			->get()->result_array();
-
 			$nilai_semen = 0;
-
 			foreach ($stock_opname_semen as $x){
 				$nilai_semen += $x['nilai'];
 			}
 
-			$stock_opname_pasir = $this->db->select('cat.*')
+			$stock_opname_pasir = $this->db->select('cat.*, sum(cat.total) as nilai')
 			->from('pmm_remaining_materials_cat cat')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 2")
@@ -167,14 +165,12 @@
 			->group_by('cat.id')
 			->order_by('cat.material_id','asc')
 			->get()->result_array();
-
 			$nilai_pasir = 0;
-
 			foreach ($stock_opname_pasir as $x){
 				$nilai_pasir += $x['nilai'];
 			}
 
-			$stock_opname_batu1020 = $this->db->select('cat.*')
+			$stock_opname_batu1020 = $this->db->select('cat.*, sum(cat.total) as nilai')
 			->from('pmm_remaining_materials_cat cat')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 3")
@@ -182,15 +178,12 @@
 			->group_by('cat.id')
 			->order_by('cat.material_id','asc')
 			->get()->result_array();
-
 			$nilai_batu1020 = 0;
-			$total = 0;
-
 			foreach ($stock_opname_batu1020 as $x){
 				$nilai_batu1020 += $x['nilai'];
 			}
 
-			$stock_opname_batu2030 = $this->db->select('cat.*')
+			$stock_opname_batu2030 = $this->db->select('cat.*, sum(cat.total) as nilai')
 			->from('pmm_remaining_materials_cat cat')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 4")
@@ -198,27 +191,35 @@
 			->group_by('cat.id')
 			->order_by('cat.material_id','asc')
 			->get()->result_array();
-
 			$nilai_batu2030 = 0;
-			$total = 0;
-
 			foreach ($stock_opname_batu2030 as $x){
 				$nilai_batu2030 += $x['nilai'];
 			}
 
-			$stock_opname_solar = $this->db->select('cat.*')
-			>from('pmm_remaining_materials_cat cat')
+			$stock_opname_solar = $this->db->select('cat.*, sum(cat.total) as nilai')
+			->from('pmm_remaining_materials_cat cat')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 5")
 			->where("cat.status = 'PUBLISH'")
 			->group_by('cat.id')
 			->order_by('cat.material_id','asc')
 			->get()->result_array();
-
 			$nilai_solar = 0;
-
 			foreach ($stock_opname_solar as $x){
 				$nilai_solar += $x['nilai'];
+			}
+
+			$stock_opname_additive = $this->db->select('cat.*, sum(cat.total) as nilai')
+			->from('pmm_remaining_materials_cat cat')
+			->where("cat.date between '$awal' and '$akhir'")
+			->where("cat.material_id = 19")
+			->where("cat.status = 'PUBLISH'")
+			->group_by('cat.id')
+			->order_by('cat.material_id','asc')
+			->get()->result_array();
+			$nilai_additive = 0;
+			foreach ($stock_opname_additive as $x){
+				$nilai_additive += $x['nilai'];
 			}
 
 			?>
@@ -287,9 +288,22 @@
 			<?php
 			endforeach; ?>
 
+			<?php
+			foreach ($stock_opname_additive as $row) : ?>  
+			<tr class="table-baris2">
+				<td align="center" class="table-border-pojok-kiri"><?php echo $row['date'] = date('d-m-Y',strtotime($row['date']));;?></td>
+				<td align="left" class="table-border-pojok-tengah"><?php echo $this->crud_global->GetField('produk',array('id'=>$row['material_id']),'nama_produk');?></td>
+				<td align="center" class="table-border-pojok-tengah"><?php echo $this->crud_global->GetField('pmm_measures',array('id'=>$row['satuan']),'measure_name');?></td>
+				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['volume'],2,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['price'],0,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-kanan"><?= number_format($row['total'],0,',','.'); ?></td>
+			</tr>
+			<?php
+			endforeach; ?>
+
 			<tr class="table-total2">
 				<td align="right" colspan="5" class="table-border-spesial-kiri">TOTAL</td>
-				<td align="right" class="table-border-spesial-kanan"><?php echo number_format($nilai_semen + $nilai_pasir + $nilai_batu1020 + $nilai_batu2030 + + $nilai_solar,0,',','.');?></td>
+				<td align="right" class="table-border-spesial-kanan"><?php echo number_format($nilai_semen + $nilai_pasir + $nilai_batu1020 + $nilai_batu2030 + $nilai_solar + $nilai_additive,0,',','.');?></td>
 			</tr>
 		</table>
 		<br /><br />
