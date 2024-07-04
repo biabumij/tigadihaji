@@ -31,7 +31,7 @@
                         <div class="panel-content">
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">JURNAL UMUM</a></li>
-                                <li role="presentation"><a href="#home_2" aria-controls="home_2" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold;">JURNAL UMUM (<?php echo date('F');?>)</a></li>
+                                <li role="presentation"><a href="#home_2" aria-controls="home_2" role="tab" data-toggle="tab" style="border-radius:10px 0px 10px 0px; font-weight:bold; text-transform:uppercase;">JURNAL UMUM (<?php echo date('F');?>)</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="home">
