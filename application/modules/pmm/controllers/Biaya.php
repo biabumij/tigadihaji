@@ -337,6 +337,28 @@ class Biaya extends CI_Controller {
         }
     }
 
+    public function detail_biaya_2($id)
+    {
+        $check = $this->m_admin->check_login();
+        if($check == true){     
+
+            $this->db->select('b.*,p.nama as penerima');
+            $this->db->join('penerima p','b.penerima = p.id','left');
+            $this->db->where('b.id',$id);
+            $query = $this->db->get('pmm_biaya b');
+            $data['row'] = $query->row_array();
+
+
+            $this->db->select('b.*, c.coa as akun, c.coa_number as kode_akun');
+            $this->db->join('pmm_coa c','b.akun = c.id','left');
+            $data['detail'] = $this->db->get_where('pmm_detail_biaya b',array('b.biaya_id'=>$id))->result_array();            
+            $this->load->view('pmm/biaya/detail_biaya_2',$data);
+            
+        }else {
+            redirect('admin');
+        }
+    }
+
     public function delete($id)
     {
         if(!empty($id)){
@@ -930,28 +952,6 @@ class Biaya extends CI_Controller {
             $data['row'] = $query->row_array();
           
             $this->load->view('pmm/biaya/detail_transaction',$data);
-            
-        }else {
-            redirect('admin');
-        }
-    }
-
-    public function detail_biaya_2($id)
-    {
-        $check = $this->m_admin->check_login();
-        if($check == true){     
-
-            $this->db->select('b.*,p.nama as penerima');
-            $this->db->join('penerima p','b.penerima = p.id','left');
-            $this->db->where('b.id',$id);
-            $query = $this->db->get('pmm_biaya b');
-            $data['row'] = $query->row_array();
-
-
-            $this->db->select('b.*, c.coa as akun, c.coa_number as kode_akun');
-            $this->db->join('pmm_coa c','b.akun = c.id','left');
-            $data['detail'] = $this->db->get_where('pmm_detail_biaya b',array('b.biaya_id'=>$id))->result_array();            
-            $this->load->view('pmm/biaya/detail_biaya_2',$data);
             
         }else {
             redirect('admin');
