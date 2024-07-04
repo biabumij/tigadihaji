@@ -21,10 +21,7 @@
                         <div class="panel">
                             <div class="panel-header">
                                 <div class="">
-                                    <h3 class="">
-                                        Detail Surat Jalan Pengiriman Penjualan
-                                        <small>(<i><?= $row['status']; ?></i>)</small>
-                                    </h3>
+                                    <h3 class="">Edit Komposisi</h3>
                                 </div>
                             </div>
                             <div class="panel-content">
