@@ -134,6 +134,7 @@
                                         </div>
                                     </th>
                                     <th width="50%" class="text-center">
+                                    <?php echo number_format($laba_rugi_juni24,0,',','.');?>
                                         <div class="col-sm-12">
                                             <figure class="highcharts-figure">
                                                 <div id="container_laba_rugi" style="border-radius:10px;"></div>
@@ -722,7 +723,7 @@
                                     fontFamily: 'helvetica'
                                 }
                             },
-                            categories: ['Apr 24','Mei 24','Juni 24','Juli 24','Agu 24','Sep 24']
+                            categories: ['Juni 24','Juli 24','Agustus 24','September 24','Oktober 24','November 24','Desember 24']
                         },
                         yAxis: {
                             //title: {  //label yAxis
@@ -804,7 +805,7 @@
                         {  
                             name: 'Laba Rugi %',  
                             
-                            data: [<?php echo json_encode(10, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode($nilai_rap_bahan_agustus23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(2, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(2, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(2, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(2, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(2, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#FF0000',
                             fontWeight: 'bold',
