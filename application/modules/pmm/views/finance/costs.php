@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
 
-                                <div role="tabpanel" class="tab-pane active" id="home_2">
+                                <div role="tabpanel" class="tab-pane" id="home_2">
                                     <br />
                                     <div class="col-sm-3">
                                         <input type="text" id="filter_date_biaya_2" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
