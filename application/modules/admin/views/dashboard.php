@@ -127,7 +127,6 @@
                             <table width="100%" border="0" cellpadding="100px">
                                 <tr>
                                     <th width="50%" class="text-center">
-                                    <?php echo number_format($realisasi_produksi_juni24,0,',','.');?>
                                         <div class="col-sm-12">
                                             <figure class="highcharts-figure">
                                                 <div id="container" style="border-radius:10px;"></div>
@@ -144,6 +143,7 @@
                                 </tr>
                                 <tr>
                                     <th colspan="2" class="text-center">
+                                    <?php echo number_format($realisasi_produksi_juni24,0,',','.');?>
                                         <div class="col-sm-12">
                                             <figure class="highcharts-figure">
                                                 <div id="container_rencana_kerja_perminggu" style="border-radius:10px;"></div>
@@ -628,7 +628,7 @@
                         series: [{  
                             name: 'Rencana',  
                             
-                            data: [<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode($rencana_produksi_juni24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_juli24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_agustus24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_september24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_oktober24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_november24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_desember24, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#000000',
                             fontWeight: 'bold',
@@ -903,8 +903,8 @@
                                 format: '{value}'
                             },
                             min: 0,
-                            max: 2500,
-                            tickInterval: 500,
+                            max: 300,
+                            tickInterval: 100,
                         },
                         tooltip: { 
                         //fungsi tooltip, ini opsional, kegunaan dari fungsi ini 
