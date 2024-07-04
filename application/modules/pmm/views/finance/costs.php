@@ -13,7 +13,7 @@
 
 <body>
 <div class="wrap">
-        <?php echo $this->Templates->PageHeader();?>
+    <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
             <div class="content">
                 <div class="row animated fadeInUp">
