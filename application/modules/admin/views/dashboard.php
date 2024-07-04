@@ -587,8 +587,8 @@
                                 format: '{value} M3'
                             },
                             min: 0,
-                            max: 1000,
-                            tickInterval:100,
+                            max: 2500,
+                            tickInterval:500,
                         },
                         tooltip: {
                         //fungsi tooltip, ini opsional, kegunaan dari fungsi ini 
