@@ -12,23 +12,10 @@
 </head>
 
 <body>
-    <div class="wrap">
-
-        <?php echo $this->Templates->PageHeader(); ?>
-
+<div class="wrap">
+        <?php echo $this->Templates->PageHeader();?>
         <div class="page-body">
-            <?php echo $this->Templates->LeftBar(); ?>
-            <div class="content" style="padding:0;">
-                <div class="content-header">
-                    <div class="leftside-content-header">
-                        <ul class="breadcrumbs">
-                            <li><i class="fa fa-sitemap" aria-hidden="true"></i><a href="<?php echo site_url('admin'); ?>">Dashboard</a></li>
-                            <li><a>Penjualan</a></li>
-                            <li><a>Sales Order</a></li>
-                            <li><a>Surat Jalan Pengiriman Penjualan</a></li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="content">
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
