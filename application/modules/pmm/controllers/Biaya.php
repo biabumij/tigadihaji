@@ -56,7 +56,6 @@ class Biaya extends CI_Controller {
         ->get()->row_array();
         $last_opname = $kunci_bahan_baku['date'];
         $last_opname = date('Y-m-d', strtotime('+1 days 0 months', strtotime($last_opname)));
-        //$last_opname = date('Y-m-d', strtotime(' days 0 months', strtotime($last_opname)));
 
 		if(!empty($filter_date)){
 			$arr_date = explode(' - ', $filter_date);

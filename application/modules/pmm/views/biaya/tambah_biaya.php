@@ -27,6 +27,14 @@
                                 </div>
                             </div>
                             <div class="panel-content">
+                            <?php
+                            $kunci_bahan_baku = $this->db->select('pp.date')
+                            ->from('kunci_bahan_baku pp')
+                            ->order_by('pp.date','desc')->limit(1)
+                            ->get()->row_array();
+                            $last_opname = $kunci_bahan_baku['date'];
+                            $last_opname = date('Y-m-d', strtotime('+1 days 0 months', strtotime($last_opname)));
+                            ?>
                                 <form method="POST" action="<?php echo site_url('pmm/biaya/submit_biaya');?>" id="form-po" enctype="multipart/form-data" autocomplete="off">
                                     <div class="row">
                                         <div class="col-sm-3">
@@ -241,10 +249,8 @@
     <script type="text/javascript">
         
         $('.form-select2').select2();
-
         $('input.numberformat').number( true, 0,',','.' );
         $('.dtpicker').daterangepicker({
-            //minDate: moment().add('d', 0).toDate(),
             singleDatePicker: true,
             showDropdowns : false,
             locale: {
@@ -254,9 +260,9 @@
 			//maxDate: new Date()+1,
             //minDate: moment().add(-10, 'd').toDate(),
 			//maxDate: moment().add(+0, 'd').toDate(),
-            //minDate: moment().add(-1, 'month').toDate(),
+            minDate: moment().add(-1, 'month').toDate(),
             //minDate: moment().startOf('month').toDate(),
-			//maxDate: moment().endOf('month').toDate(),	
+			maxDate: moment().endOf('month').toDate(),	
         });
         
         $('.dtpicker').on('apply.daterangepicker', function(ev, picker) {
