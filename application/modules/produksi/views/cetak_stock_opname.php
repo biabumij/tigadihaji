@@ -145,7 +145,7 @@
 			$akhir = date('Y-m-d',strtotime($date2));
 			
 			$stock_opname_semen = $this->db->select('cat.*')
-			->from('pmm_remaining_materials_cat cat ')
+			->from('pmm_remaining_materials_cat cat')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 1")
 			->where("cat.status = 'PUBLISH'")
@@ -160,7 +160,7 @@
 			}
 
 			$stock_opname_pasir = $this->db->select('cat.*')
-			->from('pmm_remaining_materials_cat cat ')
+			->from('pmm_remaining_materials_cat cat')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 2")
 			->where("cat.status = 'PUBLISH'")
@@ -175,7 +175,7 @@
 			}
 
 			$stock_opname_batu1020 = $this->db->select('cat.*')
-			->from('pmm_remaining_materials_cat cat ')
+			->from('pmm_remaining_materials_cat cat')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 3")
 			->where("cat.status = 'PUBLISH'")
@@ -191,7 +191,7 @@
 			}
 
 			$stock_opname_batu2030 = $this->db->select('cat.*')
-			->from('pmm_remaining_materials_cat cat ')
+			->from('pmm_remaining_materials_cat cat')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 4")
 			->where("cat.status = 'PUBLISH'")
@@ -207,6 +207,7 @@
 			}
 
 			$stock_opname_solar = $this->db->select('cat.*')
+			>from('pmm_remaining_materials_cat cat')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 5")
 			->where("cat.status = 'PUBLISH'")
