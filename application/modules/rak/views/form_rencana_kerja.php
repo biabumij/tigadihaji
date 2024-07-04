@@ -392,7 +392,7 @@
                                                     </select>
                                                     </td>
                                                     <td>
-                                                        <input type="text" id="price_tm" name="price_tm" class="form-control rupiahformat text-right" value=""  readonly="" autocomplete="off">
+                                                        <input type="text" id="price_tm" name="price_tm" class="form-control rupiahformat text-right" value="0"  readonly="" autocomplete="off">
                                                         <input type="hidden" id="measure_tm" name="measure_tm" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                         <input type="hidden" id="tax_id_tm" name="tax_id_tm" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                         <input type="hidden" id="pajak_id_tm" name="pajak_id_tm" class="form-control text-right" value=""  readonly="" autocomplete="off">
@@ -404,7 +404,7 @@
                                                     <td class="text-center">2.</td>
                                                     <td>Ecvaxator</td>
                                                     <td>
-                                                        <input type="text" id="vol_exc" name="vol_exc" class="form-control numberformat text-right" value="" autocomplete="off">
+                                                        <input type="text" id="vol_exc" name="vol_exc" class="form-control numberformat text-right" value="0" autocomplete="off">
                                                     </td>
                                                     <td class="text-center"><select id="penawaran_exc" class="form-control">
                                                         <option value="">Pilih Penawaran</option>
@@ -431,7 +431,7 @@
                                                     <td class="text-center">3.</td>
                                                     <td>Transfer Semen</td>
                                                     <td>
-                                                        <input type="text" id="vol_tr" name="vol_tr" class="form-control numberformat text-right" value="" autocomplete="off">
+                                                        <input type="text" id="vol_tr" name="vol_tr" class="form-control numberformat text-right" value="0" autocomplete="off">
                                                     </td>
                                                     <td class="text-center"><select id="penawaran_tr" class="form-control">
                                                         <option value="">Pilih Penawaran</option>
