@@ -1297,7 +1297,8 @@ class Reports extends CI_Controller {
 			}
 
 			table tr.table-active{
-				background: linear-gradient(90deg, #fdcd3b 20%, #fdcd3b 40%, #e69500 80%);
+				/*background: linear-gradient(90deg, #fdcd3b 20%, #fdcd3b 40%, #e69500 80%);*/
+				background-color: #eeeeee;
 				font-size: 12px;
 				font-weight: bold;
 			}
@@ -1314,7 +1315,7 @@ class Reports extends CI_Controller {
 			}
 				
 			table tr.table-active4{
-				background: linear-gradient(90deg, #eeeeee 5%, #cccccc 50%, #cccccc 100%);
+				/*background: linear-gradient(90deg, #eeeeee 5%, #cccccc 50%, #cccccc 100%);*/
 				font-weight: bold;
 				font-size: 12px;
 				color: black;

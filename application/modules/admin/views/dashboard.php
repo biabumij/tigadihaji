@@ -127,6 +127,7 @@
                             <table width="100%" border="0" cellpadding="100px">
                                 <tr>
                                     <th width="50%" class="text-center">
+                                    <?php echo number_format($realisasi_produksi_juni24,0,',','.');?>
                                         <div class="col-sm-12">
                                             <figure class="highcharts-figure">
                                                 <div id="container" style="border-radius:10px;"></div>
@@ -134,7 +135,6 @@
                                         </div>
                                     </th>
                                     <th width="50%" class="text-center">
-                                    <?php echo number_format($laba_rugi_juni24,0,',','.');?>
                                         <div class="col-sm-12">
                                             <figure class="highcharts-figure">
                                                 <div id="container_laba_rugi" style="border-radius:10px;"></div>
@@ -315,10 +315,10 @@
                                                 <a href="<?php echo site_url('admin/rap');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-regular fa-calendar-check"></i><b>RAP</b></span></a>
                                             </li>
-                                            <!--<li class="text-center" class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
+                                            <li class="text-center" class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
                                                 <a href="<?php echo site_url('admin/rencana_kerja');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-calendar-days"></i><b>RENCANA<br />KERJA</b></span></a>
-                                            </li>-->
+                                            </li>
                                         </ul>
                                     </th>
                                     <?php
@@ -556,7 +556,7 @@
                                     fontFamily: 'helvetica'
                                 }
                             },
-                            categories: ['Apr 24','Mei 24','Juni 24','Juli 24','Agu 24','Sep 24']
+                            categories: ['Juni 24','Juli 24','Agustus 24','September 24','Oktober 24','November 24','Desember 24']
                         },
                         yAxis: {
                             //title: {  //label yAxis
@@ -584,18 +584,18 @@
                                     fontSize: '10px',
                                     fontFamily: 'helvetica'
                                 },
-                                format: '{value} %'
+                                format: '{value} M3'
                             },
                             min: 0,
-                            max: 110,
-                            tickInterval: 10,
+                            max: 1000,
+                            tickInterval:100,
                         },
                         tooltip: {
                         //fungsi tooltip, ini opsional, kegunaan dari fungsi ini 
                         //akan menampikan data di titik tertentu di grafik saat mouseover
                             formatter: function() {
                                     return '<b>'+ this.series.name +'</b><br/>'+ 
-                                    ''+ 'Presentase' +': '+ this.y + '%<br/>';
+                                    ''+ 'Volume' +': '+ this.y + ' (M3)<br/>';
                                     //''+ 'Vol' +': '+ this.x + '';
 
                                     //'<b>'+ 'Presentase' +': '+ this.y +'%'</b><br/>'+ 
@@ -626,9 +626,9 @@
                         },
                 
                         series: [{  
-                            name: 'Rencana %',  
+                            name: 'Rencana',  
                             
-                            data: [<?php echo json_encode(70, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#000000',
                             fontWeight: 'bold',
@@ -636,9 +636,9 @@
                             fontFamily: 'helvetica'
                         },
                         {  
-                            name: 'Realisasi %',  
+                            name: 'Realisasi',  
                             
-                            data: [<?php echo json_encode(80, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode($realisasi_produksi_juni24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_juli24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_agustus24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_september24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_oktober24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_november24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_desember24, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#FF0000',
                             fontWeight: 'bold',
@@ -753,9 +753,9 @@
                                 },
                                 format: '{value} %'
                             },
-                            min: -50,
-                            max: 50,
-                            tickInterval: 10,
+                            min: -150,
+                            max: 150,
+                            tickInterval: 50,
                         },
                         tooltip: { 
                         //fungsi tooltip, ini opsional, kegunaan dari fungsi ini 
@@ -805,7 +805,7 @@
                         {  
                             name: 'Laba Rugi %',  
                             
-                            data: [<?php echo json_encode($nilai_rap_bahan_agustus23_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(2, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(2, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(2, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(2, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(2, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode($persentase_laba_rugi_juni24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_juli24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_agustus24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_september24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_oktober24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_november24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_desember24, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#FF0000',
                             fontWeight: 'bold',
