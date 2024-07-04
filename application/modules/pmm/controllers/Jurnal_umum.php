@@ -30,7 +30,7 @@ class Jurnal_umum extends CI_Controller {
 		if($check == true){		
             $data['akun'] = $this->db->get_where('pmm_coa',["status" => "PUBLISH"])->result_array();
             $data['detail'] = $this->db->get_where('pmm_jurnal_umum',["id" => $id])->row_array();
-            $data['detailBiaya'] = $this->db->query("SELECT coa,deskripsi,debit,kredit,coa_number FROM pmm_detail_jurnal INNER JOIN pmm_coa ON pmm_detail_jurnal.akun = pmm_coa.id
+            $data['detailBiaya'] = $this->db->query("SELECT coa,deskripsi,debit,kredit,coa_number,coa_number FROM pmm_detail_jurnal INNER JOIN pmm_coa ON pmm_detail_jurnal.akun = pmm_coa.id
             WHERE pmm_detail_jurnal.jurnal_id = '$id'")->result_array();
             $data['lampiran'] = $this->db->get_where('pmm_lampiran_biaya',["biaya_id" => $id])->result_array();
             $this->load->view('pmm/jurnal_umum/detailJurnal',$data);
@@ -44,7 +44,7 @@ class Jurnal_umum extends CI_Controller {
 		if($check == true){		
             $data['akun'] = $this->db->get_where('pmm_coa',["status" => "PUBLISH"])->result_array();
             $data['detail'] = $this->db->get_where('pmm_jurnal_umum',["id" => $id])->row_array();
-            $data['detailBiaya'] = $this->db->query("SELECT coa,deskripsi,debit,kredit FROM pmm_detail_jurnal INNER JOIN pmm_coa ON pmm_detail_jurnal.akun = pmm_coa.id
+            $data['detailBiaya'] = $this->db->query("SELECT coa,deskripsi,debit,kredit,coa_number,coa_number FROM pmm_detail_jurnal INNER JOIN pmm_coa ON pmm_detail_jurnal.akun = pmm_coa.id
             WHERE pmm_detail_jurnal.jurnal_id = '$id'")->result_array();
             $data['lampiran'] = $this->db->get_where('pmm_lampiran_biaya',["biaya_id" => $id])->result_array();
             $this->load->view('pmm/jurnal_umum/detailJurnal_2',$data);
