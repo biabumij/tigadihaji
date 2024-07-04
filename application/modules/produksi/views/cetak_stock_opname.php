@@ -234,8 +234,8 @@
 				<td align="left" class="table-border-pojok-tengah">Semen</td>
 				<td align="center" class="table-border-pojok-tengah"><?php echo $this->crud_global->GetField('pmm_measures',array('id'=>$row['satuan']),'measure_name');?></td>
 				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['volume'],2,',','.'); ?></td>
-				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['harsat'],0,',','.'); ?></td>
-				<td align="right" class="table-border-pojok-kanan"><?= number_format($row['nilai'],0,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['price'],0,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-kanan"><?= number_format($row['total'],0,',','.'); ?></td>
 			</tr>
 			<?php
 			endforeach; ?>
@@ -247,8 +247,8 @@
 				<td align="left" class="table-border-pojok-tengah"><?php echo $this->crud_global->GetField('produk',array('id'=>$row['material_id']),'nama_produk');?></td>
 				<td align="center" class="table-border-pojok-tengah"><?php echo $this->crud_global->GetField('pmm_measures',array('id'=>$row['satuan']),'measure_name');?></td>
 				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['volume'],2,',','.'); ?></td>
-				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['harsat'],0,',','.'); ?></td>
-				<td align="right" class="table-border-pojok-kanan"><?= number_format($row['nilai'],0,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['price'],0,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-kanan"><?= number_format($row['total'],0,',','.'); ?></td>
 			</tr>
 			<?php
 			endforeach; ?>
@@ -260,8 +260,8 @@
 				<td align="left" class="table-border-pojok-tengah"><?php echo $this->crud_global->GetField('produk',array('id'=>$row['material_id']),'nama_produk');?></td>
 				<td align="center" class="table-border-pojok-tengah"><?php echo $this->crud_global->GetField('pmm_measures',array('id'=>$row['satuan']),'measure_name');?></td>
 				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['volume'],2,',','.'); ?></td>
-				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['harsat'],0,',','.'); ?></td>
-				<td align="right" class="table-border-pojok-kanan"><?= number_format($row['nilai'],0,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['price'],0,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-kanan"><?= number_format($row['total'],0,',','.'); ?></td>
 			</tr>
 			<?php
 			endforeach; ?>
@@ -273,8 +273,8 @@
 				<td align="left" class="table-border-pojok-tengah"><?php echo $this->crud_global->GetField('produk',array('id'=>$row['material_id']),'nama_produk');?></td>
 				<td align="center" class="table-border-pojok-tengah"><?php echo $this->crud_global->GetField('pmm_measures',array('id'=>$row['satuan']),'measure_name');?></td>
 				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['volume'],2,',','.'); ?></td>
-				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['harsat'],0,',','.'); ?></td>
-				<td align="right" class="table-border-pojok-kanan"><?= number_format($row['nilai'],0,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['price'],0,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-kanan"><?= number_format($row['total'],0,',','.'); ?></td>
 			</tr>
 			<?php
 			endforeach; ?>
@@ -286,8 +286,8 @@
 				<td align="left" class="table-border-pojok-tengah"><?php echo $this->crud_global->GetField('produk',array('id'=>$row['material_id']),'nama_produk');?></td>
 				<td align="center" class="table-border-pojok-tengah"><?php echo $this->crud_global->GetField('pmm_measures',array('id'=>$row['satuan']),'measure_name');?></td>
 				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['volume'],2,',','.'); ?></td>
-				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['harsat'],0,',','.'); ?></td>
-				<td align="right" class="table-border-pojok-kanan"><?= number_format($row['nilai'],0,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-tengah"><?= number_format($row['price'],0,',','.'); ?></td>
+				<td align="right" class="table-border-pojok-kanan"><?= number_format($row['total'],0,',','.'); ?></td>
 			</tr>
 			<?php
 			endforeach; ?>
