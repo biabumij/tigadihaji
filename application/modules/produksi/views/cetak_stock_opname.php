@@ -144,9 +144,8 @@
 			$awal = date('Y-m-d',strtotime($date1));
 			$akhir = date('Y-m-d',strtotime($date2));
 			
-			$stock_opname_semen = $this->db->select('cat.date, cat.measure as satuan, cat.material_id, cat.notes, cat.display_volume as volume, pp.semen as harsat, (cat.display_volume * pp.semen) as nilai')
+			$stock_opname_semen = $this->db->select('cat.*')
 			->from('pmm_remaining_materials_cat cat ')
-			->join('hpp_bahan_baku pp', 'cat.date = pp.date_hpp', 'left')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 1")
 			->where("cat.status = 'PUBLISH'")
@@ -160,9 +159,8 @@
 				$nilai_semen += $x['nilai'];
 			}
 
-			$stock_opname_pasir = $this->db->select('cat.date, cat.measure as satuan, cat.material_id, cat.notes, cat.display_volume as volume, pp.pasir as harsat, (cat.display_volume * pp.pasir) as nilai')
+			$stock_opname_pasir = $this->db->select('cat.*')
 			->from('pmm_remaining_materials_cat cat ')
-			->join('hpp_bahan_baku pp', 'cat.date = pp.date_hpp', 'left')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 2")
 			->where("cat.status = 'PUBLISH'")
@@ -176,9 +174,8 @@
 				$nilai_pasir += $x['nilai'];
 			}
 
-			$stock_opname_batu1020 = $this->db->select('cat.date, cat.measure as satuan, cat.material_id, cat.notes, cat.display_volume as volume, pp.batu1020 as harsat, (cat.display_volume * pp.batu1020) as nilai')
+			$stock_opname_batu1020 = $this->db->select('cat.*')
 			->from('pmm_remaining_materials_cat cat ')
-			->join('hpp_bahan_baku pp', 'cat.date = pp.date_hpp', 'left')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 3")
 			->where("cat.status = 'PUBLISH'")
@@ -193,9 +190,8 @@
 				$nilai_batu1020 += $x['nilai'];
 			}
 
-			$stock_opname_batu2030 = $this->db->select('cat.date, cat.measure as satuan, cat.material_id, cat.notes, cat.display_volume as volume, pp.batu2030 as harsat, (cat.display_volume * pp.batu2030) as nilai')
+			$stock_opname_batu2030 = $this->db->select('cat.*')
 			->from('pmm_remaining_materials_cat cat ')
-			->join('hpp_bahan_baku pp', 'cat.date = pp.date_hpp', 'left')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 4")
 			->where("cat.status = 'PUBLISH'")
@@ -210,9 +206,7 @@
 				$nilai_batu2030 += $x['nilai'];
 			}
 
-			$stock_opname_solar = $this->db->select('cat.date, cat.measure as satuan, cat.material_id, cat.notes, cat.display_volume as volume, pp.solar as harsat, (cat.display_volume * pp.solar) as nilai')
-			->from('pmm_remaining_materials_cat cat ')
-			->join('hpp_bahan_baku pp', 'cat.date = pp.date_hpp', 'left')
+			$stock_opname_solar = $this->db->select('cat.*')
 			->where("cat.date between '$awal' and '$akhir'")
 			->where("cat.material_id = 5")
 			->where("cat.status = 'PUBLISH'")
