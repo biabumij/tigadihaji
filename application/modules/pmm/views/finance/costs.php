@@ -302,6 +302,37 @@
             });
         }
 
+        var table_biaya_2 = $('#table_biaya_2').DataTable( {"bAutoWidth": false,
+            ajax: {
+                processing: true,
+                serverSide: true,
+                url: '<?php echo site_url('pmm/biaya/table_biaya_2');?>',
+                type : 'POST',
+				data: function(d) {
+                    d.filter_date = $('#filter_date_biaya_2').val();
+                }
+            },
+            columns: [
+                { "data": "no" },
+                { "data": "tanggal"},
+                { "data": "nomor_transaksi" },
+                { "data": "penerima" },
+                { "data": "jumlah_total" },
+                { "data": "status"}
+            ],
+            "columnDefs": [
+                { "width": "5%", "targets": 0, "className": 'text-center'},
+                { "targets": 4, "className": 'text-right'},
+            ],
+            responsive: true,
+            pageLength: 25,
+        });
+		
+		$('#filter_date_biaya_2').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+            table_biaya_2.ajax.reload();
+		});
+
 
     </script>
     
