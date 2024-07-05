@@ -1379,7 +1379,7 @@ class Reports extends CI_Controller {
 			$total_nilai = $bahan;
 
 			//BAHAN_2
-			$bahan_2 = $this->db->select('date, SUM(nilai_semen + nilai_pasir + nilai_1020 + nilai_2030) as total')
+			$bahan_2 = $this->db->select('date, SUM(nilai_semen + nilai_pasir + nilai_1020 + nilai_2030 + nilai_additive) as total')
 			->from('kunci_bahan_baku')
 			->where("(date between '$date3' and '$date2')")
 			->get()->row_array();

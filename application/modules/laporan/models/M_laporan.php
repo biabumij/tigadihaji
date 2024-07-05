@@ -22,9 +22,9 @@ class M_laporan extends CI_Model {
         $this->db->where('b.tanggal_transaksi >=',$start_date.' 00:00:00');
         $this->db->where('b.tanggal_transaksi <=',$end_date.' 23:59:59');
         $this->db->where("c.coa_category in ('15','17')");
-        $this->db->where("c.id <> 123 "); //Biaya BP
+        $this->db->where("c.id <> 138 "); //Biaya Maintenance BP
         $this->db->where("c.id <> 124 "); //Biaya TM
-        $this->db->where("c.id <> 125 "); //Biaya WL
+        $this->db->where("c.id <> 140 "); //Biaya Maintenance WL
         $this->db->where("c.id <> 110 "); //Biaya Diskonto Bank
         $this->db->where('b.status','PAID');
         $this->db->group_by('c.coa_parent');
@@ -46,11 +46,10 @@ class M_laporan extends CI_Model {
         $this->db->where('b.tanggal_transaksi >=',$start_date.' 00:00:00');
         $this->db->where('b.tanggal_transaksi <=',$end_date.' 23:59:59');
         $this->db->where("c.coa_category in ('15','17')");
-        $this->db->where("c.id <> 123 "); //Biaya BP
+        $this->db->where("c.id <> 138 "); //Biaya Maintenance BP
         $this->db->where("c.id <> 124 "); //Biaya TM
-        $this->db->where("c.id <> 125 "); //Biaya WL
+        $this->db->where("c.id <> 140 "); //Biaya Maintenance WL
         $this->db->where("c.id <> 110 "); //Biaya Diskonto Bank
-        $this->db->where('b.status','PAID');
         $this->db->group_by('c.coa');
         $this->db->order_by('c.coa_number','asc');
         $query = $this->db->get('pmm_biaya b');
@@ -70,9 +69,9 @@ class M_laporan extends CI_Model {
         $this->db->where('b.tanggal_transaksi >=',$start_date.' 00:00:00');
         $this->db->where('b.tanggal_transaksi <=',$end_date.' 23:59:59');
         $this->db->where("c.coa_category in ('15','17')");
-        $this->db->where("c.id <> 123 "); //Biaya BP
+        $this->db->where("c.id <> 138 "); //Biaya Maintenance BP
         $this->db->where("c.id <> 124 "); //Biaya TM
-        $this->db->where("c.id <> 125 "); //Biaya WL
+        $this->db->where("c.id <> 140 "); //Biaya Maintenance WL
         $this->db->where("c.id <> 110 "); //Biaya Diskonto Bank
         $this->db->where('b.status','PAID');
         $this->db->group_by('c.coa_parent');
@@ -94,9 +93,9 @@ class M_laporan extends CI_Model {
         $this->db->where('b.tanggal_transaksi >=',$start_date.' 00:00:00');
         $this->db->where('b.tanggal_transaksi <=',$end_date.' 23:59:59');
         $this->db->where("c.coa_category in ('15','17')");
-        $this->db->where("c.id <> 123 "); //Biaya BP
+        $this->db->where("c.id <> 138 "); //Biaya Maintenance BP
         $this->db->where("c.id <> 124 "); //Biaya TM
-        $this->db->where("c.id <> 125 "); //Biaya WL
+        $this->db->where("c.id <> 140 "); //Biaya Maintenance WL
         $this->db->where("c.id <> 110 "); //Biaya Diskonto Bank
         $this->db->group_by('c.coa');
         $this->db->order_by('c.coa_number','asc');
