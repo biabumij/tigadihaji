@@ -681,7 +681,7 @@ html.right-sidebar-opened .right-sidebar {
 
   .page-header .leftside-header {
     position: fixed;
-    background: #ffb732;
+    background: #e69500;
     left: 0;
     right: 0;
     top: 0;
@@ -689,11 +689,11 @@ html.right-sidebar-opened .right-sidebar {
   }
 
   .page-header .rightside-header {
-    background: #e69500;
+    background: #333333;
     float: none !important;
     margin-top: 50px;
     width: 100%;
-    text-align: right;
+    text-align: left;
   }
 }
 

@@ -133,6 +133,8 @@
                                             </figure>
                                         </div>
                                     </th>
+                                </tr>
+                                <tr>
                                     <th width="50%" class="text-center">
                                         <div class="col-sm-12">
                                             <figure class="highcharts-figure">
@@ -247,8 +249,6 @@
                                     ?>
                                 </tr>
                             </table>
-                            <br />
-                            <br />
                             <table width="100%">
                                 <tr>
                                     <th width="25%" class="text-center">
@@ -264,8 +264,6 @@
                                             <?php
                                             if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,6,7,8))){
                                             ?>
-                                            <br />
-                                            <br />
                                             <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 40%, #2ea4d7 80%);">
                                                 <a href="<?php echo site_url('admin/stock_opname');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cubes"></i><b>STOCK<br />OPNAME</b></span></a>
@@ -325,8 +323,7 @@
                                     ?>
                                 </tr>
                             </table>
-
-                            <table width="100%" style="margin-top:50px;">
+                            <table width="100%">
                                 <tr>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#laporan" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn">
@@ -352,24 +349,8 @@
                                             </li>
                                         </ul>
                                     </th>
-                                    <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1))){
-                                    ?>
-                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#settings" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
-                                                <a>
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-gear"></i><b>SETTINGS</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>
-                                    <?php
-                                    }
-                                    ?>
                                 </tr>
                             </table>
-                            <br />
-                            <br />
                             <table width="100%">
                                 <tr>
                                     <th width="25%" class="text-center">
@@ -452,26 +433,51 @@
                                             ?>
                                         </ul>
                                     </th>
+                                </tr>
+                            </table>
+                            <table width="100%">
+                                <tr>
+                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="beton">
+                                        
+                                    </th>
+                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#settings" aria-expanded="false" aria-controls="beton">
+                                        <ul class="row text-center list-inline  wowload bounceIn">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
+                                                <a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-gear"></i><b>SETTINGS</b></span></a>
+                                            </li>
+                                        </ul>
+                                    </th>
+                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="beton">
+                                    
+                                    </th>
+                                </tr>
+                            </table>
+                            <table width="100%">
+                                <tr>                   
                                     <?php
                                     if(in_array($this->session->userdata('admin_group_id'), array(1))){
                                     ?>
                                     <th width="25%" class="text-center">
+                                        
+                                    </th>
+                                    <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="settings">
-                                            <li class="text-center" class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
                                                 <a href="<?php echo site_url('admin/menu');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-bars"></i><b>MENU</b></span></a>
                                             </li>
-                                            <li class="text-center" class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
                                                 <a href="<?php echo site_url('admin/admin_access');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-eye"></i><b>ADMIN<br />ACCESS</b></span></a>
                                             </li>
-                                            <br />
-                                            <br />
-                                            <li class="text-center" class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
                                                 <a href="<?php echo site_url('admin/admin');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-user-secret"></i><b>ADMIN</b></span></a>
                                             </li>
                                         </ul>
+                                    </th>
+                                    <th width="25%" class="text-center">
                                     </th>
                                     <?php
                                     }
