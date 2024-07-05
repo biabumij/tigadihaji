@@ -1689,15 +1689,23 @@ class Laporan extends Secure_Controller {
 
 	public function print_biaya()
     {
-        $this->load->library('pdf');
+		$this->load->library('pdf');
 
         $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-        $pdf->setPrintHeader(true);
-		$pdf->setPrintFooter(true);
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
-        $pdf->setHtmlVSpace($tagvs);
-        $pdf->AddPage('P');
+		$pdf->setHtmlVSpace($tagvs);
+		
+		// add a page
+		$pdf->AddPage('P');
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+		$pdf->SetMargins(5, 5); 
 
+		$pdf->SetAutoPageBreak(TRUE, 30);
         $arr_date = $this->input->get('filter_date');
 
         $dt = explode(' - ', $arr_date);
@@ -1706,20 +1714,20 @@ class Laporan extends Secure_Controller {
 
         $date = array($start_date,$end_date);
         $data['filter_date'] = $arr_date;
-		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung($arr_date);
-		$data['biaya_langsung_jurnal'] = $this->m_laporan->biaya_langsung_jurnal($arr_date);
-        $data['biaya'] = $this->m_laporan->showBiaya($arr_date);
-		$data['biaya_jurnal'] = $this->m_laporan->showBiayaJurnal($arr_date);
-        $data['biaya_lainnya'] = $this->m_laporan->showBiayaLainnya($arr_date);
-		$data['biaya_lainnya_jurnal'] = $this->m_laporan->showBiayaLainnyaJurnal($arr_date);
-		$data['biaya_persiapan'] = $this->m_laporan->showPersiapanBiaya($arr_date);
-		$data['biaya_persiapan_jurnal'] = $this->m_laporan->showPersiapanJurnal($arr_date);
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
+		$data['biaya_langsung_jurnal'] = $this->m_laporan->biaya_langsung_jurnal_print($arr_date);
+        $data['biaya'] = $this->m_laporan->showBiaya_print($arr_date);
+		$data['biaya_jurnal'] = $this->m_laporan->showBiayaJurnal_print($arr_date);
+        $data['biaya_lainnya'] = $this->m_laporan->showBiayaLainnya_print($arr_date);
+		$data['biaya_lainnya_jurnal'] = $this->m_laporan->showBiayaLainnyaJurnal_print($arr_date);
 
         $html = $this->load->view('laporan_biaya/print_biaya',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Overhead');
+        $pdf->SetTitle('BBJ - Detail Biaya');
         $pdf->nsi_html($html);
-        $pdf->Output('overhead.pdf', 'I');
+        $pdf->Output('detail-biaya.pdf', 'I');
     
     }
 

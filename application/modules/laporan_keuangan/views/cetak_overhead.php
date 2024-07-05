@@ -125,7 +125,7 @@
 						<td width="20%" align="center"><?= $bl['coa_number'];?></td>
 						<td width="2%"></td>
 						<td width="48%"><?= $bl['coa'];?></td>
-						<td width="30%" align="right"><?php echo number_format($bl['total'],0,',','.');?></td>
+						<td width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/print_biaya?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($bl['total'],0,',','.');?></a></td>
 					</tr>
 					<?php
 					$total_biaya_langsung += $bl['total'];	
@@ -163,7 +163,7 @@
 			?>
 			<tr class="table-active2">
 				<td width="80%" style="padding-left:20px;"><b>Total Biaya Operasional Produksi</b></td>
-				<td width="20%" align="right"><b><?php echo number_format($total_a,0,',','.');?></b></td>
+				<td width="20%" align="right"><b><a target="_blank" href="<?= base_url("laporan/print_biaya?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_a,0,',','.');?></a></b></td>
 			</tr>
 		</table>
 		<br />
