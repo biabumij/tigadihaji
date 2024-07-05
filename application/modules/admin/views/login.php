@@ -38,11 +38,9 @@
 				<div class="box" style="background-color: rgba(255, 255, 255, 0.9); margin-top:10%;">
 					<table width="100%" border="0">
 						<tr>
-							<th width="50%" class="text-center" style="border-right:1px solid #cccccc;">
-								<img alt="logo" width="70%" src="<?php echo base_url().$this->m_themes->GetThemes('site_logo');?>" />
-							</th>
 							<th width="50%" class="text-center">
-								<div class="panel-login mb-none" style="background:linear-gradient(90deg, #ebf3fa 20%, #ebf3fa 40%, #bbd6ee 80%); margin:35px 20px 35px 20px !important; border-radius:10px;">
+								<img alt="logo" width="50%" src="<?php echo base_url().$this->m_themes->GetThemes('site_logo');?>" />
+								<div class="panel-content-login bg-scale-0">
 									<div class="panel-content-login bg-scale-0">
 										<div class="alert alert-warning" role="alert">
 											<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
