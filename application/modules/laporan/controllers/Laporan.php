@@ -1725,9 +1725,9 @@ class Laporan extends Secure_Controller {
 
         $html = $this->load->view('laporan_biaya/print_biaya',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Detail Biaya');
+        $pdf->SetTitle('BBJ - Laporan Biaya');
         $pdf->nsi_html($html);
-        $pdf->Output('detail-biaya.pdf', 'I');
+        $pdf->Output('laporan-biaya.pdf', 'I');
     
     }
 
