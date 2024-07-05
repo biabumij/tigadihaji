@@ -46,7 +46,7 @@
 											<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
 											<div class="alert-content"></div>
 										</div>
-										<form id="loginform" action="<?php echo site_url('login_admin');?>" style="margin:auto; width:75%;">
+										<form id="loginform" action="<?php echo site_url('login_admin');?>">
 											<div class="form-group mt-md">
 												<span class="input-with-icon">
 													<input type="email" class="form-control-login" id="email" placeholder="Email" name="email" value="<?= $email;?>">
