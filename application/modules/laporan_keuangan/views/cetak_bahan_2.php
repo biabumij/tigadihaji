@@ -142,40 +142,40 @@
 				<th align="center" width="20%">NILAI</th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center"><b>1.</b></th>	
-				<th align="left"><b>Semen</b></th>
+				<th align="center">1.</th>	
+				<th align="left">Semen</th>
 				<th align="center">Ton</th>
 				<th align="right"><?php echo number_format($pemakaian_volume_semen,2,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_semen / $pemakaian_volume_semen,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_semen,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center"><b>2.</b></th>
-				<th align="left"><b>Pasir</b></th>
+				<th align="center">2.</th>
+				<th align="left">Pasir</th>
 				<th align="center">M3</th>
 				<th align="right"><?php echo number_format($pemakaian_volume_pasir,2,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_pasir / $pemakaian_volume_pasir,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_pasir,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center"><b>3.</b></th>
-				<th align="left"><b>Batu Split 10-20</b></th>
+				<th align="center">3.</th>
+				<th align="left">Batu Split 10-20</th>
 				<th align="center">M3</th>
 				<th align="right"><?php echo number_format($pemakaian_volume_1020,2,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_1020 / $pemakaian_volume_1020,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_1020,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center"><b>4.</b></th>
-				<th align="left"><b>Batu Split 20-30</b></th>
+				<th align="center">4.</th>
+				<th align="left">Batu Split 20-30</th>
 				<th align="center">M3</th>
 				<th align="right"><?php echo number_format($pemakaian_volume_2030,2,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_2030 / $pemakaian_volume_2030,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_2030,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center"><b>5.</b></th>
-				<th align="left"><b>Additive</b></th>
+				<th align="center">5.</th>
+				<th align="left">Additive</th>
 				<th align="center">M3</th>
 				<th align="right"><?php echo number_format($pemakaian_volume_additive,2,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_nilai_additive / $pemakaian_volume_additive,0,',','.');?></th>
