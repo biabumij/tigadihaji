@@ -392,7 +392,7 @@
                                                 <a href="<?php echo site_url('admin/laporan_ev._produksi');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>EVALUASI</b></span></a>
                                             </li>
-                                            <?php
+                                            <!--<?php
                                             if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
                                             ?>
                                             <br />
@@ -403,7 +403,7 @@
                                             </li>
                                             <?php
                                             }
-                                            ?>
+                                            ?>-->
                                         </ul>
                                     </th>
                                     <th width="25%" class="text-center">
