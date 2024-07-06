@@ -75,28 +75,26 @@
                                         <br />
                                         <div class="row">
                                             <div width="100%">
-                                                <div class="panel panel-default">
-													<?php
-                                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,6,7,8))){
-                                                    ?>  
-													<div class="col-sm-5">
-														<p><b><h5>Laporan Evaluasi Biaya Produksi</h5></b></p>
-                                                        <a href="#laporan_evaluasi_biaya_produksi" aria-controls="laporan_evaluasi_biaya_produksi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
-													</div>
-													<?php
-                                                    }
-                                                    ?>
-													<!--<?php
-                                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
-                                                    ?>
-													<div class="col-sm-5">
-														<p><h5><b>Evaluasi Target Produksi</b></h5></p>
-                                                        <a href="#evaluasi_target_produksi" aria-controls="evaluasi_target_produksi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
-                                                    </div>  
-													<?php
-                                                    }
-                                                    ?>-->                             													
-                                                </div>
+												<?php
+												if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,6,7,8))){
+												?>  
+												<div class="col-sm-5">
+													<p><b><h5>Laporan Evaluasi Biaya Produksi</h5></b></p>
+													<a href="#laporan_evaluasi_biaya_produksi" aria-controls="laporan_evaluasi_biaya_produksi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
+												</div>
+												<?php
+												}
+												?>
+												<!--<?php
+												if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
+												?>
+												<div class="col-sm-5">
+													<p><h5><b>Evaluasi Target Produksi</b></h5></p>
+													<a href="#evaluasi_target_produksi" aria-controls="evaluasi_target_produksi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
+												</div>  
+												<?php
+												}
+												?>-->      
                                             </div>
                                         </div>
                                     </div>
