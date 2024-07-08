@@ -160,8 +160,8 @@
 						</tr>
 						<tr>
 							<td align="left">
-								<b>NINDYA - BINA NUSA LESTARI, KSO<br />
-								Proyek Lanjutan Bendungan Tiga Dihaji</b>
+								<b>Nindya - TPP, Kso<br />
+								Pembangunan Bendungan Tiga Dihaji Paket III</b>
 							</td>
 							<td align="center">
 								
@@ -192,72 +192,6 @@
 							<td align="left">
 								<b><u></u></b><br />
 								Logistik
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
-		<br /><br /><br /><br /><br />
-		<table width="100%" border="0" cellpadding="0">
-			<tr>
-				<td>
-					<table border="0">
-						<tr>
-							<td align="center" width="20%">
-								
-							</td>
-							<td align="center" width="60%">
-								
-							</td>
-							<td align="center" width="20%">
-								
-							</td>
-						</tr>
-						<tr>
-							<td align="center" >
-								
-							</td>
-							<td align="center">
-								Diperiksa Oleh,
-							</td>
-							<td align="center">
-								
-							</td>
-						</tr>
-						<tr>
-							<td align="center">
-								
-							</td>
-							<td align="center">
-								<b>NINDYA - BINA NUSA LESTARI, KSO<br />
-								Proyek Lanjutan Bendungan Tiga Dihaji</b>
-							</td>
-							<td align="center">
-								
-							</td>
-						</tr>
-						<tr class="">
-							<td align="center" height="45px">
-							
-							</td>
-							<td align="center">
-								
-							</td>
-							<td align="center">
-								
-							</td>
-						</tr>
-						<tr>
-							<td align="center">
-								
-							</td>
-							<td align="center">
-								<b><u></u></b><br />
-								Office Engineering
-							</td>
-							<td align="center">
-								
 							</td>
 						</tr>
 					</table>
