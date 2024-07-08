@@ -104,7 +104,7 @@
 		
 		<table width="98%" border="0" cellpadding="3" border="0">
 		
-		<?php
+			<?php
 			$pembelian_batching_plant = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
 			->from('pmm_receipt_material prm')

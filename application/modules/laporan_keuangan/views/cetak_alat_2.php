@@ -118,12 +118,12 @@
 			->group_by('prm.harga_satuan')
 			->order_by('pn.nama','asc')
 			->get()->result_array();
-
+	
 			$total_nilai_batching_plant = 0;
 			foreach ($pembelian_batching_plant as $x){
 				$total_nilai_batching_plant += $x['price'];
 			}
-
+	
 			$pemeliharaan_batching_plant_biaya = $this->db->select('sum(pdb.jumlah) as total')
 			->from('pmm_biaya pb ')
 			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
@@ -142,7 +142,7 @@
 			->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
 			->get()->row_array();
 			$total_nilai_pemeliharaan_batching_plant = $pemeliharaan_batching_plant_biaya['total'] + $pemeliharaan_batching_plant_jurnal['total'];
-
+	
 			$penyusutan_batching_plant_biaya = $this->db->select('sum(pdb.jumlah) as total')
 			->from('pmm_biaya pb ')
 			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
@@ -175,12 +175,12 @@
 			->group_by('prm.harga_satuan')
 			->order_by('pn.nama','asc')
 			->get()->result_array();
-
+	
 			$total_nilai_truck_mixer = 0;
 			foreach ($pembelian_truck_mixer as $x){
 				$total_nilai_truck_mixer += $x['price'];
 			}
-
+	
 			$pembelian_wheel_loader = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
 			->from('pmm_receipt_material prm')
@@ -193,12 +193,12 @@
 			->group_by('prm.harga_satuan')
 			->order_by('pn.nama','asc')
 			->get()->result_array();
-
+	
 			$total_nilai_wheel_loader = 0;
 			foreach ($pembelian_wheel_loader as $x){
 				$total_nilai_wheel_loader += $x['price'];
 			}
-
+	
 			$pemeliharaan_wheel_loader_biaya = $this->db->select('sum(pdb.jumlah) as total')
 			->from('pmm_biaya pb ')
 			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
@@ -217,12 +217,12 @@
 			->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
 			->get()->row_array();
 			$total_nilai_pemeliharaan_wheel_loader = $pemeliharaan_wheel_loader_biaya['total'] + $pemeliharaan_wheel_loader_jurnal['total'];
-
+	
 			$penyusutan_wheel_loader_biaya = $this->db->select('sum(pdb.jumlah) as total')
 			->from('pmm_biaya pb ')
 			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
 			->join('pmm_coa c','pdb.akun = c.id','left')
-			->where("pdb.akun = 138")
+			->where("pdb.akun = 139")
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
 			->get()->row_array();
@@ -231,13 +231,13 @@
 			->from('pmm_jurnal_umum pb ')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
 			->join('pmm_coa c','pdb.akun = c.id','left')
-			->where("pdb.akun = 138")
+			->where("pdb.akun = 136")
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
 			->get()->row_array();
 			$total_nilai_penyusutan_wheel_loader = $penyusutan_wheel_loader_biaya['total'] + $penyusutan_wheel_loader_jurnal['total'];
 			$total_nilai_wheel_loader = $total_nilai_wheel_loader + $total_nilai_pemeliharaan_wheel_loader + $total_nilai_penyusutan_wheel_loader;
-
+	
 			$pembelian_truck_mixer = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
 			->from('pmm_receipt_material prm')
@@ -250,14 +250,14 @@
 			->group_by('prm.harga_satuan')
 			->order_by('pn.nama','asc')
 			->get()->result_array();
-
+	
 			$total_nilai_truck_mixer = 0;
 			$total_vol_truck_mixer = 0;
 			foreach ($pembelian_truck_mixer as $x){
 				$total_nilai_truck_mixer += $x['price'];
 				$total_vol_truck_mixer += $x['volume'];
 			}
-
+	
 			$pembelian_transfer_semen = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
 			->from('pmm_receipt_material prm')
@@ -270,12 +270,13 @@
 			->group_by('prm.harga_satuan')
 			->order_by('pn.nama','asc')
 			->get()->result_array();
-
+	
 			$total_nilai_transfer_semen = 0;
 			foreach ($pembelian_transfer_semen as $x){
 				$total_nilai_transfer_semen += $x['price'];
 			}
-
+			$total_vol_transfer_semen = $pembelian_transfer_semen['volume'];
+	
 			$pembelian_excavator = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
 			->from('pmm_receipt_material prm')
@@ -288,12 +289,13 @@
 			->group_by('prm.harga_satuan')
 			->order_by('pn.nama','asc')
 			->get()->result_array();
-
+	
 			$total_nilai_excavator = 0;
 			foreach ($pembelian_excavator as $x){
 				$total_nilai_excavator += $x['price'];
 			}
-
+			$total_vol_excavator = $pembelian_excavator['volume'];
+	
 			//SPESIAL
 			$pemakaian_solar = $this->db->select('date, SUM(vol_solar) as vol_total, SUM(nilai_solar) as total')
 			->from('kunci_bahan_baku')
@@ -303,15 +305,12 @@
 			$pemakaian_nilai_solar = $pemakaian_solar['total'];
 			$pemakaian_harsat_solar = $pemakaian_nilai_solar / $pemakaian_volume_solar;
 			//SPESIAL
-
-			$total_vol_excavator = $pembelian_excavator['volume'];
-			$total_vol_transfer_semen = $pembelian_transfer_semen['volume'];
-
+	
 			$penjualan = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
 			->from('pmm_productions pp')
 			->join('penerima p', 'pp.client_id = p.id','left')
 			->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
-			->where("pp.date_production between '$date3' and '$date2'")
+			->where("pp.date_production between '$date1' and '$date2'")
 			->where("pp.status = 'PUBLISH'")
 			->where("ppo.status in ('OPEN','CLOSED')")
 			->group_by("pp.client_id")
@@ -321,13 +320,13 @@
 			foreach ($penjualan as $x){
 				$total_volume += $x['volume'];
 			}
-
+	
 			$rap_alat = $this->db->select('rap.*')
 			->from('rap_alat rap')
 			->where("rap.tanggal_rap_alat <= '$date2'")
 			->where('rap.status','PUBLISH')
 			->get()->result_array();
-
+	
 			foreach ($rap_alat as $x){
 				$vol_rap_batching_plant = $x['vol_batching_plant'];
 				$vol_rap_pemeliharaan_batching_plant = $x['vol_pemeliharaan_batching_plant'];
@@ -349,7 +348,7 @@
 				$harsat_bbm_solar = $x['vol_bbm_solar'] * $x['harsat_bbm_solar'];
 				
 			}
-
+	
 			$vol_batching_plant = $total_volume;
 			$vol_pemeliharaan_batching_plant = $total_volume;
 			$vol_penyusutan_batching_plant = $total_volume;
@@ -360,7 +359,7 @@
 			$vol_excavator = $total_volume;
 			$vol_transfer_semen = $total_volume;
 			$vol_bbm_solar = $total_volume;
-
+	
 			$batching_plant = $harsat_batching_plant * $total_volume;
 			$pemeliharaan_batching_plant = $harsat_pemeliharaan_batching_plant * $total_volume;
 			$penyusutan_batching_plant = $batching_plant - $pemeliharaan_batching_plant;
@@ -371,7 +370,7 @@
 			$excavator = $harsat_excavator * $total_volume;
 			$transfer_semen = $harsat_transfer_semen * $total_volume;
 			$bbm_solar = $harsat_bbm_solar * $vol_bbm_solar;
-
+	
 			$harsat_batching_plant = ($vol_batching_plant!=0)?$batching_plant / $vol_batching_plant * 1:0;
 			$harsat_truck_mixer = ($vol_truck_mixer!=0)?$truck_mixer / $vol_truck_mixer * 1:0;
 			$harsat_wheel_loader = ($wheel_loader!=0)?$wheel_loader / $vol_wheel_loader * 1:0;
@@ -379,7 +378,7 @@
 			$harsat_transfer_semen = ($transfer_semen!=0)?$transfer_semen / $vol_transfer_semen * 1:0;
 			$harsat_bbm_solar = ($vol_bbm_solar!=0)?$bbm_solar / $vol_bbm_solar * 1:0;
 			$total_nilai_rap_alat = $batching_plant + $truck_mixer + $wheel_loader + $excavator + $transfer_semen + $bbm_solar;
-
+	
 			$pemakaian_vol_batching_plant = $total_volume;
 			$pemakaian_vol_pemeliharaan_batching_plant = 0;
 			$pemakaian_vol_penyusutan_batching_plant = $total_volume;
@@ -390,17 +389,19 @@
 			$pemakaian_vol_excavator = $total_vol_excavator;
 			$pemakaian_vol_transfer_semen = $total_vol_transfer_semen;
 			$pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
-
-			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $penyusutan_batching_plant;
+			
+			//SPESIAL//
 			$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
 			$total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
+			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_penyusutan_batching_plant;
 			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer;
-			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $wheel_loader;
 			$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
 			$total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
+			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_penyusutan_wheel_loader;
 			$total_pemakaian_excavator = $total_nilai_excavator;
 			$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
 			$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
+			//SPESIAL//
 	
 			$total_vol_evaluasi_batching_plant = ($pemakaian_vol_batching_plant!=0)?$vol_batching_plant - $pemakaian_vol_batching_plant * 1:0;
 			$total_nilai_evaluasi_batching_plant = ($total_pemakaian_batching_plant!=0)?$batching_plant - $total_pemakaian_batching_plant * 1:0;
@@ -422,7 +423,7 @@
 			$total_nilai_evaluasi_transfer_semen = ($total_pemakaian_transfer_semen!=0)?$transfer_semen - $total_pemakaian_transfer_semen * 1:0;
 			$total_vol_evaluasi_bbm_solar = ($vol_rap_bbm_solar * $total_volume!=0)?$pemakaian_volume_solar - ($vol_rap_bbm_solar * $total_volume) * 1:0;
 			$total_nilai_evaluasi_bbm_solar = ($pemakaian_nilai_solar!=0)?$bbm_solar - $pemakaian_nilai_solar * 1:0;
-
+	
 			$total_vol_rap_alat = $total_volume;
 			$total_nilai_rap_alat = $batching_plant + $truck_mixer + $wheel_loader + $excavator + $transfer_semen + $bbm_solar;
 			$total_vol_realisasi_alat = $pemakaian_vol_batching_plant + $pemakaian_vol_truck_mixer + $pemakaian_vol_wheel_loader + $pemakaian_vol_excavator + $pemakaian_vol_transfer_semen + $pemakaian_volume_solar;
