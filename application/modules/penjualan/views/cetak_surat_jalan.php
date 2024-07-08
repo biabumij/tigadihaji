@@ -144,7 +144,7 @@
 								
 							</td>
 							<td align="left" width="30%">
-								Kupang, <?php echo $date_now = tglIndonesia(date('d F Y'));?>
+								Oku Selatan, <?php echo $date_now = tglIndonesia(date('d F Y'));?>
 							</td>
 						</tr>
 						<tr>
