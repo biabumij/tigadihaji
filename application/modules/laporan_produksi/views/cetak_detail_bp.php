@@ -420,11 +420,11 @@
 			$harsat_bbm_solar = ($vol_bbm_solar!=0)?$bbm_solar / $vol_bbm_solar * 1:0;
 			$total_nilai_rap_alat = $batching_plant + $truck_mixer + $wheel_loader + $excavator + $transfer_semen + $bbm_solar;
 
-			$pemakaian_vol_batching_plant = $total_volume;
+			$pemakaian_vol_batching_plant = 0;
 			$pemakaian_vol_pemeliharaan_batching_plant = 0;
 			$pemakaian_vol_penyusutan_batching_plant = $total_volume;
 			$pemakaian_vol_truck_mixer = $total_vol_truck_mixer;
-			$pemakaian_vol_wheel_loader =  $total_volume;
+			$pemakaian_vol_wheel_loader = 0;
 			$pemakaian_vol_pemeliharaan_wheel_loader = 0;
 			$pemakaian_vol_penyusutan_wheel_loader = $pemakaian_vol_pemeliharaan_wheel_loader;
 			$pemakaian_vol_excavator = $total_vol_excavator;
