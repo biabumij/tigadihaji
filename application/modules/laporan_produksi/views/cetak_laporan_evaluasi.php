@@ -433,7 +433,7 @@
 				$styleColorB = $evaluasi_volume_b < 0 ? 'color:red' : 'color:black';
 				$styleColorC = $evaluasi_volume_c < 0 ? 'color:red' : 'color:black';
 				$styleColorD = $evaluasi_volume_d < 0 ? 'color:red' : 'color:black';
-				$styleColorE = $evaluasi_volume_d < 0 ? 'color:red' : 'color:black';
+				$styleColorE = $evaluasi_volume_e < 0 ? 'color:red' : 'color:black';
 
 				$styleColorAA = $evaluasi_nilai_a < 0 ? 'color:red' : 'color:black';
 				$styleColorBB = $evaluasi_nilai_b < 0 ? 'color:red' : 'color:black';
