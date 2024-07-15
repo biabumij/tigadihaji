@@ -34,12 +34,15 @@
                                 <div class="panel-content">
                                     <ul class="nav nav-tabs" role="tablist">
                                         <li role="presentation" class="active"><a href="#material_on_site" aria-controls="material_on_site" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">STOCK OPNAME</a></li>
+                                        <li role="presentation"><a href="#pemakaian" aria-controls="pemakaian" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PEMAKAIAN MATERIAL</a></li>
                                     </ul>
-
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane active" id="material_on_site">
                                             <?php include_once "material_on_site.php"; ?>
-                                        </div>          
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="pemakaian">
+                                            <?php include_once "pemakaian.php"; ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -58,6 +61,7 @@
         <script src="<?php echo base_url(); ?>assets/back/theme/vendor/daterangepicker/daterangepicker.js"></script>
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/back/theme/vendor/daterangepicker/daterangepicker.css">
         <?php include_once("script_material_on_site.php"); ?>
+        <?php include_once("script_pemakaian.php"); ?>
 
     </body>
 </html>
