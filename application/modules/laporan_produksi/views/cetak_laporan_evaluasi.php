@@ -675,7 +675,7 @@
 				<th class="text-right" style="background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_additive,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
-				<th class="text-left" style="background-color:yellow; color:black;">&nbsp;&nbsp;Stok 2030 Akhir</th>
+				<th class="text-left" style="background-color:yellow; color:black;">&nbsp;&nbsp;Stok Additive Akhir</th>
 				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_additive_now,2,',','');?> (Ton)</th>
 				<th class="text-right" style="background-color:yellow; color:black;"></th>
 				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_additive_now,0,',','.');?>&nbsp;&nbsp;</th>
