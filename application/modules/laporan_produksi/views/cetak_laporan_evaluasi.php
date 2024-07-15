@@ -654,6 +654,39 @@
 				<th class="text-right" style="background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_2030,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 		</table>
+		<br /><br />
+		<table width="98%" style="font-size:7px;">
+			<tr>
+				<th class="text-left" width="30%" style="background-color:grey; color:white;">&nbsp;&nbsp;Stok Additive Bulan Lalu</th>
+				<th class="text-right" width="15%" style="background-color:grey; color:white;"><?php echo number_format($stok_volume_additive_lalu,2,',','');?> (Ton)</th>
+				<th class="text-right" width="15%" style="background-color:grey; color:white;"><?php echo number_format($stok_harsat_additive_lalu,0,',','.');?></th>
+				<th class="text-right" width="15%"style="background-color:grey; color:white;"><?php echo number_format($stok_nilai_additive_lalu,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="background-color:yellow; color:black;">&nbsp;&nbsp;Pembelian Additive Bulan Ini</th>
+				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($pembelian_volume_additive,2,',','');?> (Ton)</th>
+				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($pembelian_harga_additive,0,',','.');?></th>
+				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($pembelian_nilai_additive,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="background-color:grey; color:white;">&nbsp;&nbsp;Total Stok Additive Bulan Ini</th>
+				<th class="text-right" style="background-color:grey; color:white;"><?php echo number_format($total_stok_volume_additive,2,',','');?> (Ton)</th>
+				<th class="text-right" style="background-color:grey; color:white;"></th>
+				<th class="text-right" style="background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_additive,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="background-color:yellow; color:black;">&nbsp;&nbsp;Stok 2030 Akhir</th>
+				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_additive_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="background-color:yellow; color:black;"></th>
+				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_additive_now,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+			<tr>
+				<th class="text-left" style="background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Additive Bulan Ini</th>
+				<th class="text-right" style="background-color:blue; color:white;"><?php echo number_format($pemakaian_volume_additive,2,',','');?> (Ton)</th>
+				<th class="text-right" style="background-color:blue; color:white;"><?php echo number_format($pemakaian_harsat_additive,0,',','.');?></th>
+				<th class="text-right" style="background-color:blue; color:white;"><?php echo number_format($pemakaian_nilai_additive,0,',','.');?>&nbsp;&nbsp;</th>
+			</tr>
+		</table>
 		<?php
 		}
 		?>
