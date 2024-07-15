@@ -497,7 +497,7 @@
 			<tr class="table-baris1">
 				<th align="center" style="vertical-align:middle">4.</th>			
 				<th align="left">Additive</th>
-				<th align="center">Litter</th>
+				<th align="center">Liter</th>
 				<th align="right"><?php echo number_format($volume_e,2,',','.');?></th>
 				<th align="right"><?php echo number_format($price_e,0,',','.');?></th>
 				<th align="right"><?php echo number_format($nilai_e,0,',','.');?></th>
