@@ -440,7 +440,7 @@
 				$styleColorCC = $evaluasi_nilai_c < 0 ? 'color:red' : 'color:black';
 				$styleColorDD = $evaluasi_nilai_d < 0 ? 'color:red' : 'color:black';
 				$styleColorEE = $total_nilai_evaluasi < 0 ? 'color:red' : 'color:black';
-				$styleColorFF = $evaluasi_nilai_d < 0 ? 'color:red' : 'color:black';
+				$styleColorFF = $evaluasi_nilai_e < 0 ? 'color:red' : 'color:black';
 			?>
 			<tr class="table-baris1">
 				<th align="center" style="vertical-align:middle">1.</th>			
