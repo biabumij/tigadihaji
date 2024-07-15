@@ -50,7 +50,10 @@
                 "data": "date"
             },
             {
-                "data": "jumlah"
+                "data": "jumlah_bahan"
+            },
+            {
+                "data": "jumlah_solar"
             },
             {
                 "data": "actions"
@@ -59,7 +62,7 @@
         pageLength: 25,
         "columnDefs": [
             { "width": "5%", "targets": 0, "className": 'text-center'},
-            { "width": "5%", "targets": 3, "className": 'text-center'},
+            { "width": "5%", "targets": 4, "className": 'text-center'},
         ],
     });
 

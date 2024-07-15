@@ -23,7 +23,8 @@
             <tr>
                 <th>No.</th>
                 <th>Tanggal</th>
-                <th>Jumlah</th>
+                <th>Jumlah Bahan</th>
+                <th>Jumlah Solar</th>
                 <th>Tindakan</th>
             </tr>
         </thead>
