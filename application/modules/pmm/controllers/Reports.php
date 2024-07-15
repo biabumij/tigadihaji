@@ -11638,7 +11638,7 @@ class Reports extends CI_Controller {
 				<?php
 				$styleColor = $total_vol_evaluasi_alat < 0 ? 'color:red' : 'color:black';
 				?>
-				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_vol_evaluasi_alat < 0 ? "(".number_format(-$total_vol_evaluasi_alat,0,',','.').")" : number_format($total_vol_evaluasi_alat,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_vol_evaluasi_alat < 0 ? "(".number_format(-$total_vol_evaluasi_alat,2,',','.').")" : number_format($total_vol_evaluasi_alat,2,',','.');?></th>
 				<?php
 				$styleColor = $total_nilai_evaluasi_alat < 0 ? 'color:red' : 'color:black';
 				?>
