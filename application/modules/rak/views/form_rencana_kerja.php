@@ -57,7 +57,7 @@
                                                     <input type="text" id="vol_produk_a" name="vol_produk_a" class="form-control numberformat text-right" value="" onchange="changeData(1)"  autocomplete="off">
                                                     </td>
                                                     <td>
-                                                    <input type="text" id="price_a" name="price_a" class="form-control rupiahformat text-right" value="1110000" autocomplete="off">
+                                                    <input type="text" id="price_a" name="price_a" class="form-control rupiahformat text-right" value="1127140" autocomplete="off">
                                                     </td>
                                                     <td class="text-center">M3</td>
                                                     <td class="text-center">
@@ -182,7 +182,7 @@
                                                     <input type="text" id="vol_produk_f" name="vol_produk_f" class="form-control numberformat text-right" value="" onchange="changeData(1)"  autocomplete="off">
                                                     </td>
                                                     <td>
-                                                    <input type="text" id="price_f" name="price_f" class="form-control rupiahformat text-right" value="1550000" autocomplete="off">
+                                                    <input type="text" id="price_f" name="price_f" class="form-control rupiahformat text-right" value="1455000" autocomplete="off">
                                                     </td>
                                                     <td class="text-center">M3</td>
                                                     <td class="text-center">
