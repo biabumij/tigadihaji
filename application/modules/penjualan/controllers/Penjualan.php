@@ -829,6 +829,7 @@ class Penjualan extends Secure_Controller
 				$row['memo'] = $row['memo'];
 				$row['nopol_truck'] = $row['nopol_truck'];
 				$row['driver'] = $row['driver'];
+				$row['komposisi'] = $this->crud_global->GetField('pmm_agregat', array('id' => $row['komposisi_id']), 'jobs_type');
 				$row['action'] = '-';
 				$row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));

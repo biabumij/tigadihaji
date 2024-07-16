@@ -206,6 +206,7 @@
                                                         <th>No. Surat Jalan</th>
                                                         <th>Surat Jalan</th>
                                                         <th>Produk</th>
+                                                        <th>Komposisi</th>
                                                         <th>Satuan</th>
                                                         <th>Volume</th>
                                                         <th>Upload Surat Jalan</th>
@@ -472,6 +473,9 @@
                 },
                 {
                     "data": "product"
+                },
+                {
+                    "data": "komposisi"
                 },
                 {
                     "data": "measure"
