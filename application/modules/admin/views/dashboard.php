@@ -120,7 +120,7 @@
                     <div id="flippy">
                         <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}"><i class="fa-regular fa-hand-point-right"></i> GRAFIK</button>
                     </div>
-                    <!-- <div id="spoiler" style="display:none"> -->
+                    <!--<div id="spoiler" style="display:none">-->
                     <div id="spoiler" style="display:block">
                         <?php include_once("script_dashboard.php"); ?>
                         <div class="row animated fadeInUp">
