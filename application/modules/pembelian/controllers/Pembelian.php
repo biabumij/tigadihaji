@@ -1819,6 +1819,7 @@ class Pembelian extends Secure_Controller
 		$data = array(
             'id' => $penagihan_id,
 		    'tanggal_invoice' => $tanggal_invoice,
+            'nomor_invoice' => $nomor_invoice,
 		);
 
 		if(!empty($id)){
@@ -1836,6 +1837,7 @@ class Pembelian extends Secure_Controller
         $data_verif = array(
             'penagihan_pembelian_id' => $penagihan_id,
 		    'tanggal_invoice' => $tanggal_invoice,
+            'nomor_invoice' => $nomor_invoice,
 		);
 
         if(!empty($penagihan_id)){
