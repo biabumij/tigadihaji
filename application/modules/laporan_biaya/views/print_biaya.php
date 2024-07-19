@@ -86,7 +86,7 @@
 						<td width="10%">BIAYA</td>
 						<td width="25%"><?= $bl['coa'];?></td>
 						<td width="25%"><?= $bl['deskripsi'];?></td>
-						<td width="30%" align="right"><?= $this->filter->Rupiah($bl['total']);?></td>
+						<td width="30%" align="right"><?php echo number_format($bl['total'],0,',','.');?></td>
 					</tr>
 					<?php
 					$total_biaya_langsung += $bl['total'];	
@@ -102,7 +102,7 @@
 							<td>JURNAL</td>
 							<td width="25%"><?= $blj['coa'];?></td>
 							<td width="25%"><?= $blj['deskripsi'];?></td>
-							<td align="right"><?= $this->filter->Rupiah($blj['total']);?></td>
+							<td align="right"><?php echo number_format($blj['total'],0,',','.');?></td>
 						</tr>
 						<?php
 						$total_biaya_langsung_jurnal += $blj['total'];					
@@ -112,7 +112,7 @@
 			?>
 			<tr class="active">
 				<td width="80%" align="right" style="padding-right:5px;"><b>TOTAL HARGA POKOK PENJUALAN</b></td>
-				<td width="20%" align="right"><b><?= $this->filter->Rupiah($total_a);?></b></td>
+				<td width="20%" align="right"><b><?php echo number_format($total_a,0,',','.');?></b></td>
 			</tr>
 			<!--<tr>
 				<th width="100%" colspan="6"></th>
@@ -130,7 +130,7 @@
 						<td width="10%">BIAYA</td>
 						<td width="25%"><?= $row['coa'];?></td>
 						<td width="25%"><?= $row['deskripsi'];?></td>
-						<td align="center" width="30%" align="right"><?= $this->filter->Rupiah($row['total']);?></td>
+						<td align="center" width="30%" align="right"><?php echo number_format($row['total'],0,',','.');?></td>
 					</tr>
 					<?php
 					$total_biaya += $row['total'];				
@@ -146,7 +146,7 @@
 						<td>JURNAL</td>
 						<td width="25%"><?= $row2['coa'];?></td>
 						<td width="25%"><?= $row2['deskripsi'];?></td>
-						<td align="right"><?= $this->filter->Rupiah($row2['total']);?></td>
+						<td align="right"><?php echo number_format($row2['total'],0,',','.');?></td>
 					</tr>
 					<?php
 					$total_biaya_jurnal += $row2['total'];				
@@ -156,7 +156,7 @@
 			?>
 			<tr class="active">
 				<td width="80%" align="right" style="padding-right:5px;">TOTAL BEBAN</td>
-				<td width="20%" align="right"><b><?= $this->filter->Rupiah($total_b);?></b></td>
+				<td width="20%" align="right"><b><?php echo number_format($total_b,0,',','.');?></b></td>
 			</tr>-->
 			<tr>
 				<th width="100%" colspan="6"></th>
@@ -174,7 +174,7 @@
 						<td width="10%">BIAYA</td>
 						<td width="25%"><?= $row['coa'];?></td>
 						<td width="25%"><?= $row['deskripsi'];?></td>
-						<td align="center" width="30%" align="right"><?= $this->filter->Rupiah($row['total']);?></td>
+						<td align="center" width="30%" align="right"><?php echo number_format($row['total'],0,',','.');?></td>
 					</tr>
 					<?php
 					$total_biaya_lainnya += $row['total'];					
@@ -190,7 +190,7 @@
 						<td>JURNAL</td>
 						<td width="25%"><?= $row2['coa'];?></td>
 						<td width="25%"><?= $row2['deskripsi'];?></td>
-						<td align="right"><?= $this->filter->Rupiah($row2['total']);?></td>
+						<td align="right"><?php echo number_format($row2['total'],0,',','.');?></td>
 					</tr>
 					<?php
 					$total_biaya_lainnya_jurnal += $row2['total'];					
@@ -200,7 +200,7 @@
 			?>
 			<tr class="active">
 				<td width="80%" align="right" style="padding-right:5px;"><b>TOTAL BEBAN LAINNYA</b></td>
-				<td width="20%" align="right"><b><?= $this->filter->Rupiah($total_c);?></b></td>
+				<td width="20%" align="right"><b><?php echo number_format($total_c,0,',','.');?></b></td>
 			</tr>
 		</table>
 		
