@@ -850,7 +850,7 @@ class Productions extends Secure_Controller {
 						$arr['measure'] = $row['measure'];
 						$arr['nama_produk'] = $row['nama_produk'];
 						$arr['salesPo_id'] = '<a href="'.base_url().'penjualan/dataSalesPO/'.$row['salesPo_id'].'" target="_blank">'.$row['salesPo_id'] = $this->crud_global->GetField('pmm_sales_po',array('id'=>$row['salesPo_id']),'contract_number').'</a>';
-						$arr['real'] = number_format($row['total'],2,',','.');
+						$arr['real'] = '<a href="'.base_url().'pmm/productions/detail_transaction/'.$start_date.'/'.$end_date.'/'.$row['client_id'].'/'.$row['product_id'].'" target="_blank">'.number_format($row['total'],2,',','.').'</a>';
 						$arr['price'] = number_format($row['price'],0,',','.');
 						$arr['total_price'] = number_format($row['total_price'],0,',','.');
 						
@@ -1240,6 +1240,27 @@ class Productions extends Secure_Controller {
 
 		echo json_encode(array('data'=>$data,'total'=>number_format($total,0,',','.')));	
 	}
+
+	public function detail_transaction($start_date,$end_date,$id,$material_id)
+    {
+        $check = $this->m_admin->check_login();
+        if($check == true){
+
+            $this->db->select('ppo.*, SUM(prm.volume) as volume');
+			$this->db->join('pmm_productions prm','ppo.id = prm.salesPo_id');
+			$this->db->where('prm.date_production >=',$start_date);
+            $this->db->where('prm.date_production <=',$end_date);
+            $this->db->where('ppo.client_id',$id);
+			$this->db->where('prm.product_id',$material_id);
+			$this->db->group_by('ppo.id');
+            $query = $this->db->get('pmm_sales_po ppo');
+            $data['row'] = $query->result_array();
+            $this->load->view('laporan_penjualan/detail_transaction',$data);
+            
+        }else {
+            redirect('admin');
+        }
+    }
 
 
 }
