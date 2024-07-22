@@ -72,7 +72,7 @@ class Penjualan extends Secure_Controller
 		->get()->result_array();
 		$taxs = $this->db->select('id,tax_name')->get_where('pmm_taxs', array('status' => 'PUBLISH'))->result_array();
 		$measures = $this->db->get_where('pmm_measures', array('status' => 'PUBLISH'))->result_array();
-?>
+		?>
 		<tr>
 			<td><?php echo $no; ?>.</td>
 			<td>
@@ -129,7 +129,7 @@ class Penjualan extends Secure_Controller
 
 		<script type="text/javascript">
 			$('.form-select2').select2();
-			$('input.numberformat').number(true, 2, ',', '.');
+			$('input.numberformat').number(true, 0, ',', '.');
 		</script>
 	<?php
 	}

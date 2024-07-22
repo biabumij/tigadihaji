@@ -10168,39 +10168,58 @@ class Reports extends CI_Controller {
 			<tr class="table-active4">
 	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;ASET LANCAR</th>
 	        </tr>
-			<?php
-			$akun_1_10001 = $this->db->select('t.akun as id, sum(t.debit) as debit, sum(t.kredit) as kredit')
-			->from('transactions t')
-			->where("t.tanggal_transaksi between '$date1' and '$date2'")
-			->where("t.akun = 1")
-			->group_by('t.akun')
-			->get()->row_array();
-			$akun_1_10001 = $akun_1_10001['debit'] - $akun_1_10001['kredit'] ;
-
-			$akun_1_10002 = $this->db->select('t.akun as id, sum(t.debit) as debit, sum(t.kredit) as kredit')
-			->from('transactions t')
-			->where("t.tanggal_transaksi between '$date1' and '$date2'")
-			->where("t.akun = 121")
-			->group_by('t.akun')
-			->get()->row_array();
-			$akun_1_10002 = $akun_1_10001 + ($akun_1_10002['debit'] - $akun_1_10002['kredit']);
-
-			$total_aset_lancar = $akun_1_10002;
-
-			?>
+				<?php
+				$akun_110002 = $this->pmm_model->get110002($date1,$date2);
+				$akun_110001 = $this->pmm_model->get110001($date1,$date2);
+				$akun_110001 = $akun_110002 - $akun_110001;
+				?>
 			<tr class="table-active3">
 	            <th width="10%" class="text-center">1-10001</th>
 				<th class="text-left">Kas Cutting Stone</th>
-				<th class="text-right"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction/".$date1."/".$date2."/".'1'."") ?>"><?php echo $akun_1_10001 < 0 ? "(".number_format(-$akun_1_10001,0,',','.').")" : number_format($akun_1_10001,0,',','.');?></a></th>
-	        </tr>
+				<!--<th class="text-right"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction/".$date1."/".$date2."/".'1'."") ?>"><?php echo $akun_1_10001 < 0 ? "(".number_format(-$akun_1_10001,0,',','.').")" : number_format($akun_1_10001,0,',','.');?></a></th>-->
+				<th class="text-right"><?php echo number_format($akun_110001,0,',','.');?></th>
+			</tr>
 			<tr class="table-active3">
 				<th width="10%" class="text-center">1-10002</th>
 				<th class="text-left">Bank Kantor Pusat</th>
-				<th class="text-right"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction2/".$date1."/".$date2."/".'121'."") ?>"><?php echo $akun_1_10002 < 0 ? "(".number_format(-$akun_1_10002,0,',','.').")" : number_format($akun_1_10002,0,',','.');?></a></th>
+				<th class="text-right"><?php echo number_format($akun_110002,0,',','.');?></th>
+	        </tr>
+				<?php
+				$akun_110100 = $this->pmm_model->get110100($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10100</th>
+				<th class="text-left">Piutang Usaha</th>
+				<th class="text-right"><?php echo number_format($akun_110100,0,',','.');?></th>
+	        </tr>
+				<?php
+				$akun_110101 = $this->pmm_model->get110101($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10101</th>
+				<th class="text-left">Piutang Belum Ditagih</th>
+				<th class="text-right"><?php echo number_format($akun_110101,0,',','.');?></th>
+	        </tr>
+				<?php
+				$akun_110201 = $this->pmm_model->get110201($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10201</th>
+				<th class="text-left">Persediaan Bahan Baku</th>
+				<th class="text-right"><?php echo number_format($akun_110201,0,',','.');?></th>
 	        </tr>
 			<?php
+				$akun_110500 = $this->pmm_model->get110500($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10500</th>
+				<th class="text-left">PPN Masukan</th>
+				<th class="text-right"><?php echo number_format($akun_110500,0,',','.');?></th>
+	        </tr>
+				<?php
+				$total_aset_lancar = $akun_110001 + $akun_110002 + $akun_110100 + $akun_110101 + $akun_110201;
 				$styleColor = $total_aset_lancar < 0 ? 'color:red' : 'color:black';
-			?>
+				?>
 			<tr class="table-active3">
 	            <th class="text-right" colspan="2">TOTAL ASET LANCAR</th>
 				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_aset_lancar < 0 ? "(".number_format(-$total_aset_lancar,0,',','.').")" : number_format($total_aset_lancar,0,',','.');?></th>

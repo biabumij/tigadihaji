@@ -1,6 +1,6 @@
 <form action="<?php echo site_url('produksi/cetak_stock_opname'); ?>" target="_blank">
     <div class="col-sm-3">
-        <input type="text" id="filter_date_pemakaian" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
+        <input type="text" id="filter_date_pemakaian" name="filter_date" class="form-control dtpickerangepemakaian" autocomplete="off" placeholder="Filter By Date">
     </div>
     <!--<div class="col-sm-1">
         <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>

@@ -17,7 +17,7 @@
         //table.ajax.reload();
     });
 
-    $('.dtpickerange').daterangepicker({
+    $('.dtpickerangepemakaian').daterangepicker({
         autoUpdateInput: false,
         locale: {
             format: 'DD-MM-YYYY'
@@ -66,7 +66,7 @@
         ],
     });
 
-    $('.dtpickerange').on('apply.daterangepicker', function(ev, picker) {
+    $('.dtpickerangepemakaian').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
         table_pemakaian.ajax.reload();
     });

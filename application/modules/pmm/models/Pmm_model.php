@@ -6360,5 +6360,201 @@ class Pmm_model extends CI_Model {
         return $data;
     }
 
+    function get110001($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110001_biaya = $this->db->select('bayar_dari as id, sum(total) as total')
+        ->from('pmm_biaya')
+        ->where("tanggal_transaksi between '$date1' and '$date2'")
+        ->where("bayar_dari = 1")
+        ->group_by('bayar_dari')
+        ->get()->row_array();
+
+        $akun_110001_jurnal = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')
+        ->from('pmm_jurnal_umum j')
+        ->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+        ->where("j.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("pdj.akun = 1")
+        ->group_by('pdj.akun')
+        ->get()->row_array();
+        $akun_110001 = $akun_110001_biaya['total'] + $akun_110001_jurnal['total'];
+        
+        $query = $akun_110001;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110002($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110002 = $this->db->select('terima_dari as id, sum(jumlah) as total')
+        ->from('pmm_terima_uang')
+        ->where("tanggal_transaksi between '$date1' and '$date2'")
+        ->where("terima_dari = 121")
+        ->group_by('terima_dari')
+        ->get()->row_array();
+        $akun_110002 = $akun_110002['total'];
+        
+        $query = $akun_110002;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110100($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110100 = $this->db->select('sum(ppp.total) as total')
+        ->from('pmm_penagihan_penjualan ppp')
+        ->where("ppp.tanggal_invoice between '$date1' and '$date2'")
+        ->get()->row_array();
+        
+        $query = $akun_110100['total'];
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110101($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110101 = $this->db->select('sum(pp.display_price) as total')
+        ->from('pmm_productions pp')
+        ->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+        ->where("pp.date_production between '$date1' and '$date2'")
+        ->where("pp.status = 'PUBLISH'")
+        ->where("ppo.status in ('OPEN','CLOSED')")
+        ->get()->row_array();
+        
+        $query = $akun_110101['total'];
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110201($date1,$date2)
+    {   
+        $total = 0;
+
+        $awal = date('Y-m-d',strtotime($date1));
+		$akhir = date('Y-m-d',strtotime($date2));
+
+        $stock_opname_semen = $this->db->select('cat.*, (cat.total) as nilai')
+        ->from('pmm_remaining_materials_cat cat')
+        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.material_id = 1")
+        ->where("cat.status = 'PUBLISH'")
+        ->group_by('cat.id')
+        ->order_by('cat.id','desc')->limit(1)
+        ->get()->result_array();
+        $nilai_semen = 0;
+        foreach ($stock_opname_semen as $x){
+            $nilai_semen += $x['nilai'];
+        }
+
+        $stock_opname_pasir = $this->db->select('cat.*, (cat.total) as nilai')
+        ->from('pmm_remaining_materials_cat cat')
+        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.material_id = 2")
+        ->where("cat.status = 'PUBLISH'")
+        ->group_by('cat.id')
+        ->order_by('cat.id','desc')->limit(1)
+        ->get()->result_array();
+        $nilai_pasir = 0;
+        foreach ($stock_opname_pasir as $x){
+            $nilai_pasir += $x['nilai'];
+        }
+
+        $stock_opname_batu1020 = $this->db->select('cat.*, (cat.total) as nilai')
+        ->from('pmm_remaining_materials_cat cat')
+        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.material_id = 3")
+        ->where("cat.status = 'PUBLISH'")
+        ->group_by('cat.id')
+        ->order_by('cat.id','desc')->limit(1)
+        ->get()->result_array();
+        $nilai_batu1020 = 0;
+        foreach ($stock_opname_batu1020 as $x){
+            $nilai_batu1020 += $x['nilai'];
+        }
+
+        $stock_opname_batu2030 = $this->db->select('cat.*, (cat.total) as nilai')
+        ->from('pmm_remaining_materials_cat cat')
+        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.material_id = 4")
+        ->where("cat.status = 'PUBLISH'")
+        ->group_by('cat.id')
+        ->order_by('cat.id','desc')->limit(1)
+        ->get()->result_array();
+        $nilai_batu2030 = 0;
+        foreach ($stock_opname_batu2030 as $x){
+            $nilai_batu2030 += $x['nilai'];
+        }
+
+        $stock_opname_solar = $this->db->select('cat.*, (cat.total) as nilai')
+        ->from('pmm_remaining_materials_cat cat')
+        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.material_id = 5")
+        ->where("cat.status = 'PUBLISH'")
+        ->group_by('cat.id')
+        ->order_by('cat.id','desc')->limit(1)
+        ->get()->result_array();
+        $nilai_solar = 0;
+        foreach ($stock_opname_solar as $x){
+            $nilai_solar += $x['nilai'];
+        }
+
+        $stock_opname_additive = $this->db->select('cat.*, (cat.total) as nilai')
+        ->from('pmm_remaining_materials_cat cat')
+        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.material_id = 19")
+        ->where("cat.status = 'PUBLISH'")
+        ->group_by('cat.id')
+        ->order_by('cat.id','desc')->limit(1)
+        ->get()->result_array();
+        $nilai_additive = 0;
+        foreach ($stock_opname_additive as $x){
+            $nilai_additive += $x['nilai'];
+        }
+        
+        $query = $nilai_semen + $nilai_pasir + $nilai_batu1020 + $nilai_batu2030 + $nilai_solar + $nilai_additive;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110500($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110500 = $this->db->select('sum(ppd.tax) as total')
+        ->from('pmm_penagihan_pembelian ppp')
+        ->join('pmm_penagihan_pembelian_detail ppd','ppp.id = ppd.penagihan_pembelian_id','left')
+        ->where("ppp.tanggal_invoice between '$date1' and '$date2'")
+        ->get()->row_array();
+        
+        $query = $akun_110500['total'];
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
 }
 ?>
