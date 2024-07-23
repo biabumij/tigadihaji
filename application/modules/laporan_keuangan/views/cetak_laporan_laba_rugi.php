@@ -95,7 +95,7 @@
 		$date2 = '';
 
 		if(count($arr_filter_date) == 2){
-			$date3 	= date('2024-06-01',strtotime($date3));
+			$date3 	= date('2024-01-01',strtotime($date3));
 			$date1 	= date('Y-m-d',strtotime($arr_filter_date[0]));
 			$date2 	= date('Y-m-d',strtotime($arr_filter_date[1]));
 			$filter_date = date('d/m/Y',strtotime($arr_filter_date[0])).' - '.date('d/m/Y',strtotime($arr_filter_date[1]));
