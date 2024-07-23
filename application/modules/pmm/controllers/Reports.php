@@ -10389,7 +10389,25 @@ class Reports extends CI_Controller {
 				<th class="text-right"><?php echo number_format($akun_330999,0,',','.');?></th>
 	        </tr>
 				<?php
-				$total_modal_pemilik = $akun_330000 + $akun_330999;
+				$pendapatan_tahun_lalu = $this->pmm_model->getpendapatantahunlalu($date1,$date2);
+				$styleColor = $pendapatan_tahun_lalu < 0 ? 'color:red' : 'color:black';
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center"></th>
+				<th class="text-left">Pendapatan sampai Tahun Lalu</th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $pendapatan_tahun_lalu < 0 ? "(".number_format(-$pendapatan_tahun_lalu,0,',','.').")" : number_format($pendapatan_tahun_lalu,0,',','.');?></th>
+	        </tr>
+				<?php
+				$pendapatan_periode_ini = $this->pmm_model->getpendapatanperiodeini($date3,$date2);
+				$styleColor = $pendapatan_periode_ini < 0 ? 'color:red' : 'color:black';
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center"></th>
+				<th class="text-left">Pendapatan Periode Ini</th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $pendapatan_periode_ini < 0 ? "(".number_format(-$pendapatan_periode_ini,0,',','.').")" : number_format($pendapatan_periode_ini,0,',','.');?></th>
+	        </tr>
+				<?php
+				$total_modal_pemilik = $akun_330000 + $akun_330999 + $pendapatan_tahun_lalu + $pendapatan_periode_ini;
 				$styleColor = $total_modal_pemilik < 0 ? 'color:red' : 'color:black';
 				?>
 			<tr class="table-active3">
