@@ -106,7 +106,7 @@
 		
 		<table width="98%" border="0" cellpadding="3">
 		
-		<?php
+			<?php
 			//PENJUALAN
 			$penjualan = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
 			->from('pmm_productions pp')
@@ -555,7 +555,7 @@
 							
 							</td>
 							<td align="center">
-								
+
 							</td>
 						</tr>
 						<tr>
