@@ -10179,11 +10179,6 @@ class Reports extends CI_Controller {
 				<!--<th class="text-right"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction/".$date1."/".$date2."/".'1'."") ?>"><?php echo $akun_1_10001 < 0 ? "(".number_format(-$akun_1_10001,0,',','.').")" : number_format($akun_1_10001,0,',','.');?></a></th>-->
 				<th class="text-right"><?php echo number_format($akun_110001,0,',','.');?></th>
 			</tr>
-			<tr class="table-active3">
-				<th width="10%" class="text-center">1-10002</th>
-				<th class="text-left">Bank Kantor Pusat</th>
-				<th class="text-right"><?php echo number_format($akun_110002,0,',','.');?></th>
-	        </tr>
 				<?php
 				$akun_110100 = $this->pmm_model->get110100($date1,$date2);
 				?>
@@ -10225,7 +10220,7 @@ class Reports extends CI_Controller {
 				<th class="text-right"><?php echo number_format($akun_110500,0,',','.');?></th>
 	        </tr>
 				<?php
-				$total_aset_lancar = $akun_110001 + $akun_110002 + $akun_110100 + $akun_110101 + $akun_110201 + $akun_110403 + $akun_110500;
+				$total_aset_lancar = $akun_110001 + $akun_110100 + $akun_110101 + $akun_110201 + $akun_110403 + $akun_110500;
 				$styleColor = $total_aset_lancar < 0 ? 'color:red' : 'color:black';
 				?>
 			<tr class="table-active3">
