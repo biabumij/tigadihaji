@@ -10208,7 +10208,15 @@ class Reports extends CI_Controller {
 				<th class="text-left">Persediaan Bahan Baku</th>
 				<th class="text-right"><?php echo number_format($akun_110201,0,',','.');?></th>
 	        </tr>
-			<?php
+				<?php
+				$akun_110403 = $this->pmm_model->get110403($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10403</th>
+				<th class="text-left">Uang Muka</th>
+				<th class="text-right"><?php echo number_format($akun_110403,0,',','.');?></th>
+	        </tr>
+				<?php
 				$akun_110500 = $this->pmm_model->get110500($date1,$date2);
 				?>
 			<tr class="table-active3">
@@ -10217,7 +10225,7 @@ class Reports extends CI_Controller {
 				<th class="text-right"><?php echo number_format($akun_110500,0,',','.');?></th>
 	        </tr>
 				<?php
-				$total_aset_lancar = $akun_110001 + $akun_110002 + $akun_110100 + $akun_110101 + $akun_110201;
+				$total_aset_lancar = $akun_110001 + $akun_110002 + $akun_110100 + $akun_110101 + $akun_110201 + $akun_110403 + $akun_110500;
 				$styleColor = $total_aset_lancar < 0 ? 'color:red' : 'color:black';
 				?>
 			<tr class="table-active3">
@@ -10227,16 +10235,72 @@ class Reports extends CI_Controller {
 			<tr class="table-active4">
 	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;ASET TETAP</th>
 	        </tr>
+				<?php
+				$akun_110703 = $this->pmm_model->get110703($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10703</th>
+				<th class="text-left">Aset Tetap - Kendaraan</th>
+				<th class="text-right"><?php echo number_format($akun_110703,0,',','.');?></th>
+	        </tr>
+				<?php
+				$akun_110704 = $this->pmm_model->get110704($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10704</th>
+				<th class="text-left">Aset Tetap - Mesin & Peralatan</th>
+				<th class="text-right"><?php echo number_format($akun_110704,0,',','.');?></th>
+	        </tr>
+				<?php
+				$akun_110705 = $this->pmm_model->get110705($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10705</th>
+				<th class="text-left">Aset Tetap - Perlengkapan Kantor</th>
+				<th class="text-right"><?php echo number_format($akun_110705,0,',','.');?></th>
+	        </tr>
+				<?php
+				$total_aset_tetap = $akun_110703 + $akun_110704 + $akun_110705;
+				$styleColor = $total_aset_tetap < 0 ? 'color:red' : 'color:black';
+				?>
 			<tr class="table-active3">
 	            <th class="text-right" colspan="2">TOTAL ASET TETAP</th>
-				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_aset_tetap < 0 ? "(".number_format(-$total_aset_tetap,0,',','.').")" : number_format($total_aset_tetap,0,',','.');?></th>
 	        </tr>
 			<tr class="table-active4">
 	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;DEPRESIASI & AMORTISASI</th>
 	        </tr>
+				<?php
+				$akun_110753 = $this->pmm_model->get110753($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10753</th>
+				<th class="text-left">Akumulasi Penyusutan - Kendaraan</th>
+				<th class="text-right"><?php echo number_format($akun_110753,0,',','.');?></th>
+	        </tr>
+				<?php
+				$akun_110754 = $this->pmm_model->get110754($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10754</th>
+				<th class="text-left">Akumulasi Penyusutan - Mesin & Peralatan</th>
+				<th class="text-right"><?php echo number_format($akun_110754,0,',','.');?></th>
+	        </tr>
+				<?php
+				$akun_110755 = $this->pmm_model->get110755($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">1-10755</th>
+				<th class="text-left">Akumulasi Penyusutan - Peralatan Kantor</th>
+				<th class="text-right"><?php echo number_format($akun_110755,0,',','.');?></th>
+	        </tr>
+				<?php
+				$total_depresiasi_amortisasi = $akun_110753 + $akun_110755 + $akun_110755;
+				$styleColor = $total_depresiasi_amortisasi < 0 ? 'color:red' : 'color:black';
+				?>
 			<tr class="table-active3">
 	            <th class="text-right" colspan="2">TOTAL DEPRESIASI & AMORTISASI</th>
-				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_depresiasi_amortisasi < 0 ? "(".number_format(-$total_depresiasi_amortisasi,0,',','.').")" : number_format($total_depresiasi_amortisasi,0,',','.');?></th>
 	        </tr>
 			<tr class="table-active4">
 	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;LAIN-LAIN</th>
@@ -10245,9 +10309,13 @@ class Reports extends CI_Controller {
 	            <th class="text-right" colspan="2">TOTAL ASET LAIN-LAIN</th>
 				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
 	        </tr>
+				<?php
+				$total_aset = $total_aset_lancar + $total_aset_tetap + $total_depresiasi_amortisasi;
+				$styleColor = $total_aset < 0 ? 'color:red' : 'color:black';
+				?>
 			<tr class="table-active3">
 	            <th class="text-right" colspan="2">TOTAL ASET</th>
-				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_aset < 0 ? "(".number_format(-$total_aset,0,',','.').")" : number_format($total_aset,0,',','.');?></th>
 	        </tr>
 			<tr class="table-active4">
 	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;LIABILITAS & MODAL</th>
@@ -10255,24 +10323,91 @@ class Reports extends CI_Controller {
 			<tr class="table-active4">
 	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;LIABILITAS JANGKA PENDEK</th>
 	        </tr>
+				<?php
+				$akun_220100 = $this->pmm_model->get220100($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">2-20100</th>
+				<th class="text-left">Hutang Usaha</th>
+				<th class="text-right"><?php echo number_format($akun_220100,0,',','.');?></th>
+	        </tr>
+				<?php
+				$akun_220101 = $this->pmm_model->get220101($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">2-20101</th>
+				<th class="text-left">Hutang Belum Ditagih</th>
+				<th class="text-right"><?php echo number_format($akun_220101,0,',','.');?></th>
+	        </tr>
+				<?php
+				$akun_220200 = $this->pmm_model->get220200($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">2-20200</th>
+				<th class="text-left">Hutang Lain Lain</th>
+				<th class="text-right"><?php echo number_format($akun_220200,0,',','.');?></th>
+	        </tr>
+				<?php
+				$akun_220500 = $this->pmm_model->get220500($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">2-20500</th>
+				<th class="text-left">PPN Keluaran</th>
+				<th class="text-right"><?php echo number_format($akun_220500,0,',','.');?></th>
+	        </tr>
+				<?php
+				$total_liabilitas_jangka_pendek = $akun_220100 + $akun_220101 + $akun_220200 + $akun_220500;
+				$styleColor = $total_liabilitas_jangka_pendek < 0 ? 'color:red' : 'color:black';
+				?>
 			<tr class="table-active3">
 	            <th class="text-right" colspan="2">TOTAL LIABILITAS JANGKA PENDEK</th>
-				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_liabilitas_jangka_pendek < 0 ? "(".number_format(-$total_liabilitas_jangka_pendek,0,',','.').")" : number_format($total_liabilitas_jangka_pendek,0,',','.');?></th>
 	        </tr>
+			<tr class="table-active4">
+	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;&nbsp;&nbsp;LIABILITAS JANGKA PANJANG</th>
+	        </tr>
+				<?php
+				$total_liabilitas = $total_liabilitas_jangka_pendek;
+				$styleColor = $total_liabilitas < 0 ? 'color:red' : 'color:black';
+				?>
 			<tr class="table-active3">
 	            <th class="text-right" colspan="2">TOTAL LIABILITAS</th>
-				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_liabilitas < 0 ? "(".number_format(-$total_liabilitas,0,',','.').")" : number_format($total_liabilitas,0,',','.');?></th>
 	        </tr>
 			<tr class="table-active4">
 	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;MODAL PEMILIK</th>
 	        </tr>
+				<?php
+				$akun_330000 = $this->pmm_model->get330000($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">3-30000</th>
+				<th class="text-left">Modal Saham</th>
+				<th class="text-right"><?php echo number_format($akun_330000,0,',','.');?></th>
+	        </tr>
+				<?php
+				$akun_330999 = $this->pmm_model->get330999($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">3-30999</th>
+				<th class="text-left">Ekuitas Saldo Awal</th>
+				<th class="text-right"><?php echo number_format($akun_330999,0,',','.');?></th>
+	        </tr>
+				<?php
+				$total_modal_pemilik = $akun_330000 + $akun_330999;
+				$styleColor = $total_modal_pemilik < 0 ? 'color:red' : 'color:black';
+				?>
 			<tr class="table-active3">
 	            <th class="text-right" colspan="2">TOTAL MODAL PEMILIK</th>
-				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_modal_pemilik < 0 ? "(".number_format(-$total_modal_pemilik,0,',','.').")" : number_format($total_modal_pemilik,0,',','.');?></th>
 	        </tr>
+			<?php
+				$total_liabilitas_modal = $total_liabilitas + $total_modal_pemilik;
+				$styleColor = $total_modal_pemilik < 0 ? 'color:red' : 'color:black';
+				?>
 			<tr class="table-active3">
 	            <th class="text-right" colspan="2">TOTAL LIABILITAS & MODAL</th>
-				<th class="text-right"><?php echo number_format(0,0,',','.');?></th>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $total_liabilitas_modal < 0 ? "(".number_format(-$total_liabilitas_modal,0,',','.').")" : number_format($total_liabilitas_modal,0,',','.');?></th>
 	        </tr>
 	    </table>
 		<?php

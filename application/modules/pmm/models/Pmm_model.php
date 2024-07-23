@@ -6412,12 +6412,17 @@ class Pmm_model extends CI_Model {
     {   
         $total = 0;
 
-        $akun_110100 = $this->db->select('sum(ppp.total) as total')
-        ->from('pmm_penagihan_penjualan ppp')
-        ->where("ppp.tanggal_invoice between '$date1' and '$date2'")
+        $akun_110100 = $this->db->select('sum(total) as total')
+        ->from('pmm_penagihan_penjualan')
+        ->where("tanggal_invoice between '$date1' and '$date2'")
+        ->get()->row_array();
+
+        $akun_110100_pembayaran = $this->db->select('sum(total) as total')
+        ->from('pmm_pembayaran')
+        ->where("tanggal_pembayaran between '$date1' and '$date2'")
         ->get()->row_array();
         
-        $query = $akun_110100['total'];
+        $query = $akun_110100['total'] - $akun_110100_pembayaran['total'];
         
         if(!empty($query)){
             $total = $query;
@@ -6429,6 +6434,18 @@ class Pmm_model extends CI_Model {
     {   
         $total = 0;
 
+        $akun_110100 = $this->db->select('sum(total) as total')
+        ->from('pmm_penagihan_penjualan')
+        ->where("tanggal_invoice between '$date1' and '$date2'")
+        ->get()->row_array();
+
+        $akun_110100_pembayaran = $this->db->select('sum(total) as total')
+        ->from('pmm_pembayaran')
+        ->where("tanggal_pembayaran between '$date1' and '$date2'")
+        ->get()->row_array();
+        
+        $tagihan = $akun_110100['total'] - $akun_110100_pembayaran['total'];
+
         $akun_110101 = $this->db->select('sum(pp.display_price) as total')
         ->from('pmm_productions pp')
         ->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
@@ -6436,8 +6453,8 @@ class Pmm_model extends CI_Model {
         ->where("pp.status = 'PUBLISH'")
         ->where("ppo.status in ('OPEN','CLOSED')")
         ->get()->row_array();
-        
-        $query = $akun_110101['total'];
+
+        $query = $akun_110101['total'] - $tagihan;
         
         if(!empty($query)){
             $total = $query;
@@ -6549,6 +6566,283 @@ class Pmm_model extends CI_Model {
         ->get()->row_array();
         
         $query = $akun_110500['total'];
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110403($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110403 = $this->db->select('sum(ppp.uang_muka) as total')
+        ->from('pmm_penagihan_pembelian ppp')
+        ->where("ppp.tanggal_invoice between '$date1' and '$date2'")
+        ->get()->row_array();
+        
+        $query = $akun_110403['total'];
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110703($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110703 = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')
+        ->from('pmm_jurnal_umum j')
+        ->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+        ->where("j.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("pdj.akun = 20")
+        ->group_by('pdj.akun')
+        ->get()->row_array();
+        $akun_110703 = $akun_110703['total'];
+        
+        $query = $akun_110703;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110704($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110704 = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')
+        ->from('pmm_jurnal_umum j')
+        ->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+        ->where("j.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("pdj.akun = 21")
+        ->group_by('pdj.akun')
+        ->get()->row_array();
+        $akun_110704 = $akun_110704['total'];
+        
+        $query = $akun_110704;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110705($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110705 = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')
+        ->from('pmm_jurnal_umum j')
+        ->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+        ->where("j.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("pdj.akun = 22")
+        ->group_by('pdj.akun')
+        ->get()->row_array();
+        $akun_110705 = $akun_110705['total'];
+        
+        $query = $akun_110705;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110753($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110753 = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')
+        ->from('pmm_jurnal_umum j')
+        ->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+        ->where("j.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("pdj.akun = 26")
+        ->group_by('pdj.akun')
+        ->get()->row_array();
+        $akun_110753 = $akun_110753['total'];
+        
+        $query = $akun_110753;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110754($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110754 = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')
+        ->from('pmm_jurnal_umum j')
+        ->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+        ->where("j.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("pdj.akun = 27")
+        ->group_by('pdj.akun')
+        ->get()->row_array();
+        $akun_110754 = $akun_110754['total'];
+        
+        $query = $akun_110754;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get110755($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110755 = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')
+        ->from('pmm_jurnal_umum j')
+        ->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+        ->where("j.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("pdj.akun = 28")
+        ->group_by('pdj.akun')
+        ->get()->row_array();
+        $akun_110755 = $akun_110755['total'];
+        
+        $query = $akun_110755;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get220100($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_220100 = $this->db->select('sum(total) as total')
+        ->from('pmm_penagihan_pembelian')
+        ->where("tanggal_invoice between '$date1' and '$date2'")
+        ->get()->row_array();
+
+        $akun_220100_pembayaran = $this->db->select('sum(total) as total')
+        ->from('pmm_pembayaran_penagihan_pembelian')
+        ->where("tanggal_pembayaran between '$date1' and '$date2'")
+        ->get()->row_array();
+
+        $query = $akun_220100['total'] - $akun_220100_pembayaran['total'];
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get220101($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_220100 = $this->db->select('sum(total) as total')
+        ->from('pmm_penagihan_pembelian')
+        ->where("tanggal_invoice between '$date1' and '$date2'")
+        ->get()->row_array();
+
+        $akun_220100_pembayaran = $this->db->select('sum(total) as total')
+        ->from('pmm_pembayaran_penagihan_pembelian')
+        ->where("tanggal_pembayaran between '$date1' and '$date2'")
+        ->get()->row_array();
+
+        $tagihan = $akun_220100['total'] - $akun_220100_pembayaran['total'];
+
+        $akun_220101 = $this->db->select('sum(prm.display_price) as total')
+        ->from('pmm_receipt_material prm')
+        ->join('pmm_purchase_order ppo', 'prm.purchase_order_id = ppo.id','left')
+        ->where("prm.date_receipt between '$date1' and '$date2'")
+        ->where("ppo.status in ('PUBLISH','CLOSED')")
+        ->get()->row_array();
+        
+        $query = $akun_220101['total'] - $tagihan;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get220200($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_220200 = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')
+        ->from('pmm_jurnal_umum j')
+        ->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+        ->where("j.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("pdj.akun = 34")
+        ->group_by('pdj.akun')
+        ->get()->row_array();
+        $akun_220200 = $akun_220200['total'];
+        
+        $query = $akun_220200;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get220500($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_110500 = $this->db->select('sum(ppd.tax) as total')
+        ->from('pmm_penagihan_penjualan ppp')
+        ->join('pmm_penagihan_penjualan_detail ppd','ppp.id = ppd.penagihan_id','left')
+        ->where("ppp.tanggal_invoice between '$date1' and '$date2'")
+        ->get()->row_array();
+        
+        $query = $akun_110500['total'];
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get330000($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_330000 = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')
+        ->from('pmm_jurnal_umum j')
+        ->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+        ->where("j.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("pdj.akun = 43")
+        ->group_by('pdj.akun')
+        ->get()->row_array();
+        $akun_330000 = $akun_330000['total'];
+        
+        $query = $akun_330000;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function get330999($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_330999 = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')
+        ->from('pmm_jurnal_umum j')
+        ->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+        ->where("j.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("pdj.akun = 49")
+        ->group_by('pdj.akun')
+        ->get()->row_array();
+        $akun_330999 = $akun_330999['total'];
+        
+        $query = $akun_330999;
         
         if(!empty($query)){
             $total = $query;
