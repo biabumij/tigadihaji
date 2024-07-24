@@ -57,7 +57,7 @@ class Templates extends CI_Model {
 				}
 				?>
 	            <div class="logo">
-	                <a href="" class="on-click" style="color:#ffffff; font-weight:bold; display:block; text-align:left; font-size:18px; padding-top:1px; width:880px;">
+	                <a href="" class="on-click" style="color:#ffffff; font-weight:bold; display:block; text-align:left; font-size:18px; padding-top:1px; width:auto;">
 					<!--<?php echo $this->m_themes->GetThemes('site_name');?>--> PROYEK BENDUNGAN TIGA DIHAJI <br />
 					<div style="font-size:12px;">
 						<?php echo tglIndonesia(date('D'));?>, <?php echo tglIndonesia(date('d F Y'));?>
