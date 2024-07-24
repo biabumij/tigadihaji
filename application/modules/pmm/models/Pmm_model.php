@@ -1594,8 +1594,8 @@ class Pmm_model extends CI_Model {
     {
         $data = array();
 
-        //$status = $this->input->post('status');
-        //$schedule_id = $this->input->post('schedule_id');
+        /*$status = $this->input->post('status');
+        $schedule_id = $this->input->post('schedule_id');*/
         $w_date = $this->input->post('filter_date');
 
         //$this->db->where('status !=','DELETED');

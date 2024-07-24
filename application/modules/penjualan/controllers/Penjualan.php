@@ -1728,6 +1728,15 @@ class Penjualan extends Secure_Controller
         redirect("admin/penjualan");
     }
 
+	public function reject_sales_order($id)
+	{
+		$this->db->set("status", "REJECT");
+		$this->db->where("id", $id);
+        $this->db->update('pmm_sales_po', array('status' => 'REJECT'), array('id' => $id));
+		$this->session->set_flashdata('notif_reject','<b>REJECTED</b>');
+		redirect("admin/pembelian");
+	}
+
 	public function open_sales_order($id)
     {
         $this->db->set("status", "OPEN");
