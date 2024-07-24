@@ -10098,7 +10098,7 @@ class Reports extends CI_Controller {
 					</table>
 					<br />
 					<div>
-						<button title="Click to show answer" type="button" class="btn btn-info"><b>(1-10001) Kas Cutting Stone</b></button>
+						<button title="Click to show answer" type="button" class="btn btn-info"><b>(1-10001) Kas Cutting Stone<b></button>
 						<div class="spoiler">
 							<?php
 							$saldo = $saldoawal;
