@@ -1592,8 +1592,8 @@ class Pmm_model extends CI_Model {
     {
         $data = array();
 
-        $status = $this->input->post('status');
-        $schedule_id = $this->input->post('schedule_id');
+        //$status = $this->input->post('status');
+        //$schedule_id = $this->input->post('schedule_id');
         $w_date = $this->input->post('filter_date');
 
         //$this->db->where('status !=','DELETED');
@@ -1601,9 +1601,9 @@ class Pmm_model extends CI_Model {
             $this->db->where('supplier_id',$supplier_id);
         }
         
-        if(!empty($status)){
+        /*if(!empty($status)){
             $this->db->where('status',$status);
-        }
+        }*/
         if(!empty($w_date)){
             $arr_date = explode(' - ', $w_date);
             $start_date = $arr_date[0];
