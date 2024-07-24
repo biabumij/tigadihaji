@@ -6364,11 +6364,13 @@ class Pmm_model extends CI_Model {
     {   
         $total = 0;
 
-        $akun_110001_biaya = $this->db->select('bayar_dari as id, sum(total) as total')
-        ->from('pmm_biaya')
-        ->where("tanggal_transaksi between '$date1' and '$date2'")
-        ->where("bayar_dari = 1")
-        ->group_by('bayar_dari')
+        $akun_110001_biaya = $this->db->select('b.bayar_dari as id, sum(pdb.jumlah) as total')
+        ->from('pmm_biaya b')
+        ->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
+        ->where("b.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("b.bayar_dari = 1")
+        ->group_by('b.bayar_dari')
+        ->order_by('b.tanggal_transaksi','asc')
         ->get()->row_array();
 
         $akun_110001_jurnal = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')

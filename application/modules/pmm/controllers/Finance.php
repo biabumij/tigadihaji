@@ -1114,6 +1114,7 @@ class Finance extends CI_Controller {
 			'tanggal_transaksi' => date('Y-m-d',strtotime($this->input->post('tanggal_transaksi'))),
 			'memo' => $this->input->post('memo'),
         	'status' => 'PAID',
+			'transaksi' => 'KAS & BANK',
         	'created_by' => $this->session->userdata('admin_id'),
         	'created_on' => date('Y-m-d H:i:s')
 		);

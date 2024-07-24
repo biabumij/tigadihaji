@@ -67,13 +67,13 @@
                                                         <p><h5><b>Neraca</b></h5></p>
                                                         <a href="#neraca" aria-controls="neraca" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
                                                     </div>
-                                                    <!--<div class="col-sm-5">
-                                                        <p><h5><b>Cash Flow</b></h5></p>
-                                                        <a href="#cash_flow" aria-controls="cash_flow" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
-                                                    </div>
                                                     <div class="col-sm-5">
                                                         <p><h5><b>Buku Besar</b></h5></p>
                                                         <a href="#buku_besar" aria-controls="buku_besar" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
+                                                    </div>
+                                                    <!--<div class="col-sm-5">
+                                                        <p><h5><b>Cash Flow</b></h5></p>
+                                                        <a href="#cash_flow" aria-controls="cash_flow" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
                                                     </div>-->
                                                     <?php
                                                     }
@@ -103,7 +103,7 @@
                                                         </div>
                                                         <br />
                                                         <div id="wait-laba-rugi" style=" text-align: center; align-content: center; display: none;">	
-                                                            <div>Please Wait</div>
+                                                            <div>Mohon Tunggu</div>
                                                             <div class="fa-3x">
                                                             <i class="fa fa-spinner fa-spin"></i>
                                                             </div>
@@ -139,7 +139,7 @@
                                                         </div>
                                                         <br />
                                                         <div id="wait-neraca" style=" text-align: center; align-content: center; display: none;">	
-                                                            <div>Please Wait</div>
+                                                            <div>Mohon Tunggu</div>
                                                             <div class="fa-3x">
                                                             <i class="fa fa-spinner fa-spin"></i>
                                                             </div>
@@ -147,37 +147,6 @@
                                                         <div class="table-responsive" id="table-neraca">													
                                                         
                         
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                            
-                                            </div>
-                                        </div>
-
-                                        <!-- Cash Flow -->
-                                        <div role="tabpanel" class="tab-pane" id="cash_flow">
-                                            <div class="col-sm-15">
-                                                <div class="panel panel-default">
-                                                    <div class="panel-heading">
-                                                        <h3 class="panel-title"><b>Cash Flow</b></h3>
-                                                        <a href="laporan_keuangan">Kembali</a>
-                                                    </div>
-                                                    <div style="margin: 20px">
-                                                        <!--<div class="row">
-                                                            <form action="<?php echo site_url('laporan/cetak_cash_flow');?>" target="_blank">
-                                                                <div class="col-sm-3">
-                                                                    <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>-->
-                                                        <br />
-                                                        <div id="wait-cash-flow" style=" text-align: center; align-content: center; display: none;">	
-                                                            <div>Please Wait</div>
-                                                            <div class="fa-3x">
-                                                            <i class="fa fa-spinner fa-spin"></i>
-                                                            </div>
-                                                        </div>				
-                                                        <div class="table-responsive" id="cash-flow">
                                                         </div>
                                                     </div>
                                             </div>
@@ -207,7 +176,7 @@
                                                         </div>
                                                         <br />
                                                         <div id="wait-buku-besar" style=" text-align: center; align-content: center; display: none;">	
-                                                            <div>Please Wait</div>
+                                                            <div>Mohon Tunggu</div>
                                                             <div class="fa-3x">
                                                             <i class="fa fa-spinner fa-spin"></i>
                                                             </div>
@@ -215,6 +184,37 @@
                                                         <div class="table-responsive" id="table-buku-besar">													
                                                         
                         
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            
+                                            </div>
+                                        </div>
+
+                                        <!-- Cash Flow -->
+                                        <div role="tabpanel" class="tab-pane" id="cash_flow">
+                                            <div class="col-sm-15">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">
+                                                        <h3 class="panel-title"><b>Cash Flow</b></h3>
+                                                        <a href="laporan_keuangan">Kembali</a>
+                                                    </div>
+                                                    <div style="margin: 20px">
+                                                        <!--<div class="row">
+                                                            <form action="<?php echo site_url('laporan/cetak_cash_flow');?>" target="_blank">
+                                                                <div class="col-sm-3">
+                                                                    <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>-->
+                                                        <br />
+                                                        <div id="wait-cash-flow" style=" text-align: center; align-content: center; display: none;">	
+                                                            <div>Mohon Tunggu</div>
+                                                            <div class="fa-3x">
+                                                            <i class="fa fa-spinner fa-spin"></i>
+                                                            </div>
+                                                        </div>				
+                                                        <div class="table-responsive" id="cash-flow">
                                                         </div>
                                                     </div>
                                             </div>
@@ -330,6 +330,52 @@
             //TableNeraca();
 		</script>
 
+        <!-- Buku Besar -->
+		<script type="text/javascript">
+            $('#filter_date_buku_besar').daterangepicker({
+                autoUpdateInput : false,
+                showDropdowns: true,
+                singleDatePicker: true,
+                locale: {
+                format: 'DD-MM-YYYY'
+                },
+                minDate: new Date(2024, 01, 01),	
+                ranges: {
+                'Today': [moment(), moment()],
+                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                'Last 30 Days': [moment().subtract(30, 'days'), moment()],
+                'This Month': [moment().startOf('month'), moment().endOf('month')],
+                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                }
+            });
+
+            $('#filter_date_buku_besar').on('apply.daterangepicker', function(ev, picker) {
+                $(this).val(picker.startDate.format('01-01-2024') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+                TableBukuBesar();
+            });
+
+
+            function TableBukuBesar()
+            {
+                $('#wait-buku-besar').fadeIn('fast');   
+                $.ajax({
+                    type    : "POST",
+                    url     : "<?php echo site_url('pmm/reports/buku_besar'); ?>/"+Math.random(),
+                    dataType : 'html',
+                    data: {
+                        filter_date : $('#filter_date_buku_besar').val(),
+                    },
+                    success : function(result){
+                        $('#table-buku-besar').html(result);
+                        $('#wait-buku-besar').fadeOut('fast');
+                    }
+                });
+            }
+
+            //TableBukuBesar();
+		</script>
+
         <!-- Script Cash Flow -->
 		<script type="text/javascript">
 			$('#filter_date_cash_flow').daterangepicker({
@@ -373,51 +419,5 @@
 
 			CashFlow();
         </script>
-
-        <!-- Buku Besar -->
-		<script type="text/javascript">
-            $('#filter_date_buku_besar').daterangepicker({
-                autoUpdateInput : false,
-                showDropdowns: true,
-                singleDatePicker: true,
-                locale: {
-                format: 'DD-MM-YYYY'
-                },
-                minDate: new Date(2024, 01, 01),	
-                ranges: {
-                'Today': [moment(), moment()],
-                'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                'Last 30 Days': [moment().subtract(30, 'days'), moment()],
-                'This Month': [moment().startOf('month'), moment().endOf('month')],
-                'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                }
-            });
-
-            $('#filter_date_buku_besar').on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.startDate.format('01-01-2024') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
-                TableBukuBesar();
-            });
-
-
-            function TableBukuBesar()
-            {
-                $('#wait').fadeIn('fast');   
-                $.ajax({
-                    type    : "POST",
-                    url     : "<?php echo site_url('pmm/reports/buku_besar'); ?>/"+Math.random(),
-                    dataType : 'html',
-                    data: {
-                        filter_date : $('#filter_date_buku_besar').val(),
-                    },
-                    success : function(result){
-                        $('#table-buku-besar').html(result);
-                        $('#wait-buku-besar').fadeOut('fast');
-                    }
-                });
-            }
-
-            //TableBukuBesar();
-		</script>
     </body>
 </html>

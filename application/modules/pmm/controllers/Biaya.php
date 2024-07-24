@@ -186,6 +186,7 @@ class Biaya extends CI_Controller {
         	'status' => 'PAID',
             'unit_head' => 6,
             'admin' => 9,
+            'transaksi' => 'BIAYA',
         	'created_by' => $this->session->userdata('admin_id'),
         	'created_on' => date('Y-m-d H:i:s')
         );
