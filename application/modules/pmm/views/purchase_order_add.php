@@ -278,7 +278,8 @@
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 5){
                                         ?>
                                         <form class="form-check" action="<?= base_url("pembelian/closed_po/".$id) ?>">
-                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> CLOSED</button>        
+                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> CLOSED</button>
+                                            <a href="<?= site_url('pembelian/reject_po/' . $id); ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> REJECT</a>      
                                         </form>	
                                         <?php
                                     }

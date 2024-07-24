@@ -1709,6 +1709,15 @@ class Pembelian extends Secure_Controller
         redirect("admin/pembelian");
     }
 
+    public function reject_po($id)
+	{
+		$this->db->set("status", "REJECT");
+		$this->db->where("id", $id);
+        $this->db->update('pmm_purchase_order', array('status' => 'REJECT'), array('id' => $id));
+		$this->session->set_flashdata('notif_reject','<b>REJECTED</b>');
+		redirect("admin/pembelian");
+	}
+
     public function hapus_pembayaran_pembelian($id)
 	{
 
