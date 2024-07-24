@@ -1012,7 +1012,7 @@ class Pmm_model extends CI_Model {
         $this->db->select('SUM(prm.volume) as volume, SUM(prm.volume * prm.harga_satuan) as total,prm.measure, pm.nama_produk as material_name,prm.material_id');
         $this->db->join('produk pm','prm.material_id = pm.id','left');
         $this->db->where('prm.purchase_order_id',$id);
-        $this->db->group_by('prm.material_id');
+        $this->db;
         $query = $this->db->get('pmm_receipt_material prm')->result_array();
 
         return $query;
@@ -1526,7 +1526,7 @@ class Pmm_model extends CI_Model {
             $this->db->where_in('prm.material_id',$filter_material);
         }
         $this->db->order_by('pm.material_name','asc');
-        $this->db->group_by('prm.material_id');
+        $this->db;
         $query = $this->db->get('pmm_receipt_material prm');
         $output = $query->result_array();
         return $output;
@@ -1552,7 +1552,7 @@ class Pmm_model extends CI_Model {
             $this->db->where_in('prm.material_id',$filter_material);
         }
         $this->db->order_by('pm.material_name','asc');
-        $this->db->group_by('prm.material_id');
+        $this->db;
         $query = $this->db->get('pmm_receipt_material prm');
         $output = $query->result_array();
         return $output;
@@ -3879,7 +3879,7 @@ class Pmm_model extends CI_Model {
         }
 		$this->db->where("ppo.status in ('PUBLISH','CLOSED')");
         $this->db->order_by('p.nama_produk','asc');
-        $this->db->group_by('prm.material_id');
+        $this->db;
         $query = $this->db->get('pmm_receipt_material prm');
         $output = $query->result_array();
 		
@@ -3914,7 +3914,7 @@ class Pmm_model extends CI_Model {
         }
 		$this->db->where("ppo.status in ('PUBLISH','CLOSED')");
         $this->db->order_by('p.nama_produk','asc');
-        $this->db->group_by('prm.material_id');
+        $this->db;
         $query = $this->db->get('pmm_receipt_material prm');
         $output = $query->result_array();
 		
@@ -4517,7 +4517,6 @@ class Pmm_model extends CI_Model {
 		->join('produk p', 'prm.material_id = p.id','left')
 		->where("prm.date_receipt between '$date1' and '$date2'")
 		->where("p.kategori_bahan = 1")
-		->group_by('prm.material_id')
 		->get()->row_array();
 	
 		$pembelian_volume_semen = $pembelian_semen['volume'];
@@ -4563,7 +4562,6 @@ class Pmm_model extends CI_Model {
 		->join('produk p', 'prm.material_id = p.id','left')
 		->where("prm.date_receipt between '$date1' and '$date2'")
 		->where("p.kategori_bahan = 2")
-		->group_by('prm.material_id')
 		->get()->row_array();
 	
 		$pembelian_volume_pasir = $pembelian_pasir['volume'];
@@ -4609,7 +4607,6 @@ class Pmm_model extends CI_Model {
 		->join('produk p', 'prm.material_id = p.id','left')
 		->where("prm.date_receipt between '$date1' and '$date2'")
 		->where("p.kategori_bahan = 3")
-		->group_by('prm.material_id')
 		->get()->row_array();
 	
 		$pembelian_volume_1020 = $pembelian_1020['volume'];
@@ -4655,7 +4652,6 @@ class Pmm_model extends CI_Model {
 		->join('produk p', 'prm.material_id = p.id','left')
 		->where("prm.date_receipt between '$date1' and '$date2'")
 		->where("p.kategori_bahan = 4")
-		->group_by('prm.material_id')
 		->get()->row_array();
 	
 		$pembelian_volume_2030 = $pembelian_2030['volume'];
@@ -4701,7 +4697,6 @@ class Pmm_model extends CI_Model {
 		->join('produk p', 'prm.material_id = p.id','left')
 		->where("prm.date_receipt between '$date1' and '$date2'")
 		->where("p.kategori_bahan = 6")
-		->group_by('prm.material_id')
 		->get()->row_array();
 	
 		$pembelian_volume_additive = $pembelian_additive['volume'];
@@ -4970,7 +4965,6 @@ class Pmm_model extends CI_Model {
         ->join('produk p', 'prm.material_id = p.id','left')
         ->where("prm.date_receipt between '$date1' and '$date2'")
         ->where("p.kategori_bahan = 5")
-        ->group_by('prm.material_id')
         ->get()->row_array();
     
         $pembelian_volume_solar = $pembelian_solar['volume'];
