@@ -788,6 +788,8 @@ class Pmm_model extends CI_Model {
             return '<button type="button" class="btn btn-danger" style="font-weight:bold; border-radius:10px;">'.$status.'</button>';
         }else if($status == 'PUBLISH'){
             return '<button type="button" class="btn btn-success" style="font-weight:bold; border-radius:10px;">'.$status.'</button>';
+        }else if($status == 'REJECT'){
+        return '<button type="button" class="btn btn-danger" style="font-weight:bold; border-radius:10px;">'.$status.'</button>';
         }
     }
 
