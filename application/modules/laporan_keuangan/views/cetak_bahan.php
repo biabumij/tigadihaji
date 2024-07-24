@@ -177,7 +177,6 @@
 		->join('produk p', 'prm.material_id = p.id','left')
 		->where("prm.date_receipt between '$date1' and '$date2'")
 		->where("p.kategori_bahan = 1")
-		->group_by('prm.material_id')
 		->get()->row_array();
 	
 		$pembelian_volume_semen = $pembelian_semen['volume'];
@@ -223,7 +222,6 @@
 		->join('produk p', 'prm.material_id = p.id','left')
 		->where("prm.date_receipt between '$date1' and '$date2'")
 		->where("p.kategori_bahan = 2")
-		->group_by('prm.material_id')
 		->get()->row_array();
 	
 		$pembelian_volume_pasir = $pembelian_pasir['volume'];
@@ -269,7 +267,6 @@
 		->join('produk p', 'prm.material_id = p.id','left')
 		->where("prm.date_receipt between '$date1' and '$date2'")
 		->where("p.kategori_bahan = 3")
-		->group_by('prm.material_id')
 		->get()->row_array();
 	
 		$pembelian_volume_1020 = $pembelian_1020['volume'];
@@ -315,7 +312,6 @@
 		->join('produk p', 'prm.material_id = p.id','left')
 		->where("prm.date_receipt between '$date1' and '$date2'")
 		->where("p.kategori_bahan = 4")
-		->group_by('prm.material_id')
 		->get()->row_array();
 	
 		$pembelian_volume_2030 = $pembelian_2030['volume'];
@@ -361,7 +357,6 @@
 		->join('produk p', 'prm.material_id = p.id','left')
 		->where("prm.date_receipt between '$date1' and '$date2'")
 		->where("p.kategori_bahan = 6")
-		->group_by('prm.material_id')
 		->get()->row_array();
 	
 		$pembelian_volume_additive = $pembelian_additive['volume'];

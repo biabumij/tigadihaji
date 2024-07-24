@@ -315,7 +315,6 @@
 			->join('produk p', 'prm.material_id = p.id','left')
 			->where("prm.date_receipt between '$date1' and '$date2'")
 			->where("p.kategori_bahan = 5")
-			->group_by('prm.material_id')
 			->get()->row_array();
 		
 			$pembelian_volume_solar = $pembelian_solar['volume'];
