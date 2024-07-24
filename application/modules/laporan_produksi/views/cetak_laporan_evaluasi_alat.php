@@ -702,8 +702,155 @@
 				<th align="right" style="<?php echo $styleColor ?>;border-right:1px solid black; border-top:1px solid black; border-bottom:1px solid black;"><?php echo $total_nilai_evaluasi_alat < 0 ? "(".number_format(-$total_nilai_evaluasi_alat,0,',','.').")" : number_format($total_nilai_evaluasi_alat,0,',','.');?></th>
 	        </tr>
 	    </table>
+		<br /><br />
 		<?php
 		if(in_array($this->session->userdata('admin_group_id'), array(1,2,3))){
+		?>
+		<table width="98%" border="0" cellpadding="3" border="0">
+			<?php
+			$date1_ago = date('2020-01-01');
+			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+
+			$stock_opname_solar_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 5")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$stok_volume_solar_lalu = $stock_opname_solar_ago['volume'];
+			$stok_nilai_solar_lalu = $stock_opname_solar_ago['nilai'];
+			$stok_harsat_solar_lalu = (round($stok_volume_solar_lalu,2)!=0)?$stok_nilai_solar_lalu / round($stok_volume_solar_lalu,2) * 1:0;
+
+			$pembelian_solar = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("p.kategori_bahan = 5")
+			->group_by('prm.material_id')
+			->get()->row_array();
+		
+			$pembelian_volume_solar = $pembelian_solar['volume'];
+			$pembelian_nilai_solar = $pembelian_solar['nilai'];
+			$pembelian_harga_solar = (round($pembelian_volume_solar,2)!=0)?$pembelian_nilai_solar / round($pembelian_volume_solar,2) * 1:0;
+
+			$total_stok_volume_solar = $stok_volume_solar_lalu + $pembelian_volume_solar;
+			$total_stok_nilai_solar = $stok_nilai_solar_lalu + $pembelian_nilai_solar;
+
+			$stock_opname_solar_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 5")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$volume_stock_opname_solar_now = $stock_opname_solar_now['volume'];
+			$nilai_stock_opname_solar_now = $stock_opname_solar_now['nilai'];
+
+			$vol_pemakaian_solar_now = ($stok_volume_solar_lalu + $pembelian_volume_solar) - $volume_stock_opname_solar_now;
+			$nilai_pemakaian_solar_now = $stock_opname_solar_now['nilai'];
+
+			$pemakaian_volume_solar = $vol_pemakaian_solar_now;
+			$pemakaian_nilai_solar = (($total_stok_nilai_solar - $nilai_stock_opname_solar_now) * $stock_opname_solar_now['reset']) + ($stock_opname_solar_now['pemakaian_custom'] * $stock_opname_solar_now['reset_pemakaian']);
+			$pemakaian_harsat_solar = $pemakaian_nilai_solar / $pemakaian_volume_solar;	
+
+			$pembelian_solar = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("p.kategori_bahan = 5")
+			->group_by('prm.material_id')
+			->get()->row_array();
+			
+			$total_volume_solar = $pembelian_solar['volume'];
+			$total_harsat_solar = $pembelian_solar['harga'];
+			$total_nilai_solar = $pembelian_solar['nilai'];
+
+
+			$vol_bbm_solar = $total_volume_solar;
+			$bbm_solar = $total_nilai_solar;
+			$harsat_bbm_solar = $total_harsat_solar;
+			$total_nilai_rap_alat = $bbm_solar;
+			$pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
+			
+			//SPESIAL//
+			$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
+			//SPESIAL//
+
+			$total_vol_evaluasi_bbm_solar = ($pemakaian_volume_solar!=0)?($vol_bbm_solar) - $pemakaian_volume_solar * 1:0;
+			$total_nilai_evaluasi_bbm_solar = ($pemakaian_nilai_solar!=0)?$bbm_solar - $pemakaian_nilai_solar * 1:0;
+
+			$total_vol_rap_alat = $total_volume;
+			$total_nilai_rap_alat = $bbm_solar;
+			$total_vol_realisasi_alat = $pemakaian_volume_solar;
+			$total_nilai_realisasi_alat = $pemakaian_nilai_solar;
+			$total_vol_evaluasi_alat = $total_vol_evaluasi_bbm_solar;
+			$total_nilai_evaluasi_alat = $total_nilai_evaluasi_bbm_solar;
+			?>
+			
+			<tr class="table-judul">
+				<th width="5%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-left:1px solid black; border-bottom:1px solid black;">&nbsp;<br>NO.</th>
+				<th width="20%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black;">&nbsp;<br>URAIAN</th>
+				<th width="8%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black;">&nbsp;<br>SATUAN</th>
+				<th width="25%" align="center" colspan="3" style="background-color:#e69500; border-top:1px solid black; border-left:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">PEMBELIAN</th>
+				<th width="25%" align="center" colspan="3" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">REALISASI</th>
+				<th width="17%" align="center" colspan="2" style="background-color:#e69500; border-top:1px solid black; border-right:1px solid black; border-bottom:1px solid black;">DEVIASI</th>
+			</tr>
+			<tr class="table-judul">
+				<th width="7%" align="center" style="background-color:#e69500; border-left:1px solid black; border-bottom:1px solid black;">VOLUME</th>
+				<th width="8%" align="center" style="background-color:#e69500; border-bottom:1px solid black;">HARSAT</th>
+				<th width="10%" align="center" style="background-color:#e69500; border-bottom:1px solid black; border-right:1px solid black;">NILAI</th>
+				<th width="7%" align="center" style="background-color:#e69500; border-bottom:1px solid black;">VOLUME</th>
+				<th width="8%" align="center" style="background-color:#e69500; border-bottom:1px solid black;">HARSAT</th>
+				<th width="10%" align="center" style="background-color:#e69500; border-bottom:1px solid black; border-right:1px solid black;">NILAI</th>
+				<th width="7%" align="center" style="background-color:#e69500; border-bottom:1px solid black;">VOLUME</th>
+				<th width="10%" align="center" style="background-color:#e69500; border-bottom:1px solid black; border-right:1px solid black;">NILAI</th>
+			</tr>
+			<tr class="table-baris1">
+				<th align="center" style="border-left:1px solid black;">6.</th>			
+				<th align="left">BBM Solar</th>
+				<th align="center" style="border-right:1px solid black;">Liter</th>
+				<th align="right"><?php echo number_format($vol_bbm_solar,2,',','.');?></th>
+				<th align="right"><?php echo number_format($harsat_bbm_solar,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><?php echo number_format($bbm_solar,0,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_volume_solar,2,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_harsat_solar,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><?php echo number_format($pemakaian_nilai_solar,0,',','.');?></th>
+				<?php
+				$styleColor = $total_vol_evaluasi_bbm_solar < 0 ? 'color:red' : 'color:black';
+				?>
+				<th align="right" style="<?php echo $styleColor ?>"><?php echo $total_vol_evaluasi_bbm_solar < 0 ? "(".number_format(-$total_vol_evaluasi_bbm_solar,2,',','.').")" : number_format($total_vol_evaluasi_bbm_solar,2,',','.');?></th>
+				<?php
+				$styleColor = $total_nilai_evaluasi_bbm_solar < 0 ? 'color:red' : 'color:black';
+				?>
+				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black;"><?php echo $total_nilai_evaluasi_bbm_solar < 0 ? "(".number_format(-$total_nilai_evaluasi_bbm_solar,0,',','.').")" : number_format($total_nilai_evaluasi_bbm_solar,0,',','.');?></th>
+			</tr>
+			<tr class="table-total">		
+				<th align="right" colspan="3" style="border:1px solid black;">TOTAL</th>
+				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black;"></th>
+				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black;"></th>
+				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;"><?php echo number_format($total_nilai_rap_alat,0,',','.');?></th>
+				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black;"></th>
+				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black;"></th>
+				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;"><?php echo number_format($total_nilai_realisasi_alat,0,',','.');?></th>
+				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black;"></th>
+				<?php
+				$styleColor = $total_nilai_evaluasi_alat < 0 ? 'color:red' : 'color:black';
+				?>
+				<th align="right" style="<?php echo $styleColor ?>;border-right:1px solid black; border-top:1px solid black; border-bottom:1px solid black;"><?php echo $total_nilai_evaluasi_alat < 0 ? "(".number_format(-$total_nilai_evaluasi_alat,0,',','.').")" : number_format($total_nilai_evaluasi_alat,0,',','.');?></th>
+			</tr>
+		</table>
+		<?php
+		}
+		?>
+		<?php
+		if(in_array($this->session->userdata('admin_group_id'), array(1))){
 		?>
 		<br /><br />
 		<table width="98%" style="font-size:7px;">
