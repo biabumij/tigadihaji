@@ -520,7 +520,7 @@
 	        </tr>
 	    </table>
 		<?php
-		if(in_array($this->session->userdata('admin_group_id'), array(1))){
+		if(in_array($this->session->userdata('admin_group_id'), array(1,2,3))){
 		?>
 		<br /><br />
 		<table width="98%" style="font-size:7px;">
