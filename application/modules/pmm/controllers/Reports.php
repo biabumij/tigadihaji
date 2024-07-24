@@ -10098,7 +10098,7 @@ class Reports extends CI_Controller {
 					</table>
 					<br />
 					<div>
-						<button title="Click to show answer" type="button" class="btn btn-info">(1-10001) Kas Cutting Stone</button>
+						<button title="Click to show answer" type="button" class="btn btn-info"><b>(1-10001) Kas Cutting Stone</b></button>
 						<div class="spoiler">
 							<?php
 							$saldo = $saldoawal;
@@ -10131,7 +10131,7 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%"><b>(1-10001) Kas Cutting Stone | Saldo Akhir</b></th>
+									<th class="text-right" width="70%">(1-10001) Kas Cutting Stone | Saldo Akhir</th>
 									<th class="text-right" width="10%"><?php echo number_format($total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_saldo,0,',','.');?></th>
