@@ -225,6 +225,7 @@
                                     if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 5){
                                     ?>
                                         <a class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;" href="<?= base_url("penjualan/open_sales_order/".$sales_po["id"]) ?>"> OPEN</a>
+                                        <a href="<?= site_url('penjualan/reject_sales_order/' . $sales_po["id"]); ?>" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> REJECT</a>
                                     <?php
                                     }
                                     ?>
