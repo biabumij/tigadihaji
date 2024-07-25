@@ -334,7 +334,6 @@
             $('#filter_date_buku_besar').daterangepicker({
                 autoUpdateInput : false,
                 showDropdowns: true,
-                singleDatePicker: true,
                 locale: {
                 format: 'DD-MM-YYYY'
                 },
