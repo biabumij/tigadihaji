@@ -338,7 +338,7 @@
                 locale: {
                 format: 'DD-MM-YYYY'
                 },
-                minDate: new Date(2024, 01, 01),	
+                //minDate: new Date(2024, 01, 01),	
                 ranges: {
                 'Today': [moment(), moment()],
                 'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
@@ -350,7 +350,7 @@
             });
 
             $('#filter_date_buku_besar').on('apply.daterangepicker', function(ev, picker) {
-                $(this).val(picker.startDate.format('01-01-2024') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+                $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
                 TableBukuBesar();
             });
 
