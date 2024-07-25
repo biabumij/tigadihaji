@@ -10077,6 +10077,7 @@ class Reports extends CI_Controller {
 			->where("b.bayar_dari = 1")
 			->group_by('pdb.id')
 			->order_by('b.tanggal_transaksi','asc')
+			->order_by('b.created_on','asc')
 			->get()->result_array();
 
 			$akun_110001_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
@@ -10086,6 +10087,7 @@ class Reports extends CI_Controller {
 			->where("pdj.akun = 1")
 			->group_by('pdj.id')
 			->order_by('j.tanggal_transaksi','asc')
+			->order_by('j.created_on','asc')
 			->get()->result_array();
 
 			$terima_uang = $this->db->select('*, memo as deskripsi, jumlah as debit')
@@ -10094,6 +10096,7 @@ class Reports extends CI_Controller {
 			->where("setor_ke = 1")
 			->group_by('id')
 			->order_by('tanggal_transaksi','asc')
+			->order_by('created_on','asc')
 			->get()->result_array();
 
 			$akun_110001 = array_merge($akun_110001_biaya,$akun_110001_jurnal,$terima_uang);
