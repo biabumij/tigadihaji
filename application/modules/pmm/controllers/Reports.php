@@ -10146,7 +10146,7 @@ class Reports extends CI_Controller {
 
 							$total_debit += $x['debit'];
 							$total_kredit += $x['kredit'];
-							$total_saldo = ($saldo + $total_debit) - $total_kredit;
+							$total_saldo = $total_debit - $total_kredit;
 							?>
 							<table width="100% "border="1">
 								<tr>
@@ -10168,9 +10168,9 @@ class Reports extends CI_Controller {
 							<table width="100% "border="0">
 								<tr>
 									<th class="text-right" width="70%">(1-10001) Kas Cutting Stone | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_110001_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
-									<th class="text-right" width="10%"><?php echo number_format($total_saldo,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format(($akun_110001_lalu + $total_debit) - $total_kredit,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -10187,15 +10187,11 @@ class Reports extends CI_Controller {
 		
 		$arr_date = $this->input->post('filter_date');
 		$arr_filter_date = explode(' - ', $arr_date);
-		$date4 = '';
 		$date3 = '';
 		$date1 = '';
 		$date2 = '';
 
 		if(count($arr_filter_date) == 2){
-			$date_now = date('Y-m-01');
-			$date_now = date('Y-m-d', strtotime('-1 days -1 months ', strtotime($date_now)));
-			$date4 	= date('Y-m-d',strtotime($date_now));
 			$date3 	= date('2024-01-01',strtotime($date3));
 			$date1 	= date('Y-m-d',strtotime($arr_filter_date[0]));
 			$date2 	= date('Y-m-d',strtotime($arr_filter_date[1]));
@@ -10248,27 +10244,6 @@ class Reports extends CI_Controller {
 	            <th width="100%" class="text-left" colspan="3">&nbsp;&nbsp;ASET LANCAR</th>
 	        </tr>
 				<?php
-				$akun_110001_biaya_lalu = $this->db->select('sum(pdb.jumlah) as kredit')
-				->from('pmm_biaya b')
-				->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
-				->where("b.tanggal_transaksi between '$date3' and '$date4'")
-				->where("b.bayar_dari = 1")
-				->get()->row_array();
-	
-				$akun_110001_jurnal_lalu = $this->db->select('sum(pdj.debit), sum(pdj.kredit)')
-				->from('pmm_jurnal_umum j')
-				->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
-				->where("j.tanggal_transaksi between '$date3' and '$date4'")
-				->where("pdj.akun = 1")
-				->get()->row_array();
-	
-				$terima_uang_lalu = $this->db->select('sum(jumlah) as debit')
-				->from('pmm_terima_uang')
-				->where("tanggal_transaksi between '$date3' and '$date4'")
-				->where("setor_ke = 1")
-				->get()->row_array();
-				$akun_110001_lalu = ($terima_uang_lalu['debit'] + $akun_110001_jurnal_lalu['debit']) - ($akun_110001_biaya_lalu['kredit'] + $akun_110001_jurnal_lalu['kredit']);
-
 				$akun_110002 = $this->pmm_model->get110002($date1,$date2);
 				$akun_110001 = $this->pmm_model->get110001($date1,$date2);
 				$akun_110001 = $akun_110002 - $akun_110001;
