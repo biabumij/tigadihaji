@@ -10027,11 +10027,14 @@ class Reports extends CI_Controller {
 			}
 		 </style>
 		 <script>
-			document.querySelectorAll(".spoiler").forEach(s => {
-			s.previousElementSibling.addEventListener("click", () => {
-				s.classList.toggle("show");
-			});
-			})
+			function myFunction() {
+			var x = document.getElementById("myDIV");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
 		 </script>
 	        <tr class="table-active2">
 	            <th colspan="3">PERIODE</th>
@@ -10098,8 +10101,8 @@ class Reports extends CI_Controller {
 					</table>
 					<br />
 					<div>
-						<button title="Click to show answer" type="button" class="btn btn-info"><b>(1-10001) Kas Cutting Stone<b></button>
-						<div class="spoiler">
+						<button onclick="myFunction()" class="btn btn-info"><b>(1-10001) Kas Cutting Stone<b></button>
+						<div id="myDIV" style="display:none;">
 							<?php
 							$saldo = $saldoawal;
 							$total_debit = 0;

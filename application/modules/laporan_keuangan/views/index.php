@@ -283,8 +283,6 @@
             //LabaRugi();
 		</script>
 
-        
-
         <!-- Neraca -->
 		<script type="text/javascript">
             $('#filter_date_neraca').daterangepicker({
