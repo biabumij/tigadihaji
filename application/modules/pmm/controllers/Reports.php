@@ -10180,7 +10180,6 @@ class Reports extends CI_Controller {
 					</div>	
 				</th>
 			</tr>
-			
 	    </table>
 		<?php
 	}
