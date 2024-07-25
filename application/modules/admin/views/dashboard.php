@@ -592,7 +592,7 @@
                                 format: '{value} M3'
                             },
                             min: 0,
-                            max: 2500,
+                            max: 3500,
                             tickInterval:500,
                         },
                         tooltip: {
@@ -758,7 +758,7 @@
                                 },
                                 format: '{value} %'
                             },
-                            min: -200,
+                            min: -250,
                             max: 100,
                             tickInterval: 50,
                         },
@@ -908,7 +908,7 @@
                                 format: '{value}'
                             },
                             min: 0,
-                            max: 300,
+                            max: 1000,
                             tickInterval: 100,
                         },
                         tooltip: { 
@@ -949,7 +949,7 @@
                         series: [{  
                             name: 'Rencana Kerja',  
                         
-                            data: [<?php echo json_encode(70, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#000000 ',
                             fontWeight: 'bold',
@@ -959,7 +959,7 @@
                         {  
                             name: 'Realisasi',  
                             
-                            data: [ <?php echo json_encode(80, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode(0, JSON_NUMERIC_CHECK); ?>],
+                            data: [ <?php echo json_encode($penjualan_minggu_1_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($penjualan_minggu_2_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($penjualan_minggu_3_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($penjualan_minggu_4_fix, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#FF0000',
                             fontWeight: 'bold',

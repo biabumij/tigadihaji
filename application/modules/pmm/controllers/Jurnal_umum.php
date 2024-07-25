@@ -88,12 +88,8 @@ class Jurnal_umum extends CI_Controller {
         $data = array();
 		$filter_date = $this->input->post('filter_date');
 
-        $kunci_bahan_baku = $this->db->select('pp.date')
-        ->from('kunci_bahan_baku pp')
-        ->order_by('pp.date','desc')->limit(1)
-        ->get()->row_array();
-        $last_opname = $kunci_bahan_baku['date'];
-        $last_opname = date('Y-m-d', strtotime('+1 days 0 months', strtotime($last_opname)));
+        $date_now = date('Y-m-01');
+        $last_opname = date('Y-m-d', strtotime('+0 days -0 months', strtotime($date_now)));
 
 		if(!empty($filter_date)){
 			$arr_date = explode(' - ', $filter_date);

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	  <title>BIAYA (BAHAN)</title>
+	  <title>BIAYA BAHAN</title>
 	  <?= include 'lib.php'; ?>
 	  
 	  <?php
@@ -71,7 +71,7 @@
 		<table width="98%" cellpadding="3">
 			<tr>
 				<td align="center" width="100%">
-					<div style="display: block;font-weight: bold;font-size: 11px;">LAPORAN BIAYA BAHAN</div>
+					<div style="display: block;font-weight: bold;font-size: 11px;">BIAYA BAHAN</div>
 					<div style="display: block;font-weight: bold;font-size: 11px;">PROYEK BENDUNGAN TIGA DIHAJI</div>
 					<div style="display: block;font-weight: bold;font-size: 11px;">PT. BIA BUMI JAYENDRA</div>
 					<div style="display: block;font-weight: bold;font-size: 11px; text-transform: uppercase;">PERIODE : <?php echo str_replace($search, $replace, $subject);?></div>
@@ -460,7 +460,7 @@
 	        </tr>
 	    </table>
 		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-		<table width="98%">
+		<!--<table width="98%">
 			<tr >
 				<td width="5%"></td>
 				<td width="90%">
@@ -500,13 +500,13 @@
                                 $admin = $this->db->get('tbl_admin a')->row_array();
                             ?>
 							<td align="center" height="55px">
-								<!--<img src="<?= $unit_head['admin_ttd']?>" width="70px">-->
+								<img src="<?= $unit_head['admin_ttd']?>" width="70px">
 							</td>
 							<td align="center">
-								<!--<img src="<?= $unit_head['admin_ttd']?>" width="70px">-->
+								<img src="<?= $unit_head['admin_ttd']?>" width="70px">
 							</td>
 							<td align="center">
-								<!--<img src="<?= $logistik['admin_ttd']?>" width="70px">-->
+								<img src="<?= $logistik['admin_ttd']?>" width="70px">
 							</td>
 						</tr>
 						<tr>
@@ -521,6 +521,42 @@
 							<td align="center" >
 								<b><u><?php echo $this->crud_global->GetField('tbl_admin',array('admin_id'=>$create['logistik']),'admin_name');?></u><br />
 								<?= $logistik['admin_group_name']?></b>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td width="5%"></td>
+			</tr>
+		</table>-->
+		<table width="98%">
+			<tr >
+				<td width="5%"></td>
+				<td width="90%">
+					<table width="100%" border="0" cellpadding="2">
+						<tr>
+							<td align="center">
+								Diperiksa Oleh & Disetujui Oleh
+							</td>
+							<td align="center" >
+								Dibuat Oleh
+							</td>	
+						</tr>
+						<tr>
+							<td align="center" height="55px">
+								
+							</td>
+							<td align="center">
+								
+							</td>
+						</tr>
+						<tr>
+							<td align="center" >
+								<b><u>Novel Joko Tri Laksono</u><br />
+								Ka. Plant</b>
+							</td>
+							<td align="center" >
+								<b><u>Rani Oktavia Rizal</u><br />
+								Adm. Logistik</b>
 							</td>
 						</tr>
 					</table>

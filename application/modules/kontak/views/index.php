@@ -26,7 +26,7 @@
                         	</h3>
                             <div class="text-left">
                                 <a href="<?php echo site_url('admin');?>">
-                                <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                                <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
                             </div>
                         </div>
                         <div class="panel-content">
@@ -146,12 +146,9 @@
         var form_control = '';
     </script>
 	<?php echo $this->Templates->Footer();?>
-
-    	
-
 	<script src="<?php echo base_url();?>assets/back/theme/vendor/bootbox.min.js"></script>
-
     <script src="<?php echo base_url();?>assets/back/theme/vendor/jquery.number.min.js"></script>
+    <script src="https://kit.fontawesome.com/591a1bf2f6.js" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
         $('input.numberformat').number( true, 4,',','.' );

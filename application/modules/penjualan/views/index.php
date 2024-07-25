@@ -3,7 +3,6 @@
 
 <head>
     <?php echo $this->Templates->Header(); ?>
-    <link type="text/css" href="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/css/dataTables.checkboxes.css" rel="stylesheet" />
     <style>
         body {
             font-family: helvetica;
@@ -37,7 +36,7 @@
                                 </h3>
                                 <div class="text-left">
                                     <a href="<?php echo site_url('admin');?>">
-                                    <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                                    <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
                                 </div>
                             </div>
                             <div class="panel-content">
@@ -320,6 +319,7 @@
     <!--<link rel="stylesheet" type="text/css" href="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/css/dataTables.checkboxes.css">-->
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/sl-1.2.5/datatables.min.js"></script>
     <script type="text/javascript" src="https://gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
+    <script src="https://kit.fontawesome.com/591a1bf2f6.js" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
         var form_control = '';

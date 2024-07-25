@@ -25,12 +25,12 @@
                             <h3 class="section-subtitle"><b>JURNAL UMUM</b></h3>
                             <div class="text-left">
                                 <a href="<?php echo site_url('admin');?>">
-                                <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                                <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
                             </div>
                         </div>
                         <div class="panel-content">
                             <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">JURNAL UMUM</a></li>
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">JURNAL UMUM (ALL)</a></li>
                                 <li role="presentation"><a href="#home_2" aria-controls="home_2" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold; text-transform:uppercase;">JURNAL UMUM (<?php echo date('F');?>)</a></li>
                             </ul>
                             <div class="tab-content">
@@ -114,6 +114,7 @@
     <script src="<?php echo base_url(); ?>assets/back/theme/vendor/daterangepicker/moment.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/back/theme/vendor/daterangepicker/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/back/theme/vendor/daterangepicker/daterangepicker.css">
+    <script src="https://kit.fontawesome.com/591a1bf2f6.js" crossorigin="anonymous"></script>
 	
     <script>
     let po = [];

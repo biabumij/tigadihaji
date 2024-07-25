@@ -68,7 +68,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_bahan',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Bahan');
+        $pdf->SetTitle('Bahan');
         $pdf->nsi_html($html);
         $pdf->Output('bahan.pdf', 'I');
 	}
@@ -97,7 +97,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_bahan_2',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Bahan');
+        $pdf->SetTitle('Bahan');
         $pdf->nsi_html($html);
         $pdf->Output('bahan.pdf', 'I');
 	}
@@ -156,7 +156,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_alat',$data,TRUE);
 
-        $pdf->SetTitle('BBJ - Alat');
+        $pdf->SetTitle('Alat');
         $pdf->nsi_html($html);
         $pdf->Output('alat.pdf', 'I');
 	}
@@ -185,7 +185,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_alat_2',$data,TRUE);
 
-        $pdf->SetTitle('BBJ - Alat');
+        $pdf->SetTitle('Alat');
         $pdf->nsi_html($html);
         $pdf->Output('alat.pdf', 'I');
 	}
@@ -222,7 +222,7 @@ class Laporan extends Secure_Controller {
 
         $html = $this->load->view('laporan_keuangan/cetak_overhead',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - BUA');
+        $pdf->SetTitle('BUA');
         $pdf->nsi_html($html);
         $pdf->Output('bua.pdf', 'I');
 	}

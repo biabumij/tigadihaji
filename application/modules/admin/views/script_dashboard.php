@@ -43,7 +43,7 @@ $date_akumulasi_akhir = date('2024-12-31');
 
 //REALISASI PRODUKSI
 //JUNI24
-$rak_juni24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_f) as total_produksi')
+$rak_juni24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
 ->from('rak r')
 ->where("r.tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
 ->get()->row_array();
@@ -65,7 +65,7 @@ foreach ($penjualan_juni24 as $x){
 $realisasi_produksi_juni24 = $total_volume_penjualan_juni24;
 
 //JULI24
-$rak_juli24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_f) as total_produksi')
+$rak_juli24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
 ->from('rak r')
 ->where("r.tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
 ->get()->row_array();
@@ -87,7 +87,7 @@ foreach ($penjualan_juli24 as $x){
 $realisasi_produksi_juli24 = $total_volume_penjualan_juli24;
 
 //AGUSTUS24
-$rak_agustus24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_f) as total_produksi')
+$rak_agustus24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
 ->from('rak r')
 ->where("r.tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
 ->get()->row_array();
@@ -109,7 +109,7 @@ foreach ($penjualan_agustus24 as $x){
 $realisasi_produksi_agustus24 = $total_volume_penjualan_agustus24;
 
 //SEPTEMBER24
-$rak_september24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_f) as total_produksi')
+$rak_september24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
 ->from('rak r')
 ->where("r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
 ->get()->row_array();
@@ -131,7 +131,7 @@ foreach ($penjualan_september24 as $x){
 $realisasi_produksi_september24 = $total_volume_penjualan_september24;
 
 //OKTOBER24
-$rak_oktober24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_f) as total_produksi')
+$rak_oktober24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
 ->from('rak r')
 ->where("r.tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
 ->get()->row_array();
@@ -153,7 +153,7 @@ foreach ($penjualan_oktober24 as $x){
 $realisasi_produksi_oktober24 = $total_volume_penjualan_oktober24;
 
 //NOVEMBER24
-$rak_november24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_f) as total_produksi')
+$rak_november24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
 ->from('rak r')
 ->where("r.tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
 ->get()->row_array();
@@ -175,7 +175,7 @@ foreach ($penjualan_november24 as $x){
 $realisasi_produksi_november24 = $total_volume_penjualan_november24;
 
 //DESEMBER24
-$rak_desember24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_f) as total_produksi')
+$rak_desember24 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
 ->from('rak r')
 ->where("r.tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
 ->get()->row_array();

@@ -27,7 +27,7 @@ if($this->session->userdata('admin_group_id') == 1){
                             <h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name;?></h3>
                             <div class="text-left">
                                 <a href="<?php echo site_url('admin');?>">
-                                <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                                <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
                             </div>
                             <div class="panel-actions">
                                 <ul>
@@ -122,6 +122,8 @@ if($this->session->userdata('admin_group_id') == 1){
 </div>
 
 	<?php echo $this->Templates->Footer();?>
+    <script src="https://kit.fontawesome.com/591a1bf2f6.js" crossorigin="anonymous"></script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             load_table("<?php echo site_url($row[0]->menu_alias.'/table');?>");

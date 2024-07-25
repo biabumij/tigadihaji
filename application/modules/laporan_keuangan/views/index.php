@@ -41,7 +41,7 @@
                                         <h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
                                         <div class="text-left">
                                             <a href="<?php echo site_url('admin');?>">
-                                            <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
+                                            <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
                                         </div>
                                     </div>
                                     <div class="tab-content">
@@ -237,7 +237,8 @@
         <script src="<?php echo base_url(); ?>assets/back/theme/vendor/bootbox.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/back/theme/vendor/jquery.number.min.js"></script>
         <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
-		
+		<script src="https://kit.fontawesome.com/591a1bf2f6.js" crossorigin="anonymous"></script>
+        
 		<!-- Script Laba Rugi -->
 		<script type="text/javascript">
             $('#filter_date_laba_rugi').daterangepicker({
