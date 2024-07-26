@@ -6431,27 +6431,16 @@ class Pmm_model extends CI_Model {
     {   
         $total = 0;
 
-        $akun_110100 = $this->db->select('sum(total) as total')
-        ->from('pmm_penagihan_penjualan')
-        ->where("tanggal_invoice between '$date1' and '$date2'")
-        ->get()->row_array();
-
-        $akun_110100_pembayaran = $this->db->select('sum(total) as total')
-        ->from('pmm_pembayaran')
-        ->where("tanggal_pembayaran between '$date1' and '$date2'")
-        ->get()->row_array();
-        
-        $tagihan = $akun_110100['total'] - $akun_110100_pembayaran['total'];
-
         $akun_110101 = $this->db->select('sum(pp.display_price) as total')
         ->from('pmm_productions pp')
         ->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
         ->where("pp.date_production between '$date1' and '$date2'")
         ->where("pp.status = 'PUBLISH'")
         ->where("ppo.status in ('OPEN','CLOSED')")
+        ->where("pp.status_payment = 'UNCREATED'")
         ->get()->row_array();
 
-        $query = $akun_110101['total'] - $tagihan;
+        $query = $akun_110101['total'];
         
         if(!empty($query)){
             $total = $query;
@@ -6463,12 +6452,9 @@ class Pmm_model extends CI_Model {
     {   
         $total = 0;
 
-        $awal = date('Y-m-d',strtotime($date1));
-		$akhir = date('Y-m-d',strtotime($date2));
-
         $stock_opname_semen = $this->db->select('cat.*, (cat.total) as nilai')
         ->from('pmm_remaining_materials_cat cat')
-        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.date between '$date1' and '$date2'")
         ->where("cat.material_id = 1")
         ->where("cat.status = 'PUBLISH'")
         ->group_by('cat.id')
@@ -6481,7 +6467,7 @@ class Pmm_model extends CI_Model {
 
         $stock_opname_pasir = $this->db->select('cat.*, (cat.total) as nilai')
         ->from('pmm_remaining_materials_cat cat')
-        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.date between '$date1' and '$date2'")
         ->where("cat.material_id = 2")
         ->where("cat.status = 'PUBLISH'")
         ->group_by('cat.id')
@@ -6494,7 +6480,7 @@ class Pmm_model extends CI_Model {
 
         $stock_opname_batu1020 = $this->db->select('cat.*, (cat.total) as nilai')
         ->from('pmm_remaining_materials_cat cat')
-        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.date between '$date1' and '$date2'")
         ->where("cat.material_id = 3")
         ->where("cat.status = 'PUBLISH'")
         ->group_by('cat.id')
@@ -6507,7 +6493,7 @@ class Pmm_model extends CI_Model {
 
         $stock_opname_batu2030 = $this->db->select('cat.*, (cat.total) as nilai')
         ->from('pmm_remaining_materials_cat cat')
-        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.date between '$date1' and '$date2'")
         ->where("cat.material_id = 4")
         ->where("cat.status = 'PUBLISH'")
         ->group_by('cat.id')
@@ -6520,7 +6506,7 @@ class Pmm_model extends CI_Model {
 
         $stock_opname_solar = $this->db->select('cat.*, (cat.total) as nilai')
         ->from('pmm_remaining_materials_cat cat')
-        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.date between '$date1' and '$date2'")
         ->where("cat.material_id = 5")
         ->where("cat.status = 'PUBLISH'")
         ->group_by('cat.id')
@@ -6533,7 +6519,7 @@ class Pmm_model extends CI_Model {
 
         $stock_opname_additive = $this->db->select('cat.*, (cat.total) as nilai')
         ->from('pmm_remaining_materials_cat cat')
-        ->where("cat.date between '$awal' and '$akhir'")
+        ->where("cat.date between '$date1' and '$date2'")
         ->where("cat.material_id = 19")
         ->where("cat.status = 'PUBLISH'")
         ->group_by('cat.id')
@@ -6543,8 +6529,10 @@ class Pmm_model extends CI_Model {
         foreach ($stock_opname_additive as $x){
             $nilai_additive += $x['nilai'];
         }
+
+        $akun_110201 = $nilai_semen + $nilai_pasir + $nilai_batu1020 + $nilai_batu2030 + $nilai_solar + $nilai_additive;
         
-        $query = $nilai_semen + $nilai_pasir + $nilai_batu1020 + $nilai_batu2030 + $nilai_solar + $nilai_additive;
+        $query = $akun_110201;
         
         if(!empty($query)){
             $total = $query;
