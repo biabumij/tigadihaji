@@ -67,7 +67,7 @@
                                                         if(!empty($coa)){
                                                             foreach ($coa as $row) {
                                                                 ?>
-                                                                <option value="<?php echo $row['id'];?>"><?php echo $row['coa_number'];?> <?php echo $row['coa'];?></option>
+                                                                <option value="<?php echo $row['id'];?>">(<?php echo $row['coa_number'];?>) <?php echo $row['coa'];?></option>
                                                                 <?php
                                                             }
                                                         }
