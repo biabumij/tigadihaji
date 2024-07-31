@@ -554,50 +554,28 @@
 					<table width="100%" border="0" cellpadding="2">
 						<tr>
 							<td align="center">
-								Disetujui Oleh
+								Diperiksa Oleh & Disetujui Oleh
 							</td>
 							<td align="center" >
 								Dibuat Oleh
 							</td>	
 						</tr>
-						<tr class="">
-							<?php
-								$create = $this->db->select('id, unit_head, logistik, admin')
-								->from('kunci_bahan_baku')
-								->where("(date between '$start_date' and '$end_date')")
-								->order_by('id','desc')->limit(1)
-								->get()->row_array();
-
-                                $this->db->select('g.admin_group_name, a.admin_ttd');
-                                $this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-                                $this->db->where('a.admin_id',$create['unit_head']);
-                                $unit_head = $this->db->get('tbl_admin a')->row_array();
-
-								$this->db->select('g.admin_group_name, a.admin_ttd');
-                                $this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-                                $this->db->where('a.admin_id',$create['logistik']);
-                                $logistik = $this->db->get('tbl_admin a')->row_array();
-
-								$this->db->select('g.admin_group_name, a.admin_ttd');
-                                $this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
-                                $this->db->where('a.admin_id',$create['admin']);
-                                $admin = $this->db->get('tbl_admin a')->row_array();
-                            ?>
+						<tr>
 							<td align="center" height="55px">
-								<!--<img src="<?= $unit_head['admin_ttd']?>" width="70px">-->
+								
 							</td>
 							<td align="center">
-								<!--<img src="<?= $logistik['admin_ttd']?>" width="70px">-->
+								
 							</td>
 						</tr>
 						<tr>
 							<td align="center" >
-								<b><u><?php echo $this->crud_global->GetField('tbl_admin',array('admin_id'=>$create['unit_head']),'admin_name');?></u><br />
-								<?= $unit_head['admin_group_name']?></b>
+								<b><u>Novel Joko Tri Laksono</u><br />
+								Ka. Plant</b>
 							</td>
 							<td align="center" >
-								<b><u><?php echo $this->crud_global->GetField('tbl_admin',array('admin_id'=>$create['logistik']),'admin_name');?></u><br />
-								<?= $logistik['admin_group_name']?></b>
+								<b><u>Rani Oktavia Rizal</u><br />
+								Adm. Logistik</b>
 							</td>
 						</tr>
 					</table>
