@@ -187,7 +187,7 @@
 	        </tr>
 	    </table>
 		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-		<!--<table width="98%">
+		<table width="98%">
 			<tr >
 				<td width="5%"></td>
 				<td width="90%">
@@ -204,9 +204,9 @@
 							</td>	
 						</tr>
 						<tr class="">
-						<?php
+							<?php
 								$create = $this->db->select('id, unit_head, logistik, admin')
-								->from('kunci_bahan_baku')
+								->from('akumulasi')
 								->where("(date_akumulasi between '$start_date' and '$end_date')")
 								->order_by('id','desc')->limit(1)
 								->get()->row_array();
@@ -227,13 +227,13 @@
                                 $admin = $this->db->get('tbl_admin a')->row_array();
                             ?>
 							<td align="center" height="55px">
-								<img src="<?= $unit_head['admin_ttd']?>" width="70px">
+								<!--<img src="<?= $unit_head['admin_ttd']?>" width="70px">-->
 							</td>
 							<td align="center">
-								<img src="<?= $unit_head['admin_ttd']?>" width="70px">
+								<!--<img src="<?= $unit_head['admin_ttd']?>" width="70px">-->
 							</td>
 							<td align="center">
-								<img src="<?= $logistik['admin_ttd']?>" width="70px">
+								<!--<img src="<?= $logistik['admin_ttd']?>" width="70px">-->
 							</td>
 						</tr>
 						<tr>
@@ -248,42 +248,6 @@
 							<td align="center" >
 								<b><u><?php echo $this->crud_global->GetField('tbl_admin',array('admin_id'=>$create['logistik']),'admin_name');?></u><br />
 								<?= $logistik['admin_group_name']?></b>
-							</td>
-						</tr>
-					</table>
-				</td>
-				<td width="5%"></td>
-			</tr>
-		</table>-->
-		<table width="98%">
-			<tr >
-				<td width="5%"></td>
-				<td width="90%">
-					<table width="100%" border="0" cellpadding="2">
-						<tr>
-							<td align="center">
-								Diperiksa Oleh & Disetujui Oleh
-							</td>
-							<td align="center" >
-								Dibuat Oleh
-							</td>	
-						</tr>
-						<tr>
-							<td align="center" height="55px">
-								
-							</td>
-							<td align="center">
-								
-							</td>
-						</tr>
-						<tr>
-							<td align="center" >
-								<b><u>Novel Joko Tri Laksono</u><br />
-								Ka. Plant</b>
-							</td>
-							<td align="center" >
-								<b><u>Rani Oktavia Rizal</u><br />
-								Adm. Logistik</b>
 							</td>
 						</tr>
 					</table>

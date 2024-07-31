@@ -479,7 +479,7 @@
 						<tr class="">
 							<?php
 								$create = $this->db->select('id, unit_head, logistik, admin')
-								->from('kunci_bahan_baku')
+								->from('akumulasi')
 								->where("(date_akumulasi between '$start_date' and '$end_date')")
 								->order_by('id','desc')->limit(1)
 								->get()->row_array();
