@@ -191,11 +191,11 @@
 						</tr>
 						<tr>
 							<td align="center" >
-								<b><u>Avriani Delia Ika Putri</u><br />
+								<b><u>Novel Joko Tri Laksono</u><br />
 								Ka. Plant</b>
 							</td>
 							<td align="center" >
-								<b><u>Rani Oktavia Rizal</u><br />
+								<b><u>Avriani Delia Ika Putri</u><br />
 								Keuangan Proyek</b>
 							</td>
 						</tr>
