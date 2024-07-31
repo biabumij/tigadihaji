@@ -1369,7 +1369,7 @@ class Pmm extends CI_Controller {
 		->from('kunci_bahan_baku')
 		->order_by('date','desc')->limit(1)
 		->get()->row_array();
-		$last_opname = $last_opname['date'];
+		$last_opname = date('Y-m-d', strtotime('0 days', strtotime($last_opname['date'])));
 
 		$this->db->where('status','PUBLISH');
 		$this->where("date >= '$last_opname'");
