@@ -765,11 +765,11 @@
 			$nilai_d = $pembelian_nilai_2030;
 			$nilai_e = $pembelian_nilai_additive;
 
-			$price_a = ($total_volume_a!=0)?$total_nilai_a / $total_volume_a * 1:0;
-			$price_b = ($total_volume_b!=0)?$total_nilai_b / $total_volume_b * 1:0;
-			$price_c = ($total_volume_c!=0)?$total_nilai_c / $total_volume_c * 1:0;
-			$price_d = ($total_volume_d!=0)?$total_nilai_d / $total_volume_d * 1:0;
-			$price_e = ($total_volume_e!=0)?$total_nilai_e / $total_volume_e * 1:0;
+			$price_a = ($total_volume_a!=0)?$nilai_a / $volume_a * 1:0;
+			$price_b = ($total_volume_b!=0)?$nilai_b / $volume_b * 1:0;
+			$price_c = ($total_volume_c!=0)?$nilai_c / $volume_c * 1:0;
+			$price_d = ($total_volume_d!=0)?$nilai_d / $volume_d * 1:0;
+			$price_e = ($total_volume_e!=0)?$nilai_e / $volume_e * 1:0;
 
 			$total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d + $volume_e;
 			$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d + $nilai_e;
