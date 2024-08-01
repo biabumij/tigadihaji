@@ -135,7 +135,6 @@
                                     </th>
                                 </tr>
                                 <tr>
-                                    <?php echo number_format($persentase_rak_juni24,2,',','.');?>
                                     <th width="50%" class="text-center">
                                         <div class="col-sm-12">
                                             <figure class="highcharts-figure">
