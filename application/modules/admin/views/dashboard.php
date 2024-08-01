@@ -135,6 +135,7 @@
                                     </th>
                                 </tr>
                                 <tr>
+                                    <?php echo number_format($persentase_rak_juni24,2,',','.');?>
                                     <th width="50%" class="text-center">
                                         <div class="col-sm-12">
                                             <figure class="highcharts-figure">
@@ -800,7 +801,7 @@
                         series: [{  
                             name: 'Target %',  
                             
-                            data: [2,2,2,2,2,2],
+                            data: [<?php echo json_encode($persentase_rak_juni24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_juli24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_agustus24, JSON_NUMERIC_CHECK); ?>,2,2,2],
 
                             color: '#000000',
                             fontWeight: 'bold',

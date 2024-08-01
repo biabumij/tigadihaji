@@ -417,8 +417,16 @@
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($rak['harga_batu2030'],0,',','.');?></th>
 				<th align="right" class="table-border-pojok-kanan"><?php echo number_format($total_volume_batu2030 * $rak['harga_batu2030'],0,',','.');?></th>
 	        </tr>
+			<tr class="table-baris1">
+				<th align="center" class="table-border-pojok-kiri">5.</th>	
+				<th align="left" class="table-border-pojok-tengah">BBM Solar</th>
+				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($total_volume_solar,2,',','.');?></th>
+				<th align="center" class="table-border-pojok-tengah">M3</th>
+				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($rak['harga_solar'],0,',','.');?></th>
+				<th align="right" class="table-border-pojok-kanan"><?php echo number_format($total_volume_solar * $rak['harga_solar'],0,',','.');?></th>
+	        </tr>
 			<?php
-			$total = ($total_volume_semen * $rak['harga_semen']) + ($total_volume_pasir * $rak['harga_pasir']) + ($total_volume_batu1020 * $rak['harga_batu1020']) + ($total_volume_batu2030 * $rak['harga_batu2030']);
+			$total = ($total_volume_semen * $rak['harga_semen']) + ($total_volume_pasir * $rak['harga_pasir']) + ($total_volume_batu1020 * $rak['harga_batu1020']) + ($total_volume_batu2030 * $rak['harga_batu2030']) + ($total_volume_solar * $rak['harga_solar']);
 			?>
 			<tr class="table-total2">	
 				<th align="right" colspan="5" class="table-border-spesial-kiri">TOTAL KEBUTUHAN BIAYA BAHAN</th>
