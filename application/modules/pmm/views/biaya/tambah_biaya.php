@@ -84,7 +84,7 @@
                                         <div class="col-sm-3">
                                             <label>Cara Pembayaran<span class="required" aria-required="true">*</span></label>
                                             <?php $pembayaran = ["Transfer","Cash","Cek&Giro"]; ?>
-                                            <select name="cara_pembayaran" class="form-control">
+                                            <select name="cara_pembayaran" class="form-control" required="">
                                                 <option value="">Pilih Cara Pembayaran</option>
                                                 <?php foreach($pembayaran as $p) : ?>
                                                 <option value="<?= $p; ?>"><?= $p; ?></option>
