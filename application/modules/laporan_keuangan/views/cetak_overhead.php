@@ -110,9 +110,7 @@
 				foreach ($biaya_langsung_parent as $key => $bl) {
 					?>
 					<tr class="table-active4">
-						<td width="20%" align="center"><?= $bl['coa_number'] = $this->crud_global->GetField('pmm_coa',array('id'=>$bl['coa_parent']),'coa_number');?></td>
-						<td width="50%"><?= $bl['coa'] = $this->crud_global->GetField('pmm_coa',array('id'=>$bl['coa_parent']),'coa');?></td>
-						<td width="30%" align="right"></td>
+						<td align="left" width="100%"><b>BIAYA</b></td>
 					</tr>
 					<?php
 				}
@@ -125,7 +123,7 @@
 						<td width="20%" align="center"><?= $bl['coa_number'];?></td>
 						<td width="2%"></td>
 						<td width="48%"><?= $bl['coa'];?></td>
-						<td width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/print_biaya?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($bl['total'],0,',','.');?></a></td>
+						<td width="30%" align="right"><?php echo number_format($bl['total'],0,',','.');?></td>
 					</tr>
 					<?php
 					$total_biaya_langsung += $bl['total'];	
@@ -135,10 +133,8 @@
 			if(!empty($biaya_langsung_jurnal_parent)){
 				foreach ($biaya_langsung_jurnal_parent as $key => $blj) {
 					?>	
-					<tr class="table-active4">
-						<td width="20%" align="center"><?= $blj['coa_number'] = $this->crud_global->GetField('pmm_coa',array('id'=>$blj['coa_parent']),'coa_number');?></td>
-						<td width="50%"><?= $blj['coa'] = $this->crud_global->GetField('pmm_coa',array('id'=>$blj['coa_parent']),'coa');?></td>
-						<td width="30%" align="right"></td>
+					<tr>
+						<td align="left" width="100%"><b>JURNAL</b></td>
 					</tr>
 					<?php				
 				}

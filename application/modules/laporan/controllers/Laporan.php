@@ -215,6 +215,7 @@ class Laporan extends Secure_Controller {
 		$data['date1'] = date('Y-m-d',strtotime($arr_filter_date[0]));
 		$data['date2'] = date('Y-m-d',strtotime($arr_filter_date[1]));
 		$data['biaya_langsung_parent'] = $this->m_laporan->biaya_langsung_parent($arr_date);
+		file_put_contents("D:\\test.txt", $this->db->last_query());
 		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung($arr_date);
 		$data['biaya_langsung_jurnal_parent'] = $this->m_laporan->biaya_langsung_jurnal_parent($arr_date);
 		$data['biaya_langsung_jurnal'] = $this->m_laporan->biaya_langsung_jurnal($arr_date);
@@ -1705,7 +1706,7 @@ class Laporan extends Secure_Controller {
 		$pdf->SetX(5);
 		$pdf->SetMargins(5, 5); 
 
-		$pdf->SetAutoPageBreak(TRUE, 30);
+		$pdf->SetAutoPageBreak(TRUE, 20);
         $arr_date = $this->input->get('filter_date');
 
         $dt = explode(' - ', $arr_date);

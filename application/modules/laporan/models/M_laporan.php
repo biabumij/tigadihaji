@@ -295,8 +295,7 @@ class M_laporan extends CI_Model {
         $this->db->where("c.id <> 140 "); //Biaya Maintenance WL
         $this->db->where("c.id <> 110 "); //Biaya Diskonto Bank
         $this->db->where('b.status','PAID');
-        $this->db->group_by('b.id');
-        $this->db->order_by('c.coa','asc');
+        $this->db->group_by('pdb.id');
         $this->db->order_by('b.tanggal_transaksi','asc');
         $query = $this->db->get('pmm_biaya b');
         return $query->result_array();

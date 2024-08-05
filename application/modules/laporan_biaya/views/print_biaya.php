@@ -6,6 +6,7 @@
 	  <style type="text/css">
 		body {
 			font-family: helvetica;
+			font-size: 6.5px;
 		}
 		
 	  	table.minimalistBlack {
@@ -67,14 +68,16 @@
 				</td>
 			</tr>
 			<tr class="table-active3">
-				<th align="left" width="10%"><b>TANGGAL</b></th>
 				<th align="left" width="10%"><b>TRANSAKSI</b></th>
-				<th align="left" width="25%"><b>KATEGORI</b></th>
-				<th align="left" width="25%"><b>DESKRIPSI</b></th>
-				<th align="center" width="30%" align="right"><b>JUMLAH</b></th>
+				<th align="left" width="10%"><b>NO. AKUN</b></th>
+				<th align="left" width="20%"><b>NAMA AKUN</b></th>
+				<th align="left" width="8%"><b>TANGGAL</b></th>
+				<th align="left" width="20%"><b>NO. TRANSAKSI</b></th>
+				<th align="left" width="22%"><b>DESKRIPSI</b></th>
+				<th align="center" width="10%" align="right"><b>JUMLAH</b></th>
 			</tr>
 			<tr class="table-active2">
-				<th width="100%" align="left" colspan="6"><b>HARGA POKOK PENJUALAN</b></th>
+				<th width="100%" align="left" colspan="8"><b>HARGA POKOK PENJUALAN</b></th>
 			</tr>
 			<?php
 			$total_biaya_langsung  = 0;
@@ -82,11 +85,13 @@
 				foreach ($biaya_langsung as $key => $bl) {
 					?>
 					<tr>
-						<td width="10%"><?= $bl['tanggal_transaksi'];?></td>
 						<td width="10%">BIAYA</td>
-						<td width="25%"><?= $bl['coa'];?></td>
-						<td width="25%"><?= $bl['deskripsi'];?></td>
-						<td width="30%" align="right"><?php echo number_format($bl['total'],0,',','.');?></td>
+						<td width="10%"><?= $bl['coa_number'];?></td>
+						<td width="20%"><?= $bl['coa'];?></td>
+						<td width="8%"><?= $bl['tanggal_transaksi'];?></td>
+						<td width="20%"><?= $bl['nomor_transaksi'];?></td>
+						<td width="22%"><?= $bl['deskripsi'];?></td>
+						<td width="10%" align="right"><?php echo number_format($bl['total'],0,',','.');?></td>
 					</tr>
 					<?php
 					$total_biaya_langsung += $bl['total'];	
@@ -98,11 +103,13 @@
 					foreach ($biaya_langsung_jurnal as $key => $blj) {
 						?>	
 						<tr>
-							<td><?= $blj['tanggal_transaksi'];?></td>
-							<td>JURNAL</td>
-							<td width="25%"><?= $blj['coa'];?></td>
-							<td width="25%"><?= $blj['deskripsi'];?></td>
-							<td align="right"><?php echo number_format($blj['total'],0,',','.');?></td>
+							<td width="10%">JURNAL</td>
+							<td width="10%"><?= $blj['coa_number'];?></td>
+							<td width="20%"><?= $blj['coa'];?></td>
+							<td width="8%"><?= $blj['tanggal_transaksi'];?></td>
+							<td width="20%"><?= $blj['nomor_transaksi'];?></td>
+							<td width="22%"><?= $blj['deskripsi'];?></td>
+							<td width="10%" align="right"><?php echo number_format($blj['total'],0,',','.');?></td>
 						</tr>
 						<?php
 						$total_biaya_langsung_jurnal += $blj['total'];					
@@ -111,58 +118,14 @@
 			$total_a = $grand_total_biaya_langsung + $total_biaya_langsung_jurnal;
 			?>
 			<tr class="active">
-				<td width="80%" align="right" style="padding-right:5px;"><b>TOTAL HARGA POKOK PENJUALAN</b></td>
-				<td width="20%" align="right"><b><?php echo number_format($total_a,0,',','.');?></b></td>
+				<td width="90%" align="right" style="padding-right:5px;"><b>TOTAL HARGA POKOK PENJUALAN</b></td>
+				<td width="10%" align="right"><b><?php echo number_format($total_a,0,',','.');?></b></td>
 			</tr>
-			<!--<tr>
-				<th width="100%" colspan="6"></th>
-			</tr>
-			<tr class="table-active2">
-				<th width="100%" align="left" colspan="6"><b>BEBAN</b></th>
-			</tr>
-			<?php
-			$total_biaya  = 0;
-			if(!empty($biaya)){
-				foreach ($biaya as $key => $row) {
-					?>
-					<tr>
-						<td width="10%"><?= $row['tanggal_transaksi'];?></td>
-						<td width="10%">BIAYA</td>
-						<td width="25%"><?= $row['coa'];?></td>
-						<td width="25%"><?= $row['deskripsi'];?></td>
-						<td align="center" width="30%" align="right"><?php echo number_format($row['total'],0,',','.');?></td>
-					</tr>
-					<?php
-					$total_biaya += $row['total'];				
-				}
-			}
-			$total_biaya_jurnal = 0;
-			$grand_total_biaya = $total_biaya;
-			if(!empty($biaya_jurnal)){
-				foreach ($biaya_jurnal as $key => $row2) {
-					?>
-					<tr>
-						<td><?= $row2['tanggal_transaksi'];?></td>
-						<td>JURNAL</td>
-						<td width="25%"><?= $row2['coa'];?></td>
-						<td width="25%"><?= $row2['deskripsi'];?></td>
-						<td align="right"><?php echo number_format($row2['total'],0,',','.');?></td>
-					</tr>
-					<?php
-					$total_biaya_jurnal += $row2['total'];				
-				}
-			}
-			$total_b = $grand_total_biaya + $total_biaya_jurnal;
-			?>
-			<tr class="active">
-				<td width="80%" align="right" style="padding-right:5px;">TOTAL BEBAN</td>
-				<td width="20%" align="right"><b><?php echo number_format($total_b,0,',','.');?></b></td>
-			</tr>-->
 			<tr>
 				<th width="100%" colspan="6"></th>
 			</tr>
 			<tr class="table-active2">
-				<th width="100%" align="left" colspan="6"><b>BEBAN LAINNYA</b></th>
+				<th width="100%" align="left" colspan="8"><b>BEBAN LAINNYA</b></th>
 			</tr>
 			<?php
 			$total_biaya_lainnya = 0;
@@ -170,11 +133,13 @@
 				foreach ($biaya_lainnya as $key => $row) {
 					?>
 					<tr>
-						<td width="10%"><?= $row['tanggal_transaksi'];?></td>
 						<td width="10%">BIAYA</td>
-						<td width="25%"><?= $row['coa'];?></td>
-						<td width="25%"><?= $row['deskripsi'];?></td>
-						<td align="center" width="30%" align="right"><?php echo number_format($row['total'],0,',','.');?></td>
+						<td width="10%"><?= $row['coa_number'];?></td>
+						<td width="20%"><?= $row['coa'];?></td>
+						<td width="8%"><?= $row['tanggal_transaksi'];?></td>
+						<td width="20%"><?= $row['nomor_transaksi'];?></td>
+						<td width="22%"><?= $row['deskripsi'];?></td>
+						<td width="10%" align="right"><?php echo number_format($row['total'],0,',','.');?></td>
 					</tr>
 					<?php
 					$total_biaya_lainnya += $row['total'];					
@@ -186,11 +151,13 @@
 				foreach ($biaya_lainnya_jurnal as $key => $row2) {
 					?>
 					<tr>
-						<td><?= $row2['tanggal_transaksi'];?></td>
-						<td>JURNAL</td>
-						<td width="25%"><?= $row2['coa'];?></td>
-						<td width="25%"><?= $row2['deskripsi'];?></td>
-						<td align="right"><?php echo number_format($row2['total'],0,',','.');?></td>
+						<td width="10%">JURNAL</td>
+						<td width="10%"><?= $row2['coa_number'];?></td>
+						<td width="20%"><?= $row2['coa'];?></td>
+						<td width="8%"><?= $row2['tanggal_transaksi'];?></td>
+						<td width="20%"><?= $row2['nomor_transaksi'];?></td>
+						<td width="22%"><?= $row2['deskripsi'];?></td>
+						<td width="10%" align="right"><?php echo number_format($row2['total'],0,',','.');?></td>
 					</tr>
 					<?php
 					$total_biaya_lainnya_jurnal += $row2['total'];					
