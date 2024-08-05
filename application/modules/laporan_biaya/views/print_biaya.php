@@ -166,8 +166,8 @@
 			$total_c = $grand_total_biaya_lainnya + $total_biaya_lainnya_jurnal;
 			?>
 			<tr class="active">
-				<td width="80%" align="right" style="padding-right:5px;"><b>TOTAL BEBAN LAINNYA</b></td>
-				<td width="20%" align="right"><b><?php echo number_format($total_c,0,',','.');?></b></td>
+				<td width="90%" align="right" style="padding-right:5px;"><b>TOTAL BEBAN LAINNYA</b></td>
+				<td width="10%" align="right"><b><?php echo number_format($total_c,0,',','.');?></b></td>
 			</tr>
 		</table>
 		
