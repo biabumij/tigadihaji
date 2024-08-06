@@ -51,7 +51,7 @@ class Biaya extends CI_Controller {
 		$filter_date = $this->input->post('filter_date');
 
         $date_now = date('Y-m-01');
-        $last_opname = date('Y-m-d', strtotime('-36 days -0 months', strtotime($date_now)));
+        $last_opname = date('Y-m-d', strtotime('+0 days -1 months', strtotime($date_now)));
 
 		if(!empty($filter_date)){
 			$arr_date = explode(' - ', $filter_date);
