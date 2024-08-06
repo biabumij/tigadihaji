@@ -10998,6 +10998,18 @@ class Reports extends CI_Controller {
 				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_220200 < 0 ? "(".number_format(-$akun_220200,0,',','.').")" : number_format($akun_220200,0,',','.');?></th>
 	        </tr>
 				<?php
+				$akun_220205 = $this->pmm_model->get110002($date1,$date2);
+				?>
+			<tr class="table-active3">
+				<th width="10%" class="text-center">2-20205</th>
+				<th class="text-left">Hutang Modal</th>
+				<?php
+				$styleColor = $akun_220205 < 0 ? 'color:red' : 'color:black';
+				?>
+				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_220205 < 0 ? "(".number_format(-$akun_220205,0,',','.').")" : number_format($akun_220205,0,',','.');?></th>
+	        </tr>
+
+				<?php
 				$akun_220500 = $this->pmm_model->get220500($date1,$date2);
 				?>
 			<tr class="table-active3">
