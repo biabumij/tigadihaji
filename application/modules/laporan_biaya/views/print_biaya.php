@@ -50,8 +50,7 @@
 		<table width="98%" border="0" cellpadding="3">
 			<tr>
 				<td align="center">
-					<div style="display: block;font-weight: bold;font-size: 12px;">LAPORAN BIAYA</div>
-					<div style="display: block;font-weight: bold;font-size: 12px;">PROYEK BENDUNGAN TIGA DIHAJI</div>
+					<div style="display: block;font-weight: bold;font-size: 12px;">RINCIAN BIAYA UMUM & ADMINISTRASI</div>
 				</td>
 			</tr>
 		</table>
