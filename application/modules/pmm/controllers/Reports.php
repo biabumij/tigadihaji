@@ -11021,7 +11021,7 @@ class Reports extends CI_Controller {
 				<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_220500 < 0 ? "(".number_format(-$akun_220500,0,',','.').")" : number_format($akun_220500,0,',','.');?></th>
 	        </tr>
 				<?php
-				$total_liabilitas_jangka_pendek = $akun_220100 + $akun_220101 + $akun_220200 + $akun_220500;
+				$total_liabilitas_jangka_pendek = $akun_220100 + $akun_220101 + $akun_220200 + $akun_220205 + $akun_220500;
 				$styleColor = $total_liabilitas_jangka_pendek < 0 ? 'color:red' : 'color:black';
 				?>
 			<tr class="table-active3">
