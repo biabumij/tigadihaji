@@ -187,7 +187,7 @@
                                 </form>
                                 <br />
                                 <div class="text-right">
-                                    <button class="btn btn-default" id="btn-view" style="width:100px; font-weight:bold; font-weight:bold; border-radius:10px;"> LIHAT DATA</button>
+                                    <button class="btn btn-default" id="btn-view" style="width:250px; font-weight:bold; font-weight:bold; border-radius:10px;"> EDIT & HAPUS SURAT JALAN</button>
                                 </div>
                                 <div id="box-view" style="display:none;">
                                     <div style="color:red; font-weight:bold;"> * Data yang tampil adalah data surat jalan dengan status UNCREATED / belum ditagihkan.<br />
@@ -250,8 +250,7 @@
                                                     <th>Komposisi</th>
                                                     <th >Volume</th>
                                                     <th>Satuan</th>
-                                                    <th>Edit Komposisi</th>
-                                                    <th>Hapus</th>
+                                                    <th>Tindakan</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -422,9 +421,6 @@
                 },
 				{
                     "data": "measure"
-                },
-                {
-                    "data": "edits"
                 },
                 {
                     "data": "delete"

@@ -169,7 +169,7 @@
                             </form>
                             <br />
                             <div class="text-right">
-                                <button class="btn btn-default" id="btn-view" style="width:100px; font-weight:bold; font-weight:bold; border-radius:10px;"> LIHAT DATA</button>
+                                <button class="btn btn-default" id="btn-view" style="width:250px; font-weight:bold; font-weight:bold; border-radius:10px;"> EDIT & HAPUS SURAT JALAN</button>
                             </div>
                             <div id="box-view" style="display:none;">
                                 <div style="color:red; font-weight:bold;"> * Data yang tampil adalah data surat jalan dengan status UNCREATED / belum ditagihkan.<br />
@@ -213,8 +213,7 @@
                                                 <th>Satuan</th>
 												<th>Harga Satuan</th>
 												<th>Nilai</th>
-                                                <th>Edit</th>
-                                                <th>Hapus</th>
+                                                <th>Tindakan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -391,13 +390,11 @@
 			//maxDate: moment().endOf('month').toDate(),	
         });
 
-
         $(document).ready(function(){
             $('#supplier_id').val(<?= $data['supplier_id'];?>).trigger('change');
             $('#purchase_order').val(<?= $data['id'];?>).trigger('change');
         });
         
-
         $('#date_receipt').on('apply.daterangepicker', function(ev, picker) {
               $('#date_receipt_val').val(picker.startDate.format('DD-MM-YYYY'));
               // table.ajax.reload();
@@ -547,7 +544,6 @@
                 { "data": "measure" },
                 { "data": "harga_satuan" },
 				{ "data": "price" },
-                { "data": "edits" },
                 { "data": "actions" },
             ],
             "columnDefs": [
