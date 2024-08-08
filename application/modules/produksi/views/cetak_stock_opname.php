@@ -150,7 +150,7 @@
 			->where("cat.material_id = 1")
 			->where("cat.status = 'PUBLISH'")
 			->group_by('cat.id')
-			->order_by('cat.material_id','asc')
+			->order_by('cat.date','desc')->limit(1)
 			->get()->result_array();
 			$nilai_semen = 0;
 			foreach ($stock_opname_semen as $x){
@@ -163,7 +163,7 @@
 			->where("cat.material_id = 2")
 			->where("cat.status = 'PUBLISH'")
 			->group_by('cat.id')
-			->order_by('cat.material_id','asc')
+			->order_by('cat.date','desc')->limit(1)
 			->get()->result_array();
 			$nilai_pasir = 0;
 			foreach ($stock_opname_pasir as $x){
@@ -176,7 +176,7 @@
 			->where("cat.material_id = 3")
 			->where("cat.status = 'PUBLISH'")
 			->group_by('cat.id')
-			->order_by('cat.material_id','asc')
+			->order_by('cat.date','desc')->limit(1)
 			->get()->result_array();
 			$nilai_batu1020 = 0;
 			foreach ($stock_opname_batu1020 as $x){
@@ -189,7 +189,7 @@
 			->where("cat.material_id = 4")
 			->where("cat.status = 'PUBLISH'")
 			->group_by('cat.id')
-			->order_by('cat.material_id','asc')
+			->order_by('cat.date','desc')->limit(1)
 			->get()->result_array();
 			$nilai_batu2030 = 0;
 			foreach ($stock_opname_batu2030 as $x){
@@ -202,7 +202,7 @@
 			->where("cat.material_id = 5")
 			->where("cat.status = 'PUBLISH'")
 			->group_by('cat.id')
-			->order_by('cat.material_id','asc')
+			->order_by('cat.date','desc')->limit(1)
 			->get()->result_array();
 			$nilai_solar = 0;
 			foreach ($stock_opname_solar as $x){
@@ -215,7 +215,7 @@
 			->where("cat.material_id = 19")
 			->where("cat.status = 'PUBLISH'")
 			->group_by('cat.id')
-			->order_by('cat.material_id','asc')
+			->order_by('cat.date','desc')->limit(1)
 			->get()->result_array();
 			$nilai_additive = 0;
 			foreach ($stock_opname_additive as $x){
