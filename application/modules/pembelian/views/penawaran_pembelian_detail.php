@@ -132,8 +132,8 @@
                                             <td class="text-left"><?= $produk ?></td>
                                             <td class="text-center"><?= $dt["qty"]; ?></td>
                                             <td class="text-center"><?= $measure; ?></td>
-                                            <td class="text-center"><?= number_format($dt['price'],0,',','.'); ?></td>
-                                            <td class="text-center"><?= number_format($dt['total'],0,',','.'); ?></td>
+                                            <td class="text-right"><?= number_format($dt['price'],0,',','.'); ?></td>
+                                            <td class="text-right"><?= number_format($dt['total'],0,',','.'); ?></td>
 											<td class="text-center"><?= $tax ?></td>
                                             <td class="text-center"><?= $pajak ?></td>
                                         </tr>
