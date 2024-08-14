@@ -6727,26 +6727,15 @@ class Pmm_model extends CI_Model {
     {   
         $total = 0;
 
-        $akun_220100 = $this->db->select('sum(total) as total')
-        ->from('pmm_penagihan_pembelian')
-        ->where("tanggal_invoice between '$date1' and '$date2'")
-        ->get()->row_array();
-
-        $akun_220100_pembayaran = $this->db->select('sum(total) as total')
-        ->from('pmm_pembayaran_penagihan_pembelian')
-        ->where("tanggal_pembayaran between '$date1' and '$date2'")
-        ->get()->row_array();
-
-        $tagihan = $akun_220100['total'] - $akun_220100_pembayaran['total'];
-
         $akun_220101 = $this->db->select('sum(prm.display_price) as total')
         ->from('pmm_receipt_material prm')
         ->join('pmm_purchase_order ppo', 'prm.purchase_order_id = ppo.id','left')
         ->where("prm.date_receipt between '$date1' and '$date2'")
+        ->where("prm.status_payment = 'UNCREATED'")
         ->where("ppo.status in ('PUBLISH','CLOSED')")
         ->get()->row_array();
         
-        $query = $akun_220101['total'] - $tagihan;
+        $query = $akun_220101['total'];
         
         if(!empty($query)){
             $total = $query;
