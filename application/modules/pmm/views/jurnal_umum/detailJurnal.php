@@ -136,7 +136,7 @@
                                             <?php if($detail["status"] === "PAID") : ?>
                                                 <a target="_blank" href="<?= base_url('pmm/jurnal_umum/cetakJurnal/'.$detail["id"]) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:10px;"> PRINT</a>
                                                 <?php
-                                                if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 6){
+                                                if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4){
                                                 ?>
                                                 <a  href="<?= base_url('pmm/jurnal_umum/form/'.$detail['id']) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:10px;"> EDIT</a>
                                                 <?php
