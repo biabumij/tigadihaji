@@ -19,7 +19,7 @@
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header">
-                                <h3>Butuh Persetujuan Ka. Plant</h3>
+                                <h3>Butuh Persetujuan Kantor Pusat</h3>
                                 <div class="text-left">
                                     <a href="<?php echo site_url('admin');?>">
                                     <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE DASHBOARD</b></button></a>
@@ -43,12 +43,6 @@
                                             ->order_by('created_on','desc')
                                             ->get()->result_array();
 
-                                            $permintaan = $this->db->select('*')
-                                            ->from('pmm_request_materials')
-                                            ->where("status = 'WAITING'")
-                                            ->order_by('created_on','desc')
-                                            ->get()->result_array();
-
                                             $verifikasi = $this->db->select('v.*, ppp.nomor_invoice')
                                             ->from('pmm_verifikasi_penagihan_pembelian v')
                                             ->join('pmm_penagihan_pembelian ppp','v.penagihan_pembelian_id = ppp.id','left')
@@ -61,16 +55,6 @@
                                                 <th class="text-center" width="5%"><?php echo $no++;?></th>
                                                 <th class="text-left"><?= $x['kategori_persetujuan'] = $this->pmm_model->GetStatusKategoriPersetujuan($x['kategori_persetujuan']); ?></th>
                                                 <th class="text-left"><?= $x['no_po'] = '<a href="'.site_url('pmm/purchase_order/manage/'.$x['id']).'" target="_blank">'.$x['no_po'].'</a>';?></th>
-                                                <th class="text-left"><?= $x['created_by'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$x['created_by']),'admin_name'); ?></th>
-                                                <th class="text-left"><?= $x['created_on'] = date('d/m/Y H:i:s',strtotime($x['created_on'])); ?></th>
-                                            </tr>
-                                            <?php endforeach; ?>
-
-                                            <?php foreach ($permintaan as $x): ?>
-                                            <tr>
-                                                <th class="text-center" width="5%"><?php echo $no++;?></th>
-                                                <th class="text-left"><?= $x['kategori_persetujuan'] = $this->pmm_model->GetStatusKategoriPersetujuan($x['kategori_persetujuan']); ?></th>
-                                                <th class="text-left"><?= $x['request_no'] = '<a href="'.site_url('pmm/request_materials/manage/'.$x['id']).'" target="_blank">'.$x['request_no'].'</a>';?></th>
                                                 <th class="text-left"><?= $x['created_by'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$x['created_by']),'admin_name'); ?></th>
                                                 <th class="text-left"><?= $x['created_on'] = date('d/m/Y H:i:s',strtotime($x['created_on'])); ?></th>
                                             </tr>
