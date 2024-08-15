@@ -10483,7 +10483,7 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_110101_lalu =$this->db->select('sum(pp.display_price) as debit')
+						$akun_110101_uncreated_lalu =$this->db->select('sum(pp.display_price) as total')
 						->from('pmm_productions pp')
 						->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
 						->where("pp.date_production between '$date3' and '$date4'")
@@ -10491,9 +10491,18 @@ class Reports extends CI_Controller {
 						->where("pp.status_payment = 'UNCREATED'")
 						->where("ppo.status in ('OPEN','CLOSED')")
 						->get()->row_array();
-						$akun_110101_lalu = $akun_110101_lalu['debit'];
 
-						$akun_110101 = $this->db->select('pp.date_production as tanggal_transaksi,ppo.contract_number as deskripsi,pp.display_price as debit')
+						$akun_110101_created_lalu =$this->db->select('sum(pp.display_price) as total')
+						->from('pmm_productions pp')
+						->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+						->where("pp.date_production between '$date3' and '$date4'")
+						->where("pp.status = 'PUBLISH'")
+						->where("pp.status_payment in ('CREATED','CREATING','PAID')")
+						->where("ppo.status in ('OPEN','CLOSED')")
+						->get()->row_array();
+						$akun_110101_lalu = $akun_110101_uncreated_lalu['total'] - $akun_110101_created_lalu['total'];
+
+						$akun_110101_uncreated = $this->db->select('pp.date_production as tanggal_transaksi,ppo.contract_number as deskripsi,pp.display_price as debit')
 						->from('pmm_productions pp')
 						->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
 						->where("pp.date_production between '$date1' and '$date2'")
@@ -10502,6 +10511,19 @@ class Reports extends CI_Controller {
 						->where("ppo.status in ('OPEN','CLOSED')")
 						->group_by('pp.id')
 						->get()->result_array();
+
+						$akun_110101_created = $this->db->select('pp.date_production as tanggal_transaksi,ppo.contract_number as deskripsi,pp.display_price as kredit')
+						->from('pmm_productions pp')
+						->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+						->where("pp.date_production between '$date1' and '$date2'")
+						->where("pp.status = 'PUBLISH'")
+						->where("pp.status_payment in ('CREATED','CREATING','PAID')")
+						->where("ppo.status in ('OPEN','CLOSED')")
+						->group_by('pp.id')
+						->get()->result_array();
+
+						$akun_110101 = array_merge($akun_110101_uncreated,$akun_110101_created);
+						usort($akun_110101, 'sortByOrder');
 						?>
 						<button onclick="myFunction3()" class="btn btn-info"><b>(1-10101) Piutang Belum Ditagih<b></button>
 						<div id="myDIV3" style="display:none;">
@@ -10968,25 +10990,47 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_220101_lalu = $this->db->select('sum(prm.display_price) as total')
+						$akun_220101_uncreated_lalu = $this->db->select('sum(prm.display_price) as total')
 						->from('pmm_receipt_material prm')
 						->join('pmm_purchase_order ppo', 'prm.purchase_order_id = ppo.id','left')
 						->where("prm.date_receipt between '$date3' and '$date4'")
 						->where("prm.status_payment = 'UNCREATED'")
 						->where("ppo.status in ('PUBLISH','CLOSED')")
 						->get()->row_array();
-						$akun_220101_lalu = $akun_220101_lalu['total'];
 
-						$akun_220101 = $this->db->select('ppo.date_po as tanggal_transaksi,ppo.no_po as nomor_transaksi,sum(prm.display_price) as debit')
+						$akun_220101_created_lalu = $this->db->select('sum(prm.display_price) as total')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order ppo', 'prm.purchase_order_id = ppo.id','left')
+						->where("prm.date_receipt between '$date3' and '$date4'")
+						->where("prm.status_payment in ('CREATED','CREATING')")
+						->where("ppo.status in ('PUBLISH','CLOSED')")
+						->get()->row_array();
+						$akun_220101_lalu = $akun_220101_uncreated_lalu['total'] - $akun_220101_created_lalu['total'];
+
+						$akun_220101_uncreated = $this->db->select('ppo.date_po as tanggal_transaksi,ppo.no_po as nomor_transaksi,sum(prm.display_price) as debit')
 						->from('pmm_receipt_material prm')
 						->join('pmm_purchase_order ppo', 'prm.purchase_order_id = ppo.id','left')
 						->where("prm.date_receipt between '$date1' and '$date2'")
 						->where("prm.status_payment = 'UNCREATED'")
 						->where("ppo.status in ('PUBLISH','CLOSED')")
-						->group_by('prm.purchase_order_id')
+						->group_by('prm.id')
 						->order_by('ppo.date_po','asc')
 						->order_by('ppo.no_po','asc')
 						->get()->result_array();
+
+						$akun_220101_created = $this->db->select('ppo.date_po as tanggal_transaksi,ppo.no_po as nomor_transaksi,sum(prm.display_price) as kredit')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order ppo', 'prm.purchase_order_id = ppo.id','left')
+						->where("prm.date_receipt between '$date1' and '$date2'")
+						->where("prm.status_payment in ('CREATED','CREATING')")
+						->where("ppo.status in ('PUBLISH','CLOSED')")
+						->group_by('prm.id')
+						->order_by('ppo.date_po','asc')
+						->order_by('ppo.no_po','asc')
+						->get()->result_array();
+
+						$akun_220101 = array_merge($akun_220101_uncreated,$akun_220101_created);
+						usort($akun_220101, 'sortByOrder');
 						?>
 						<button onclick="myFunction8()" class="btn btn-info"><b>(2-20101) Hutang Belum Ditagih<b></button>
 						<div id="myDIV8" style="display:none;">
