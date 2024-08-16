@@ -414,6 +414,15 @@ class Pembelian extends Secure_Controller
                 $row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 
+                $uploads_verifikasi = '<a href="javascript:void(0);" onclick="UploadDocVerifikasi('.$row['id'].')" class="btn btn-primary" style="border-radius:10px;" title="Upload Dok. Verifikasi" ><i class="fa fa-upload"></i> </a>';
+				$row['document_verifikasi'] = $uploads_verifikasi.' ';
+                
+                if (!empty($row['verifikasi_file'])) {
+                    $row['verifikasi_file'] = '<a href="'.base_url().'uploads/verifikasi_dokumen/'.$row['verifikasi_file'].'" target="_blank">'.$row['verifikasi_file'].'</a>';
+                } else {
+                    $row['verifikasi_file'] = '-';
+                }
+
                 $data[] = $row;
             }
         }
