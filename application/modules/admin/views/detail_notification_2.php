@@ -47,7 +47,7 @@
                                             <?php foreach ($permintaan as $x): ?>
                                             <tr>
                                                 <th class="text-center" width="5%"><?php echo $no++;?></th>
-                                                <th class="text-left"><?= $x['kategori_persetujuan'] = $this->pmm_model->GetStatusKategoriPersetujuan($x['kategori_persetujuan']); ?></th>
+                                                <th class="text-left"><?= $x['kategori_persetujuan']; ?></th>
                                                 <th class="text-left"><?= $x['request_no'] = '<a href="'.site_url('pmm/request_materials/manage/'.$x['id']).'" target="_blank">'.$x['request_no'].'</a>';?></th>
                                                 <th class="text-left"><?= $x['created_by'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$x['created_by']),'admin_name'); ?></th>
                                                 <th class="text-left"><?= $x['created_on'] = date('d/m/Y H:i:s',strtotime($x['created_on'])); ?></th>

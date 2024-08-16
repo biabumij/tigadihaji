@@ -53,7 +53,7 @@
                                             <?php $no=1; foreach ($waiting_po as $x): ?>
                                             <tr>
                                                 <th class="text-center" width="5%"><?php echo $no++;?></th>
-                                                <th class="text-left"><?= $x['kategori_persetujuan'] = $this->pmm_model->GetStatusKategoriPersetujuan($x['kategori_persetujuan']); ?></th>
+                                                <th class="text-left"><?= $x['kategori_persetujuan']; ?></th>
                                                 <th class="text-left"><?= $x['no_po'] = '<a href="'.site_url('pmm/purchase_order/manage/'.$x['id']).'" target="_blank">'.$x['no_po'].'</a>';?></th>
                                                 <th class="text-left"><?= $x['created_by'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$x['created_by']),'admin_name'); ?></th>
                                                 <th class="text-left"><?= $x['created_on'] = date('d/m/Y H:i:s',strtotime($x['created_on'])); ?></th>
@@ -63,7 +63,7 @@
                                             <?php foreach ($verifikasi as $x): ?>
                                             <tr>
                                                 <th class="text-center" width="5%"><?php echo $no++;?></th>
-                                                <th class="text-left"><?= $x['kategori_persetujuan'] = $this->pmm_model->GetStatusKategoriPersetujuan($x['kategori_persetujuan']); ?></th>
+                                                <th class="text-left"><?= $x['kategori_persetujuan']; ?></th>
                                                 <th class="text-left"><?= $x['nomor_invoice'] = '<a href="'.base_url('pembelian/read_notification/'.$x['id']).'" target="_blank">'.$x['nomor_invoice'].'</a>';?></th>
                                                 <th class="text-left"><?= $x['created_by'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$x['created_by']),'admin_name'); ?></th>
                                                 <th class="text-left"><?= $x['created_on'] = date('d/m/Y H:i:s',strtotime($x['created_on'])); ?></th>
