@@ -335,7 +335,7 @@
 							</td>
 							<td align="center">
 								<b><u>Rani Oktavia Rizal</u><br />
-								Adm. Lohistik</b>
+								Adm. Logistik</b>
 							</td>
 						</tr>
 					</table>
