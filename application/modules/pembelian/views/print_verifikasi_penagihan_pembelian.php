@@ -227,7 +227,7 @@
 			</tr>
 		</table>
 		<br /><br />
-        <table width="98%" border="0" cellpadding="0">
+        <!--<table width="98%" border="0" cellpadding="0">
 			<?php
 				$this->db->select('a.admin_name, g.admin_group_name, a.admin_ttd');
 				$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
@@ -252,7 +252,7 @@
 				$ttd_pusat = $this->db->select('*')
 				->from('pmm_verifikasi_penagihan_pembelian')
 				->where('id', $row['id'])
-				//->where('approve_unit_head', 'SETUJUI')
+				->where('approve_unit_head', 'SETUJUI')
 				->get()->row_array();
 
 				$this->db->select('a.admin_name, g.admin_group_name, a.admin_ttd');
@@ -264,8 +264,6 @@
 				$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
 				$this->db->where('a.admin_id',$ttd_pusat['pusat']);
 				$pusat = $this->db->get('tbl_admin a')->row_array();
-
-				
 			?>
             <tr border="1">
                 <td width="100%">
@@ -333,6 +331,119 @@
                             </td>
 							<td align="center">
 								<b><?= $pusat['admin_group_name'];?></b> 
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>-->
+
+		<table width="98%" border="0" cellpadding="0">
+			<?php
+				$this->db->select('a.admin_name, g.admin_group_name, a.admin_ttd');
+				$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
+				$this->db->where('a.admin_id',$row['created_by']);
+				$verifikator = $this->db->get('tbl_admin a')->row_array();
+				
+				$ttd_proyek = $this->db->select('*')
+				->from('pmm_verifikasi_penagihan_pembelian')
+				->where('id', $row['id'])
+				->get()->row_array();
+
+				$this->db->select('a.admin_name, g.admin_group_name, a.admin_ttd');
+				$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
+				$this->db->where('a.admin_id',$ttd_proyek['logistik']);
+				$logistik = $this->db->get('tbl_admin a')->row_array();
+				
+				$this->db->select('a.admin_name, g.admin_group_name, a.admin_ttd');
+				$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
+				$this->db->where('a.admin_id',$ttd_proyek['unit_head']);
+				$unit_head = $this->db->get('tbl_admin a')->row_array();
+
+				$ttd_pusat = $this->db->select('*')
+				->from('pmm_verifikasi_penagihan_pembelian')
+				->where('id', $row['id'])
+				->where('approve_unit_head', 'SETUJUI')
+				->get()->row_array();
+
+				$this->db->select('a.admin_name, g.admin_group_name, a.admin_ttd');
+				$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
+				$this->db->where('a.admin_id',$ttd_pusat['keu_pusat']);
+				$keu_pusat = $this->db->get('tbl_admin a')->row_array();
+
+				$this->db->select('a.admin_name, g.admin_group_name, a.admin_ttd');
+				$this->db->join('tbl_admin_group g','a.admin_group_id = g.admin_group_id','left');
+				$this->db->where('a.admin_id',$ttd_pusat['pusat']);
+				$pusat = $this->db->get('tbl_admin a')->row_array();
+
+				
+			?>
+            <tr border="1">
+                <td width="100%">
+				<table width="100%" border="1" cellpadding="2">
+                        <tr>
+                            <td align="center">
+                                Dibuat Oleh
+                            </td>
+                            <td align="center" colspan="2">
+                                Diperiksa 
+                            </td>
+							<td align="center">
+								Disetujui
+                            </td>
+							<td align="center">
+                                Mengetahui
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center" height="75px">
+								
+                            </td>
+                            <td align="center">
+								
+                            </td>
+							<td align="center">
+								
+                            </td>
+                            <td align="center">
+								
+                            </td>
+							<td align="center">
+								
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+								<?= $verifikator['admin_name'];?>
+                            </td>
+                            <td align="center">
+								<?= $logistik['admin_name'];?>
+                            </td>
+							<td align="center">
+								Debi Khania
+                            </td>
+                            <td align="center">
+								<?= $unit_head['admin_name'];?>
+                            </td>
+							<td align="center">
+								Erika Sinaga
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+								<b><?= $verifikator['admin_group_name'];?></b> 
+                            </td>
+                            <td align="center">
+								<b><?= $logistik['admin_group_name'];?></b> 
+                            </td>
+							<td align="center">
+								<b>Keuangan Pusat</b> 
+                            </td>
+                            <td align="center">
+								<b><?= $unit_head['admin_group_name'];?></b> 
+                            </td>
+							<td align="center">
+								<b>Dir. Keuangan & SDM</b> 
                             </td>
                         </tr>
                     </table>
