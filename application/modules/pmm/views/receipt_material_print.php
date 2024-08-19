@@ -143,7 +143,7 @@
             <th colspan="8" style="text-align:right;">TOTAL</th>
                <th style="text-align:center;"><?php echo number_format($total,2,',','.');?></th>
                <th></th>
-               <th style="text-align:right;"><?php echo number_format($total_biaya,2,',','.');?></th>
+               <th style="text-align:right;"><?php echo number_format($total_biaya,0,',','.');?></th>
            </tr>
     </table>
 
