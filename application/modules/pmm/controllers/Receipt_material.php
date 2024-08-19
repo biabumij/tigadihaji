@@ -1641,7 +1641,7 @@ class Receipt_material extends CI_Controller {
 		$pdf->setHtmlVSpace($tagvs);
 
 		// add a page
-		$pdf->AddPage('');
+		$pdf->AddPage('L');
 		$pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
 		$pdf->SetY(5);
