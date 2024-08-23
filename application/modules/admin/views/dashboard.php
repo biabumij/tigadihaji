@@ -233,9 +233,6 @@
                                             </li>
                                         </ul>
                                     </th>
-                                    <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6,7,8))){
-                                    ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#keuangan" aria-expanded="false" aria-controls="kp">
                                         <ul class="row text-center list-inline  wowload bounceIn">
                                             <li style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 40%, #57d762 80%);">
@@ -244,12 +241,6 @@
                                             </li>
                                         </ul>
                                     </th>
-                                    <?php
-                                    }
-                                    ?>
-                                    <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
-                                    ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#rencana" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn">
                                             <li class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
@@ -258,9 +249,6 @@
                                             </li>
                                         </ul>
                                     </th>
-                                    <?php
-                                    }
-                                    ?>
                                 </tr>
                             </table>
                             <table width="100%">
