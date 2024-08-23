@@ -449,6 +449,9 @@
                                     </th>
                                 </tr>
                             </table>
+                            <?php
+                            if(in_array($this->session->userdata('admin_group_id'), array(1))){
+                            ?>
                             <table width="100%">
                                 <tr>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#" aria-expanded="false" aria-controls="beton">
@@ -467,9 +470,6 @@
                                     </th>
                                 </tr>
                             </table>
-                            <?php
-                            if(in_array($this->session->userdata('admin_group_id'), array(1))){
-                            ?>
                             <table width="100%">
                                 <tr>
                                     <th width="25%" class="text-center">
