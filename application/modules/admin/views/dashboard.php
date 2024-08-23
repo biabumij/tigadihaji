@@ -335,6 +335,18 @@
                                     <?php
                                     }
                                     ?>
+
+                                    <?php
+                                    if(in_array($this->session->userdata('admin_group_id'), array(6))){
+                                    ?>
+                                    <th width="25%" class="text-center">
+                                        <ul class="row text-center list-inline  wowload bounceInUp collapse" id="rencana">
+                        
+                                        </ul>
+                                    </th>
+                                    <?php
+                                    }
+                                    ?>
                                 </tr>
                             </table>
                             <table width="100%">
@@ -467,13 +479,12 @@
                                     </th>
                                 </tr>
                             </table>
+                            <?php
+                            if(in_array($this->session->userdata('admin_group_id'), array(1))){
+                            ?>
                             <table width="100%">
-                                <tr>                   
-                                    <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1))){
-                                    ?>
+                                <tr>
                                     <th width="25%" class="text-center">
-                                        
                                     </th>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="settings">
@@ -493,11 +504,11 @@
                                     </th>
                                     <th width="25%" class="text-center">
                                     </th>
-                                    <?php
-                                    }
-                                    ?>
                                 </tr>
                             </table>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
