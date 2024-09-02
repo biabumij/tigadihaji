@@ -202,7 +202,7 @@
                                         </div>
                                     </th>
                                 </tr>
-                                <tr>
+                                <!--<tr>
                                     <th colspan="2" class="text-center">
                                         <div class="col-sm-12">
                                             <figure class="highcharts-figure">
@@ -210,7 +210,7 @@
                                             </figure>
                                         </div>
                                     </th>
-                                </tr>
+                                </tr>-->
                             </table>
                         </div>
                     </div>
