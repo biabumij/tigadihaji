@@ -222,6 +222,7 @@
 			$persentase_laba_sebelum_pajak_2 = ($total_penjualan_all_2!=0)?($laba_usaha_2 / $total_penjualan_all_2) * 100:0;
 	        ?>
 
+			</br >
 			<table width="98%" border="0" cellpadding="3">
 				<tr class="table-active" style="">
 					<td width="50%">
