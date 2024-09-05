@@ -1368,14 +1368,14 @@ class Pmm extends CI_Controller {
 		$last_opname = $this->db->select('date,material_id')
 		->from('pmm_remaining_materials_cat')
 		->where("material_id = 1")
-		->order_by('date','desc')->limit(2.1)
+		->order_by('date','desc')->limit(1,2)
 		->get()->row_array();
 		$last_opname = date('Y-m-d', strtotime($last_opname['date']));
 
 		$this->db->where('status','PUBLISH');
 		$this->db->where("date >= '$last_opname'");
+		$this->db->group_by('id');
 		$this->db->order_by('date','desc');
-		$this->db->order_by('id','desc');
 		if(!empty($this->input->post('material_id'))){
 			$this->db->where('material_id',$this->input->post('material_id'));
 		}
@@ -1386,7 +1386,6 @@ class Pmm extends CI_Controller {
 			$this->db->where('date <=',date('Y-m-d',strtotime($arr_date[1])));
 		}
 		$query = $this->db->get('pmm_remaining_materials_cat');
-		file_put_contents("D:\\test.txt", $this->db->last_query());
 		if($query->num_rows() > 0){
 			foreach ($query->result_array() as $key => $row) {
 				$row['no'] = $key+1;
