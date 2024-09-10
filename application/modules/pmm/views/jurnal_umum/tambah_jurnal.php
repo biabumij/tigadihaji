@@ -159,7 +159,7 @@
             locale: {
               format: 'DD-MM-YYYY'
             },
-            minDate: moment().add(-1, 'M').toDate(),
+            minDate: moment().add(-39, 'd').toDate(),
 			//maxDate: moment().add(+0, 'd').toDate(),
             //minDate: moment().startOf('month').toDate(),
 			maxDate: moment().endOf('month').toDate(),
