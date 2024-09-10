@@ -331,9 +331,9 @@
             locale: {
                 format: 'DD-MM-YYYY'
             },
-            //minDate: moment().add(-2, 'M').toDate(),
+            minDate: moment().add(-1, 'M').toDate(),
 			//maxDate: moment().add(+0, 'd').toDate(),
-            minDate: moment().startOf('month').toDate(),
+            //minDate: moment().startOf('month').toDate(),
 			maxDate: moment().endOf('month').toDate(),
         });
         $('.dtpicker').on('apply.daterangepicker', function(ev, picker) {
