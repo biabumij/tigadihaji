@@ -510,17 +510,9 @@
 				<div align="left" style="display: block;font-weight: bold;font-size: 9px;text-transform:uppercase;">2.2. ALAT</div>
 				</th>	
 			</tr>
+			<?php $no=1; foreach ($produk_tm as $x): ?>
 			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri">1.</th>	
-				<th align="left" class="table-border-pojok-tengah">Batching Plant</th>
-				<th align="right" class="table-border-pojok-tengah"></th>
-				<th align="center" class="table-border-pojok-tengah"></th>
-				<th align="right" class="table-border-pojok-tengah"></th>
-				<th align="right" class="table-border-pojok-kanan"></th>
-	        </tr>
-			<?php foreach ($produk_tm as $x): ?>
-			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri"></th>
+				<th align="center" class="table-border-pojok-kiri"><?php echo $no++;?></th>
 				<th align="right" class="table-border-pojok-tengah"><?= $x['nama_produk'] ?></th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($rak_alat['vol_tm'],2,',','.');?></th>
 				<th align="center" class="table-border-pojok-tengah"><?= $x['measure_name'] ?></th>
@@ -528,17 +520,9 @@
 				<th align="right" class="table-border-pojok-kanan"><?php echo number_format($rak_alat['vol_tm'] * $x['price'],0,',','.');?></th>
 	        </tr>
 			<?php endforeach; ?>
-			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri">2.</th>	
-				<th align="left" class="table-border-pojok-tengah">Excavator</th>
-				<th align="right" class="table-border-pojok-tengah"></th>
-				<th align="center" class="table-border-pojok-tengah"></th>
-				<th align="right" class="table-border-pojok-tengah"></th>
-				<th align="right" class="table-border-pojok-kanan"></th>
-	        </tr>
 			<?php foreach ($produk_exc as $x): ?>
 			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri"></th>
+				<th align="center" class="table-border-pojok-kiri"><?php echo $no++;?></th>
 				<th align="right" class="table-border-pojok-tengah"><?= $x['nama_produk'] ?></th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($rak_alat['vol_exc'],2,',','.');?></th>
 				<th align="center" class="table-border-pojok-tengah"><?= $x['measure_name'] ?></th>
@@ -546,14 +530,6 @@
 				<th align="right" class="table-border-pojok-kanan"><?php echo number_format($rak_alat['vol_exc']* $x['price'],0,',','.');?></th>
 	        </tr>
 			<?php endforeach; ?>
-			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri">3.</th>	
-				<th align="left" class="table-border-pojok-tengah">Transfer Semen</th>
-				<th align="right" class="table-border-pojok-tengah"></th>
-				<th align="center" class="table-border-pojok-tengah"></th>
-				<th align="right" class="table-border-pojok-tengah"></th>
-				<th align="right" class="table-border-pojok-kanan"></th>
-	        </tr>
 			<?php foreach ($produk_tr as $x): ?>
 			<tr class="table-baris1">
 				<th align="center" class="table-border-pojok-kiri"></th>
