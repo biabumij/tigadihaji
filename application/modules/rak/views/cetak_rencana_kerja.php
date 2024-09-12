@@ -148,7 +148,7 @@
 				<th width="20%" align="center" class="table-border-pojok-kanan">TOTAL</th>
             </tr>
 			<tr class="table-baris1">
-				<td align="center" class="table-border-pojok-kiri">1.</td>
+				<td align="center" class="table-border-pojok-kiri">1</td>
 				<td align="left" class="table-border-pojok-tengah">Beton K-125 </td>
 				<td align="right" class="table-border-pojok-tengah"><?= number_format($rak['vol_produk_a'],2,',','.'); ?></td>
 				<td align="center" class="table-border-pojok-tengah">M3</td>
@@ -161,7 +161,7 @@
 				<td align="right" class="table-border-pojok-kanan"><?= number_format($a3,0,',','.'); ?></td>
 			</tr>
 			<tr class="table-baris1">
-				<td align="center" class="table-border-pojok-kiri">2.</td>
+				<td align="center" class="table-border-pojok-kiri">2</td>
 				<td align="left" class="table-border-pojok-tengah">Beton K-175 </td>
 				<td align="right" class="table-border-pojok-tengah"><?= number_format($rak['vol_produk_b'],2,',','.'); ?></td>
 				<td align="center" class="table-border-pojok-tengah">M3</td>
@@ -174,7 +174,7 @@
 				<td align="right" class="table-border-pojok-kanan"><?= number_format($b3,0,',','.'); ?></td>
 			</tr>
 			<tr class="table-baris1">
-				<td align="center" class="table-border-pojok-kiri">3.</td>
+				<td align="center" class="table-border-pojok-kiri">3</td>
 				<td align="left" class="table-border-pojok-tengah">Beton K-225 </td>
 				<td align="right" class="table-border-pojok-tengah"><?= number_format($rak['vol_produk_c'],2,',','.'); ?></td>
 				<td align="center" class="table-border-pojok-tengah">M3</td>
@@ -187,7 +187,7 @@
 				<td align="right" class="table-border-pojok-kanan"><?= number_format($c3,0,',','.'); ?></td>
 			</tr>
 			<tr class="table-baris1">
-				<td align="center" class="table-border-pojok-kiri">4.</td>
+				<td align="center" class="table-border-pojok-kiri">4</td>
 				<td align="left" class="table-border-pojok-tengah">Beton K-250 </td>
 				<td align="right" class="table-border-pojok-tengah"><?= number_format($rak['vol_produk_d'],2,',','.'); ?></td>
 				<td align="center" class="table-border-pojok-tengah">M3</td>
@@ -200,7 +200,7 @@
 				<td align="right" class="table-border-pojok-kanan"><?= number_format($d3,0,',','.'); ?></td>
 			</tr>
 			<tr class="table-baris1">
-				<td align="center" class="table-border-pojok-kiri">5.</td>
+				<td align="center" class="table-border-pojok-kiri">5</td>
 				<td align="left" class="table-border-pojok-tengah">Beton K-300</td>
 				<td align="right" class="table-border-pojok-tengah"><?= number_format($rak['vol_produk_e'],2,',','.'); ?></td>
 				<td align="center" class="table-border-pojok-tengah">M3</td>
@@ -213,7 +213,7 @@
 				<td align="right" class="table-border-pojok-kanan"><?= number_format($e3,0,',','.'); ?></td>
 			</tr>
 			<tr class="table-baris1">
-				<td align="center" class="table-border-pojok-kiri">6.</td>
+				<td align="center" class="table-border-pojok-kiri">6</td>
 				<td align="left" class="table-border-pojok-tengah">Beton K-350</td>
 				<td align="right" class="table-border-pojok-tengah"><?= number_format($rak['vol_produk_f'],2,',','.'); ?></td>
 				<td align="center" class="table-border-pojok-tengah">M3</td>
@@ -386,7 +386,7 @@
 				</th>	
 			</tr>
 			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri">1.</th>	
+				<th align="center" class="table-border-pojok-kiri">1</th>	
 				<th align="left" class="table-border-pojok-tengah">Semen</th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($total_volume_semen,2,',','.');?></th>
 				<th align="center" class="table-border-pojok-tengah">Ton</th>
@@ -394,7 +394,7 @@
 				<th align="right" class="table-border-pojok-kanan"><?php echo number_format($total_volume_semen * $rak['harga_semen'],0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri">2.</th>	
+				<th align="center" class="table-border-pojok-kiri">2</th>	
 				<th align="left" class="table-border-pojok-tengah">Pasir</th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($total_volume_pasir,2,',','.');?></th>
 				<th align="center" class="table-border-pojok-tengah">M3</th>
@@ -402,7 +402,7 @@
 				<th align="right" class="table-border-pojok-kanan"><?php echo number_format($total_volume_pasir * $rak['harga_pasir'],0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri">3.</th>	
+				<th align="center" class="table-border-pojok-kiri">3</th>	
 				<th align="left" class="table-border-pojok-tengah">Batu Split 10-20</th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($total_volume_batu1020,2,',','.');?></th>
 				<th align="center" class="table-border-pojok-tengah">M3</th>
@@ -410,7 +410,7 @@
 				<th align="right" class="table-border-pojok-kanan"><?php echo number_format($total_volume_batu1020 * $rak['harga_batu1020'],0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri">4.</th>	
+				<th align="center" class="table-border-pojok-kiri">4</th>	
 				<th align="left" class="table-border-pojok-tengah">Batu Split 20-30</th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($total_volume_batu2030,2,',','.');?></th>
 				<th align="center" class="table-border-pojok-tengah">M3</th>
@@ -418,7 +418,7 @@
 				<th align="right" class="table-border-pojok-kanan"><?php echo number_format($total_volume_batu2030 * $rak['harga_batu2030'],0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri">5.</th>	
+				<th align="center" class="table-border-pojok-kiri">5</th>	
 				<th align="left" class="table-border-pojok-tengah">BBM Solar</th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($total_volume_solar,2,',','.');?></th>
 				<th align="center" class="table-border-pojok-tengah">M3</th>
@@ -532,7 +532,7 @@
 			<?php endforeach; ?>
 			<?php foreach ($produk_tr as $x): ?>
 			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri"><?php echo $no++;?>.</th>
+				<th align="center" class="table-border-pojok-kiri"><?php echo $no++;?></th>
 				<th align="left" class="table-border-pojok-tengah"><?= $x['nama_produk'] ?></th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($rak_alat['vol_tr'],2,',','.');?></th>
 				<th align="center" class="table-border-pojok-tengah"><?= $x['measure_name'] ?></th>
