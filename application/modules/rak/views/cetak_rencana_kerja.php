@@ -522,7 +522,7 @@
 			<?php endforeach; ?>
 			<?php foreach ($produk_exc as $x): ?>
 			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri"><?php echo $no++;?></th>
+				<th align="center" class="table-border-pojok-kiri"><?php echo $no++;?>.</th>
 				<th align="left" class="table-border-pojok-tengah"><?= $x['nama_produk'] ?></th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($rak_alat['vol_exc'],2,',','.');?></th>
 				<th align="center" class="table-border-pojok-tengah"><?= $x['measure_name'] ?></th>
@@ -532,7 +532,7 @@
 			<?php endforeach; ?>
 			<?php foreach ($produk_tr as $x): ?>
 			<tr class="table-baris1">
-				<th align="center" class="table-border-pojok-kiri"></th>
+				<th align="center" class="table-border-pojok-kiri"><?php echo $no++;?>.</th>
 				<th align="left" class="table-border-pojok-tengah"><?= $x['nama_produk'] ?></th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($rak_alat['vol_tr'],2,',','.');?></th>
 				<th align="center" class="table-border-pojok-tengah"><?= $x['measure_name'] ?></th>
