@@ -516,7 +516,7 @@
 	    </table>
 		<br /><br />
 		<?php
-		if(in_array($this->session->userdata('admin_group_id'), array(1,2,3))){
+		if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4))){
 		?>
 		<table width="98%" cellpadding="5">
 			<?php
@@ -903,7 +903,7 @@
 		}
 		?>
 		<?php
-		if(in_array($this->session->userdata('admin_group_id'), array(1,4))){
+		if(in_array($this->session->userdata('admin_group_id'), array(1))){
 		?>
 		<br /><br />
 		<table width="98%" style="font-size:7px;">
