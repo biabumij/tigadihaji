@@ -50,8 +50,8 @@ class Biaya extends CI_Controller {
         $data = array();
 		$filter_date = $this->input->post('filter_date');
 
-        $date_now = date('Y-m-01');
-        $last_opname = date('Y-m-d', strtotime('+1 days -0 months', strtotime($date_now)));
+        $kunci_rakor = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('kunci_rakor')->row_array();
+        $last_opname = date('Y-m-d', strtotime('0 days', strtotime($kunci_rakor['date'])));
 
 		if(!empty($filter_date)){
 			$arr_date = explode(' - ', $filter_date);

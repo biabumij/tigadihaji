@@ -374,14 +374,17 @@
     <script src="<?php echo base_url();?>assets/back/theme/vendor/jquery.number.min.js"></script>
 
     <script type="text/javascript">
-        
+        <?php
+        $kunci_rakor = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('kunci_rakor')->row_array();
+        $last_opname = date('d-m-Y', strtotime('+1 days', strtotime($kunci_rakor['date'])));
+        ?>
         $('input.numberformat').number( true, 2,',','.' );
         $('.dtpicker').daterangepicker({
             singleDatePicker: true,
             locale: {
                 format: 'DD-MM-YYYY'
             },
-            minDate: moment().add(-40, 'd').toDate(),
+            minDate: '<?php echo $last_opname;?>',
 			//maxDate: moment().add(+0, 'd').toDate(),
             //minDate: moment().startOf('month').toDate(),
 			maxDate: moment().endOf('month').toDate(),
