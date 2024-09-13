@@ -81,10 +81,10 @@
 														<p><h5><b>Rencana Kerja</b></h5></p>
 														<a href="#rencana_kerja" aria-controls="rencana_kerja" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
 													</div>	                                       
-													<div class="col-sm-5">
+													<!--<div class="col-sm-5">
 														<p><h5><b>Prognosa Produksi</b></h5></p>
 														<a href="#prognosa_produksi" aria-controls="prognosa_produksi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>
-													</div>	
+													</div>-->
 												</div>
 											</div>
 										</div>

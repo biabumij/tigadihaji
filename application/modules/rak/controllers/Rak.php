@@ -30,10 +30,11 @@ class Rak extends Secure_Controller {
 			$data['pasir'] = $this->pmm_model->getMatByPenawaranRencanaKerjaPasir();
 			$data['batu1020'] = $this->pmm_model->getMatByPenawaranRencanaKerjaBatu1020();
 			$data['batu2030'] = $this->pmm_model->getMatByPenawaranRencanaKerjaBatu2030();
+			$data['additive'] = $this->pmm_model->getMatByPenawaranRencanaKerjaAdditive();
 			$data['solar'] = $this->pmm_model->getMatByPenawaranRencanaKerjaSolar();
+			$data['bp'] = $this->pmm_model->getMatByPenawaranRencanaKerjaBP();
 			$data['tm'] = $this->pmm_model->getMatByPenawaranRencanaKerjaTM();
-			$data['exc'] = $this->pmm_model->getMatByPenawaranRencanaKerjaEXC();
-			$data['tr'] = $this->pmm_model->getMatByPenawaranRencanaKerjaTransferSemen();
+			$data['wl'] = $this->pmm_model->getMatByPenawaranRencanaKerjaWL();
 			$this->load->view('rak/form_rencana_kerja', $data);
 		} else {
 			redirect('admin');
@@ -58,12 +59,12 @@ class Rak extends Secure_Controller {
 
 		$vol_bbm_solar =  str_replace('.', '', $this->input->post('vol_bbm_solar'));
 		$vol_bbm_solar =  str_replace(',', '.', $vol_bbm_solar);
+		$vol_bp =  str_replace('.', '', $this->input->post('vol_bp'));
+		$vol_bp =  str_replace(',', '.', $vol_bp);
 		$vol_tm =  str_replace('.', '', $this->input->post('vol_tm'));
 		$vol_tm =  str_replace(',', '.', $vol_tm);
-		$vol_exc =  str_replace('.', '', $this->input->post('vol_exc'));
-		$vol_exc =  str_replace(',', '.', $vol_exc);
-		$vol_tr =  str_replace('.', '', $this->input->post('vol_tr'));
-		$vol_tr =  str_replace(',', '.', $vol_tr);
+		$vol_wl =  str_replace('.', '', $this->input->post('vol_wl'));
+		$vol_wl =  str_replace(',', '.', $vol_wl);
 
 		$komposisi_125 =  $this->input->post('komposisi_125');
 		$komposisi_175 =  $this->input->post('komposisi_175');
@@ -84,55 +85,61 @@ class Rak extends Secure_Controller {
 		$penawaran_id_pasir =  $this->input->post('penawaran_id_pasir');
 		$penawaran_id_batu1020 =  $this->input->post('penawaran_id_batu1020');
 		$penawaran_id_batu2030 =  $this->input->post('penawaran_id_batu2030');
+		$penawaran_id_additive =  $this->input->post('penawaran_id_additive');
 		$penawaran_id_solar =  $this->input->post('penawaran_id_solar');
+		$penawaran_id_bp =  $this->input->post('penawaran_id_bp');
 		$penawaran_id_tm =  $this->input->post('penawaran_id_tm');
-		$penawaran_id_exc =  $this->input->post('penawaran_id_exc');
-		$penawaran_id_tr =  $this->input->post('penawaran_id_tr');
+		$penawaran_id_wl =  $this->input->post('penawaran_id_wl');
 
 		$harga_semen =  str_replace('.', '', $this->input->post('price_semen'));
 		$harga_pasir =  str_replace('.', '', $this->input->post('price_pasir'));
 		$harga_batu1020 =  str_replace('.', '', $this->input->post('price_batu1020'));
 		$harga_batu2030 =  str_replace('.', '', $this->input->post('price_batu2030'));
+		$harga_additive =  str_replace('.', '', $this->input->post('harga_additive'));
 		$harga_solar =  str_replace('.', '', $this->input->post('price_solar'));
+		$harga_bp =  str_replace('.', '', $this->input->post('price_bp'));
 		$harga_tm =  str_replace('.', '', $this->input->post('price_tm'));
-		$harga_exc =  str_replace('.', '', $this->input->post('price_exc'));
-		$harga_tr =  str_replace('.', '', $this->input->post('price_tr'));
+		$harga_wl =  str_replace('.', '', $this->input->post('price_wl'));
 
 		$satuan_semen =  $this->input->post('measure_semen');
 		$satuan_pasir =  $this->input->post('measure_pasir');
 		$satuan_batu1020 =  $this->input->post('measure_batu1020');
 		$satuan_batu2030 =  $this->input->post('measure_batu2030');
+		$satuan_additive =  $this->input->post('measure_additive');
 		$satuan_solar =  $this->input->post('measure_solar');
+		$satuan_bp =  $this->input->post('measure_bp');
 		$satuan_tm =  $this->input->post('measure_tm');
-		$satuan_exc =  $this->input->post('measure_exc');
-		$satuan_tr =  $this->input->post('measure_tr');
+		$satuan_wl =  $this->input->post('measure_wl');
 	
 		$tax_id_semen =  $this->input->post('tax_id_semen');
 		$tax_id_pasir =  $this->input->post('tax_id_pasir');
 		$tax_id_batu1020 =  $this->input->post('tax_id_batu1020');
 		$tax_id_batu2030 =  $this->input->post('tax_id_batu2030');
+		$tax_id_additive =  $this->input->post('tax_id_additive');
 		$tax_id_solar =  $this->input->post('tax_id_solar');
+		$tax_id_bp =  $this->input->post('tax_id_bp');
 		$tax_id_tm =  $this->input->post('tax_id_tm');
-		$tax_id_exc =  $this->input->post('tax_id_exc');
-		$tax_id_tr =  $this->input->post('tax_id_tr');
+		$tax_id_wl =  $this->input->post('tax_id_wl');
 		
 		$pajak_id_semen =  $this->input->post('pajak_id_semen');
 		$pajak_id_pasir =  $this->input->post('pajak_id_pasir');
 		$pajak_id_batu1020 =  $this->input->post('pajak_id_batu1020');
 		$pajak_id_batu2030 =  $this->input->post('pajak_id_batu2030');
+		$pajak_id_additive =  $this->input->post('pajak_id_additive');
 		$pajak_id_solar =  $this->input->post('pajak_id_solar');
+		$pajak_id_bp =  $this->input->post('pajak_id_bp');
 		$pajak_id_tm =  $this->input->post('pajak_id_tm');
-		$pajak_id_exc =  $this->input->post('pajak_id_exc');
-		$pajak_id_tr =  $this->input->post('pajak_id_tr');
+		$pajak_id_wl =  $this->input->post('pajak_id_wl');
 		
 		$supplier_id_semen =  $this->input->post('supplier_id_semen');
 		$supplier_id_pasir =  $this->input->post('supplier_id_pasir');
 		$supplier_id_batu1020 =  $this->input->post('supplier_id_batu1020');
 		$supplier_id_batu2030 =  $this->input->post('supplier_id_batu2030');
+		$supplier_id_additive =  $this->input->post('supplier_id_additive');
 		$supplier_id_solar =  $this->input->post('supplier_id_solar');
+		$supplier_id_bp =  $this->input->post('supplier_id_bp');
 		$supplier_id_tm =  $this->input->post('supplier_id_tm');
-		$supplier_id_exc =  $this->input->post('supplier_id_exc');
-		$supplier_id_tr =  $this->input->post('supplier_id_tr');
+		$supplier_id_wl =  $this->input->post('supplier_id_wl');
 		
 		$this->db->trans_start(); # Starting Transaction
 		$this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
@@ -148,9 +155,9 @@ class Rak extends Secure_Controller {
 			'vol_produk_f' => $vol_produk_f,
 
 			'vol_bbm_solar' => $vol_bbm_solar,
+			'vol_bp' => $vol_bp,
 			'vol_tm' => $vol_tm,
-			'vol_exc' => $vol_exc,
-			'vol_tr' => $vol_tr,
+			'vol_wl' => $vol_wl,
 
 			'price_a' => $price_a,
 			'price_b' => $price_b,
@@ -171,55 +178,61 @@ class Rak extends Secure_Controller {
 			'penawaran_id_pasir' => $penawaran_id_pasir,
 			'penawaran_id_batu1020' => $penawaran_id_batu1020,
 			'penawaran_id_batu2030' => $penawaran_id_batu2030,
+			'penawaran_id_additive' => $penawaran_id_additive,
 			'penawaran_id_solar' => $penawaran_id_solar,
+			'penawaran_id_bp' => $penawaran_id_bp,
 			'penawaran_id_tm' => $penawaran_id_tm,
-			'penawaran_id_exc' => $penawaran_id_exc,
-			'penawaran_id_tr' => $penawaran_id_tr,
+			'penawaran_id_wl' => $penawaran_id_wl,
 			
 			'harga_semen' => $harga_semen,
 			'harga_pasir' => $harga_pasir,
 			'harga_batu1020' => $harga_batu1020,
 			'harga_batu2030' => $harga_batu2030,
+			'harga_additive' => $harga_additive,
 			'harga_solar' => $harga_solar,
+			'harga_bp' => $harga_bp,
 			'harga_tm' => $harga_tm,
-			'harga_exc' => $harga_exc,
-			'harga_tr' => $harga_tr,	
+			'harga_wl' => $harga_wl,	
 
 			'satuan_semen' => $satuan_semen,
 			'satuan_pasir' => $satuan_pasir,
 			'satuan_batu1020' => $satuan_batu1020,
 			'satuan_batu2030' => $satuan_batu2030,
+			'satuan_additive' => $satuan_additive,
 			'satuan_solar' => $satuan_solar,
+			'satuan_bp' => $satuan_bp,
 			'satuan_tm' => $satuan_tm,
-			'satuan_exc' => $satuan_exc,
-			'satuan_tr' => $satuan_tr,
+			'satuan_wl' => $satuan_wl,
 			
 			'tax_id_semen' => $tax_id_semen,
 			'tax_id_pasir' => $tax_id_pasir,
 			'tax_id_batu1020' => $tax_id_batu1020,
 			'tax_id_batu2030' => $tax_id_batu2030,
+			'tax_id_additive' => $tax_id_additive,
 			'tax_id_solar' => $tax_id_solar,
+			'tax_id_bp' => $tax_id_bp,
 			'tax_id_tm' => $tax_id_tm,
-			'tax_id_exc' => $tax_id_exc,
-			'tax_id_tr' => $tax_id_tr,
+			'tax_id_wl' => $tax_id_wl,
 
 			'pajak_id_semen' => $pajak_id_semen,
 			'pajak_id_pasir' => $pajak_id_pasir,
 			'pajak_id_batu1020' => $pajak_id_batu1020,
 			'pajak_id_batu2030' => $pajak_id_batu2030,
+			'pajak_id_additive' => $pajak_id_additive,
 			'pajak_id_solar' => $pajak_id_solar,
+			'pajak_id_bp' => $pajak_id_bp,
 			'pajak_id_tm' => $pajak_id_tm,
-			'pajak_id_exc' => $pajak_id_exc,
-			'pajak_id_tr' => $pajak_id_tr,
+			'pajak_id_wl' => $pajak_id_wl,
 		
 			'supplier_id_semen' => $supplier_id_semen,
 			'supplier_id_pasir' => $supplier_id_pasir,
 			'supplier_id_batu1020' => $supplier_id_batu1020,
 			'supplier_id_batu2030' => $supplier_id_batu2030,
+			'supplier_id_additive' => $supplier_id_batu2030,
 			'supplier_id_solar' => $supplier_id_solar,
+			'supplier_id_bp' => $supplier_id_bp,
 			'supplier_id_tm' => $supplier_id_tm,
-			'supplier_id_exc' => $supplier_id_exc,
-			'supplier_id_tr' => $supplier_id_tr,
+			'supplier_id_wl' => $supplier_id_wl,
 			
 			'status' => 'PUBLISH',
 			'created_by' => $this->session->userdata('admin_id'),
@@ -391,12 +404,12 @@ class Rak extends Secure_Controller {
 
 		$vol_bbm_solar =  str_replace('.', '', $this->input->post('vol_bbm_solar'));
 		$vol_bbm_solar =  str_replace(',', '.', $vol_bbm_solar);
+		$vol_bp =  str_replace('.', '', $this->input->post('vol_bp'));
+		$vol_bp =  str_replace(',', '.', $vol_bp);
 		$vol_tm =  str_replace('.', '', $this->input->post('vol_tm'));
 		$vol_tm =  str_replace(',', '.', $vol_tm);
-		$vol_exc =  str_replace('.', '', $this->input->post('vol_exc'));
-		$vol_exc =  str_replace(',', '.', $vol_exc);
-		$vol_tr =  str_replace('.', '', $this->input->post('vol_tr'));
-		$vol_tr =  str_replace(',', '.', $vol_tr);
+		$vol_wl =  str_replace('.', '', $this->input->post('vol_wl'));
+		$vol_wl =  str_replace(',', '.', $vol_wl);
 
 		$komposisi_125 =  $this->input->post('komposisi_125');
 		$komposisi_175 =  $this->input->post('komposisi_175');
@@ -417,55 +430,61 @@ class Rak extends Secure_Controller {
 		$penawaran_id_pasir =  $this->input->post('penawaran_id_pasir');
 		$penawaran_id_batu1020 =  $this->input->post('penawaran_id_batu1020');
 		$penawaran_id_batu2030 =  $this->input->post('penawaran_id_batu2030');
+		$penawaran_id_additive =  $this->input->post('penawaran_id_additive');
 		$penawaran_id_solar =  $this->input->post('penawaran_id_solar');
+		$penawaran_id_bp =  $this->input->post('penawaran_id_bp');
 		$penawaran_id_tm =  $this->input->post('penawaran_id_tm');
-		$penawaran_id_exc =  $this->input->post('penawaran_id_exc');
-		$penawaran_id_tr =  $this->input->post('penawaran_id_tr');
+		$penawaran_id_wl =  $this->input->post('penawaran_id_wl');
 
 		$harga_semen =  str_replace('.', '', $this->input->post('price_semen'));
 		$harga_pasir =  str_replace('.', '', $this->input->post('price_pasir'));
 		$harga_batu1020 =  str_replace('.', '', $this->input->post('price_batu1020'));
 		$harga_batu2030 =  str_replace('.', '', $this->input->post('price_batu2030'));
+		$harga_additive =  str_replace('.', '', $this->input->post('harga_additive'));
 		$harga_solar =  str_replace('.', '', $this->input->post('price_solar'));
+		$harga_bp =  str_replace('.', '', $this->input->post('price_bp'));
 		$harga_tm =  str_replace('.', '', $this->input->post('price_tm'));
-		$harga_exc =  str_replace('.', '', $this->input->post('price_exc'));
-		$harga_tr =  str_replace('.', '', $this->input->post('price_tr'));
+		$harga_wl =  str_replace('.', '', $this->input->post('price_wl'));
 
 		$satuan_semen =  $this->input->post('measure_semen');
 		$satuan_pasir =  $this->input->post('measure_pasir');
 		$satuan_batu1020 =  $this->input->post('measure_batu1020');
 		$satuan_batu2030 =  $this->input->post('measure_batu2030');
+		$satuan_additive =  $this->input->post('measure_additive');
 		$satuan_solar =  $this->input->post('measure_solar');
+		$satuan_bp =  $this->input->post('measure_bp');
 		$satuan_tm =  $this->input->post('measure_tm');
-		$satuan_exc =  $this->input->post('measure_exc');
-		$satuan_tr =  $this->input->post('measure_tr');
+		$satuan_wl =  $this->input->post('measure_wl');
 	
 		$tax_id_semen =  $this->input->post('tax_id_semen');
 		$tax_id_pasir =  $this->input->post('tax_id_pasir');
 		$tax_id_batu1020 =  $this->input->post('tax_id_batu1020');
 		$tax_id_batu2030 =  $this->input->post('tax_id_batu2030');
+		$tax_id_additive =  $this->input->post('tax_id_additive');
 		$tax_id_solar =  $this->input->post('tax_id_solar');
+		$tax_id_bp =  $this->input->post('tax_id_bp');
 		$tax_id_tm =  $this->input->post('tax_id_tm');
-		$tax_id_exc =  $this->input->post('tax_id_exc');
-		$tax_id_tr =  $this->input->post('tax_id_tr');
+		$tax_id_wl =  $this->input->post('tax_id_wl');
 		
 		$pajak_id_semen =  $this->input->post('pajak_id_semen');
 		$pajak_id_pasir =  $this->input->post('pajak_id_pasir');
 		$pajak_id_batu1020 =  $this->input->post('pajak_id_batu1020');
 		$pajak_id_batu2030 =  $this->input->post('pajak_id_batu2030');
+		$pajak_id_additive =  $this->input->post('pajak_id_additive');
 		$pajak_id_solar =  $this->input->post('pajak_id_solar');
+		$pajak_id_bp =  $this->input->post('pajak_id_bp');
 		$pajak_id_tm =  $this->input->post('pajak_id_tm');
-		$pajak_id_exc =  $this->input->post('pajak_id_exc');
-		$pajak_id_tr =  $this->input->post('pajak_id_tr');
+		$pajak_id_wl =  $this->input->post('pajak_id_wl');
 		
 		$supplier_id_semen =  $this->input->post('supplier_id_semen');
 		$supplier_id_pasir =  $this->input->post('supplier_id_pasir');
 		$supplier_id_batu1020 =  $this->input->post('supplier_id_batu1020');
 		$supplier_id_batu2030 =  $this->input->post('supplier_id_batu2030');
+		$supplier_id_additive =  $this->input->post('supplier_id_additive');
 		$supplier_id_solar =  $this->input->post('supplier_id_solar');
+		$supplier_id_bp =  $this->input->post('supplier_id_bp');
 		$supplier_id_tm =  $this->input->post('supplier_id_tm');
-		$supplier_id_exc =  $this->input->post('supplier_id_exc');
-		$supplier_id_tr =  $this->input->post('supplier_id_tr');
+		$supplier_id_wl =  $this->input->post('supplier_id_wl');
 
 		$arr_update = array(
 
@@ -477,9 +496,9 @@ class Rak extends Secure_Controller {
 			'vol_produk_f' => $vol_produk_f,
 
 			'vol_bbm_solar' => $vol_bbm_solar,
+			'vol_bp' => $vol_bp,
 			'vol_tm' => $vol_tm,
-			'vol_exc' => $vol_exc,
-			'vol_tr' => $vol_tr,
+			'vol_wl' => $vol_wl,
 
 			'price_a' => $price_a,
 			'price_b' => $price_b,
@@ -500,55 +519,61 @@ class Rak extends Secure_Controller {
 			'penawaran_id_pasir' => $penawaran_id_pasir,
 			'penawaran_id_batu1020' => $penawaran_id_batu1020,
 			'penawaran_id_batu2030' => $penawaran_id_batu2030,
+			'penawaran_id_additive' => $penawaran_id_additive,
 			'penawaran_id_solar' => $penawaran_id_solar,
+			'penawaran_id_bp' => $penawaran_id_bp,
 			'penawaran_id_tm' => $penawaran_id_tm,
-			'penawaran_id_exc' => $penawaran_id_exc,
-			'penawaran_id_tr' => $penawaran_id_tr,
+			'penawaran_id_wl' => $penawaran_id_wl,
 			
 			'harga_semen' => $harga_semen,
 			'harga_pasir' => $harga_pasir,
 			'harga_batu1020' => $harga_batu1020,
 			'harga_batu2030' => $harga_batu2030,
+			'harga_additive' => $harga_additive,
 			'harga_solar' => $harga_solar,
+			'harga_bp' => $harga_bp,
 			'harga_tm' => $harga_tm,
-			'harga_exc' => $harga_exc,
-			'harga_tr' => $harga_tr,	
+			'harga_wl' => $harga_wl,	
 
 			'satuan_semen' => $satuan_semen,
 			'satuan_pasir' => $satuan_pasir,
 			'satuan_batu1020' => $satuan_batu1020,
 			'satuan_batu2030' => $satuan_batu2030,
+			'satuan_additive' => $satuan_additive,
 			'satuan_solar' => $satuan_solar,
+			'satuan_bp' => $satuan_bp,
 			'satuan_tm' => $satuan_tm,
-			'satuan_exc' => $satuan_exc,
-			'satuan_tr' => $satuan_tr,
+			'satuan_wl' => $satuan_wl,
 			
 			'tax_id_semen' => $tax_id_semen,
 			'tax_id_pasir' => $tax_id_pasir,
 			'tax_id_batu1020' => $tax_id_batu1020,
 			'tax_id_batu2030' => $tax_id_batu2030,
+			'tax_id_additive' => $tax_id_additive,
 			'tax_id_solar' => $tax_id_solar,
+			'tax_id_bp' => $tax_id_bp,
 			'tax_id_tm' => $tax_id_tm,
-			'tax_id_exc' => $tax_id_exc,
-			'tax_id_tr' => $tax_id_tr,
+			'tax_id_wl' => $tax_id_wl,
 
 			'pajak_id_semen' => $pajak_id_semen,
 			'pajak_id_pasir' => $pajak_id_pasir,
 			'pajak_id_batu1020' => $pajak_id_batu1020,
 			'pajak_id_batu2030' => $pajak_id_batu2030,
+			'pajak_id_additive' => $pajak_id_additive,
 			'pajak_id_solar' => $pajak_id_solar,
+			'pajak_id_bp' => $pajak_id_bp,
 			'pajak_id_tm' => $pajak_id_tm,
-			'pajak_id_exc' => $pajak_id_exc,
-			'pajak_id_tr' => $pajak_id_tr,
+			'pajak_id_wl' => $pajak_id_wl,
 		
 			'supplier_id_semen' => $supplier_id_semen,
 			'supplier_id_pasir' => $supplier_id_pasir,
 			'supplier_id_batu1020' => $supplier_id_batu1020,
 			'supplier_id_batu2030' => $supplier_id_batu2030,
+			'supplier_id_additive' => $supplier_id_batu2030,
 			'supplier_id_solar' => $supplier_id_solar,
+			'supplier_id_bp' => $supplier_id_bp,
 			'supplier_id_tm' => $supplier_id_tm,
-			'supplier_id_exc' => $supplier_id_exc,
-			'supplier_id_tr' => $supplier_id_tr,
+			'supplier_id_wl' => $supplier_id_wl,
 				
 			'status' => 'PUBLISH',
 			'updated_by' => $this->session->userdata('admin_id'),
