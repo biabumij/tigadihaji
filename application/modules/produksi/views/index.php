@@ -117,18 +117,17 @@
         $kunci_rakor = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('kunci_rakor')->row_array();
         $last_opname = date('d-m-Y', strtotime('+1 days', strtotime($kunci_rakor['date'])));
         ?>
-
         $('.dtpicker').daterangepicker({
-                singleDatePicker: true,
-                showDropdowns : false,
-                locale: {
-                    format: 'DD-MM-YYYY'
-                },
-                minDate: '<?php echo $last_opname;?>',
-                //maxDate: moment().add(+0, 'd').toDate(),
-                //minDate: moment().startOf('month').toDate(),
-                maxDate: moment().endOf('month').toDate(),
-            });
+            singleDatePicker: true,
+            showDropdowns : false,
+            locale: {
+                format: 'DD-MM-YYYY'
+            },
+            minDate: '<?php echo $last_opname;?>',
+            //maxDate: moment().add(+0, 'd').toDate(),
+            //minDate: moment().startOf('month').toDate(),
+            maxDate: moment().endOf('month').toDate(),
+        });
         </script>
     </body>
 </html>

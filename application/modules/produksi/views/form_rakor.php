@@ -60,9 +60,11 @@
     
 
     <script type="text/javascript">
-        
+        <?php
+        $kunci_rakor = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('kunci_rakor')->row_array();
+        $last_opname = date('d-m-Y', strtotime('+1 days', strtotime($kunci_rakor['date'])));
+        ?>
         $('.form-select2').select2();
-
         $('input.numberformat').number( true, 2,',','.' );
 		//$('input.rupiahformat').number( true, 0,',','.' );
 
@@ -71,16 +73,22 @@
           height: 200,
           menubar: false,
         });
+
         $('.dtpicker').daterangepicker({
             singleDatePicker: true,
-            showDropdowns : true,
+            showDropdowns : false,
             locale: {
-              format: 'DD-MM-YYYY'
-            }
+                format: 'DD-MM-YYYY'
+            },
+            minDate: '<?php echo $last_opname;?>',
+            //maxDate: moment().add(+0, 'd').toDate(),
+            //minDate: moment().startOf('month').toDate(),
+            maxDate: moment().endOf('month').toDate(),
         });
+
         $('.dtpicker').on('apply.daterangepicker', function(ev, picker) {
-              $(this).val(picker.startDate.format('DD-MM-YYYY'));
-              // table.ajax.reload();
+            $(this).val(picker.startDate.format('DD-MM-YYYY'));
+            // table.ajax.reload();
         });
 
 
