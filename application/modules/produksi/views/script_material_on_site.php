@@ -10,7 +10,7 @@
     $('input.nilaiformat').number( true, 0,',','.' );
     $('.dtpicker').daterangepicker({
         singleDatePicker: true,
-        showDropdowns: true,
+        showDropdowns : false,
         locale: {
             format: 'DD-MM-YYYY'
         },
@@ -19,6 +19,7 @@
         //minDate: moment().startOf('month').toDate(),
         maxDate: moment().endOf('month').toDate(),
     });
+    
     $('.dtpicker').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('DD-MM-YYYY'));
         //table.ajax.reload();
