@@ -7,50 +7,50 @@
         body {
             font-family: helvetica;
         }
-
+        
 		.mytable thead th {
-		  background-color:	#666666;
+		  background-color:	#e69500;
+		  color: #ffffff;
+		  text-align: center;
 		  vertical-align: middle;
-          color: white;
+		  padding: 5px;
 		}
 		
 		.mytable tbody td {
-            vertical-align: middle;
-            color: black;
+		  padding: 5px;
 		}
 		
 		.mytable tfoot td {
-            vertical-align: middle;
-            color: black;
+		  background-color:	#e69500;
+		  color: #FFFFFF;
+		  padding: 5px;
 		}
 
-        blink {
-        -webkit-animation: 2s linear infinite kedip; /* for Safari 4.0 - 8.0 */
-        animation: 2s linear infinite kedip;
-        }
-        /* for Safari 4.0 - 8.0 */
-        @-webkit-keyframes kedip { 
-        0% {
-            visibility: hidden;
-        }
-        50% {
-            visibility: hidden;
-        }
-        100% {
-            visibility: visible;
-        }
-        }
-        @keyframes kedip {
-        0% {
-            visibility: hidden;
-        }
-        50% {
-            visibility: hidden;
-        }
-        100% {
-            visibility: visible;
-        }
-        }
+        button {
+			border: none;
+			border-radius: 5px;
+			padding: 5px;
+			font-size: 12px;
+			text-transform: uppercase;
+			cursor: pointer;
+			color: white;
+			background-color: #2196f3;
+			box-shadow: 0 0 4px #999;
+			outline: none;
+		}
+
+		.ripple {
+			background-position: center;
+			transition: background 0.8s;
+		}
+		.ripple:hover {
+			background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+		}
+		.ripple:active {
+			background-color: #6eb9f7;
+			background-size: 100%;
+			transition: background 0s;
+		}
     </style>
 </head>
 
@@ -63,15 +63,15 @@
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-content">
-								<div class="panel-header">
-									<h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
+                                <div class="panel-header">
+                                    <h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
                                     <div class="text-left">
                                         <a href="<?php echo site_url('admin');?>">
-                                        <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
+                                        <button class="ripple"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
                                     </div>
                                 </div>
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane active" id="pembelian">
+                                    <div role="tabpanel" class="tab-pane active">
                                         <br />
                                         <div class="row">
                                             <div width="100%">
@@ -1120,7 +1120,7 @@
                                     });
                                     $('#table-daftar-pembayaran tbody').append('<tr style="display:none;" class="mats-' + val.no + '"><td class="text-right" colspan="5"><b>JUMLAH</b></td><td class="text-right"">' + val.total_bayar + '</td></tr>');
                                 });
-                                $('#table-daftar-pembayaran tbody').append('<tr><td class="text-right" colspan="5"><b>TOTAL</b></td><td class="text-right" ><b>' + result.total + '</b></td></tr>');
+                                $('#table-daftar-pembayaran tbody').append('<tr style="background-color:#cccccc;"><td class="text-right" colspan="5"><b>TOTAL</b></td><td class="text-right" ><b>' + result.total + '</b></td></tr>');
                             } else {
                                 $('#table-daftar-pembayaran tbody').append('<tr><td class="text-center" colspan="6"><b>Tidak Ada Data</b></td></tr>');
                             }
