@@ -22,8 +22,9 @@
     
     $('.dtpicker').on('apply.daterangepicker', function(ev, picker) {
         $(this).val(picker.startDate.format('DD-MM-YYYY'));
-        //table.ajax.reload();
+        // table.ajax.reload();
     });
+
 
     $('.dtpickerange').daterangepicker({
         autoUpdateInput: false,
