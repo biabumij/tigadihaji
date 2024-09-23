@@ -11,14 +11,14 @@
 </head>
 
 <body>
-	<div class="wrap">
-		<?php echo $this->Templates->PageHeader();?>
-		<div class="page-body">
-			<div class="content">
-				<div class="row animated fadeInUp">
-					<div class="col-sm-12 col-lg-12">
-						<div class="panel">
-							<div class="panel-header"> 
+    <div class="wrap">
+        <?php echo $this->Templates->PageHeader();?>
+        <div class="page-body">
+            <div class="content">
+                <div class="row animated fadeInUp">
+                    <div class="col-sm-12 col-lg-12">
+                        <div class="panel">
+                            <div class="panel-header">
 								<div>
 									<h3><b>KUNCI DATA RAKOR</b></h3>                                
 								</div>
