@@ -12463,7 +12463,7 @@ class Reports extends CI_Controller {
 						->order_by('ppp.created_on','asc')
 						->get()->result_array();
 						?>
-						<button onclick="myFunction5()" class="btn btn-info"><b>() Uang Muka<b></button>
+						<button onclick="myFunction5()" class="btn btn-info"><b>(1-10403) Uang Muka<b></button>
 						<div id="myDIV5" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
@@ -12506,7 +12506,7 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">() Uang Muka | Saldo Akhir</th>
+									<th class="text-right" width="70%">(1-10403) Uang Muka | Saldo Akhir</th>
 									<th class="text-right" width="10%"><?php echo number_format($akun_110403_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
@@ -12539,7 +12539,7 @@ class Reports extends CI_Controller {
 						->order_by('ppp.created_on','asc')
 						->get()->result_array();
 						?>
-						<button onclick="myFunction6()" class="btn btn-info"><b>(1-10504) PPN Masukan<b></button>
+						<button onclick="myFunction6()" class="btn btn-info"><b>(1-10500) PPN Masukan<b></button>
 						<div id="myDIV6" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
@@ -12582,7 +12582,7 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(1-10504) PPN Masukan | Saldo Akhir</th>
+									<th class="text-right" width="70%">(1-10500) PPN Masukan | Saldo Akhir</th>
 									<th class="text-right" width="10%"><?php echo number_format($akun_110500_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
@@ -12789,7 +12789,7 @@ class Reports extends CI_Controller {
 						->order_by('tu.tanggal_transaksi','asc')
 						->get()->result_array();
 						?>
-						<button onclick="myFunction9()" class="btn btn-info"><b>() Hutang Modal<b></button>
+						<button onclick="myFunction9()" class="btn btn-info"><b>(2-20205) Hutang Modal<b></button>
 						<div id="myDIV9" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
@@ -12831,7 +12831,7 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">() Hutang Modal | Saldo Akhir</th>
+									<th class="text-right" width="70%">(2-20205) Hutang Modal | Saldo Akhir</th>
 									<th class="text-right" width="10%"><?php echo number_format($akun_220205_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
@@ -12864,7 +12864,7 @@ class Reports extends CI_Controller {
 						->order_by('ppp.created_on','asc')
 						->get()->result_array();
 						?>
-						<button onclick="myFunction10()" class="btn btn-info"><b>() PPN Keluaran<b></button>
+						<button onclick="myFunction10()" class="btn btn-info"><b>(2-20500) PPN Keluaran<b></button>
 						<div id="myDIV10" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
@@ -12907,7 +12907,7 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">() PPN Keluaran | Saldo Akhir</th>
+									<th class="text-right" width="70%">(2-20500) PPN Keluaran | Saldo Akhir</th>
 									<th class="text-right" width="10%"><?php echo number_format($akun_220500_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
@@ -12922,22 +12922,22 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_550304_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550501_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 114")
 						->get()->row_array();
 
-						$akun_550304_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550501_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 114")
 						->get()->row_array();
-						$akun_550304_lalu = $akun_550304_biaya_lalu['total'] + $akun_550304_jurnal['total'];
+						$akun_550501_lalu = $akun_550501_biaya_lalu['total'] + $akun_550501_jurnal['total'];
 
-						$akun_550304_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550501_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -12947,7 +12947,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_550304_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550501_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -12957,25 +12957,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_550304 = array_merge($akun_550304_biaya,$akun_550304_jurnal);
-						usort($akun_550304, 'sortByOrder');
+						$akun_550501 = array_merge($akun_550501_biaya,$akun_550501_jurnal);
+						usort($akun_550501, 'sortByOrder');
 						?>
-						<button onclick="myFunction11()" class="btn btn-info"><b>(5-50304) Gaji<b></button>
+						<button onclick="myFunction11()" class="btn btn-info"><b>(5-50501) Gaji<b></button>
 						<div id="myDIV11" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_550304_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550501_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550304_lalu < 0 ? "(".number_format(-$akun_550304_lalu,0,',','.').")" : number_format($akun_550304_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550501_lalu < 0 ? "(".number_format(-$akun_550501_lalu,0,',','.').")" : number_format($akun_550501_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_550304_lalu;
+							$saldo = $akun_550501_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_550304 as $x): 
+							foreach ($akun_550501 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -13003,14 +13003,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50304) Gaji | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_550304_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50501) Gaji | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550501_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_550304 = ($akun_550304_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_550304 < 0 ? 'color:red' : 'color:black';
+									$saldo_550501 = ($akun_550501_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550501 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550304 < 0 ? "(".number_format(-$saldo_550304,0,',','.').")" : number_format($saldo_550304,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550501 < 0 ? "(".number_format(-$saldo_550501,0,',','.').")" : number_format($saldo_550501,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -13018,22 +13018,118 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_550301_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550502_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						->from('pmm_biaya b')
+						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
+						->where("b.tanggal_transaksi between '$date3' and '$date4'")
+						->where("pdb.akun = 115")
+						->get()->row_array();
+
+						$akun_550502_jurnal = $this->db->select('sum(pdj.debit) as total')
+						->from('pmm_jurnal_umum j')
+						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+						->where("j.tanggal_transaksi between '$date3' and '$date4'")
+						->where("pdj.akun = 115")
+						->get()->row_array();
+						$akun_550502_lalu = $akun_550502_biaya_lalu['total'] + $akun_550502_jurnal['total'];
+
+						$akun_550502_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						->from('pmm_biaya b')
+						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
+						->where("b.tanggal_transaksi between '$date1' and '$date2'")
+						->where("pdb.akun = 115")
+						->group_by('pdb.id')
+						->order_by('b.tanggal_transaksi','asc')
+						->order_by('b.created_on','asc')
+						->get()->result_array();
+
+						$akun_550502_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						->from('pmm_jurnal_umum j')
+						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+						->where("j.tanggal_transaksi between '$date1' and '$date2'")
+						->where("pdj.akun = 115")
+						->group_by('pdj.id')
+						->order_by('j.tanggal_transaksi','asc')
+						->order_by('j.created_on','asc')
+						->get()->result_array();
+
+						$akun_550502 = array_merge($akun_550502_biaya,$akun_550502_jurnal);
+						usort($akun_550502, 'sortByOrder');
+						?>
+						<button onclick="myFunction12()" class="btn btn-info"><b>(5-50502) Upah<b></button>
+						<div id="myDIV12" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_550502_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550502_lalu < 0 ? "(".number_format(-$akun_550502_lalu,0,',','.').")" : number_format($akun_550502_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_550502_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_550502 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							 
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left"><?php echo $x['transaksi'];?></th>
+									<th width="20%" class="text-left"><?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format(0,0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50502) Upah | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550502_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_550502 = ($akun_550502_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550502 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550502 < 0 ? "(".number_format(-$saldo_550502,0,',','.').")" : number_format($saldo_550502,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_550503_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 116")
 						->get()->row_array();
 
-						$akun_550301_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550503_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 116")
 						->get()->row_array();
-						$akun_550301_lalu = $akun_550301_biaya_lalu['total'] + $akun_550301_jurnal['total'];
+						$akun_550503_lalu = $akun_550503_biaya_lalu['total'] + $akun_550503_jurnal['total'];
 
-						$akun_550301_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550503_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -13043,7 +13139,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_550301_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550503_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -13053,25 +13149,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_550301 = array_merge($akun_550301_biaya,$akun_550301_jurnal);
-						usort($akun_550301, 'sortByOrder');
+						$akun_550503 = array_merge($akun_550503_biaya,$akun_550503_jurnal);
+						usort($akun_550503, 'sortByOrder');
 						?>
-						<button onclick="myFunction13()" class="btn btn-info"><b>(5-50301) Konsumsi<b></button>
+						<button onclick="myFunction13()" class="btn btn-info"><b>(5-50503) Konsumsi<b></button>
 						<div id="myDIV13" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_550301_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550503_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550301_lalu < 0 ? "(".number_format(-$akun_550301_lalu,0,',','.').")" : number_format($akun_550301_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550503_lalu < 0 ? "(".number_format(-$akun_550503_lalu,0,',','.').")" : number_format($akun_550503_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_550301_lalu;
+							$saldo = $akun_550503_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_550301 as $x): 
+							foreach ($akun_550503 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -13099,14 +13195,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50301) Konsumsi | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_550301_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50503) Konsumsi | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550503_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_550301 = ($akun_550301_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_550301 < 0 ? 'color:red' : 'color:black';
+									$saldo_550503 = ($akun_550503_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550503 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550301 < 0 ? "(".number_format(-$saldo_550301,0,',','.').")" : number_format($saldo_550301,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550503 < 0 ? "(".number_format(-$saldo_550503,0,',','.').")" : number_format($saldo_550503,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -13114,22 +13210,22 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_550302_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550513_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 118")
 						->get()->row_array();
 
-						$akun_550302_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550513_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 118")
 						->get()->row_array();
-						$akun_550302_lalu = $akun_550302_biaya_lalu['total'] + $akun_550302_jurnal['total'];
+						$akun_550513_lalu = $akun_550513_biaya_lalu['total'] + $akun_550513_jurnal['total'];
 
-						$akun_550302_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550513_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -13139,7 +13235,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_550302_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550513_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -13149,25 +13245,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_550302 = array_merge($akun_550302_biaya,$akun_550302_jurnal);
-						usort($akun_550302, 'sortByOrder');
+						$akun_550513 = array_merge($akun_550513_biaya,$akun_550513_jurnal);
+						usort($akun_550513, 'sortByOrder');
 						?>
-						<button onclick="myFunction14()" class="btn btn-info"><b>(5-50302) Listrik & Internet<b></button>
+						<button onclick="myFunction14()" class="btn btn-info"><b>(5-50513) Listrik & Internet<b></button>
 						<div id="myDIV14" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_550302_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550513_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550302_lalu < 0 ? "(".number_format(-$akun_550302_lalu,0,',','.').")" : number_format($akun_550302_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550513_lalu < 0 ? "(".number_format(-$akun_550513_lalu,0,',','.').")" : number_format($akun_550513_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_550302_lalu;
+							$saldo = $akun_550513_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_550302 as $x): 
+							foreach ($akun_550513 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -13195,14 +13291,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50302) Listrik & Internet | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_550302_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50513) Listrik & Internet | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550513_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_550302 = ($akun_550302_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_550302 < 0 ? 'color:red' : 'color:black';
+									$saldo_550513 = ($akun_550513_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550513 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550302 < 0 ? "(".number_format(-$saldo_550302,0,',','.').")" : number_format($saldo_550302,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550513 < 0 ? "(".number_format(-$saldo_550513,0,',','.').")" : number_format($saldo_550513,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -13210,22 +13306,22 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_550316_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550505_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 70")
 						->get()->row_array();
 
-						$akun_550316_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550505_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 70")
 						->get()->row_array();
-						$akun_550316_lalu = $akun_550316_biaya_lalu['total'] + $akun_550316_jurnal['total'];
+						$akun_550505_lalu = $akun_550505_biaya_lalu['total'] + $akun_550505_jurnal['total'];
 
-						$akun_550316_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550505_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -13235,7 +13331,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_550316_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550505_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -13245,25 +13341,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_550316 = array_merge($akun_550316_biaya,$akun_550316_jurnal);
-						usort($akun_550316, 'sortByOrder');
+						$akun_550505 = array_merge($akun_550505_biaya,$akun_550505_jurnal);
+						usort($akun_550505, 'sortByOrder');
 						?>
-						<button onclick="myFunction15()" class="btn btn-info"><b>(5-50316) Pengobatan<b></button>
+						<button onclick="myFunction15()" class="btn btn-info"><b>(5-50505) Pengobatan<b></button>
 						<div id="myDIV15" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_550316_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550505_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550316_lalu < 0 ? "(".number_format(-$akun_550316_lalu,0,',','.').")" : number_format($akun_550316_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550505_lalu < 0 ? "(".number_format(-$akun_550505_lalu,0,',','.').")" : number_format($akun_550505_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_550316_lalu;
+							$saldo = $akun_550505_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_550316 as $x): 
+							foreach ($akun_550505 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -13291,14 +13387,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50316) Pengobatan | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_550316_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50505) Pengobatan | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550505_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_550316 = ($akun_550316_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_550316 < 0 ? 'color:red' : 'color:black';
+									$saldo_550505 = ($akun_550505_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550505 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550316 < 0 ? "(".number_format(-$saldo_550316,0,',','.').")" : number_format($saldo_550316,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550505 < 0 ? "(".number_format(-$saldo_550505,0,',','.').")" : number_format($saldo_550505,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -13306,22 +13402,22 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_550311_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550508_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 78")
 						->get()->row_array();
 
-						$akun_550311_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550508_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 78")
 						->get()->row_array();
-						$akun_550311_lalu = $akun_550311_biaya_lalu['total'] + $akun_550311_jurnal['total'];
+						$akun_550508_lalu = $akun_550508_biaya_lalu['total'] + $akun_550508_jurnal['total'];
 
-						$akun_550311_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550508_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -13331,7 +13427,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_550311_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550508_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -13341,25 +13437,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_550311 = array_merge($akun_550311_biaya,$akun_550311_jurnal);
-						usort($akun_550311, 'sortByOrder');
+						$akun_550508 = array_merge($akun_550508_biaya,$akun_550508_jurnal);
+						usort($akun_550508, 'sortByOrder');
 						?>
-						<button onclick="myFunction16()" class="btn btn-info"><b>(5-50311) Bensin, Tol dan Parkir - Umum<b></button>
+						<button onclick="myFunction16()" class="btn btn-info"><b>(5-50508) Bensin, Tol dan Parkir - Umum<b></button>
 						<div id="myDIV16" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_550311_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550508_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550311_lalu < 0 ? "(".number_format(-$akun_550311_lalu,0,',','.').")" : number_format($akun_550311_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550508_lalu < 0 ? "(".number_format(-$akun_550508_lalu,0,',','.').")" : number_format($akun_550508_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_550311_lalu;
+							$saldo = $akun_550508_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_550311 as $x): 
+							foreach ($akun_550508 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -13387,14 +13483,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50311) Bensin, Tol dan Parkir - Umum | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_550311_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50508) Bensin, Tol dan Parkir - Umum | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550508_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_550311 = ($akun_550311_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_550311 < 0 ? 'color:red' : 'color:black';
+									$saldo_550508 = ($akun_550508_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550508 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550311 < 0 ? "(".number_format(-$saldo_550311,0,',','.').")" : number_format($saldo_550311,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550508 < 0 ? "(".number_format(-$saldo_550508,0,',','.').")" : number_format($saldo_550508,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -13402,22 +13498,22 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_550314_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550510_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 87")
 						->get()->row_array();
 
-						$akun_550314_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550510_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 87")
 						->get()->row_array();
-						$akun_550314_lalu = $akun_550314_biaya_lalu['total'] + $akun_550314_jurnal['total'];
+						$akun_550510_lalu = $akun_550510_biaya_lalu['total'] + $akun_550510_jurnal['total'];
 
-						$akun_550314_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550510_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -13427,7 +13523,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_550314_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550510_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -13437,25 +13533,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_550314 = array_merge($akun_550314_biaya,$akun_550314_jurnal);
-						usort($akun_550314, 'sortByOrder');
+						$akun_550510 = array_merge($akun_550510_biaya,$akun_550510_jurnal);
+						usort($akun_550510, 'sortByOrder');
 						?>
-						<button onclick="myFunction17()" class="btn btn-info"><b>(5-50314) Pakaian Dinas & K3<b></button>
+						<button onclick="myFunction17()" class="btn btn-info"><b>(5-50510) Pakaian Dinas & K3<b></button>
 						<div id="myDIV17" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_550314_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550510_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550314_lalu < 0 ? "(".number_format(-$akun_550314_lalu,0,',','.').")" : number_format($akun_550314_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550510_lalu < 0 ? "(".number_format(-$akun_550510_lalu,0,',','.').")" : number_format($akun_550510_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_550314_lalu;
+							$saldo = $akun_550510_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_550314 as $x): 
+							foreach ($akun_550510 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -13483,14 +13579,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50314) Pakaian Dinas & K3 | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_550314_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50510) Pakaian Dinas & K3 | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550510_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_550314 = ($akun_550314_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_550314 < 0 ? 'color:red' : 'color:black';
+									$saldo_550510 = ($akun_550510_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550510 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550314 < 0 ? "(".number_format(-$saldo_550314,0,',','.').")" : number_format($saldo_550314,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550510 < 0 ? "(".number_format(-$saldo_550510,0,',','.').")" : number_format($saldo_550510,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -13498,22 +13594,22 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_550317_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550514_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 96")
 						->get()->row_array();
 
-						$akun_550317_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550514_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 96")
 						->get()->row_array();
-						$akun_550317_lalu = $akun_550317_biaya_lalu['total'] + $akun_550317_jurnal['total'];
+						$akun_550514_lalu = $akun_550514_biaya_lalu['total'] + $akun_550514_jurnal['total'];
 
-						$akun_550317_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550514_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -13523,7 +13619,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_550317_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550514_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -13533,25 +13629,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_550317 = array_merge($akun_550317_biaya,$akun_550317_jurnal);
-						usort($akun_550317, 'sortByOrder');
+						$akun_550514 = array_merge($akun_550514_biaya,$akun_550514_jurnal);
+						usort($akun_550514, 'sortByOrder');
 						?>
-						<button onclick="myFunction18()" class="btn btn-info"><b>(5-50317) Alat Tulis Kantor & Printing<b></button>
+						<button onclick="myFunction18()" class="btn btn-info"><b>(5-50514) Alat Tulis Kantor & Printing<b></button>
 						<div id="myDIV18" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_550317_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550514_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550317_lalu < 0 ? "(".number_format(-$akun_550317_lalu,0,',','.').")" : number_format($akun_550317_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550514_lalu < 0 ? "(".number_format(-$akun_550514_lalu,0,',','.').")" : number_format($akun_550514_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_550317_lalu;
+							$saldo = $akun_550514_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_550317 as $x): 
+							foreach ($akun_550514 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -13579,14 +13675,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50317) Alat Tulis Kantor & Printing | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_550317_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50514) Alat Tulis Kantor & Printing | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550514_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_550317 = ($akun_550317_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_550317 < 0 ? 'color:red' : 'color:black';
+									$saldo_550514 = ($akun_550514_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550514 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550317 < 0 ? "(".number_format(-$saldo_550317,0,',','.').")" : number_format($saldo_550317,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550514 < 0 ? "(".number_format(-$saldo_550514,0,',','.').")" : number_format($saldo_550514,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -13594,22 +13690,22 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_550318_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550515_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 97")
 						->get()->row_array();
 
-						$akun_550318_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550515_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 97")
 						->get()->row_array();
-						$akun_550318_lalu = $akun_550318_biaya_lalu['total'] + $akun_550318_jurnal['total'];
+						$akun_550515_lalu = $akun_550515_biaya_lalu['total'] + $akun_550515_jurnal['total'];
 
-						$akun_550318_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550515_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -13619,7 +13715,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_550318_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550515_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -13629,25 +13725,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_550318 = array_merge($akun_550318_biaya,$akun_550318_jurnal);
-						usort($akun_550318, 'sortByOrder');
+						$akun_550515 = array_merge($akun_550515_biaya,$akun_550515_jurnal);
+						usort($akun_550515, 'sortByOrder');
 						?>
-						<button onclick="myFunction19()" class="btn btn-info"><b>(5-50318) Keamanan dan Kebersihan<b></button>
+						<button onclick="myFunction19()" class="btn btn-info"><b>(5-50515) Keamanan dan Kebersihan<b></button>
 						<div id="myDIV19" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_550318_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550515_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550318_lalu < 0 ? "(".number_format(-$akun_550318_lalu,0,',','.').")" : number_format($akun_550318_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550515_lalu < 0 ? "(".number_format(-$akun_550515_lalu,0,',','.').")" : number_format($akun_550515_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_550318_lalu;
+							$saldo = $akun_550515_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_550318 as $x): 
+							foreach ($akun_550515 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -13675,14 +13771,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50318) Keamanan dan Kebersihan | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_550318_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50515) Keamanan dan Kebersihan | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550515_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_550318 = ($akun_550318_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_550318 < 0 ? 'color:red' : 'color:black';
+									$saldo_550515 = ($akun_550515_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550515 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550318 < 0 ? "(".number_format(-$saldo_550318,0,',','.').")" : number_format($saldo_550318,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550515 < 0 ? "(".number_format(-$saldo_550515,0,',','.').")" : number_format($saldo_550515,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -13690,22 +13786,22 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_550315_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550516_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 97")
 						->get()->row_array();
 
-						$akun_550315_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550516_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 97")
 						->get()->row_array();
-						$akun_550315_lalu = $akun_550315_biaya_lalu['total'] + $akun_550315_jurnal['total'];
+						$akun_550516_lalu = $akun_550516_biaya_lalu['total'] + $akun_550516_jurnal['total'];
 
-						$akun_550315_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550516_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -13715,7 +13811,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_550315_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550516_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -13725,25 +13821,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_550315 = array_merge($akun_550315_biaya,$akun_550315_jurnal);
-						usort($akun_550315, 'sortByOrder');
+						$akun_550516 = array_merge($akun_550516_biaya,$akun_550516_jurnal);
+						usort($akun_550516, 'sortByOrder');
 						?>
-						<button onclick="myFunction20()" class="btn btn-info"><b>(5-50315) Perlengkapan Kantor<b></button>
+						<button onclick="myFunction20()" class="btn btn-info"><b>(5-50516) Perlengkapan Kantor<b></button>
 						<div id="myDIV20" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_550315_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550516_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550315_lalu < 0 ? "(".number_format(-$akun_550315_lalu,0,',','.').")" : number_format($akun_550315_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550516_lalu < 0 ? "(".number_format(-$akun_550516_lalu,0,',','.').")" : number_format($akun_550516_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_550315_lalu;
+							$saldo = $akun_550516_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_550315 as $x): 
+							foreach ($akun_550516 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -13771,14 +13867,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50315) Perlengkapan Kantor | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_550315_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50516) Perlengkapan Kantor | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550516_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_550315 = ($akun_550315_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_550315 < 0 ? 'color:red' : 'color:black';
+									$saldo_550516 = ($akun_550516_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550516 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550315 < 0 ? "(".number_format(-$saldo_550315,0,',','.').")" : number_format($saldo_550315,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550516 < 0 ? "(".number_format(-$saldo_550516,0,',','.').")" : number_format($saldo_550516,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -13786,22 +13882,22 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_550321_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550517_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 94")
 						->get()->row_array();
 
-						$akun_550321_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550517_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 94")
 						->get()->row_array();
-						$akun_550321_lalu = $akun_550321_biaya_lalu['total'] + $akun_550321_jurnal['total'];
+						$akun_550517_lalu = $akun_550517_biaya_lalu['total'] + $akun_550517_jurnal['total'];
 
-						$akun_550321_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550517_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -13811,7 +13907,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_550321_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550517_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -13821,25 +13917,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_550321 = array_merge($akun_550321_biaya,$akun_550321_jurnal);
-						usort($akun_550321, 'sortByOrder');
+						$akun_550517 = array_merge($akun_550517_biaya,$akun_550517_jurnal);
+						usort($akun_550517, 'sortByOrder');
 						?>
-						<button onclick="myFunction21()" class="btn btn-info"><b>(5-50321) Biaya Lain-Lain<b></button>
+						<button onclick="myFunction21()" class="btn btn-info"><b>(5-50517) Beban Lain-Lain<b></button>
 						<div id="myDIV21" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_550321_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550517_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550321_lalu < 0 ? "(".number_format(-$akun_550321_lalu,0,',','.').")" : number_format($akun_550321_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550517_lalu < 0 ? "(".number_format(-$akun_550517_lalu,0,',','.').")" : number_format($akun_550517_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_550321_lalu;
+							$saldo = $akun_550517_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_550321 as $x): 
+							foreach ($akun_550517 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -13867,14 +13963,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50321) Biaya Lain-Lain | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_550321_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50517) Beban Lain-Lain | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550517_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_550321 = ($akun_550321_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_550321 < 0 ? 'color:red' : 'color:black';
+									$saldo_550517 = ($akun_550517_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550517 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550321 < 0 ? "(".number_format(-$saldo_550321,0,',','.').")" : number_format($saldo_550321,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550517 < 0 ? "(".number_format(-$saldo_550517,0,',','.').")" : number_format($saldo_550517,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -13882,22 +13978,22 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_550310_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550520_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 100")
 						->get()->row_array();
 
-						$akun_550310_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550520_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 100")
 						->get()->row_array();
-						$akun_550310_lalu = $akun_550310_biaya_lalu['total'] + $akun_550310_jurnal['total'];
+						$akun_550520_lalu = $akun_550520_biaya_lalu['total'] + $akun_550520_jurnal['total'];
 
-						$akun_550310_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550520_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -13907,7 +14003,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_550310_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550520_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -13917,25 +14013,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_550310 = array_merge($akun_550310_biaya,$akun_550310_jurnal);
-						usort($akun_550310, 'sortByOrder');
+						$akun_550520 = array_merge($akun_550520_biaya,$akun_550520_jurnal);
+						usort($akun_550520, 'sortByOrder');
 						?>
-						<button onclick="myFunction22()" class="btn btn-info"><b>(5-50310) Biaya Sewa - Kendaraan<b></button>
+						<button onclick="myFunction22()" class="btn btn-info"><b>(5-50520) Biaya Sewa - Kendaraan<b></button>
 						<div id="myDIV22" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_550310_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550520_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550310_lalu < 0 ? "(".number_format(-$akun_550310_lalu,0,',','.').")" : number_format($akun_550310_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550520_lalu < 0 ? "(".number_format(-$akun_550520_lalu,0,',','.').")" : number_format($akun_550520_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_550310_lalu;
+							$saldo = $akun_550520_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_550310 as $x): 
+							foreach ($akun_550520 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -13963,14 +14059,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50310) Biaya Sewa - Kendaraan | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_550310_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50520) Biaya Sewa - Kendaraan | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550520_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_550310 = ($akun_550310_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_550310 < 0 ? 'color:red' : 'color:black';
+									$saldo_550520 = ($akun_550520_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550520 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550310 < 0 ? "(".number_format(-$saldo_550310,0,',','.').")" : number_format($saldo_550310,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550520 < 0 ? "(".number_format(-$saldo_550520,0,',','.').")" : number_format($saldo_550520,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -13978,22 +14074,22 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_660200_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						$akun_550700_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdb.akun = 131")
 						->get()->row_array();
 
-						$akun_660200_jurnal = $this->db->select('sum(pdj.debit) as total')
+						$akun_550700_jurnal = $this->db->select('sum(pdj.debit) as total')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date3' and '$date4'")
 						->where("pdj.akun = 131")
 						->get()->row_array();
-						$akun_660200_lalu = $akun_660200_biaya_lalu['total'] + $akun_660200_jurnal['total'];
+						$akun_550700_lalu = $akun_550700_biaya_lalu['total'] + $akun_550700_jurnal['total'];
 
-						$akun_660200_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						$akun_550700_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
 						->from('pmm_biaya b')
 						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
 						->where("b.tanggal_transaksi between '$date1' and '$date2'")
@@ -14003,7 +14099,7 @@ class Reports extends CI_Controller {
 						->order_by('b.created_on','asc')
 						->get()->result_array();
 
-						$akun_660200_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						$akun_550700_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
 						->from('pmm_jurnal_umum j')
 						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
 						->where("j.tanggal_transaksi between '$date1' and '$date2'")
@@ -14013,25 +14109,25 @@ class Reports extends CI_Controller {
 						->order_by('j.created_on','asc')
 						->get()->result_array();
 
-						$akun_660200 = array_merge($akun_660200_biaya,$akun_660200_jurnal);
-						usort($akun_660200, 'sortByOrder');
+						$akun_550700 = array_merge($akun_550700_biaya,$akun_550700_jurnal);
+						usort($akun_550700, 'sortByOrder');
 						?>
-						<button onclick="myFunction100()" class="btn btn-info"><b>(6-60200) Biaya Persiapan<b></button>
+						<button onclick="myFunction100()" class="btn btn-info"><b>(5-50700) Biaya Persiapan<b></button>
 						<div id="myDIV100" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
 									<?php
-									$styleColor = $akun_660200_lalu < 0 ? 'color:red' : 'color:black';
+									$styleColor = $akun_550700_lalu < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_660200_lalu < 0 ? "(".number_format(-$akun_660200_lalu,0,',','.').")" : number_format($akun_660200_lalu,0,',','.');?></th>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550700_lalu < 0 ? "(".number_format(-$akun_550700_lalu,0,',','.').")" : number_format($akun_550700_lalu,0,',','.');?></th>
 								</tr>
 							</table>
 							<?php
-							$saldo = $akun_660200_lalu;
+							$saldo = $akun_550700_lalu;
 							$total_debit = 0;
 							$total_kredit = 0;
-							foreach ($akun_660200 as $x): 
+							foreach ($akun_550700 as $x): 
 							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
 							{$saldo = $saldo + $x['debit'];}
 
@@ -14059,14 +14155,14 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(6-60200) Biaya Persiapan | Saldo Akhir</th>
-									<th class="text-right" width="10%"><?php echo number_format($akun_660200_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="70%">(5-50700) Biaya Persiapan | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550700_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_660200 = ($akun_660200_lalu + $total_debit) - $total_kredit;
-									$styleColor = $saldo_660200 < 0 ? 'color:red' : 'color:black';
+									$saldo_550700 = ($akun_550700_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550700 < 0 ? 'color:red' : 'color:black';
 									?>
-									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_660200 < 0 ? "(".number_format(-$saldo_660200,0,',','.').")" : number_format($saldo_660200,0,',','.');?></th>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550700 < 0 ? "(".number_format(-$saldo_550700,0,',','.').")" : number_format($saldo_550700,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
