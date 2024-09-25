@@ -14241,7 +14241,7 @@ class Reports extends CI_Controller {
 				?>
 			<tr class="table-active3">
 				<th width="10%" class="text-center">1-10704</th>
-				<th class="text-left">Aset Tetap Peralatan</th>
+				<th class="text-left">Aset Tetap - Peralatan</th>
 				<?php
 				$styleColor = $akun_110704 < 0 ? 'color:red' : 'color:black';
 				?>
@@ -14296,7 +14296,7 @@ class Reports extends CI_Controller {
 				?>
 			<tr class="table-active3">
 				<th width="10%" class="text-center">1-10755</th>
-				<th class="text-left">Akumulasi Penyusutan - Peralatan Kantor inventaris</th>
+				<th class="text-left">Akumulasi Penyusutan - Peralatan Kantor Inventaris</th>
 				<?php
 				$styleColor = $akun_110755 < 0 ? 'color:red' : 'color:black';
 				?>
