@@ -11942,6 +11942,15 @@ class Reports extends CI_Controller {
 				x.style.display = "none";
 			}
 			}
+
+			function myFunction100() {
+			var x = document.getElementById("myDIV100");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
 		 </script>
 	        <tr class="table-active2">
 	            <th colspan="3">PERIODE</th>
@@ -12952,7 +12961,7 @@ class Reports extends CI_Controller {
 						usort($akun_550301, 'sortByOrder');
 						?>
 						<button onclick="myFunction11()" class="btn btn-info"><b>(5-50301) Konsumsi<b></button>
-						<div id="myDIV13" style="display:none;">
+						<div id="myDIV11" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -13048,7 +13057,7 @@ class Reports extends CI_Controller {
 						usort($akun_550302, 'sortByOrder');
 						?>
 						<button onclick="myFunction12()" class="btn btn-info"><b>(5-50302) Listrik & Internet<b></button>
-						<div id="myDIV14" style="display:none;">
+						<div id="myDIV12" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -13144,7 +13153,7 @@ class Reports extends CI_Controller {
 						usort($akun_550304, 'sortByOrder');
 						?>
 						<button onclick="myFunction13()" class="btn btn-info"><b>(5-50304) Gaji<b></button>
-						<div id="myDIV11" style="display:none;">
+						<div id="myDIV13" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -13240,7 +13249,7 @@ class Reports extends CI_Controller {
 						usort($akun_550310, 'sortByOrder');
 						?>
 						<button onclick="myFunction14()" class="btn btn-info"><b>(5-50310) Biaya Sewa - Kendaraan<b></button>
-						<div id="myDIV22" style="display:none;">
+						<div id="myDIV14" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -13336,7 +13345,7 @@ class Reports extends CI_Controller {
 						usort($akun_550311, 'sortByOrder');
 						?>
 						<button onclick="myFunction15()" class="btn btn-info"><b>(5-50311) Bensin, Tol dan Parkir<b></button>
-						<div id="myDIV16" style="display:none;">
+						<div id="myDIV15" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -13432,7 +13441,7 @@ class Reports extends CI_Controller {
 						usort($akun_550313, 'sortByOrder');
 						?>
 						<button onclick="myFunction16()" class="btn btn-info"><b>(5-50313) Pakaian Dinas & K3<b></button>
-						<div id="myDIV17" style="display:none;">
+						<div id="myDIV16" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -13528,7 +13537,7 @@ class Reports extends CI_Controller {
 						usort($akun_550315, 'sortByOrder');
 						?>
 						<button onclick="myFunction17()" class="btn btn-info"><b>(5-50315) Perlengkapan Kantor<b></button>
-						<div id="myDIV20" style="display:none;">
+						<div id="myDIV17" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -13624,7 +13633,7 @@ class Reports extends CI_Controller {
 						usort($akun_550316, 'sortByOrder');
 						?>
 						<button onclick="myFunction18()" class="btn btn-info"><b>(5-50316) Pengobatan<b></button>
-						<div id="myDIV15" style="display:none;">
+						<div id="myDIV18" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -13720,7 +13729,7 @@ class Reports extends CI_Controller {
 						usort($akun_550317, 'sortByOrder');
 						?>
 						<button onclick="myFunction19()" class="btn btn-info"><b>(5-50317) Alat Tulis Kantor & Printing<b></button>
-						<div id="myDIV18" style="display:none;">
+						<div id="myDIV19" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -13816,7 +13825,7 @@ class Reports extends CI_Controller {
 						usort($akun_550318, 'sortByOrder');
 						?>
 						<button onclick="myFunction20()" class="btn btn-info"><b>(5-50318) Keamanan dan Kebersihan<b></button>
-						<div id="myDIV19" style="display:none;">
+						<div id="myDIV20" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -14007,7 +14016,7 @@ class Reports extends CI_Controller {
 						$akun_660200 = array_merge($akun_660200_biaya,$akun_660200_jurnal);
 						usort($akun_660200, 'sortByOrder');
 						?>
-						<button onclick="myFunction22()" class="btn btn-info"><b>(6-60200) Biaya Persiapan<b></button>
+						<button onclick="myFunction100()" class="btn btn-info"><b>(6-60200) Biaya Persiapan<b></button>
 						<div id="myDIV100" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
