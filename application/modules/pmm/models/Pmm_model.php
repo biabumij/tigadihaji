@@ -6781,7 +6781,7 @@ class Pmm_model extends CI_Model {
         return $total;
     }
 
-    function get220500($date1,$date2)
+    function get220505($date1,$date2)
     {   
         $total = 0;
 
