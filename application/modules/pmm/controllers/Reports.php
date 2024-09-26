@@ -13248,7 +13248,7 @@ class Reports extends CI_Controller {
 						$akun_550310 = array_merge($akun_550310_biaya,$akun_550310_jurnal);
 						usort($akun_550310, 'sortByOrder');
 						?>
-						<button onclick="myFunction14()" class="btn btn-info"><b>(5-50310) Biaya Sewa - Kendaraan<b></button>
+						<button onclick="myFunction14()" class="btn btn-info"><b>(5-50310) Sewa Kendaraan<b></button>
 						<div id="myDIV14" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
@@ -13291,7 +13291,7 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50310) Biaya Sewa - Kendaraan | Saldo Akhir</th>
+									<th class="text-right" width="70%">(5-50310) Sewa Kendaraan | Saldo Akhir</th>
 									<th class="text-right" width="10%"><?php echo number_format($akun_550310_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
