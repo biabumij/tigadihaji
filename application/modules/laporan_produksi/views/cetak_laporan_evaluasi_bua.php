@@ -839,7 +839,7 @@
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" class="table-border-pojok-kiri">16.</th>			
-				<th align="left" class="table-border-pojok-tengah">Biaya Sewa - Kendaraan</th>
+				<th align="left" class="table-border-pojok-tengah">Sewa Kendaraan</th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($rap_biaya_sewa_kendaraan['total'],0,',','.');?></th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($biaya_sewa_kendaraan,0,',','.');?></th>
 				<th align="right" class="table-border-pojok-kanan" style="<?php echo $styleColorP ?>"><?php echo $evaluasi_biaya_sewa_kendaraan < 0 ? "(".number_format(-$evaluasi_biaya_sewa_kendaraan,0,',','.').")" : number_format($evaluasi_biaya_sewa_kendaraan,0,',','.');?></th>
