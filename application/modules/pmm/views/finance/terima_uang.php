@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <label>Setor Ke</label>
-                                        <select  class="form-control form-select2" name="setor_ke"  required="">
+                                        <select  class="form-control form-select2" name="setor_ke" required="">
                                             <option value="">Pilih Setor</option>
                                             <?php
                                             if(!empty($akun)){
