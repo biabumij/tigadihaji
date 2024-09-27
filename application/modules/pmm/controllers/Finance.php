@@ -1187,6 +1187,7 @@ class Finance extends CI_Controller {
 		$check = $this->m_admin->check_login();
 		if($check == true){		
 			$this->db->select('c.*');
+			//$this->db->where('c.coa_category',3);
 			$this->db->where("c.id in (1,147)");
 			$this->db->where('c.status','PUBLISH');
 			$this->db->order_by('c.coa_number','asc'); 
@@ -1201,6 +1202,7 @@ class Finance extends CI_Controller {
 		$check = $this->m_admin->check_login();
 		if($check == true){		
 			$this->db->select('c.*');
+			//$this->db->where('c.coa_category',3);
 			$this->db->where("c.id in (1,147)");
 			$this->db->where('c.status','PUBLISH');
 			$this->db->order_by('c.coa_number','asc'); 
