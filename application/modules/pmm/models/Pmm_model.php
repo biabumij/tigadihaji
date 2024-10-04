@@ -1606,6 +1606,7 @@ class Pmm_model extends CI_Model {
         /*if(!empty($status)){
             $this->db->where('status',$status);
         }*/
+
         if(!empty($w_date)){
             $arr_date = explode(' - ', $w_date);
             $start_date = $arr_date[0];
@@ -1658,15 +1659,17 @@ class Pmm_model extends CI_Model {
                 if($row['status'] == 'PUBLISH' || $row['status'] == 'CLOSED'){
                     $edit = '<a href="javascript:void(0);" onclick="UploadDoc('.$row['id'].')" class="btn btn-primary" style="border-radius:10px;" title="Upload Document PO" ><i class="fa fa-upload"></i> </a>';
                 }
+                
                 $edit_no_po = false;
                 $status = "'".$row['status']."'";
+                $subject = "'".$row['subject']."'";
+                $date_po = "'".date('d-m-Y',strtotime($row['date_po']))."'";
                 if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4))){
-                     $edit_no_po = '<a href="javascript:void(0);" onclick="EditNoPo('.$row['id'].','.$no_po.','.$status.')" class="btn btn-primary" style="border-radius:10px;" title="Edit Nomor PO" ><i class="fa fa-edit"></i> </a>';
-                }   
-                $row['status'] = $this->pmm_model->GetStatus($row['status']);
-                
-                $row['actions'] = $edit.' '.$edit_no_po;
+                     $edit_no_po = '<a href="javascript:void(0);" onclick="EditNoPo('.$row['id'].','.$no_po.','.$status.','.$subject.','.$date_po.')" class="btn btn-primary" style="border-radius:10px;" title="Edit Nomor PO" ><i class="fa fa-edit"></i> </a>';
+                }  
 
+                $row['status'] = $this->pmm_model->GetStatus($row['status']);
+                $row['actions'] = $edit.' '.$edit_no_po;
                 $row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 
