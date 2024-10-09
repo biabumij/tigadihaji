@@ -71,7 +71,7 @@
 		<table width="98%" cellpadding="3">
 			<tr>
 				<td align="center"  width="100%">
-					<div style="display: block;font-weight: bold;font-size: 11px;">LAPORAN BIAYA BAHAN</div>
+					<div style="display: block;font-weight: bold;font-size: 11px;">BIAYA BAHAN</div>
 					<div style="display: block;font-weight: bold;font-size: 11px;">PROYEK BENDUNGAN TIGA DIHAJI</div>
 					<div style="display: block;font-weight: bold;font-size: 11px;">PT. BIA BUMI JAYENDRA</div>
 					<div style="display: block;font-weight: bold;font-size: 11px; text-transform: uppercase;">PERIODE : <?php echo str_replace($search, $replace, $subject);?></div>
