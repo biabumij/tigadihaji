@@ -131,7 +131,6 @@
 			->get()->result_array();
 
            	$no = 0 ;
-
             $total = 0;
 			
            	foreach ($rap_bua_detail as $row) : ?>  
