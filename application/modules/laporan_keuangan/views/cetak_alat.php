@@ -43,38 +43,23 @@
 	  <style type="text/css">
 		body {
 			font-family: helvetica;
-			font-size: 7px;
+			font-size: 8px;
 		}
-
 		table tr.table-judul{
 			background-color: #e69500;
-			font-weight:bold; 
-			font-size: 7px;
-			color: black;
+			font-weight: bold;
+			font-size: 8px;
 		}
 			
 		table tr.table-baris1{
-			background-color: none;
-			font-size: 7px;
-		}
-
-		table tr.table-baris1-bold{
-			background-color: none;
-			font-size: 7px;
-			font-weight:bold; 
+			background-color: #F0F0F0;
+			font-size: 8px;
 		}
 			
 		table tr.table-total{
-			font-weight:bold; 
-			font-size: 7px;
-			color: black;
-		}
-
-		table tr.table-total2{
 			background-color: #cccccc;
-			font-weight:bold; 
-			font-size: 7px;
-			color: black;
+			font-weight: bold;
+			font-size: 8px;
 		}
 	  </style>
 
