@@ -2173,9 +2173,9 @@ class Reports extends CI_Controller {
 			->where("pp.date_production between '$date_awal' and '$last_opname'")
 			->where("pp.status = 'PUBLISH'")
 			->where("ppo.status in ('OPEN','CLOSED')")
-			->group_by("pp.client_id")
 			->get()->row_array();
-			$penjualan_now = $penjualan_now['total'];
+			file_put_contents("D:\\test.txt", $this->db->last_query());
+			$penjualan_sd_bulan_lalu = $penjualan_sd_bulan_lalu['total'];
 
 			$date_1_awal = date('Y-m-01', strtotime('+1 days +0 months', strtotime($last_opname)));
 			$date_1_akhir = date('Y-m-d', strtotime('-1 days +1 months', strtotime($date_1_awal)));
@@ -2231,7 +2231,7 @@ class Reports extends CI_Controller {
 			<tr class="table-active2-csf">
 				<th class="text-left">&nbsp;&nbsp;1. PRODUKSI (Rp.)</th>
 				<th class="text-right"><?php echo number_format($rencana_pendapatan,0,',','.');?></th>
-				<th class="text-right"><?php echo number_format($penjualan_now,0,',','.');?></th>
+				<th class="text-right"><?php echo number_format($penjualan_sd_bulan_lalu,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($penjualan_bulan_ini,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($penjualan_bulan_ini_sd,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($penjualan_2,0,',','.');?></th>
