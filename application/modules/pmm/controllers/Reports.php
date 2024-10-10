@@ -2174,7 +2174,6 @@ class Reports extends CI_Controller {
 			->where("pp.status = 'PUBLISH'")
 			->where("ppo.status in ('OPEN','CLOSED')")
 			->get()->row_array();
-			file_put_contents("D:\\test.txt", $this->db->last_query());
 			$penjualan_sd_bulan_lalu = $penjualan_sd_bulan_lalu['total'];
 
 			$date_1_awal = date('Y-m-01', strtotime('+1 days +0 months', strtotime($last_opname)));
