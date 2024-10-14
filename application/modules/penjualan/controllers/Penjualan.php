@@ -19,9 +19,10 @@ class Penjualan extends Secure_Controller
 	{
 		$data = array();
 		
-
 		$this->db->select('pmm_penawaran_penjualan.*,penerima.nama');
 		$this->db->join("penerima", "pmm_penawaran_penjualan.client_id = penerima.id");
+		$this->db->where("status <> 'REJECT'");
+		$this->db->order_by('status','DESC');
 		$this->db->order_by('tanggal', 'DESC');
 		$this->db->order_by('created_on', 'DESC');
 		$query = $this->db->get("pmm_penawaran_penjualan");
@@ -389,6 +390,8 @@ class Penjualan extends Secure_Controller
 
 		$this->db->select('ps.*, p.nama as client_name');
 		$this->db->join('penerima p', 'ps.client_id = p.id', 'left');
+		$this->db->where("status <> 'REJECT'");
+		$this->db->order_by('status','DESC');
 		$this->db->order_by('created_on', 'DESC');
 		$query = $this->db->get('pmm_sales_po ps');
 		if ($query->num_rows() > 0) {
