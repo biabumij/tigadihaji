@@ -65,6 +65,19 @@
             visibility: visible;
         }
         }
+
+        .ripple {
+			background-position: center;
+			transition: background 0.8s;
+		}
+		.ripple:hover {
+			background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+		}
+		.ripple:active {
+			background-color: #6eb9f7;
+			background-size: 100%;
+			transition: background 0s;
+		}
     </style>
 </head>
 
@@ -83,7 +96,7 @@
                                 </h3>
                                 <div class="text-left">
                                     <a href="<?php echo site_url('admin');?>">
-                                    <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
+                                    <button class="ripple"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
                                 </div>
                             </div>
                             <div class="panel-content">
