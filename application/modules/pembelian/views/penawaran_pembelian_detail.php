@@ -48,7 +48,7 @@
                     <div class="col-sm-12 col-lg-12">
                         <div class="panel">
                             <div class="panel-header">
-                                <h3><b>DETAIL PENAWARAN PEMBELIAN <?php echo $this->pmm_model->GetStatus2($row['status']);?></b></h3><br />
+                                <h3><b>DETAIL PENAWARAN PEMBELIAN <?php echo $this->pmm_model->GetStatus2($row['status']);?></b></h3>
                                 <div class="text-left">
                                     <a href="<?php echo site_url('admin/pembelian');?>">
                                     <button class="ripple"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
