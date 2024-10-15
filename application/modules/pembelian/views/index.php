@@ -66,6 +66,19 @@
         }
         }
 
+        button {
+			border: none;
+			border-radius: 5px;
+			padding: 5px;
+			font-size: 12px;
+			text-transform: uppercase;
+			cursor: pointer;
+			color: white;
+			background-color: #2196f3;
+			box-shadow: 0 0 4px #999;
+			outline: none;
+		}
+        
         .ripple {
 			background-position: center;
 			transition: background 0.8s;
