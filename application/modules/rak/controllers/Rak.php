@@ -486,26 +486,26 @@ class Rak extends Secure_Controller {
 		$supplier_id_tm =  $this->input->post('supplier_id_tm');
 		$supplier_id_wl =  $this->input->post('supplier_id_wl');
 
-		$realisasi_vol_semen =  str_replace('.', '', $this->input->post('realiasi_vol_semen'));
+		$realisasi_vol_semen =  str_replace('.', '', $this->input->post('realisasi_vol_semen'));
 		$realisasi_vol_semen =  str_replace(',', '.', $realiasi_vol_semen);
-		$realisasi_vol_pasir =  str_replace('.', '', $this->input->post('realiasi_vol_pasir'));
+		$realisasi_vol_pasir =  str_replace('.', '', $this->input->post('realisasi_vol_pasir'));
 		$realisasi_vol_pasir =  str_replace(',', '.', $realiasi_vol_pasir);
-		$realisasi_vol_batu1020 =  str_replace('.', '', $this->input->post('realiasi_vol_batu1020'));
+		$realisasi_vol_batu1020 =  str_replace('.', '', $this->input->post('realisasi_vol_batu1020'));
 		$realisasi_vol_batu1020 =  str_replace(',', '.', $realiasi_vol_batu1020);
-		$realisasi_vol_batu2030 =  str_replace('.', '', $this->input->post('realiasi_vol_batu2030'));
+		$realisasi_vol_batu2030 =  str_replace('.', '', $this->input->post('realisasi_vol_batu2030'));
 		$realisasi_vol_batu2030 =  str_replace(',', '.', $realiasi_vol_batu2030);
-		$realisasi_vol_additive =  str_replace('.', '', $this->input->post('realiasi_vol_additive'));
+		$realisasi_vol_additive =  str_replace('.', '', $this->input->post('realisasi_vol_additive'));
 		$realisasi_vol_additive =  str_replace(',', '.', $realiasi_vol_additive);
 
-		$realisasi_semen =  str_replace('.', '', $this->input->post('realiasi_semen'));
-		$realisasi_vol_pasir =  str_replace('.', '', $this->input->post('realiasi_vol_pasir'));
-		$realisasi_batu1020 =  str_replace('.', '', $this->input->post('realiasi_batu1020'));
-		$realisasi_batu2030 =  str_replace('.', '', $this->input->post('realiasi_batu2030'));
-		$realisasi_additive =  str_replace('.', '', $this->input->post('realiasi_additive'));
-		$realisasi_bp =  str_replace('.', '', $this->input->post('realiasi_bp'));
-		$realisasi_tm =  str_replace('.', '', $this->input->post('realiasi_tm'));
-		$realisasi_wl =  str_replace('.', '', $this->input->post('realiasi_wl'));
-		$realisasi_solar =  str_replace('.', '', $this->input->post('realiasi_solar'));
+		$realisasi_semen =  str_replace('.', '', $this->input->post('realisasi_semen'));
+		$realisasi_vol_pasir =  str_replace('.', '', $this->input->post('realisasi_vol_pasir'));
+		$realisasi_batu1020 =  str_replace('.', '', $this->input->post('realisasi_batu1020'));
+		$realisasi_batu2030 =  str_replace('.', '', $this->input->post('realisasi_batu2030'));
+		$realisasi_additive =  str_replace('.', '', $this->input->post('realisasi_additive'));
+		$realisasi_bp =  str_replace('.', '', $this->input->post('realisasi_bp'));
+		$realisasi_tm =  str_replace('.', '', $this->input->post('realisasi_tm'));
+		$realisasi_wl =  str_replace('.', '', $this->input->post('realisasi_wl'));
+		$realisasi_solar =  str_replace('.', '', $this->input->post('realisasi_solar'));
 
 		$arr_update = array(
 
@@ -596,15 +596,15 @@ class Rak extends Secure_Controller {
 			'supplier_id_tm' => $supplier_id_tm,
 			'supplier_id_wl' => $supplier_id_wl,
 
-			'realisasi_vol_semen' => $realiasi_vol_semen,
-			'realisasi_vol_pasir' => $realiasi_vol_pasir,
-			'realisasi_vol_batu1020' => $realiasi_vol_batu1020,
-			'realisasi_vol_batu2030' => $realiasi_vol_batu2030,
-			'realisasi_vol_additive' => $realiasi_vol_additive,
-			'realisasi_bp' => $realiasi_bp,
-			'realisasi_tm' => $realiasi_tm,
-			'realisasi_wl' => $realiasi_wl,
-			'realisasi_solar' => $realiasi_solar,
+			'realisasi_vol_semen' => $realisasi_vol_semen,
+			'realisasi_vol_pasir' => $realisasi_vol_pasir,
+			'realisasi_vol_batu1020' => $realisasi_vol_batu1020,
+			'realisasi_vol_batu2030' => $realisasi_vol_batu2030,
+			'realisasi_vol_additive' => $realisasi_vol_additive,
+			'realisasi_bp' => $realisasi_bp,
+			'realisasi_tm' => $realisasi_tm,
+			'realisasi_wl' => $realisasi_wl,
+			'realisasi_solar' => $realisasi_solar,
 				
 			'status' => 'PUBLISH',
 			'updated_by' => $this->session->userdata('admin_id'),
