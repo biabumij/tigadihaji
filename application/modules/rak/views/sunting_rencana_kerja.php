@@ -259,10 +259,10 @@
                                                     <input type="hidden" id="supplier_id_semen" name="supplier_id_semen" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_vol_semen" class="form-control numberformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_vol_semen" class="form-control numberformat text-right" value="<?php echo number_format($rak['realisasi_vol_semen'],2,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_semen" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_semen" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_semen'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -288,10 +288,10 @@
                                                     <input type="hidden" id="supplier_id_pasir" name="supplier_id_pasir" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_vol_pasir" class="form-control numberformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_vol_pasir" class="form-control numberformat text-right" value="<?php echo number_format($rak['realisasi_vol_pasir'],2,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_pasir" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_pasir" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_pasir'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -317,10 +317,10 @@
                                                     <input type="hidden" id="supplier_id_batu1020" name="supplier_id_batu1020" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_vol_batu1020" class="form-control numberformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_vol_batu1020" class="form-control numberformat text-right" value="<?php echo number_format($rak['realisasi_vol_batu1020'],2,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_batu1020" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_batu1020" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_batu1020'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -346,10 +346,10 @@
                                                     <input type="hidden" id="supplier_id_batu2030" name="supplier_id_batu2030" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_vol_batu2030" class="form-control numberformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_vol_batu2030" class="form-control numberformat text-right" value="<?php echo number_format($rak['realisasi_vol_batu2030'],2,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_batu2030" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_batu2030" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_batu2030'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -375,10 +375,10 @@
                                                     <input type="hidden" id="supplier_id_additive" name="supplier_id_additive" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_vol_additive" class="form-control numberformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_vol_additive" class="form-control numberformat text-right" value="<?php echo number_format($rak['realisasi_vol_additive'],2,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_additive" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_additive" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_additive'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -418,7 +418,7 @@
                                                     <input type="hidden" id="supplier_id_bp" name="supplier_id_bp" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_bp" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_bp" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_bp'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -444,7 +444,7 @@
                                                     <input type="hidden" id="supplier_id_tm" name="supplier_id_tm" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_tm" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_tm" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_tm'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -470,7 +470,7 @@
                                                     <input type="hidden" id="supplier_id_wl" name="supplier_id_wl" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_wl" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_wl" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_wl'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -496,7 +496,7 @@
                                                     <input type="hidden" id="supplier_id_solar" name="supplier_id_solar" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_solar" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_solar" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_solar'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                         </tbody>
