@@ -228,9 +228,11 @@
                                         <thead>
                                             <tr class="text-center">
                                                 <th width="5%">NO.</th>
-                                                <th width="25%">KEBUTUHAN BAHAN</th>
-                                                <th width="40%">PENAWARAN</th>
-                                                <th width="30%">HARGA SATUAN</th>                                 
+                                                <th width="10%">KEBUTUHAN BAHAN</th>
+                                                <th width="25%">PENAWARAN</th>
+                                                <th width="25%">HARGA SATUAN</th>
+                                                <th width="20%">REALISASI (VOL.)</th>
+                                                <th width="20%">REALISASI (NILAI)</th>                                 
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -256,6 +258,12 @@
                                                     <input type="hidden" id="pajak_id_semen" name="pajak_id_semen" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="supplier_id_semen" name="supplier_id_semen" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_vol_semen" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_semen" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center">2.</td>
@@ -278,6 +286,12 @@
                                                     <input type="hidden" id="tax_id_pasir" name="tax_id_pasir" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="pajak_id_pasir" name="pajak_id_pasir" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="supplier_id_pasir" name="supplier_id_pasir" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_vol_pasir" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_pasir" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -302,6 +316,12 @@
                                                     <input type="hidden" id="pajak_id_batu1020" name="pajak_id_batu1020" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="supplier_id_batu1020" name="supplier_id_batu1020" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_vol_batu1020" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_batu1020" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center">4.</td>
@@ -324,6 +344,12 @@
                                                     <input type="hidden" id="tax_id_batu2030" name="tax_id_batu2030" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="pajak_id_batu2030" name="pajak_id_batu2030" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="supplier_id_batu2030" name="supplier_id_batu2030" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_vol_batu2030" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_batu2030" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -348,18 +374,25 @@
                                                     <input type="hidden" id="pajak_id_additive" name="pajak_id_additive" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="supplier_id_additive" name="supplier_id_additive" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_vol_additive" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_additive" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                     <br />
                                     <table id="table-product" class="table table-bordered table-striped table-condensed table-center">
                                         <thead>
-                                        <tr class="text-center">
-                                            <th width="5%">NO.</th>
-                                            <th width="25%">KEBUTUHAN BAHAN</th>
-                                            <th width="40%">PENAWARAN</th>
-                                            <th width="30%">HARGA SATUAN</th>                                 
-                                        </tr>
+                                            <tr class="text-center">
+                                                <th width="5%">NO.</th>
+                                                <th width="15%">KEBUTUHAN BAHAN</th>
+                                                <th width="30%">PENAWARAN</th>
+                                                <th width="25%">HARGA SATUAN</th>
+                                                <th width="25%">REALISASI</th>                                
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
@@ -384,6 +417,9 @@
                                                     <input type="hidden" id="pajak_id_bp" name="pajak_id_bp" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="supplier_id_bp" name="supplier_id_bp" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_bp" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center">2.</td>
@@ -406,6 +442,9 @@
                                                     <input type="hidden" id="tax_id_tm" name="tax_id_tm" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="pajak_id_tm" name="pajak_id_tm" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="supplier_id_tm" name="supplier_id_tm" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_tm" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                             <tr>
@@ -430,6 +469,9 @@
                                                     <input type="hidden" id="pajak_id_wl" name="pajak_id_wl" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="supplier_id_wl" name="supplier_id_wl" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_wl" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center">4.</td>
@@ -452,6 +494,9 @@
                                                     <input type="hidden" id="tax_id_solar" name="tax_id_solar" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="pajak_id_solar" name="pajak_id_solar" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                     <input type="hidden" id="supplier_id_solar" name="supplier_id_solar" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_solar" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                             </tr>
                                         </tbody>
