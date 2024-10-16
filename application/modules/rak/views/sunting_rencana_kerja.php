@@ -556,7 +556,7 @@
             var vol_produk_c = $('#vol_produk_c').val();
             var vol_produk_d = $('#vol_produk_d').val();
             var vol_produk_e = $('#vol_produk_e').val();
-            var vol_produk_F = $('#vol_produk_f').val();
+            var vol_produk_f = $('#vol_produk_f').val();
 
 			vol_produk_a = ( vol_produk_a);
             $('#vol_produk_a').val(vol_produk_a);
