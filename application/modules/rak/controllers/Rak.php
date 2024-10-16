@@ -497,8 +497,14 @@ class Rak extends Secure_Controller {
 		$realisasi_vol_additive =  str_replace('.', '', $this->input->post('realisasi_vol_additive'));
 		$realisasi_vol_additive =  str_replace(',', '.', $realiasi_vol_additive);
 
-		$realisasi_semen =  str_replace('.', '', $this->input->post('realisasi_semen'));
+		$realisasi_vol_semen =  str_replace('.', '', $this->input->post('realisasi_vol_semen'));
 		$realisasi_vol_pasir =  str_replace('.', '', $this->input->post('realisasi_vol_pasir'));
+		$realisasi_vol_batu1020 =  str_replace('.', '', $this->input->post('realisasi_vol_batu1020'));
+		$realisasi_vol_batu2030 =  str_replace('.', '', $this->input->post('realisasi_vol_batu2030'));
+		$realisasi_vol_additive =  str_replace('.', '', $this->input->post('realisasi_vol_additive'));
+
+		$realisasi_semen =  str_replace('.', '', $this->input->post('realisasi_semen'));
+		$realisasi_pasir =  str_replace('.', '', $this->input->post('realisasi_pasir'));
 		$realisasi_batu1020 =  str_replace('.', '', $this->input->post('realisasi_batu1020'));
 		$realisasi_batu2030 =  str_replace('.', '', $this->input->post('realisasi_batu2030'));
 		$realisasi_additive =  str_replace('.', '', $this->input->post('realisasi_additive'));
@@ -601,6 +607,11 @@ class Rak extends Secure_Controller {
 			'realisasi_vol_batu1020' => $realisasi_vol_batu1020,
 			'realisasi_vol_batu2030' => $realisasi_vol_batu2030,
 			'realisasi_vol_additive' => $realisasi_vol_additive,
+			'realisasi_semen' => $realisasi_semen,
+			'realisasi_pasir' => $realisasi_pasir,
+			'realisasi_batu1020' => $realisasi_batu1020,
+			'realisasi_batu2030' => $realisasi_batu2030,
+			'realisasi_additive' => $realisasi_additive,
 			'realisasi_bp' => $realisasi_bp,
 			'realisasi_tm' => $realisasi_tm,
 			'realisasi_wl' => $realisasi_wl,
