@@ -556,6 +556,7 @@
             var vol_produk_c = $('#vol_produk_c').val();
             var vol_produk_d = $('#vol_produk_d').val();
             var vol_produk_e = $('#vol_produk_e').val();
+            var vol_produk_F = $('#vol_produk_f').val();
 
 			vol_produk_a = ( vol_produk_a);
             $('#vol_produk_a').val(vol_produk_a);
@@ -567,6 +568,8 @@
             $('#vol_produk_d').val(vol_produk_d);
             vol_produk_e = ( vol_produk_e);
             $('#vol_produk_e').val(vol_produk_e);
+            vol_produk_f = ( vol_produk_f);
+            $('#vol_produk_f').val(vol_produk_f);
             getTotal();
         }
 
@@ -574,7 +577,7 @@
         {
             var sub_total = $('#sub-total-val').val();
 
-            sub_total = parseFloat($('#vol_produk_a').val()) + parseFloat($('#vol_produk_b').val()) + parseFloat($('#vol_produk_c').val()) + parseFloat($('#vol_produk_d').val()) + parseFloat($('#vol_produk_e').val());
+            sub_total = parseFloat($('#vol_produk_a').val()) + parseFloat($('#vol_produk_b').val()) + parseFloat($('#vol_produk_c').val()) + parseFloat($('#vol_produk_d').val()) + parseFloat($('#vol_produk_e').val()) + parseFloat($('#vol_produk_f').val());
             
             $('#sub-total-val').val(sub_total);
             $('#sub-total').text($.number( sub_total, 2,',','.' ));
