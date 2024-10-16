@@ -90,7 +90,7 @@
                                                 <td class="text-center">1.</td>
                                                 <td class="text-left">Beton-K 125</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_a" name="vol_produk_a" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_a"],2,',','.');?>" onchange="changeData(1)"  autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_a" name="price_a" class="form-control rupiahformat text-right" value="<?= $rak['price_a'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_a" name="price_a" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_a'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_125" name="komposisi_125" class="form-control input-sm">
@@ -111,7 +111,7 @@
                                                 <td class="text-center">2.</td>
                                                 <td class="text-left">Beton K-175</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_b" name="vol_produk_b" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_b"],2,',','.');?>" onchange="changeData(1)"  autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_b" name="price_b" class="form-control rupiahformat text-right" value="<?= $rak['price_b'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_b" name="price_b" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_b'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_175" name="komposisi_175" class="form-control input-sm">
@@ -132,7 +132,7 @@
                                                 <td class="text-center">3.</td>
                                                 <td class="text-left">Beton K 225</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_c" name="vol_produk_c" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_c"],2,',','.');?>" onchange="changeData(1)"  autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_c" name="price_c" class="form-control rupiahformat text-right" value="<?= $rak['price_c'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_c" name="price_c" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_c'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_225" name="komposisi_225" class="form-control input-sm">
@@ -153,7 +153,7 @@
                                                 <td class="text-center">4.</td>
                                                 <td class="text-left">Beton K-250</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_d" name="vol_produk_d" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_d"],2,',','.');?>" onchange="changeData(1)" autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_d" name="price_d" class="form-control rupiahformat text-right" value="<?= $rak['price_d'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_d" name="price_d" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_d'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_250" name="komposisi_250" class="form-control input-sm">
@@ -174,7 +174,7 @@
                                                 <td class="text-center">5.</td>
                                                 <td class="text-left">Beton K-300</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_e" name="vol_produk_e" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_e"],2,',','.');?>" onchange="changeData(1)" autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_e" name="price_e" class="form-control rupiahformat text-right" value="<?= $rak['price_e'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_e" name="price_e" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_e'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_300" name="komposisi_300" class="form-control input-sm">
@@ -195,7 +195,7 @@
                                                 <td class="text-center">6.</td>
                                                 <td class="text-left">Beton K-350</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_f" name="vol_produk_f" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_f"],2,',','.');?>" onchange="changeData(1)" autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_f" name="price_f" class="form-control rupiahformat text-right" value="<?= $rak['price_f'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_f" name="price_f" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_f'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_350" name="komposisi_350" class="form-control input-sm">
