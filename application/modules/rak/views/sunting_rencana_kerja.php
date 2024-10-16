@@ -259,7 +259,7 @@
                                                     <input type="hidden" id="supplier_id_semen" name="supplier_id_semen" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_vol_semen" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_vol_semen" class="form-control numberformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                                 <td>
                                                     <input type="text" name="realisasi_semen" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
@@ -288,7 +288,7 @@
                                                     <input type="hidden" id="supplier_id_pasir" name="supplier_id_pasir" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_vol_pasir" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_vol_pasir" class="form-control numberformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                                 <td>
                                                     <input type="text" name="realisasi_pasir" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
@@ -317,7 +317,7 @@
                                                     <input type="hidden" id="supplier_id_batu1020" name="supplier_id_batu1020" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_vol_batu1020" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_vol_batu1020" class="form-control numberformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                                 <td>
                                                     <input type="text" name="realisasi_batu1020" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
@@ -346,7 +346,7 @@
                                                     <input type="hidden" id="supplier_id_batu2030" name="supplier_id_batu2030" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_vol_batu2030" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_vol_batu2030" class="form-control numberformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                                 <td>
                                                     <input type="text" name="realisasi_batu2030" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
@@ -375,7 +375,7 @@
                                                     <input type="hidden" id="supplier_id_additive" name="supplier_id_additive" class="form-control text-right" value=""  readonly="" autocomplete="off">
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="realisasi_vol_additive" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                    <input type="text" name="realisasi_vol_additive" class="form-control numberformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
                                                 </td>
                                                 <td>
                                                     <input type="text" name="realisasi_additive" class="form-control rupiahformat text-right"  placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
