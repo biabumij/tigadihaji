@@ -1947,4 +1947,40 @@ class Penjualan extends Secure_Controller
 		}
 		echo json_encode($output);
 	}
+
+	public function edit_no_po()
+	{
+		$output['output'] = false;
+		$id = $this->input->post('id');
+		$contract_number = $this->input->post('contract_number');
+		$status = $this->input->post('status');
+		$jobs_type = $this->input->post('jobs_type');
+		$contract_date = $this->input->post('contract_date');
+		
+		if(!empty($id)){
+			$arr_data = array(
+				'contract_number' => $contract_number,
+				'status' => $status,
+				'jobs_type' => $jobs_type,
+				'contract_date' => date('Y-m-d', strtotime($contract_date)),
+ 			);
+
+			$this->db->set("nomor_kontrak", $contract_number);
+			$this->db->set("tanggal_kontrak", date('Y-m-d', strtotime($contract_date)));
+			$this->db->where("sales_po_id", $id);
+			$this->db->update("pmm_penagihan_penjualan");
+				
+			// $check_po = $this->db->get_where('pmm_sales_po',array('contract_number'=>$contract_number))->num_rows();
+			// if($check_po > 0){
+				// $output['err'] = 'No sales order has been added';
+			// }else {
+				if($this->db->update('pmm_sales_po',$arr_data,array('id'=>$id))){
+					
+					$output['output'] = true;
+				}	
+			// }
+			
+		}
+		echo json_encode($output);
+	}
 }
