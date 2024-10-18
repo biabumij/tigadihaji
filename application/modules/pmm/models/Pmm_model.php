@@ -1589,7 +1589,6 @@ class Pmm_model extends CI_Model {
         return $output;
     }
 
-
     function TableCustomMaterial($supplier_id)
     {
         $data = array();
