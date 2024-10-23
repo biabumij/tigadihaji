@@ -90,7 +90,7 @@
                                                 <td class="text-center">1.</td>
                                                 <td class="text-left">Beton-K 125</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_a" name="vol_produk_a" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_a"],2,',','.');?>" onchange="changeData(1)"  autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_a" name="price_a" class="form-control rupiahformat text-right" value="<?= $rak['price_a'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_a" name="price_a" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_a'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_125" name="komposisi_125" class="form-control input-sm">
@@ -111,7 +111,7 @@
                                                 <td class="text-center">2.</td>
                                                 <td class="text-left">Beton K-175</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_b" name="vol_produk_b" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_b"],2,',','.');?>" onchange="changeData(1)"  autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_b" name="price_b" class="form-control rupiahformat text-right" value="<?= $rak['price_b'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_b" name="price_b" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_b'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_175" name="komposisi_175" class="form-control input-sm">
@@ -132,7 +132,7 @@
                                                 <td class="text-center">3.</td>
                                                 <td class="text-left">Beton K 225</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_c" name="vol_produk_c" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_c"],2,',','.');?>" onchange="changeData(1)"  autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_c" name="price_c" class="form-control rupiahformat text-right" value="<?= $rak['price_c'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_c" name="price_c" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_c'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_225" name="komposisi_225" class="form-control input-sm">
@@ -153,7 +153,7 @@
                                                 <td class="text-center">4.</td>
                                                 <td class="text-left">Beton K-250</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_d" name="vol_produk_d" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_d"],2,',','.');?>" onchange="changeData(1)" autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_d" name="price_d" class="form-control rupiahformat text-right" value="<?= $rak['price_d'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_d" name="price_d" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_d'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_250" name="komposisi_250" class="form-control input-sm">
@@ -174,7 +174,7 @@
                                                 <td class="text-center">5.</td>
                                                 <td class="text-left">Beton K-300</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_e" name="vol_produk_e" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_e"],2,',','.');?>" onchange="changeData(1)" autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_e" name="price_e" class="form-control rupiahformat text-right" value="<?= $rak['price_e'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_e" name="price_e" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_e'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_300" name="komposisi_300" class="form-control input-sm">
@@ -195,7 +195,7 @@
                                                 <td class="text-center">6.</td>
                                                 <td class="text-left">Beton K-350</td>
                                                 <td class="text-right"><input type="text" id="vol_produk_f" name="vol_produk_f" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_produk_f"],2,',','.');?>" onchange="changeData(1)" autocomplete="off"></td>
-                                                <td class="text-right"><input type="text" id="price_f" name="price_f" class="form-control rupiahformat text-right" value="<?= $rak['price_f'] ?>" autocomplete="off"></td>
+                                                <td class="text-right"><input type="text" id="price_f" name="price_f" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['price_f'],0,',','.');?>" autocomplete="off"></td>
                                                 <td class="text-center">M3</td>
                                                 <td class="text-center">
                                                     <select id="komposisi_350" name="komposisi_350" class="form-control input-sm">
@@ -457,6 +457,283 @@
                                         </tbody>
                                     </table>
                                     <br />
+                                    <!--<table id="table-product" class="table table-bordered table-striped table-condensed table-center">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th width="5%">NO.</th>
+                                                <th width="10%">KEBUTUHAN BAHAN</th>
+                                                <th width="25%">PENAWARAN</th>
+                                                <th width="25%">HARGA SATUAN</th>
+                                                <th width="20%">REALISASI (VOL.)</th>
+                                                <th width="20%">REALISASI (NILAI)</th>                                 
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                                <td class="text-center">1.</td>
+                                                <td>Semen</td>
+                                                <td class="text-center"><select id="penawaran_id_semen" name="penawaran_id_semen" class="form-control">
+                                                    <option value="">Pilih Penawaran</option>
+                                                    <?php
+
+                                                    foreach ($semen as $key => $sm) {
+                                                        ?>
+                                                        <option value="<?php echo $sm['penawaran_id'];?>" data-supplier_id="<?php echo $sm['supplier_id'];?>" data-measure="<?php echo $sm['measure'];?>" data-price="<?php echo $sm['price'];?>" data-tax_id="<?php echo $sm['tax_id'];?>" data-tax="<?php echo $sm['tax'];?>" data-penawaran_id="<?php echo $sm['penawaran_id'];?>"><?php echo $sm['nama'];?> - <?php echo $sm['nomor_penawaran'];?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="price_semen" name="price_semen" class="form-control rupiahformat text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="measure_semen" name="measure_semen" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="tax_id_semen" name="tax_id_semen" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="pajak_id_semen" name="pajak_id_semen" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="supplier_id_semen" name="supplier_id_semen" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_vol_semen" class="form-control numberformat text-right" value="<?php echo number_format($rak['realisasi_vol_semen'],2,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_semen" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_semen'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">2.</td>
+                                                <td>Pasir</td>
+                                                <td class="text-center"><select id="penawaran_id_pasir" name="penawaran_id_pasir" class="form-control">
+                                                    <option value="">Pilih Penawaran</option>
+                                                    <?php
+
+                                                    foreach ($pasir as $key => $sm) {
+                                                        ?>
+                                                        <option value="<?php echo $sm['penawaran_id'];?>" data-supplier_id="<?php echo $sm['supplier_id'];?>" data-measure="<?php echo $sm['measure'];?>" data-price="<?php echo $sm['price'];?>" data-tax_id="<?php echo $sm['tax_id'];?>" data-tax="<?php echo $sm['tax'];?>" data-penawaran_id="<?php echo $sm['penawaran_id'];?>"><?php echo $sm['nama'];?> - <?php echo $sm['nomor_penawaran'];?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="price_pasir" name="price_pasir" class="form-control rupiahformat text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="measure_pasir" name="measure_pasir" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="tax_id_pasir" name="tax_id_pasir" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="pajak_id_pasir" name="pajak_id_pasir" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="supplier_id_pasir" name="supplier_id_pasir" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_vol_pasir" class="form-control numberformat text-right" value="<?php echo number_format($rak['realisasi_vol_pasir'],2,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_pasir" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_pasir'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">3.</td>
+                                                <td>Batu Split 10-20</td>
+                                                <td class="text-center"><select id="penawaran_id_batu1020" name="penawaran_id_batu1020" class="form-control">
+                                                    <option value="">Pilih Penawaran</option>
+                                                    <?php
+
+                                                    foreach ($batu1020 as $key => $sm) {
+                                                        ?>
+                                                        <option value="<?php echo $sm['penawaran_id'];?>" data-supplier_id="<?php echo $sm['supplier_id'];?>" data-measure="<?php echo $sm['measure'];?>" data-price="<?php echo $sm['price'];?>" data-tax_id="<?php echo $sm['tax_id'];?>" data-tax="<?php echo $sm['tax'];?>" data-penawaran_id="<?php echo $sm['penawaran_id'];?>"><?php echo $sm['nama'];?> - <?php echo $sm['nomor_penawaran'];?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="price_batu1020" name="price_batu1020" class="form-control rupiahformat text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="measure_batu1020" name="measure_batu1020" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="tax_id_batu1020" name="tax_id_batu1020" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="pajak_id_batu1020" name="pajak_id_batu1020" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="supplier_id_batu1020" name="supplier_id_batu1020" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_vol_batu1020" class="form-control numberformat text-right" value="<?php echo number_format($rak['realisasi_vol_batu1020'],2,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_batu1020" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_batu1020'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">4.</td>
+                                                <td>Batu Split 20-30</td>
+                                                <td class="text-center"><select id="penawaran_id_batu2030" name="penawaran_id_batu2030" class="form-control">
+                                                    <option value="">Pilih Penawaran</option>
+                                                    <?php
+
+                                                    foreach ($batu2030 as $key => $sm) {
+                                                        ?>
+                                                        <option value="<?php echo $sm['penawaran_id'];?>" data-supplier_id="<?php echo $sm['supplier_id'];?>" data-measure="<?php echo $sm['measure'];?>" data-price="<?php echo $sm['price'];?>" data-tax_id="<?php echo $sm['tax_id'];?>" data-tax="<?php echo $sm['tax'];?>" data-penawaran_id="<?php echo $sm['penawaran_id'];?>"><?php echo $sm['nama'];?> - <?php echo $sm['nomor_penawaran'];?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="price_batu2030" name="price_batu2030" class="form-control rupiahformat text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="measure_batu2030" name="measure_batu2030" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="tax_id_batu2030" name="tax_id_batu2030" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="pajak_id_batu2030" name="pajak_id_batu2030" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="supplier_id_batu2030" name="supplier_id_batu2030" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_vol_batu2030" class="form-control numberformat text-right" value="<?php echo number_format($rak['realisasi_vol_batu2030'],2,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_batu2030" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_batu2030'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">5.</td>
+                                                <td>Additive</td>
+                                                <td class="text-center"><select id="penawaran_id_additive" name="penawaran_id_additive" class="form-control">
+                                                    <option value="">Pilih Penawaran</option>
+                                                    <?php
+
+                                                    foreach ($additive as $key => $sm) {
+                                                        ?>
+                                                        <option value="<?php echo $sm['penawaran_id'];?>" data-supplier_id="<?php echo $sm['supplier_id'];?>" data-measure="<?php echo $sm['measure'];?>" data-price="<?php echo $sm['price'];?>" data-tax_id="<?php echo $sm['tax_id'];?>" data-tax="<?php echo $sm['tax'];?>" data-penawaran_id="<?php echo $sm['penawaran_id'];?>"><?php echo $sm['nama'];?> - <?php echo $sm['nomor_penawaran'];?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="price_additive" name="price_additive" class="form-control rupiahformat text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="measure_additive" name="measure_additive" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="tax_id_additive" name="tax_id_additive" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="pajak_id_additive" name="pajak_id_additive" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="supplier_id_additive" name="supplier_id_additive" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_vol_additive" class="form-control numberformat text-right" value="<?php echo number_format($rak['realisasi_vol_additive'],2,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_additive" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_additive'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <br />
+                                    <table id="table-product" class="table table-bordered table-striped table-condensed table-center">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th width="5%">NO.</th>
+                                                <th width="15%">KEBUTUHAN BAHAN</th>
+                                                <th width="30%">PENAWARAN</th>
+                                                <th width="25%">HARGA SATUAN</th>
+                                                <th width="25%">REALISASI</th>                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">1.</td>
+                                                <td>Batching Plant</td>
+                                                <td class="text-center"><select id="penawaran_id_bp" name="penawaran_id_bp" class="form-control">
+                                                    <option value="">Pilih Penawaran</option>
+                                                    <?php
+
+                                                    foreach ($bp as $key => $sm) {
+                                                        ?>
+                                                        <option value="<?php echo $sm['penawaran_id'];?>" data-supplier_id="<?php echo $sm['supplier_id'];?>" data-measure="<?php echo $sm['measure'];?>" data-price="<?php echo $sm['price'];?>" data-tax_id="<?php echo $sm['tax_id'];?>" data-tax="<?php echo $sm['tax'];?>" data-penawaran_id="<?php echo $sm['penawaran_id'];?>"><?php echo $sm['nama'];?> - <?php echo $sm['nomor_penawaran'];?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="price_bp" name="price_bp" class="form-control rupiahformat text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="measure_bp" name="measure_bp" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="tax_id_bp" name="tax_id_bp" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="pajak_id_bp" name="pajak_id_bp" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="supplier_id_bp" name="supplier_id_bp" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_bp" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_bp'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">2.</td>
+                                                <td>Truck Mixer</td>
+                                                <td class="text-center"><select id="penawaran_id_tm" name="penawaran_id_tm" class="form-control">
+                                                    <option value="">Pilih Penawaran</option>
+                                                    <?php
+
+                                                    foreach ($tm as $key => $sm) {
+                                                        ?>
+                                                        <option value="<?php echo $sm['penawaran_id'];?>" data-supplier_id="<?php echo $sm['supplier_id'];?>" data-measure="<?php echo $sm['measure'];?>" data-price="<?php echo $sm['price'];?>" data-tax_id="<?php echo $sm['tax_id'];?>" data-tax="<?php echo $sm['tax'];?>" data-penawaran_id="<?php echo $sm['penawaran_id'];?>"><?php echo $sm['nama'];?> - <?php echo $sm['nomor_penawaran'];?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="price_tm" name="price_tm" class="form-control rupiahformat text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="measure_tm" name="measure_tm" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="tax_id_tm" name="tax_id_tm" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="pajak_id_tm" name="pajak_id_tm" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="supplier_id_tm" name="supplier_id_tm" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_tm" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_tm'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">3.</td>
+                                                <td>Wheel Loader</td>
+                                                <td class="text-center"><select id="penawaran_id_wl" name="penawaran_id_wl" class="form-control">
+                                                    <option value="">Pilih Penawaran</option>
+                                                    <?php
+
+                                                    foreach ($wl as $key => $sm) {
+                                                        ?>
+                                                        <option value="<?php echo $sm['penawaran_id'];?>" data-supplier_id="<?php echo $sm['supplier_id'];?>" data-measure="<?php echo $sm['measure'];?>" data-price="<?php echo $sm['price'];?>" data-tax_id="<?php echo $sm['tax_id'];?>" data-tax="<?php echo $sm['tax'];?>" data-penawaran_id="<?php echo $sm['penawaran_id'];?>"><?php echo $sm['nama'];?> - <?php echo $sm['nomor_penawaran'];?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="price_wl" name="price_wl" class="form-control rupiahformat text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="measure_wl" name="measure_wl" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="tax_id_wl" name="tax_id_wl" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="pajak_id_wl" name="pajak_id_wl" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="supplier_id_wl" name="supplier_id_wl" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_wl" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_wl'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">4.</td>
+                                                <td>BBM Solar</td>
+                                                <td class="text-center"><select id="penawaran_id_solar" name="penawaran_id_solar" class="form-control">
+                                                    <option value="">Pilih Penawaran</option>
+                                                    <?php
+
+                                                    foreach ($solar as $key => $sm) {
+                                                        ?>
+                                                        <option value="<?php echo $sm['penawaran_id'];?>" data-supplier_id="<?php echo $sm['supplier_id'];?>" data-measure="<?php echo $sm['measure'];?>" data-price="<?php echo $sm['price'];?>" data-tax_id="<?php echo $sm['tax_id'];?>" data-tax="<?php echo $sm['tax'];?>" data-penawaran_id="<?php echo $sm['penawaran_id'];?>"><?php echo $sm['nama'];?> - <?php echo $sm['nomor_penawaran'];?></option>
+                                                        <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                                </td>
+                                                <td>
+                                                    <input type="text" id="price_solar" name="price_solar" class="form-control rupiahformat text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="measure_solar" name="measure_solar" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="tax_id_solar" name="tax_id_solar" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="pajak_id_solar" name="pajak_id_solar" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                    <input type="hidden" id="supplier_id_solar" name="supplier_id_solar" class="form-control text-right" value=""  readonly="" autocomplete="off">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="realisasi_solar" class="form-control rupiahformat text-right" value="<?php echo number_format($rak['realisasi_solar'],0,',','.');?>" placeholder="Diisi jika sudah ada realisasinya" autocomplete="off">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>-->
                                     <table id="table-product" class="table table-bordered table-striped table-condensed table-center">
                                         <thead>
                                             <tr class="text-center">
@@ -556,6 +833,7 @@
             var vol_produk_c = $('#vol_produk_c').val();
             var vol_produk_d = $('#vol_produk_d').val();
             var vol_produk_e = $('#vol_produk_e').val();
+            var vol_produk_f = $('#vol_produk_f').val();
 
 			vol_produk_a = ( vol_produk_a);
             $('#vol_produk_a').val(vol_produk_a);
@@ -567,6 +845,8 @@
             $('#vol_produk_d').val(vol_produk_d);
             vol_produk_e = ( vol_produk_e);
             $('#vol_produk_e').val(vol_produk_e);
+            vol_produk_f = ( vol_produk_f);
+            $('#vol_produk_f').val(vol_produk_f);
             getTotal();
         }
 
@@ -574,7 +854,7 @@
         {
             var sub_total = $('#sub-total-val').val();
 
-            sub_total = parseFloat($('#vol_produk_a').val()) + parseFloat($('#vol_produk_b').val()) + parseFloat($('#vol_produk_c').val()) + parseFloat($('#vol_produk_d').val()) + parseFloat($('#vol_produk_e').val());
+            sub_total = parseFloat($('#vol_produk_a').val()) + parseFloat($('#vol_produk_b').val()) + parseFloat($('#vol_produk_c').val()) + parseFloat($('#vol_produk_d').val()) + parseFloat($('#vol_produk_e').val()) + parseFloat($('#vol_produk_f').val());
             
             $('#sub-total-val').val(sub_total);
             $('#sub-total').text($.number( sub_total, 2,',','.' ));
