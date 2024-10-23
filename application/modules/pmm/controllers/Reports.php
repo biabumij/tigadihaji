@@ -1276,6 +1276,7 @@ class Reports extends CI_Controller {
 		
 		$arr_date = $this->input->post('filter_date');
 		$arr_filter_date = explode(' - ', $arr_date);
+		$date4 = '';
 		$date3 = '';
 		$date1 = '';
 		$date2 = '';
@@ -1284,6 +1285,7 @@ class Reports extends CI_Controller {
 			$date3 	= date('2024-01-01',strtotime($date3));
 			$date1 	= date('Y-m-d',strtotime($arr_filter_date[0]));
 			$date2 	= date('Y-m-d',strtotime($arr_filter_date[1]));
+			$date4 = date('Y-m-d', strtotime('-1 days 0 months ', strtotime($date1)));
 			$filter_date = date('Y-m-d',strtotime($arr_filter_date[0])).' - '.date('Y-m-d',strtotime($arr_filter_date[1]));
 			$filter_date_2 = date('Y-m-d',strtotime($date3)).' - '.date('Y-m-d',strtotime($arr_filter_date[1]));
 		}
@@ -1390,11 +1392,13 @@ class Reports extends CI_Controller {
 
 			//ALAT
 			$alat = $this->pmm_model->getAlat($date1,$date2);
-			$alat = $alat;
+			$solar = $this->pmm_model->getSolar($date1,$date2);
+			$alat = $alat + $solar;
 
 			//ALAT_2
 			$alat_2 = $this->pmm_model->getAkumulasiAlat($date3,$date2);
-			$alat_2 = $alat_2;
+			$solar_2 = $this->pmm_model->getSolar2($date3,$date4);
+			$alat_2 = ($alat_2 + $solar_2) + $solar;
 
 			//OVERHEAD
 			$overhead = $this->pmm_model->getOverheadLabaRugi($date1,$date2);

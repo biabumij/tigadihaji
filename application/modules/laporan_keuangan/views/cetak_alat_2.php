@@ -257,10 +257,11 @@
 			->get()->result_array();
 	
 			$total_nilai_transfer_semen = 0;
+			$total_vol_transfer_semen = 0;
 			foreach ($pembelian_transfer_semen as $x){
 				$total_nilai_transfer_semen += $x['price'];
+				$total_vol_transfer_semen += $x['volume'];
 			}
-			$total_vol_transfer_semen = $pembelian_transfer_semen['volume'];
 	
 			$pembelian_excavator = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
@@ -276,18 +277,70 @@
 			->get()->result_array();
 	
 			$total_nilai_excavator = 0;
+			$total_vol_excavator = 0;
 			foreach ($pembelian_excavator as $x){
 				$total_nilai_excavator += $x['price'];
+				$total_vol_excavator += $x['volume'];
 			}
-			$total_vol_excavator = $pembelian_excavator['volume'];
+
+			$date4 = date('Y-m-d', strtotime('-5 days', strtotime($date2)));
+			$date1_ago = date('2020-01-01');
+			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date4)));
+			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date4)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date4)));
+
+			$stock_opname_solar_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 5")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$stok_volume_solar_lalu = $stock_opname_solar_ago['volume'];
+			$stok_nilai_solar_lalu = $stock_opname_solar_ago['nilai'];
+			$stok_harsat_solar_lalu = (round($stok_volume_solar_lalu,2)!=0)?$stok_nilai_solar_lalu / round($stok_volume_solar_lalu,2) * 1:0;
+
+			$pembelian_solar = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->where("prm.date_receipt between '$date4' and '$date2'")
+			->where("p.kategori_bahan = 5")
+			->get()->row_array();
+		
+			$pembelian_volume_solar = $pembelian_solar['volume'];
+			$pembelian_nilai_solar = $pembelian_solar['nilai'];
+			$pembelian_harga_solar = (round($pembelian_volume_solar,2)!=0)?$pembelian_nilai_solar / round($pembelian_volume_solar,2) * 1:0;
+
+			$total_stok_volume_solar = $stok_volume_solar_lalu + $pembelian_volume_solar;
+			$total_stok_nilai_solar = $stok_nilai_solar_lalu + $pembelian_nilai_solar;
+
+			$stock_opname_solar_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 5")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$volume_stock_opname_solar_now = $stock_opname_solar_now['volume'];
+			$nilai_stock_opname_solar_now = $stock_opname_solar_now['nilai'];
+
+			$vol_pemakaian_solar_now = ($stok_volume_solar_lalu + $pembelian_volume_solar) - $volume_stock_opname_solar_now;
+			$nilai_pemakaian_solar_now = $stock_opname_solar_now['nilai'];
+
+			$pemakaian_volume_solar_bulan_ini = $vol_pemakaian_solar_now;
+			$pemakaian_nilai_solar_bulan_ini = (($total_stok_nilai_solar - $nilai_stock_opname_solar_now) * $stock_opname_solar_now['reset']) + ($stock_opname_solar_now['pemakaian_custom'] * $stock_opname_solar_now['reset_pemakaian']);
+			$pemakaian_harsat_solar_bulan_ini = $pemakaian_nilai_solar / $pemakaian_volume_solar;	
 	
 			//SPESIAL
 			$pemakaian_solar = $this->db->select('date, SUM(vol_solar) as vol_total, SUM(nilai_solar) as total')
 			->from('kunci_bahan_baku')
-			->where("(date between '$date3' and '$date2')")
+			->where("(date between '$date1' and '$date4')")
 			->get()->row_array();
-			$pemakaian_volume_solar = $pemakaian_solar['vol_total'];
-			$pemakaian_nilai_solar = $pemakaian_solar['total'];
+			$pemakaian_volume_solar = $pemakaian_solar['vol_total'] + $pemakaian_volume_solar_bulan_ini;
+			$pemakaian_nilai_solar = $pemakaian_solar['total'] + $pemakaian_nilai_solar_bulan_ini;
 			$pemakaian_harsat_solar = $pemakaian_nilai_solar / $pemakaian_volume_solar;
 			//SPESIAL
 	
@@ -432,16 +485,16 @@
 				<th align="center" style="border-left:1px solid black;">1.</th>			
 				<th align="left">Batching Plant + Genset</th>
 				<th align="center" style="border-right:1px solid black;">M3</th>
-				<th align="right"><?php echo number_format($pemakaian_vol_batching_plant,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_pemakaian_batching_plant / $pemakaian_vol_batching_plant,0,',','.');?></th>
+				<th align="right"><?php echo number_format(0,2,',','.');?></th>
+				<th align="right"><?php echo number_format(0,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_batching_plant,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">2.</th>			
 				<th align="left">Wheel Loader</th>
 				<th align="center" style="border-right:1px solid black;">M3</th>
-				<th align="right"><?php echo number_format($pemakaian_vol_wheel_loader,2,',','.');?></th>
-				<th align="right"><?php echo number_format($total_pemakaian_wheel_loader / $pemakaian_vol_wheel_loader,0,',','.');?></th>
+				<th align="right"><?php echo number_format(0,2,',','.');?></th>
+				<th align="right"><?php echo number_format(0,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_wheel_loader,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
