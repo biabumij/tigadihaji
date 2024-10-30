@@ -1080,7 +1080,6 @@ class Productions extends Secure_Controller {
 	{
 		$this->load->library('pdf');
 	
-
 		$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
