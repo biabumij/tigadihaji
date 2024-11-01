@@ -15532,7 +15532,7 @@ class Reports extends CI_Controller {
 			->from('pmm_jurnal_umum pb ')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
 			->join('pmm_coa c','pdb.akun = c.id','left')
-			->where("pdb.akun = 136")
+			->where("pdb.akun = 139")
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
@@ -15890,7 +15890,14 @@ class Reports extends CI_Controller {
 				<th class="text-left">BUA</th>
 				<th class="text-right"><?php echo number_format($total_volume_rap_bua,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_harsat_rap_bua,0,',','.');?></th>
-				<th class="text-right"><a target="_blank" href="<?= base_url("rap/cetak_rap_bua/".'1') ?>"><?php echo number_format($total_nilai_rap_bua,0,',','.');?></a></th>
+				<?php
+				$rap_bua = $this->db->select('id')
+				->from('rap_bua')
+				->order_by('tanggal_rap_bua','desc')->limit(1)
+				->get()->row_array();
+				$rap_bua = $rap_bua['id'];
+				?>
+				<th class="text-right"><a target="_blank" href="<?= base_url("rap/cetak_rap_bua/".$rap_bua) ?>"><?php echo number_format($total_nilai_rap_bua,0,',','.');?></a></th>
 				<th class="text-right"><?php echo number_format($total_volume_realisasi_bua,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_harsat_realisasi_bua,0,',','.');?></th>
 				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_evaluasi_bua?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_realisasi_bua,0,',','.');?></a></th>
