@@ -94,9 +94,11 @@ class Productions extends Secure_Controller {
 				$row['edits'] = '<a href="'.site_url().'pmm/productions/sunting_komposisi/'.$row['id'].'" class="btn btn-warning" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
 				$edit = false;
 				$edit = '<a href="javascript:void(0);" onclick="EditData('.$row['id'].')" class="btn btn-warning" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';	
+				$edit_new = false;
+				$edit_new = '<a href="javascript:void(0);" onclick="EditDataNew('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
 				if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 5){
-					//$row['delete'] = $edit.' <a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
-					$row['delete'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
+					$row['delete'] = $edit_new.' <a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
+					//$row['delete'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
 				}else {
 					$row['delete'] = '-';
 				}
