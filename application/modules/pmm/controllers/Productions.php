@@ -108,6 +108,52 @@ class Productions extends Secure_Controller {
 		echo json_encode(array('data'=>$data));
 	}
 
+	public function edit_data_detail_new()
+	{
+		$id = $this->input->post('id');
+		$this->db->select('pp.*');
+		$data = $this->db->get_where('pmm_productions pp',array('pp.id'=>$id))->row_array();
+		$data['date_production'] = date('d-m-Y',strtotime($data['date_production']));
+		echo json_encode(array('data'=>$data));		
+	}
+
+	public function edit_process()
+	{
+		$output['output'] = false;
+
+		$this->db->trans_start(); # Starting Transaction
+		$this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
+
+		$id = $this->input->post('id_edit');
+		$date_production = $this->input->post('edit_date');
+		$memo = $this->input->post('edit_memo');
+
+		$data_p = array(
+			'id' => $id,
+			'date_production' => date('Y-m-d',strtotime($date_production)),
+			'memo' => $memo,
+		);
+
+		$data_p['updated_on'] = date('Y-m-d H:i:s');
+		$data_p['updated_by'] = $this->session->userdata('admin_id');
+		
+		$this->db->update('pmm_productions',$data_p,array('id'=>$id));
+		
+
+		if ($this->db->trans_status() === FALSE) {
+			# Something went wrong.
+			$this->db->trans_rollback();
+			$output['output'] = false;
+		} 
+		else {
+			# Everything is Perfect. 
+			# Committing data to the database.
+			$this->db->trans_commit();
+			$output['output'] = true;
+		}
+		echo json_encode($output);	
+	}
+
 	public function sunting_komposisi($id)
 	{
 		$check = $this->m_admin->check_login();
