@@ -258,6 +258,15 @@
 			->order_by('rap.tanggal_rap_bua','asc')->limit(1)
 			->get()->row_array();
 
+			$rap_biaya_maintenance = $this->db->select('rap.*,sum(det.harga_satuan) as total')
+			->from('rap_bua rap')
+			->join('rap_bua_detail det','rap.id = det.rap_bua_id','left')
+			->where("rap.status = 'PUBLISH'")
+			->where("det.coa = 141")
+			->where("rap.tanggal_rap_bua < '$date2'")
+			->order_by('rap.tanggal_rap_bua','asc')->limit(1)
+			->get()->row_array();
+
 			$rap_thr_bonus = $this->db->select('rap.*,sum(det.harga_satuan) as total')
 			->from('rap_bua rap')
 			->join('rap_bua_detail det','rap.id = det.rap_bua_id','left')
@@ -548,7 +557,7 @@
 			$evaluasi_perlengkapan_kantor = $rap_perlengkapan_kantor['total'] - $perlengkapan_kantor;
 			$evaluasi_beban_lain_lain = $rap_beban_lain_lain['total'] - 	$beban_lain_lain;
 			$evaluasi_biaya_sewa_kendaraan = $rap_biaya_sewa_kendaraan['total'] - $biaya_sewa_kendaraan;
-			$evaluasi_biaya_maintenance = $rap_biaya_biaya_maintenance['total'] - $biaya_biaya_maintenance;
+			$evaluasi_biaya_maintenance = $rap_biaya_maintenance['total'] - $biaya_maintenance;
 			$evaluasi_thr_bonus = $rap_thr_bonus['total'] - $thr_bonus;
 
 			$total_rap = $rap_gaji['total'] + $rap_konsumsi['total'] + $rap_listrik_internet['total'] + $rap_keamanan_kebersihan['total'] + $rap_pengobatan['total'] + $rap_bensin_tol_parkir['total'] + $rap_perjalanan_dinas_penjualan['total'] + $rap_pakaian_dinas['total'] + $rap_alat_tulis_kantor['total'] + $rap_perlengkapan_kantor['total'] + $rap_beban_lain_lain['total'] + $rap_biaya_sewa_kendaraan['total'] + $rap_biaya_maintenance['total'] + $rap_thr_bonus['total'];
@@ -668,8 +677,8 @@
 				<th align="center" class="table-border-pojok-kiri">13</th>			
 				<th align="left" class="table-border-pojok-tengah">Biaya Maintenace Perbaikan & Pemeliharaan</th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($rap_biaya_maintenance['total'],0,',','.');?></th>
-				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($biaya_biaya_maintenance,0,',','.');?></th>
-				<th align="right" class="table-border-pojok-kanan" style="<?php echo $styleColorM ?>"><?php echo $evaluasi_biaya_biaya_maintenance < 0 ? "(".number_format(-$evaluasi_biaya_biaya_maintenance,0,',','.').")" : number_format($evaluasi_biaya_biaya_maintenance,0,',','.');?></th>
+				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($biaya_maintenance,0,',','.');?></th>
+				<th align="right" class="table-border-pojok-kanan" style="<?php echo $styleColorM ?>"><?php echo $evaluasi_biaya_maintenance < 0 ? "(".number_format(-$evaluasi_biaya_maintenance,0,',','.').")" : number_format($evaluasi_biaya_maintenance,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" class="table-border-pojok-kiri">14</th>			
