@@ -591,7 +591,7 @@
 			?>
 			<tr class="table-baris1">
 				<th align="center" class="table-border-pojok-kiri">1</th>			
-				<th align="left" class="table-border-pojok-tengah">Gaji / Upah</th>
+				<th align="left" class="table-border-pojok-tengah">Gaji</th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($rap_gaji['total'],0,',','.');?></th>
 				<th align="right" class="table-border-pojok-tengah"><?php echo number_format($gaji,0,',','.');?></th>
 				<th align="right" class="table-border-pojok-kanan" style="<?php echo $styleColorA ?>"><?php echo $evaluasi_gaji < 0 ? "(".number_format(-$evaluasi_gaji,0,',','.').")" : number_format($evaluasi_gaji,0,',','.');?></th>
