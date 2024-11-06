@@ -38,7 +38,7 @@
 									</div>
                                     <br />
                                     <div class="table-responsive">
-                                        <table id="table-product" class="table table-bordered table-striped table-condensed table-center">
+                                    <table id="table-product" class="table table-bordered table-striped table-condensed table-center">
                                             <thead>
                                                 <tr class="text-center">
                                                     <th width="5%">NO.</th>
@@ -84,14 +84,34 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center">6.</td>
-                                                    <td>Biaya Persiapan</td>
+                                                    <td>Pajak Keluaran</td>
 													<td>
-                                                    <input type="text" id="biaya_persiapan" name="biaya_persiapan" class="form-control rupiahformat text-right" value="0" required="" autocomplete="off">
+                                                    <input type="text" id="pajak_keluaran" name="pajak_keluaran" class="form-control rupiahformat text-right" value="0" required="" autocomplete="off">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">7.</td>
+                                                    <td>Pajak Masukan</td>
+													<td>
+                                                    <input type="text" id="pajak_masukan" name="pajak_masukan" class="form-control rupiahformat text-right" value="0" required="" autocomplete="off">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">8.</td>
+                                                    <td>Penerimaan Pinjaman</td>
+													<td>
+                                                    <input type="text" id="penerimaan" name="penerimaan" class="form-control rupiahformat text-right" value="0" required="" autocomplete="off">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">9.</td>
+                                                    <td>Pengembelian Pinjaman</td>
+													<td>
+                                                    <input type="text" id="pengembalian" name="pengembalian" class="form-control rupiahformat text-right" value="0" required="" autocomplete="off">
                                                     </td>
                                                 </tr>
                                             </tbody>
-                                
-                                        </table>    
+                                        </table>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-4">
