@@ -376,6 +376,8 @@ class Rak extends Secure_Controller {
 			$data['tm'] = $this->pmm_model->getMatByPenawaranRencanaKerjaTM();
 			$data['exc'] = $this->pmm_model->getMatByPenawaranRencanaKerjaEXC();
 			$data['tr'] = $this->pmm_model->getMatByPenawaranRencanaKerjaTransferSemen();
+			$rak = $this->db->get_where("rak", ["id" => $id])->row_array();
+			$data['tanggal'] = date('d-m-Y',strtotime($rak['tanggal_rencana_kerja']));
 			$this->load->view('rak/sunting_rencana_kerja', $data);
 		} else {
 			redirect('admin');
@@ -389,6 +391,7 @@ class Rak extends Secure_Controller {
 		$this->db->trans_strict(FALSE); #
 
 		$id = $this->input->post('id');
+		$tanggal_rencana_kerja = $this->input->post('tanggal_rencana_kerja');
 		$vol_produk_a =  str_replace('.', '', $this->input->post('vol_produk_a'));
 		$vol_produk_a =  str_replace(',', '.', $vol_produk_a);
 		$vol_produk_b =  str_replace('.', '', $this->input->post('vol_produk_b'));
@@ -514,6 +517,7 @@ class Rak extends Secure_Controller {
 		$realisasi_solar =  str_replace('.', '', $this->input->post('realisasi_solar'));
 
 		$arr_update = array(
+			'tanggal_rencana_kerja' =>  date('Y-m-d', strtotime($tanggal_rencana_kerja)),
 
 			'vol_produk_a' => $vol_produk_a,
 			'vol_produk_b' => $vol_produk_b,
@@ -818,6 +822,8 @@ class Rak extends Secure_Controller {
 			$data['tes'] = '';
 			$data['rak'] = $this->db->get_where("rencana_cash_flow", ["id" => $id])->row_array();
 			$data['lampiran'] = $this->db->get_where("lampiran_rencana_cash_flow", ["rencana_cash_flow_id" => $id])->result_array();
+			$rak = $this->db->get_where("rencana_cash_flow", ["id" => $id])->row_array();
+			$data['tanggal'] = date('d-m-Y',strtotime($rak['tanggal_rencana_kerja']));
 			$this->load->view('rak/sunting_rencana_cash_flow', $data);
 		} else {
 			redirect('admin');
@@ -831,20 +837,28 @@ class Rak extends Secure_Controller {
 		$this->db->trans_strict(FALSE); #
 
 			$id = $this->input->post('id');
+			$tanggal_rencana_kerja = $this->input->post('tanggal_rencana_kerja');
 			$biaya_bahan =  str_replace('.', '', $this->input->post('biaya_bahan'));
 			$biaya_alat =  str_replace('.', '', $this->input->post('biaya_alat'));
 			$biaya_bank =  str_replace('.', '', $this->input->post('biaya_bank'));
 			$overhead =  str_replace('.', '', $this->input->post('overhead'));
 			$termin =  str_replace('.', '', $this->input->post('termin'));
-			$biaya_persiapan =  str_replace('.', '', $this->input->post('biaya_persiapan'));
+			$pajak_keluaran =  str_replace('.', '', $this->input->post('pajak_keluaran'));
+			$pajak_masukan =  str_replace('.', '', $this->input->post('pajak_masukan'));
+			$penerimaan =  str_replace('.', '', $this->input->post('penerimaan'));
+			$pengembalian =  str_replace('.', '', $this->input->post('pengembalian'));
 
 			$arr_update = array(
+				'tanggal_rencana_kerja' =>  date('Y-m-d', strtotime($tanggal_rencana_kerja)),
 				'biaya_bahan' => $biaya_bahan,
 				'biaya_alat' => $biaya_alat,
 				'biaya_bank' => $biaya_bank,
 				'overhead' => $overhead,
 				'termin' => $termin,
-				'biaya_persiapan' => $biaya_persiapan,
+				'pajak_keluaran' => $pajak_keluaran,
+				'pajak_masukan' => $pajak_masukan,
+				'penerimaan' => $penerimaan,
+				'pengembalian' => $pengembalian,
 				'status' => 'PUBLISH',
 				'updated_by' => $this->session->userdata('admin_id'),
 				'updated_on' => date('Y-m-d H:i:s')
