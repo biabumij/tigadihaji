@@ -296,7 +296,6 @@
 			->where("cat.status = 'PUBLISH'")
 			->order_by('date','desc')->limit(1)
 			->get()->row_array();
-			file_put_contents("D:\\test.txt", $this->db->last_query());
 
 			$stok_volume_solar_lalu = $stock_opname_solar_ago['volume'];
 			$stok_nilai_solar_lalu = $stock_opname_solar_ago['nilai'];
