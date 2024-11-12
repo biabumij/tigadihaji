@@ -10907,7 +10907,7 @@ class Reports extends CI_Controller {
 				$harsat_rap_beton_additive = $harsat_rap_beton['price_e'];
 				?>
 				<th class="text-right"><?php echo number_format($harsat_rap_beton_semen,0,',','.');?></th>
-				<th class="text-center">M3</th>
+				<th class="text-center">Ton</th>
 				<th class="text-right"><?php echo number_format($total_volume_semen_125_1,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_nilai_semen_125_1,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_volume_semen_125_2,2,',','.');?></th>
@@ -10995,7 +10995,7 @@ class Reports extends CI_Controller {
 				<th class="text-center"></th>
 				<th class="text-left">Additive</th>
 				<th class="text-right"><?php echo number_format($harsat_rap_beton_additive,0,',','.');?></th>
-				<th class="text-center">M3</th>
+				<th class="text-center">Liter</th>
 				<th class="text-right"><?php echo number_format($total_volume_additive_125_1,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_nilai_additive_125_1,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_volume_additive_125_2,2,',','.');?></th>
@@ -11044,7 +11044,7 @@ class Reports extends CI_Controller {
 				<th class="text-center"></th>
 				<th class="text-left">Semen</th>
 				<th class="text-right"><?php echo number_format($harsat_rap_beton_semen,0,',','.');?></th>
-				<th class="text-center">M3</th>
+				<th class="text-center">Ton</th>
 				<th class="text-right"><?php echo number_format($total_volume_semen_175_1,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_nilai_semen_175_1,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_volume_semen_175_2,2,',','.');?></th>
@@ -11132,7 +11132,7 @@ class Reports extends CI_Controller {
 				<th class="text-center"></th>
 				<th class="text-left">Additive</th>
 				<th class="text-right"><?php echo number_format($harsat_rap_beton_additive,0,',','.');?></th>
-				<th class="text-center">M3</th>
+				<th class="text-center">Liter</th>
 				<th class="text-right"><?php echo number_format($total_volume_additive_175_1,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_nilai_additive_175_1,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_volume_additive_175_2,2,',','.');?></th>
@@ -11181,7 +11181,7 @@ class Reports extends CI_Controller {
 				<th class="text-center"></th>
 				<th class="text-left">Semen</th>
 				<th class="text-right"><?php echo number_format($harsat_rap_beton_semen,0,',','.');?></th>
-				<th class="text-center">M3</th>
+				<th class="text-center">Ton</th>
 				<th class="text-right"><?php echo number_format($total_volume_semen_225_1,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_nilai_semen_225_1,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_volume_semen_225_2,2,',','.');?></th>
@@ -11269,7 +11269,7 @@ class Reports extends CI_Controller {
 				<th class="text-center"></th>
 				<th class="text-left">Additive</th>
 				<th class="text-right"><?php echo number_format($harsat_rap_beton_additive,0,',','.');?></th>
-				<th class="text-center">M3</th>
+				<th class="text-center">Liter</th>
 				<th class="text-right"><?php echo number_format($total_volume_additive_225_1,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_nilai_additive_225_1,0,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_volume_additive_225_2,2,',','.');?></th>
