@@ -140,6 +140,37 @@ class Rak extends Secure_Controller {
 		$supplier_id_bp =  $this->input->post('supplier_id_bp');
 		$supplier_id_tm =  $this->input->post('supplier_id_tm');
 		$supplier_id_wl =  $this->input->post('supplier_id_wl');
+
+		$realisasi =  $this->input->post('realisasi');
+		$vol_realisasi_a =  str_replace('.', '', $this->input->post('vol_realisasi_a'));
+		$vol_realisasi_a =  str_replace(',', '.', $vol_realisasi_a);
+		$vol_realisasi_b =  str_replace('.', '', $this->input->post('vol_realisasi_b'));
+		$vol_realisasi_b =  str_replace(',', '.', $vol_realisasi_b);
+		$vol_realisasi_c =  str_replace('.', '', $this->input->post('vol_realisasi_c'));
+		$vol_realisasi_c =  str_replace(',', '.', $vol_realisasi_c);
+		$vol_realisasi_d =  str_replace('.', '', $this->input->post('vol_realisasi_d'));
+		$vol_realisasi_d =  str_replace(',', '.', $vol_realisasi_d);
+		$vol_realisasi_e =  str_replace('.', '', $this->input->post('vol_realisasi_e'));
+		$vol_realisasi_e =  str_replace(',', '.', $vol_realisasi_e);
+		
+		$nilai_realisasi_a =  str_replace('.', '', $this->input->post('nilai_realisasi_a'));
+		$nilai_realisasi_b =  str_replace('.', '', $this->input->post('nilai_realisasi_b'));
+		$nilai_realisasi_c =  str_replace('.', '', $this->input->post('nilai_realisasi_c'));
+		$nilai_realisasi_d =  str_replace('.', '', $this->input->post('nilai_realisasi_d'));
+
+		$vol_realisasi_bp =  str_replace('.', '', $this->input->post('vol_realisasi_bp'));
+		$vol_realisasi_bp =  str_replace(',', '.', $vol_realisasi_bp);
+		$vol_realisasi_tm =  str_replace('.', '', $this->input->post('vol_realisasi_tm'));
+		$vol_realisasi_tm =  str_replace(',', '.', $vol_realisasi_tm);
+		$vol_realisasi_wl =  str_replace('.', '', $this->input->post('vol_realisasi_wl'));
+		$vol_realisasi_wl =  str_replace(',', '.', $vol_realisasi_wl);
+		$vol_realisasi_solar =  str_replace('.', '', $this->input->post('vol_realisasi_solar'));
+		$vol_realisasi_solar =  str_replace(',', '.', $vol_realisasi_solar);
+
+		$nilai_realisasi_bp =  str_replace('.', '', $this->input->post('nilai_realisasi_bp'));
+		$nilai_realisasi_tm =  str_replace('.', '', $this->input->post('nilai_realisasi_tm'));
+		$nilai_realisasi_wl =  str_replace('.', '', $this->input->post('nilai_realisasi_wl'));
+		$nilai_realisasi_solar =  str_replace('.', '', $this->input->post('nilai_realisasi_solar'));
 		
 		$this->db->trans_start(); # Starting Transaction
 		$this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
@@ -233,6 +264,28 @@ class Rak extends Secure_Controller {
 			'supplier_id_bp' => $supplier_id_bp,
 			'supplier_id_tm' => $supplier_id_tm,
 			'supplier_id_wl' => $supplier_id_wl,
+
+			'realisasi' => 1,
+			'vol_realisasi_a' => $vol_realisasi_a,
+			'vol_realisasi_b' => $vol_realisasi_b,
+			'vol_realisasi_c' => $vol_realisasi_c,
+			'vol_realisasi_d' => $vol_realisasi_d,
+			'vol_realisasi_e' => $vol_realisasi_e,
+
+			'nilai_realisasi_a' => $nilai_realisasi_a,
+			'nilai_realisasi_b' => $nilai_realisasi_b,
+			'nilai_realisasi_c' => $nilai_realisasi_c,
+			'nilai_realisasi_d' => $nilai_realisasi_d,
+
+			'vol_realisasi_bp' => $vol_realisasi_bp,
+			'vol_realisasi_tm' => $vol_realisasi_tm,
+			'vol_realisasi_wl' => $vol_realisasi_wl,
+			'vol_realisasi_solar' => $vol_realisasi_solar,
+
+			'nilai_realisasi_bp' => $nilai_realisasi_bp,
+			'nilai_realisasi_tm' => $nilai_realisasi_tm,
+			'nilai_realisasi_wl' => $nilai_realisasi_wl,
+			'nilai_realisasi_solar' => $nilai_realisasi_solar,
 			
 			'status' => 'PUBLISH',
 			'created_by' => $this->session->userdata('admin_id'),
@@ -489,32 +542,36 @@ class Rak extends Secure_Controller {
 		$supplier_id_tm =  $this->input->post('supplier_id_tm');
 		$supplier_id_wl =  $this->input->post('supplier_id_wl');
 
-		$realisasi_vol_semen =  str_replace('.', '', $this->input->post('realisasi_vol_semen'));
-		$realisasi_vol_semen =  str_replace(',', '.', $realiasi_vol_semen);
-		$realisasi_vol_pasir =  str_replace('.', '', $this->input->post('realisasi_vol_pasir'));
-		$realisasi_vol_pasir =  str_replace(',', '.', $realiasi_vol_pasir);
-		$realisasi_vol_batu1020 =  str_replace('.', '', $this->input->post('realisasi_vol_batu1020'));
-		$realisasi_vol_batu1020 =  str_replace(',', '.', $realiasi_vol_batu1020);
-		$realisasi_vol_batu2030 =  str_replace('.', '', $this->input->post('realisasi_vol_batu2030'));
-		$realisasi_vol_batu2030 =  str_replace(',', '.', $realiasi_vol_batu2030);
-		$realisasi_vol_additive =  str_replace('.', '', $this->input->post('realisasi_vol_additive'));
-		$realisasi_vol_additive =  str_replace(',', '.', $realiasi_vol_additive);
+		$realisasi =  $this->input->post('realisasi');
+		$vol_realisasi_a =  str_replace('.', '', $this->input->post('vol_realisasi_a'));
+		$vol_realisasi_a =  str_replace(',', '.', $vol_realisasi_a);
+		$vol_realisasi_b =  str_replace('.', '', $this->input->post('vol_realisasi_b'));
+		$vol_realisasi_b =  str_replace(',', '.', $vol_realisasi_b);
+		$vol_realisasi_c =  str_replace('.', '', $this->input->post('vol_realisasi_c'));
+		$vol_realisasi_c =  str_replace(',', '.', $vol_realisasi_c);
+		$vol_realisasi_d =  str_replace('.', '', $this->input->post('vol_realisasi_d'));
+		$vol_realisasi_d =  str_replace(',', '.', $vol_realisasi_d);
+		$vol_realisasi_e =  str_replace('.', '', $this->input->post('vol_realisasi_e'));
+		$vol_realisasi_e =  str_replace(',', '.', $vol_realisasi_e);
+		
+		$nilai_realisasi_a =  str_replace('.', '', $this->input->post('nilai_realisasi_a'));
+		$nilai_realisasi_b =  str_replace('.', '', $this->input->post('nilai_realisasi_b'));
+		$nilai_realisasi_c =  str_replace('.', '', $this->input->post('nilai_realisasi_c'));
+		$nilai_realisasi_d =  str_replace('.', '', $this->input->post('nilai_realisasi_d'));
 
-		$realisasi_vol_semen =  str_replace('.', '', $this->input->post('realisasi_vol_semen'));
-		$realisasi_vol_pasir =  str_replace('.', '', $this->input->post('realisasi_vol_pasir'));
-		$realisasi_vol_batu1020 =  str_replace('.', '', $this->input->post('realisasi_vol_batu1020'));
-		$realisasi_vol_batu2030 =  str_replace('.', '', $this->input->post('realisasi_vol_batu2030'));
-		$realisasi_vol_additive =  str_replace('.', '', $this->input->post('realisasi_vol_additive'));
+		$vol_realisasi_bp =  str_replace('.', '', $this->input->post('vol_realisasi_bp'));
+		$vol_realisasi_bp =  str_replace(',', '.', $vol_realisasi_bp);
+		$vol_realisasi_tm =  str_replace('.', '', $this->input->post('vol_realisasi_tm'));
+		$vol_realisasi_tm =  str_replace(',', '.', $vol_realisasi_tm);
+		$vol_realisasi_wl =  str_replace('.', '', $this->input->post('vol_realisasi_wl'));
+		$vol_realisasi_wl =  str_replace(',', '.', $vol_realisasi_wl);
+		$vol_realisasi_solar =  str_replace('.', '', $this->input->post('vol_realisasi_solar'));
+		$vol_realisasi_solar =  str_replace(',', '.', $vol_realisasi_solar);
 
-		$realisasi_semen =  str_replace('.', '', $this->input->post('realisasi_semen'));
-		$realisasi_pasir =  str_replace('.', '', $this->input->post('realisasi_pasir'));
-		$realisasi_batu1020 =  str_replace('.', '', $this->input->post('realisasi_batu1020'));
-		$realisasi_batu2030 =  str_replace('.', '', $this->input->post('realisasi_batu2030'));
-		$realisasi_additive =  str_replace('.', '', $this->input->post('realisasi_additive'));
-		$realisasi_bp =  str_replace('.', '', $this->input->post('realisasi_bp'));
-		$realisasi_tm =  str_replace('.', '', $this->input->post('realisasi_tm'));
-		$realisasi_wl =  str_replace('.', '', $this->input->post('realisasi_wl'));
-		$realisasi_solar =  str_replace('.', '', $this->input->post('realisasi_solar'));
+		$nilai_realisasi_bp =  str_replace('.', '', $this->input->post('nilai_realisasi_bp'));
+		$nilai_realisasi_tm =  str_replace('.', '', $this->input->post('nilai_realisasi_tm'));
+		$nilai_realisasi_wl =  str_replace('.', '', $this->input->post('nilai_realisasi_wl'));
+		$nilai_realisasi_solar =  str_replace('.', '', $this->input->post('nilai_realisasi_solar'));
 
 		$arr_update = array(
 			'tanggal_rencana_kerja' =>  date('Y-m-d', strtotime($tanggal_rencana_kerja)),
@@ -606,20 +663,27 @@ class Rak extends Secure_Controller {
 			'supplier_id_tm' => $supplier_id_tm,
 			'supplier_id_wl' => $supplier_id_wl,
 
-			'realisasi_vol_semen' => $realisasi_vol_semen,
-			'realisasi_vol_pasir' => $realisasi_vol_pasir,
-			'realisasi_vol_batu1020' => $realisasi_vol_batu1020,
-			'realisasi_vol_batu2030' => $realisasi_vol_batu2030,
-			'realisasi_vol_additive' => $realisasi_vol_additive,
-			'realisasi_semen' => $realisasi_semen,
-			'realisasi_pasir' => $realisasi_pasir,
-			'realisasi_batu1020' => $realisasi_batu1020,
-			'realisasi_batu2030' => $realisasi_batu2030,
-			'realisasi_additive' => $realisasi_additive,
-			'realisasi_bp' => $realisasi_bp,
-			'realisasi_tm' => $realisasi_tm,
-			'realisasi_wl' => $realisasi_wl,
-			'realisasi_solar' => $realisasi_solar,
+			'realisasi' => $realisasi,
+			'vol_realisasi_a' => $vol_realisasi_a,
+			'vol_realisasi_b' => $vol_realisasi_b,
+			'vol_realisasi_c' => $vol_realisasi_c,
+			'vol_realisasi_d' => $vol_realisasi_d,
+			'vol_realisasi_e' => $vol_realisasi_e,
+
+			'nilai_realisasi_a' => $nilai_realisasi_a,
+			'nilai_realisasi_b' => $nilai_realisasi_b,
+			'nilai_realisasi_c' => $nilai_realisasi_c,
+			'nilai_realisasi_d' => $nilai_realisasi_d,
+
+			'vol_realisasi_bp' => $vol_realisasi_bp,
+			'vol_realisasi_tm' => $vol_realisasi_tm,
+			'vol_realisasi_wl' => $vol_realisasi_wl,
+			'vol_realisasi_solar' => $vol_realisasi_solar,
+
+			'nilai_realisasi_bp' => $nilai_realisasi_bp,
+			'nilai_realisasi_tm' => $nilai_realisasi_tm,
+			'nilai_realisasi_wl' => $nilai_realisasi_wl,
+			'nilai_realisasi_solar' => $nilai_realisasi_solar,
 				
 			'status' => 'PUBLISH',
 			'updated_by' => $this->session->userdata('admin_id'),
