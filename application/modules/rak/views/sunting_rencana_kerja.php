@@ -442,6 +442,13 @@
                                                 <td colspan="2">
                                                     <input type="text" id="overhead" name="overhead" class="form-control rupiahformat text-right" value="<?php echo number_format($rak["overhead"],0,',','.');?>"  autocomplete="off">
                                                 </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">2.</td>
+                                                <td>Diskonto</td>
+                                                <td colspan="2">
+                                                    <input type="text" id="diskonto" name="diskonto" class="form-control rupiahformat text-right" value="<?php echo number_format($rak["diskonto"],0,',','.');?>"  autocomplete="off">
+                                                </td>
                                             </tr>		
                                         </tbody>
                                     </table>

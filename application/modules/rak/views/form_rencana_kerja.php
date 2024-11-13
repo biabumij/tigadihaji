@@ -477,9 +477,16 @@
                                                     <td class="text-center">1.</td>
                                                     <td>BUA</td>
                                                     <td colspan="2">
-                                                        <input type="text" id="overhead" name="overhead" class="form-control rupiahformat text-right" value=""  autocomplete="off">
+                                                        <input type="text" id="overhead" name="overhead" class="form-control rupiahformat text-right" value="0"  autocomplete="off">
                                                     </td>
-                                                </tr>		
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">2.</td>
+                                                    <td>Diskonto</td>
+                                                    <td colspan="2">
+                                                        <input type="text" id="diskonto" name="diskonto" class="form-control rupiahformat text-right" value="0"  autocomplete="off">
+                                                    </td>
+                                                </tr>	
                                             </tbody>
                                         </table>
                                     </div>

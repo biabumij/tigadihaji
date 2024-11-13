@@ -80,6 +80,7 @@ class Rak extends Secure_Controller {
 		$price_e =  str_replace('.', '', $this->input->post('price_e'));
 		$price_f =  str_replace('.', '', $this->input->post('price_f'));
 		$overhead =  str_replace('.', '', $this->input->post('overhead'));
+		$diskonto =  str_replace('.', '', $this->input->post('diskonto'));
 
 		$penawaran_id_semen =  $this->input->post('penawaran_id_semen');
 		$penawaran_id_pasir =  $this->input->post('penawaran_id_pasir');
@@ -197,6 +198,7 @@ class Rak extends Secure_Controller {
 			'price_e' => $price_e,
 			'price_f' => $price_f,
 			'overhead' => $overhead,
+			'diskonto' => $diskonto,
 
 			'komposisi_125' => $komposisi_125,
 			'komposisi_175' => $komposisi_175,
@@ -481,6 +483,7 @@ class Rak extends Secure_Controller {
 		$price_e =  str_replace('.', '', $this->input->post('price_e'));
 		$price_f =  str_replace('.', '', $this->input->post('price_f'));
 		$overhead =  str_replace('.', '', $this->input->post('overhead'));
+		$diskonto =  str_replace('.', '', $this->input->post('diskonto'));
 
 		$penawaran_id_semen =  $this->input->post('penawaran_id_semen');
 		$penawaran_id_pasir =  $this->input->post('penawaran_id_pasir');
@@ -596,6 +599,7 @@ class Rak extends Secure_Controller {
 			'price_e' => $price_e,
 			'price_f' => $price_f,
 			'overhead' => $overhead,
+			'diskonto' => $diskonto,
 
 			'komposisi_125' => $komposisi_125,
 			'komposisi_175' => $komposisi_175,
