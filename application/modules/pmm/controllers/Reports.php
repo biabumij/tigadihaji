@@ -12392,7 +12392,7 @@ class Reports extends CI_Controller {
 			?>
 			<tr class="table-baris">
 				<th class="text-center"></th>
-				<th class="text-left">diskonto</th>
+				<th class="text-left">Diskonto</th>
 				<th class="text-right"></th>
 				<th class="text-center"></th>
 				<th class="text-right"><?php echo number_format($total_volume_diskonto_1,2,',','.');?></th>
