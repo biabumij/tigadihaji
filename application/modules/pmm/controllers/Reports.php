@@ -13151,7 +13151,7 @@ class Reports extends CI_Controller {
 			$jumlah_biaya_5 = $jumlah_kebutuhan_bahan_5 + $jumlah_alat_5 + $total_nilai_overhead_5 + $total_nilai_diskonto_5;
 			$jumlah_biaya_6 = $jumlah_kebutuhan_bahan_6 + $jumlah_alat_6 + $total_nilai_overhead_6 + $total_nilai_diskonto_6;
 			$jumlah_biaya_7 = $jumlah_kebutuhan_bahan_7 + $jumlah_alat_7 + $total_nilai_overhead_7 + $total_nilai_diskonto_7;
-			$jumlah_biaya = $jumlah_kebutahan_bahan_all;
+			$jumlah_biaya = $jumlah_alat;
 			?>
 			<tr class="table-total">
 				<th class="text-right" colspan="4">JUMLAH BAHAN + ALAT + OVERHEAD</th>
