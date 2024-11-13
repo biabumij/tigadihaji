@@ -12385,7 +12385,7 @@ class Reports extends CI_Controller {
 			$total_nilai_diskonto_5 = $diskonto_rak_5['nilai'];
 			?>
 			<tr class="table-baris">
-				<th class="text-left" colspan="16"><b>E. diskonto</b></th>
+				<th class="text-left" colspan="16"><b>F. DISKONTO</b></th>
 			</tr>
 			<?php
 			$total_nilai_diskonto = $total_nilai_diskonto_1 + $total_nilai_diskonto_2 + $total_nilai_diskonto_3 + $total_nilai_diskonto_4 + $total_nilai_diskonto_5;
