@@ -2164,7 +2164,7 @@ class Reports extends CI_Controller {
 
 			$date_kunci = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('kunci_bahan_baku')->row_array();
 			$last_opname = date('Y-m-d', strtotime('0 days', strtotime($date_kunci['date'])));
-			$date_awal = date('2024-08-01');
+			$date_awal = date('2024-01-01');
 
 			$penjualan_sd_bulan_lalu = $this->db->select('SUM(pp.display_price) as total')
 			->from('pmm_productions pp')
