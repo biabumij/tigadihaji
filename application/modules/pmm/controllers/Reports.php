@@ -11728,28 +11728,28 @@ class Reports extends CI_Controller {
 				->get()->row_array();
 				$vol_realisasi_semen_1 = $realisasi_1['vol_realisasi_a'];
 				$nilai_realisasi_semen_1 = $realisasi_1['nilai_realisasi_a'];
-				$total_volume_semen_300_1_all = (($total_volume_semen_300_1 + $total_volume_semen_300_18_1) * $realisasi_1['realisasi']) + $vol_realisasi_semen_1;
-				$total_nilai_semen_300_1_all = (($total_nilai_semen_300_1 + $total_nilai_semen_300_18_1) * $realisasi_1['realisasi']) + $nilai_realisasi_semen_1;
+				$total_volume_semen_300_1_all = (($total_volume_semen_125_1 + $total_volume_semen_175_1 + $total_volume_semen_225_1 + $total_volume_semen_250_1 + $total_volume_semen_300_1 + $total_volume_semen_350_1) * $realisasi_1['realisasi']) + $vol_realisasi_semen_1;
+				$total_nilai_semen_300_1_all = (($total_nilai_semen_125_1 + $total_nilai_semen_175_1 + $total_nilai_semen_225_1 + $total_nilai_semen_250_1 + $total_nilai_semen_300_1 + $total_nilai_semen_350_1) * $realisasi_1['realisasi']) + $nilai_realisasi_semen_1;
 				
 				$vol_realisasi_pasir_1 = $realisasi_1['vol_realisasi_b'];
 				$nilai_realisasi_pasir_1 = $realisasi_1['nilai_realisasi_b'];
-				$total_volume_pasir_300_1_all = (($total_volume_pasir_300_1 + $total_volume_pasir_300_18_1) * $realisasi_1['realisasi']) + $vol_realisasi_pasir_1;
-				$total_nilai_pasir_300_1_all = (($total_nilai_pasir_300_1 + $total_nilai_pasir_300_18_1) * $realisasi_1['realisasi']) + $nilai_realisasi_pasir_1;
+				$total_volume_pasir_300_1_all = (($total_volume_pasir_125_1 + $total_volume_pasir_175_1 + $total_volume_pasir_225_1 + $total_volume_pasir_250_1 + $total_volume_pasir_300_1 + $total_volume_pasir_350_1) * $realisasi_1['realisasi']) + $vol_realisasi_pasir_1;
+				$total_nilai_pasir_300_1_all = (($total_nilai_pasir_125_1 + $total_nilai_pasir_175_1 + $total_nilai_pasir_225_1 + $total_nilai_pasir_250_1 + $total_nilai_pasir_300_1 + $total_nilai_pasir_350_1) * $realisasi_1['realisasi']) + $nilai_realisasi_pasir_1;
 
 				$vol_realisasi_batu1020_1 = $realisasi_1['vol_realisasi_c'];
 				$nilai_realisasi_batu1020_1 = $realisasi_1['nilai_realisasi_c'];
-				$total_volume_batu1020_300_1_all = (($total_volume_batu1020_300_1 + $total_volume_batu1020_300_18_1) * $realisasi_1['realisasi']) + $vol_realisasi_batu1020_1;
-				$total_nilai_batu1020_300_1_all = (($total_nilai_batu1020_300_1 + $total_nilai_batu1020_300_18_1) * $realisasi_1['realisasi']) + $nilai_realisasi_batu1020_1;
+				$total_volume_batu1020_300_1_all = (($total_volume_batu1020_125_1 + $total_volume_batu1020_175_1 + $total_volume_batu1020_225_1 + $total_volume_batu1020_250_1 + $total_volume_batu1020_300_1 + $total_volume_batu1020_350_1) * $realisasi_1['realisasi']) + $vol_realisasi_batu1020_1;
+				$total_nilai_batu1020_300_1_all = (($total_nilai_batu1020_125_1 + $total_nilai_batu1020_175_1 + $total_nilai_batu1020_225_1 + $total_nilai_batu1020_250_1 + $total_nilai_batu1020_300_1 + $total_nilai_batu1020_350_1) * $realisasi_1['realisasi']) + $nilai_realisasi_batu1020_1;
 
 				$vol_realisasi_batu2030_1 = $realisasi_1['vol_realisasi_d'];
 				$nilai_realisasi_batu2030_1 = $realisasi_1['nilai_realisasi_d'];
-				$total_volume_batu2030_300_1_all = (($total_volume_batu2030_300_1 + $total_volume_batu2030_300_18_1) * $realisasi_1['realisasi']) + $vol_realisasi_batu2030_1;
-				$total_nilai_batu2030_300_1_all = (($total_nilai_batu2030_300_1 + $total_nilai_batu2030_300_18_1) * $realisasi_1['realisasi']) + $nilai_realisasi_batu2030_1;
+				$total_volume_batu2030_300_1_all = (($total_volume_batu2030_125_1 + $total_volume_batu2030_175_1 + $total_volume_batu2030_225_1 + $total_volume_batu2030_250_1 + $total_volume_batu2030_300_1 + $total_volume_batu2030_350_1) * $realisasi_1['realisasi']) + $vol_realisasi_batu2030_1;
+				$total_nilai_batu2030_300_1_all = (($total_nilai_batu2030_125_1 + $total_nilai_batu2030_175_1 + $total_nilai_batu2030_225_1 + $total_nilai_batu2030_250_1 + $total_nilai_batu2030_300_1 + $total_nilai_batu2030_350_1) * $realisasi_1['realisasi']) + $nilai_realisasi_batu2030_1;
 
 				$vol_realisasi_additive_1 = $realisasi_1['vol_realisasi_e'];
 				$nilai_realisasi_additive_1 = $realisasi_1['nilai_realisasi_e'];
-				$total_volume_additive_300_1_all = (($total_volume_additive_300_1 + $total_volume_additive_300_18_1) * $realisasi_1['realisasi']) + $vol_realisasi_additive_1;
-				$total_nilai_additive_300_1_all = (($total_nilai_additive_300_1 + $total_nilai_additive_300_18_1) * $realisasi_1['realisasi']) + $nilai_realisasi_additive_1;
+				$total_volume_additive_300_1_all = (($total_volume_additive_125_1 + $total_volume_additive_175_1 + $total_volume_additive_225_1 + $total_volume_additive_250_1 + $total_volume_additive_300_1 + $total_volume_additive_350_1) * $realisasi_1['realisasi']) + $vol_realisasi_additive_1;
+				$total_nilai_additive_300_1_all = (($total_nilai_additive_125_1 + $total_nilai_additive_175_1 + $total_nilai_additive_225_1 + $total_nilai_additive_250_1 + $total_nilai_additive_300_1 + $total_nilai_additive_350_1) * $realisasi_1['realisasi']) + $nilai_realisasi_additive_1;
 
 				$realisasi_2 = $this->db->select('*')
 				->from('rak')
@@ -11757,28 +11757,28 @@ class Reports extends CI_Controller {
 				->get()->row_array();
 				$vol_realisasi_semen_2 = $realisasi_2['vol_realisasi_a'];
 				$nilai_realisasi_semen_2 = $realisasi_2['nilai_realisasi_a'];
-				$total_volume_semen_300_2_all = (($total_volume_semen_300_2 + $total_volume_semen_300_18_2) * $realisasi_2['realisasi']) + $vol_realisasi_semen_2;
-				$total_nilai_semen_300_2_all = (($total_nilai_semen_300_2 + $total_nilai_semen_300_18_2) * $realisasi_2['realisasi']) + $nilai_realisasi_semen_2;
+				$total_volume_semen_300_2_all = (($total_volume_semen_125_2 + $total_volume_semen_175_2 + $total_volume_semen_225_2 + $total_volume_semen_250_2 + $total_volume_semen_300_2 + $total_volume_semen_350_2) * $realisasi_2['realisasi']) + $vol_realisasi_semen_2;
+				$total_nilai_semen_300_2_all = (($total_nilai_semen_125_2 + $total_nilai_semen_175_2 + $total_nilai_semen_225_2 + $total_nilai_semen_250_2 + $total_nilai_semen_300_2 + $total_nilai_semen_350_2) * $realisasi_2['realisasi']) + $nilai_realisasi_semen_2;
 
 				$vol_realisasi_pasir_2 = $realisasi_2['vol_realisasi_b'];
 				$nilai_realisasi_pasir_2 = $realisasi_2['nilai_realisasi_b'];
-				$total_volume_pasir_300_2_all = (($total_volume_pasir_300_2 + $total_volume_pasir_300_18_2) * $realisasi_2['realisasi']) + $vol_realisasi_pasir_2;
-				$total_nilai_pasir_300_2_all = (($total_nilai_pasir_300_2 + $total_nilai_pasir_300_18_2) * $realisasi_2['realisasi']) + $nilai_realisasi_pasir_2;
+				$total_volume_pasir_300_2_all = (($total_volume_pasir_125_2 + $total_volume_pasir_175_2 + $total_volume_pasir_225_2 + $total_volume_pasir_250_2 + $total_volume_pasir_300_2 + $total_volume_pasir_350_2) * $realisasi_2['realisasi']) + $vol_realisasi_pasir_2;
+				$total_nilai_pasir_300_2_all = (($total_nilai_pasir_125_2 + $total_nilai_pasir_175_2 + $total_nilai_pasir_225_2 + $total_nilai_pasir_250_2 + $total_nilai_pasir_300_2 + $total_nilai_pasir_350_2) * $realisasi_2['realisasi']) + $nilai_realisasi_pasir_2;
 
 				$vol_realisasi_batu1020_2 = $realisasi_2['vol_realisasi_c'];
 				$nilai_realisasi_batu1020_2 = $realisasi_2['nilai_realisasi_c'];
-				$total_volume_batu1020_300_2_all = (($total_volume_batu1020_300_2 + $total_volume_batu1020_300_18_2) * $realisasi_2['realisasi']) + $vol_realisasi_batu1020_2;
-				$total_nilai_batu1020_300_2_all = (($total_nilai_batu1020_300_2 + $total_nilai_batu1020_300_18_2) * $realisasi_2['realisasi']) + $nilai_realisasi_batu1020_2;
+				$total_volume_batu1020_300_2_all = (($total_volume_batu1020_125_2 + $total_volume_batu1020_175_2 + $total_volume_batu1020_225_2 + $total_volume_batu1020_250_2 + $total_volume_batu1020_300_2 + $total_volume_batu1020_350_2) * $realisasi_2['realisasi']) + $vol_realisasi_batu1020_2;
+				$total_nilai_batu1020_300_2_all = (($total_nilai_batu1020_125_2 + $total_nilai_batu1020_175_2 + $total_nilai_batu1020_225_2 + $total_nilai_batu1020_250_2 + $total_nilai_batu1020_300_2 + $total_nilai_batu1020_350_2) * $realisasi_2['realisasi']) + $nilai_realisasi_batu1020_2;
 
 				$vol_realisasi_batu2030_2 = $realisasi_2['vol_realisasi_d'];
 				$nilai_realisasi_batu2030_2 = $realisasi_2['nilai_realisasi_d'];
-				$total_volume_batu2030_300_2_all = (($total_volume_batu2030_300_2 + $total_volume_batu2030_300_18_2) * $realisasi_2['realisasi']) + $vol_realisasi_batu2030_2;
-				$total_nilai_batu2030_300_2_all = (($total_nilai_batu2030_300_2 + $total_nilai_batu2030_300_18_2) * $realisasi_2['realisasi']) + $nilai_realisasi_batu2030_2;
+				$total_volume_batu2030_300_2_all = (($total_volume_batu2030_125_2 + $total_volume_batu2030_175_2 + $total_volume_batu2030_225_2 + $total_volume_batu2030_250_2 + $total_volume_batu2030_300_2 + $total_volume_batu2030_350_2) * $realisasi_2['realisasi']) + $vol_realisasi_batu2030_2;
+				$total_nilai_batu2030_300_2_all = (($total_nilai_batu2030_125_2 + $total_nilai_batu2030_175_2 + $total_nilai_batu2030_225_2 + $total_nilai_batu2030_250_2 + $total_nilai_batu2030_300_2 + $total_nilai_batu2030_350_2) * $realisasi_2['realisasi']) + $nilai_realisasi_batu2030_2;
 
 				$vol_realisasi_additive_2 = $realisasi_2['vol_realisasi_e'];
 				$nilai_realisasi_additive_2 = $realisasi_2['nilai_realisasi_e'];
-				$total_volume_additive_300_2_all = (($total_volume_additive_300_2 + $total_volume_additive_300_18_2) * $realisasi_2['realisasi']) + $vol_realisasi_additive_2;
-				$total_nilai_additive_300_2_all = (($total_nilai_additive_300_2 + $total_nilai_additive_300_18_2) * $realisasi_2['realisasi']) + $nilai_realisasi_additive_2;
+				$total_volume_additive_300_2_all = (($total_volume_additive_125_2 + $total_volume_additive_175_2 + $total_volume_additive_225_2 + $total_volume_additive_250_2 + $total_volume_additive_300_2 + $total_volume_additive_350_2) * $realisasi_2['realisasi']) + $vol_realisasi_additive_2;
+				$total_nilai_additive_300_2_all = (($total_nilai_additive_125_2 + $total_nilai_additive_175_2 + $total_nilai_additive_225_2 + $total_nilai_additive_250_2 + $total_nilai_additive_300_2 + $total_nilai_additive_350_2) * $realisasi_2['realisasi']) + $nilai_realisasi_additive_2;
 		
 				$realisasi_3 = $this->db->select('*')
 				->from('rak')
@@ -11786,28 +11786,28 @@ class Reports extends CI_Controller {
 				->get()->row_array();
 				$vol_realisasi_semen_3 = $realisasi_3['vol_realisasi_a'];
 				$nilai_realisasi_semen_3 = $realisasi_3['nilai_realisasi_a'];
-				$total_volume_semen_300_3_all = (($total_volume_semen_300_3 + $total_volume_semen_300_18_3) * $realisasi_3['realisasi']) + $vol_realisasi_semen_3;
-				$total_nilai_semen_300_3_all = (($total_nilai_semen_300_3 + $total_nilai_semen_300_18_3) * $realisasi_3['realisasi'] + $nilai_realisasi_semen_3);
+				$total_volume_semen_300_3_all = (($total_volume_semen_125_3 + $total_volume_semen_175_3 + $total_volume_semen_225_3 + $total_volume_semen_250_3 + $total_volume_semen_300_3 + $total_volume_semen_350_3) * $realisasi_3['realisasi']) + $vol_realisasi_semen_3;
+				$total_nilai_semen_300_3_all = (($total_nilai_semen_125_3 + $total_nilai_semen_175_3 + $total_nilai_semen_225_3 + $total_nilai_semen_250_3 + $total_nilai_semen_300_3 + $total_nilai_semen_350_3) * $realisasi_3['realisasi']) + $nilai_realisasi_semen_3;
 
 				$vol_realisasi_pasir_3 = $realisasi_3['vol_realisasi_b'];
 				$nilai_realisasi_pasir_3 = $realisasi_3['nilai_realisasi_b'];
-				$total_volume_pasir_300_3_all = (($total_volume_pasir_300_3 + $total_volume_pasir_300_18_3) * $realisasi_3['realisasi']) + $vol_realisasi_pasir_3;
-				$total_nilai_pasir_300_3_all = (($total_nilai_pasir_300_3 + $total_nilai_pasir_300_18_3) * $realisasi_3['realisasi'] + $nilai_realisasi_pasir_3);
+				$total_volume_pasir_300_3_all = (($total_volume_pasir_125_3 + $total_volume_pasir_175_3 + $total_volume_pasir_225_3 + $total_volume_pasir_250_3 + $total_volume_pasir_300_3 + $total_volume_pasir_350_3) * $realisasi_3['realisasi']) + $vol_realisasi_pasir_3;
+				$total_nilai_pasir_300_3_all = (($total_nilai_pasir_125_3 + $total_nilai_pasir_175_3 + $total_nilai_pasir_225_3 + $total_nilai_pasir_250_3 + $total_nilai_pasir_300_3 + $total_nilai_pasir_350_3) * $realisasi_3['realisasi']) + $nilai_realisasi_pasir_3;
 
 				$vol_realisasi_batu1020_3 = $realisasi_3['vol_realisasi_c'];
 				$nilai_realisasi_batu1020_3 = $realisasi_3['nilai_realisasi_c'];
-				$total_volume_batu1020_300_3_all = (($total_volume_batu1020_300_3 + $total_volume_batu1020_300_18_3) * $realisasi_3['realisasi']) + $vol_realisasi_batu1020_3;
-				$total_nilai_batu1020_300_3_all = (($total_nilai_batu1020_300_3 + $total_nilai_batu1020_300_18_3) * $realisasi_3['realisasi'] + $nilai_realisasi_batu1020_3);
+				$total_volume_batu1020_300_3_all = (($total_volume_batu1020_125_3 + $total_volume_batu1020_175_3 + $total_volume_batu1020_225_3 + $total_volume_batu1020_250_3 + $total_volume_batu1020_300_3 + $total_volume_batu1020_350_3) * $realisasi_3['realisasi']) + $vol_realisasi_batu1020_3;
+				$total_nilai_batu1020_300_3_all = (($total_nilai_batu1020_125_3 + $total_nilai_batu1020_175_3 + $total_nilai_batu1020_225_3 + $total_nilai_batu1020_250_3 + $total_nilai_batu1020_300_3 + $total_nilai_batu1020_350_3) * $realisasi_3['realisasi']) + $nilai_realisasi_batu1020_3;
 
 				$vol_realisasi_batu2030_3 = $realisasi_3['vol_realisasi_d'];
 				$nilai_realisasi_batu2030_3 = $realisasi_3['nilai_realisasi_d'];
-				$total_volume_batu2030_300_3_all = (($total_volume_batu2030_300_3 + $total_volume_batu2030_300_18_3) * $realisasi_3['realisasi']) + $vol_realisasi_batu2030_3;
-				$total_nilai_batu2030_300_3_all = (($total_nilai_batu2030_300_3 + $total_nilai_batu2030_300_18_3) * $realisasi_3['realisasi'] + $nilai_realisasi_batu2030_3);
+				$total_volume_batu2030_300_3_all = (($total_volume_batu2030_125_3 + $total_volume_batu2030_175_3 + $total_volume_batu2030_225_3 + $total_volume_batu2030_250_3 + $total_volume_batu2030_300_3 + $total_volume_batu2030_350_3) * $realisasi_3['realisasi']) + $vol_realisasi_batu2030_3;
+				$total_nilai_batu2030_300_3_all = (($total_nilai_batu2030_125_3 + $total_nilai_batu2030_175_3 + $total_nilai_batu2030_225_3 + $total_nilai_batu2030_250_3 + $total_nilai_batu2030_300_3 + $total_nilai_batu2030_350_3) * $realisasi_3['realisasi']) + $nilai_realisasi_batu2030_3;
 
 				$vol_realisasi_additive_3 = $realisasi_3['vol_realisasi_e'];
 				$nilai_realisasi_additive_3 = $realisasi_3['nilai_realisasi_e'];
-				$total_volume_additive_300_3_all = (($total_volume_additive_300_3 + $total_volume_additive_300_18_3) * $realisasi_3['realisasi']) + $vol_realisasi_additive_3;
-				$total_nilai_additive_300_3_all = (($total_nilai_additive_300_3 + $total_nilai_additive_300_18_3) * $realisasi_3['realisasi'] + $nilai_realisasi_additive_3);
+				$total_volume_additive_300_3_all = (($total_volume_additive_125_3 + $total_volume_additive_175_3 + $total_volume_additive_225_3 + $total_volume_additive_250_3 + $total_volume_additive_300_3 + $total_volume_additive_350_3) * $realisasi_3['realisasi']) + $vol_realisasi_additive_3;
+				$total_nilai_additive_300_3_all = (($total_nilai_additive_125_3 + $total_nilai_additive_175_3 + $total_nilai_additive_225_3 + $total_nilai_additive_250_3 + $total_nilai_additive_300_3 + $total_nilai_additive_350_3) * $realisasi_3['realisasi']) + $nilai_realisasi_additive_3;
 
 				$realisasi_4 = $this->db->select('*')
 				->from('rak')
@@ -11815,28 +11815,28 @@ class Reports extends CI_Controller {
 				->get()->row_array();
 				$vol_realisasi_semen_4 = $realisasi_4['vol_realisasi_a'];
 				$nilai_realisasi_semen_4 = $realisasi_4['nilai_realisasi_a'];
-				$total_volume_semen_300_4_all = (($total_volume_semen_300_4 + $total_volume_semen_300_18_4) * $realisasi_4['realisasi']) + $vol_realisasi_semen_4;
-				$total_nilai_semen_300_4_all = (($total_nilai_semen_300_4 + $total_nilai_semen_300_18_4) * $realisasi_4['realisasi']) + $nilai_realisasi_semen_4;
+				$total_volume_semen_300_4_all = (($total_volume_semen_125_4 + $total_volume_semen_175_4 + $total_volume_semen_225_4 + $total_volume_semen_250_4 + $total_volume_semen_300_4 + $total_volume_semen_350_4) * $realisasi_4['realisasi']) + $vol_realisasi_semen_4;
+				$total_nilai_semen_300_4_all = (($total_nilai_semen_125_4 + $total_nilai_semen_175_4 + $total_nilai_semen_225_4 + $total_nilai_semen_250_4 + $total_nilai_semen_300_4 + $total_nilai_semen_350_4) * $realisasi_4['realisasi']) + $nilai_realisasi_semen_4;
 
 				$vol_realisasi_pasir_4 = $realisasi_4['vol_realisasi_b'];
 				$nilai_realisasi_pasir_4 = $realisasi_4['nilai_realisasi_b'];
-				$total_volume_pasir_300_4_all = (($total_volume_pasir_300_4 + $total_volume_pasir_300_18_4) * $realisasi_4['realisasi']) + $vol_realisasi_pasir_4;
-				$total_nilai_pasir_300_4_all = (($total_nilai_pasir_300_4 + $total_nilai_pasir_300_18_4) * $realisasi_4['realisasi']) + $nilai_realisasi_pasir_4;
+				$total_volume_pasir_300_4_all = (($total_volume_pasir_125_4 + $total_volume_pasir_175_4 + $total_volume_pasir_225_4 + $total_volume_pasir_250_4 + $total_volume_pasir_300_4 + $total_volume_pasir_350_4) * $realisasi_4['realisasi']) + $vol_realisasi_pasir_4;
+				$total_nilai_pasir_300_4_all = (($total_nilai_pasir_125_4 + $total_nilai_pasir_175_4 + $total_nilai_pasir_225_4 + $total_nilai_pasir_250_4 + $total_nilai_pasir_300_4 + $total_nilai_pasir_350_4) * $realisasi_4['realisasi']) + $nilai_realisasi_pasir_4;
 
 				$vol_realisasi_batu1020_4 = $realisasi_4['vol_realisasi_c'];
 				$nilai_realisasi_batu1020_4 = $realisasi_4['nilai_realisasi_c'];
-				$total_volume_batu1020_300_4_all = (($total_volume_batu1020_300_4 + $total_volume_batu1020_300_18_4) * $realisasi_4['realisasi']) + $vol_realisasi_batu1020_4;
-				$total_nilai_batu1020_300_4_all = (($total_nilai_batu1020_300_4 + $total_nilai_batu1020_300_18_4) * $realisasi_4['realisasi']) + $nilai_realisasi_batu1020_4;
+				$total_volume_batu1020_300_4_all = (($total_volume_batu1020_125_4 + $total_volume_batu1020_175_4 + $total_volume_batu1020_225_4 + $total_volume_batu1020_250_4 + $total_volume_batu1020_300_4 + $total_volume_batu1020_350_4) * $realisasi_4['realisasi']) + $vol_realisasi_batu1020_4;
+				$total_nilai_batu1020_300_4_all = (($total_nilai_batu1020_125_4 + $total_nilai_batu1020_175_4 + $total_nilai_batu1020_225_4 + $total_nilai_batu1020_250_4 + $total_nilai_batu1020_300_4 + $total_nilai_batu1020_350_4) * $realisasi_4['realisasi']) + $nilai_realisasi_batu1020_4;
 
 				$vol_realisasi_batu2030_4 = $realisasi_4['vol_realisasi_d'];
 				$nilai_realisasi_batu2030_4 = $realisasi_4['nilai_realisasi_d'];
-				$total_volume_batu2030_300_4_all = (($total_volume_batu2030_300_4 + $total_volume_batu2030_300_18_4) * $realisasi_4['realisasi']) + $vol_realisasi_batu2030_4;
-				$total_nilai_batu2030_300_4_all = (($total_nilai_batu2030_300_4 + $total_nilai_batu2030_300_18_4) * $realisasi_4['realisasi']) + $nilai_realisasi_batu2030_4;
+				$total_volume_batu2030_300_4_all = (($total_volume_batu2030_125_4 + $total_volume_batu2030_175_4 + $total_volume_batu2030_225_4 + $total_volume_batu2030_250_4 + $total_volume_batu2030_300_4 + $total_volume_batu2030_350_4) * $realisasi_4['realisasi']) + $vol_realisasi_batu2030_4;
+				$total_nilai_batu2030_300_4_all = (($total_nilai_batu2030_125_4 + $total_nilai_batu2030_175_4 + $total_nilai_batu2030_225_4 + $total_nilai_batu2030_250_4 + $total_nilai_batu2030_300_4 + $total_nilai_batu2030_350_4) * $realisasi_4['realisasi']) + $nilai_realisasi_batu2030_4;
 
 				$vol_realisasi_additive_4 = $realisasi_4['vol_realisasi_e'];
 				$nilai_realisasi_additive_4 = $realisasi_4['nilai_realisasi_e'];
-				$total_volume_additive_300_4_all = (($total_volume_additive_300_4 + $total_volume_additive_300_18_4) * $realisasi_4['realisasi']) + $vol_realisasi_additive_4;
-				$total_nilai_additive_300_4_all = (($total_nilai_additive_300_4 + $total_nilai_additive_300_18_4) * $realisasi_4['realisasi']) + $nilai_realisasi_additive_4;
+				$total_volume_additive_300_4_all = (($total_volume_additive_125_4 + $total_volume_additive_175_4 + $total_volume_additive_225_4 + $total_volume_additive_250_4 + $total_volume_additive_300_4 + $total_volume_additive_350_4) * $realisasi_4['realisasi']) + $vol_realisasi_additive_4;
+				$total_nilai_additive_300_4_all = (($total_nilai_additive_125_4 + $total_nilai_additive_175_4 + $total_nilai_additive_225_4 + $total_nilai_additive_250_4 + $total_nilai_additive_300_4 + $total_nilai_additive_350_4) * $realisasi_4['realisasi']) + $nilai_realisasi_additive_4;
 
 				$realisasi_5 = $this->db->select('*')
 				->from('rak')
@@ -11844,28 +11844,28 @@ class Reports extends CI_Controller {
 				->get()->row_array();
 				$vol_realisasi_semen_5 = $realisasi_5['vol_realisasi_a'];
 				$nilai_realisasi_semen_5 = $realisasi_5['nilai_realisasi_a'];
-				$total_volume_semen_300_5_all = (($total_volume_semen_300_5 + $total_volume_semen_300_18_5) * $realisasi_5['realisasi']) + $vol_realisasi_semen_5;
-				$total_nilai_semen_300_5_all = (($total_nilai_semen_300_5 + $total_nilai_semen_300_18_5) * $realisasi_5['realisasi']) + $nilai_realisasi_semen_5;
+				$total_volume_semen_300_5_all = (($total_volume_semen_125_5 + $total_volume_semen_175_5 + $total_volume_semen_225_5 + $total_volume_semen_250_5 + $total_volume_semen_300_5 + $total_volume_semen_350_5) * $realisasi_5['realisasi']) + $vol_realisasi_semen_5;
+				$total_nilai_semen_300_5_all = (($total_nilai_semen_125_5 + $total_nilai_semen_175_5 + $total_nilai_semen_225_5 + $total_nilai_semen_250_5 + $total_nilai_semen_300_5 + $total_nilai_semen_350_5) * $realisasi_5['realisasi']) + $nilai_realisasi_semen_5;
 
 				$vol_realisasi_pasir_5 = $realisasi_5['vol_realisasi_b'];
 				$nilai_realisasi_pasir_5 = $realisasi_5['nilai_realisasi_b'];
-				$total_volume_pasir_300_5_all = (($total_volume_pasir_300_5 + $total_volume_pasir_300_18_5) * $realisasi_5['realisasi']) + $vol_realisasi_pasir_5;
-				$total_nilai_pasir_300_5_all = (($total_nilai_pasir_300_5 + $total_nilai_pasir_300_18_5) * $realisasi_5['realisasi']) + $nilai_realisasi_pasir_5;
+				$total_volume_pasir_300_5_all = (($total_volume_pasir_125_5 + $total_volume_pasir_175_5 + $total_volume_pasir_225_5 + $total_volume_pasir_250_5 + $total_volume_pasir_300_5 + $total_volume_pasir_350_5) * $realisasi_5['realisasi']) + $vol_realisasi_pasir_5;
+				$total_nilai_pasir_300_5_all = (($total_nilai_pasir_125_5 + $total_nilai_pasir_175_5 + $total_nilai_pasir_225_5 + $total_nilai_pasir_250_5 + $total_nilai_pasir_300_5 + $total_nilai_pasir_350_5) * $realisasi_5['realisasi']) + $nilai_realisasi_pasir_5;
 				
 				$vol_realisasi_batu1020_5 = $realisasi_5['vol_realisasi_c'];
 				$nilai_realisasi_batu1020_5 = $realisasi_5['nilai_realisasi_c'];
-				$total_volume_batu1020_300_5_all = (($total_volume_batu1020_300_5 + $total_volume_batu1020_300_18_5) * $realisasi_5['realisasi']) + $vol_realisasi_batu1020_5;
-				$total_nilai_batu1020_300_5_all = (($total_nilai_batu1020_300_5 + $total_nilai_batu1020_300_18_5) * $realisasi_5['realisasi']) + $nilai_realisasi_batu1020_5;
+				$total_volume_batu1020_300_5_all = (($total_volume_batu1020_125_5 + $total_volume_batu1020_175_5 + $total_volume_batu1020_225_5 + $total_volume_batu1020_250_5 + $total_volume_batu1020_300_5 + $total_volume_batu1020_350_5) * $realisasi_5['realisasi']) + $vol_realisasi_batu1020_5;
+				$total_nilai_batu1020_300_5_all = (($total_nilai_batu1020_125_5 + $total_nilai_batu1020_175_5 + $total_nilai_batu1020_225_5 + $total_nilai_batu1020_250_5 + $total_nilai_batu1020_300_5 + $total_nilai_batu1020_350_5) * $realisasi_5['realisasi']) + $nilai_realisasi_batu1020_5;
 
 				$vol_realisasi_batu2030_5 = $realisasi_5['vol_realisasi_d'];
 				$nilai_realisasi_batu2030_5 = $realisasi_5['nilai_realisasi_d'];
-				$total_volume_batu2030_300_5_all = (($total_volume_batu2030_300_5 + $total_volume_batu2030_300_18_5) * $realisasi_5['realisasi']) + $vol_realisasi_batu2030_5;
-				$total_nilai_batu2030_300_5_all = (($total_nilai_batu2030_300_5 + $total_nilai_batu2030_300_18_5) * $realisasi_5['realisasi']) + $nilai_realisasi_batu2030_5;
+				$total_volume_batu2030_300_5_all = (($total_volume_batu2030_125_5 + $total_volume_batu2030_175_5 + $total_volume_batu2030_225_5 + $total_volume_batu2030_250_5 + $total_volume_batu2030_300_5 + $total_volume_batu2030_350_5) * $realisasi_5['realisasi']) + $vol_realisasi_batu2030_5;
+				$total_nilai_batu2030_300_5_all = (($total_nilai_batu2030_125_5 + $total_nilai_batu2030_175_5 + $total_nilai_batu2030_225_5 + $total_nilai_batu2030_250_5 + $total_nilai_batu2030_300_5 + $total_nilai_batu2030_350_5) * $realisasi_5['realisasi']) + $nilai_realisasi_batu2030_5;
 
 				$vol_realisasi_additive_5 = $realisasi_5['vol_realisasi_e'];
 				$nilai_realisasi_additive_5 = $realisasi_5['nilai_realisasi_e'];
-				$total_volume_additive_300_5_all = (($total_volume_additive_300_5 + $total_volume_additive_300_18_5) * $realisasi_5['realisasi']) + $vol_realisasi_additive_5;
-				$total_nilai_additive_300_5_all = (($total_nilai_additive_300_5 + $total_nilai_additive_300_18_5) * $realisasi_5['realisasi']) + $nilai_realisasi_additive_5;
+				$total_volume_additive_300_5_all = (($total_volume_additive_125_5 + $total_volume_additive_175_5 + $total_volume_additive_225_5 + $total_volume_additive_250_5 + $total_volume_additive_300_5 + $total_volume_additive_350_5) * $realisasi_5['realisasi']) + $vol_realisasi_additive_5;
+				$total_nilai_additive_300_5_all = (($total_nilai_additive_125_5 + $total_nilai_additive_175_5 + $total_nilai_additive_225_5 + $total_nilai_additive_250_5 + $total_nilai_additive_300_5 + $total_nilai_additive_350_5) * $realisasi_5['realisasi']) + $nilai_realisasi_additive_5;
 				?>
 				<th class="text-center"></th>
 				<th class="text-left">Semen</th>
