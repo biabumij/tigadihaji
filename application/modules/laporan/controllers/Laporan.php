@@ -692,7 +692,7 @@ class Laporan extends Secure_Controller {
 
 		//Page1
 		$pdf->setPage(1, true);
-		$pdf->SetY(10);
+		$pdf->SetY(5);
 		$pdf->Cell(0, 0, '', 0, 0, 'C');
 
 		$arr_data = array();
@@ -957,7 +957,7 @@ class Laporan extends Secure_Controller {
 
 		//Page1
 		$pdf->setPage(1, true);
-		$pdf->SetY(10);
+		$pdf->SetY(5);
 		//$pdf->Cell(0, 0, '', 0, 0, 'C');
 
 		$arr_data = array();
@@ -1310,11 +1310,12 @@ class Laporan extends Secure_Controller {
 		$this->load->library('pdf');
 	
 		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
-        $pdf->setPrintHeader(true);
-		$pdf->setPrintFooter(true);
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
 		$pdf->AddPage('L');
+		$pdf->SetY(5);
 
 		$arr_data = array();
 		$client_id = $this->input->get('client_id');
