@@ -39,20 +39,6 @@ class Jurnal_umum extends CI_Controller {
 		}
     }
 
-    public function detailJurnal_2($id){
-        $check = $this->m_admin->check_login();
-		if($check == true){		
-            $data['akun'] = $this->db->get_where('pmm_coa',["status" => "PUBLISH"])->result_array();
-            $data['detail'] = $this->db->get_where('pmm_jurnal_umum',["id" => $id])->row_array();
-            $data['detailBiaya'] = $this->db->query("SELECT coa,deskripsi,debit,kredit,coa_number,coa_number FROM pmm_detail_jurnal INNER JOIN pmm_coa ON pmm_detail_jurnal.akun = pmm_coa.id
-            WHERE pmm_detail_jurnal.jurnal_id = '$id'")->result_array();
-            $data['lampiran'] = $this->db->get_where('pmm_lampiran_biaya',["biaya_id" => $id])->result_array();
-            $this->load->view('pmm/jurnal_umum/detailJurnal_2',$data);
-		}else {
-			redirect('admin');
-		}
-    }
-
     public function table_jurnal(){
         $data = array();
 		$filter_date = $this->input->post('filter_date');
@@ -88,8 +74,8 @@ class Jurnal_umum extends CI_Controller {
         $data = array();
 		$filter_date = $this->input->post('filter_date');
 
-        $date_now = date('Y-m-01');
-        $last_opname = date('Y-m-d', strtotime('+1 days -0 months', strtotime($date_now)));
+        $kunci_rakor = date('Y-m-01');
+        $last_opname = date('Y-m-d', strtotime('+1 days -0 months', strtotime($kunci_rakor)));
 
 		if(!empty($filter_date)){
 			$arr_date = explode(' - ', $filter_date);
@@ -110,7 +96,7 @@ class Jurnal_umum extends CI_Controller {
                 $row['total_debit'] = $this->filter->Rupiah($row['total_debit']);
                 $row['tanggal'] = date('d/m/Y',strtotime($row['tanggal_transaksi']));
                 $row['jumlah_total'] = number_format($row["total"],2,',','.');
-                $row['nomor'] = "<a href=".base_url('pmm/jurnal_umum/detailJurnal_2/'.$row["id"]).">".$row["nomor_transaksi"]."</a>";
+                $row['nomor'] = "<a href=".base_url('pmm/jurnal_umum/detailJurnal/'.$row["id"]).">".$row["nomor_transaksi"]."</a>";
 				$row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
                 $data[] = $row;

@@ -56,10 +56,26 @@
                         </div>
                         <div class="panel-content">
                             <ul class="nav nav-tabs" role="tablist">
+                                <?php
+                                if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,7,8))){
+                                ?>
                                 <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">JURNAL UMUM</a></li>
-                                <!--<li role="presentation"><a href="#home_2" aria-controls="home_2" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold; text-transform:uppercase;">JURNAL UMUM (<?php echo date('F');?>)</a></li>-->
+                                <?php
+                                }
+                                ?>
+
+                                <?php
+                                if(in_array($this->session->userdata('admin_group_id'), array(4,5,6))){
+                                ?>
+                                <li role="presentation" class="active"><a href="#home_2" aria-controls="home_2" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold; text-transform:uppercase;">JURNAL UMUM</a></li>
+                                <?php
+                                }
+                                ?>
                             </ul>
                             <div class="tab-content">
+                                <?php
+                                if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,7,8))){
+                                ?>
                                 <div role="tabpanel" class="tab-pane active" id="home">
                                     <br />
                                     <div class="col-sm-3">
@@ -86,8 +102,14 @@
                                             </table>
                                     </div>
                                 </div>
+                                <?php
+                                }
+                                ?>
 
-                                <div role="tabpanel" class="tab-pane" id="home_2">
+                                <?php
+                                if(in_array($this->session->userdata('admin_group_id'), array(4,5,6))){
+                                ?>
+                                <div role="tabpanel" class="tab-pane active" id="home_2">
                                     <br />
                                     <div class="col-sm-3">
                                         <input type="text" id="filter_date_jurnal_2" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
@@ -113,6 +135,9 @@
                                             </table>
                                     </div>
                                 </div>
+                                <?php
+                                }
+                                ?>
                             </div>
                            
                         </div>
