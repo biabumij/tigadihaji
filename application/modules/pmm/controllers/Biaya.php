@@ -17,6 +17,9 @@ class Biaya extends CI_Controller {
     public function table_biaya(){
         $data = array();
 		$filter_date = $this->input->post('filter_date');
+        $kunci_rakor = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('kunci_rakor')->row_array();
+		$kunci_rakor = date('Y-m-d', strtotime('0 days', strtotime($kunci_rakor['date'])));
+
 		if(!empty($filter_date)){
 			$arr_date = explode(' - ', $filter_date);
 			$this->db->where('b.tanggal_transaksi >=',date('Y-m-d',strtotime($arr_date[0])));
@@ -25,9 +28,11 @@ class Biaya extends CI_Controller {
 
         $this->db->select('b.*, p.nama as penerima');
         $this->db->join('penerima p','b.penerima = p.id','left');
+        $this->db->where('b.tanggal_transaksi >=', date($kunci_rakor));
         $this->db->order_by('b.tanggal_transaksi','desc');
         $this->db->order_by('b.created_on','desc');
 		$query = $this->db->get('pmm_biaya b');
+        file_put_contents("D:\\test.txt", $this->db->last_query());
 		if($query->num_rows() > 0){
 			foreach ($query->result_array() as $key => $row) {
 				$row['no'] = $key+1;
