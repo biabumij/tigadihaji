@@ -438,7 +438,7 @@
             pageLength: 25,
         });
 		
-		$('#filter_date_biaya_2').on('apply.daterangepicker', function(ev, picker) {
+		$('#filter_date_biaya_3').on('apply.daterangepicker', function(ev, picker) {
             $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
             table_biaya_3.ajax.reload();
 		});
