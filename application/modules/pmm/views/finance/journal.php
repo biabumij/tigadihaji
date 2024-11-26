@@ -86,20 +86,20 @@
                                     <br />
                                     <h3 class="text-center"></h3>
                                     <div class="table-responsive">
-                                            <table class="table table-striped table-hover" id="table_jurnal" style="width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>NO.</th>
-                                                        <th>TANGGAL</th>
-                                                        <th>NOMOR TRANSAKSI</th>
-                                                        <th>DEBIT</th>
-                                                        <th>KREDIT</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                
-                                                </tbody>
-                                            </table>
+                                        <table class="table table-striped table-hover" id="table_jurnal" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>NO.</th>
+                                                    <th>TANGGAL</th>
+                                                    <th>NOMOR TRANSAKSI</th>
+                                                    <th>DEBIT</th>
+                                                    <th>KREDIT</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                                 <?php
@@ -119,20 +119,20 @@
                                     <br />
                                     <h3 class="text-center"></h3>
                                     <div class="table-responsive">
-                                            <table class="table table-striped table-hover" id="table_jurnal_2" style="width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>NO.</th>
-                                                        <th>TANGGAL</th>
-                                                        <th>NOMOR TRANSAKSI</th>
-                                                        <th>DEBIT</th>
-                                                        <th>KREDIT</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                
-                                                </tbody>
-                                            </table>
+                                        <table class="table table-striped table-hover" id="table_jurnal_2" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>NO.</th>
+                                                    <th>TANGGAL</th>
+                                                    <th>NOMOR TRANSAKSI</th>
+                                                    <th>DEBIT</th>
+                                                    <th>KREDIT</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
                                 <?php
@@ -329,7 +329,6 @@
             });
         }
 
-
         function DeleteData(id)
         {
             bootbox.confirm("Apakah Anda yakin untuk menghapus data ini ?", function(result){ 
@@ -382,8 +381,6 @@
         $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
         table_jurnal_2.ajax.reload();
 		});
-
-
     </script>
 
 </body>

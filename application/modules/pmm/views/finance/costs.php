@@ -85,21 +85,21 @@
                                             <br />
                                             <h3 class="text-center"></h3>
                                             <div class="table-responsive">
-                                                    <table class="table table-striped table-hover" id="table_biaya" style="width:100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>NO.</th>
-                                                                <th>TANGGAL</th>
-                                                                <th>NOMOR TRANSAKSI</th>
-                                                                <th>PENERIMA</th>
-                                                                <th>TOTAL</th>
-                                                                <th>STATUS</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        
-                                                        </tbody>
-                                                    </table>
+                                                <table class="table table-striped table-hover" id="table_biaya" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>NO.</th>
+                                                            <th>TANGGAL</th>
+                                                            <th>NOMOR TRANSAKSI</th>
+                                                            <th>PENERIMA</th>
+                                                            <th>TOTAL</th>
+                                                            <th>STATUS</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                         <?php
@@ -119,21 +119,21 @@
                                             <br />
                                             <h3 class="text-center"></h3>
                                             <div class="table-responsive">
-                                                    <table class="table table-striped table-hover" id="table_biaya_2" style="width:100%">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>NO.</th>
-                                                                <th>TANGGAL</th>
-                                                                <th>NOMOR TRANSAKSI</th>
-                                                                <th>PENERIMA</th>
-                                                                <th>TOTAL</th>
-                                                                <th>STATUS</th>
-                                                            </tr>   
-                                                        </thead>
-                                                        <tbody>
-                                                        
-                                                        </tbody>
-                                                    </table>
+                                                <table class="table table-striped table-hover" id="table_biaya_2" style="width:100%">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>NO.</th>
+                                                            <th>TANGGAL</th>
+                                                            <th>NOMOR TRANSAKSI</th>
+                                                            <th>PENERIMA</th>
+                                                            <th>TOTAL</th>
+                                                            <th>STATUS</th>
+                                                        </tr>   
+                                                    </thead>
+                                                    <tbody>
+                                                    
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                         <?php
@@ -382,8 +382,6 @@
             $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
             table_biaya_2.ajax.reload();
 		});
-
-
     </script>
     
 	<script type="text/javascript">
