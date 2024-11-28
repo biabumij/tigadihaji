@@ -183,10 +183,10 @@
                             <?php
                             }
                             ?>
-                            <?php
+                            <!--<?php
                             if(in_array($this->session->userdata('admin_group_id'), array(1))){
                             ?>
-                            <!--<?php
+                            <?php
                             $query = $this->db->select('COUNT(id) as id')
                             ->from('perubahan_sistem')
                             ->where("status = 'UNPUBLISH'")
