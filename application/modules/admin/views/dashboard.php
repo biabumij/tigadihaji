@@ -186,7 +186,7 @@
                             <?php
                             if(in_array($this->session->userdata('admin_group_id'), array(1))){
                             ?>
-                            <?php
+                            <!--<?php
                             $query = $this->db->select('COUNT(id) as id')
                             ->from('perubahan_sistem')
                             ->where("status = 'UNPUBLISH'")
@@ -197,7 +197,7 @@
                                 <center><a target="_blank" href="<?= base_url("pmm/reports/detail_notification_3/") ?>"><i class="fa-solid fa-clipboard-check"></i> BUTUH PERSETUJUAN TI & SISTEM (<blink><?php echo number_format($query,0,',','.');?></blink>)</a></center>
                             <?php
                             }
-                            ?>
+                            ?>-->
                         </figure>    
                     </div>
                     <?php
