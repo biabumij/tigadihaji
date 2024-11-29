@@ -78,7 +78,7 @@
 
 	</head>
 	<body>
-		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">RINCIAN PEMAKAIAN BATU SPLIT 10-20</div>
+		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">RINCIAN PEMAKAIAN SEMEN</div>
 		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">PROYEK BENDUNGAN TIGA DIHAJI</div>
 		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">PT. BIA BUMI JAYENDRA</div>
 		<div align="center" style="display: block;font-weight: bold;font-size: 11px; text-transform: uppercase;">PERIODE : <?php echo str_replace($search, $replace, $subject);?></div>
@@ -104,7 +104,7 @@
 			$pemakaian = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
 			->from('pemakaian_bahan')
 			->where("date between '$date1' and '$date2'")
-			->where("material_id = 3")
+			->where("material_id = 1")
 			->where("status = 'PUBLISH'")
 			->group_by("id")
 			->get()->result_array();

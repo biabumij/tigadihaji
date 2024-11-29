@@ -1762,7 +1762,83 @@ class Laporan extends Secure_Controller {
     
     }
 
-	public function print_1020()
+	public function cetak_detail_semen()
+    {
+		$this->load->library('pdf');
+
+        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		
+		// add a page
+		$pdf->AddPage('P');
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+		$pdf->SetMargins(5, 5); 
+
+		$pdf->SetAutoPageBreak(TRUE, 20);
+        $arr_date = $this->input->get('filter_date');
+
+        $dt = explode(' - ', $arr_date);
+        $start_date = date('Y-m-d',strtotime($dt[0]));
+        $end_date = date('Y-m-d',strtotime($dt[1]));
+
+        $date = array($start_date,$end_date);
+        $data['filter_date'] = $arr_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
+
+        $html = $this->load->view('laporan_produksi/cetak_detail_semen',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('detail-semen.pdf', 'I');
+    }
+
+	public function cetak_detail_pasir()
+    {
+		$this->load->library('pdf');
+
+        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		
+		// add a page
+		$pdf->AddPage('P');
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+		$pdf->SetMargins(5, 5); 
+
+		$pdf->SetAutoPageBreak(TRUE, 20);
+        $arr_date = $this->input->get('filter_date');
+
+        $dt = explode(' - ', $arr_date);
+        $start_date = date('Y-m-d',strtotime($dt[0]));
+        $end_date = date('Y-m-d',strtotime($dt[1]));
+
+        $date = array($start_date,$end_date);
+        $data['filter_date'] = $arr_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
+
+        $html = $this->load->view('laporan_produksi/cetak_detail_pasir',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('detail-pasir.pdf', 'I');
+    }
+
+	public function cetak_detail_1020()
     {
 		$this->load->library('pdf');
 
@@ -1797,8 +1873,83 @@ class Laporan extends Secure_Controller {
         
         $pdf->SetTitle('');
         $pdf->nsi_html($html);
-        $pdf->Output('detail-split-1020.pdf', 'I');
-    
+        $pdf->Output('detail-1020.pdf', 'I');
+    }
+
+	public function cetak_detail_2030()
+    {
+		$this->load->library('pdf');
+
+        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		
+		// add a page
+		$pdf->AddPage('P');
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+		$pdf->SetMargins(5, 5); 
+
+		$pdf->SetAutoPageBreak(TRUE, 20);
+        $arr_date = $this->input->get('filter_date');
+
+        $dt = explode(' - ', $arr_date);
+        $start_date = date('Y-m-d',strtotime($dt[0]));
+        $end_date = date('Y-m-d',strtotime($dt[1]));
+
+        $date = array($start_date,$end_date);
+        $data['filter_date'] = $arr_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
+
+        $html = $this->load->view('laporan_produksi/cetak_detail_2030',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('detail-2030.pdf', 'I');
+    }
+
+	public function cetak_detail_additive()
+    {
+		$this->load->library('pdf');
+
+        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		
+		// add a page
+		$pdf->AddPage('P');
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+		$pdf->SetMargins(5, 5); 
+
+		$pdf->SetAutoPageBreak(TRUE, 20);
+        $arr_date = $this->input->get('filter_date');
+
+        $dt = explode(' - ', $arr_date);
+        $start_date = date('Y-m-d',strtotime($dt[0]));
+        $end_date = date('Y-m-d',strtotime($dt[1]));
+
+        $date = array($start_date,$end_date);
+        $data['filter_date'] = $arr_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
+
+        $html = $this->load->view('laporan_produksi/cetak_detail_additive',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('detail-additive.pdf', 'I');
     }
 
 	public function cetak_bahan_rap_2022()
