@@ -73,6 +73,7 @@
                                         <?php
                                         if(in_array($this->session->userdata('admin_group_id'), array(1))){
                                         ?>
+                                        <li role="presentation"><a href="#pemakaian_bahan" aria-controls="pemakaian_bahan" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PEMAKAIAN BAHAN</a></li>
                                         <li role="presentation"><a href="#pemakaian" aria-controls="pemakaian" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PEMAKAIAN MATERIAL</a></li>
                                         <li role="presentation"><a href="#rakor" aria-controls="rakor" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">KUNCI DATA RAKOR</a></li>
                                         <?php
@@ -83,6 +84,9 @@
                                         <br />
                                         <div role="tabpanel" class="tab-pane active" id="material_on_site">
                                             <?php include_once "material_on_site.php"; ?>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane" id="pemakaian_bahan">
+                                            <?php include_once "pemakaian_bahan.php"; ?>
                                         </div>
                                         <div role="tabpanel" class="tab-pane" id="pemakaian">
                                             <?php include_once "pemakaian.php"; ?>
@@ -109,6 +113,7 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/back/theme/vendor/daterangepicker/daterangepicker.css">
         <script src="https://kit.fontawesome.com/591a1bf2f6.js" crossorigin="anonymous"></script>
         <?php include_once("script_material_on_site.php"); ?>
+        <?php include_once("script_pemakaian_bahan.php"); ?>
         <?php include_once("script_pemakaian.php"); ?>
         <?php include_once("script_rakor.php"); ?>
 
