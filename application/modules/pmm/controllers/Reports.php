@@ -13057,7 +13057,7 @@ class Reports extends CI_Controller {
 				<th class="text-left">BAHAN</th>
 				<th class="text-right"><?php echo number_format($total_volume_komposisi,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_nilai_komposisi / $total_volume_komposisi,0,',','.');?></th>
-				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_evaluasi_bahan?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_komposisi,0,',','.');?></a></th>
+				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_evaluasi_bahan_pemakaian?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_komposisi,0,',','.');?></a></th>
 				<th class="text-right"><?php echo number_format($total_volume_realisasi,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_nilai_realisasi / $total_volume_realisasi,0,',','.');?></th>
 				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_evaluasi_bahan_pemakaian?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_realisasi,0,',','.');?></a></th>

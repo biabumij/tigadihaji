@@ -289,39 +289,6 @@ class Produksi extends Secure_Controller {
 		echo json_encode($output);
 	}
 
-	public function table_rakor()
-	{   
-        $data = array();
-		$filter_date = $this->input->post('filter_date');
-		if(!empty($filter_date)){
-			$arr_date = explode(' - ', $filter_date);
-			$this->db->where('date >=',date('Y-m-d',strtotime($arr_date[0])));
-			$this->db->where('date <=',date('Y-m-d',strtotime($arr_date[1])));
-		}
-        $this->db->select('*');
-		$this->db->order_by('date','desc');
-		$query = $this->db->get('kunci_rakor');
-		
-       if($query->num_rows() > 0){
-			foreach ($query->result_array() as $key => $row) {
-                $row['no'] = $key+1;
-                $row['date'] = date('d F Y',strtotime($row['date']));
-				$row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
-                $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
-
-				if($this->session->userdata('admin_group_id') == 1){
-					$row['actions'] = '<a href="javascript:void(0);" onclick="DeleteDataRakor('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
-				}else {
-					$row['actions'] = '-';
-				}
-				
-                $data[] = $row;
-            }
-
-        }
-        echo json_encode(array('data'=>$data));
-    }
-
 	public function form_pemakaian_bahan()
 	{
 		$check = $this->m_admin->check_login();
@@ -368,6 +335,39 @@ class Produksi extends Secure_Controller {
 			redirect('admin/stock_opname');
 		}
 	}
+
+	public function table_rakor()
+	{   
+        $data = array();
+		$filter_date = $this->input->post('filter_date');
+		if(!empty($filter_date)){
+			$arr_date = explode(' - ', $filter_date);
+			$this->db->where('date >=',date('Y-m-d',strtotime($arr_date[0])));
+			$this->db->where('date <=',date('Y-m-d',strtotime($arr_date[1])));
+		}
+        $this->db->select('*');
+		$this->db->order_by('date','desc');
+		$query = $this->db->get('kunci_rakor');
+		
+       if($query->num_rows() > 0){
+			foreach ($query->result_array() as $key => $row) {
+                $row['no'] = $key+1;
+                $row['date'] = date('d F Y',strtotime($row['date']));
+				$row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
+                $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
+
+				if($this->session->userdata('admin_group_id') == 1){
+					$row['actions'] = '<a href="javascript:void(0);" onclick="DeleteDataRakor('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
+				}else {
+					$row['actions'] = '-';
+				}
+				
+                $data[] = $row;
+            }
+
+        }
+        echo json_encode(array('data'=>$data));
+    }
 
 	public function delete_rakor()
 	{
