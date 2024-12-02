@@ -925,10 +925,10 @@
 				<th class="text-right" style="background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_semen,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
-				<th class="text-left" style="background-color:yellow; color:black;">&nbsp;&nbsp;Stok Semen Akhir</th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_semen_now,2,',','');?> (Ton)</th>
-				<th class="text-right" style="background-color:yellow; color:black;"></th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_semen_now,0,',','.');?>&nbsp;&nbsp;</th>
+				<th class="text-left" style="background-color:red; color:white;">&nbsp;&nbsp;Stok Semen Akhir</th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($volume_stock_opname_semen_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="background-color:red; color:white;"></th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($nilai_stock_opname_semen_now,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
 				<th class="text-left" style="background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Semen Bulan Ini</th>
@@ -958,10 +958,10 @@
 				<th class="text-right" style="background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_pasir,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
-				<th class="text-left" style="background-color:yellow; color:black;">&nbsp;&nbsp;Stok Pasir Akhir</th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_pasir_now,2,',','');?> (Ton)</th>
-				<th class="text-right" style="background-color:yellow; color:black;"></th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_pasir_now,0,',','.');?>&nbsp;&nbsp;</th>
+				<th class="text-left" style="background-color:red; color:white;">&nbsp;&nbsp;Stok Pasir Akhir</th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($volume_stock_opname_pasir_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="background-color:red; color:white;"></th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($nilai_stock_opname_pasir_now,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
 				<th class="text-left" style="background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Pasir Bulan Ini</th>
@@ -991,10 +991,10 @@
 				<th class="text-right" style="background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_1020,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
-				<th class="text-left" style="background-color:yellow; color:black;">&nbsp;&nbsp;Stok 1020 Akhir</th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_1020_now,2,',','');?> (Ton)</th>
-				<th class="text-right" style="background-color:yellow; color:black;"></th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_1020_now,0,',','.');?>&nbsp;&nbsp;</th>
+				<th class="text-left" style="background-color:red; color:white;">&nbsp;&nbsp;Stok 1020 Akhir</th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($volume_stock_opname_1020_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="background-color:red; color:white;"></th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($nilai_stock_opname_1020_now,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
 				<th class="text-left" style="background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian 1020 Bulan Ini</th>
@@ -1024,10 +1024,10 @@
 				<th class="text-right" style="background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_2030,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
-				<th class="text-left" style="background-color:yellow; color:black;">&nbsp;&nbsp;Stok 2030 Akhir</th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_2030_now,2,',','');?> (Ton)</th>
-				<th class="text-right" style="background-color:yellow; color:black;"></th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_2030_now,0,',','.');?>&nbsp;&nbsp;</th>
+				<th class="text-left" style="background-color:red; color:white;">&nbsp;&nbsp;Stok 2030 Akhir</th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($volume_stock_opname_2030_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="background-color:red; color:white;"></th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($nilai_stock_opname_2030_now,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
 				<th class="text-left" style="background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian 2030 Bulan Ini</th>
@@ -1057,10 +1057,10 @@
 				<th class="text-right" style="background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_additive,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
-				<th class="text-left" style="background-color:yellow; color:black;">&nbsp;&nbsp;Stok Additive Akhir</th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_additive_now,2,',','');?> (Ton)</th>
-				<th class="text-right" style="background-color:yellow; color:black;"></th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_additive_now,0,',','.');?>&nbsp;&nbsp;</th>
+				<th class="text-left" style="background-color:red; color:white;">&nbsp;&nbsp;Stok Additive Akhir</th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($volume_stock_opname_additive_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="background-color:red; color:white;"></th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($nilai_stock_opname_additive_now,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
 				<th class="text-left" style="background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Additive Bulan Ini</th>
