@@ -12,7 +12,67 @@ class Produksi extends Secure_Controller {
 		$this->load->library('filter');
 		$this->load->library('waktu');
 		$this->load->library('session');
-    }	
+    }
+
+	public function sunting_stock_opname($id)
+	{
+		$check = $this->m_admin->check_login();
+		if ($check == true) {
+			$data['row'] = $this->db->get_where("pmm_remaining_materials_cat", ["id" => $id])->row_array();
+			$cat = $this->db->get_where("pmm_remaining_materials_cat", ["id" => $id])->row_array();
+			$data['tanggal'] = date('d-m-Y',strtotime($cat['date']));
+			$this->load->view('produksi/sunting_stock_opname', $data);
+		} else {
+			redirect('admin');
+		}
+	}
+
+	public function submit_sunting_stock_opname()
+	{
+
+		$id = $this->input->post('id');
+		$date = date('Y-m-d',strtotime($this->input->post('date')));
+		$material_id = $this->input->post('material_id');
+		$volume =  str_replace('.', '', $this->input->post('volume'));
+		$volume =  str_replace(',', '.', $volume);
+		$total =  str_replace('.', '', $this->input->post('total'));
+		$measure = $this->input->post('measure');
+		$notes = $this->input->post('notes');
+
+		$arr_update = array(
+			'material_id' => $material_id,
+			'date' => $date,
+			'measure' => $measure,
+			'volume' => $volume,
+			'convert' => $convert,
+			'display_volume' => $volume,
+			'display_measure' => $measure,
+			'notes' => $notes,
+			'total' => $total,
+			'price' => $total / $volume,
+			'updated_by' => $this->session->userdata('admin_id'),
+			'updated_on' => date('Y-m-d H:i:s')
+		);
+
+		$this->db->where('id', $id);
+		if ($this->db->update('pmm_remaining_materials_cat', $arr_update)) {
+			
+		}
+
+		if ($this->db->trans_status() === FALSE) {
+			# Something went wrong.
+			$this->db->trans_rollback();
+			$this->session->set_flashdata('notif_error', '<b>ERROR</b>');
+			redirect('admin/stock_opname');
+		} else {
+			# Everything is Perfect. 
+			# Committing data to the database.
+			$this->db->trans_commit();
+			$this->session->set_flashdata('notif_success', '<b>SAVED</b>');
+			redirect('admin/stock_opname');
+		}
+	}
+
 	
 	public function cetak_stock_opname()
 	{
