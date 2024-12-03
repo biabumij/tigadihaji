@@ -179,8 +179,8 @@
 			</tr>
 			<?php foreach ($pembelian as $i=>$x): ?>
 			<tr class="table-baris1">
-				<td align="right"><?php echo number_format($stock_volume_lalu,2,',','.');?></td>
-				<td align="right"><?php echo number_format($stock_nilai_lalu,0,',','.');?></td>
+				<td align="right"></td>
+				<td align="right"></td>
 				<td align="right"><?= $pembelian[$i]['nama'] ?></td>
 				<td align="right"><?php echo number_format($pembelian[$i]['volume'],2,',','.');?></td>
 				<td align="right"><?php echo number_format($pembelian[$i]['nilai'],0,',','.');?></td>
