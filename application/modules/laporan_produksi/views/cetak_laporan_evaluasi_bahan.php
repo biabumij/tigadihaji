@@ -269,8 +269,8 @@
 				<th align="right"><?php echo number_format($price_a,0,',','.');?></th>
 				<th align="right"><?php echo number_format($nilai_a,0,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_volume_semen,2,',','.');?></th>
-				<th align="right"><a target="_blank" href="<?= base_url("laporan/cetak_detail_semen?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($pemakaian_harsat_semen,0,',','.');?></a></th>
-				<th align="right"><?php echo number_format($pemakaian_nilai_semen,0,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_harsat_semen,0,',','.');?></th>
+				<th align="right"><a target="_blank" href="<?= base_url("laporan/cetak_detail_semen?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($pemakaian_nilai_semen,0,',','.');?></a></th>
 				<th align="right" style="<?php echo $styleColorA ?>"><?php echo $evaluasi_volume_a < 0 ? "(".number_format(-$evaluasi_volume_a,2,',','.').")" : number_format($evaluasi_volume_a,2,',','.');?></th>
 				<th align="right" style="<?php echo $styleColorAA ?>"><?php echo $evaluasi_nilai_a < 0 ? "(".number_format(-$evaluasi_nilai_a,0,',','.').")" : number_format($evaluasi_nilai_a,0,',','.');?></th>
 	        </tr>

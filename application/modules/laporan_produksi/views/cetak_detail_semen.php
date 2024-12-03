@@ -42,43 +42,43 @@
 	  <style type="text/css">
 		body {
 			font-family: helvetica;
-			font-size: 10px;
+			font-size: 8px;
 		}
 		
 		table tr.table-judul{
 			background-color: #e69500;
 			font-weight: bold;
-			font-size: 10px;
+			font-size: 8px;
 			color: black;
 		}
 			
 		table tr.table-baris1{
 			background-color: #F0F0F0;
-			font-size: 10px;
+			font-size: 8px;
 		}
 
 		table tr.table-baris1-bold{
 			background-color: #F0F0F0;
-			font-size: 10px;
+			font-size: 8px;
 			font-weight: bold;
 		}
 			
 		table tr.table-baris2{
-			font-size: 10px;
+			font-size: 8px;
 			background-color: #E8E8E8;
 		}
 			
 		table tr.table-total{
 			background-color: #cccccc;
 			font-weight: bold;
-			font-size: 10px;
+			font-size: 8px;
 			color: black;
 		}
 	  </style>
 
 	</head>
 	<body>
-		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">RINCIAN PEMAKAIAN SEMEN</div>
+		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">KARTU STOCK SEMEN</div>
 		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">PROYEK BENDUNGAN TIGA DIHAJI</div>
 		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">PT. BIA BUMI JAYENDRA</div>
 		<div align="center" style="display: block;font-weight: bold;font-size: 11px; text-transform: uppercase;">PERIODE : <?php echo str_replace($search, $replace, $subject);?></div>
@@ -101,27 +101,76 @@
 		
 		<table width="98%" cellpadding="5">
 			<?php
+			$date1_ago = date('2020-01-01');
+			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+
+			$stock_opname_semen_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 1")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$stok_volume_semen_lalu = $stock_opname_semen_ago['volume'];
+			$stok_nilai_semen_lalu = $stock_opname_semen_ago['nilai'];
+
+			$pembelian = $this->db->select('SUM(prm.display_volume) as volume, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->where("(prm.date_receipt between '$date1' and '$date2')")
+			->where("p.kategori_bahan = '1'")
+			->where("po.status in ('PUBLISH','CLOSED')")
+			->get()->row_array();
+
+			$pembelian_volume = $pembelian['volume'];
+			$pembelian_nilai = $pembelian['nilai'];
+			
 			$pemakaian = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
 			->from('pemakaian_bahan')
 			->where("date between '$date1' and '$date2'")
 			->where("material_id = 1")
 			->where("status = 'PUBLISH'")
 			->group_by("id")
-			->get()->result_array();
+			->get()->row_array();
+
+			$pemakaian_volume = $pemakaian['volume'];
+			$pemakaian_nilai = $pemakaian['nilai'];
+
+			$stock_volume = ($stok_volume_semen_lalu + $pembelian_volume) - $pemakaian_volume;
+			$stock_nilai = ($stok_nilai_semen_lalu + $pembelian_nilai) - $pemakaian_nilai;
 			?>
 		<table cellpadding="3" width="98%">
-			<tr>
-				<th align="right" width="30%" style="background-color:grey; color:white;">VOLUME</th>
-				<th align="right" width="35%" style="background-color:grey; color:white;">HARSAT</th>
-				<th align="right" width="35%" style="background-color:grey; color:white;">NILAI</th>
+			<tr class="table-judul">
+				<th align="center" colspan="2">PERSEDIAAN AWAL</th>
+				<th align="center" colspan="2">PEMBELIAN</th>
+				<th align="center" colspan="2">PEMAKAIAN</th>
+				<th align="center" colspan="2">STOCK OPNAME</th>
 			</tr>
-			<?php foreach ($pemakaian as $x): ?>
-			<tr>
-				<th align="right" width="30%" style="background-color:grey; color:white;"><?php echo number_format($x['volume'],2,',','.');?></th>
-				<th align="right" width="35%" style="background-color:grey; color:white;"><?php echo number_format($x['nilai'] / $x['volume'],0,',','.');?></th>
-				<th align="right" width="35%" style="background-color:grey; color:white;"><?php echo number_format($x['nilai'],0,',','.');?></th>
+			<tr class="table-judul">
+				<th align="right">VOLUME</th>
+				<th align="right">NILAI</th>
+				<th align="right">VOLUME</th>
+				<th align="right">NILAI</th>
+				<th align="right">VOLUME</th>
+				<th align="right">NILAI</th>
+				<th align="right">VOLUME</th>
+				<th align="right">NILAI</th>
 			</tr>
-			<?php endforeach; ?>
+			<tr class="table-baris1">
+				<td align="right"><?php echo number_format($stok_volume_semen_lalu,2,',','.');?></td>
+				<td align="right"><?php echo number_format($stok_nilai_semen_lalu,0,',','.');?></td>
+				<td align="right"><?php echo number_format($pembelian_volume,2,',','.');?></td>
+				<td align="right"><?php echo number_format($pembelian_nilai,0,',','.');?></td>
+				<td align="right"><?php echo number_format($pemakaian_volume,2,',','.');?></td>
+				<td align="right"><?php echo number_format($pemakaian_nilai,0,',','.');?></td>
+				<td align="right"><?php echo number_format($stock_volume,2,',','.');?></td>
+				<td align="right"><?php echo number_format($stock_nilai,0,',','.');?></td>
+			</tr>
+			
 		</table>
 	</body>
 </html>
