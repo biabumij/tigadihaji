@@ -110,7 +110,7 @@
 			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
 			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
 
-			$stock_opname_semen_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			$stock_opname_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
 			->from('pmm_remaining_materials_cat cat ')
 			->where("(cat.date <= '$tanggal_opening_balance')")
 			->where("cat.material_id = 1")
@@ -118,8 +118,8 @@
 			->order_by('date','desc')->limit(1)
 			->get()->row_array();
 
-			$stok_volume_semen_lalu = $stock_opname_semen_ago['volume'];
-			$stok_nilai_semen_lalu = $stock_opname_semen_ago['nilai'];
+			$stok_volume_lalu = $stock_opname_ago['volume'];
+			$stok_nilai_lalu = $stock_opname_ago['nilai'];
 
 			$pembelian = $this->db->select('SUM(prm.display_volume) as volume, SUM(prm.display_price) as nilai')
 			->from('pmm_receipt_material prm')
@@ -144,8 +144,8 @@
 			$pemakaian_volume = $pemakaian['volume'];
 			$pemakaian_nilai = $pemakaian['nilai'];
 
-			$stock_volume = ($stok_volume_semen_lalu + $pembelian_volume) - $pemakaian_volume;
-			$stock_nilai = ($stok_nilai_semen_lalu + $pembelian_nilai) - $pemakaian_nilai;
+			$stock_volume = ($stok_volume_lalu + $pembelian_volume) - $pemakaian_volume;
+			$stock_nilai = ($stok_nilai_lalu + $pembelian_nilai) - $pemakaian_nilai;
 			?>
 		<table cellpadding="3" width="98%">
 			<tr class="table-judul">
@@ -165,8 +165,8 @@
 				<th align="right">NILAI</th>
 			</tr>
 			<tr class="table-baris1">
-				<td align="right"><?php echo number_format($stok_volume_semen_lalu,2,',','.');?></td>
-				<td align="right"><?php echo number_format($stok_nilai_semen_lalu,0,',','.');?></td>
+				<td align="right"><?php echo number_format($stok_volume_lalu,2,',','.');?></td>
+				<td align="right"><?php echo number_format($stok_nilai_lalu,0,',','.');?></td>
 				<td align="right"><?php echo number_format($pembelian_volume,2,',','.');?></td>
 				<td align="right"><?php echo number_format($pembelian_nilai,0,',','.');?></td>
 				<td align="right"><?php echo number_format($pemakaian_volume,2,',','.');?></td>
