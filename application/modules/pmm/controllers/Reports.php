@@ -2316,14 +2316,51 @@ class Reports extends CI_Controller {
 			</tr>
 			<?php
 			$rencana_ppn_keluaran = ($rencana_termin * 11) / 100;
-			$ppn_keluaran_sd_bulan_lalu = ($termin_sd_bulan_lalu * 11) / 100;
-			$ppn_keluaran_bulan_ini = ($termin_bulan_ini * 11) / 100;
-			$ppn_keluaran_bulan_ini_sd = ($termin_bulan_ini_sd * 11) / 100;
-			$ppn_keluaran_2 = ($termin_2 * 11) / 100;
-			$ppn_keluaran_3 = ($termin_3 * 11) / 100;
-			$ppn_keluaran_4 = ($termin_4 * 11) / 100;
-			$jumlah_ppn_keluaran = ($jumlah_termin * 11) / 100;
-			$sisa_ppn_keluaran = ($sisa_termin * 11) / 100;
+
+			$ppn_keluaran_sd_bulan_lalu = $this->db->select('SUM(pm.total) as total')
+			->from('pmm_pembayaran pm')
+			->where("pm.tanggal_pembayaran between '$date_awal' and '$last_opname'")
+			->where("pm.status = 'DISETUJUI'")
+			->where("pm.memo <> 'PPN'")
+			->get()->row_array();
+			$ppn_keluaran_sd_bulan_lalu = $ppn_keluaran_sd_bulan_lalu['total'];
+
+			$ppn_keluaran_bulan_ini = $this->db->select('SUM(pm.total) as total')
+			->from('pmm_pembayaran pm')
+			->where("pm.tanggal_pembayaran between '$date_1_awal' and '$date_1_akhir'")
+			->where("pm.status = 'DISETUJUI'")
+			->where("pm.memo = 'PPN'")
+			->get()->row_array();
+			$ppn_keluaran_bulan_ini = $ppn_keluaran_bulan_ini['total'];
+
+			$ppn_keluaran_bulan_ini_sd = $this->db->select('SUM(pm.total) as total')
+			->from('pmm_pembayaran pm')
+			->where("pm.tanggal_pembayaran between '$date_awal' and '$date_1_akhir'")
+			->where("pm.status = 'DISETUJUI'")
+			->where("pm.memo = 'PPN'")
+			->get()->row_array();
+			$ppn_keluaran_bulan_ini_sd = $ppn_keluaran_bulan_ini_sd['total'];
+
+			$ppn_keluaran_2 = $this->db->select('SUM(pajak_keluaran) as total')
+			->from('rencana_cash_flow')
+			->where("tanggal_rencana_kerja between '$date_2_awal' and '$date_2_akhir'")
+			->get()->row_array();
+			$ppn_keluaran_2 = $ppn_keluaran_2['total'];
+
+			$ppn_keluaran_3 = $this->db->select('SUM(pajak_keluaran) as total')
+			->from('rencana_cash_flow')
+			->where("tanggal_rencana_kerja between '$date_3_awal' and '$date_3_akhir'")
+			->get()->row_array();
+			$ppn_keluaran_3 = $ppn_keluaran_3['total'];
+
+			$ppn_keluaran_4 = $this->db->select('SUM(pajak_keluaran) as total')
+			->from('rencana_cash_flow')
+			->where("tanggal_rencana_kerja between '$date_4_awal' and '$date_4_akhir'")
+			->get()->row_array();
+			$ppn_keluaran_4 = $ppn_keluaran_4['total'];
+
+			$jumlah_ppn_keluaran = $ppn_keluaran_bulan_ini_sd + $ppn_keluaran_2 + $ppn_keluaran_3 + $ppn_keluaran_4;
+			$sisa_ppn_keluaran = $rencana_ppn_keluaran - $jumlah_ppn_keluaran;
 			?>
 			<tr class="table-active3-csf">
 				<th class="text-left">&nbsp;&nbsp;2. PPN Keluaran</th>
