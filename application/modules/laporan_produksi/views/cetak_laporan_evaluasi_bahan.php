@@ -44,6 +44,10 @@
 			font-family: helvetica;
 			font-size: 7px;
 		}
+
+		table, th, td {
+			border: 0.5px solid white;
+		}
 		
 		table tr.table-judul{
 			background-color: #e69500;
@@ -78,10 +82,9 @@
 
 	</head>
 	<body>
-		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">EVALUASI PEMAKAIAN BAHAN BAKU</div>
-		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">PROYEK BENDUNGAN TIGA DIHAJI</div>
-		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">PT. BIA BUMI JAYENDRA</div>
-		<div align="center" style="display: block;font-weight: bold;font-size: 11px; text-transform: uppercase;">PERIODE : <?php echo str_replace($search, $replace, $subject);?></div>
+		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">Evaluasi Pemakaian Bahan Baku</div>
+		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">Proyek Bendungan Tiga Dihaji</div>
+		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">Periode <?php echo str_replace($search, $replace, $subject);?></div>
 		<br /><br /><br />
 		<?php
 		$data = array();
@@ -238,14 +241,14 @@
 				<th width="19%" align="center" colspan="2">DEVIASI</th>
 	        </tr>
 			<tr class="table-judul">
-				<th width="8%" align="right">VOLUME</th>
-				<th width="9%" align="right">HARSAT</th>
-				<th width="12%" align="right">NILAI</th>
-				<th width="8%" align="right">VOLUME</th>
-				<th width="9%" align="right">HARSAT</th>
-				<th width="12%" align="right">NILAI</th>
-				<th width="8%" align="right">VOLUME</th>
-				<th width="11%" align="right">NILAI</th>
+				<th width="8%" align="center">VOLUME</th>
+				<th width="9%" align="center">HARSAT</th>
+				<th width="12%" align="center">NILAI</th>
+				<th width="8%" align="center">VOLUME</th>
+				<th width="9%" align="center">HARSAT</th>
+				<th width="12%" align="center">NILAI</th>
+				<th width="8%" align="center">VOLUME</th>
+				<th width="11%" align="center">NILAI</th>
 	        </tr>
 			<?php
 				$styleColorA = $evaluasi_volume_a < 0 ? 'color:red' : 'color:black';
@@ -508,14 +511,14 @@
 				<th width="19%" align="center" colspan="2">DEVIASI</th>
 			</tr>
 			<tr class="table-judul">
-				<th width="8%" align="right">VOLUME</th>
-				<th width="9%" align="right">HARSAT</th>
-				<th width="12%" align="right">NILAI</th>
-				<th width="8%" align="right">VOLUME</th>
-				<th width="9%" align="right">HARSAT</th>
-				<th width="12%" align="right">NILAI</th>
-				<th width="8%" align="right">VOLUME</th>
-				<th width="11%" align="right">NILAI</th>
+				<th width="8%" align="center">VOLUME</th>
+				<th width="9%" align="center">HARSAT</th>
+				<th width="12%" align="center">NILAI</th>
+				<th width="8%" align="center">VOLUME</th>
+				<th width="9%" align="center">HARSAT</th>
+				<th width="12%" align="center">NILAI</th>
+				<th width="8%" align="center">VOLUME</th>
+				<th width="11%" align="center">NILAI</th>
 			</tr>
 			<?php
 				$styleColorA = $evaluasi_volume_a < 0 ? 'color:red' : 'color:black';

@@ -1766,14 +1766,14 @@ class Laporan extends Secure_Controller {
     {
 		$this->load->library('pdf');
 
-        $pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
 		
 		// add a page
-		$pdf->AddPage('L');
+		$pdf->AddPage('P');
 		$pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
 		$pdf->SetY(5);
@@ -1804,14 +1804,14 @@ class Laporan extends Secure_Controller {
     {
 		$this->load->library('pdf');
 
-        $pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
 		
 		// add a page
-		$pdf->AddPage('L');
+		$pdf->AddPage('P');
 		$pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
 		$pdf->SetY(5);
@@ -1842,14 +1842,14 @@ class Laporan extends Secure_Controller {
     {
 		$this->load->library('pdf');
 
-        $pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
 		
 		// add a page
-		$pdf->AddPage('L');
+		$pdf->AddPage('P');
 		$pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
 		$pdf->SetY(5);
@@ -1880,14 +1880,14 @@ class Laporan extends Secure_Controller {
     {
 		$this->load->library('pdf');
 
-        $pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
 		
 		// add a page
-		$pdf->AddPage('L');
+		$pdf->AddPage('P');
 		$pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
 		$pdf->SetY(5);
@@ -1918,14 +1918,14 @@ class Laporan extends Secure_Controller {
     {
 		$this->load->library('pdf');
 
-        $pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
 		
 		// add a page
-		$pdf->AddPage('L');
+		$pdf->AddPage('P');
 		$pdf->setPrintHeader(false);
 		$pdf->setPrintFooter(false);
 		$pdf->SetY(5);
