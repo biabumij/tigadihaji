@@ -241,14 +241,14 @@
 				<th width="19%" align="center" colspan="2">DEVIASI</th>
 	        </tr>
 			<tr class="table-judul">
-				<th width="8%" align="center">VOLUME</th>
-				<th width="9%" align="center">HARSAT</th>
-				<th width="12%" align="center">NILAI</th>
-				<th width="8%" align="center">VOLUME</th>
-				<th width="9%" align="center">HARSAT</th>
-				<th width="12%" align="center">NILAI</th>
-				<th width="8%" align="center">VOLUME</th>
-				<th width="11%" align="center">NILAI</th>
+				<th width="8%" align="right">VOLUME</th>
+				<th width="9%" align="right">HARSAT</th>
+				<th width="12%" align="right">NILAI</th>
+				<th width="8%" align="right">VOLUME</th>
+				<th width="9%" align="right">HARSAT</th>
+				<th width="12%" align="right">NILAI</th>
+				<th width="8%" align="right">VOLUME</th>
+				<th width="11%" align="right">NILAI</th>
 	        </tr>
 			<?php
 				$styleColorA = $evaluasi_volume_a < 0 ? 'color:red' : 'color:black';
@@ -511,14 +511,14 @@
 				<th width="19%" align="center" colspan="2">DEVIASI</th>
 			</tr>
 			<tr class="table-judul">
-				<th width="8%" align="center">VOLUME</th>
-				<th width="9%" align="center">HARSAT</th>
-				<th width="12%" align="center">NILAI</th>
-				<th width="8%" align="center">VOLUME</th>
-				<th width="9%" align="center">HARSAT</th>
-				<th width="12%" align="center">NILAI</th>
-				<th width="8%" align="center">VOLUME</th>
-				<th width="11%" align="center">NILAI</th>
+				<th width="8%" align="right">VOLUME</th>
+				<th width="9%" align="right">HARSAT</th>
+				<th width="12%" align="right">NILAI</th>
+				<th width="8%" align="right">VOLUME</th>
+				<th width="9%" align="right">HARSAT</th>
+				<th width="12%" align="right">NILAI</th>
+				<th width="8%" align="right">VOLUME</th>
+				<th width="11%" align="right">NILAI</th>
 			</tr>
 			<?php
 				$styleColorA = $evaluasi_volume_a < 0 ? 'color:red' : 'color:black';
