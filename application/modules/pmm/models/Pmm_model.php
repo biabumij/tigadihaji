@@ -4498,13 +4498,13 @@ class Pmm_model extends CI_Model {
         return $total;
     }
 
-    function getBahan2($date3,$date4)
+    function getBahan2($date3,$date2)
     {   
         $total = 0;
 
         $pemakaian_semen = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
         ->from('pemakaian_bahan')
-        ->where("date between '$date3' and '$date4'")
+        ->where("date between '$date3' and '$date2'")
         ->where("material_id = 1")
         ->where("status = 'PUBLISH'")
         ->get()->row_array();
@@ -4515,7 +4515,7 @@ class Pmm_model extends CI_Model {
         
         $pemakaian_pasir = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
         ->from('pemakaian_bahan')
-        ->where("date between '$date3' and '$date4'")
+        ->where("date between '$date3' and '$date2'")
         ->where("material_id = 2")
         ->where("status = 'PUBLISH'")
         ->get()->row_array();
@@ -4526,7 +4526,7 @@ class Pmm_model extends CI_Model {
 
         $pemakaian_1020 = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
         ->from('pemakaian_bahan')
-        ->where("date between '$date3' and '$date4'")
+        ->where("date between '$date3' and '$date2'")
         ->where("material_id = 3")
         ->where("status = 'PUBLISH'")
         ->get()->row_array();
@@ -4537,7 +4537,7 @@ class Pmm_model extends CI_Model {
 
         $pemakaian_2030 = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
         ->from('pemakaian_bahan')
-        ->where("date between '$date3' and '$date4'")
+        ->where("date between '$date3' and '$date2'")
         ->where("material_id = 4")
         ->where("status = 'PUBLISH'")
         ->get()->row_array();
@@ -4548,7 +4548,7 @@ class Pmm_model extends CI_Model {
 
         $pemakaian_additive = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
         ->from('pemakaian_bahan')
-        ->where("date between '$date3' and '$date4'")
+        ->where("date between '$date3' and '$date2'")
         ->where("material_id = 19")
         ->where("status = 'PUBLISH'")
         ->get()->row_array();
@@ -5208,55 +5208,16 @@ class Pmm_model extends CI_Model {
     {   
         $total = 0;
 
-        $date1_ago = date('2020-01-01');
-        $date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
-        $date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
-        $tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
-
-        $stock_opname_solar_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
-        ->from('pmm_remaining_materials_cat cat ')
-        ->where("(cat.date <= '$tanggal_opening_balance')")
-        ->where("cat.material_id = 5")
-        ->where("cat.status = 'PUBLISH'")
-        ->order_by('date','desc')->limit(1)
+        $pemakaian_solar = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
+        ->from('pemakaian_bahan')
+        ->where("date between '$date1' and '$date2'")
+        ->where("material_id = 5")
+        ->where("status = 'PUBLISH'")
         ->get()->row_array();
 
-        $stok_volume_solar_lalu = $stock_opname_solar_ago['volume'];
-        $stok_nilai_solar_lalu = $stock_opname_solar_ago['nilai'];
-        $stok_harsat_solar_lalu = (round($stok_volume_solar_lalu,2)!=0)?$stok_nilai_solar_lalu / round($stok_volume_solar_lalu,2) * 1:0;
-
-        $pembelian_solar = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
-        ->from('pmm_receipt_material prm')
-        ->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
-        ->join('produk p', 'prm.material_id = p.id','left')
-        ->where("prm.date_receipt between '$date1' and '$date2'")
-        ->where("p.kategori_bahan = 5")
-        ->get()->row_array();
-    
-        $pembelian_volume_solar = $pembelian_solar['volume'];
-        $pembelian_nilai_solar = $pembelian_solar['nilai'];
-        $pembelian_harga_solar = (round($pembelian_volume_solar,2)!=0)?$pembelian_nilai_solar / round($pembelian_volume_solar,2) * 1:0;
-
-        $total_stok_volume_solar = $stok_volume_solar_lalu + $pembelian_volume_solar;
-        $total_stok_nilai_solar = $stok_nilai_solar_lalu + $pembelian_nilai_solar;
-
-        $stock_opname_solar_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
-        ->from('pmm_remaining_materials_cat cat ')
-        ->where("(cat.date <= '$date2')")
-        ->where("cat.material_id = 5")
-        ->where("cat.status = 'PUBLISH'")
-        ->order_by('date','desc')->limit(1)
-        ->get()->row_array();
-
-        $volume_stock_opname_solar_now = $stock_opname_solar_now['volume'];
-        $nilai_stock_opname_solar_now = $stock_opname_solar_now['nilai'];
-
-        $vol_pemakaian_solar_now = ($stok_volume_solar_lalu + $pembelian_volume_solar) - $volume_stock_opname_solar_now;
-        $nilai_pemakaian_solar_now = $stock_opname_solar_now['nilai'];
-
-        $pemakaian_volume_solar = $vol_pemakaian_solar_now;
-        $pemakaian_nilai_solar = (($total_stok_nilai_solar - $nilai_stock_opname_solar_now) * $stock_opname_solar_now['reset']) + ($stock_opname_solar_now['pemakaian_custom'] * $stock_opname_solar_now['reset_pemakaian']);
-        $pemakaian_harsat_solar = $pemakaian_nilai_solar / $pemakaian_volume_solar;
+        $pemakaian_volume_solar = $pemakaian_solar['volume'];
+        $pemakaian_nilai_solar = $pemakaian_solar['nilai'];
+        $pemakaian_harsat_solar = ($pemakaian_volume_solar!=0)?$pemakaian_nilai_solar / $pemakaian_volume_solar * 1:0;
         
         $query = $pemakaian_nilai_solar;
 
@@ -5266,18 +5227,22 @@ class Pmm_model extends CI_Model {
         return $total;
     }
 
-    function getSolar2($date3,$date4)
+    function getSolar2($date3,$date2)
     {   
         $total = 0;
 
-        $kunci_nilai_solar = $this->db->select('SUM(nilai_solar) as total')
-        ->from('kunci_bahan_baku')
-        ->where("(date between '$date3' and '$date4')")
-        ->order_by('date','desc')->limit(1)
+        $pemakaian_solar = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
+        ->from('pemakaian_bahan')
+        ->where("date between '$date3' and '$date2'")
+        ->where("material_id = 5")
+        ->where("status = 'PUBLISH'")
         ->get()->row_array();
-        $kunci_nilai_solar = $kunci_nilai_solar['total'];
+
+        $pemakaian_volume_solar = $pemakaian_solar['volume'];
+        $pemakaian_nilai_solar = $pemakaian_solar['nilai'];
+        $pemakaian_harsat_solar = ($pemakaian_volume_solar!=0)?$pemakaian_nilai_solar / $pemakaian_volume_solar * 1:0;
         
-        $query = $kunci_nilai_solar;
+        $query = $pemakaian_nilai_solar;
 
         if(!empty($query)){
             $total = $query;

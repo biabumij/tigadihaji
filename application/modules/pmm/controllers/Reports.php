@@ -1391,8 +1391,8 @@ class Reports extends CI_Controller {
 
 			//ALAT_2
 			$alat_2 = $this->pmm_model->getAkumulasiAlat($date3,$date2);
-			$solar_2 = $this->pmm_model->getSolar2($date3,$date4);
-			$alat_2 = ($alat_2 + $solar_2) + $solar;
+			$solar_2 = $this->pmm_model->getSolar2($date3,$date2);
+			$alat_2 = $alat_2 + $solar_2;
 
 			//OVERHEAD
 			$overhead = $this->pmm_model->getOverheadLabaRugi($date1,$date2);
@@ -13115,13 +13115,13 @@ class Reports extends CI_Controller {
 				$total_harsat_rap_alat = (round($total_vol_rap_alat,2)!=0)?($total_nilai_rap_alat / $total_vol_rap_alat) * 1:0;
 				?>
 				<th class="text-right"><?php echo number_format($total_harsat_rap_alat ,0,',','.');?></th>
-				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_laporan_evaluasi_alat?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_rap_alat,0,',','.');?></a></th>
+				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_evaluasi_alat_pemakaian?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_rap_alat,0,',','.');?></a></th>
 				<th class="text-right"><?php echo number_format($total_vol_realisasi_alat,2,',','.');?></th>
 				<?php
 				$total_harsat_realisasi_alat = (round($total_vol_realisasi_alat,2)!=0)?($total_nilai_realisasi_alat / $total_vol_realisasi_alat) * 1:0;
 				?>
 				<th class="text-right"><?php echo number_format($total_harsat_realisasi_alat,0,',','.');?></th>
-				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_laporan_evaluasi_alat?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_realisasi_alat,0,',','.');?></a></th>
+				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_evaluasi_alat_pemakaian?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_realisasi_alat,0,',','.');?></a></th>
 				<?php
 				$styleColor = $total_vol_evaluasi_alat < 0 ? 'color:red' : 'color:black';
 				?>
