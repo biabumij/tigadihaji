@@ -472,11 +472,11 @@
 			<tr class="table-judul">
 				<th width="5%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-left:1px solid black; border-bottom:1px solid black;">&nbsp;<br>NO.</th>
 				<th width="20%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black;">&nbsp;<br>URAIAN</th>
-				<th width="8%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black;">&nbsp;<br>SATUAN</th>
-				<th width="25%" align="center" colspan="3" style="background-color:#e69500; border-top:1px solid black; border-left:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">RAP</th>
+				<th width="8%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">&nbsp;<br>SATUAN</th>
+				<th width="25%" align="center" colspan="3" style="background-color:#e69500; border-top:1px solid black; border-left:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">PEMBELIAN</th>
 				<th width="25%" align="center" colspan="3" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">REALISASI</th>
 				<th width="17%" align="center" colspan="2" style="background-color:#e69500; border-top:1px solid black; border-right:1px solid black; border-bottom:1px solid black;">DEVIASI</th>
-	        </tr>
+			</tr>
 			<tr class="table-judul">
 				<th width="7%" align="center" style="background-color:#e69500; border-left:1px solid black; border-bottom:1px solid black;">VOLUME</th>
 				<th width="8%" align="center" style="background-color:#e69500; border-bottom:1px solid black;">HARSAT</th>
@@ -486,7 +486,7 @@
 				<th width="10%" align="center" style="background-color:#e69500; border-bottom:1px solid black; border-right:1px solid black;">NILAI</th>
 				<th width="7%" align="center" style="background-color:#e69500; border-bottom:1px solid black;">VOLUME</th>
 				<th width="10%" align="center" style="background-color:#e69500; border-bottom:1px solid black; border-right:1px solid black;">NILAI</th>
-	        </tr>
+			</tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">1.</th>			
 				<th align="left">Batching Plant + Genset</th>
@@ -718,7 +718,7 @@
 			<tr class="table-judul">
 				<th width="5%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-left:1px solid black; border-bottom:1px solid black;">&nbsp;<br>NO.</th>
 				<th width="20%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black;">&nbsp;<br>URAIAN</th>
-				<th width="8%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black;">&nbsp;<br>SATUAN</th>
+				<th width="8%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">&nbsp;<br>SATUAN</th>
 				<th width="25%" align="center" colspan="3" style="background-color:#e69500; border-top:1px solid black; border-left:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">PEMBELIAN</th>
 				<th width="25%" align="center" colspan="3" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">REALISASI</th>
 				<th width="17%" align="center" colspan="2" style="background-color:#e69500; border-top:1px solid black; border-right:1px solid black; border-bottom:1px solid black;">DEVIASI</th>
@@ -753,7 +753,7 @@
 				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black;"><?php echo $total_nilai_evaluasi_bbm_solar < 0 ? "(".number_format(-$total_nilai_evaluasi_bbm_solar,0,',','.').")" : number_format($total_nilai_evaluasi_bbm_solar,0,',','.');?></th>
 			</tr>
 			<tr class="table-total">		
-				<th align="right" colspan="3" style="border:1px solid black;">TOTAL</th>
+				<th align="right" colspan="3" style="border-left:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">TOTAL</th>
 				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black;"></th>
 				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black;"></th>
 				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;"><?php echo number_format($total_nilai_rap_alat,0,',','.');?></th>
@@ -794,10 +794,10 @@
 				<th class="text-right" style="background-color:grey; color:white;"><?php echo number_format($total_stok_nilai_solar,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
-				<th class="text-left" style="background-color:yellow; color:black;">&nbsp;&nbsp;Stok Solar Akhir</th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($volume_stock_opname_solar_now,2,',','');?> (Ton)</th>
-				<th class="text-right" style="background-color:yellow; color:black;"></th>
-				<th class="text-right" style="background-color:yellow; color:black;"><?php echo number_format($nilai_stock_opname_solar_now,0,',','.');?>&nbsp;&nbsp;</th>
+				<th class="text-left" style="background-color:red; color:white;">&nbsp;&nbsp;Stok Solar Akhir</th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($volume_stock_opname_solar_now,2,',','');?> (Ton)</th>
+				<th class="text-right" style="background-color:red; color:white;"></th>
+				<th class="text-right" style="background-color:red; color:white;"><?php echo number_format($nilai_stock_opname_solar_now,0,',','.');?>&nbsp;&nbsp;</th>
 			</tr>
 			<tr>
 				<th class="text-left" style="background-color:blue; color:white;">&nbsp;&nbsp;Pemakaian Solar Bulan Ini</th>
