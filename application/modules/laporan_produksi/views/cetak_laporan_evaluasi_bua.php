@@ -195,8 +195,6 @@
 			->order_by('rap.tanggal_rap_bua','asc')->limit(1)
 			->get()->row_array();
 
-			
-
 			$rap_bensin_tol_parkir = $this->db->select('rap.*,sum(det.harga_satuan) as total')
 			->from('rap_bua rap')
 			->join('rap_bua_detail det','rap.id = det.rap_bua_id','left')

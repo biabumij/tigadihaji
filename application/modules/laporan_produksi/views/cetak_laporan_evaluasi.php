@@ -44,10 +44,6 @@
 			font-family: helvetica;
 			font-size: 7px;
 		}
-
-		table, th, td {
-			border: 0.5px solid white;
-		}
 		
 		table tr.table-judul{
 			background-color: #e69500;
@@ -908,7 +904,7 @@
 		if(in_array($this->session->userdata('admin_group_id'), array(1))){
 		?>
 		<br /><br />
-		<table width="98%" style="font-size:7px;">
+		<table width="98%" style="font-size:7px;" border="0">
 			<tr>
 				<th class="text-left" width="30%" style="background-color:grey; color:white;">&nbsp;&nbsp;Stok Semen Bulan Lalu</th>
 				<th class="text-right" width="15%" style="background-color:grey; color:white;"><?php echo number_format($stok_volume_semen_lalu,2,',','');?> (Ton)</th>
