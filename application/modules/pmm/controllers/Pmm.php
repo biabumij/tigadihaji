@@ -1427,7 +1427,6 @@ class Pmm extends CI_Controller {
 		$convert = $this->input->post('convert');
 		$display_volume = $this->input->post('display_volume');
 		$display_measure = $this->input->post('display_measure');
-		//$price = $this->input->post('price');
 		$notes = $this->input->post('notes');
 		$status = $this->input->post('status');
 
@@ -1437,7 +1436,6 @@ class Pmm extends CI_Controller {
 		->get()->row_array();
 		$material_group = $material_group['kategori_bahan'];
 		
-
 		$last_price = $this->db->select('prm.display_harga_satuan')
 		->from('pmm_receipt_material prm')
 		->join('produk p','prm.material_id = p.id','left')
@@ -1455,8 +1453,8 @@ class Pmm extends CI_Controller {
 			'display_volume' => $display_volume,
 			'display_measure' => $display_measure,
 			'notes' => $notes,
-			//'price' => $last_price,
-			//'total' => $volume * $last_price,
+			'price' => $last_price,
+			'total' => $volume * $last_price,
 			'pemakaian_custom' => 0,
 			'reset' => 1,
 			'status' => 'PUBLISH'
