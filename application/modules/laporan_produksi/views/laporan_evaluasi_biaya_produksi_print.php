@@ -46,6 +46,10 @@
 			font-size: 7px;
 		}
 
+		table, th, td {
+			border: 0.5px solid white;
+		}
+
 	  	table tr.table-active{
             background-color: #e69500;
 			font-size: 7px;
@@ -58,6 +62,7 @@
 			
 		table tr.table-active3{
 			font-size: 7px;
+			background-color: #eeeeee;
 		}
 			
 		table tr.table-active4{
@@ -77,8 +82,8 @@
 		<table width="98%" cellpadding="3">
 			<tr>
 				<td align="center"  width="100%">
-					<div style="display: block;font-weight: bold;font-size: 12px;">LAPORAN EVALUASI BIAYA PRODUKSI<br/>
-					<div style="text-transform: uppercase;">PERIODE <?php echo str_replace($search, $replace, $subject);?></div></div>
+					<div style="display: block;font-weight: bold;font-size: 12px;">Laporan Evaluasi Biaya Produksi<br/>
+					<div style="display: block;font-weight: bold;font-size: 12px;">Periode <?php echo str_replace($search, $replace, $subject);?></div></div>
 				</td>
 			</tr>
 		</table>
@@ -157,6 +162,7 @@
 
 		$total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d + $volume_e;
 		$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d + $nilai_e;
+		
 		
 		$date1_ago = date('2020-01-01');
 		$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
@@ -463,7 +469,6 @@
 		->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 		->get()->row_array();
 		$total_nilai_penyusutan_batching_plant = $penyusutan_batching_plant_biaya['total'] + $penyusutan_batching_plant_jurnal['total'];
-		$total_nilai_batching_plant = $total_nilai_batching_plant + $total_nilai_pemeliharaan_batching_plant + $total_nilai_penyusutan_batching_plant;
 		
 		$pembelian_truck_mixer = $this->db->select('
 		pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
@@ -538,7 +543,6 @@
 		->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 		->get()->row_array();
 		$total_nilai_penyusutan_wheel_loader = $penyusutan_wheel_loader_biaya['total'] + $penyusutan_wheel_loader_jurnal['total'];
-		$total_nilai_wheel_loader = $total_nilai_wheel_loader + $total_nilai_pemeliharaan_wheel_loader + $total_nilai_penyusutan_wheel_loader;
 
 		$pembelian_truck_mixer = $this->db->select('
 		pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
@@ -728,7 +732,7 @@
 		$pemakaian_vol_truck_mixer = $total_vol_truck_mixer;
 		$pemakaian_vol_wheel_loader = 0;
 		$pemakaian_vol_pemeliharaan_wheel_loader = 0;
-		$pemakaian_vol_penyusutan_wheel_loader = $pemakaian_vol_pemeliharaan_wheel_loader;
+		$pemakaian_vol_penyusutan_wheel_loader = $total_volume;
 		$pemakaian_vol_excavator = $total_vol_excavator;
 		$pemakaian_vol_transfer_semen = $total_vol_transfer_semen;
 		$pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
@@ -736,11 +740,11 @@
 		//SPESIAL//
 		$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
 		$total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
-		$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_penyusutan_batching_plant;
+		$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_pemakaian_penyusutan_batching_plant;
 		$total_pemakaian_truck_mixer = $total_nilai_truck_mixer;
 		$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
 		$total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
-		$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_penyusutan_wheel_loader;
+		$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_pemakaian_penyusutan_wheel_loader;
 		$total_pemakaian_excavator = $total_nilai_excavator;
 		$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
 		$total_pemakaian_bbm_solar = $total_akumulasi_bbm;

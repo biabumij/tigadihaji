@@ -65,10 +65,9 @@
 
 	</head>
 	<body>
-		<div align="center" style="display: block;font-weight:bold; font-size: 11px;">BIAYA ALAT</div>
-		<div align="center" style="display: block;font-weight:bold; font-size: 11px;">PROYEK BENDUNGAN TIGA DIHAJI</div>
-		<div align="center" style="display: block;font-weight:bold; font-size: 11px;">PT. BIA BUMI JAYENDRA</div>
-		<div align="center" style="display: block;font-weight:bold; font-size: 11px; text-transform: uppercase;">PERIODE : <?php echo str_replace($search, $replace, $subject);?></div>
+		<div align="center" style="display: block;font-weight:bold; font-size: 11px;">Biaya Alat</div>
+		<div align="center" style="display: block;font-weight:bold; font-size: 11px;">Proyek Bendungan Tiga Dihaji</div>
+		<div align="center" style="display: block;font-weight:bold; font-size: 11px;">Periode <?php echo str_replace($search, $replace, $subject);?></div>
 		<br /><br /><br />
 		<?php
 		$data = array();
@@ -88,6 +87,134 @@
 		
 		<table width="98%" border="0" cellpadding="3" border="0">
 		
+			<?php
+			$komposisi = $this->db->select('pp.date_production, (pp.display_volume) * pk.presentase_a as volume_a, (pp.display_volume) * pk.presentase_b as volume_b, (pp.display_volume) * pk.presentase_c as volume_c, (pp.display_volume) * pk.presentase_d as volume_d, (pp.display_volume) * pk.presentase_e as volume_e, (pp.display_volume * pk.presentase_a) * pk.price_a as nilai_a, (pp.display_volume * pk.presentase_b) * pk.price_b as nilai_b, (pp.display_volume * pk.presentase_c) * pk.price_c as nilai_c, (pp.display_volume * pk.presentase_d) * pk.price_d as nilai_d, (pp.display_volume * pk.presentase_e) * pk.price_e as nilai_e')
+			->from('pmm_productions pp')
+			->join('pmm_agregat pk', 'pp.komposisi_id = pk.id','left')
+			->where("pp.date_production between '$date1' and '$date2'")
+			->get()->result_array();
+
+			$total_volume_a = 0;
+			$total_volume_b = 0;
+			$total_volume_c = 0;
+			$total_volume_d = 0;
+			$total_volume_e = 0;
+
+			$total_nilai_a = 0;
+			$total_nilai_b = 0;
+			$total_nilai_c = 0;
+			$total_nilai_d = 0;
+			$total_nilai_e = 0;
+
+			foreach ($komposisi as $x){
+				$total_volume_a += $x['volume_a'];
+				$total_volume_b += $x['volume_b'];
+				$total_volume_c += $x['volume_c'];
+				$total_volume_d += $x['volume_d'];
+				$total_volume_e += $x['volume_e'];
+				$total_nilai_a += $x['nilai_a'];
+				$total_nilai_b += $x['nilai_b'];
+				$total_nilai_c += $x['nilai_c'];
+				$total_nilai_d += $x['nilai_d'];
+				$total_nilai_e += $x['nilai_e'];
+				
+			}
+
+			$volume_a = $total_volume_a;
+			$volume_b = $total_volume_b;
+			$volume_c = $total_volume_c;
+			$volume_d = $total_volume_d;
+			$volume_e = $total_volume_e;
+
+			$nilai_a = $total_nilai_a;
+			$nilai_b = $total_nilai_b;
+			$nilai_c = $total_nilai_c;
+			$nilai_d = $total_nilai_d;
+			$nilai_e = $total_nilai_e;
+
+			$price_a = ($total_volume_a!=0)?$total_nilai_a / $total_volume_a * 1:0;
+			$price_b = ($total_volume_b!=0)?$total_nilai_b / $total_volume_b * 1:0;
+			$price_c = ($total_volume_c!=0)?$total_nilai_c / $total_volume_c * 1:0;
+			$price_d = ($total_volume_d!=0)?$total_nilai_d / $total_volume_d * 1:0;
+			$price_e = ($total_volume_e!=0)?$total_nilai_e / $total_volume_e * 1:0;
+
+			$total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d + $volume_e;
+			$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d + $nilai_e;
+			
+			$pemakaian_semen = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
+			->from('pemakaian_bahan')
+			->where("date between '$date1' and '$date2'")
+			->where("material_id = 1")
+			->where("status = 'PUBLISH'")
+			->get()->row_array();
+
+			$pemakaian_volume_semen = $pemakaian_semen['volume'];
+			$pemakaian_nilai_semen = $pemakaian_semen['nilai'];
+			$pemakaian_harsat_semen = ($pemakaian_volume_semen!=0)?$pemakaian_nilai_semen / $pemakaian_volume_semen * 1:0;
+			
+			$pemakaian_pasir = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
+			->from('pemakaian_bahan')
+			->where("date between '$date1' and '$date2'")
+			->where("material_id = 2")
+			->where("status = 'PUBLISH'")
+			->get()->row_array();
+
+			$pemakaian_volume_pasir = $pemakaian_pasir['volume'];
+			$pemakaian_nilai_pasir = $pemakaian_pasir['nilai'];
+			$pemakaian_harsat_pasir = ($pemakaian_volume_pasir!=0)?$pemakaian_nilai_pasir / $pemakaian_volume_pasir * 1:0;
+
+			$pemakaian_1020 = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
+			->from('pemakaian_bahan')
+			->where("date between '$date1' and '$date2'")
+			->where("material_id = 3")
+			->where("status = 'PUBLISH'")
+			->get()->row_array();
+
+			$pemakaian_volume_1020 = $pemakaian_1020['volume'];
+			$pemakaian_nilai_1020 = $pemakaian_1020['nilai'];
+			$pemakaian_harsat_1020 = ($pemakaian_volume_1020!=0)?$pemakaian_nilai_1020 / $pemakaian_volume_1020 * 1:0;
+
+			$pemakaian_2030 = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
+			->from('pemakaian_bahan')
+			->where("date between '$date1' and '$date2'")
+			->where("material_id = 4")
+			->where("status = 'PUBLISH'")
+			->get()->row_array();
+
+			$pemakaian_volume_2030 = $pemakaian_2030['volume'];
+			$pemakaian_nilai_2030 = $pemakaian_2030['nilai'];
+			$pemakaian_harsat_2030 = ($pemakaian_volume_2030!=0)?$pemakaian_nilai_2030 / $pemakaian_volume_2030 * 1:0;
+
+			$pemakaian_additive = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
+			->from('pemakaian_bahan')
+			->where("date between '$date1' and '$date2'")
+			->where("material_id = 19")
+			->where("status = 'PUBLISH'")
+			->get()->row_array();
+
+			$pemakaian_volume_additive = $pemakaian_additive['volume'];
+			$pemakaian_nilai_additive = $pemakaian_additive['nilai'];
+			$pemakaian_harsat_additive = ($pemakaian_volume_additive!=0)?$pemakaian_nilai_additive / $pemakaian_volume_additive * 1:0;
+
+			$total_volume_realisasi = $pemakaian_volume_semen + $pemakaian_volume_pasir + $pemakaian_volume_1020 + $pemakaian_volume_2030 +  $pemakaian_volume_additive;
+			$total_nilai_realisasi = $pemakaian_nilai_semen + $pemakaian_nilai_pasir + $pemakaian_nilai_1020 + $pemakaian_nilai_2030 + $pemakaian_nilai_additive;
+			
+			$evaluasi_volume_a = round($volume_a - $pemakaian_volume_semen,2);
+			$evaluasi_volume_b = round($volume_b - $pemakaian_volume_pasir,2);
+			$evaluasi_volume_c = round($volume_c - $pemakaian_volume_1020,2);
+			$evaluasi_volume_d = round($volume_d - $pemakaian_volume_2030,2);
+			$evaluasi_volume_e = round($volume_e - $pemakaian_volume_additive,2);
+
+			$evaluasi_nilai_a = round($nilai_a - $pemakaian_nilai_semen,0);
+			$evaluasi_nilai_b = round($nilai_b - $pemakaian_nilai_pasir,0);
+			$evaluasi_nilai_c = round($nilai_c - $pemakaian_nilai_1020,0);
+			$evaluasi_nilai_d = round($nilai_d - $pemakaian_nilai_2030,0);
+			$evaluasi_nilai_e = round($nilai_e - $pemakaian_nilai_additive,0);
+
+			$total_volume_evaluasi = round($total_volume_komposisi - $total_volume_realisasi,2);
+			$total_nilai_evaluasi = round($evaluasi_nilai_a + $evaluasi_nilai_b + $evaluasi_nilai_c + $evaluasi_nilai_d + $evaluasi_nilai_e,0);
+			?>
+
 			<?php
 			$pembelian_batching_plant = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
@@ -115,7 +242,7 @@
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
-	
+
 			$pemeliharaan_batching_plant_jurnal = $this->db->select('sum(pdb.debit) as total')
 			->from('pmm_jurnal_umum pb ')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
@@ -134,7 +261,7 @@
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
-	
+
 			$penyusutan_batching_plant_jurnal = $this->db->select('sum(pdb.debit) as total')
 			->from('pmm_jurnal_umum pb ')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
@@ -144,7 +271,6 @@
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
 			$total_nilai_penyusutan_batching_plant = $penyusutan_batching_plant_biaya['total'] + $penyusutan_batching_plant_jurnal['total'];
-			$total_nilai_batching_plant = $total_nilai_batching_plant + $total_nilai_pemeliharaan_batching_plant + $total_nilai_penyusutan_batching_plant;
 			
 			$pembelian_truck_mixer = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
@@ -190,7 +316,7 @@
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
-	
+
 			$pemeliharaan_wheel_loader_jurnal = $this->db->select('sum(pdb.debit) as total')
 			->from('pmm_jurnal_umum pb ')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
@@ -209,7 +335,7 @@
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
-	
+
 			$penyusutan_wheel_loader_jurnal = $this->db->select('sum(pdb.debit) as total')
 			->from('pmm_jurnal_umum pb ')
 			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
@@ -219,7 +345,6 @@
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
 			$total_nilai_penyusutan_wheel_loader = $penyusutan_wheel_loader_biaya['total'] + $penyusutan_wheel_loader_jurnal['total'];
-			$total_nilai_wheel_loader = $total_nilai_wheel_loader + $total_nilai_pemeliharaan_wheel_loader + $total_nilai_penyusutan_wheel_loader;
 
 			$pembelian_truck_mixer = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
@@ -255,11 +380,10 @@
 			->get()->result_array();
 
 			$total_nilai_transfer_semen = 0;
-			$total_vol_transfer_semen = 0;
 			foreach ($pembelian_transfer_semen as $x){
 				$total_nilai_transfer_semen += $x['price'];
-				$total_vol_transfer_semen += $x['volume'];
 			}
+			$total_vol_transfer_semen = $pembelian_transfer_semen['volume'];
 
 			$pembelian_excavator = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
@@ -275,11 +399,10 @@
 			->get()->result_array();
 
 			$total_nilai_excavator = 0;
-			$total_vol_excavator = 0;
 			foreach ($pembelian_excavator as $x){
 				$total_nilai_excavator += $x['price'];
-				$total_vol_excavator += $x['volume'];
 			}
+			$total_vol_excavator = $pembelian_excavator['volume'];
 
 			$pemakaian_solar = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
 			->from('pemakaian_bahan')
@@ -287,7 +410,7 @@
 			->where("material_id = 5")
 			->where("status = 'PUBLISH'")
 			->get()->row_array();
-	
+
 			$pemakaian_volume_solar = $pemakaian_solar['volume'];
 			$pemakaian_nilai_solar = $pemakaian_solar['nilai'];
 			$pemakaian_harsat_solar = ($pemakaian_volume_solar!=0)?$pemakaian_nilai_solar / $pemakaian_volume_solar * 1:0;
@@ -371,7 +494,7 @@
 			$pemakaian_vol_truck_mixer = $total_vol_truck_mixer;
 			$pemakaian_vol_wheel_loader = 0;
 			$pemakaian_vol_pemeliharaan_wheel_loader = 0;
-			$pemakaian_vol_penyusutan_wheel_loader = $pemakaian_vol_pemeliharaan_wheel_loader;
+			$pemakaian_vol_penyusutan_wheel_loader = $total_volume;
 			$pemakaian_vol_excavator = $total_vol_excavator;
 			$pemakaian_vol_transfer_semen = $total_vol_transfer_semen;
 			$pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
@@ -379,16 +502,16 @@
 			//SPESIAL//
 			$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
 			$total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
-			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_penyusutan_batching_plant;
+			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_pemakaian_penyusutan_batching_plant;
 			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer;
 			$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
 			$total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
-			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_penyusutan_wheel_loader;
+			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_pemakaian_penyusutan_wheel_loader;
 			$total_pemakaian_excavator = $total_nilai_excavator;
 			$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
 			$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
 			//SPESIAL//
-	
+
 			$total_vol_evaluasi_batching_plant = ($pemakaian_vol_batching_plant!=0)?$vol_batching_plant - $pemakaian_vol_batching_plant * 1:0;
 			$total_nilai_evaluasi_batching_plant = ($total_pemakaian_batching_plant!=0)?$batching_plant - $total_pemakaian_batching_plant * 1:0;
 			$total_vol_evaluasi_pemeliharaan_batching_plant = ($pemakaian_vol_pemeliharaan_batching_plant!=0)?$vol_pemeliharaan_batching_plant - $pemakaian_vol_pemeliharaan_batching_plant * 1:0;
@@ -420,9 +543,9 @@
 			
 			<tr class="table-judul">
 				<th width="5%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-left:1px solid black; border-bottom:1px solid black;">&nbsp;<br>NO.</th>
-				<th width="30%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black;">&nbsp;<br>URAIAN</th>
-				<th width="10%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black;">&nbsp;<br>SATUAN</th>
-				<th width="55%" align="center" colspan="3" style="background-color:#e69500; border:1px solid black;">REALISASI</th>
+				<th width="30%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">&nbsp;<br>URAIAN</th>
+				<th width="10%" align="center" rowspan="2" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">&nbsp;<br>SATUAN</th>
+				<th width="55%" align="center" colspan="3" style="background-color:#e69500; border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">REALISASI</th>
 	        </tr>
 			<tr class="table-judul">
 				<th width="15%" align="right" style="border-left:1px solid black; border-bottom:1px solid black;">VOLUME</th>
@@ -431,7 +554,7 @@
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">1.</th>			
-				<th align="left">Batching Plant + Genset</th>
+				<th align="left" style="border-right:1px solid black;">Batching Plant + Genset</th>
 				<th align="center" style="border-right:1px solid black;">M3</th>
 				<th align="right"><?php echo number_format(0,2,',','.');?></th>
 				<th align="right"><?php echo number_format(0,0,',','.');?></th>
@@ -439,7 +562,7 @@
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">2.</th>			
-				<th align="left">Wheel Loader</th>
+				<th align="left" style="border-right:1px solid black;">Wheel Loader</th>
 				<th align="center" style="border-right:1px solid black;">M3</th>
 				<th align="right"><?php echo number_format(0,2,',','.');?></th>
 				<th align="right"><?php echo number_format(0,0,',','.');?></th>
@@ -447,7 +570,7 @@
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">3.</th>			
-				<th align="left">Truck Mixer</th>
+				<th align="left" style="border-right:1px solid black;">Truck Mixer</th>
 				<th align="center" style="border-right:1px solid black;">M3</th>
 				<th align="right"><?php echo number_format($pemakaian_vol_truck_mixer,2,',','.');?></th>
 				<?php
@@ -458,7 +581,7 @@
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">4.</th>			
-				<th align="left">Excavator</th>
+				<th align="left" style="border-right:1px solid black;">Excavator</th>
 				<th align="center" style="border-right:1px solid black;">M3</th>
 				<th align="right"><?php echo number_format($pemakaian_vol_excavator,2,',','.');?></th>
 				<?php
@@ -469,7 +592,7 @@
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">5.</th>			
-				<th align="left">Transfer Semen</th>
+				<th align="left" style="border-right:1px solid black;">Transfer Semen</th>
 				<th align="center" style="border-right:1px solid black;">M3</th>
 				<th align="right"><?php echo number_format($pemakaian_vol_transfer_semen,2,',','.');?></th>
 				<?php
@@ -480,14 +603,14 @@
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">6.</th>			
-				<th align="left">BBM Solar</th>
+				<th align="left" style="border-right:1px solid black;">BBM Solar</th>
 				<th align="center" style="border-right:1px solid black;">Liter</th>
 				<th align="right"><?php echo number_format($pemakaian_volume_solar,2,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_harsat_solar,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($pemakaian_nilai_solar,0,',','.');?></th>
 	        </tr>
 			<tr class="table-total">		
-				<th align="right" colspan="3" style="border:1px solid black;">TOTAL</th>
+				<th align="right" colspan="3" style="border-top:1px solid black; border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black;">TOTAL</th>
 				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black;"></th>
 				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black;"></th>
 				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;"><?php echo number_format($total_nilai_realisasi_alat,0,',','.');?></th>
