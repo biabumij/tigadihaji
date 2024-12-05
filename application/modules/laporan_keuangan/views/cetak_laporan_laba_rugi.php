@@ -106,7 +106,7 @@
 		
 		<table width="98%" border="0" cellpadding="3">
 		
-		<?php
+			<?php
 			//PENJUALAN
 			$penjualan = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
 			->from('pmm_productions pp')
@@ -158,19 +158,14 @@
 			$total_nilai = $bahan;
 
 			//BAHAN_2
-			$date4 = date('Y-m-d', strtotime('-5 days', strtotime($date2)));
-			$bahan_2 = $this->pmm_model->getBahan2($date3,$date4);
-			$total_nilai_2= $bahan_2 + $bahan;
+			$bahan_2 = $this->pmm_model->getBahan2($date3,$date2);
+			$total_nilai_2= $bahan_2;
 
 			//ALAT
 			$alat = $this->pmm_model->getAlat($date1,$date2);
-			$solar = $this->pmm_model->getSolar($date1,$date2);
-			$alat = $alat + $solar;
 
 			//ALAT_2
 			$alat_2 = $this->pmm_model->getAkumulasiAlat($date3,$date2);
-			$solar_2 = $this->pmm_model->getSolar2($date3,$date4);
-			$alat_2 = ($alat_2 + $solar_2) + $solar;
 
 			//OVERHEAD
 			$overhead = $this->pmm_model->getOverheadLabaRugi($date1,$date2);
@@ -220,6 +215,7 @@
 			$laba_usaha_2 = $laba_kotor_2;
 			$persentase_laba_sebelum_pajak_2 = ($total_penjualan_all_2!=0)?($laba_usaha_2 / $total_penjualan_all_2) * 100:0;
 	        ?>
+
 			<table width="98%" border="0" cellpadding="3">
 				<tr class="table-active">
 					<td width="50%">
