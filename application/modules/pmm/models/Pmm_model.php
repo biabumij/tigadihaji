@@ -5096,11 +5096,22 @@ class Pmm_model extends CI_Model {
         }
         $total_vol_excavator = $pembelian_excavator['volume'];
 
+        $pemakaian_solar = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
+		->from('pemakaian_bahan')
+		->where("date between '$date1' and '$date2'")
+		->where("material_id = 5")
+		->where("status = 'PUBLISH'")
+		->get()->row_array();
+
+		$pemakaian_volume_solar = $pemakaian_solar['volume'];
+		$pemakaian_nilai_solar = $pemakaian_solar['nilai'];
+		$pemakaian_harsat_solar = ($pemakaian_volume_solar!=0)?$pemakaian_nilai_solar / $pemakaian_volume_solar * 1:0;
+
         $penjualan = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
         ->from('pmm_productions pp')
         ->join('penerima p', 'pp.client_id = p.id','left')
         ->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
-        ->where("pp.date_production between '$date1' and '$date2'")
+        ->where("pp.date_production between '$date3' and '$date2'")
         ->where("pp.status = 'PUBLISH'")
         ->where("ppo.status in ('OPEN','CLOSED')")
         ->group_by("pp.client_id")
@@ -5223,52 +5234,6 @@ class Pmm_model extends CI_Model {
         
         $query = $total_nilai_realisasi_alat;
         
-        if(!empty($query)){
-            $total = $query;
-        }
-        return $total;
-    }
-
-    function getSolar($date1,$date2)
-    {   
-        $total = 0;
-
-        $pemakaian_solar = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
-        ->from('pemakaian_bahan')
-        ->where("date between '$date1' and '$date2'")
-        ->where("material_id = 5")
-        ->where("status = 'PUBLISH'")
-        ->get()->row_array();
-
-        $pemakaian_volume_solar = $pemakaian_solar['volume'];
-        $pemakaian_nilai_solar = $pemakaian_solar['nilai'];
-        $pemakaian_harsat_solar = ($pemakaian_volume_solar!=0)?$pemakaian_nilai_solar / $pemakaian_volume_solar * 1:0;
-        
-        $query = $pemakaian_nilai_solar;
-
-        if(!empty($query)){
-            $total = $query;
-        }
-        return $total;
-    }
-
-    function getSolar2($date3,$date2)
-    {   
-        $total = 0;
-
-        $pemakaian_solar = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
-        ->from('pemakaian_bahan')
-        ->where("date between '$date3' and '$date2'")
-        ->where("material_id = 5")
-        ->where("status = 'PUBLISH'")
-        ->get()->row_array();
-
-        $pemakaian_volume_solar = $pemakaian_solar['volume'];
-        $pemakaian_nilai_solar = $pemakaian_solar['nilai'];
-        $pemakaian_harsat_solar = ($pemakaian_volume_solar!=0)?$pemakaian_nilai_solar / $pemakaian_volume_solar * 1:0;
-        
-        $query = $pemakaian_nilai_solar;
-
         if(!empty($query)){
             $total = $query;
         }

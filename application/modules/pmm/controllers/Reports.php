@@ -1386,13 +1386,9 @@ class Reports extends CI_Controller {
 
 			//ALAT
 			$alat = $this->pmm_model->getAlat($date1,$date2);
-			$solar = $this->pmm_model->getSolar($date1,$date2);
-			$alat = $alat + $solar;
 
 			//ALAT_2
 			$alat_2 = $this->pmm_model->getAkumulasiAlat($date3,$date2);
-			$solar_2 = $this->pmm_model->getSolar2($date3,$date2);
-			$alat_2 = $alat_2 + $solar_2;
 
 			//OVERHEAD
 			$overhead = $this->pmm_model->getOverheadLabaRugi($date1,$date2);
