@@ -239,14 +239,6 @@
 		<br /><br />
 		<table width="98%" cellpadding="3">
 			<?php
-			$notes = $this->db->select('cat.*')
-			->from('pmm_remaining_materials_cat cat ')
-			->where("cat.date between '$date1' and '$date2'")
-			->where("cat.material_id = 2")
-			->where("cat.status = 'PUBLISH'")
-			->order_by('date','desc')->limit(1)
-			->get()->row_array();
-
 			$persediaan_akhir_volume = ($stock_volume_lalu + $pembelian_volume) - $pemakaian_volume;
 			$persediaan_akhir_nilai = ($stock_nilai_lalu + $pembelian_nilai) - $pemakaian_nilai;
 			?>
@@ -260,7 +252,7 @@
 				<th align="right">NILAI</th>
 			</tr>
 			<tr class="table-total">
-				<td align="right"><?= $notes['notes'] ?></td>
+				<td align="right"></td>
 				<td align="right"><?php echo number_format($persediaan_akhir_volume,2,',','.');?></td>
 				<td align="right"></td>
 				<td align="right"><?php echo number_format($persediaan_akhir_nilai,0,',','.');?></td>
