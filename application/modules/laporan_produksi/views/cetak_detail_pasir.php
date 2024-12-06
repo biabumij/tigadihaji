@@ -242,7 +242,7 @@
 			$notes = $this->db->select('cat.*')
 			->from('pmm_remaining_materials_cat cat ')
 			->where("cat.date between '$date1' and '$date2'")
-			->where("cat.material_id = 1")
+			->where("cat.material_id = 2")
 			->where("cat.status = 'PUBLISH'")
 			->order_by('date','desc')->limit(1)
 			->get()->row_array();
