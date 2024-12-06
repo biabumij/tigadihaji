@@ -282,6 +282,7 @@ class Produksi extends Secure_Controller {
 		$volume =  str_replace('.', '', $this->input->post('volume'));
 		$volume =  str_replace(',', '.', $volume);
 		$nilai = str_replace('.', '', $this->input->post('nilai'));
+		$notes = $this->input->post('notes');
 
 		$this->db->trans_start(); # Starting Transaction
 		$this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
@@ -291,6 +292,7 @@ class Produksi extends Secure_Controller {
 			'material_id' => $material_id,
 			'volume' => $volume,
 			'nilai' => $nilai,
+			'notes' => $notes,
 			'status' => 'PUBLISH',
 			'created_by' => $this->session->userdata('admin_id'),
 			'created_on' => date('Y-m-d H:i:s')

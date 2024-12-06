@@ -41,6 +41,7 @@
 												<th class="text-center" width="15%">Bahan</th>
 												<th class="text-center" >Volume</th>
 												<th class="text-center" >Nilai</th>
+												<th class="text-center" >Nilai</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -61,6 +62,7 @@
 												</td>
 												<td><input type="text" id="volume" name="volume" class="form-control numberformat text-center" value="" required="" placeholder="Isikan 0 jika tidak ada data" autocomplete="off"></td>
 												<td><input type="text" id="nilai" name="nilai" class="form-control rupiahformat text-center" value="" required="" placeholder="Isikan 0 jika tidak ada data" autocomplete="off"></td>
+												<td><input type="text" id="notes" name="notes" class="form-control=" value="" autocomplete="off"></td>
 											</tr>
 										</tbody>
 										<tfoot>
