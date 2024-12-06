@@ -197,7 +197,7 @@
 		<br /><br />
 		<table width="98%" cellpadding="3">
 			<?php
-			$pemakaian = $this->db->select('sum(volume) as volume, sum(nilai) as nilai, sum(nilai) / sum(volume) as harsat')
+			$pemakaian = $this->db->select('notes as notes, sum(volume) as volume, sum(nilai) as nilai, sum(nilai) / sum(volume) as harsat')
 			->from('pemakaian_bahan')
 			->where("date between '$date1' and '$date2'")
 			->where("material_id = 2")
@@ -223,7 +223,7 @@
 			</tr>
 			<?php foreach ($pemakaian as $x): ?>
 			<tr class="table-baris1">
-				<td align="right"></td>
+				<td align="right"><?= $x['notes'] ?></td>
 				<td align="right"><?php echo number_format($x['volume'],2,',','.');?></td>
 				<td align="right"><?php echo number_format($x['harsat'],0,',','.');?></td>
 				<td align="right"><?php echo number_format($x['nilai'],0,',','.');?></td>
