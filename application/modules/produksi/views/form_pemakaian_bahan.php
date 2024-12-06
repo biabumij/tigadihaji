@@ -72,9 +72,10 @@
 										<label>Catatan</label>
 									</div>
 										<div class="col-sm-10">
-										<input type="text" class="form-control dtpicker" name="date" required="" value="" />
+										<input type="text" class="form-control" id="notes" name="notes"/>
 									</div>                          
 								</div>
+								<br /><br /><br />
 								<div class="text-center">
 									<a href="<?= site_url('admin/stock_opname#pemakaian_bahan');?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:10px;">BATAL</a>
 									<button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;">KIRIM</button>
