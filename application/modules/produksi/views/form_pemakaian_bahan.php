@@ -69,7 +69,7 @@
 								</div>
 								<div class="col-sm-4">
 									<label>Rekanan</label>
-									<select class="form-control form-select2" name="notes" id="notes" required="">
+									<select class="form-control form-select2" name="notes" id="notes">
 										<option value="">Pilih Rekanan</option>
 										<?php
 										$supplier = $this->db->order_by('nama', 'asc')->select('*')->get_where('penerima', array('status' => 'PUBLISH', 'rekanan' => 1))->result_array();
