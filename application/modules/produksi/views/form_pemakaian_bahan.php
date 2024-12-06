@@ -26,7 +26,7 @@
 						<div class="panel-content">
 							<form method="POST" action="<?php echo site_url('produksi/submit_pemakaian_bahan');?>" id="form-po" enctype="multipart/form-data" autocomplete="off">
 								<div class="row">
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<label>Tanggal</label>
 									</div>
 										<div class="col-sm-2">
@@ -68,10 +68,10 @@
 									</table>
 								</div>
 								<div class="row">
-									<div class="col-sm-2">
+									<div class="col-sm-1">
 										<label>Catatan</label>
 									</div>
-										<div class="col-sm-10">
+										<div class="col-sm-11">
 										<input type="text" class="form-control" id="notes" name="notes"/>
 									</div>                          
 								</div>
