@@ -67,13 +67,21 @@
 										</tfoot>
 									</table>
 								</div>
-								<div class="row">
-									<div class="col-sm-1">
-										<label>Catatan</label>
-									</div>
-										<div class="col-sm-11">
-										<input type="text" class="form-control" id="notes" name="notes"/>
-									</div>                          
+								<div class="col-sm-4">
+									<label>Rekanan<span class="required" aria-required="true">*</span></label>
+									<select class="form-control form-select2" name="supplier_id" id="supplier_id" required="">
+										<option value="">Pilih Rekanan</option>
+										<?php
+										$supplier = $this->db->order_by('nama', 'asc')->select('*')->get_where('penerima', array('status' => 'PUBLISH', 'rekanan' => 1))->result_array();
+										if(!empty($supplier)){
+											foreach ($supplier as $row) {
+												?>
+												<option value="<?php echo $row['nama'];?>"><?php echo $row['nama'];?></option>
+												<?php
+											}
+										}
+										?>
+									</select>
 								</div>
 								<br /><br /><br />
 								<div class="text-center">
