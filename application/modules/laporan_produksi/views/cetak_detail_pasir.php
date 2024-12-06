@@ -260,7 +260,7 @@
 				<th align="right">NILAI</th>
 			</tr>
 			<tr class="table-total">
-				<td align="right"></td>
+				<td align="right"><?= $x['notes'] ?></td>
 				<td align="right"><?php echo number_format($persediaan_akhir_volume,2,',','.');?></td>
 				<td align="right"></td>
 				<td align="right"><?php echo number_format($persediaan_akhir_nilai,0,',','.');?></td>
