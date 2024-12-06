@@ -41,7 +41,6 @@
 												<th class="text-center" width="15%">Bahan</th>
 												<th class="text-center" >Volume</th>
 												<th class="text-center" >Nilai</th>
-												<th class="text-center" >Nilai</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -62,16 +61,23 @@
 												</td>
 												<td><input type="text" id="volume" name="volume" class="form-control numberformat text-center" value="" required="" placeholder="Isikan 0 jika tidak ada data" autocomplete="off"></td>
 												<td><input type="text" id="nilai" name="nilai" class="form-control rupiahformat text-center" value="" required="" placeholder="Isikan 0 jika tidak ada data" autocomplete="off"></td>
-												<td><input type="text" id="notes" name="notes" class="form-control=" value="" autocomplete="off"></td>
 											</tr>
 										</tbody>
 										<tfoot>
 										</tfoot>
 									</table>
-									<div class="text-center">
-										<a href="<?= site_url('admin/stock_opname#pemakaian_bahan');?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:10px;">BATAL</a>
-										<button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;">KIRIM</button>
+								</div>
+								<div class="row">
+									<div class="col-sm-2">
+										<label>Catatan</label>
 									</div>
+										<div class="col-sm-10">
+										<input type="text" class="form-control dtpicker" name="date" required="" value="" />
+									</div>                          
+								</div>
+								<div class="text-center">
+									<a href="<?= site_url('admin/stock_opname#pemakaian_bahan');?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:10px;">BATAL</a>
+									<button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;">KIRIM</button>
 								</div>
 							</form>
 						</div>
