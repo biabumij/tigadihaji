@@ -576,11 +576,11 @@
 				<?php
 				$styleColor = $total_vol_evaluasi_penyusutan_batching_plant < 0 ? 'color:red' : 'color:black';
 				?>
-				<th align="right" style="<?php echo $styleColor ?>; border-bottom:1px solid black;"><?php echo $total_vol_evaluasi_penyusutan_batching_plant < 0 ? "(".number_format(-$total_vol_evaluasi_penyusutan_batching_plant,2,',','.').")" : number_format($total_vol_evaluasi_penyusutan_batching_plant,2,',','.');?></th>
+				<th align="right" style="<?php echo $styleColor ?>;"><?php echo $total_vol_evaluasi_penyusutan_batching_plant < 0 ? "(".number_format(-$total_vol_evaluasi_penyusutan_batching_plant,2,',','.').")" : number_format($total_vol_evaluasi_penyusutan_batching_plant,2,',','.');?></th>
 				<?php
 				$styleColor = $total_nilai_evaluasi_penyusutan_batching_plant < 0 ? 'color:red' : 'color:black';
 				?>
-				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black; border-bottom:1px solid black;"><?php echo $total_nilai_evaluasi_penyusutan_batching_plant < 0 ? "(".number_format(-$total_nilai_evaluasi_penyusutan_batching_plant,0,',','.').")" : number_format($total_nilai_evaluasi_penyusutan_batching_plant,0,',','.');?></th>
+				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black;"><?php echo $total_nilai_evaluasi_penyusutan_batching_plant < 0 ? "(".number_format(-$total_nilai_evaluasi_penyusutan_batching_plant,0,',','.').")" : number_format($total_nilai_evaluasi_penyusutan_batching_plant,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">			
 				<th align="left" style="border-left:1px solid black; border-bottom:1px solid black;">&nbsp;&nbsp;Angsuran</th>
