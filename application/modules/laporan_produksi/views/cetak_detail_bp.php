@@ -567,11 +567,11 @@
 			<tr class="table-baris1">			
 				<th align="left" style="border-left:1px solid black;">&nbsp;&nbsp;Penyusutan</th>
 				<th align="center" style="border-right:1px solid black;">M3</th>
-				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format($vol_penyusutan_batching_plant,2,',','.');?></th>
-				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format($harsat_penyusutan_batching_plant,0,',','.');?></th>
+				<th align="right"><?php echo number_format($vol_penyusutan_batching_plant,2,',','.');?></th>
+				<th align="right"><?php echo number_format($harsat_penyusutan_batching_plant,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($penyusutan_batching_plant,0,',','.');?></th>
-				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format($pemakaian_vol_penyusutan_batching_plant,2,',','.');?></th>
-				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format($total_pemakaian_penyusutan_batching_plant / $pemakaian_vol_penyusutan_batching_plant,0,',','.');?></th>
+				<th align="right"><?php echo number_format($pemakaian_vol_penyusutan_batching_plant,2,',','.');?></th>
+				<th align="right"><?php echo number_format($total_pemakaian_penyusutan_batching_plant / $pemakaian_vol_penyusutan_batching_plant,0,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_penyusutan_batching_plant,0,',','.');?></th>
 				<?php
 				$styleColor = $total_vol_evaluasi_penyusutan_batching_plant < 0 ? 'color:red' : 'color:black';
