@@ -98,7 +98,7 @@ class Jurnal_umum extends CI_Controller {
 		}
 		
 		$this->db->select('b.*');
-        $this->db->where('b.tanggal_transaksi >=', $last_opname);
+        //$this->db->where('b.tanggal_transaksi >=', $last_opname);
         $this->db->order_by('b.tanggal_transaksi','desc');
         $this->db->order_by('b.created_on','desc');
 		$query = $this->db->get('pmm_jurnal_umum b');
