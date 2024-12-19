@@ -298,6 +298,8 @@ class M_laporan extends CI_Model {
         $this->db->where("c.id <> 124 "); //Biaya TM
         $this->db->where("c.id <> 140 "); //Biaya Maintenance WL
         $this->db->where("c.id <> 110 "); //Biaya Diskonto Bank
+        $this->db->where("c.id <> 159 "); //Angsuran Batching Plant
+        $this->db->where("c.id <> 160 "); //Angsuran Wheel Loader
         $this->db->where('b.status','PAID');
         $this->db->group_by('pdb.id');
         $this->db->order_by('b.tanggal_transaksi','asc');
@@ -322,6 +324,8 @@ class M_laporan extends CI_Model {
         $this->db->where("c.id <> 124 "); //Biaya TM
         $this->db->where("c.id <> 140 "); //Biaya Maintenance WL
         $this->db->where("c.id <> 110 "); //Biaya Diskonto Bank
+        $this->db->where("c.id <> 159 "); //Angsuran Batching Plant
+        $this->db->where("c.id <> 160 "); //Angsuran Wheel Loader
         $this->db->where('b.status','PAID');
         $this->db->group_by('b.id');
         $this->db->order_by('c.coa','asc');
@@ -388,6 +392,8 @@ class M_laporan extends CI_Model {
         $this->db->where("c.id <> 124 "); //Biaya TM
         $this->db->where("c.id <> 140 "); //Biaya Maintenance WL
         $this->db->where("c.id <> 110 "); //Biaya Diskonto Bank
+        $this->db->where("c.id <> 159 "); //Angsuran Batching Plant
+        $this->db->where("c.id <> 160 "); //Angsuran Wheel Loader
         $this->db->where('b.status','PAID');
         $this->db->group_by('b.id');
         $this->db->order_by('b.tanggal_transaksi','asc');
@@ -412,6 +418,8 @@ class M_laporan extends CI_Model {
         $this->db->where("c.id <> 124 "); //Biaya TM
         $this->db->where("c.id <> 140 "); //Biaya Maintenance WL
         $this->db->where("c.id <> 110 "); //Biaya Diskonto Bank
+        $this->db->where("c.id <> 159 "); //Angsuran Batching Plant
+        $this->db->where("c.id <> 160 "); //Angsuran Wheel Loader
         $this->db->where('b.status','PAID');
         $this->db->group_by('b.id');
         $this->db->order_by('c.coa','asc');
