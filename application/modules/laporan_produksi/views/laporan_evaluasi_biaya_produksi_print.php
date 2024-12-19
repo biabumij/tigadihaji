@@ -827,6 +827,8 @@
 		->where("c.id <> 124 ") //Biaya Maintenance Truck Mixer
 		->where("c.id <> 138 ") //Biaya Maintenance Batching Plant
 		->where("c.id <> 140 ") //Biaya Maintenance Wheel Loader
+		->where("c.id <> 159 ") //Angsuran Batching Plant
+		->where("c.id <> 160 ") //Angsuran Wheel Loader
 		->where("pb.status = 'PAID'")
 		->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 		->get()->row_array();
@@ -841,6 +843,8 @@
 		->where("c.id <> 124 ") //Biaya Maintenance Truck Mixer
 		->where("c.id <> 138 ") //Biaya Maintenance Batching Plant
 		->where("c.id <> 140 ") //Biaya Maintenance Wheel Loader
+		->where("c.id <> 159 ") //Angsuran Batching Plant
+		->where("c.id <> 160 ") //Angsuran Wheel Loader
 		->where("pb.status = 'PAID'")
 		->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 		->get()->row_array();
