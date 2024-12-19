@@ -27,6 +27,8 @@ class M_laporan extends CI_Model {
         $this->db->where("c.id <> 124 "); //Biaya Maintenance Truck Mixer
         $this->db->where("c.id <> 138 "); //Biaya Maintenance Batching Plant
         $this->db->where("c.id <> 140 "); //Biaya Maintenance Wheel Loader
+        $this->db->where("c.id <> 159 "); //Angsuran Batching Plant
+        $this->db->where("c.id <> 160 "); //Angsuran Wheel Loader
         $this->db->where('b.status','PAID');
         $this->db->group_by('c.coa_parent');
         $this->db->order_by('c.coa_number','asc')->limit(1);
@@ -52,6 +54,8 @@ class M_laporan extends CI_Model {
         $this->db->where("c.id <> 124 "); //Biaya Maintenance Truck Mixer
         $this->db->where("c.id <> 138 "); //Biaya Maintenance Batching Plant
         $this->db->where("c.id <> 140 "); //Biaya Maintenance Wheel Loader
+        $this->db->where("c.id <> 159 "); //Angsuran Batching Plant
+        $this->db->where("c.id <> 160 "); //Angsuran Wheel Loader
         $this->db->group_by('c.coa');
         $this->db->order_by('c.coa_number','asc');
         $query = $this->db->get('pmm_biaya b');
@@ -76,6 +80,8 @@ class M_laporan extends CI_Model {
         $this->db->where("c.id <> 124 "); //Biaya Maintenance Truck Mixer
         $this->db->where("c.id <> 138 "); //Biaya Maintenance Batching Plant
         $this->db->where("c.id <> 140 "); //Biaya Maintenance Wheel Loader
+        $this->db->where("c.id <> 159 "); //Angsuran Batching Plant
+        $this->db->where("c.id <> 160 "); //Angsuran Wheel Loader
         $this->db->where('b.status','PAID');
         $this->db->group_by('c.coa_parent');
         $this->db->order_by('c.coa_number','asc')->limit(1);
@@ -101,6 +107,8 @@ class M_laporan extends CI_Model {
         $this->db->where("c.id <> 124 "); //Biaya Maintenance Truck Mixer
         $this->db->where("c.id <> 138 "); //Biaya Maintenance Batching Plant
         $this->db->where("c.id <> 140 "); //Biaya Maintenance Wheel Loader
+        $this->db->where("c.id <> 159 "); //Angsuran Batching Plant
+        $this->db->where("c.id <> 160 "); //Angsuran Wheel Loader
         $this->db->group_by('c.coa');
         $this->db->order_by('c.coa_number','asc');
         $query = $this->db->get('pmm_jurnal_umum b');
