@@ -456,7 +456,7 @@
 			$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
 			$total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
 			$total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
-			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_pemakaian_penyusutan_wheel_loader + $total_nilai_angsuran_wheel_loader;
+			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader;
 			$total_pemakaian_excavator = $total_nilai_excavator;
 			$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
 			$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
@@ -548,7 +548,7 @@
 				?>
 				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black;"><?php echo $total_nilai_evaluasi_pemeliharaan_batching_plant < 0 ? "(".number_format(-$total_nilai_evaluasi_pemeliharaan_batching_plant,0,',','.').")" : number_format($total_nilai_evaluasi_pemeliharaan_batching_plant,0,',','.');?></th>
 	        </tr>
-			<tr class="table-baris1">			
+			<!--<tr class="table-baris1">			
 				<th align="left" style="border-left:1px solid black;">&nbsp;&nbsp;Penyusutan</th>
 				<th align="center" style="border-right:1px solid black;">M3</th>
 				<th align="right"><?php echo number_format($vol_penyusutan_batching_plant,2,',','.');?></th>
@@ -565,7 +565,7 @@
 				$styleColor = $total_nilai_evaluasi_penyusutan_batching_plant < 0 ? 'color:red' : 'color:black';
 				?>
 				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black;"><?php echo $total_nilai_evaluasi_penyusutan_batching_plant < 0 ? "(".number_format(-$total_nilai_evaluasi_penyusutan_batching_plant,0,',','.').")" : number_format($total_nilai_evaluasi_penyusutan_batching_plant,0,',','.');?></th>
-	        </tr>
+	        </tr>-->
 			<tr class="table-baris1">			
 				<th align="left" style="border-left:1px solid black; border-bottom:1px solid black;">&nbsp;&nbsp;Angsuran</th>
 				<th align="center" style="border-right:1px solid black; border-bottom:1px solid black;">M3</th>
