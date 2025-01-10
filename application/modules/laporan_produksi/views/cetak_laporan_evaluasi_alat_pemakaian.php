@@ -274,6 +274,25 @@
 				$total_vol_truck_mixer += $x['volume'];
 			}
 
+			$pemeliharaan_truck_mixer_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun in ('124','161')")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+	
+			$pemeliharaan_truck_mixer_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->where("pdb.akun in ('124','161')")
+			->where("pdb.akun = 140")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$total_nilai_pemeliharaan_truck_mixer = $pemeliharaan_truck_mixer_biaya['total'] + $pemeliharaan_truck_mixer_jurnal['total'];
+
 			$pembelian_transfer_semen = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
 			->from('pmm_receipt_material prm')
@@ -452,7 +471,7 @@
 			$total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
 			$total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
 			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant;
-			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer;
+			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_pemeliharaan_truck_mixer;
 			$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
 			$total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
 			$total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
@@ -601,7 +620,7 @@
 				$harsat_pemakaian_truck_mixer = ($pemakaian_vol_truck_mixer!=0)?$total_pemakaian_truck_mixer / $pemakaian_vol_truck_mixer * 1:0;
 				?>
 				<th align="right"><?php echo number_format($harsat_pemakaian_truck_mixer,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_truck_mixer,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_tm?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_pemakaian_truck_mixer,0,',','.');?></a></th>
 				<?php
 				$styleColor = $total_vol_evaluasi_truck_mixer < 0 ? 'color:red' : 'color:black';
 				?>
