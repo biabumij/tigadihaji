@@ -5424,6 +5424,7 @@ class Pmm_model extends CI_Model {
         ->where("c.id <> 140 ") //Biaya Maintenance Wheel Loader
         ->where("c.id <> 159 ") //Angsuran Batching Plant
 		->where("c.id <> 160 ") //Angsuran Wheel Loader
+        ->where("c.id <> 161 ") //Biaya Alat Truck Mixer
         ->where("pb.status = 'PAID'")
         ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
         ->get()->row_array();
@@ -5440,6 +5441,7 @@ class Pmm_model extends CI_Model {
         ->where("c.id <> 140 ") //Biaya Maintenance Wheel Loader
         ->where("c.id <> 159 ") //Angsuran Batching Plant
 		->where("c.id <> 160 ") //Angsuran Wheel Loader
+        ->where("c.id <> 161 ") //Biaya Alat Truck Mixer
         ->where("pb.status = 'PAID'")
         ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
         ->get()->row_array();
@@ -5470,6 +5472,7 @@ class Pmm_model extends CI_Model {
         ->where("c.id <> 140 ") //Biaya Maintenance Wheel Loader
         ->where("c.id <> 159 ") //Angsuran Batching Plant
 		->where("c.id <> 160 ") //Angsuran Wheel Loader
+        ->where("c.id <> 161 ") //Biaya Alat Truck Mixer
         ->where("pb.status = 'PAID'")
         ->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
         ->get()->row_array();
@@ -5486,6 +5489,7 @@ class Pmm_model extends CI_Model {
         ->where("c.id <> 140 ") //Biaya Maintenance Wheel Loader
         ->where("c.id <> 159 ") //Angsuran Batching Plant
 		->where("c.id <> 160 ") //Angsuran Wheel Loader
+        ->where("c.id <> 161 ") //Biaya Alat Truck Mixer
         ->where("pb.status = 'PAID'")
         ->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
         ->get()->row_array();
