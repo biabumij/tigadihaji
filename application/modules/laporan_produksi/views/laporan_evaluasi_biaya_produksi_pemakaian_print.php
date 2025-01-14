@@ -685,10 +685,13 @@
 		->join('pmm_coa c','pdb.akun = c.id','left')
 		->where("c.coa_category in ('15','17')")
 		->where("c.id <> 110 ") //Biaya Diskonto Bank
-		->where("c.id <> 131 ") //Biaya Persiapan
-		->where("c.id <> 124 ") //Biaya Maintenance Truck Mixer
-		->where("c.id <> 138 ") //Biaya Maintenance Batching Plant
-		->where("c.id <> 140 ") //Biaya Maintenance Wheel Loader
+        ->where("c.id <> 131 ") //Biaya Persiapan
+        ->where("c.id <> 124 ") //Biaya Maintenance Truck Mixer
+        ->where("c.id <> 138 ") //Biaya Maintenance Batching Plant
+        ->where("c.id <> 140 ") //Biaya Maintenance Wheel Loader
+        ->where("c.id <> 159 ") //Angsuran Batching Plant
+		->where("c.id <> 160 ") //Angsuran Wheel Loader
+        ->where("c.id <> 161 ") //Biaya Alat Truck Mixer
 		->where("pb.status = 'PAID'")
 		->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 		->get()->row_array();
@@ -699,10 +702,13 @@
 		->join('pmm_coa c','pdb.akun = c.id','left')
 		->where("c.coa_category in ('15','17')")
 		->where("c.id <> 110 ") //Biaya Diskonto Bank
-		->where("c.id <> 131 ") //Biaya Persiapan
-		->where("c.id <> 124 ") //Biaya Maintenance Truck Mixer
-		->where("c.id <> 138 ") //Biaya Maintenance Batching Plant
-		->where("c.id <> 140 ") //Biaya Maintenance Wheel Loader
+        ->where("c.id <> 131 ") //Biaya Persiapan
+        ->where("c.id <> 124 ") //Biaya Maintenance Truck Mixer
+        ->where("c.id <> 138 ") //Biaya Maintenance Batching Plant
+        ->where("c.id <> 140 ") //Biaya Maintenance Wheel Loader
+        ->where("c.id <> 159 ") //Angsuran Batching Plant
+		->where("c.id <> 160 ") //Angsuran Wheel Loader
+        ->where("c.id <> 161 ") //Biaya Alat Truck Mixer
 		->where("pb.status = 'PAID'")
 		->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 		->get()->row_array();
