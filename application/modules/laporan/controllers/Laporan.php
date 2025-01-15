@@ -1459,7 +1459,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_laporan_evaluasi',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_laporan_evaluasi',$data,TRUE);
 
         $pdf->SetTitle('BBJ - Laporan Evaluasi Pemakaian Bahan Baku');
         $pdf->nsi_html($html);
@@ -1489,7 +1489,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_laporan_evaluasi_pemakaian',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_laporan_evaluasi_pemakaian',$data,TRUE);
 
         $pdf->SetTitle('BBJ - Laporan Evaluasi Pemakaian Bahan Baku');
         $pdf->nsi_html($html);
@@ -1519,7 +1519,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_laporan_evaluasi_alat',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_laporan_evaluasi_alat',$data,TRUE);
         
         $pdf->SetTitle('BBJ - Laporan Evaluasi Pemakaian Alat');
         $pdf->nsi_html($html);
@@ -1549,7 +1549,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_laporan_evaluasi_alat_pemakaian',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_laporan_evaluasi_alat_pemakaian',$data,TRUE);
         
         $pdf->SetTitle('BBJ - Laporan Evaluasi Pemakaian Alat');
         $pdf->nsi_html($html);
@@ -1579,7 +1579,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_laporan_evaluasi_bua',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_laporan_evaluasi_bua',$data,TRUE);
 
         
         $pdf->SetTitle('BBJ - Laporan Evaluasi BUA');
@@ -1611,7 +1611,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_evaluasi_target_produksi',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_evaluasi_target_produksi',$data,TRUE);
 
         
         $pdf->SetTitle('BBJ - Evaluasi Target Produksi');
@@ -1823,7 +1823,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
 		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
 
-        $html = $this->load->view('laporan_produksi/cetak_detail_semen',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_semen',$data,TRUE);
         
         $pdf->SetTitle('');
         $pdf->nsi_html($html);
@@ -1861,7 +1861,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
 		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
 
-        $html = $this->load->view('laporan_produksi/cetak_detail_pasir',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_pasir',$data,TRUE);
         
         $pdf->SetTitle('');
         $pdf->nsi_html($html);
@@ -1899,7 +1899,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
 		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
 
-        $html = $this->load->view('laporan_produksi/cetak_detail_1020',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_1020',$data,TRUE);
         
         $pdf->SetTitle('');
         $pdf->nsi_html($html);
@@ -1937,7 +1937,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
 		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
 
-        $html = $this->load->view('laporan_produksi/cetak_detail_2030',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_2030',$data,TRUE);
         
         $pdf->SetTitle('');
         $pdf->nsi_html($html);
@@ -1975,7 +1975,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
 		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
 
-        $html = $this->load->view('laporan_produksi/cetak_detail_additive',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_additive',$data,TRUE);
         
         $pdf->SetTitle('');
         $pdf->nsi_html($html);
@@ -2013,7 +2013,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
 		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung_print($arr_date);
 
-        $html = $this->load->view('laporan_produksi/cetak_detail_solar',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_solar',$data,TRUE);
         
         $pdf->SetTitle('');
         $pdf->nsi_html($html);
@@ -2691,7 +2691,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/laporan_evaluasi_biaya_produksi_print',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/laporan_evaluasi_biaya_produksi_print',$data,TRUE);
 
         $pdf->SetTitle('BBJ - Laporan Evaluasi Biaya Produksi');
         $pdf->nsi_html($html);
@@ -2722,7 +2722,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/laporan_evaluasi_biaya_produksi_pemakaian_print',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/laporan_evaluasi_biaya_produksi_pemakaian_print',$data,TRUE);
 
         $pdf->SetTitle('BBJ - Laporan Evaluasi Biaya Produksi');
         $pdf->nsi_html($html);
@@ -2752,7 +2752,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_detail_bp',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_bp',$data,TRUE);
         
         $pdf->SetTitle('BBJ - Batching Plant & Genset');
         $pdf->nsi_html($html);
@@ -2781,7 +2781,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_detail_wl',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_wl',$data,TRUE);
         
         $pdf->SetTitle('BBJ - Wheel Loader');
         $pdf->nsi_html($html);
@@ -2810,7 +2810,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_detail_tm',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_tm',$data,TRUE);
         
         $pdf->SetTitle('BBJ - Truck Mixer');
         $pdf->nsi_html($html);
@@ -2839,7 +2839,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_detail_pemeliharaan_tm',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_pemeliharaan_tm',$data,TRUE);
         
         $pdf->SetTitle('BBJ - Truck Mixer');
         $pdf->nsi_html($html);
@@ -2868,7 +2868,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_detail_pemeliharaan_wl',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_pemeliharaan_wl',$data,TRUE);
         
         $pdf->SetTitle('BBJ - Wheel Loader');
         $pdf->nsi_html($html);
@@ -2897,7 +2897,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['start_date'] = $start_date;
 		$data['end_date'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_detail_pemeliharaan_bp',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_pemeliharaan_bp',$data,TRUE);
         
         $pdf->SetTitle('BBJ - Batching Plant');
         $pdf->nsi_html($html);
@@ -2927,7 +2927,7 @@ class Laporan extends Secure_Controller {
 		$data['filter_date'] = $filter_date;
 		$data['date1'] = $start_date;
 		$data['date2'] = $end_date;
-        $html = $this->load->view('laporan_produksi/cetak_laporan_evaluasi_bua',$data,TRUE);
+        $html = $this->load->view('laporan_ev._produksi/cetak_laporan_evaluasi_bua',$data,TRUE);
         
         $pdf->SetTitle('BBJ - BUA');
         $pdf->nsi_html($html);
