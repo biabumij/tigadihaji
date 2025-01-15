@@ -58,7 +58,7 @@
 			transition: background 0.8s;
             background-color: #5f914a;
             padding: 20px;
-            border-radius: 20px;
+            border-radius: 15px;
             font-size: 14px;
 		}
 		.ripple2:hover {
