@@ -780,7 +780,7 @@
                                 format: '{value} %'
                             },
                             min: -600,
-                            max: 100,
+                            max: 500,
                             tickInterval: 50,
                         },
                         tooltip: { 
