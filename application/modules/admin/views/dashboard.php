@@ -207,7 +207,7 @@
                         <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}"><i class="fa-regular fa-hand-point-right"></i> GRAFIK</button>
                     </div>
                     <!--<div id="spoiler" style="display:none">-->
-                    <div id="spoiler" style="display:none">
+                    <div id="spoiler" style="display:block">
                         <?php include_once("script_dashboard.php"); ?>
                         <div class="row animated fadeInUp">
                             <table width="100%" border="0" cellpadding="100px">
@@ -252,7 +252,7 @@
                         <div class="process">
                             <table width="100%" style="margin-top:100px;">
                                 <tr>
-                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#produksi" aria-expanded="false" aria-controls="sc">
+                                    <th width="50%" class="text-center" data-toggle="collapse" data-target="#produksi" aria-expanded="false" aria-controls="sc">
                                         <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
                                             <li style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 40%, #2ea4d7 80%);">
                                                 <a>
@@ -260,7 +260,7 @@
                                             </li>
                                         </ul>
                                     </th>
-                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#keuangan" aria-expanded="false" aria-controls="kp">
+                                    <th width="50%" class="text-center" data-toggle="collapse" data-target="#keuangan" aria-expanded="false" aria-controls="kp">
                                         <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
                                             <li style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 40%, #57d762 80%);">
                                                 <a>
@@ -268,20 +268,31 @@
                                             </li>
                                         </ul>
                                     </th>
-                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#rencana" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
-                                                <a>
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-calendar-week"></i><b>RENCANA</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>
                                 </tr>
                             </table>
                             <table width="100%">
                                 <tr>
-                                    <th width="25%" class="text-center">
+                                    <th width="50%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="produksi">
+                                            <?php
+                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
+                                            ?>
+                                            <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 40%, #2ea4d7 80%);">
+                                                <a href="<?php echo site_url('admin/rap');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-regular fa-calendar-check"></i><b>RAP</b></span></a>
+                                            </li>
+                                            <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 40%, #2ea4d7 80%);">
+                                                <a href="<?php echo site_url('admin/rencana_kerja');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-calendar-days"></i><b>RENCANA<br />KERJA</b></span></a>
+                                            </li>
+                                            <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 40%, #2ea4d7 80%);">
+                                                <a href="<?php echo site_url('admin/stock_opname');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-cubes"></i><b>STOCK<br />OPNAME</b></span></a>
+                                            </li>
+                                            <br /><br />
+                                            <?php
+                                            }
+                                            ?>
                                             <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 40%, #2ea4d7 80%);">
                                                 <a href="<?php echo site_url('admin/pembelian');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cart-shopping"></i><b>PEMBELIAN</b></span></a>
@@ -293,10 +304,6 @@
                                             <?php
                                             if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
                                             ?>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 40%, #2ea4d7 80%);">
-                                                <a href="<?php echo site_url('admin/stock_opname');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-cubes"></i><b>STOCK<br />OPNAME</b></span></a>
-                                            </li>
                                             <?php
                                             }
                                             ?>
@@ -305,7 +312,7 @@
                                     <?php
                                     if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6,7,8))){
                                     ?>
-                                    <th width="25%" class="text-center">
+                                    <th width="50%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="keuangan">
                                             <li class="text-center" style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 40%, #57d762 80%);">
                                                 <a href="<?php echo site_url('admin/biaya_bua');?>">
@@ -334,7 +341,7 @@
                                     <?php
                                     if(in_array($this->session->userdata('admin_group_id'), array(5))){
                                     ?>
-                                    <th width="25%" class="text-center">
+                                    <th width="50%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="keuangan">
                         
                                         </ul>
@@ -343,42 +350,11 @@
                                     }
                                     ?>
                                     
-                                    <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
-                                    ?>
-                                    <th width="25%" class="text-center">
-                                        <ul class="row text-center list-inline  wowload bounceInUp collapse" id="rencana">
-                                            
-                                            <li class="text-center" class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
-                                                <a href="<?php echo site_url('admin/rap');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-regular fa-calendar-check"></i><b>RAP</b></span></a>
-                                            </li>
-                                            <li class="text-center" class="text-center" style="background: linear-gradient(110deg, #cf9231 20%, #cf9231 40%, #ca861b 80%);">
-                                                <a href="<?php echo site_url('admin/rencana_kerja');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-calendar-days"></i><b>RENCANA<br />KERJA</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>
-                                    <?php
-                                    }
-                                    ?>
-
-                                    <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(6))){
-                                    ?>
-                                    <th width="25%" class="text-center">
-                                        <ul class="row text-center list-inline  wowload bounceInUp collapse" id="rencana">
-                        
-                                        </ul>
-                                    </th>
-                                    <?php
-                                    }
-                                    ?>
                                 </tr>
                             </table>
                             <table width="100%">
                                 <tr>
-                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#laporan" aria-expanded="false" aria-controls="beton">
+                                    <th width="50%" class="text-center" data-toggle="collapse" data-target="#laporan" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
                                             <li style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a>
@@ -386,15 +362,7 @@
                                             </li>
                                         </ul>
                                     </th>
-                                    <!--<th width="25%" class="text-center" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
-                                            <li style="background: linear-gradient(110deg, #7163b8 20%, #7163b8 40%, #6252b1 80%);">
-                                                <a>
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-book"></i><b>FORM</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>-->
-                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#master" aria-expanded="false" aria-controls="beton">
+                                    <th width="50%" class="text-center" data-toggle="collapse" data-target="#master" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
                                             <li style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
                                                 <a>
@@ -402,32 +370,6 @@
                                             </li>
                                         </ul>
                                     </th>
-                                    <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(2,3,4,5,6,7,8))){
-                                    ?>
-                                    <th width="25%" class="text-center">
-                                        <ul class="row text-center list-inline  wowload bounceInUp collapse" id="settings">
-                        
-                                        </ul>
-                                    </th>
-                                    <?php
-                                    }
-                                    ?>
-
-                                    <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1))){
-                                    ?>
-                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#settings" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
-                                                <a>
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-gear"></i><b>SETTINGS</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>
-                                    <?php
-                                    }
-                                    ?>
                                 </tr>
                             </table>
                             <table width="100%">
@@ -435,10 +377,14 @@
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="laporan">
                                             <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
-                                                <a href="<?php echo site_url('admin/laporan_keuangan');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-dollar-sign"></i><b>KEUANGAN</b></span></a>
+                                                <a href="<?php echo site_url('admin/laporan_produksi');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-person-digging"></i><b>PRODUKSI</b></span></a>
                                             </li>
                                             <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
+                                                <a href="<?php echo site_url('admin/laporan_keuangan');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-money-bill"></i><b>KEUANGAN</b></span></a>
+                                            </li>
+                                            <!--<li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_pembelian');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cart-shopping"></i><b>PEMBELIAN</b></span></a>
                                             </li>
@@ -457,17 +403,10 @@
                                             <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_rencana_kerja');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-calendar-week"></i><b>RENCANA<br />KERJA</b></span></a>
-                                            </li>
+                                            </li>-->
                                         </ul>
                                     </th>
-                                    <!--<th width="25%" class="text-center">
-                                        <ul class="row text-center list-inline  wowload bounceInUp collapse" id="form">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #7163b8 20%, #7163b8 40%, #6252b1 80%);">
-                                                <a href="<?php echo site_url('admin/form');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-file"></i><b>PERUBAHAN<br />SISTEM</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>-->
+                                    
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="master">
                                             <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
@@ -506,6 +445,38 @@
                                             ?>
                                         </ul>
                                     </th>
+                                </tr>
+                            </table>
+                            <table width="100%">
+                                <tr>
+                                    <?php
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1))){
+                                    ?>
+                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#settings" aria-expanded="false" aria-controls="beton">
+                                        <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
+                                                <a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-gear"></i><b>SETTINGS</b></span></a>
+                                            </li>
+                                        </ul>
+                                    </th>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    
+                                    <!--<th width="25%" class="text-center" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="beton">
+                                        <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
+                                            <li style="background: linear-gradient(110deg, #7163b8 20%, #7163b8 40%, #6252b1 80%);">
+                                                <a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-book"></i><b>FORM</b></span></a>
+                                            </li>
+                                        </ul>
+                                    </th>-->
+                                </tr>
+                            </table>
+                            <table width="100%">
+                                <tr>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="settings">
                                             <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 40%, #666666 80%);">
@@ -522,6 +493,15 @@
                                             </li>
                                         </ul>
                                     </th>
+
+                                    <!--<th width="25%" class="text-center">
+                                        <ul class="row text-center list-inline  wowload bounceInUp collapse" id="form">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #7163b8 20%, #7163b8 40%, #6252b1 80%);">
+                                                <a href="<?php echo site_url('admin/form');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-file"></i><b>PERUBAHAN<br />SISTEM</b></span></a>
+                                            </li>
+                                        </ul>
+                                    </th>-->
                                 </tr>
                             </table>
                         </div>

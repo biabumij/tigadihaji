@@ -66,7 +66,7 @@
 								<div class="panel-header">
                                     <h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
                                     <div class="text-left">
-                                        <a href="<?php echo site_url('admin');?>">
+                                        <a href="<?php echo site_url('admin/laporan_produksi');?>">
                                         <button class="ripple"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
                                     </div>
                                 </div>
