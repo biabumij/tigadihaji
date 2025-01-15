@@ -279,7 +279,6 @@
 			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
 			->join('pmm_coa c','pdb.akun = c.id','left')
 			->where("pdb.akun = 124")
-			->where("pdb.akun in ('124','161')")
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
@@ -623,42 +622,5 @@
 				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black; border-bottom:1px solid black;"><?php echo $total_nilai_evaluasi_angsuran_batching_plant < 0 ? "(".number_format(-$total_nilai_evaluasi_angsuran_batching_plant,0,',','.').")" : number_format($total_nilai_evaluasi_angsuran_batching_plant,0,',','.');?></th>
 	        </tr>
 	    </table>
-		<br /><br /><br /><br /><br /><br /><br /><br /><br />
-		<table width="98%" border="0" cellpadding="30">
-			<tr >
-				<td width="5%"></td>
-				<td width="90%">
-					<table width="100%" border="0" cellpadding="2">
-						<tr>
-							<td align="center" >
-								Disetujui Oleh
-							</td>
-							<td align="center">
-								Dibuat Oleh
-							</td>
-						</tr>
-						<tr class="">
-							<td align="center" height="55px">
-							
-							</td>
-							<td align="center">
-								
-							</td>
-						</tr>
-						<tr>
-							<td align="center">
-								<b><u>Deddy Sarwobiso</u><br />
-								Direktur Utama</b>
-							</td>
-							<td align="center">
-								<b><u>Novel Joko Tri Laksono</u><br />
-								Ka. Plant</b>
-							</td>
-						</tr>
-					</table>
-				</td>
-				<td width="5%"></td>
-			</tr>
-		</table>
 	</body>
 </html>

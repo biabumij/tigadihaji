@@ -279,7 +279,6 @@
 			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
 			->join('pmm_coa c','pdb.akun = c.id','left')
 			->where("pdb.akun = 124")
-			->where("pdb.akun in ('124','161')")
 			->where("pb.status = 'PAID'")
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
