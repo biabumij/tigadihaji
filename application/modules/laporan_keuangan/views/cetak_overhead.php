@@ -89,10 +89,10 @@
 		<table width="98%" border="0" cellpadding="3">
 			<tr>
 				<td align="center">
-					<div style="display: block;font-weight: bold;font-size: 11px;">LAPORAN BIAYA UMUM & ADMINISTRATIF</div>
-					<div align="center" style="display: block;font-weight:bold; font-size: 11px;">PROYEK BENDUNGAN TIGA DIHAJI</div>
-					<div align="center" style="display: block;font-weight:bold; font-size: 11px;">PT. BIA BUMI JAYENDRA</div>
-					<div align="center" style="display: block;font-weight:bold; font-size: 11px; text-transform: uppercase;">PERIODE : <?php echo str_replace($search, $replace, $subject);?></div>
+					<div style="display: block;font-weight: bold;font-size: 11px;">Laporan Biaya Umum & Administratif</div>
+					<div align="center" style="display: block;font-weight:bold; font-size: 11px;">Proyek Bendungan Tiga Dihaji</div>
+					<div align="center" style="display: block;font-weight:bold; font-size: 11px;">PT. Bia Bumi Jayendra</div>
+					<div align="center" style="display: block;font-weight:bold; font-size: 11px; ">Periode : <?php echo str_replace($search, $replace, $subject);?></div>
 				</td>
 			</tr>
 		</table>
@@ -100,68 +100,417 @@
 		<br />
 		<br />
 		<table class="table-lap" width="98%" border="0" cellpadding="3">
-			<tr class="table-active">
-				<th align="center" width="20%"><b>KODE AKUN</b></th>
-				<th align="center" width="50%"><b>NAMA AKUN</b></th>
-				<th align="center" width="30%" align="right"><b>JUMLAH</b></th>
-			</tr>
 			<?php
+			$konsumsi_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 116")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
 
-			if(!empty($biaya_langsung_parent)){
-				foreach ($biaya_langsung_parent as $key => $blj) {
-					?>	
-					<tr>
-						<td align="left" width="100%"><b>BIAYA</b></td>
-					</tr>
-					<?php				
-				}
-			}
+			$konsumsi_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 116")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$konsumsi = $konsumsi_biaya['total'] + $konsumsi_jurnal['total'];
 
-			$total_biaya_langsung  = 0;
-			if(!empty($biaya_langsung)){
-				foreach ($biaya_langsung as $key => $bl) {
-					?>
-					<tr>
-						<td width="20%" align="center"><?= $bl['coa_number'];?></td>
-						<td width="2%"></td>
-						<td width="48%"><?= $bl['coa'];?></td>
-						<td width="30%" align="right"><?php echo number_format($bl['total'],0,',','.');?></td>
-					</tr>
-					<?php
-					$total_biaya_langsung += $bl['total'];	
-				}
-			}
+			$listrik_internet_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 118")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
 
-			if(!empty($biaya_langsung_jurnal_parent)){
-				foreach ($biaya_langsung_jurnal_parent as $key => $blj) {
-					?>	
-					<tr>
-						<td align="left" width="100%"><b>JURNAL</b></td>
-					</tr>
-					<?php				
-				}
-			}
+			$listrik_internet_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 118")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$listrik_internet = $listrik_internet_biaya['total'] + $listrik_internet_jurnal['total'];
 
-			$total_biaya_langsung_jurnal  = 0;
-			$grand_total_biaya_langsung = $total_biaya_langsung;
-				if(!empty($biaya_langsung_jurnal)){
-					foreach ($biaya_langsung_jurnal as $key => $blj) {
-						?>	
-						<tr>
-							<td width="20%" align="center"><?= $blj['coa_number'];?></td>
-							<td width="2%"></td>
-							<td width="48%"><?= $blj['coa'];?></td>
-							<td width="30%" align="right"><?php echo number_format($blj['total'],0,',','.');?></td>
-						</tr>
-						<?php
-						$total_biaya_langsung_jurnal += $blj['total'];					
-					}
-			}
-			$total_a = $grand_total_biaya_langsung + $total_biaya_langsung_jurnal;
+			$gaji_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun in ('114','115')")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$gaji_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun in ('114','115')")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$gaji = $gaji_biaya['total'] + $gaji_jurnal['total'];
+
+			$akomodasi_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 143")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$akomodasi_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 143")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$akomodasi = $akomodasi_biaya['total'] + $akomodasi_jurnal['total'];
+
+			$biaya_maintenance_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 141")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$biaya_maintenance_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 141")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$biaya_maintenance = $biaya_maintenance_biaya['total'] + $biaya_maintenance_jurnal['total'];
+
+			$thr_bonus_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 117")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$thr_bonus_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 117")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$thr_bonus = $thr_bonus_biaya['total'] + $thr_bonus_jurnal['total'];
+
+			$biaya_sewa_kendaraan_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 100")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$biaya_sewa_kendaraan_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 100")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$biaya_sewa_kendaraan = $biaya_sewa_kendaraan_biaya['total'] + $biaya_sewa_kendaraan_jurnal['total'];
+
+			$bensin_tol_parkir_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 78")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$bensin_tol_parkir_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 78")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$bensin_tol_parkir = $bensin_tol_parkir_biaya['total'] + $bensin_tol_parkir_jurnal['total'];
+
+			$pakaian_dinas_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 87")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$pakaian_dinas_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 87")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$pakaian_dinas = $pakaian_dinas_biaya['total'] + $pakaian_dinas_jurnal['total'];
+
+			$perjalanan_dinas_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 62")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$perjalanan_dinas_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 62")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$perjalanan_dinas = $perjalanan_dinas_biaya['total'] + $perjalanan_dinas_jurnal['total'];
+
+			$perlengkapan_kantor_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 98")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$perlengkapan_kantor_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 98")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$perlengkapan_kantor = $perlengkapan_kantor_biaya['total'] + $perlengkapan_kantor_jurnal['total'];
+
+			$pengobatan_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 70")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$pengobatan_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 70")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$pengobatan = $pengobatan_biaya['total'] + $pengobatan_jurnal['total'];
+
+			$alat_tulis_kantor_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 96")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$alat_tulis_kantor_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 96")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$alat_tulis_kantor = $alat_tulis_kantor_biaya['total'] + $alat_tulis_kantor_jurnal['total'];
+
+			$keamanan_kebersihan_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 97")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$keamanan_kebersihan_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 97")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$keamanan_kebersihan = $keamanan_kebersihan_biaya['total'] + $keamanan_kebersihan_jurnal['total'];
+
+			$biaya_lain_lain_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 94")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$biaya_lain_lain_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 94")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$biaya_lain_lain = $biaya_lain_lain_biaya['total'] + $biaya_lain_lain_jurnal['total'];
+
+			$total_realisasi = $konsumsi + $listrik_internet + $gaji + $akomodasi + $biaya_maintenance + $thr_bonus + $biaya_sewa_kendaraan + $bensin_tol_parkir + $pakaian_dinas + $perjalanan_dinas + $perlengkapan_kantor + $pengobatan + $alat_tulis_kantor + $keamanan_kebersihan + $biaya_lain_lain;
 			?>
+			<tr class="table-active">
+				<th align="center" width="20%"><b>Kode Akun</b></th>
+				<th align="center" width="50%"><b>Nama Akun</b></th>
+				<th align="center" width="30%" align="right"><b>Jumlah</b></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50301</th>
+				<th align="left" width="50%">Konsumsi</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_konsumsi?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($konsumsi,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50302</th>
+				<th align="left" width="50%">Listrik & Internet</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_listrik_internet?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($listrik_internet,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50303</th>
+				<th align="left" width="50%">Biaya Upah</th>
+				<th align="center" width="30%" align="right">0</th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50304</th>
+				<th align="left" width="50%">Gaji</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_gaji?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($gaji,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50305</th>
+				<th align="left" width="50%">Akomodasi Tamu </th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_akomodasi?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($akomodasi,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50306</th>
+				<th align="left" width="50%">Biaya Perbaikan & Pemeliharaan</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_biaya_maintenance?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($biaya_maintenance,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50307</th>
+				<th align="left" width="50%">THR & Bonus</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_thr_bonus?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($thr_bonus,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50308</th>
+				<th align="left" width="50%">Biaya Pengujian Material & Laboratorium</th>
+				<th align="center" width="30%" align="right">0</th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50309</th>
+				<th align="left" width="50%">Biaya Donasi</th>
+				<th align="center" width="30%" align="right">0</th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50310</th>
+				<th align="left" width="50%">Biaya Sewa Kendaraan</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_biaya_sewa_kendaraan?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($biaya_sewa_kendaraan,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50311</th>
+				<th align="left" width="50%">Bensin, Tol dan Parkir</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_bensin_tol_parkir?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($bensin_tol_parkir,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50312</th>
+				<th align="left" width="50%">Biaya Kirim</th>
+				<th align="center" width="30%" align="right">0</th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50313</th>
+				<th align="left" width="50%">Pakaian Dinas & K3</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_pakaian_dinas?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($pakaian_dinas,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50314</th>
+				<th align="left" width="50%">Perjalanan Dinas Umum</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_perjalanan_dinas?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($perjalanan_dinas,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50315</th>
+				<th align="left" width="50%">Perlengkapan Kantor</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_perlengkapan_kantor?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($perlengkapan_kantor,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50316</th>
+				<th align="left" width="50%">Biaya Pengobatan</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_pengobatan?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($pengobatan,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50317</th>
+				<th align="left" width="50%">Biaya Alat Tulis Kantor & Printing</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_alat_tulis_kantor?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($alat_tulis_kantor,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50318</th>
+				<th align="left" width="50%">Biaya Keamanan dan Kebersihan</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_keamanan_kebersihan?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($keamanan_kebersihan,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50319</th>
+				<th align="left" width="50%">Biaya Sewa - Mess / Bangunan</th>
+				<th align="center" width="30%" align="right">0</th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50320</th>
+				<th align="left" width="50%">Biaya Lain-Lain</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_biaya_lain_lain?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($biaya_lain_lain,0,',','.');?></a></th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50321</th>
+				<th align="left" width="50%">Biaya Adm Bank</th>
+				<th align="center" width="30%" align="right">0</th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50322</th>
+				<th align="left" width="50%">Biaya Jamsostek</th>
+				<th align="center" width="30%" align="right">0</th>
+			</tr>
+			<tr>
+				<th align="center" width="20%">5-50323</th>
+				<th align="left" width="50%">Biaya Iuran & Langganan</th>
+				<th align="center" width="30%" align="right">0</th>
+			</tr>
 			<tr class="table-active2">
 				<td width="80%" style="padding-left:20px;"><b>Total Biaya Operasional Produksi</b></td>
-				<td width="20%" align="right"><b><a target="_blank" href="<?= base_url("laporan/print_biaya?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_a,0,',','.');?></a></b></td>
+				<td width="20%" align="right"><b><?php echo number_format($total_realisasi,0,',','.');?></b></td>
 			</tr>
 		</table>
 		<br />

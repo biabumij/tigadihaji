@@ -214,12 +214,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
 		$data['date1'] = date('Y-m-d',strtotime($arr_filter_date[0]));
 		$data['date2'] = date('Y-m-d',strtotime($arr_filter_date[1]));
-		$data['biaya_langsung_parent'] = $this->m_laporan->biaya_langsung_parent($arr_date);
-		$data['biaya_langsung'] = $this->m_laporan->biaya_langsung($arr_date);
-		$data['biaya_langsung_jurnal_parent'] = $this->m_laporan->biaya_langsung_jurnal_parent($arr_date);
-		$data['biaya_langsung_jurnal'] = $this->m_laporan->biaya_langsung_jurnal($arr_date);
 		
-
         $html = $this->load->view('laporan_keuangan/cetak_overhead',$data,TRUE);
         
         $pdf->SetTitle('BUA');
@@ -2932,6 +2927,486 @@ class Laporan extends Secure_Controller {
         $pdf->SetTitle('BBJ - BUA');
         $pdf->nsi_html($html);
         $pdf->Output('bua.pdf', 'I');
+	}
+
+	public function cetak_konsumsi()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_konsumsi',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('konsumsi.pdf', 'I');
+	}
+
+	public function cetak_listrik_internet()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_listrik_internet',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('listrik_internet.pdf', 'I');
+	}
+
+	public function cetak_gaji()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_gaji',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('gaji.pdf', 'I');
+	}
+
+	public function cetak_akomodasi()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_akomodasi',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('akomodasi.pdf', 'I');
+	}
+
+	public function cetak_biaya_maintenance()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_biaya_maintenance',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('biaya_maintenance.pdf', 'I');
+	}
+	
+	public function cetak_thr_bonus()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_thr_bonus',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('thr_bonus.pdf', 'I');
+	}
+
+	public function cetak_biaya_sewa_kendaraan()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_biaya_sewa_kendaraan',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('biaya_sewa_kendaraan.pdf', 'I');
+	}
+
+	public function cetak_bensin_tol_parkir()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_bensin_tol_parkir',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('bensin_tol_parkir.pdf', 'I');
+	}
+
+	public function cetak_pakaian_dinas()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_pakaian_dinas',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('pakaian_dinas.pdf', 'I');
+	}
+
+	public function cetak_perjalanan_dinas()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_perjalanan_dinas',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('perjalanan_dinas.pdf', 'I');
+	}
+
+	public function cetak_perlengkapan_kantor()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_perlengkapan_kantor',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('perlengkapan_kantor.pdf', 'I');
+	}
+
+	public function cetak_pengobatan()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_pengobatan',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('pengobatan.pdf', 'I');
+	}
+
+	public function cetak_alat_tulis_kantor()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_alat_tulis_kantor',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('alat_tulis_kantor.pdf', 'I');
+	}
+
+	public function cetak_keamanan_kebersihan()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_keamanan_kebersihan',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('keamanan_kebersihan.pdf', 'I');
+	}
+
+	public function cetak_biaya_lain_lain()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false); 
+		$pdf->setPrintFooter(false);
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('L');
+		$pdf->SetY(3);
+		$pdf->SetX(3);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_biaya_lain_lain',$data,TRUE);
+        
+        $pdf->SetTitle('');
+        $pdf->nsi_html($html);
+        $pdf->Output('biaya_lain_lain.pdf', 'I');
 	}
 	
 }

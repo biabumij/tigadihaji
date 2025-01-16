@@ -128,6 +128,7 @@
 			->join('rap_bua_detail rpd','rap.id = rpd.rap_bua_id','left')
 			->join('pmm_coa c','rpd.coa = c.id','left')
 			->where('rpd.rap_bua_id',$id)
+			->order_by('c.coa_number','asc')
 			->get()->result_array();
 
            	$no = 0 ;
