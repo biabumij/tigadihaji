@@ -43,7 +43,7 @@
 	  <style type="text/css">
 		body {
 			font-family: helvetica;
-			font-size: 8px;
+			font-size: 7px;
 		}
 		table tr.table-active{
             background-color: #e69500;
@@ -128,15 +128,7 @@
 			
 			usort($total_biaya, 'sortByOrder');
 			?>
-			<tr class="table-active">
-				<th align="center" width="10%"><b>TANGGAL</b></th>
-				<th align="center" width="20%"><b>NOMOR BUKTI</b></th>
-				<th align="center"><b>PENERIMA</b></th>
-				<th align="center"><b>URAIAN</b></th>
-				<th align="center"><b>KODE AKUN</b></th>
-				<th align="center"><b>NAMA AKUN</b></th>
-				<th align="center" align="right"><b>JUMLAH</b></th>
-			</tr>
+			<td align="center"><?= $x['transaksi'];?></td>
 			<?php
 			if(!empty($total_biaya)){
 				foreach ($total_biaya as $key => $x) {
@@ -148,6 +140,7 @@
 						<td align="left"><?= $x['deskripsi'];?></td>
 						<td align="center"><?= $x['coa_number'];?></td>
 						<td align="center"><?= $x['coa'];?></td>
+						<td align="center"><?= $x['transaksi'];?></td>
 						<td align="right"><?php echo number_format($x['total'],0,',','.');?></td>
 					</tr>
 					<?php
@@ -156,7 +149,7 @@
 			}
 			?>
 			<tr class="table-active2">
-				<td colspan="6" align="right"><b>TOTAL</b></td>
+				<td colspan="7" align="right"><b>TOTAL</b></td>
 				<td align="right"><b><?php echo number_format($total,0,',','.');?></b></td>
 			</tr>
 		</table>
