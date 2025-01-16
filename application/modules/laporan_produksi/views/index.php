@@ -58,7 +58,7 @@
 			transition: background 0.8s;
             background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 20px;
             font-size: 14px;
             line-height:30px;
 		}
