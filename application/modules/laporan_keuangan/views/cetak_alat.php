@@ -533,7 +533,7 @@
 				<th align="center" style="border-right:1px solid black;">M3</th>
 				<th align="right"><?php echo number_format(0,2,',','.');?></th>
 				<th align="right"><?php echo number_format(0,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_batching_plant,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_bp?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_pemakaian_batching_plant,0,',','.');?></a></th>
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">2.</th>			
@@ -541,7 +541,7 @@
 				<th align="center" style="border-right:1px solid black;">M3</th>
 				<th align="right"><?php echo number_format(0,2,',','.');?></th>
 				<th align="right"><?php echo number_format(0,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_wheel_loader,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_wl?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_pemakaian_wheel_loader,0,',','.');?></a></th>
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">3.</th>			
@@ -552,7 +552,7 @@
 				$harsat_pemakaian_truck_mixer = ($pemakaian_vol_truck_mixer!=0)?$total_pemakaian_truck_mixer / $pemakaian_vol_truck_mixer * 1:0;
 				?>
 				<th align="right"><?php echo number_format($harsat_pemakaian_truck_mixer,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_truck_mixer,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_tm?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_pemakaian_truck_mixer,0,',','.');?></a></th>
 	        </tr>
 			<tr class="table-baris1">
 				<th align="center" style="border-left:1px solid black;">4.</th>			
