@@ -582,7 +582,7 @@
 				<th align="center" style="border-right:1px solid black;">Liter</th>
 				<th align="right"><?php echo number_format($pemakaian_volume_solar,2,',','.');?></th>
 				<th align="right"><?php echo number_format($pemakaian_harsat_solar,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($pemakaian_nilai_solar,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_solar?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($pemakaian_nilai_solar,0,',','.');?></a></th>
 	        </tr>
 			<tr class="table-total">		
 				<th align="right" colspan="3" style="border-top:1px solid black; border-bottom:1px solid black; border-left:1px solid black; border-right:1px solid black;">TOTAL</th>
