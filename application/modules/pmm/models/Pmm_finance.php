@@ -121,6 +121,451 @@ class Pmm_finance extends CI_Model {
         $this->db->insert('transactions',$data);
     }
 
+    function InsertTransactionsPenjualan($production_id,$date_production,$no_production,$client_id,$product_id,$price)
+    {
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => $production_id,
+            'akun' => 3,
+            'debit' => $price,
+            'kredit' => 0,
+            'tanggal_transaksi' => $date_production,
+            'nomor_transaksi' => $no_production,
+            'penerima' => $client_id,
+            'produk' => $product_id,
+            'transaksi' => 'Pengiriman Penjualan'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsPenjualan2($production_id,$date_production,$no_production,$client_id,$product_id,$price)
+    {
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => $production_id,
+            'akun' => 53,
+            'debit' => 0,
+            'kredit' => $price,
+            'tanggal_transaksi' => $date_production,
+            'nomor_transaksi' => $no_production,
+            'penerima' => $client_id,
+            'produk' => $product_id,
+            'transaksi' => 'Pengiriman Penjualan'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsPenjualan3($production_id,$date_production,$no_production,$client_id,$product_id,$price,$komposisi_id)
+    {
+        $komposisi = $this->db->select('(pp.display_volume) * pk.presentase_a as volume_a, (pp.display_volume) * pk.presentase_b as volume_b, (pp.display_volume) * pk.presentase_c as volume_c, (pp.display_volume) * pk.presentase_d as volume_d, (pp.display_volume) * pk.presentase_e as volume_e, (pp.display_volume * pk.presentase_a) * pk.price_a as nilai_a, (pp.display_volume * pk.presentase_b) * pk.price_b as nilai_b, (pp.display_volume * pk.presentase_c) * pk.price_c as nilai_c, (pp.display_volume * pk.presentase_d) * pk.price_d as nilai_d, (pp.display_volume * pk.presentase_e) * pk.price_e as nilai_e')
+		->from('pmm_productions pp')
+		->join('pmm_agregat pk', 'pp.komposisi_id = pk.id','left')
+		->where("pp.id = '$production_id'")
+		->get()->result_array();
+
+		$total_volume_a = 0;
+		$total_volume_b = 0;
+		$total_volume_c = 0;
+		$total_volume_d = 0;
+		$total_volume_e = 0;
+
+		$total_nilai_a = 0;
+		$total_nilai_b = 0;
+		$total_nilai_c = 0;
+		$total_nilai_d = 0;
+		$total_nilai_e = 0;
+
+		foreach ($komposisi as $x){
+			$total_volume_a += $x['volume_a'];
+			$total_volume_b += $x['volume_b'];
+			$total_volume_c += $x['volume_c'];
+			$total_volume_d += $x['volume_d'];
+			$total_volume_e += $x['volume_e'];
+			$total_nilai_a += $x['nilai_a'];
+			$total_nilai_b += $x['nilai_b'];
+			$total_nilai_c += $x['nilai_c'];
+			$total_nilai_d += $x['nilai_d'];
+			$total_nilai_e += $x['nilai_e'];
+			
+		}
+
+		$volume_a = $total_volume_a;
+		$volume_b = $total_volume_b;
+		$volume_c = $total_volume_c;
+		$volume_d = $total_volume_d;
+		$volume_e = $total_volume_e;
+
+		$nilai_a = $total_nilai_a;
+		$nilai_b = $total_nilai_b;
+		$nilai_c = $total_nilai_c;
+		$nilai_d = $total_nilai_d;
+		$nilai_e = $total_nilai_e;
+
+		$price_a = ($total_volume_a!=0)?$total_nilai_a / $total_volume_a * 1:0;
+		$price_b = ($total_volume_b!=0)?$total_nilai_b / $total_volume_b * 1:0;
+		$price_c = ($total_volume_c!=0)?$total_nilai_c / $total_volume_c * 1:0;
+		$price_d = ($total_volume_d!=0)?$total_nilai_d / $total_volume_d * 1:0;
+		$price_e = ($total_volume_e!=0)?$total_nilai_e / $total_volume_e * 1:0;
+
+		$total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d + $volume_e;
+		$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d + $nilai_e;
+
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => $production_id,
+            'akun' => 149,
+            'debit' => $total_nilai_komposisi,
+            'kredit' => 0,
+            'tanggal_transaksi' => $date_production,
+            'nomor_transaksi' => $no_production,
+            'penerima' => $client_id,
+            'produk' => $product_id,
+            'transaksi' => 'Pengiriman Penjualan'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsPenjualan4($production_id,$date_production,$no_production,$client_id,$product_id,$price,$komposisi_id)
+    {
+        $komposisi = $this->db->select('(pp.display_volume) * pk.presentase_a as volume_a, (pp.display_volume) * pk.presentase_b as volume_b, (pp.display_volume) * pk.presentase_c as volume_c, (pp.display_volume) * pk.presentase_d as volume_d, (pp.display_volume) * pk.presentase_e as volume_e, (pp.display_volume * pk.presentase_a) * pk.price_a as nilai_a, (pp.display_volume * pk.presentase_b) * pk.price_b as nilai_b, (pp.display_volume * pk.presentase_c) * pk.price_c as nilai_c, (pp.display_volume * pk.presentase_d) * pk.price_d as nilai_d, (pp.display_volume * pk.presentase_e) * pk.price_e as nilai_e')
+		->from('pmm_productions pp')
+		->join('pmm_agregat pk', 'pp.komposisi_id = pk.id','left')
+		->where("pp.id = '$production_id'")
+		->get()->result_array();
+
+		$total_volume_a = 0;
+		$total_volume_b = 0;
+		$total_volume_c = 0;
+		$total_volume_d = 0;
+		$total_volume_e = 0;
+
+		$total_nilai_a = 0;
+		$total_nilai_b = 0;
+		$total_nilai_c = 0;
+		$total_nilai_d = 0;
+		$total_nilai_e = 0;
+
+		foreach ($komposisi as $x){
+			$total_volume_a += $x['volume_a'];
+			$total_volume_b += $x['volume_b'];
+			$total_volume_c += $x['volume_c'];
+			$total_volume_d += $x['volume_d'];
+			$total_volume_e += $x['volume_e'];
+			$total_nilai_a += $x['nilai_a'];
+			$total_nilai_b += $x['nilai_b'];
+			$total_nilai_c += $x['nilai_c'];
+			$total_nilai_d += $x['nilai_d'];
+			$total_nilai_e += $x['nilai_e'];
+			
+		}
+
+		$volume_a = $total_volume_a;
+		$volume_b = $total_volume_b;
+		$volume_c = $total_volume_c;
+		$volume_d = $total_volume_d;
+		$volume_e = $total_volume_e;
+
+		$nilai_a = $total_nilai_a;
+		$nilai_b = $total_nilai_b;
+		$nilai_c = $total_nilai_c;
+		$nilai_d = $total_nilai_d;
+		$nilai_e = $total_nilai_e;
+
+		$price_a = ($total_volume_a!=0)?$total_nilai_a / $total_volume_a * 1:0;
+		$price_b = ($total_volume_b!=0)?$total_nilai_b / $total_volume_b * 1:0;
+		$price_c = ($total_volume_c!=0)?$total_nilai_c / $total_volume_c * 1:0;
+		$price_d = ($total_volume_d!=0)?$total_nilai_d / $total_volume_d * 1:0;
+		$price_e = ($total_volume_e!=0)?$total_nilai_e / $total_volume_e * 1:0;
+
+		$total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d + $volume_e;
+		$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d + $nilai_e;
+
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => $production_id,
+            'akun' => 6,
+            'debit' => 0,
+            'kredit' => $total_nilai_komposisi,
+            'tanggal_transaksi' => $date_production,
+            'nomor_transaksi' => $no_production,
+            'penerima' => $client_id,
+            'produk' => $product_id,
+            'transaksi' => 'Pengiriman Penjualan'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsPenjualan5($production_id,$date_production,$no_production,$price,$komposisi_id)
+    {
+        $komposisi = $this->db->select('(pp.display_volume) * pk.presentase_a as volume_a, (pp.display_volume) * pk.presentase_b as volume_b, (pp.display_volume) * pk.presentase_c as volume_c, (pp.display_volume) * pk.presentase_d as volume_d, (pp.display_volume) * pk.presentase_e as volume_e, (pp.display_volume * pk.presentase_a) * pk.price_a as nilai_a, (pp.display_volume * pk.presentase_b) * pk.price_b as nilai_b, (pp.display_volume * pk.presentase_c) * pk.price_c as nilai_c, (pp.display_volume * pk.presentase_d) * pk.price_d as nilai_d, (pp.display_volume * pk.presentase_e) * pk.price_e as nilai_e')
+		->from('pmm_productions pp')
+		->join('pmm_agregat pk', 'pp.komposisi_id = pk.id','left')
+		->where("pp.id = '$production_id'")
+		->get()->result_array();
+
+		$total_volume_a = 0;
+		$total_volume_b = 0;
+		$total_volume_c = 0;
+		$total_volume_d = 0;
+		$total_volume_e = 0;
+
+		$total_nilai_a = 0;
+		$total_nilai_b = 0;
+		$total_nilai_c = 0;
+		$total_nilai_d = 0;
+		$total_nilai_e = 0;
+
+		foreach ($komposisi as $x){
+			$total_volume_a += $x['volume_a'];
+			$total_volume_b += $x['volume_b'];
+			$total_volume_c += $x['volume_c'];
+			$total_volume_d += $x['volume_d'];
+			$total_volume_e += $x['volume_e'];
+			$total_nilai_a += $x['nilai_a'];
+			$total_nilai_b += $x['nilai_b'];
+			$total_nilai_c += $x['nilai_c'];
+			$total_nilai_d += $x['nilai_d'];
+			$total_nilai_e += $x['nilai_e'];
+			
+		}
+
+		$volume_a = $total_volume_a;
+		$volume_b = $total_volume_b;
+		$volume_c = $total_volume_c;
+		$volume_d = $total_volume_d;
+		$volume_e = $total_volume_e;
+
+		$nilai_a = $total_nilai_a;
+		$nilai_b = $total_nilai_b;
+		$nilai_c = $total_nilai_c;
+		$nilai_d = $total_nilai_d;
+		$nilai_e = $total_nilai_e;
+
+		$price_a = ($total_volume_a!=0)?$total_nilai_a / $total_volume_a * 1:0;
+		$price_b = ($total_volume_b!=0)?$total_nilai_b / $total_volume_b * 1:0;
+		$price_c = ($total_volume_c!=0)?$total_nilai_c / $total_volume_c * 1:0;
+		$price_d = ($total_volume_d!=0)?$total_nilai_d / $total_volume_d * 1:0;
+		$price_e = ($total_volume_e!=0)?$total_nilai_e / $total_volume_e * 1:0;
+
+		$total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d + $volume_e;
+		$total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d + $nilai_e;
+
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => $production_id,
+            'akun' => 0,
+            'debit' => $total_nilai_komposisi + $price,
+            'kredit' => $total_nilai_komposisi + $price,
+            'tanggal_transaksi' => $date_production,
+            'nomor_transaksi' => $no_production,
+            'penerima' => NULL,
+            'produk' => NULL,
+            'transaksi' => '<div style="text-align:right; vertical-align:middle;">Total</div>'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsTagihanPenjualan($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id)
+    {
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => 0,
+            'tagihan_id' => $tagihan_id,
+            'akun' => 53,
+            'debit' => $total,
+            'kredit' => 0,
+            'tanggal_transaksi' => $tanggal_invoice_id,
+            'nomor_transaksi' => $nomor_invoice,
+            'penerima' => $client_id,
+            'produk' => NULL,
+            'transaksi' => 'Invoice Penjualan'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsTagihanPenjualan2($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id)
+    {
+
+        $akun_masuk = $this->db->select('ppp.*, p.akun_masuk')
+		->from('pmm_penagihan_penjualan ppp')
+		->join('penerima p', 'ppp.client_id = p.id','left')
+		->where("ppp.id = '$tagihan_id'")
+		->get()->row_array();
+        $akun_masuk = $akun_masuk['akun_masuk'];
+
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => 0,
+            'tagihan_id' => $tagihan_id,
+            'akun' => $akun_masuk,
+            'debit' => $total,
+            'kredit' => 0,
+            'tanggal_transaksi' => $tanggal_invoice_id,
+            'nomor_transaksi' => $nomor_invoice,
+            'penerima' => $client_id,
+            'produk' => NULL,
+            'transaksi' => 'Invoice Penjualan'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsTagihanPenjualan3($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id)
+    {
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => 0,
+            'tagihan_id' => $tagihan_id,
+            'akun' => 3,
+            'debit' => 0,
+            'kredit' => $total,
+            'tanggal_transaksi' => $tanggal_invoice_id,
+            'nomor_transaksi' => $nomor_invoice,
+            'penerima' => $client_id,
+            'produk' => NULL,
+            'transaksi' => 'Invoice Penjualan'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsTagihanPenjualan4($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id)
+    {
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => 0,
+            'tagihan_id' => $tagihan_id,
+            'akun' => 148,
+            'debit' => 0,
+            'kredit' => $total,
+            'tanggal_transaksi' => $tanggal_invoice_id,
+            'nomor_transaksi' => $nomor_invoice,
+            'penerima' => $client_id,
+            'produk' => NULL,
+            'transaksi' => 'Invoice Penjualan'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsTagihanPenjualan5($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id)
+    {
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => 0,
+            'tagihan_id' => $tagihan_id,
+            'akun' => 0,
+            'debit' => $total + $total,
+            'kredit' => $total + $total,
+            'tanggal_transaksi' => $tanggal_invoice_id,
+            'nomor_transaksi' => $nomor_invoice,
+            'penerima' => NULL,
+            'produk' => NULL,
+            'transaksi' => '<div style="text-align:right; vertical-align:middle;">Total</div>'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsPembayaranPenjualan($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke)
+    {
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => 0,
+            'tagihan_id' => 0,
+            'pembayaran_id' => $pembayaran_id,
+            'akun' => $setor_ke,
+            'debit' => $pembayaran_pro,
+            'kredit' => 0,
+            'tanggal_transaksi' => $tanggal_pembayaran,
+            'nomor_transaksi' => $nomor_transaksi,
+            'penerima' => $client_id,
+            'produk' => NULL,
+            'transaksi' => 'Pembayaran Penjualan'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsPembayaranPenjualan2($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke)
+    {
+        $akun_masuk = $this->db->select('pm.*, p.akun_masuk')
+		->from('pmm_pembayaran pm')
+		->join('penerima p', 'pm.client_id = p.id','left')
+		->where("pm.client_id = '$client_id'")
+		->get()->row_array();
+        $akun_masuk = $akun_masuk['akun_masuk'];
+        
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => 0,
+            'tagihan_id' => 0,
+            'pembayaran_id' => $pembayaran_id,
+            'akun' => $akun_masuk,
+            'debit' => 0,
+            'kredit' => $pembayaran_pro,
+            'tanggal_transaksi' => $tanggal_pembayaran,
+            'nomor_transaksi' => $nomor_transaksi,
+            'penerima' => $client_id,
+            'produk' => NULL,
+            'transaksi' => 'Pembayaran Penjualan'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsPembayaranPenjualan3($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke)
+    {
+        $data = array(
+            'biaya_id' => 0,
+            'jurnal_id' => 0,
+            'terima_id' => 0,
+            'transfer_id' => 0,
+            'production_id' => 0,
+            'tagihan_id' => 0,
+            'pembayaran_id' => $pembayaran_id,
+            'akun' => 0,
+            'debit' => $pembayaran_pro,
+            'kredit' => $pembayaran_pro,
+            'tanggal_transaksi' => $tanggal_pembayaran,
+            'nomor_transaksi' => $nomor_transaksi,
+            'penerima' => NULL,
+            'produk' => NULL,
+            'transaksi' => '<div style="text-align:right; vertical-align:middle;">Total</div>'
+        );
+        $this->db->insert('transactions',$data);
+    }
+
     function InsertLogs($log_type,$table_name,$table_id,$description)
     {
         $data = array(

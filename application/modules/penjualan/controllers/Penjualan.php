@@ -1033,12 +1033,14 @@ class Penjualan extends Secure_Controller
 		$jobs_type = $this->input->post('jobs_type');
 		$total_product = $this->input->post('total_product');
 		$memo = $this->input->post('memo');
+		$nomor_invoice = $this->input->post('nomor_invoice');
 		$attach = $this->input->post('attach');
 		$sub_total = $this->input->post('sub_total');
 		$ppn = $this->input->post('ppn');
 		$total = $this->input->post('total');
 		$sales_po_id = $this->input->post('sales_po_id');
 		$client_id = $this->input->post('client_id');
+		$tanggal_invoice_id = date('Y-m-d',strtotime($this->input->post('tanggal_invoice')));
 
 		$surat_jalan = $this->input->post('surat_jalan');
 
@@ -1146,6 +1148,13 @@ class Penjualan extends Secure_Controller
 					);
 
 					$this->db->insert('pmm_penagihan_penjualan_detail', $arr_detail);
+
+					$this->pmm_finance->InsertTransactionsTagihanPenjualan5($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id);
+					$this->pmm_finance->InsertTransactionsTagihanPenjualan4($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id);
+					$this->pmm_finance->InsertTransactionsTagihanPenjualan3($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id);
+					$this->pmm_finance->InsertTransactionsTagihanPenjualan2($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id);
+					$this->pmm_finance->InsertTransactionsTagihanPenjualan($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id);
+
 				} else {
 					$this->session->set_flashdata('notif_error', ',<b>ERROR</b>');
 					redirect('penjualan/penagihan_penjualan/' . $this->input->post('idSurat'));
@@ -1218,6 +1227,7 @@ class Penjualan extends Secure_Controller
             unlink($path_2);
 
 			$this->db->delete('pmm_lampiran_pembayaran', array('pembayaran_id' => $pembayaran_id));
+			$this->db->delete('transactions',array('tagihan_id'=>$id));
 
 			$file = $this->db->select('lk.lampiran')
             ->from('pmm_lampiran_penagihan lk')
@@ -1398,6 +1408,11 @@ class Penjualan extends Secure_Controller
 		$pembayaran_pro = str_replace('.', '', $pembayaran_pro);
 		$pembayaran_pro = str_replace(',', '.', $pembayaran_pro);
 
+		$tanggal_pembayaran = date('Y-m-d', strtotime($this->input->post('tanggal_pembayaran')));
+		$nomor_transaksi = $this->input->post('nomor_transaksi');
+		$client_id = $this->input->post('client_id');
+		$setor_ke = $this->input->post('setor_ke');
+
 
 		$arr_insert = array(
 			'penagihan_id' => $this->input->post('id_penagihan'),
@@ -1417,6 +1432,10 @@ class Penjualan extends Secure_Controller
 
 		if ($this->db->insert('pmm_pembayaran', $arr_insert)) {
 			$pembayaran_id = $this->db->insert_id();
+
+			$this->pmm_finance->InsertTransactionsPembayaranPenjualan3($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke);
+			$this->pmm_finance->InsertTransactionsPembayaranPenjualan2($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke);
+			$this->pmm_finance->InsertTransactionsPembayaranPenjualan($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke);
 
 			if (!file_exists('uploads/pembayaran')) {
 			    mkdir('uploads/pembayaran', 0777, true);
@@ -1535,6 +1554,8 @@ class Penjualan extends Secure_Controller
 		unlink($path);
 
         $this->db->delete('pmm_lampiran_pembayaran', array('pembayaran_id' => $id));
+
+		$this->db->delete('transactions',array('pembayaran_id'=>$id));
 
 		$penagihan_id = $this->db->select('(ppp.id) as id')
         ->from('pmm_pembayaran pppp')
@@ -1885,6 +1906,13 @@ class Penjualan extends Secure_Controller
             'id' => $penagihan_id,
 		    'tanggal_invoice' => $tanggal_invoice,
 		);
+
+		$data_transactions = array(
+            'tagihan_id' => $penagihan_id,
+		    'tanggal_transaksi' => $tanggal_invoice,
+		);
+
+		$this->db->update('transactions',$data_transactions,array('tagihan_id'=>$penagihan_id));
 
 		if(!empty($id)){
 			if($this->db->update('pmm_penagihan_penjualan',$data,array('id'=>$penagihan_id))){

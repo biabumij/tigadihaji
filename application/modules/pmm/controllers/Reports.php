@@ -13832,21 +13832,45 @@ class Reports extends CI_Controller {
 		 </style>
 			
 			<?php
-			
+			$transactions = $this->db->select('t.*')
+			->from('transactions t')
+			->where("t.tanggal_transaksi between '$date1' and '$date2'")
+			->group_by("t.id")
+			->order_by('id','desc')
+			->get()->result_array();
 	        ?>
 
 			<tr class="table-active2">
-	            <th class="text-left">Tanggal</th>
-				<th class="text-left">Nomor Bukti</th>
-				<th class="text-left">Penerima</th>
-				<th class="text-left">Uraian</th>
-				<th class="text-left">Kode Akun</th>
-				<th class="text-left">Nama Akun</th>
-				<th class="text-left">Kategori Akun</th>
-				<th class="text-left">Debet</th>
-				<th class="text-left">Kredit</th>
-				<th class="text-left">Saldo</th>
+	            <th class="text-center">Tanggal</th>
+				<th class="text-center">Nomor Bukti</th>
+				<th class="text-center">Penerima</th>
+				<th class="text-center">Uraian</th>
+				<th class="text-center">Kode Akun</th>
+				<th class="text-center">Nama Akun</th>
+				<th class="text-center">Kategori Akun</th>
+				<th class="text-center">Debet</th>
+				<th class="text-center">Kredit</th>
 	        </tr>
+			<?php
+			if(!empty($transactions)){
+				foreach ($transactions as $key => $x) {
+				?>
+				
+			<tr class="table-active3">
+	            <th class="text-center"><?= date('d-m-Y',strtotime($x["tanggal_transaksi"])) ?></th>
+				<td class="text-left"><?= $x['nomor_transaksi'];?></td>
+				<td class="text-left"><?= $this->crud_global->GetField('penerima',array('id'=>$x['penerima']),'nama');?></td>
+				<td class="text-left"><?= $this->crud_global->GetField('produk',array('id'=>$x['produk']),'nama_produk');?></td>
+				<td align="left"><?= $this->crud_global->GetField('pmm_coa',array('id'=>$x['akun']),'coa');?></td>
+				<td align="center"><?= $this->crud_global->GetField('pmm_coa',array('id'=>$x['akun']),'coa_number');?></td>
+				<td class="text-left"><?= $x['transaksi'];?></td>
+				<td class="text-right"><?php echo number_format($x['debit'],0,',','.');?></td>
+				<td class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></td>
+	        </tr>
+				<?php
+				}
+			}
+			?>
 	    </table>
 		<?php
 	}

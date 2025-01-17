@@ -211,11 +211,13 @@ class Productions extends Secure_Controller {
 		$production_id = 0;
 		$id = $this->input->post('id');
 		$sales_po_id = $this->input->post('po_penjualan');
+		$date_production = date('Y-m-d',strtotime($this->input->post('date')));
 		$komposisi_id = $this->input->post('komposisi_id');
 		$product_id = $this->input->post('product_id');
 		$volume = str_replace(',', '.', $this->input->post('volume'));
 		$price = $this->pmm_model->GetPriceProductions($sales_po_id,$product_id,$volume);
 		$no_production = $this->input->post('no_production');
+		$client_id = $this->input->post('client_id');
 		
 		$surat_jalan = $this->input->post('surat_jalan_val');
 
@@ -309,6 +311,12 @@ class Productions extends Secure_Controller {
 					//Insert COA
 					//$coa_description = 'Production Nomor '.$no_production;
 					//$this->pmm_finance->InsertTransactions(4,$coa_description,$price,0);
+					$this->pmm_finance->InsertTransactionsPenjualan5($production_id,$date_production,$no_production,$price,$komposisi_id);
+					$this->pmm_finance->InsertTransactionsPenjualan4($production_id,$date_production,$no_production,$client_id,$product_id,$price,$komposisi_id);
+					$this->pmm_finance->InsertTransactionsPenjualan3($production_id,$date_production,$no_production,$client_id,$product_id,$price,$komposisi_id);
+					$this->pmm_finance->InsertTransactionsPenjualan2($production_id,$date_production,$no_production,$client_id,$product_id,$price);
+					$this->pmm_finance->InsertTransactionsPenjualan($production_id,$date_production,$no_production,$client_id,$product_id,$price);
+					 
 				}
 			}else {
 				$data['updated_by'] = $this->session->userdata('admin_id');
@@ -530,6 +538,7 @@ class Productions extends Secure_Controller {
 		unlink($path);
 		
 		$this->db->delete('pmm_productions',array('id'=>$id));
+		$this->db->delete('transactions',array('production_id'=>$id));
 		$output['output'] = true;
 			
 		

@@ -260,8 +260,14 @@
                                                 <div style="margin:20px">
                                                     <div class="row">
                                                         <form action="<?php echo site_url('laporan/cetak_laporan_jurnal');?>" target="_blank">
+                                                            <?php
+                                                            $date_now = date('Y-m-d');
+                                                            $date1 = date('2024-01-01');
+                                                            $date2 = date('Y-m-d', strtotime($date_now));
+                                                            $filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2));
+                                                            ?>
                                                             <div class="col-sm-3">
-                                                                <input type="text" id="filter_date_laporan_jurnal" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
+                                                                <input type="text" id="filter_date_laporan_jurnal" name="filter_date" value="<?php echo $filter_date;?>" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
