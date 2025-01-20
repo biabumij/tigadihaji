@@ -70,7 +70,7 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <label>Nomor Transaksi<span class="required" aria-required="true">*</span></label>
-                                            <input type="text" class="form-control text-right" name="nomor_transaksi" required="" value="<?= $bayar['nomor_transaksi'] ?>" />
+                                            <input type="text" class="form-control text-left" name="nomor_transaksi" required="" value="<?= $bayar['nomor_transaksi'] ?>" />
                                         </div>
                                     </div>
                                     <br />

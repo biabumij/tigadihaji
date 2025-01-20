@@ -203,6 +203,9 @@ class Biaya extends CI_Controller {
         $jumlah_biaya = $this->input->post('jumlah_biaya');
         $nomor_transaksi = $this->input->post('nomor_transaksi');
         $tanggal_transaksi = date('Y-m-d',strtotime($this->input->post('tanggal_transaksi')));
+        $penerima = $this->input->post('penerima');
+        $created_by = $this->session->userdata('admin_id');
+        $created_on = date('Y-m-d H:i:s');
 
         $arr_insert = array(
         	'bayar_dari' => $bayar_dari,
@@ -272,7 +275,8 @@ class Biaya extends CI_Controller {
                     
                     if(!empty($product)){
 
-                        $this->pmm_finance->InsertTransactions($biaya_id,$bayar_dari,$jumlah,$tanggal_transaksi);
+                        $this->pmm_finance->InsertTransactionsBiaya($biaya_id,$nomor_transaksi,$product,$jumlah,$tanggal_transaksi,$penerima,$created_by,$created_on);
+                        
                         $transaction_id = $this->db->insert_id();
 
                         $arr_detail = array(
@@ -291,6 +295,9 @@ class Biaya extends CI_Controller {
                     }
 
                 }
+
+                $this->pmm_finance->InsertTransactionsBiaya2($biaya_id,$bayar_dari,$nomor_transaksi,$jumlah_biaya,$tanggal_transaksi,$penerima,$created_by,$created_on);
+                $this->pmm_finance->InsertTransactionsBiayaTotal($biaya_id,$jumlah_biaya,$tanggal_transaksi,$created_by,$created_on);
         
             }
 

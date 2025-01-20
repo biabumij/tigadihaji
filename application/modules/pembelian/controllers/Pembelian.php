@@ -645,7 +645,14 @@ class Pembelian extends Secure_Controller
                     );
 
                     $this->db->insert('pmm_penagihan_pembelian_detail', $arr_detail);
+                    
+                    $created_by = $this->session->userdata('admin_id');
+					$created_on = date('Y-m-d H:i:s');
 
+                    $this->pmm_finance->InsertTransactionsTagihanPembelian($tagihan_id,$tanggal_invoice,$total_pro,$nomor_invoice,$supplier_id,$created_by,$created_on);
+                    $this->pmm_finance->InsertTransactionsTagihanPembelian2($tagihan_id,$tanggal_invoice,$total_pro,$nomor_invoice,$supplier_id,$created_by,$created_on);
+                    $this->pmm_finance->InsertTransactionsTagihanPembelianTotal($tagihan_id,$tanggal_invoice,$total,$total_pro,$supplier_id,$created_by,$created_on);
+					
                     // $this->db->update('pmm_receipt_material',array('status_payment'=>'CREATING'),array('id'=>$receipt_material_id));
 
 
@@ -1001,10 +1008,6 @@ class Pembelian extends Secure_Controller
 
         $this->db->trans_start(); # Starting Transaction
         $this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
-        $this->email->from('ginanjar.bayubimantoro@biabumijayendra.com', 'Identification');
-        $this->email->to('ginanjar.bayubimantoro@biabumijayendra.com');
-        $this->email->subject('Send Email Codeigniter');
-        $this->email->message('The email send using codeigniter library');
 
 
 
@@ -1015,7 +1018,7 @@ class Pembelian extends Secure_Controller
             // Insert COA
             $coa_1 = '';
             $coa_description = 'Penagihan Pembelian Nomor ' . $nomor_invoice;
-            $this->pmm_finance->InsertTransactions(39, $coa_description, $total, 0);
+            //$this->pmm_finance->InsertTransactions(39, $coa_description, $total, 0);
             $transaction_id = $this->db->insert_id();
             $coa_1 .= $transaction_id;
             if (!empty($coa_supp) || $coa_supp > 0) {
@@ -1104,6 +1107,8 @@ class Pembelian extends Secure_Controller
             $this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
 
             $penagihan_pembelian = $this->db->get_where('pmm_penagihan_pembelian', array('id' => $id))->row_array();
+
+            $this->db->delete('transactions',array('tagihan_pembelian_id'=>$id));
             
             $this->db->delete('pmm_penagihan_pembelian_detail', array('penagihan_pembelian_id' => $id));
 
@@ -1194,6 +1199,8 @@ class Pembelian extends Secure_Controller
             ->from('pmm_lampiran_pembayaran_penagihan_pembelian pp')
             ->where("pp.pembayaran_penagihan_pembelian_id = $pembayaran_pembelian_id")
             ->get()->row_array();
+
+            $this->db->delete('transactions',array('pembayaran_pembelian_id'=>$pembayaran_pembelian_id));
 
             $path = './uploads/pembayaran_penagihan_pembelian/'.$file['lampiran'];
             chmod($path, 0777);
@@ -1472,6 +1479,11 @@ class Pembelian extends Secure_Controller
         $pembayaran_pro = str_replace('.', '', $pembayaran_pro);
         $pembayaran_pro = str_replace(',', '.', $pembayaran_pro);
 
+        $tanggal_pembayaran = date('Y-m-d', strtotime($this->input->post('tanggal_pembayaran')));
+		$nomor_transaksi = $this->input->post('nomor_transaksi');
+		$supplier_name = $this->input->post('supplier_name');
+		$bayar_dari = $this->input->post('bayar_dari');
+
         $penagihan_pembelian_id = $this->input->post('penagihan_pembelian_id');
         $arr_insert = array(
             'penagihan_pembelian_id' => $penagihan_pembelian_id,
@@ -1489,6 +1501,13 @@ class Pembelian extends Secure_Controller
 
         if ($this->db->insert('pmm_pembayaran_penagihan_pembelian', $arr_insert)) {
             $pembayaran_id = $this->db->insert_id();
+
+            $created_by = $this->session->userdata('admin_id');
+			$created_on = date('Y-m-d H:i:s');
+
+            $this->pmm_finance->InsertTransactionsPembayaranPembelian($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on);
+            $this->pmm_finance->InsertTransactionsPembayaranPembelian2($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on);
+            $this->pmm_finance->InsertTransactionsPembayaranPembelianTotal($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$bayar_dari,$created_by,$created_on);
 
             if (!file_exists('uploads/pembayaran_penagihan_pembelian')) {
 			    mkdir('uploads/pembayaran_penagihan_pembelian', 0777, true);
@@ -1636,6 +1655,10 @@ class Pembelian extends Secure_Controller
 			$pembayaran_pro = str_replace('.', '', $pembayaran_pro);
 			$pembayaran_pro = str_replace(',', '.', $pembayaran_pro);
 
+            $tanggal_pembayaran = date('Y-m-d', strtotime($this->input->post('tanggal_pembayaran')));
+			$nomor_transaksi = $this->input->post('nomor_transaksi');
+			$bayar_dari = $this->input->post('bayar_dari');
+
 
 			$arr_update = array(
 				'penagihan_pembelian_id' => $this->input->post('id_penagihan'),
@@ -1652,7 +1675,15 @@ class Pembelian extends Secure_Controller
 
 			$this->db->where('id', $id);
 			if ($this->db->update('pmm_pembayaran_penagihan_pembelian', $arr_update)) {
-				$pembayaran_id = $this->db->insert_id();
+                $pembayaran_id = $this->db->insert_id();
+
+                $created_by = $this->session->userdata('admin_id');
+                $created_on = date('Y-m-d H:i:s');
+                $this->db->delete('transactions',array('pembayaran_pembelian_id'=>$id));
+
+                $this->pmm_finance->InsertTransactionsPembayaranPembelian($id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on);
+                $this->pmm_finance->InsertTransactionsPembayaranPembelian2($id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on);
+                $this->pmm_finance->InsertTransactionsPembayaranPembelianTotal($id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on);
 
 				$data = [];
 				$count = count($_FILES['files']['name']);
@@ -1689,6 +1720,8 @@ class Pembelian extends Secure_Controller
 					}
 				}
 			}
+
+            $created_by = $this->session->userdata('admin_id');
 
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.
@@ -1750,6 +1783,7 @@ class Pembelian extends Secure_Controller
 		unlink($path);
 
         $this->db->delete('pmm_lampiran_pembayaran_penagihan_pembelian', array('pembayaran_penagihan_pembelian_id' => $id));
+        $this->db->delete('transactions',array('pembayaran_pembelian_id'=>$id));
 
         $penagihan_pembelian_id = $this->db->select('(ppp.id) as id')
         ->from('pmm_pembayaran_penagihan_pembelian pppp')
@@ -1850,6 +1884,13 @@ class Pembelian extends Secure_Controller
             'nomor_invoice' => $nomor_invoice,
 		);
 
+        $data_transactions = array(
+            'tagihan_pembelian_id' => $penagihan_id,
+		    'tanggal_transaksi' => $tanggal_invoice,
+		);
+
+		$this->db->update('transactions',$data_transactions,array('tagihan_pembelian_id'=>$penagihan_id));
+
 		if(!empty($id)){
 			if($this->db->update('pmm_penagihan_pembelian',$data,array('id'=>$penagihan_id))){
 				$output['output'] = true;
@@ -1865,8 +1906,8 @@ class Pembelian extends Secure_Controller
         $data_verif = array(
             'penagihan_pembelian_id' => $penagihan_id,
 		    'tanggal_invoice' => $tanggal_invoice,
-            'nomor_invoice' => $nomor_invoice,
 		);
+        
 
         if(!empty($penagihan_id)){
 			if($this->db->update('pmm_verifikasi_penagihan_pembelian',$data_verif,array('penagihan_pembelian_id'=>$penagihan_id))){

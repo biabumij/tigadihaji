@@ -1149,11 +1149,16 @@ class Penjualan extends Secure_Controller
 
 					$this->db->insert('pmm_penagihan_penjualan_detail', $arr_detail);
 
-					$this->pmm_finance->InsertTransactionsTagihanPenjualan5($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id);
-					$this->pmm_finance->InsertTransactionsTagihanPenjualan4($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id);
-					$this->pmm_finance->InsertTransactionsTagihanPenjualan3($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id);
-					$this->pmm_finance->InsertTransactionsTagihanPenjualan2($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id);
-					$this->pmm_finance->InsertTransactionsTagihanPenjualan($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id);
+					$created_by = $this->session->userdata('admin_id');
+					$created_on = date('Y-m-d H:i:s');
+
+					$this->pmm_finance->InsertTransactionsTagihanPenjualan($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id,$created_by,$created_on);
+					$this->pmm_finance->InsertTransactionsTagihanPenjualan2($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id,$created_by,$created_on);
+					$this->pmm_finance->InsertTransactionsTagihanPenjualan3($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id,$created_by,$created_on);
+					$this->pmm_finance->InsertTransactionsTagihanPenjualan4($tagihan_id,$tanggal_invoice_id,$total,$nomor_invoice,$client_id,$created_by,$created_on);
+					$this->pmm_finance->InsertTransactionsTagihanPenjualanTotal($tagihan_id,$tanggal_invoice_id,$total,$client_id,$created_by,$created_on);
+					
+					
 
 				} else {
 					$this->session->set_flashdata('notif_error', ',<b>ERROR</b>');
@@ -1228,6 +1233,7 @@ class Penjualan extends Secure_Controller
 
 			$this->db->delete('pmm_lampiran_pembayaran', array('pembayaran_id' => $pembayaran_id));
 			$this->db->delete('transactions',array('tagihan_id'=>$id));
+			$this->db->delete('transactions',array('pembayaran_id'=>$pembayaran_id));
 
 			$file = $this->db->select('lk.lampiran')
             ->from('pmm_lampiran_penagihan lk')
@@ -1323,6 +1329,11 @@ class Penjualan extends Secure_Controller
 			$pembayaran_pro = str_replace('.', '', $pembayaran_pro);
 			$pembayaran_pro = str_replace(',', '.', $pembayaran_pro);
 
+			$tanggal_pembayaran = date('Y-m-d', strtotime($this->input->post('tanggal_pembayaran')));
+			$nomor_transaksi = $this->input->post('nomor_transaksi');
+			$client_id = $this->input->post('client_id');
+			$setor_ke = $this->input->post('setor_ke');
+
 
 			$arr_update = array(
 				'penagihan_id' => $this->input->post('id_penagihan'),
@@ -1342,6 +1353,16 @@ class Penjualan extends Secure_Controller
 			$this->db->where('id', $id);
 			if ($this->db->update('pmm_pembayaran', $arr_update)) {
 				$pembayaran_id = $this->db->insert_id();
+				$created_by = $this->session->userdata('admin_id');
+				$created_on = date('Y-m-d H:i:s');
+
+				$this->db->delete('transactions',array('pembayaran_id'=>$id));
+				
+				$this->pmm_finance->InsertTransactionsPembayaranPenjualan($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on);
+				$this->pmm_finance->InsertTransactionsPembayaranPenjualan2($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on);
+				$this->pmm_finance->InsertTransactionsPembayaranPenjualanTotal($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$client_id,$setor_ke,$created_by,$created_on);
+				
+				
 
 				$data = [];
 				$count = count($_FILES['files']['name']);
@@ -1412,6 +1433,8 @@ class Penjualan extends Secure_Controller
 		$nomor_transaksi = $this->input->post('nomor_transaksi');
 		$client_id = $this->input->post('client_id');
 		$setor_ke = $this->input->post('setor_ke');
+		$created_by = $this->session->userdata('admin_id');
+		$created_on = date('Y-m-d H:i:s');
 
 
 		$arr_insert = array(
@@ -1433,9 +1456,11 @@ class Penjualan extends Secure_Controller
 		if ($this->db->insert('pmm_pembayaran', $arr_insert)) {
 			$pembayaran_id = $this->db->insert_id();
 
-			$this->pmm_finance->InsertTransactionsPembayaranPenjualan3($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke);
-			$this->pmm_finance->InsertTransactionsPembayaranPenjualan2($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke);
-			$this->pmm_finance->InsertTransactionsPembayaranPenjualan($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke);
+			$this->pmm_finance->InsertTransactionsPembayaranPenjualan($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on);
+			$this->pmm_finance->InsertTransactionsPembayaranPenjualan2($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on);
+			$this->pmm_finance->InsertTransactionsPembayaranPenjualanTotal($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on);
+			
+			
 
 			if (!file_exists('uploads/pembayaran')) {
 			    mkdir('uploads/pembayaran', 0777, true);
@@ -1907,13 +1932,6 @@ class Penjualan extends Secure_Controller
 		    'tanggal_invoice' => $tanggal_invoice,
 		);
 
-		$data_transactions = array(
-            'tagihan_id' => $penagihan_id,
-		    'tanggal_transaksi' => $tanggal_invoice,
-		);
-
-		$this->db->update('transactions',$data_transactions,array('tagihan_id'=>$penagihan_id));
-
 		if(!empty($id)){
 			if($this->db->update('pmm_penagihan_penjualan',$data,array('id'=>$penagihan_id))){
 				$output['output'] = true;
@@ -1925,6 +1943,15 @@ class Penjualan extends Secure_Controller
 				$output['output'] = true;
 			}
 		}
+
+		$data_transactions = array(
+            'tagihan_id' => $penagihan_id,
+		    'tanggal_transaksi' => $tanggal_invoice,
+			'created_by' => $this->session->userdata('admin_id'),
+			'created_on' => date('Y-m-d H:i:s'),
+		);
+
+		$this->db->update('transactions',$data_transactions,array('tagihan_id'=>$penagihan_id));
 		
 		echo json_encode($output);	
 	}

@@ -458,7 +458,7 @@ class Receipt_material extends CI_Controller {
 		$material_id = $this->input->post('material_id');
 		$tax_id = $this->input->post('tax_id');
 		$pajak_id = $this->input->post('pajak_id');
-		$date_receipt = $this->input->post('date_receipt_val');
+		$date_receipt = date('Y-m-d',strtotime($this->input->post('date_receipt')));
 		$volume = str_replace('.', '', $this->input->post('volume'));
 		$volume = str_replace(',', '.', $volume);
 		$convert_value = str_replace('.', '', $this->input->post('convert_value'));
@@ -534,7 +534,8 @@ class Receipt_material extends CI_Controller {
 
 		$data_p = array(
 			'purchase_order_id' => $purchase_order_id,
-			'date_receipt' => date('Y-m-d',strtotime($date_receipt)),
+			//'date_receipt' => date('Y-m-d',strtotime($date_receipt)),
+			'date_receipt' => $date_receipt,
 			'material_id' => $material_id,
 			'tax_id' => $tax_id,
 			'pajak_id' => $pajak_id,
@@ -558,10 +559,13 @@ class Receipt_material extends CI_Controller {
 		$data_p['created_by'] = $this->session->userdata('admin_id');
 		$this->db->insert('pmm_receipt_material',$data_p);
 		$no_production = $this->db->insert_id();
+		$display_price_new = $volume * $new_price;
+		$created_by = $this->session->userdata('admin_id');
+		$created_on = date('Y-m-d H:i:s');
 
-		//$coa_description = 'Penerimaan Nomor '.$no_production;
-		//$this->pmm_finance->InsertTransactions(7,$coa_description,$price * $volume,0);
-		//$this->pmm_finance->InsertTransactions(39,$coa_description,0,$price * $volume);
+		$this->pmm_finance->InsertTransactionsPembelian($no_production,$date_receipt,$surat_jalan,$purchase_order_id,$material_id,$display_price_new,$created_by,$created_on);
+		$this->pmm_finance->InsertTransactionsPembelian2($no_production,$date_receipt,$surat_jalan,$purchase_order_id,$material_id,$display_price_new,$created_by,$created_on);
+		$this->pmm_finance->InsertTransactionsPembelianTotal($no_production,$date_receipt,$surat_jalan,$display_price_new,$created_by,$created_on);
 		
 		if ($this->db->trans_status() === FALSE) {
 			# Something went wrong.

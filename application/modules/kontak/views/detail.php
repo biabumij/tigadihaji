@@ -147,20 +147,20 @@
                                         <h4>Akun Mapping</h4>
                                     </div>
                                     <table class="table table-bordered table-striped">
+                                    <tr>
+                                            <th>
+                                                Akun Masuk
+                                            </th>        
+                                            <td>
+                                                <?= $this->crud_global->GetField('pmm_coa',array('id'=>$row['akun_masuk']),'coa');?>
+                                            </td>
+                                        </tr>
                                         <tr>
                                             <th width="30%">
                                                 Akun Keluar
                                             </th>        
                                             <td>
                                                 <?= $this->crud_global->GetField('pmm_coa',array('id'=>$row['akun_keluar']),'coa');?>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                Akun Masuk
-                                            </th>        
-                                            <td>
-                                                <?= $this->crud_global->GetField('pmm_coa',array('id'=>$row['akun_masuk']),'coa');?>
                                             </td>
                                         </tr>
                                     </table>

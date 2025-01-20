@@ -275,7 +275,8 @@ class Productions extends Secure_Controller {
 			} 
 	
 			$data = array(
-				'date_production' => date('Y-m-d',strtotime($this->input->post('date'))),
+				//'date_production' => date('Y-m-d',strtotime($this->input->post('date'))),
+				'date_production' => $date_production,
 				'no_production' => $no_production,
 				'product_id' => $product_id,
 				'tax_id' => $this->input->post('tax_id'),
@@ -311,11 +312,18 @@ class Productions extends Secure_Controller {
 					//Insert COA
 					//$coa_description = 'Production Nomor '.$no_production;
 					//$this->pmm_finance->InsertTransactions(4,$coa_description,$price,0);
-					$this->pmm_finance->InsertTransactionsPenjualan5($production_id,$date_production,$no_production,$price,$komposisi_id);
-					$this->pmm_finance->InsertTransactionsPenjualan4($production_id,$date_production,$no_production,$client_id,$product_id,$price,$komposisi_id);
-					$this->pmm_finance->InsertTransactionsPenjualan3($production_id,$date_production,$no_production,$client_id,$product_id,$price,$komposisi_id);
-					$this->pmm_finance->InsertTransactionsPenjualan2($production_id,$date_production,$no_production,$client_id,$product_id,$price);
-					$this->pmm_finance->InsertTransactionsPenjualan($production_id,$date_production,$no_production,$client_id,$product_id,$price);
+					$created_by = $this->session->userdata('admin_id');
+					$created_on = date('Y-m-d H:i:s');
+
+					$this->pmm_finance->InsertTransactionsPenjualan($production_id,$date_production,$no_production,$client_id,$product_id,$price,$created_by,$created_on);
+					$this->pmm_finance->InsertTransactionsPenjualan2($production_id,$date_production,$no_production,$client_id,$product_id,$price,$created_by,$created_on);
+					$this->pmm_finance->InsertTransactionsPenjualan3($production_id,$date_production,$no_production,$client_id,$product_id,$price,$komposisi_id,$created_by,$created_on);
+					$this->pmm_finance->InsertTransactionsPenjualan4($production_id,$date_production,$no_production,$client_id,$product_id,$price,$komposisi_id,$created_by,$created_on);
+					$this->pmm_finance->InsertTransactionsPenjualanTotal($production_id,$date_production,$no_production,$price,$komposisi_id,$created_by,$created_on);
+					
+					
+					
+					
 					 
 				}
 			}else {
