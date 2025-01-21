@@ -1353,17 +1353,15 @@ class Penjualan extends Secure_Controller
 			$this->db->where('id', $id);
 			if ($this->db->update('pmm_pembayaran', $arr_update)) {
 				$pembayaran_id = $this->db->insert_id();
+
 				$created_by = $this->session->userdata('admin_id');
 				$created_on = date('Y-m-d H:i:s');
-
+				$pembayaran_id = $id;
 				$this->db->delete('transactions',array('pembayaran_id'=>$id));
-				
 				$this->pmm_finance->InsertTransactionsPembayaranPenjualan($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on);
 				$this->pmm_finance->InsertTransactionsPembayaranPenjualan2($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on);
-				$this->pmm_finance->InsertTransactionsPembayaranPenjualanTotal($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$client_id,$setor_ke,$created_by,$created_on);
+				$this->pmm_finance->InsertTransactionsPembayaranPenjualanTotal($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on);
 				
-				
-
 				$data = [];
 				$count = count($_FILES['files']['name']);
 				for ($i = 0; $i < $count; $i++) {
@@ -1459,8 +1457,6 @@ class Penjualan extends Secure_Controller
 			$this->pmm_finance->InsertTransactionsPembayaranPenjualan($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on);
 			$this->pmm_finance->InsertTransactionsPembayaranPenjualan2($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on);
 			$this->pmm_finance->InsertTransactionsPembayaranPenjualanTotal($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on);
-			
-			
 
 			if (!file_exists('uploads/pembayaran')) {
 			    mkdir('uploads/pembayaran', 0777, true);

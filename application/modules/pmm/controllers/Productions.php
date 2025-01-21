@@ -309,9 +309,6 @@ class Productions extends Secure_Controller {
 				if($this->db->insert('pmm_productions',$data)){
 					$production_id = $this->db->insert_id();
 					
-					//Insert COA
-					//$coa_description = 'Production Nomor '.$no_production;
-					//$this->pmm_finance->InsertTransactions(4,$coa_description,$price,0);
 					$created_by = $this->session->userdata('admin_id');
 					$created_on = date('Y-m-d H:i:s');
 
@@ -320,11 +317,6 @@ class Productions extends Secure_Controller {
 					$this->pmm_finance->InsertTransactionsPenjualan3($production_id,$date_production,$no_production,$client_id,$product_id,$price,$komposisi_id,$created_by,$created_on);
 					$this->pmm_finance->InsertTransactionsPenjualan4($production_id,$date_production,$no_production,$client_id,$product_id,$price,$komposisi_id,$created_by,$created_on);
 					$this->pmm_finance->InsertTransactionsPenjualanTotal($production_id,$date_production,$no_production,$price,$komposisi_id,$created_by,$created_on);
-					
-					
-					
-					
-					 
 				}
 			}else {
 				$data['updated_by'] = $this->session->userdata('admin_id');

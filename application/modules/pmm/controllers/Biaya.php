@@ -196,8 +196,6 @@ class Biaya extends CI_Controller {
     
     public function submit_biaya(){
         $total_product = $this->input->post('total_product');
-        $this->db->trans_start(); # Starting Transaction
-        $this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
 
         $bayar_dari = $this->input->post('bayar_dari');
         $jumlah_biaya = $this->input->post('jumlah_biaya');
@@ -276,8 +274,6 @@ class Biaya extends CI_Controller {
                     if(!empty($product)){
 
                         $this->pmm_finance->InsertTransactionsBiaya($biaya_id,$nomor_transaksi,$product,$jumlah,$tanggal_transaksi,$penerima,$created_by,$created_on);
-                        
-                        $transaction_id = $this->db->insert_id();
 
                         $arr_detail = array(
     		        		'biaya_id' => $biaya_id,
@@ -288,7 +284,6 @@ class Biaya extends CI_Controller {
                         
                         $this->db->insert('pmm_detail_biaya',$arr_detail);
 
-
                     }else{
                         redirect('pmm/biaya/tambah_biaya');
             			exit();
@@ -298,11 +293,7 @@ class Biaya extends CI_Controller {
 
                 $this->pmm_finance->InsertTransactionsBiaya2($biaya_id,$bayar_dari,$nomor_transaksi,$jumlah_biaya,$tanggal_transaksi,$penerima,$created_by,$created_on);
                 $this->pmm_finance->InsertTransactionsBiayaTotal($biaya_id,$jumlah_biaya,$tanggal_transaksi,$created_by,$created_on);
-        
             }
-
-
-
         }
 
         if ($this->db->trans_status() === FALSE) {
@@ -798,12 +789,18 @@ class Biaya extends CI_Controller {
 	{
 		$output['output'] = false;
 		$id = $this->input->post('id');
-		if(!empty($id)){
-			
-			if($this->db->delete('pmm_detail_biaya',array('id'=>$id))){
-				$output['output'] = true;
-			}
+        $transaction_id = $this->input->post('transaction_id');
+
+        if(!empty($id)){
+            
+            if($this->db->delete('pmm_detail_biaya',array('id'=>$id))){
+                $output['output'] = true;
+            }
+
+            
 		}
+
+        $this->db->delete('transactions',array('id'=>$transaction_id));
 		echo json_encode($output);
 	}
 
@@ -823,7 +820,7 @@ class Biaya extends CI_Controller {
 			$output['output'] = false;
 			$output['err'] = 'Akun Sudah Ditambahkan !!!';
 		}else {
-            $transaction_id = $this->pmm_model->GetNoEditBiaya();
+            //$transaction_id = $this->pmm_model->GetNoEditBiaya();
 
 
 			$data_p = array(
@@ -841,6 +838,18 @@ class Biaya extends CI_Controller {
 				//$data_p['created_by'] = $this->session->userdata('admin_id');
 				$this->db->insert('pmm_detail_biaya',$data_p,array('id'=>$biaya_id));	
 			}
+
+            $biaya_main = $this->db->select('pb.*')
+            ->from('pmm_detail_biaya pdb')
+            ->join('pmm_biaya pb', 'pdb.biaya_id = pb.id','left')
+            ->where("pdb.biaya_id = '$biaya_id'")
+            ->get()->row_array();
+            $nomor_transaksi = $biaya_main['nomor_transaksi'];
+            $tanggal_transaksi = $biaya_main['tanggal_transaksi'];
+            $penerima = $biaya_main['penerima'];
+            $created_by = $this->session->userdata('admin_id');
+			$created_on = date('Y-m-d H:i:s');
+            $this->pmm_finance->InsertTransactionsBiaya($biaya_id,$nomor_transaksi,$product,$jumlah,$tanggal_transaksi,$penerima,$created_by,$created_on);
 
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.
@@ -916,11 +925,11 @@ class Biaya extends CI_Controller {
 		$output['output'] = false;
 
 		$form_id_biaya = $this->input->post('form_id_biaya');
+        $transaction_id = $this->input->post('transaction_id');
 		$biaya_id = $this->input->post('biaya_id');
 		$akun = $this->input->post('akun');
 		$deskripsi = $this->input->post('deskripsi');
 		$jumlah = str_replace(',', '.', $this->input->post('jumlah'));
-        $transaction_id = $this->input->post('transaction_id');
 
 		$data = array(
             'biaya_id' => $biaya_id,
@@ -939,6 +948,20 @@ class Biaya extends CI_Controller {
 				$output['output'] = true;
 			}
 		}
+
+        $arr_update = array(
+            'id' => $transaction_id,
+			'akun' => $akun,
+			//'deskripsi' => $deskripsi,
+			'debit' => $jumlah,
+            'created_by' => $this->session->userdata('admin_id'),
+            'created_on' => date('Y-m-d H:i:s')
+		);
+
+        $this->db->where('id', $transaction_id);
+        if ($this->db->update('transactions', $arr_update)) {
+            
+        }
 		
 		echo json_encode($output);	
 	}
@@ -968,7 +991,12 @@ class Biaya extends CI_Controller {
 		$output['output'] = false;
 		$id = $this->input->post('id');
 		if(!empty($id)){
-			$data = $this->db->select('*')->get_where('pmm_detail_biaya',array('id'=>$id))->row_array();
+			//$data = $this->db->select('*')->get_where('pmm_detail_biaya',array('id'=>$id))->row_array();
+            $data = $this->db->select('pdb.*, t.id as transaction_id')
+            ->from('pmm_detail_biaya pdb')
+            ->join('transactions t','pdb.akun = t.akun','left')
+            ->where('pdb.id',$id)
+            ->get()->row_array();
 			$output['output'] = $data;
 		}
 		echo json_encode($output);

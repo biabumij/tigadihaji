@@ -383,7 +383,7 @@ class Pmm_finance extends CI_Model {
         $this->db->insert('transactions',$data);
     }
 
-    function InsertTransactionsPembayaranPenjualanTotal($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$client_id,$setor_ke,$created_by,$created_on)
+    function InsertTransactionsPembayaranPenjualanTotal($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$client_id,$setor_ke,$created_by,$created_on)
     {
         $data = array(
             'pembayaran_id' => $pembayaran_id,
@@ -516,25 +516,25 @@ class Pmm_finance extends CI_Model {
         $this->db->insert('transactions',$data);
     }
 
-    function InsertTransactionsPembayaranPembelian($id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on)
+    function InsertTransactionsPembayaranPembelian($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on)
     {
         $akun_masuk = $this->db->select('p.akun_masuk')
 		->from('pmm_pembayaran_penagihan_pembelian pppp')
         ->join('pmm_penagihan_pembelian ppp', 'pppp.penagihan_pembelian_id = ppp.id','left')
 		->join('penerima p', 'ppp.supplier_id = p.id','left')
-		->where("pppp.id = '$id'")
+		->where("pppp.id = '$pembayaran_id'")
 		->get()->row_array();
         $akun_masuk = $akun_masuk['akun_masuk'];
 
         $supplier_id = $this->db->select('ppp.supplier_id')
 		->from('pmm_pembayaran_penagihan_pembelian pppp')
         ->join('pmm_penagihan_pembelian ppp', 'pppp.penagihan_pembelian_id = ppp.id','left')
-		->where("pppp.id = '$id'")
+		->where("pppp.id = '$pembayaran_id'")
 		->get()->row_array();
         $supplier_id = $supplier_id['supplier_id'];
         
         $data = array(
-            'pembayaran_pembelian_id' => $id,
+            'pembayaran_pembelian_id' => $pembayaran_id,
             'akun' => $akun_masuk,
             'debit' => $pembayaran_pro,
             'tanggal_transaksi' => $tanggal_pembayaran,
@@ -547,17 +547,17 @@ class Pmm_finance extends CI_Model {
         $this->db->insert('transactions',$data);
     }
 
-    function InsertTransactionsPembayaranPembelian2($id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on)
+    function InsertTransactionsPembayaranPembelian2($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on)
     {
         $supplier_id = $this->db->select('ppp.supplier_id')
 		->from('pmm_pembayaran_penagihan_pembelian pppp')
         ->join('pmm_penagihan_pembelian ppp', 'pppp.penagihan_pembelian_id = ppp.id','left')
-		->where("pppp.id = '$id'")
+		->where("pppp.id = '$pembayaran_id'")
 		->get()->row_array();
         $supplier_id = $supplier_id['supplier_id'];
 
         $data = array(
-            'pembayaran_pembelian_id' => $id,
+            'pembayaran_pembelian_id' => $pembayaran_id,
             'akun' => $bayar_dari,
             'kredit' => $pembayaran_pro,
             'tanggal_transaksi' => $tanggal_pembayaran,
@@ -570,10 +570,10 @@ class Pmm_finance extends CI_Model {
         $this->db->insert('transactions',$data);
     }
 
-    function InsertTransactionsPembayaranPembelianTotal($id,$tanggal_pembayaran,$pembayaran_pro,$bayar_dari,$created_by,$created_on)
+    function InsertTransactionsPembayaranPembelianTotal($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$bayar_dari,$created_by,$created_on)
     {
         $data = array(
-            'pembayaran_pembelian_id' => $id,
+            'pembayaran_pembelian_id' => $pembayaran_id,
             'debit' => $pembayaran_pro,
             'kredit' => $pembayaran_pro,
             'tanggal_transaksi' => $tanggal_pembayaran,
@@ -629,6 +629,18 @@ class Pmm_finance extends CI_Model {
         $this->db->insert('transactions',$data);
     }
 
+    function UpdateTransactionsBiaya($transaction_id,$akun,$jumlah,$created_by,$created_on)
+    {
+        $data = array(
+            //'id' => $transaction_id,
+            'akun' => $akun,
+            'debit' => $jumlah,
+            'created_by' => $created_by,
+            'created_on' =>  $created_on
+        );
+        $this->db->update('transactions',$data);
+    }
+
     function InsertLogs($log_type,$table_name,$table_id,$description)
     {
         $data = array(
@@ -639,6 +651,36 @@ class Pmm_finance extends CI_Model {
             'created_by' => $this->session->userdata('admin_id')
         );
         $this->db->insert('logs',$data);
+    }
+
+    function InsertTransactionsJurnal($jurnal_id,$nomor_transaksi,$product,$debit,$kredit,$tanggal_transaksi,$created_by,$created_on)
+    {
+        $data = array(
+            'jurnal_id' => $jurnal_id,
+            'akun' => $product,
+            'debit' => $debit,
+            'kredit' => $kredit,
+            'tanggal_transaksi' => $tanggal_transaksi,
+            'nomor_transaksi' => $nomor_transaksi,
+            'transaksi' => 'Jurnal Umum',
+            'created_by' => $created_by,
+            'created_on' =>  $created_on
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsJurnalTotal($jurnal_id,$total_debit,$total_kredit,$tanggal_transaksi,$created_by,$created_on)
+    {
+        $data = array(
+            'jurnal_id' => $jurnal_id,
+            'debit' => $total_debit,
+            'kredit' => $total_kredit,
+            'tanggal_transaksi' => $tanggal_transaksi,
+            'transaksi' => '<div style="text-align:right; vertical-align:middle;">Total</div>',
+            'created_by' => $created_by,
+            'created_on' =>  $created_on
+        );
+        $this->db->insert('transactions',$data);
     }
 
     function getSalesPoPpn($id)

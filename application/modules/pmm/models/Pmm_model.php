@@ -3698,8 +3698,9 @@ class Pmm_model extends CI_Model {
     function TableDetailBiaya($id)
     {
         $data = array();
-        $this->db->select('pdb.*, c.coa as akun');
+        $this->db->select('pdb.*, c.coa as akun, t.id as transaction_id');
         $this->db->join('pmm_coa c','pdb.akun = c.id','left');
+        $this->db->join('transactions t','pdb.akun = t.akun','left');
         $this->db->where('pdb.biaya_id',$id);
         $this->db->order_by('pdb.id','asc');
         $query = $this->db->get('pmm_detail_biaya pdb');
@@ -3710,7 +3711,7 @@ class Pmm_model extends CI_Model {
                 $row['akun'] = $row['akun'];
                 $row['deskripsi']= $row['deskripsi'];
 				$row['jumlah']= number_format($row['jumlah'],0,',','.');
-                $row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a> <a href="javascript:void(0);" onclick="OpenForm('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
+                $row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].','.$row['transaction_id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a> <a href="javascript:void(0);" onclick="OpenForm('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
                 
                 $data[] = $row;
             }
@@ -3769,8 +3770,9 @@ class Pmm_model extends CI_Model {
     function TableDetailJurnal($id)
     {
         $data = array();
-        $this->db->select('pdb.*, c.coa as akun');
+        $this->db->select('pdb.*, c.coa as akun, t.id as transaction_id');
         $this->db->join('pmm_coa c','pdb.akun = c.id','left');
+        $this->db->join('transactions t','pdb.akun = t.akun','left');
         $this->db->where('pdb.jurnal_id',$id);
         $this->db->order_by('pdb.id','asc');
         $query = $this->db->get('pmm_detail_jurnal pdb');
@@ -3783,7 +3785,7 @@ class Pmm_model extends CI_Model {
                 $row['deskripsi']= $row['deskripsi'];
 				$row['debit']= number_format($row['debit'],0,',','.');
                 $row['kredit']= number_format($row['kredit'],0,',','.');
-                $row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a> <a href="javascript:void(0);" onclick="OpenForm('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
+                $row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].','.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a> <a href="javascript:void(0);" onclick="OpenForm('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
                 
                 $data[] = $row;
             }

@@ -122,6 +122,7 @@
                 <div class="modal-body">
                     <form class="form-horizontal" style="padding: 0 10px 0 20px;" >
                         <input type="hidden" name="biaya_id" id="id" value="<?= $data['id'] ?>">
+                        <input type="hidden" name="transaction_id" id="transaction_id" value="<?= $data['transaction_id'] ?>">
                         <input type="hidden" id="form_id_biaya" name="form_id_biaya" class="form-control" required="" autocomplete="off" />
                         <div class="form-group">
                             <label>Akun</label>
@@ -337,7 +338,7 @@
             ],
         });
 
-        function DeleteData(id)
+        function DeleteData(id,transaction_id)
         {
             bootbox.confirm("Apakah anda yakin untuk proses data ini ?", function(result){ 
                 // console.log('This was logged in the callback: ' + result); 
@@ -346,7 +347,7 @@
                         type    : "POST",
                         url     : "<?php echo site_url('pmm/biaya/delete_detail'); ?>",
                         dataType : 'json',
-                        data: {id:id},
+                        data: {id:id,transaction_id:transaction_id},
                         success : function(result){
                             if(result.output){
                                 table.ajax.reload();
@@ -466,6 +467,7 @@
                 success : function(result){
                     if(result.output){
                         $('#form_id_biaya').val(result.output.id).trigger('change');
+                        $('#transaction_id').val(result.output.transaction_id).trigger('transaction_id');
                         $('#akun').val(result.output.akun).trigger('change');
                         $('#deskripsi').val(result.output.deskripsi);
                         $('#jumlah').val(result.output.jumlah);

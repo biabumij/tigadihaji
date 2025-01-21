@@ -1679,11 +1679,11 @@ class Pembelian extends Secure_Controller
 
                 $created_by = $this->session->userdata('admin_id');
                 $created_on = date('Y-m-d H:i:s');
-                $this->db->delete('transactions',array('pembayaran_pembelian_id'=>$id));
-
-                $this->pmm_finance->InsertTransactionsPembayaranPembelian($id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on);
-                $this->pmm_finance->InsertTransactionsPembayaranPembelian2($id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on);
-                $this->pmm_finance->InsertTransactionsPembayaranPembelianTotal($id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on);
+                $pembayaran_id = $id;
+                $this->db->delete('transactions',array('pembayaran_pembelian_id'=>$pembayaran_id));
+                $this->pmm_finance->InsertTransactionsPembayaranPembelian($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on);
+                $this->pmm_finance->InsertTransactionsPembayaranPembelian2($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$nomor_transaksi,$bayar_dari,$created_by,$created_on);
+                $this->pmm_finance->InsertTransactionsPembayaranPembelianTotal($pembayaran_id,$tanggal_pembayaran,$pembayaran_pro,$bayar_dari,$created_by,$created_on);
 
 				$data = [];
 				$count = count($_FILES['files']['name']);

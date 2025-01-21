@@ -191,7 +191,12 @@ class Jurnal_umum extends CI_Controller {
         $this->db->trans_start(); # Starting Transaction
         $this->db->trans_strict(FALSE); # See Note 01. If you wish can remove as well 
         $total = $this->input->post('jumlah_debit') + $this->input->post('jumlah_kredit');
+        $nomor_transaksi = $this->input->post('nomor_transaksi');
         $tanggal_transaksi = date('Y-m-d',strtotime($this->input->post('tanggal_transaksi')));
+        $created_by = $this->session->userdata('admin_id');
+        $created_on = date('Y-m-d H:i:s');
+        $total_debit = $this->input->post('jumlah_debit');
+        $total_kredit = $this->input->post('jumlah_kredit');
 
         $arr_insert = array(
             'nomor_transaksi' => $this->input->post('nomor_transaksi'),
@@ -264,8 +269,7 @@ class Jurnal_umum extends CI_Controller {
                     
                     if(!empty($product)){
 
-                        $this->pmm_finance->InsertTransactionsJurnal($jurnal_id,$product,$debit,$kredit,$tanggal_transaksi);
-                        $transaction_id = $this->db->insert_id();
+                        $this->pmm_finance->InsertTransactionsJurnal($jurnal_id,$nomor_transaksi,$product,$debit,$kredit,$tanggal_transaksi,$created_by,$created_on);
 
                         $arr_detail = array(
                             'jurnal_id' => $jurnal_id,
@@ -285,9 +289,9 @@ class Jurnal_umum extends CI_Controller {
                     }
     
                 }
-
-            
         }
+
+        $this->pmm_finance->InsertTransactionsJurnalTotal($jurnal_id,$total_debit,$total_kredit,$tanggal_transaksi,$created_by,$created_on);
 
         if ($this->db->trans_status() === FALSE) {
             # Something went wrong.
@@ -439,6 +443,7 @@ class Jurnal_umum extends CI_Controller {
 	{
 		$output['output'] = false;
 		$id = $this->input->post('id');
+        $transaction_id = $this->input->post('transaction_id');
 		if(!empty($id)){
 			
 			if($this->db->delete('pmm_detail_jurnal',array('id'=>$id))){
@@ -446,6 +451,7 @@ class Jurnal_umum extends CI_Controller {
 			}
 		}
 		echo json_encode($output);
+        $this->db->delete('transactions',array('id'=>$transaction_id));
 	}
 
     public function product_process()
@@ -537,7 +543,12 @@ class Jurnal_umum extends CI_Controller {
 		$output['output'] = false;
 		$id = $this->input->post('id');
 		if(!empty($id)){
-			$data = $this->db->select('*')->get_where('pmm_detail_jurnal',array('id'=>$id))->row_array();
+			//$data = $this->db->select('*')->get_where('pmm_detail_jurnal',array('id'=>$id))->row_array();
+            $data = $this->db->select('pdb.*, t.id as transaction_id')
+            ->from('pmm_detail_jurnal pdb')
+            ->join('transactions t','pdb.akun = t.akun','left')
+            ->where('pdb.id',$id)
+            ->get()->row_array();
 			$output['output'] = $data;
 		}
 		echo json_encode($output);
@@ -566,9 +577,6 @@ class Jurnal_umum extends CI_Controller {
             'total_kredit' => $total_kredit
 		);
 
-        $this->pmm_finance->UpdateTransactionsJurnal($form_id_jurnal_main,$akun_jurnal,$total_debit,$tanggal_transaksi);
-        $transaction_id = $this->db->insert_id();
-
 		if(!empty($id)){
 			if($this->db->update('pmm_jurnal_umum',$data,array('id'=>$form_id_jurnal_main))){
 				$output['output'] = true;
@@ -579,7 +587,9 @@ class Jurnal_umum extends CI_Controller {
 				$output['output'] = true;
 			}
 		}
-		
+
+        $this->db->delete('transactions',array('biaya_id'=>$biaya['id']));
+
 		echo json_encode($output);	
 	}
 
@@ -588,6 +598,7 @@ class Jurnal_umum extends CI_Controller {
 		$output['output'] = false;
 
 		$form_id_jurnal = $this->input->post('form_id_jurnal');
+        $transaction_id = $this->input->post('transaction_id');
 		$jurnal_id = $this->input->post('jurnal_id');
 		$akun = $this->input->post('akun');
 		$deskripsi = $this->input->post('deskripsi');
@@ -612,6 +623,21 @@ class Jurnal_umum extends CI_Controller {
 				$output['output'] = true;
 			}
 		}
+
+        $arr_update = array(
+            'id' => $transaction_id,
+			'akun' => $akun,
+			//'deskripsi' => $deskripsi,
+			'debit' => $debit,
+            'kredit' => $kredit,
+            'created_by' => $this->session->userdata('admin_id'),
+            'created_on' => date('Y-m-d H:i:s')
+		);
+
+        $this->db->where('id', $transaction_id);
+        if ($this->db->update('transactions', $arr_update)) {
+            
+        }
 		
 		echo json_encode($output);	
 	}
