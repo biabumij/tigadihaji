@@ -13835,7 +13835,7 @@ class Reports extends CI_Controller {
 			$transactions = $this->db->select('t.*')
 			->from('transactions t')
 			->where("t.tanggal_transaksi between '$date1' and '$date2'")
-			->group_by("t.id")
+			->group_by("t.tanggal_transaksi")
 			->order_by('t.created_on','desc')
 			->get()->result_array();
 	        ?>
@@ -13891,7 +13891,6 @@ class Reports extends CI_Controller {
             $this->db->where('id',$jurnal_id);
             $query = $this->db->get('pmm_jurnal_umum');
             $data['row_jurnal'] = $query->result_array();
-			file_put_contents("D:\\test.txt", $this->db->last_query());
             $this->load->view('laporan_keuangan/detail_transaction_jurnal',$data);
             
         }else {
