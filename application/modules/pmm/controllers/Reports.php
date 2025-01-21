@@ -13835,7 +13835,8 @@ class Reports extends CI_Controller {
 			$transactions = $this->db->select('t.*')
 			->from('transactions t')
 			->where("t.tanggal_transaksi between '$date1' and '$date2'")
-			->group_by("t.tanggal_transaksi")
+			->group_by("t.id")
+			->order_by('t.tanggal_transaksi','desc')
 			->order_by('t.created_on','desc')
 			->get()->result_array();
 	        ?>
