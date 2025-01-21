@@ -13845,6 +13845,7 @@ class Reports extends CI_Controller {
 				<th class="text-center">Nomor Bukti</th>
 				<th class="text-center">Penerima</th>
 				<th class="text-center">Uraian</th>
+				<th class="text-center">Produk</th>
 				<th class="text-center">Kode Akun</th>
 				<th class="text-center">Nama Akun</th>
 				<th class="text-center">Kategori Akun</th>
@@ -13858,8 +13859,9 @@ class Reports extends CI_Controller {
 				
 			<tr class="table-active3">
 	            <th class="text-center"><?= date('d-m-Y',strtotime($x["tanggal_transaksi"])) ?></th>
-				<td class="text-left"><?= $x['nomor_transaksi'];?></td>
+				<td class="text-left"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction_jurnal/".$x['id']."/".$x['biaya_id']."/".$x['jurnal_id']."") ?>"><?php echo $x['nomor_transaksi'];?></a></td>
 				<td class="text-left"><?= $this->crud_global->GetField('penerima',array('id'=>$x['penerima']),'nama');?></td>
+				<td class="text-left"><?= $x['deskripsi'];?></td>
 				<td class="text-left"><?= $this->crud_global->GetField('produk',array('id'=>$x['produk']),'nama_produk');?></td>
 				<td align="left"><?= $this->crud_global->GetField('pmm_coa',array('id'=>$x['akun']),'coa');?></td>
 				<td align="center"><?= $this->crud_global->GetField('pmm_coa',array('id'=>$x['akun']),'coa_number');?></td>
@@ -13874,5 +13876,27 @@ class Reports extends CI_Controller {
 	    </table>
 		<?php
 	}
+
+	public function detail_transaction_jurnal($id,$biaya_id,$jurnal_id)
+    {
+        $check = $this->m_admin->check_login();
+        if($check == true){
+
+            $this->db->select('*');
+            $this->db->where('id',$biaya_id);
+            $query = $this->db->get('pmm_biaya');
+            $data['row_biaya'] = $query->result_array();
+
+			$this->db->select('*');
+            $this->db->where('id',$jurnal_id);
+            $query = $this->db->get('pmm_jurnal_umum');
+            $data['row_jurnal'] = $query->result_array();
+			file_put_contents("D:\\test.txt", $this->db->last_query());
+            $this->load->view('laporan_keuangan/detail_transaction_jurnal',$data);
+            
+        }else {
+            redirect('admin');
+        }
+    }
 
 }

@@ -273,7 +273,7 @@ class Biaya extends CI_Controller {
                     
                     if(!empty($product)){
 
-                        $this->pmm_finance->InsertTransactionsBiaya($biaya_id,$nomor_transaksi,$product,$jumlah,$tanggal_transaksi,$penerima,$created_by,$created_on);
+                        $this->pmm_finance->InsertTransactionsBiaya($biaya_id,$nomor_transaksi,$deskripsi,$product,$jumlah,$tanggal_transaksi,$penerima,$created_by,$created_on);
 
                         $arr_detail = array(
     		        		'biaya_id' => $biaya_id,
