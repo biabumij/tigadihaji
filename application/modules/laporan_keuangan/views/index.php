@@ -261,6 +261,7 @@
                                                     <div class="row">
                                                         <form action="<?php echo site_url('laporan/cetak_laporan_jurnal');?>" target="_blank">
                                                             <?php
+                                                            $akun = $this->db->order_by('coa_number', 'asc')->get_where('pmm_coa', array('status' => 'PUBLISH'))->result_array();
                                                             $date_now = date('Y-m-d');
                                                             $date1 = date('2024-01-01');
                                                             $date2 = date('Y-m-d', strtotime($date_now));
@@ -268,6 +269,18 @@
                                                             ?>
                                                             <div class="col-sm-3">
                                                                 <input type="text" id="filter_date_laporan_jurnal" name="filter_date" value="<?php echo $filter_date;?>" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <select id="filter_akun" class="form-control select2" name="filter_coa">
+                                                                    <option value="">Pilih Akun</option>
+                                                                    <?php
+                                                                    foreach ($akun as $key => $cl) {
+                                                                    ?>
+                                                                        <option value="<?php echo $cl['id']; ?>"><?php echo $cl['coa_number']; ?> - <?php echo $cl['coa']; ?></option>
+                                                                    <?php
+                                                                    }
+                                                                    ?>
+                                                                </select>
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
@@ -519,6 +532,7 @@
                 dataType : 'html',
                 data: {
                     filter_date : $('#filter_date_laporan_jurnal').val(),
+                    filter_akun: $('#filter_akun').val(),
                 },
                 success : function(result){
                     $('#laporan-jurnal').html(result);
@@ -526,6 +540,10 @@
                 }
             });
         }
+
+        $('#filter_akun').change(function() {
+            LaporanJurnal();
+        });
 
         LaporanJurnal();
     </script>

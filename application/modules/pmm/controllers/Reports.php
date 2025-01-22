@@ -13785,7 +13785,7 @@ class Reports extends CI_Controller {
 	public function jurnal($arr_date)
 	{
 		$data = array();
-		
+		$filter_akun = $this->input->post('filter_akun');
 		$arr_date = $this->input->post('filter_date');
 		$arr_filter_date = explode(' - ', $arr_date);
 		$date1 = '';
@@ -13832,14 +13832,17 @@ class Reports extends CI_Controller {
 		 </style>
 			
 			<?php
-			$transactions = $this->db->select('t.*')
-			->from('transactions t')
-			->where("t.tanggal_transaksi between '$date1' and '$date2'")
-			->group_by("t.id")
-			->order_by('t.tanggal_transaksi','desc')
-			->order_by('t.created_on','desc')
-			->get()->result_array();
-	        ?>
+			$this->db->select('*');
+			if(!empty($filter_akun) || $filter_akun != 0){
+				$this->db->where('akun',$filter_akun);
+			}
+			$this->db->where("tanggal_transaksi between '$date1' and '$date2'");
+			$this->db->group_by('id');
+			$this->db->order_by('tanggal_transaksi','desc');
+			$this->db->order_by('created_on','desc');
+			$transactions = $this->db->get('transactions')->result_array();
+			file_put_contents("D:\\test.txt", $this->db->last_query());
+			?>
 
 			<tr class="table-active2">
 	            <th class="text-center">Tanggal</th>
