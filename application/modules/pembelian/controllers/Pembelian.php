@@ -2265,5 +2265,22 @@ class Pembelian extends Secure_Controller
 		
 		echo json_encode($output);	
 	}
+
+    public function detail_surat_jalan($id)
+    {
+        $check = $this->m_admin->check_login();
+        if($check == true){
+
+            $this->db->select('*');
+            $this->db->where('id',$id);
+            $query = $this->db->get('pmm_receipt_material');
+            $data['row'] = $query->row_array();
+
+            $this->load->view('pembelian/detail_surat_jalan',$data);
+            
+        }else {
+            redirect('admin');
+        }
+    }
     
 }
