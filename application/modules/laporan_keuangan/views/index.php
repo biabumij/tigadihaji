@@ -282,10 +282,10 @@
                                                                     ?>
                                                                 </select>
                                                             </div>
-                                                            <div class="col-sm-3">
+                                                            <!--<div class="col-sm-3">
                                                                 <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
-                                                            </div>
-                                                        </form>	
+                                                            </div>-->
+                                                        </form>
                                                     </div>
                                                     <br />
                                                     <div id="wait-laporan-jurnal" style=" text-align: center; align-content: center; display: none;">	
