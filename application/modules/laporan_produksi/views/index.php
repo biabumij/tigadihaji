@@ -3,7 +3,6 @@
 
 <head>
     <?php echo $this->Templates->Header(); ?>
-    <script src="https://kit.fontawesome.com/591a1bf2f6.js" crossorigin="anonymous"></script>
 	<style type="text/css">
         body {
             font-family: helvetica;
@@ -52,25 +51,6 @@
 			background-size: 100%;
 			transition: background 0s;
 		}
-
-		.ripple2 {
-			background-position: center;
-			transition: background 0.8s;
-            background: linear-gradient(110deg, #38761d 20%, #38761d 40%, #6aa84f 80%);
-            padding: 20px;
-            border-radius: 20px;
-            font-size: 14px;
-            line-height:30px;
-		}
-		.ripple2:hover {
-			background: #6aa84f radial-gradient(circle, transparent 1%, #6aa84f 1%) center/15000%;
-		}
-		.ripple2:active {
-			background-color: #a5ca95;
-			background-size: 100%;
-			transition: background 0s;
-		}
-        
     </style>
 </head>
 <body>
@@ -80,42 +60,42 @@
             <div class="content">
                 <div class="row animated fadeInUp">
                     <div class="col-sm-12 col-lg-12">
-                        <div class="panel-header">
-                            <center><h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3></center>
-                            <div class="text-center">
-                                <a href="<?php echo site_url('admin');?>">
-                                <button class="ripple"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
+                        <div class="panel">
+                            <div class="panel-content">
+                                <div class="panel-header">
+                                    <h3 class="section-subtitle" style="font-weight:bold; text-transform:uppercase;"><?php echo $row[0]->menu_name; ?></h3>
+                                    <div class="text-left">
+                                        <a href="<?php echo site_url('admin');?>">
+                                        <button class="ripple"><b><i class="fa-solid fa-rotate-left"></i> KEMBALI</b></button></a>
+                                    </div>
+                                </div>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active">
+                                        <br />
+                                        <div class="row">
+                                            <div width="100%">                     
+                                                <div class="col-sm-5">
+                                                    <p><h5><b>Laporan Penjualan</b></h5></p>
+                                                    <a href="<?php echo site_url('admin/laporan_penjualan');?>" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>								
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p><h5><b>Laporan Pembelian</b></h5></p>
+                                                    <a href="<?php echo site_url('admin/laporan_pembelian');?>" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>								
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p><h5><b>Laporan Evaluasi</b></h5></p>
+                                                    <a href="<?php echo site_url('admin/laporan_ev._produksi');?>" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>								
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <p><h5><b>Laporan Rencana Kerja</b></h5></p>
+                                                    <a href="<?php echo site_url('admin/laporan_rencana_kerja');?>" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>								
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
                             </div>
-                        </div>
-                        <div class="tab-content">
-                            <table width="100%" border="0" style="margin-top:100px; margin-bottom:100px;">
-                                <tr>
-                                    <th width="34%" class="text-center">
-                                    </th>
-                                    <th width="8%" class="text-center">
-                                        <a href="<?php echo site_url('admin/laporan_penjualan');?>">
-                                        <button class="ripple2"><b></i> LAPORAN<br />PENJUALAN</b></button>
-                                        </a>
-                                    </th>
-                                    <th width="8%" class="text-center">
-                                        <a href="<?php echo site_url('admin/laporan_pembelian');?>">
-                                        <button class="ripple2"><b></i> LAPORAN<br />PEMBELIAN</b></button>
-                                        </a>
-                                    </th>
-                                    <th width="8%" class="text-center">
-                                        <a href="<?php echo site_url('admin/laporan_ev._produksi');?>">
-                                        <button class="ripple2"><b></i> LAPORAN<br />EVALUASI</b></button>
-                                        </a>
-                                    </th>
-                                    <th width="8%" class="text-center">
-                                        <a href="<?php echo site_url('admin/laporan_rencana_kerja');?>">
-                                        <button class="ripple2"><b></i>LAP. RENCANA<br />KERJA</b></button>
-                                        </a>
-                                    </th>
-                                    <th width="34%" class="text-center">
-                                    </th>
-                                </tr>
-                            </table>
                         </div>
                     </div>
                 </div>
@@ -130,6 +110,5 @@
     <script src="<?php echo base_url(); ?>assets/back/theme/vendor/jquery.number.min.js"></script>
     <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
     <script src="https://kit.fontawesome.com/591a1bf2f6.js" crossorigin="anonymous"></script>
-
 </body>
 </html>
