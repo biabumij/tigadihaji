@@ -13841,7 +13841,6 @@ class Reports extends CI_Controller {
 			$this->db->order_by('tanggal_transaksi','desc');
 			$this->db->order_by('created_on','desc');
 			$transactions = $this->db->get('transactions')->result_array();
-			file_put_contents("D:\\test.txt", $this->db->last_query());
 			?>
 
 			<tr class="table-active2">
