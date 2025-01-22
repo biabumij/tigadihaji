@@ -13860,7 +13860,7 @@ class Reports extends CI_Controller {
 				
 			<tr class="table-active3">
 	            <th class="text-center"><?= date('d-m-Y',strtotime($x["tanggal_transaksi"])) ?></th>
-				<td class="text-left"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction_jurnal/".$x['id']."/".$x['biaya_id']."/".$x['jurnal_id']."") ?>"><?php echo $x['nomor_transaksi'];?></a></td>
+				<td class="text-left"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction_jurnal/".$x['id']."/".$x['biaya_id']."/".$x['jurnal_id']."/".$x['production_id']."/".$x['tagihan_id']."/".$x['pembayaran_id']."") ?>"><?php echo $x['nomor_transaksi'];?></a></td>
 				<td class="text-left"><?= $this->crud_global->GetField('penerima',array('id'=>$x['penerima']),'nama');?></td>
 				<td class="text-left"><?= $x['deskripsi'];?></td>
 				<td class="text-left"><?= $this->crud_global->GetField('produk',array('id'=>$x['produk']),'nama_produk');?></td>
@@ -13878,7 +13878,7 @@ class Reports extends CI_Controller {
 		<?php
 	}
 
-	public function detail_transaction_jurnal($id,$biaya_id,$jurnal_id)
+	public function detail_transaction_jurnal($id,$biaya_id,$jurnal_id,$production_id,$tagihan_id,$pembayaran_id)
     {
         $check = $this->m_admin->check_login();
         if($check == true){
@@ -13892,6 +13892,22 @@ class Reports extends CI_Controller {
             $this->db->where('id',$jurnal_id);
             $query = $this->db->get('pmm_jurnal_umum');
             $data['row_jurnal'] = $query->result_array();
+
+			$this->db->select('*');
+            $this->db->where('id',$production_id);
+            $query = $this->db->get('pmm_productions');
+            $data['row_production'] = $query->result_array();
+
+			$this->db->select('*');
+            $this->db->where('id',$tagihan_id);
+            $query = $this->db->get('pmm_penagihan_penjualan');
+            $data['row_tagihan'] = $query->result_array();
+
+			$this->db->select('*');
+            $this->db->where('id',$pembayaran_id);
+            $query = $this->db->get('pmm_pembayaran');
+            $data['row_pembayaran'] = $query->result_array();
+
             $this->load->view('laporan_keuangan/detail_transaction_jurnal',$data);
             
         }else {

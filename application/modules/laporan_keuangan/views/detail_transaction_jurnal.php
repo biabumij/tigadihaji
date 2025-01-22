@@ -41,10 +41,35 @@
                                                 <?php
                                                 }
                                                 ?>
+
                                                 <?php
                                                 foreach ($row_jurnal as $x) {
                                                 ?>
                                                 <td class="text-center"><a target="_blank" href="<?= base_url("pmm/jurnal_umum/detailJurnal/".$x['id']) ?>"><?php echo $x['nomor_transaksi'];?></a></td>
+                                                <?php
+                                                }
+                                                ?>
+
+                                                <?php
+                                                foreach ($row_production as $x) {
+                                                ?>
+                                                <td class="text-center"><a target="_blank" href="<?= base_url("penjualan/detail_surat_jalan/".$x['id']) ?>"><?php echo $x['no_production'];?></a></td>
+                                                <?php
+                                                }
+                                                ?>     
+
+                                                <?php
+                                                foreach ($row_tagihan as $x) {
+                                                ?>
+                                                <td class="text-center"><a target="_blank" href="<?= base_url("penjualan/detailPenagihan/".$x['id']) ?>"><?php echo $x['nomor_invoice'];?></a></td>
+                                                <?php
+                                                }
+                                                ?>
+
+<?php
+                                                foreach ($row_pembayaran as $x) {
+                                                ?>
+                                                <td class="text-center"><a target="_blank" href="<?= base_url("penjualan/view_pembayaran/".$x['id']) ?>"><?php echo $x['nomor_transaksi'];?></a></td>
                                                 <?php
                                                 }
                                                 ?>
