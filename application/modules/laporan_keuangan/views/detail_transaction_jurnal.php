@@ -82,7 +82,7 @@
                                                 }
                                                 ?>
 
-<?php
+                                                <?php
                                                 foreach ($row_tagihan_pembelian as $x) {
                                                 ?>
                                                 <td class="text-center"><a target="_blank" href="<?= base_url("pembelian/penagihan_pembelian_detail/".$x['id']) ?>"><?php echo $x['nomor_invoice'];?></a></td>
@@ -90,10 +90,26 @@
                                                 }
                                                 ?>
 
-<?php
+                                                <?php
                                                 foreach ($row_pembayaran_pembelian as $x) {
                                                 ?>
                                                 <td class="text-center"><a target="_blank" href="<?= base_url("pembelian/view_pembayaran_pembelian/".$x['id']) ?>"><?php echo $x['nomor_transaksi'];?></a></td>
+                                                <?php
+                                                }
+                                                ?>
+
+                                                <?php
+                                                foreach ($row_terima as $x) {
+                                                ?>
+                                                <td class="text-center"><a target="_blank" href="<?= base_url("pmm/finance/detailTerima/".$x['id']) ?>"><?php echo $x['nomor_transaksi'];?></a></td>
+                                                <?php
+                                                }
+                                                ?>
+
+                                                <?php
+                                                foreach ($row_transfer as $x) {
+                                                ?>
+                                                <td class="text-center"><a target="_blank" href="<?= base_url("pmm/finance/detailTransfer/".$x['id']) ?>"><?php echo $x['nomor_transaksi'];?></a></td>
                                                 <?php
                                                 }
                                                 ?>

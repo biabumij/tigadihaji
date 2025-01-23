@@ -1255,8 +1255,8 @@ class Finance extends CI_Controller {
 		if($this->db->insert('pmm_transfer',$arr_insert)){
 			$transfer_id = $this->db->insert_id();
 
-			$this->pmm_finance->InsertTransactionTerima2($transfer_id,$nomor_transaksi,$tanggal_transaksi,$setor_ke,$jumlah,$created_by,$created_on);
-			$this->pmm_finance->InsertTransactionTerima($transfer_id,$nomor_transaksi,$tanggal_transaksi,$transfer_dari,$jumlah,$created_by,$created_on);
+			$this->pmm_finance->InsertTransactionTransfer2($transfer_id,$nomor_transaksi,$tanggal_transaksi,$setor_ke,$jumlah,$created_by,$created_on);
+			$this->pmm_finance->InsertTransactionTransfer($transfer_id,$nomor_transaksi,$tanggal_transaksi,$transfer_dari,$jumlah,$created_by,$created_on);
 
 			if (!file_exists('uploads/transfer')) {
 			    mkdir('uploads/transfer', 0777, true);
@@ -1300,7 +1300,7 @@ class Finance extends CI_Controller {
         
 			}
 
-			$this->pmm_finance->InsertTransactionsTerimaTotal($transfer_id,$jumlah,$tanggal_transaksi,$created_by,$created_on);
+			$this->pmm_finance->InsertTransactionsTransferTotal(transfer_id,$jumlah,$tanggal_transaksi,$created_by,$created_on);
 
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.

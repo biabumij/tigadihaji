@@ -735,7 +735,7 @@ class Pmm_finance extends CI_Model {
     {
         $data = array(
             'transfer_id' => $transfer_id,
-            'akun' => $terima_dari,
+            'akun' => $transfer_dari,
             'debit' => $jumlah,
             'tanggal_transaksi' => $tanggal_transaksi,
             'nomor_transaksi' => $nomor_transaksi,

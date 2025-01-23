@@ -13862,7 +13862,7 @@ class Reports extends CI_Controller {
 				
 			<tr class="table-active3">
 	            <th class="text-center"><?= date('d-m-Y',strtotime($x["tanggal_transaksi"])) ?></th>
-				<td class="text-left"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction_jurnal/".$x['id']."/".$x['biaya_id']."/".$x['jurnal_id']."/".$x['production_id']."/".$x['tagihan_id']."/".$x['pembayaran_id']."/".$x['receipt_id']."/".$x['tagihan_pembelian_id']."/".$x['pembayaran_pembelian_id']."") ?>"><?php echo $x['nomor_transaksi'];?></a></td>
+				<td class="text-left"><a target="_blank" href="<?= base_url("pmm/reports/detail_transaction_jurnal/".$x['id']."/".$x['biaya_id']."/".$x['jurnal_id']."/".$x['production_id']."/".$x['tagihan_id']."/".$x['pembayaran_id']."/".$x['receipt_id']."/".$x['tagihan_pembelian_id']."/".$x['pembayaran_pembelian_id']."/".$x['terima_id']."/".$x['transfer_id']."") ?>"><?php echo $x['nomor_transaksi'];?></a></td>
 				<td class="text-left"><?= $this->crud_global->GetField('penerima',array('id'=>$x['penerima']),'nama');?></td>
 				<td class="text-left"><?= $x['deskripsi'];?></td>
 				<td class="text-left"><?= $this->crud_global->GetField('produk',array('id'=>$x['produk']),'nama_produk');?></td>
@@ -13880,7 +13880,7 @@ class Reports extends CI_Controller {
 		<?php
 	}
 
-	public function detail_transaction_jurnal($id,$biaya_id,$jurnal_id,$production_id,$tagihan_id,$pembayaran_id,$receipt_id,$tagihan_pembelian_id,$pembayaran_pembelian_id)
+	public function detail_transaction_jurnal($id,$biaya_id,$jurnal_id,$production_id,$tagihan_id,$pembayaran_id,$receipt_id,$tagihan_pembelian_id,$pembayaran_pembelian_id,$terima_id,$transfer_id)
     {
         $check = $this->m_admin->check_login();
         if($check == true){
@@ -13924,6 +13924,16 @@ class Reports extends CI_Controller {
             $this->db->where('id',$pembayaran_pembelian_id);
             $query = $this->db->get('pmm_pembayaran_penagihan_pembelian');
             $data['row_pembayaran_pembelian'] = $query->result_array();
+
+			$this->db->select('*');
+            $this->db->where('id',$terima_id);
+            $query = $this->db->get('pmm_terima_uang');
+            $data['row_terima'] = $query->result_array();
+
+			$this->db->select('*');
+            $this->db->where('id',$transfer_id);
+            $query = $this->db->get('pmm_transfer');
+            $data['row_transfer'] = $query->result_array();
 
             $this->load->view('laporan_keuangan/detail_transaction_jurnal',$data);
             
