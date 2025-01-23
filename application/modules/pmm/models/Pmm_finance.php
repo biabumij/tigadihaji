@@ -642,18 +642,6 @@ class Pmm_finance extends CI_Model {
         $this->db->update('transactions',$data);
     }
 
-    function InsertLogs($log_type,$table_name,$table_id,$description)
-    {
-        $data = array(
-            'log_type' => $log_type,
-            'table_name' => $table_name,
-            'table_id' => $table_id,
-            'description' => $description,
-            'created_by' => $this->session->userdata('admin_id')
-        );
-        $this->db->insert('logs',$data);
-    }
-
     function InsertTransactionsJurnal($jurnal_id,$nomor_transaksi,$product,$debit,$kredit,$tanggal_transaksi,$created_by,$created_on)
     {
         $data = array(
@@ -682,6 +670,106 @@ class Pmm_finance extends CI_Model {
             'created_on' =>  $created_on
         );
         $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionTerima($terima_id,$nomor_transaksi,$tanggal_transaksi,$setor_ke,$jumlah,$created_by,$created_on)
+    {
+        $data = array(
+            'terima_id' => $terima_id,
+            'akun' => $setor_ke,
+            'kredit' => $jumlah,
+            'tanggal_transaksi' => $tanggal_transaksi,
+            'nomor_transaksi' => $nomor_transaksi,
+            'transaksi' => 'Terima Uang',
+            'created_by' => $created_by,
+            'created_on' =>  $created_on
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionTerima2($terima_id,$nomor_transaksi,$tanggal_transaksi,$terima_dari,$jumlah,$created_by,$created_on)
+    {
+        $data = array(
+            'terima_id' => $terima_id,
+            'akun' => $terima_dari,
+            'debit' => $jumlah,
+            'tanggal_transaksi' => $tanggal_transaksi,
+            'nomor_transaksi' => $nomor_transaksi,
+            'transaksi' => 'Terima Uang',
+            'created_by' => $created_by,
+            'created_on' =>  $created_on
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsTerimaTotal($terima_id,$jumlah,$tanggal_transaksi,$created_by,$created_on)
+    {
+        $data = array(
+            'terima_id' => $terima_id,
+            'debit' => $jumlah,
+            'kredit' => $jumlah,
+            'tanggal_transaksi' => $tanggal_transaksi,
+            'transaksi' => '<div style="text-align:right; vertical-align:middle;">Total</div>',
+            'created_by' => $created_by,
+            'created_on' =>  $created_on
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionTransfer($transfer_id,$nomor_transaksi,$tanggal_transaksi,$setor_ke,$jumlah,$created_by,$created_on)
+    {
+        $data = array(
+            'transfer_id' => $transfer_id,
+            'akun' => $setor_ke,
+            'kredit' => $jumlah,
+            'tanggal_transaksi' => $tanggal_transaksi,
+            'nomor_transaksi' => $nomor_transaksi,
+            'transaksi' => 'Transfer Uang',
+            'created_by' => $created_by,
+            'created_on' =>  $created_on
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionTransfer2($transfer_id,$nomor_transaksi,$tanggal_transaksi,$transfer_dari,$jumlah,$created_by,$created_on)
+    {
+        $data = array(
+            'transfer_id' => $transfer_id,
+            'akun' => $terima_dari,
+            'debit' => $jumlah,
+            'tanggal_transaksi' => $tanggal_transaksi,
+            'nomor_transaksi' => $nomor_transaksi,
+            'transaksi' => 'Transfer Uang',
+            'created_by' => $created_by,
+            'created_on' =>  $created_on
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertTransactionsTransferTotal($transfer_id,$jumlah,$tanggal_transaksi,$created_by,$created_on)
+    {
+        $data = array(
+            'transfer_id' => $transfer_id,
+            'debit' => $jumlah,
+            'kredit' => $jumlah,
+            'tanggal_transaksi' => $tanggal_transaksi,
+            'transaksi' => '<div style="text-align:right; vertical-align:middle;">Total</div>',
+            'created_by' => $created_by,
+            'created_on' =>  $created_on
+        );
+        $this->db->insert('transactions',$data);
+    }
+
+    function InsertLogs($log_type,$table_name,$table_id,$description)
+    {
+        $data = array(
+            'log_type' => $log_type,
+            'table_name' => $table_name,
+            'table_id' => $table_id,
+            'description' => $description,
+            'created_by' => $this->session->userdata('admin_id')
+        );
+        $this->db->insert('logs',$data);
     }
 
     function getSalesPoPpn($id)
