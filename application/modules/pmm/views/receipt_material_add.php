@@ -396,7 +396,7 @@
             locale: {
                 format: 'DD-MM-YYYY'
             },
-            //minDate: '<?php echo $ok;?>',
+            minDate: '<?php echo $ok;?>',
 			//maxDate: moment().add(+0, 'd').toDate(),
             //minDate: moment().startOf('month').toDate(),
 			maxDate: moment().endOf('month').toDate(),
