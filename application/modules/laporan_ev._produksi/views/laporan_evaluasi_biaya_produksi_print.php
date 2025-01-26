@@ -46,10 +46,6 @@
 			font-size: 7px;
 		}
 
-		table, th, td {
-			border: 0.5px solid white;
-		}
-
 	  	table tr.table-active{
             background-color: #e69500;
 			font-size: 7px;

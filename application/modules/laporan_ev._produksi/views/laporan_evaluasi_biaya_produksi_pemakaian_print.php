@@ -41,10 +41,6 @@
 	  ?>
 	  
 	  <style type="text/css">
-		table, th, td {
-			border: 0.5px solid white;
-		}
-		
 		body {
 			font-family: helvetica;
 			font-size: 7px;
