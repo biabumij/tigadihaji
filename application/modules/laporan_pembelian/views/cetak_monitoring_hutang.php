@@ -214,6 +214,51 @@
 				<td align="center" class="table-border-atas-full"></td>
             </tr>   
 		</table>
-		
+		<table width="98%" border="0" cellpadding="30">
+			<tr >
+				<td width="5%"></td>
+				<td width="90%">
+					<table width="100%" border="0" cellpadding="2">
+						<tr>
+							<td align="center" >
+								Dibuat Oleh
+							</td>
+							<td align="center">
+								Diperiksa Oleh
+							</td>
+							<td align="center">
+								Disetujui Oleh
+							</td>
+						</tr>
+						<tr class="">
+							<td align="center" height="55px">
+								<img src="uploads/ttd_avriani.png" width="70px">
+							</td>
+							<td align="center">
+								<img src="uploads/ttd_novel.png" width="70px">
+							</td>
+							<td align="center">
+								<img src="uploads/ttd_novel.png" width="70px">
+							</td>
+						</tr>
+						<tr>
+						<td align="center">
+								<b><u>Avriani Delia Ika Putri</u><br />
+								Keuangan</b>
+							</td>
+							<td align="center">
+								<b><u>Novel Joko Tri Laksono</u><br />
+								Ka. Plant</b>
+							</td>
+							<td align="center">
+								<b><u>Novel Joko Tri Laksono</u><br />
+								Ka. Plant</b>
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td width="5%"></td>
+			</tr>
+		</table>
 	</body>
 </html>
