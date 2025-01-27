@@ -1310,7 +1310,7 @@ class Laporan extends Secure_Controller {
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
 		$pdf->AddPage('L');
-		$pdf->SetY(5);
+		$pdf->SetY(0);
 		$pdf->SetX(0);
 
 		$arr_data = array();
