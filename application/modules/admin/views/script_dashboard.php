@@ -40,6 +40,11 @@ $date_desember24_awal = date('2024-12-01');
 $date_desember24_akhir = date('2024-12-31');
 $date_akumulasi_awal = date('2024-01-01');
 $date_akumulasi_akhir = date('2024-12-31');
+$date_januari25_awal = date('2025-01-01');
+$date_januari25_akhir = date('2025-01-31');
+$date_februari25_awal = date('2025-02-01');
+$date_februari25_akhir = date('2025-02-28');
+
 
 //REALISASI PRODUKSI
 //JUNI24
@@ -195,6 +200,50 @@ foreach ($penjualan_desember24 as $x){
     $total_volume_penjualan_desember24 += $x['volume'];
 }
 $realisasi_produksi_desember24 = $total_volume_penjualan_desember24;
+
+//JANUARI25
+$rak_januari25 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
+->from('rak r')
+->where("r.tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
+->get()->row_array();
+$rencana_produksi_januari25 = $rak_januari25['total_produksi'];
+
+$penjualan_januari25 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_januari25_awal' and '$date_januari25_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_volume_penjualan_januari25 = 0;
+foreach ($penjualan_januari25 as $x){
+    $total_volume_penjualan_januari25 += $x['volume'];
+}
+$realisasi_produksi_januari25 = $total_volume_penjualan_januari25;
+
+//FEBRUARI25
+$rak_februari25 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
+->from('rak r')
+->where("r.tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
+->get()->row_array();
+$rencana_produksi_februari25 = $rak_februari25['total_produksi'];
+
+$penjualan_februari25 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_februari25_awal' and '$date_februari25_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_volume_penjualan_februari25 = 0;
+foreach ($penjualan_februari25 as $x){
+    $total_volume_penjualan_februari25 += $x['volume'];
+}
+$realisasi_produksi_februari25 = $total_volume_penjualan_februari25;
 
 //LABA RUGI
 //JUNI24
@@ -909,6 +958,210 @@ $total_laba_rugi_agustus24 = ($total_penjualan_agustus24!=0)?($laba_rugi_agustus
 $persentase_laba_rugi_agustus24 = round($total_laba_rugi_agustus24,2);
 
 //SEPTEMBER24
+$rak_september24 = $this->db->select('*')
+->from('rak')
+->where("(tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir')")
+->get()->row_array();
+$nilai_produk_a_september24 = $rak_september24['vol_produk_a'] * $rak_september24['price_a'];
+$nilai_produk_b_september24 = $rak_september24['vol_produk_b'] * $rak_september24['price_b'];
+$nilai_produk_c_september24 = $rak_september24['vol_produk_c'] * $rak_september24['price_c'];
+$nilai_produk_d_september24 = $rak_september24['vol_produk_d'] * $rak_september24['price_d'];
+$nilai_produk_e_september24 = $rak_september24['vol_produk_e'] * $rak_september24['price_e'];
+$nilai_produk_f_september24 = $rak_september24['vol_produk_f'] * $rak_september24['price_f'];
+$nilai_rak_penjualan_september24 = $nilai_produk_a_september24 + $nilai_produk_b_september24 + $nilai_produk_c_september24 + $nilai_produk_d_september24 + $nilai_produk_e_september24 + $nilai_produk_f_september24;
+
+$komposisi_125 = $this->db->select('(r.vol_produk_a * pk.presentase_a) as komposisi_semen_125, (vol_produk_a * pk.presentase_b) as komposisi_pasir_125, (vol_produk_a * pk.presentase_c) as komposisi_batu1020_125, (vol_produk_a * pk.presentase_d) as komposisi_batu2030_125')
+->from('rak r')
+->join('pmm_agregat pk', 'r.komposisi_125 = pk.id','left')
+->where("(r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir')")
+->get()->result_array();
+
+$total_volume_semen_125 = 0;
+$total_volume_pasir_125 = 0;
+$total_volume_batu1020_125 = 0;
+$total_volume_batu2030_125 = 0;
+
+foreach ($komposisi_125 as $x){
+	$total_volume_semen_125 = $x['komposisi_semen_125'];
+	$total_volume_pasir_125 = $x['komposisi_pasir_125'];
+	$total_volume_batu1020_125 = $x['komposisi_batu1020_125'];
+	$total_volume_batu2030_125 = $x['komposisi_batu2030_125'];
+}
+
+$komposisi_175 = $this->db->select('(r.vol_produk_a * pk.presentase_a) as komposisi_semen_175, (vol_produk_a * pk.presentase_b) as komposisi_pasir_175, (vol_produk_a * pk.presentase_c) as komposisi_batu1020_175, (vol_produk_a * pk.presentase_d) as komposisi_batu2030_175')
+->from('rak r')
+->join('pmm_agregat pk', 'r.komposisi_175 = pk.id','left')
+->where("(r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir')")
+->get()->result_array();
+
+$total_volume_semen_175 = 0;
+$total_volume_pasir_175 = 0;
+$total_volume_batu1020_175 = 0;
+$total_volume_batu2030_175 = 0;
+
+foreach ($komposisi_175 as $x){
+	$total_volume_semen_175 = $x['komposisi_semen_175'];
+	$total_volume_pasir_175 = $x['komposisi_pasir_175'];
+	$total_volume_batu1020_175 = $x['komposisi_batu1020_175'];
+	$total_volume_batu2030_175 = $x['komposisi_batu2030_175'];
+}
+
+$komposisi_225 = $this->db->select('(r.vol_produk_b * pk.presentase_a) as komposisi_semen_225, (vol_produk_b * pk.presentase_b) as komposisi_pasir_225, (vol_produk_b * pk.presentase_c) as komposisi_batu1020_225, (vol_produk_b * pk.presentase_d) as komposisi_batu2030_225')
+->from('rak r')
+->join('pmm_agregat pk', 'r.komposisi_225 = pk.id','left')
+->where("(r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir')")
+->get()->result_array();
+
+$total_volume_semen_225 = 0;
+$total_volume_pasir_225 = 0;
+$total_volume_batu1020_225 = 0;
+$total_volume_batu2030_225 = 0;
+
+foreach ($komposisi_225 as $x){
+	$total_volume_semen_225 = $x['komposisi_semen_225'];
+	$total_volume_pasir_225 = $x['komposisi_pasir_225'];
+	$total_volume_batu1020_225 = $x['komposisi_batu1020_225'];
+	$total_volume_batu2030_225 = $x['komposisi_batu2030_225'];
+}
+
+$komposisi_250 = $this->db->select('(r.vol_produk_c * pk.presentase_a) as komposisi_semen_250, (vol_produk_c * pk.presentase_b) as komposisi_pasir_250, (vol_produk_c * pk.presentase_c) as komposisi_batu1020_250, (vol_produk_c * pk.presentase_d) as komposisi_batu2030_250')
+->from('rak r')
+->join('pmm_agregat pk', 'r.komposisi_250 = pk.id','left')
+->where("(r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir')")
+->get()->result_array();
+
+$total_volume_semen_250 = 0;
+$total_volume_pasir_250 = 0;
+$total_volume_batu1020_250 = 0;
+$total_volume_batu2030_250 = 0;
+
+foreach ($komposisi_250 as $x){
+	$total_volume_semen_250 = $x['komposisi_semen_250'];
+	$total_volume_pasir_250 = $x['komposisi_pasir_250'];
+	$total_volume_batu1020_250 = $x['komposisi_batu1020_250'];
+	$total_volume_batu2030_250 = $x['komposisi_batu2030_250'];
+}
+
+$komposisi_300 = $this->db->select('(r.vol_produk_e * pk.presentase_a) as komposisi_semen_300, (vol_produk_e * pk.presentase_b) as komposisi_pasir_300, (vol_produk_e * pk.presentase_c) as komposisi_batu1020_300, (vol_produk_e * pk.presentase_d) as komposisi_batu2030_300')
+->from('rak r')
+->join('pmm_agregat pk', 'r.komposisi_300 = pk.id','left')
+->where("(r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir')")
+->get()->result_array();
+
+$total_volume_semen_300 = 0;
+$total_volume_pasir_300 = 0;
+$total_volume_batu1020_300 = 0;
+$total_volume_batu2030_300 = 0;
+
+foreach ($komposisi_300 as $x){
+	$total_volume_semen_300 = $x['komposisi_semen_300'];
+	$total_volume_pasir_300 = $x['komposisi_pasir_300'];
+	$total_volume_batu1020_300 = $x['komposisi_batu1020_300'];
+	$total_volume_batu2030_300 = $x['komposisi_batu2030_300'];
+}
+
+$komposisi_350 = $this->db->select('(r.vol_produk_f * pk.presentase_a) as komposisi_semen_350, (vol_produk_f * pk.presentase_b) as komposisi_pasir_350, (vol_produk_f * pk.presentase_c) as komposisi_batu1020_350, (vol_produk_f * pk.presentase_d) as komposisi_batu2030_350')
+->from('rak r')
+->join('pmm_agregat pk', 'r.komposisi_350 = pk.id','left')
+->where("(r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir')")
+->get()->result_array();
+
+$total_volume_semen_350 = 0;
+$total_volume_pasir_350 = 0;
+$total_volume_batu1020_350 = 0;
+$total_volume_batu2030_350 = 0;
+
+foreach ($komposisi_350 as $x){
+	$total_volume_semen_350 = $x['komposisi_semen_350'];
+	$total_volume_pasir_350 = $x['komposisi_pasir_350'];
+	$total_volume_batu1020_350 = $x['komposisi_batu1020_350'];
+	$total_volume_batu2030_350 = $x['komposisi_batu2030_350'];
+}
+
+$total_volume_semen = $total_volume_semen_125 + $total_volume_semen_175 + $total_volume_semen_225 + $total_volume_semen_250 + $total_volume_semen_300 + $total_volume_semen_350;
+$total_volume_pasir = $total_volume_pasir_125 + $total_volume_pasir_175 + $total_volume_pasir_225 + $total_volume_pasir_250 + $total_volume_pasir_300 + $total_volume_pasir_350;
+$total_volume_batu1020 = $total_volume_batu1020_125 + $total_volume_batu1020_175 + $total_volume_batu1020_225 + $total_volume_batu1020_250 + $total_volume_batu1020_300 + $total_volume_batu1020_350;
+$total_volume_batu2030 = $total_volume_batu2030_125 + $total_volume_batu2030_175 + $total_volume_batu2030_225 + $total_volume_batu2030_250 + $total_volume_batu2030_300 + $total_volume_batu2030_350;
+
+$total_volume_solar = $rak_september24['vol_bbm_solar'];
+$total_rak_bahan_september24 = ($total_volume_semen * $rak_september24['harga_semen']) + ($total_volume_pasir * $rak_september24['harga_pasir']) + ($total_volume_batu1020 * $rak_september24['harga_batu1020']) + ($total_volume_batu2030 * $rak_september24['harga_batu2030']) + ($total_volume_solar * $rak_september24['harga_solar']);
+
+$rak_alat = $this->db->select('r.*, (r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_f) as total_produksi')
+->from('rak r')
+->where("(r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir')")
+->get()->row_array();
+
+$rak_alat_tm = $rak_alat['penawaran_id_tm'];
+$rak_alat_exc = $rak_alat['penawaran_id_exc'];
+$rak_alat_tr = $rak_alat['penawaran_id_tr'];
+
+$produk_tm = $this->db->select('p.nama_produk, ppd.price, ppd.qty, pm.measure_name')
+->from('pmm_penawaran_pembelian ppp')
+->join('pmm_penawaran_pembelian_detail ppd', 'ppp.id = ppd.penawaran_pembelian_id','left')
+->join('produk p', 'ppd.material_id = p.id','left')
+->join('pmm_measures pm', 'ppd.measure = pm.id','left')
+->where("ppp.id = '$rak_alat_tm'")
+->group_by('ppd.id')
+->order_by('p.nama_produk','asc')
+->get()->result_array();
+
+$total_price_tm = 0;
+foreach ($produk_tm as $x){
+	$total_price_tm += $x['qty'] * $x['price'];
+}
+
+$produk_tm_2 = $this->db->select('p.nama_produk, ppd.price, ppd.qty, pm.measure_name')
+->from('pmm_penawaran_pembelian ppp')
+->join('pmm_penawaran_pembelian_detail ppd', 'ppp.id = ppd.penawaran_pembelian_id','left')
+->join('produk p', 'ppd.material_id = p.id','left')
+->join('pmm_measures pm', 'ppd.measure = pm.id','left')
+->where("ppp.id = '$rak_alat_tm'")
+->group_by('ppd.id')
+->order_by('p.nama_produk','asc')
+->get()->result_array();
+
+$total_price_tm = 0;
+foreach ($produk_tm as $x){
+	$total_price_tm += $rak_alat['vol_tm'] * $x['price'];
+}
+
+$produk_exc = $this->db->select('p.nama_produk, ppd.price, ppd.qty, pm.measure_name, ps.nama')
+->from('pmm_penawaran_pembelian ppp')
+->join('pmm_penawaran_pembelian_detail ppd', 'ppp.id = ppd.penawaran_pembelian_id','left')
+->join('produk p', 'ppd.material_id = p.id','left')
+->join('pmm_measures pm', 'ppd.measure = pm.id','left')
+->join('penerima ps', 'ppp.supplier_id = ps.id','left')
+->where("ppp.id = '$rak_alat_exc'")
+->group_by('ppd.id')
+->order_by('p.nama_produk','asc')
+->get()->result_array();
+
+$total_price_exc = 0;
+foreach ($produk_exc as $x){
+	$total_price_exc += $rak_alat['vol_exc'] * $x['price'];
+}
+
+$produk_tr = $this->db->select('p.nama_produk, ppd.price, ppd.qty, pm.measure_name, ps.nama')
+->from('pmm_penawaran_pembelian ppp')
+->join('pmm_penawaran_pembelian_detail ppd', 'ppp.id = ppd.penawaran_pembelian_id','left')
+->join('produk p', 'ppd.material_id = p.id','left')
+->join('pmm_measures pm', 'ppd.measure = pm.id','left')
+->join('penerima ps', 'ppp.supplier_id = ps.id','left')
+->where("ppp.id = '$rak_alat_tr'")
+->group_by('ppd.id')
+->order_by('p.nama_produk','asc')
+->get()->result_array();
+
+$total_price_tr = 0;
+foreach ($produk_tr as $x){
+	$total_price_tr += $rak_alat['vol_tr'] * $x['price'];
+}
+$total_rak_alat_september24 =  $total_price_tm + $total_price_exc + $total_price_tr;
+$total_rak_bahan_alat_september24 = $total_rak_bahan_september24 + $total_rak_alat_september24 + $rak_alat['overhead'];
+$total_rak_september24 = ($total_rak_bahan_alat_september24!=0)?($nilai_rak_penjualan_september24 - $total_rak_bahan_alat_september24) * 100:0;
+$total_presentase_rak_september24 = $total_rak_september24 / $nilai_rak_penjualan_september24;
+$persentase_rak_september24 = round($total_presentase_rak_september24,2);
+
 $penjualan_september24 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
 ->from('pmm_productions pp')
 ->join('penerima p', 'pp.client_id = p.id','left')
@@ -1039,6 +1292,72 @@ $diskonto_desember24 = $diskonto_desember24['total'];
 $laba_rugi_desember24 = $total_penjualan_desember24 - ($bahan_juni_24 + $alat_juni_24 + $overhead_desember24 + $diskonto_desember24);
 $total_laba_rugi_desember24 = ($total_penjualan_desember24!=0)?($laba_rugi_desember24 / $total_penjualan_desember24) * 100:0;
 $persentase_laba_rugi_desember24 = round($total_laba_rugi_desember24,2);
+
+//JANUARI25
+$penjualan_januari25 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_januari25_awal' and '$date_januari25_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_penjualan_januari25 = 0;
+foreach ($penjualan_januari25 as $x){
+    $total_penjualan_januari25 += $x['price'];
+}
+
+$date1 = $date_januari25_awal;
+$date2 = $date_januari25_akhir;
+$bahan_juni_24 = $this->pmm_model->getBahan($date1,$date2);
+$alat_juni_24 = $this->pmm_model->getAlat($date1,$date2);
+$overhead_januari25 = $this->pmm_model->getOverheadLabaRugi($date1,$date2);
+$diskonto_januari25 = $this->db->select('sum(pdb.jumlah) as total')
+->from('pmm_biaya pb ')
+->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+->join('pmm_coa c','pdb.akun = c.id','left')
+->where("pdb.akun = 110")
+->where("pb.status = 'PAID'")
+->where("(pb.tanggal_transaksi between '$date_januari25_awal' and '$date_januari25_akhir')")
+->get()->row_array();
+$diskonto_januari25 = $diskonto_januari25['total'];
+$laba_rugi_januari25 = $total_penjualan_januari25 - ($bahan_juni_24 + $alat_juni_24 + $overhead_januari25 + $diskonto_januari25);
+$total_laba_rugi_januari25 = ($total_penjualan_januari25!=0)?($laba_rugi_januari25 / $total_penjualan_januari25) * 100:0;
+$persentase_laba_rugi_januari25 = round($total_laba_rugi_januari25,2);
+
+//FEBRUARI25
+$penjualan_februari25 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_februari25_awal' and '$date_februari25_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_penjualan_februari25 = 0;
+foreach ($penjualan_februari25 as $x){
+    $total_penjualan_februari25 += $x['price'];
+}
+
+$date1 = $date_februari25_awal;
+$date2 = $date_februari25_akhir;
+$bahan_juni_24 = $this->pmm_model->getBahan($date1,$date2);
+$alat_juni_24 = $this->pmm_model->getAlat($date1,$date2);
+$overhead_februari25 = $this->pmm_model->getOverheadLabaRugi($date1,$date2);
+$diskonto_februari25 = $this->db->select('sum(pdb.jumlah) as total')
+->from('pmm_biaya pb ')
+->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+->join('pmm_coa c','pdb.akun = c.id','left')
+->where("pdb.akun = 110")
+->where("pb.status = 'PAID'")
+->where("(pb.tanggal_transaksi between '$date_februari25_awal' and '$date_februari25_akhir')")
+->get()->row_array();
+$diskonto_februari25 = $diskonto_februari25['total'];
+$laba_rugi_februari25 = $total_penjualan_februari25 - ($bahan_juni_24 + $alat_juni_24 + $overhead_februari25 + $diskonto_februari25);
+$total_laba_rugi_februari25 = ($total_penjualan_februari25!=0)?($laba_rugi_februari25 / $total_penjualan_februari25) * 100:0;
+$persentase_laba_rugi_februari25 = round($total_laba_rugi_februari25,2);
 
 //REALISASI PER MINGGU
 $rencana_kerja_now = $this->db->select('r.*, (r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')

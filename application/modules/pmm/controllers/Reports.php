@@ -4735,7 +4735,7 @@ class Reports extends CI_Controller {
 				}
 
 				table tr.table-total{
-					background-color: #E8E8E8;
+					background-color: #FFFF00;
 					font-size: 10px;
 					font-weight: bold;
 				}
