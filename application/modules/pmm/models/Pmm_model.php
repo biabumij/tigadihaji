@@ -7514,5 +7514,177 @@ class Pmm_model extends CI_Model {
         return $total;
     }
 
+    function getKomposisiBahan($date1,$date2)
+    {   
+        $total = 0;
+
+        $komposisi = $this->db->select('pp.date_production, (pp.display_volume) * pk.presentase_a as volume_a, (pp.display_volume) * pk.presentase_b as volume_b, (pp.display_volume) * pk.presentase_c as volume_c, (pp.display_volume) * pk.presentase_d as volume_d, (pp.display_volume) * pk.presentase_e as volume_e, (pp.display_volume * pk.presentase_a) * pk.price_a as nilai_a, (pp.display_volume * pk.presentase_b) * pk.price_b as nilai_b, (pp.display_volume * pk.presentase_c) * pk.price_c as nilai_c, (pp.display_volume * pk.presentase_d) * pk.price_d as nilai_d, (pp.display_volume * pk.presentase_e) * pk.price_e as nilai_e')
+        ->from('pmm_productions pp')
+        ->join('pmm_agregat pk', 'pp.komposisi_id = pk.id','left')
+        ->where("(pp.date_production between '$date1' and '$date2')")
+        ->get()->result_array();
+
+        $total_volume_a = 0;
+        $total_volume_b = 0;
+        $total_volume_c = 0;
+        $total_volume_d = 0;
+        $total_volume_e = 0;
+
+        $total_nilai_a = 0;
+        $total_nilai_b = 0;
+        $total_nilai_c = 0;
+        $total_nilai_d = 0;
+        $total_nilai_e = 0;
+
+        foreach ($komposisi as $x){
+            $total_volume_a += $x['volume_a'];
+            $total_volume_b += $x['volume_b'];
+            $total_volume_c += $x['volume_c'];
+            $total_volume_d += $x['volume_d'];
+            $total_volume_e += $x['volume_e'];
+            $total_nilai_a += $x['nilai_a'];
+            $total_nilai_b += $x['nilai_b'];
+            $total_nilai_c += $x['nilai_c'];
+            $total_nilai_d += $x['nilai_d'];
+            $total_nilai_e += $x['nilai_e'];
+            
+        }
+
+        $volume_a = $total_volume_a;
+        $volume_b = $total_volume_b;
+        $volume_c = $total_volume_c;
+        $volume_d = $total_volume_d;
+        $volume_e = $total_volume_e;
+
+        $nilai_a = $total_nilai_a;
+        $nilai_b = $total_nilai_b;
+        $nilai_c = $total_nilai_c;
+        $nilai_d = $total_nilai_d;
+        $nilai_e = $total_nilai_e;
+
+        $price_a = ($total_volume_a!=0)?$total_nilai_a / $total_volume_a * 1:0;
+        $price_b = ($total_volume_b!=0)?$total_nilai_b / $total_volume_b * 1:0;
+        $price_c = ($total_volume_c!=0)?$total_nilai_c / $total_volume_c * 1:0;
+        $price_d = ($total_volume_d!=0)?$total_nilai_d / $total_volume_d * 1:0;
+        $price_e = ($total_volume_e!=0)?$total_nilai_e / $total_volume_e * 1:0;
+
+        $total_volume_komposisi = $volume_a + $volume_b + $volume_c + $volume_d + $volume_e;
+        $total_nilai_komposisi = $nilai_a + $nilai_b + $nilai_c + $nilai_d + $nilai_e;
+        
+        $query = $total_nilai_komposisi;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function getKomposisiAlat($date1,$date2)
+    {   
+        $total = 0;
+
+        $penjualan = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+		->from('pmm_productions pp')
+		->join('penerima p', 'pp.client_id = p.id','left')
+		->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+		->where("pp.date_production between '$date1' and '$date2'")
+		->where("pp.status = 'PUBLISH'")
+		->where("ppo.status in ('OPEN','CLOSED')")
+		->group_by("pp.client_id")
+		->get()->result_array();
+		
+		$total_volume = 0;
+		foreach ($penjualan as $x){
+			$total_volume += $x['volume'];
+		}
+
+		$rap_alat = $this->db->select('rap.*')
+		->from('rap_alat rap')
+		->where("rap.tanggal_rap_alat <= '$date2'")
+		->where('rap.status','PUBLISH')
+		->get()->result_array();
+
+		foreach ($rap_alat as $x){
+			$vol_rap_batching_plant = $x['vol_batching_plant'];
+			$vol_rap_pemeliharaan_batching_plant = $x['vol_pemeliharaan_batching_plant'];
+			$vol_rap_wheel_loader = $x['vol_wheel_loader'];
+			$vol_rap_pemeliharaan_wheel_loader = $x['vol_pemeliharaan_wheel_loader'];
+			$vol_rap_truck_mixer = $x['vol_truck_mixer'];
+			$vol_rap_excavator = $x['vol_excavator'];
+			$vol_rap_transfer_semen = $x['vol_transfer_semen'];
+			$vol_rap_bbm_solar = $x['vol_bbm_solar'];
+			$harsat_batching_plant = $x['batching_plant'];
+			$harsat_pemeliharaan_batching_plant = $x['pemeliharaan_batching_plant'];
+			$harsat_penyusutan_batching_plant = $x['batching_plant'] - $x['pemeliharaan_batching_plant'];
+			$harsat_pemeliharaan_wheel_loader = $x['pemeliharaan_wheel_loader'];
+			$harsat_penyusutan_wheel_loader = $x['wheel_loader'] - $x['pemeliharaan_wheel_loader'];
+			$harsat_wheel_loader = $x['wheel_loader'];
+			$harsat_truck_mixer = $x['truck_mixer'];
+			$harsat_excavator = $x['excavator'];
+			$harsat_transfer_semen = $x['transfer_semen'];
+			$harsat_bbm_solar = $x['vol_bbm_solar'] * $x['harsat_bbm_solar'];
+			
+		}
+
+		$vol_batching_plant = $total_volume;
+		$vol_pemeliharaan_batching_plant = $total_volume;
+		$vol_penyusutan_batching_plant = $total_volume;
+		$vol_wheel_loader = $total_volume;
+		$vol_pemeliharaan_wheel_loader = $total_volume;
+		$vol_penyusutan_wheel_loader = $total_volume;
+		$vol_truck_mixer = $total_volume;
+		$vol_excavator = $total_volume;
+		$vol_transfer_semen = $total_volume;
+		$vol_bbm_solar = $total_volume;
+
+		$batching_plant = $harsat_batching_plant * $total_volume;
+		$pemeliharaan_batching_plant = $harsat_pemeliharaan_batching_plant * $total_volume;
+		$penyusutan_batching_plant = $batching_plant - $pemeliharaan_batching_plant;
+		$wheel_loader = ($harsat_wheel_loader * $vol_wheel_loader) + $total_nilai_pemeliharaan_wheel_loader;
+		$pemeliharaan_wheel_loader = $harsat_pemeliharaan_wheel_loader * $vol_pemeliharaan_wheel_loader;
+		$penyusutan_wheel_loader = $wheel_loader - $pemeliharaan_wheel_loader;
+		$truck_mixer = $harsat_truck_mixer * $total_volume;
+		$excavator = $harsat_excavator * $total_volume;
+		$transfer_semen = $harsat_transfer_semen * $total_volume;
+		$bbm_solar = $harsat_bbm_solar * $vol_bbm_solar;
+
+		$harsat_batching_plant = ($vol_batching_plant!=0)?$batching_plant / $vol_batching_plant * 1:0;
+		$harsat_truck_mixer = ($vol_truck_mixer!=0)?$truck_mixer / $vol_truck_mixer * 1:0;
+		$harsat_wheel_loader = ($wheel_loader!=0)?$wheel_loader / $vol_wheel_loader * 1:0;
+		$harsat_excavator = ($excavator!=0)?$excavator / $vol_excavator * 1:0;
+		$harsat_transfer_semen = ($transfer_semen!=0)?$transfer_semen / $vol_transfer_semen * 1:0;
+		$harsat_bbm_solar = ($vol_bbm_solar!=0)?$bbm_solar / $vol_bbm_solar * 1:0;
+		$total_nilai_rap_alat = $batching_plant + $truck_mixer + $wheel_loader + $excavator + $transfer_semen + $bbm_solar;
+        
+        $query = $total_nilai_rap_alat;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
+    function getKomposisiBUA($date1,$date2)
+    {   
+        $total = 0;
+
+        $rap_bua = $this->db->select('sum(det.jumlah) as total')
+		->from('rap_bua rap')
+		->join('rap_bua_detail det','rap.id = det.rap_bua_id','left')
+		->where("det.coa <> 131 ")
+		->where("rap.status = 'PUBLISH'")
+		->where("rap.tanggal_rap_bua < '$date2'")
+		->order_by('rap.tanggal_rap_bua','asc')->limit(1)
+		->get()->row_array();
+		$rap_bua = $rap_bua['total'] / 24;
+        
+        $query = $rap_bua;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
+
 }
 ?>

@@ -220,6 +220,7 @@
                                         </div>
                                     </th>
                                 </tr>
+                                <?php echo number_format($total_rak_agustus24,0,',','.');?>
                                 <tr>
                                     <th width="50%" class="text-center">
                                         <div class="col-sm-12">

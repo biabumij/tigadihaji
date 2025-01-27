@@ -12765,7 +12765,7 @@ class Reports extends CI_Controller {
 				<th class="text-right"></th>
 				<th class="text-right"></th>
 				<?php
-				$total_nilai_rap = $total_nilai_komposisi + $total_nilai_rap_alat;
+				$total_nilai_rap = $total_nilai_komposisi + $total_nilai_rap_alat + $total_nilai_rap_bua;
 				?>
 				<th class="text-right"><?php echo number_format($total_nilai_rap,0,',','.');?></th>
 				<th class="text-right"></th>
@@ -13762,7 +13762,7 @@ class Reports extends CI_Controller {
 				<th class="text-right"></th>
 				<th class="text-right"></th>
 				<?php
-				$total_nilai_rap = $total_nilai_komposisi + $total_nilai_rap_alat;
+				$total_nilai_rap = $total_nilai_komposisi + $total_nilai_rap_alat + $total_nilai_rap_bua;
 				?>
 				<th class="text-right"><?php echo number_format($total_nilai_rap,0,',','.');?></th>
 				<th class="text-right"></th>

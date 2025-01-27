@@ -1242,7 +1242,7 @@
 				<th align="right"></th>
 				<th align="right"></th>
 				<?php
-				$total_nilai_rap = $total_nilai_komposisi + $total_nilai_rap_alat;
+				$total_nilai_rap = $total_nilai_komposisi + $total_nilai_rap_alat + $total_nilai_rap_bua;
 				?>
 				<th align="right"><?php echo number_format($total_nilai_rap,0,',','.');?></th>
 				<th align="right"></th>
