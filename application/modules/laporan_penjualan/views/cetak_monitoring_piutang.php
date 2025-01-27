@@ -205,7 +205,7 @@
 				<td align="center" class="table-border-atas-full"></td>
             </tr>   
 		</table>
-		<table width="98%" border="0" cellpadding="100">
+		<table width="98%" border="0" cellpadding="0">
 			<tr >
 				<td width="5%"></td>
 				<td width="90%">
@@ -222,14 +222,14 @@
 							</td>
 						</tr>
 						<tr class="">
-							<td align="center" height="55px">
-								<img src="uploads/ttd_avriani.png" width="70px">
+							<td align="center" height="30px">
+								<img src="uploads/ttd_avriani.png" width="30px">
 							</td>
 							<td align="center">
-								<img src="uploads/ttd_novel.png" width="70px">
+								<img src="uploads/ttd_novel.png" width="30px">
 							</td>
 							<td align="center">
-								<img src="uploads/ttd_novel.png" width="70px">
+								<img src="uploads/ttd_novel.png" width="30px">
 							</td>
 						</tr>
 						<tr>
