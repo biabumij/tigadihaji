@@ -205,7 +205,7 @@
 				<td align="center" class="table-border-atas-full"></td>
             </tr>   
 		</table>
-		<table width="98%" border="0" cellpadding="50">
+		<table width="98%" border="0" cellpadding="100">
 			<tr >
 				<td width="5%"></td>
 				<td width="90%">
