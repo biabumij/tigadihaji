@@ -220,7 +220,6 @@
                                         </div>
                                     </th>
                                 </tr>
-                                
                                 <tr>
                                     <th width="50%" class="text-center">
                                         <div class="col-sm-12">
@@ -822,7 +821,7 @@
                         series: [{  
                             name: 'Target %',  
                             
-                            data: [<?php echo json_encode($persentase_rak_juni24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_juli24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_agustus24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_september24, JSON_NUMERIC_CHECK); ?>,2,2],
+                            data: [<?php echo json_encode($persentase_rak_juni24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_juli24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_agustus24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_september24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_oktober24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_november24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_desember24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_januari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_februari25, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#000000',
                             fontWeight: 'bold',
