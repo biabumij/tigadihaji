@@ -198,14 +198,14 @@
 							</td>
 						</tr>
 						<tr class="">
-							<td align="center" height="55px">
-								<img src="uploads/ttd_rani.png" width="70px">
+							<td align="center" height="50px">
+								<img src="uploads/ttd_rani.png" width="50px">
 							</td>
 							<td align="center">
-								<img src="uploads/ttd_avriani.png" width="70px">
+								<img src="uploads/ttd_avriani.png" width="50px">
 							</td>
 							<td align="center">
-								<img src="uploads/ttd_novel.png" width="70px">
+								<img src="uploads/ttd_novel.png" width="50px">
 							</td>
 						</tr>
 						<tr>
