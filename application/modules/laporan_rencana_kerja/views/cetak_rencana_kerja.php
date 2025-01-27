@@ -1688,7 +1688,7 @@
 			$jumlah_bahan_350 = $total_nilai_semen_350 + $total_nilai_pasir_350 + $total_nilai_batu1020_350 + $total_nilai_batu2030_350 + $total_nilai_additive_350;
 			?>
 			<tr class="table-baris">
-				<th align="left" colspan="120"><b>C. TOTAL KEBUTUHAN BAHAN</b></th>
+				<th align="left" colspan="120"><b>B. TOTAL KEBUTUHAN BAHAN</b></th>
 			</tr>
 			<tr class="table-baris">
 				<?php
@@ -2163,7 +2163,7 @@
 			$total_nilai_solar_7 = $volume_rak_7['volume'] * $harsat_rap_alat_solar;
 			?>
 			<tr class="table-baris">
-				<th align="left" colspan="20"><b>D. TOTAL BIAYA PERALATAN</b></th>
+				<th align="left" colspan="20"><b>C. TOTAL BIAYA PERALATAN</b></th>
 			</tr>
 			<?php
 			$realisasi_1 = $this->db->select('*')
@@ -2512,7 +2512,7 @@
 			$total_nilai_overhead_7 = $overhead_rak_7['nilai'];
 			?>
 			<tr class="table-baris">
-				<th align="left" colspan="20"><b>E. OVERHEAD</b></th>
+				<th align="left" colspan="20"><b>D. OVERHEAD</b></th>
 			</tr>
 			<?php
 			$total_nilai_overhead = $total_nilai_overhead_1 + $total_nilai_overhead_2 + $total_nilai_overhead_3 + $total_nilai_overhead_4 + $total_nilai_overhead_5 + $total_nilai_overhead_6 + $total_nilai_overhead_7;
@@ -2584,7 +2584,7 @@
 			$total_nilai_diskonto_7 = $diskonto_rak_7['nilai'];
 			?>
 			<tr class="table-baris">
-				<th align="left" colspan="20"><b>F. DISKONTO</b></th>
+				<th align="left" colspan="20"><b>E. DISKONTO</b></th>
 			</tr>
 			<?php
 			$total_nilai_diskonto = $total_nilai_diskonto_1 + $total_nilai_diskonto_2 + $total_nilai_diskonto_3 + $total_nilai_diskonto_4 + $total_nilai_diskonto_5 + $total_nilai_diskonto_6 + $total_nilai_diskonto_7;
