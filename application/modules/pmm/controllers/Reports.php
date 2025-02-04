@@ -10480,6 +10480,261 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
+						$akun_220184_tagihan_lalu = $this->db->select('ppp.total as total')
+						->from('pmm_penagihan_pembelian ppp')
+						->join('pmm_pembayaran_penagihan_pembelian pm', 'ppp.id = pm.penagihan_pembelian_id','left')
+						->where("ppp.tanggal_invoice between '$date3' and '$date4'")
+						->where("ppp.supplier_id = 29")
+						->where("ppp.status = 'BELUM LUNAS'")
+						->get()->row_array();
+
+						$akun_220184_pembayaran_lalu = $this->db->select('sum(pm.total) as total')
+						->from('pmm_penagihan_pembelian ppp')
+						->join('pmm_pembayaran_penagihan_pembelian pm', 'ppp.id = pm.penagihan_pembelian_id','left')
+						->where("ppp.tanggal_invoice between '$date3' and '$date4'")
+						->where("ppp.supplier_id = 29")
+						->where("ppp.status = 'BELUM LUNAS'")
+						->get()->row_array();
+						$akun_220184_lalu = $akun_220184_tagihan_lalu['total'] - $akun_220184_pembayaran_lalu['total'];
+
+						$akun_220184 = $this->db->select('ppp.*, ppp.tanggal_invoice as tanggal_transaksi, ppp.nomor_invoice as nomor_transaksi, ppp.no_po as deskripsi, ppp.total as debit, sum(pm.total) as kredit')
+						->from('pmm_penagihan_pembelian ppp')
+						->where("ppp.tanggal_invoice between '$date1' and '$date2'")
+						->join('pmm_pembayaran_penagihan_pembelian pm', 'ppp.id = pm.penagihan_pembelian_id','left')
+						->where("ppp.supplier_id = 29")
+						->where("ppp.status = 'BELUM LUNAS'")
+						->group_by('ppp.id')
+						->order_by('ppp.tanggal_invoice','asc')
+						->order_by('ppp.created_on','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction19()" class="btn btn-info"><b>(2-20184) Hutang CV. Selabung Aji Mandiri<b></button>
+						<div id="myDIV19" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_220184_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_220184_lalu < 0 ? "(".number_format(-$akun_220184_lalu,0,',','.').")" : number_format($akun_220184_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = 0;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_220184 as $x):
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'] - $x['kredit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
+									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(2-20184) Hutang CV. Selabung Aji Mandiri | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_220184_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_220184 = ($akun_220184_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_220184 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_220184 < 0 ? "(".number_format(-$saldo_220184,0,',','.').")" : number_format($saldo_220184,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_220185_tagihan_lalu = $this->db->select('ppp.total as total')
+						->from('pmm_penagihan_pembelian ppp')
+						->join('pmm_pembayaran_penagihan_pembelian pm', 'ppp.id = pm.penagihan_pembelian_id','left')
+						->where("ppp.tanggal_invoice between '$date3' and '$date4'")
+						->where("ppp.supplier_id = 28")
+						->where("ppp.status = 'BELUM LUNAS'")
+						->get()->row_array();
+
+						$akun_220185_pembayaran_lalu = $this->db->select('sum(pm.total) as total')
+						->from('pmm_penagihan_pembelian ppp')
+						->join('pmm_pembayaran_penagihan_pembelian pm', 'ppp.id = pm.penagihan_pembelian_id','left')
+						->where("ppp.tanggal_invoice between '$date3' and '$date4'")
+						->where("ppp.supplier_id = 28")
+						->where("ppp.status = 'BELUM LUNAS'")
+						->get()->row_array();
+						$akun_220185_lalu = $akun_220185_tagihan_lalu['total'] - $akun_220185_pembayaran_lalu['total'];
+
+						$akun_220185 = $this->db->select('ppp.*, ppp.tanggal_invoice as tanggal_transaksi, ppp.nomor_invoice as nomor_transaksi, ppp.no_po as deskripsi, ppp.total as debit, sum(pm.total) as kredit')
+						->from('pmm_penagihan_pembelian ppp')
+						->where("ppp.tanggal_invoice between '$date1' and '$date2'")
+						->join('pmm_pembayaran_penagihan_pembelian pm', 'ppp.id = pm.penagihan_pembelian_id','left')
+						->where("ppp.supplier_id = 28")
+						->where("ppp.status = 'BELUM LUNAS'")
+						->group_by('ppp.id')
+						->order_by('ppp.tanggal_invoice','asc')
+						->order_by('ppp.created_on','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction20()" class="btn btn-info"><b>(2-20185) Hutang PT. Maxi Pilar Indonesia<b></button>
+						<div id="myDIV20" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_220185_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_220185_lalu < 0 ? "(".number_format(-$akun_220185_lalu,0,',','.').")" : number_format($akun_220185_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = 0;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_220185 as $x):
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'] - $x['kredit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
+									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(2-20185) Hutang PT. Maxi Pilar Indonesia | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_220185_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_220185 = ($akun_220185_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_220185 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_220185 < 0 ? "(".number_format(-$saldo_220185,0,',','.').")" : number_format($saldo_220185,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_220186_tagihan_lalu = $this->db->select('ppp.total as total')
+						->from('pmm_penagihan_pembelian ppp')
+						->join('pmm_pembayaran_penagihan_pembelian pm', 'ppp.id = pm.penagihan_pembelian_id','left')
+						->where("ppp.tanggal_invoice between '$date3' and '$date4'")
+						->where("ppp.supplier_id = 26")
+						->where("ppp.status = 'BELUM LUNAS'")
+						->get()->row_array();
+
+						$akun_220186_pembayaran_lalu = $this->db->select('sum(pm.total) as total')
+						->from('pmm_penagihan_pembelian ppp')
+						->join('pmm_pembayaran_penagihan_pembelian pm', 'ppp.id = pm.penagihan_pembelian_id','left')
+						->where("ppp.tanggal_invoice between '$date3' and '$date4'")
+						->where("ppp.supplier_id = 26")
+						->where("ppp.status = 'BELUM LUNAS'")
+						->get()->row_array();
+						$akun_220186_lalu = $akun_220186_tagihan_lalu['total'] - $akun_220186_pembayaran_lalu['total'];
+
+						$akun_220186 = $this->db->select('ppp.*, ppp.tanggal_invoice as tanggal_transaksi, ppp.nomor_invoice as nomor_transaksi, ppp.no_po as deskripsi, ppp.total as debit, sum(pm.total) as kredit')
+						->from('pmm_penagihan_pembelian ppp')
+						->where("ppp.tanggal_invoice between '$date1' and '$date2'")
+						->join('pmm_pembayaran_penagihan_pembelian pm', 'ppp.id = pm.penagihan_pembelian_id','left')
+						->where("ppp.supplier_id = 26")
+						->where("ppp.status = 'BELUM LUNAS'")
+						->group_by('ppp.id')
+						->order_by('ppp.tanggal_invoice','asc')
+						->order_by('ppp.created_on','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction21()" class="btn btn-info"><b>(2-20186) Hutang PT. Tricakra Indonesia<b></button>
+						<div id="myDIV21" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_220186_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_220186_lalu < 0 ? "(".number_format(-$akun_220186_lalu,0,',','.').")" : number_format($akun_220186_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = 0;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_220186 as $x):
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'] - $x['kredit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
+									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(2-20186) Hutang PT. Tricakra Indonesia | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_220186_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_220186 = ($akun_220186_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_220186 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_220186 < 0 ? "(".number_format(-$saldo_220186,0,',','.').")" : number_format($saldo_220186,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
 						$akun_220205_lalu = $this->db->select('sum(tu.jumlah) as total')
 						->from('pmm_terima_uang tu')
 						->where("tu.tanggal_transaksi between '$date3' and '$date4'")
