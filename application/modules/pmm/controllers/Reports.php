@@ -8752,6 +8752,231 @@ class Reports extends CI_Controller {
 			}
 			}
 
+			function myFunction31() {
+			var x = document.getElementById("myDIV31");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction32() {
+			var x = document.getElementById("myDIV32");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction33() {
+			var x = document.getElementById("myDIV33");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction34() {
+			var x = document.getElementById("myDIV34");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction35() {
+			var x = document.getElementById("myDIV35");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction36() {
+			var x = document.getElementById("myDIV36");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction37() {
+			var x = document.getElementById("myDIV37");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction38() {
+			var x = document.getElementById("myDIV38");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction39() {
+			var x = document.getElementById("myDIV39");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction40() {
+			var x = document.getElementById("myDIV40");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction41() {
+			var x = document.getElementById("myDIV41");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction42() {
+			var x = document.getElementById("myDIV42");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction43() {
+			var x = document.getElementById("myDIV43");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction44() {
+			var x = document.getElementById("myDIV44");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction45() {
+			var x = document.getElementById("myDIV45");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction46() {
+			var x = document.getElementById("myDIV46");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction47() {
+			var x = document.getElementById("myDIV47");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction48() {
+			var x = document.getElementById("myDIV48");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction49() {
+			var x = document.getElementById("myDIV49");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction50() {
+			var x = document.getElementById("myDIV50");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction51() {
+			var x = document.getElementById("myDIV51");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction52() {
+			var x = document.getElementById("myDIV52");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction53() {
+			var x = document.getElementById("myDIV53");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction54() {
+			var x = document.getElementById("myDIV54");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
+			function myFunction55() {
+			var x = document.getElementById("myDIV55");
+			if (x.style.display === "none") {
+				x.style.display = "block";
+			} else {
+				x.style.display = "none";
+			}
+			}
+
 			function myFunction100() {
 			var x = document.getElementById("myDIV100");
 			if (x.style.display === "none") {
@@ -8910,6 +9135,7 @@ class Reports extends CI_Controller {
 						->from('pmm_penagihan_penjualan ppp')
 						->join('pmm_pembayaran pm', 'ppp.id = pm.penagihan_id','left')
 						->where("ppp.tanggal_invoice between '$date3' and '$date4'")
+						->where("ppp.status_pembayaran = 'BELUM LUNAS'")
 						->get()->row_array();
 						$akun_110100_lalu = $akun_110100_lalu['debit'] - $akun_110100_lalu['kredit'];
 
@@ -8917,6 +9143,7 @@ class Reports extends CI_Controller {
 						->from('pmm_penagihan_penjualan ppp')
 						->join('pmm_pembayaran pm', 'ppp.id = pm.penagihan_id','left')
 						->where("ppp.tanggal_invoice between '$date1' and '$date2'")
+						->where("ppp.status_pembayaran = 'BELUM LUNAS'")
 						->group_by('ppp.id')
 						->get()->result_array();
 						?>
@@ -8948,8 +9175,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">SALES INVOICE</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">SALES ORDER: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">SALES ORDER : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -9068,8 +9295,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">PENGIRIMAN</th>
-									<th width="20%" class="text-left">NO. SURAT JALLAN : <?php echo $x['no_production'];?></th>
-									<th width="30%" class="text-left">SALES ORDER: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">NO. SURAT JALAN : <?php echo $x['no_production'];?></th>
+									<th width="30%" class="text-left">SALES ORDER : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -9103,6 +9330,7 @@ class Reports extends CI_Controller {
 						->join('pmm_pembayaran pm', 'ppp.id = pm.penagihan_id','left')
 						->where("ppp.tanggal_invoice between '$date3' and '$date4'")
 						->where("ppp.client_id = '22'")
+						->where("ppp.status_pembayaran = 'BELUM LUNAS'")
 						->get()->row_array();
 						$akun_110124_lalu = $akun_110124_lalu['debit'] - $akun_110124_lalu['kredit'];
 
@@ -9111,6 +9339,7 @@ class Reports extends CI_Controller {
 						->join('pmm_pembayaran pm', 'ppp.id = pm.penagihan_id','left')
 						->where("ppp.tanggal_invoice between '$date1' and '$date2'")
 						->where("ppp.client_id = '22'")
+						->where("ppp.status_pembayaran = 'BELUM LUNAS'")
 						->group_by('ppp.id')
 						->get()->result_array();
 						?>
@@ -9142,8 +9371,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">SALES INVOICE</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">SALES ORDER: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">SALES ORDER : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -9177,6 +9406,7 @@ class Reports extends CI_Controller {
 						->join('pmm_pembayaran pm', 'ppp.id = pm.penagihan_id','left')
 						->where("ppp.tanggal_invoice between '$date3' and '$date4'")
 						->where("ppp.client_id = '2'")
+						->where("ppp.status_pembayaran = 'BELUM LUNAS'")
 						->get()->row_array();
 						$akun_110126_lalu = $akun_110126_lalu['debit'] - $akun_110126_lalu['kredit'];
 
@@ -9185,6 +9415,7 @@ class Reports extends CI_Controller {
 						->join('pmm_pembayaran pm', 'ppp.id = pm.penagihan_id','left')
 						->where("ppp.tanggal_invoice between '$date1' and '$date2'")
 						->where("ppp.client_id = '2'")
+						->where("ppp.status_pembayaran = 'BELUM LUNAS'")
 						->group_by('ppp.id')
 						->get()->result_array();
 						?>
@@ -9216,8 +9447,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">SALES INVOICE</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">SALES ORDER: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">SALES ORDER : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -9430,7 +9661,7 @@ class Reports extends CI_Controller {
 						->get()->row_array();
 						$akun_110202_lalu = $akun_110202_lalu['total'];
 
-						$akun_110202 = $this->db->select('pp.*, pp.date_production as tanggal_transaksi,ppo.contract_number as deskripsi,pp.display_price as debit,pp.display_price as kredit')
+						$akun_110202 = $this->db->select('pp.*,pp.date_production as tanggal_transaksi,pp.no_production as nomor_transaksi,ppo.contract_number as deskripsi,pp.display_price as debit,pp.display_price as kredit')
 						->from('pmm_productions pp')
 						->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
 						->where("pp.date_production between '$date1' and '$date2'")
@@ -9465,9 +9696,9 @@ class Reports extends CI_Controller {
 							?>
 							<table width="100% "border="1">
 								<tr>
-									<th width="10%" class="text-left"><?php echo $x['date_production'];?></th>
-									<th width="10%" class="text-left">SURAT JALAN</th>
-									<th width="20%" class="text-left"><?php echo $x['no_production'];?></th>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">PENGIRIMAN</th>
+									<th width="20%" class="text-left">NO. SURAT JALAN : <?php echo $x['nomor_transaksi'];?></th>
 									<th width="30%" class="text-left">SALES ORDER : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
@@ -9716,8 +9947,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
-									<th width="20%" class="text-left">INV:<?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PO:<?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -9795,8 +10026,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PEMBAYARAN: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PEMBAYARAN : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -9825,7 +10056,7 @@ class Reports extends CI_Controller {
 					<br />
 					<div>
 						<?php
-						$akun_220101_uncreated_lalu = $this->db->select('sum(prm.display_price) as total')
+						/*$akun_220101_uncreated_lalu = $this->db->select('sum(prm.display_price) as total')
 						->from('pmm_receipt_material prm')
 						->join('pmm_purchase_order ppo', 'prm.purchase_order_id = ppo.id','left')
 						->where("prm.date_receipt between '$date3' and '$date4'")
@@ -9865,7 +10096,27 @@ class Reports extends CI_Controller {
 						->get()->result_array();
 
 						$akun_220101 = array_merge($akun_220101_uncreated,$akun_220101_created);
-						usort($akun_220101, 'sortByOrder');
+						usort($akun_220101, 'sortByOrder');*/
+
+						$akun_220101_lalu = $this->db->select('sum(prm.display_price) as total')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order ppo', 'prm.purchase_order_id = ppo.id','left')
+						->where("prm.date_receipt between '$date3' and '$date4'")
+						->where("prm.status_payment = 'UNCREATED'")
+						->where("ppo.status in ('PUBLISH','CLOSED')")
+						->get()->row_array();
+						$akun_220101_lalu = $akun_220101_lalu['total'];
+
+						$akun_220101 = $this->db->select('ppo.date_po as tanggal_transaksi,ppo.no_po as nomor_transaksi,sum(prm.display_price) as debit')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order ppo', 'prm.purchase_order_id = ppo.id','left')
+						->where("prm.date_receipt between '$date1' and '$date2'")
+						->where("prm.status_payment = 'UNCREATED'")
+						->where("ppo.status in ('PUBLISH','CLOSED')")
+						->group_by('prm.id')
+						->order_by('ppo.date_po','asc')
+						->order_by('ppo.no_po','asc')
+						->get()->result_array();
 						?>
 						<button onclick="myFunction11()" class="btn btn-info"><b>(2-20101) Hutang Belum Ditagih<b></button>
 						<div id="myDIV11" style="display:none;">
@@ -9883,8 +10134,8 @@ class Reports extends CI_Controller {
 							$total_debit = 0;
 							$total_kredit = 0;
 							foreach ($akun_220101 as $x):
-							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
-							{$saldo = $saldo + $x['debit'] - $x['kredit'];}
+							if ($x['kredit']==0) { $saldo = $saldo + $x['kredit'];} else
+							{$saldo = $saldo + $x['kredit'];}
 
 							$total_debit += $x['debit'];
 							$total_kredit += $x['kredit'];
@@ -9895,7 +10146,7 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">PENERIMAAN</th>
-									<th width="20%" class="text-left">PO: <?php echo $x['nomor_transaksi'];?></th>
+									<th width="20%" class="text-left">PO : <?php echo $x['nomor_transaksi'];?></th>
 									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
@@ -10065,8 +10316,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -10150,8 +10401,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -10235,8 +10486,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -10320,8 +10571,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -10405,8 +10656,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -10490,8 +10741,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -10575,8 +10826,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -10660,8 +10911,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -10745,8 +10996,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">TAGIHAN PEMBELIAN</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PO: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">PO : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -10842,7 +11093,7 @@ class Reports extends CI_Controller {
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">HUTANG BANK</th>
 									<th width="20%" class="text-left"><?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">PO:<?php echo $x['deskripsi'];?></th>
+									<th width="30%" class="text-left">PO :<?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -10991,8 +11242,8 @@ class Reports extends CI_Controller {
 							$total_debit = 0;
 							$total_kredit = 0;
 							foreach ($akun_220300 as $x): 
-							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
-							{$saldo = $saldo + $x['debit'] - $x['kredit'];}
+							if ($x['kredit']==0) { $saldo = $saldo + $x['kredit'];} else
+							{$saldo = $saldo + $x['kredit'] ;}
 
 							$total_debit += $x['debit'];
 							$total_kredit += $x['kredit'];
@@ -11022,7 +11273,7 @@ class Reports extends CI_Controller {
 									<th class="text-right" width="10%"><?php echo number_format($akun_220300_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
-									$saldo_220300 = ($akun_220300_lalu + $total_debit) - $total_kredit;
+									$saldo_220300 = ($akun_220300_lalu + $total_debit) + $total_kredit;
 									$styleColor = $saldo_220300 < 0 ? 'color:red' : 'color:black';
 									?>
 									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_220300 < 0 ? "(".number_format(-$saldo_220300,0,',','.').")" : number_format($saldo_220300,0,',','.');?></th>
@@ -11051,8 +11302,8 @@ class Reports extends CI_Controller {
 						->order_by('ppp.created_on','asc')
 						->get()->result_array();
 						?>
-						<button onclick="myFunction10()" class="btn btn-info"><b>(2-20505) PPN Keluaran<b></button>
-						<div id="myDIV10" style="display:none;">
+						<button onclick="myFunction25()" class="btn btn-info"><b>(2-20505) PPN Keluaran<b></button>
+						<div id="myDIV25" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -11079,8 +11330,8 @@ class Reports extends CI_Controller {
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
 									<th width="10%" class="text-left">SALES INVOICE</th>
-									<th width="20%" class="text-left">INV: <?php echo $x['nomor_transaksi'];?></th>
-									<th width="30%" class="text-left">SALES ORDER: <?php echo $x['deskripsi'];?></th>
+									<th width="20%" class="text-left">INV : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">SALES ORDER : <?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
 									<?php
@@ -11102,6 +11353,1111 @@ class Reports extends CI_Controller {
 									$styleColor = $saldo_220505 < 0 ? 'color:red' : 'color:black';
 									?>
 									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_220505 < 0 ? "(".number_format(-$saldo_220505,0,',','.').")" : number_format($saldo_220505,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_220506_biaya_lalu = $this->db->select('sum(pdb.jumlah) as debit')
+						->from('pmm_biaya b')
+						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
+						->where("b.tanggal_transaksi between '$date3' and '$date4'")
+						->where("b.bayar_dari = 157")
+						->get()->row_array();
+
+						$akun_220506_jurnal_lalu = $this->db->select('sum(pdj.debit) as debit')
+						->from('pmm_jurnal_umum j')
+						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+						->where("j.tanggal_transaksi between '$date3' and '$date4'")
+						->where("pdj.akun = 157")
+						->get()->row_array();
+						$akun_220506_lalu = $akun_220506_biaya_lalu['debit'] +  $akun_220506_jurnal_lalu['debit'];
+
+						$akun_220506_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						->from('pmm_biaya b')
+						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
+						->where("b.tanggal_transaksi between '$date1' and '$date2'")
+						->where("b.bayar_dari = 157")
+						->group_by('pdb.id')
+						->order_by('b.tanggal_transaksi','asc')
+						->order_by('b.created_on','asc')
+						->get()->result_array();
+
+						$akun_220506_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						->from('pmm_jurnal_umum j')
+						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+						->where("j.tanggal_transaksi between '$date1' and '$date2'")
+						->where("pdj.akun = 157")
+						->group_by('pdj.id')
+						->order_by('j.tanggal_transaksi','asc')
+						->order_by('j.created_on','asc')
+						->get()->result_array();
+
+						$akun_220506 = array_merge($akun_220506_biaya,$akun_220506_jurnal);
+						usort($akun_220506, 'sortByOrder');
+						?>
+						<button onclick="myFunction26()" class="btn btn-info"><b>(2-20506) Hutang Pajak - PPh Pasal 4 Ayat (2)<b></button>
+						<div id="myDIV26" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_220506_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_220506_lalu < 0 ? "(".number_format(-$akun_220506_lalu,0,',','.').")" : number_format($akun_220506_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_220506_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_220506 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'] - $x['kredit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							 
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">PPH 22</th>
+									<th width="20%" class="text-left"><?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(2-20506) Hutang Pajak - PPh Pasal 4 Ayat (2) | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_220506_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_220506 = ($akun_220506_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_220506 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_220506 < 0 ? "(".number_format(-$saldo_220506,0,',','.').")" : number_format($saldo_220506,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_440001_uncreated_lalu =$this->db->select('sum(pp.display_price) as total')
+						->from('pmm_productions pp')
+						->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+						->where("pp.date_production between '$date3' and '$date4'")
+						->where("pp.status = 'PUBLISH'")
+						->where("ppo.status in ('OPEN','CLOSED')")
+						->get()->row_array();
+						$akun_440001_lalu = $akun_440001_uncreated_lalu['total'];
+
+						$akun_440001 = $this->db->select('pp.no_production as nomor_transaksi, pp.memo as deskripsi, pp.date_production as tanggal_transaksi,ppo.contract_number as deskripsi,pp.display_price as kredit')
+						->from('pmm_productions pp')
+						->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+						->where("pp.date_production between '$date1' and '$date2'")
+						->where("pp.status = 'PUBLISH'")
+						->where("ppo.status in ('OPEN','CLOSED')")
+						->group_by('pp.id')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction27()" class="btn btn-info"><b>(4-40001) Pendapatan Usaha<b></button>
+						<div id="myDIV27" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_440001_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_440001_lalu < 0 ? "(".number_format(-$akun_440001_lalu,0,',','.').")" : number_format($akun_440001_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_440001_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_440001 as $x): 
+							if ($x['kredit']==0) { $saldo = $saldo + $x['kredit'];} else
+							{$saldo = $saldo + $x['kredit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							 
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">PENGIRIMAN</th>
+									<th width="20%" class="text-left">NO. SURAT JALAN : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(4-40001) Pendapatan Usaha | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_440001_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_440001 = ($akun_440001_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_440001 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_440001 < 0 ? "(".number_format(-$saldo_440001,0,',','.').")" : number_format($saldo_440001,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+
+						$akun_440004_uncreated_lalu =$this->db->select('sum(pp.display_price) as total')
+						->from('pmm_productions pp')
+						->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+						->where("pp.date_production between '$date3' and '$date4'")
+						->where("pp.status = 'PUBLISH'")
+						->where("pp.status_payment = 'UNCREATED'")
+						->where("ppo.status in ('OPEN','CLOSED')")
+						->get()->row_array();
+						$akun_440004_lalu = $akun_440004_uncreated_lalu['total'];
+
+						$akun_440004 = $this->db->select('pp.no_production as nomor_transaksi, pp.date_production as tanggal_transaksi,ppo.contract_number as deskripsi,pp.display_price as kredit')
+						->from('pmm_productions pp')
+						->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+						->where("pp.date_production between '$date1' and '$date2'")
+						->where("pp.status = 'PUBLISH'")
+						->where("pp.status_payment = 'UNCREATED'")
+						->where("ppo.status in ('OPEN','CLOSED')")
+						->group_by('pp.id')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction28()" class="btn btn-info"><b>(4-40004) Pendapatan Belum Ditagih<b></button>
+						<div id="myDIV28" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_440004_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_440004_lalu < 0 ? "(".number_format(-$akun_440004_lalu,0,',','.').")" : number_format($akun_440004_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_440004_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_440004 as $x): 
+							if ($x['kredit']==0) { $saldo = $saldo + $x['kredit'];} else
+							{$saldo = $saldo + $x['kredit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							 
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">PENGIRIMAN</th>
+									<th width="20%" class="text-left">NO. SURAT JALAN : <?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left">SALES ORDER: <?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(4-40004) Pendapatan Belum Ditagih | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_440004_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_440004 = ($akun_440004_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_440004 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_440004 < 0 ? "(".number_format(-$saldo_440004,0,',','.').")" : number_format($saldo_440004,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_550100_lalu = $this->db->select('nilai as total')
+						->from('pemakaian_bahan')
+						->where("date between '$date3' and '$date4'")
+						->where("status = 'PUBLISH'")
+						->get()->row_array();
+						$akun_550100_lalu = $akun_550100_lalu['total'];
+
+						$akun_550100 = $this->db->select('pm.*, pm.date as tanggal_transaksi, p.nama_produk as deskripsi, pm.nilai as debit')
+						->from('pemakaian_bahan pm')
+						->join('produk p','pm.material_id = p.id','left')
+						->where("pm.date between '$date1' and '$date2'")
+						->where("pm.status = 'PUBLISH'")
+						->group_by('pm.id')
+						->order_by('pm.date','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction29()" class="btn btn-info"><b>(5-50100) Biaya Bahan<b></button>
+						<div id="myDIV29" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_550100_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550100_lalu < 0 ? "(".number_format(-$akun_550100_lalu,0,',','.').")" : number_format($akun_550100_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_550100_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_550100 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">PEMAKAIAN BAHAN</th>
+									<th width="20%" class="text-left"></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50100) Biaya Bahan | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550100_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_550100 = ($akun_550100_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_550100 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550100 < 0 ? "(".number_format(-$saldo_550100,0,',','.').")" : number_format($saldo_550100,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_550201_pembelian_lalu = $this->db->select('prm.price as total')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+						->join('produk p', 'prm.material_id = p.id','left')
+						->join('penerima pn', 'po.supplier_id = pn.id','left')
+						->where("prm.date_receipt between '$date3' and '$date4'")
+						->where("p.kategori_alat = '1'")
+						->where("po.status in ('PUBLISH','CLOSED')")
+						->get()->row_array();
+
+						$akun_550201_pembelian = $this->db->select('prm.date_receipt as tanggal_transaksi, prm.memo as deskripsi, prm.price as debit')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+						->join('produk p', 'prm.material_id = p.id','left')
+						->join('penerima pn', 'po.supplier_id = pn.id','left')
+						->where("prm.date_receipt between '$date1' and '$date2'")
+						->where("p.kategori_alat = '1'")
+						->where("po.status in ('PUBLISH','CLOSED')")
+						->group_by('prm.id')
+						->order_by('prm.date_receipt','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction30()" class="btn btn-info"><b>(5-50201) Biaya Alat Batching Plant<b></button>
+						<div id="myDIV30" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_550201_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550201_lalu < 0 ? "(".number_format(-$akun_550201_lalu,0,',','.').")" : number_format($akun_550201_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_550201_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_550201 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">JURNAL UMUM</th>
+									<th width="20%" class="text-left"></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50201) Biaya Alat Batching Plant | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550201_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_550201 = ($akun_550201_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_550201 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550201 < 0 ? "(".number_format(-$saldo_550201,0,',','.').")" : number_format($saldo_550201,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_5502013_lalu = $this->db->select('sum(pdb.debit) as total')
+						->from('pmm_jurnal_umum pb ')
+						->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+						->join('pmm_coa c','pdb.akun = c.id','left')
+						->where("pdb.akun = 159")
+						->where("pb.status = 'PAID'")
+						->where("(pb.tanggal_transaksi between '$date3' and '$date4')")
+						->get()->row_array();
+						$akun_5502013_lalu = $akun_5502013_lalu['total'];
+
+						$akun_5502013 = $this->db->select('pb.*, pb.tanggal_transaksi, pdb.deskripsi, pdb.debit as debit')
+						->from('pmm_jurnal_umum pb ')
+						->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+						->join('pmm_coa c','pdb.akun = c.id','left')
+						->where("pdb.akun = 159")
+						->where("pb.status = 'PAID'")
+						->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+						->group_by('pdb.id')
+						->order_by('pb.tanggal_transaksi','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction31()" class="btn btn-info"><b>(5-50201.3) Angsuran Batching Plant<b></button>
+						<div id="myDIV31" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_5502013_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_5502013_lalu < 0 ? "(".number_format(-$akun_5502013_lalu,0,',','.').")" : number_format($akun_5502013_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_5502013_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_5502013 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">JURNAL UMUM</th>
+									<th width="20%" class="text-left"></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50201.3) Angsuran Batching Plant | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_5502013_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_5502013 = ($akun_5502013_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_5502013 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_5502013 < 0 ? "(".number_format(-$saldo_5502013,0,',','.').")" : number_format($saldo_5502013,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_5502012_lalu = $this->db->select('sum(pdb.debit) as total')
+						->from('pmm_jurnal_umum pb ')
+						->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+						->join('pmm_coa c','pdb.akun = c.id','left')
+						->where("pdb.akun = 138")
+						->where("pb.status = 'PAID'")
+						->where("(pb.tanggal_transaksi between '$date3' and '$date4')")
+						->get()->row_array();
+						$akun_5502012_lalu = $akun_5502012_lalu['total'];
+
+						$akun_5502012 = $this->db->select('pb.*, pb.tanggal_transaksi, pdb.deskripsi, pdb.debit as debit')
+						->from('pmm_jurnal_umum pb ')
+						->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+						->join('pmm_coa c','pdb.akun = c.id','left')
+						->where("pdb.akun = 138")
+						->where("pb.status = 'PAID'")
+						->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+						->group_by('pdb.id')
+						->order_by('pb.tanggal_transaksi','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction32()" class="btn btn-info"><b>(5-50201.2) Maintenance Batching Plant<b></button>
+						<div id="myDIV32" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_5502012_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_5502012_lalu < 0 ? "(".number_format(-$akun_5502012_lalu,0,',','.').")" : number_format($akun_5502012_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_5502012_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_5502012 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">JURNAL UMUM</th>
+									<th width="20%" class="text-left"></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50201.2) Maintenance Batching Plant | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_5502012_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_5502012 = ($akun_5502012_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_5502012 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_5502012 < 0 ? "(".number_format(-$saldo_5502012,0,',','.').")" : number_format($saldo_5502012,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_550202_pembelian_lalu = $this->db->select('prm.price as total')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+						->join('produk p', 'prm.material_id = p.id','left')
+						->join('penerima pn', 'po.supplier_id = pn.id','left')
+						->where("prm.date_receipt between '$date3' and '$date4'")
+						->where("p.kategori_alat = '2'")
+						->where("po.status in ('PUBLISH','CLOSED')")
+						->get()->row_array();
+
+						$akun_550202_pembelian = $this->db->select('prm.date_receipt as tanggal_transaksi, prm.memo as deskripsi, prm.price as debit')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+						->join('produk p', 'prm.material_id = p.id','left')
+						->join('penerima pn', 'po.supplier_id = pn.id','left')
+						->where("prm.date_receipt between '$date1' and '$date2'")
+						->where("p.kategori_alat = '2'")
+						->where("po.status in ('PUBLISH','CLOSED')")
+						->group_by('prm.id')
+						->order_by('prm.date_receipt','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction33()" class="btn btn-info"><b>(5-50202) Biaya Alat Truck Mixer<b></button>
+						<div id="myDIV33" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_550202_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550202_lalu < 0 ? "(".number_format(-$akun_550202_lalu,0,',','.').")" : number_format($akun_550202_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_550202_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_550202 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">JURNAL UMUM</th>
+									<th width="20%" class="text-left"></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50202) Biaya Alat Truck Mixer | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550202_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_550202 = ($akun_550202_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_550202 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550202 < 0 ? "(".number_format(-$saldo_550202,0,',','.').")" : number_format($saldo_550202,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_5502022_lalu = $this->db->select('sum(pdb.debit) as total')
+						->from('pmm_jurnal_umum pb ')
+						->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+						->join('pmm_coa c','pdb.akun = c.id','left')
+						->where("pdb.akun = 161")
+						->where("pb.status = 'PAID'")
+						->where("(pb.tanggal_transaksi between '$date3' and '$date4')")
+						->get()->row_array();
+						$akun_5502022_lalu = $akun_5502022_lalu['total'];
+
+						$akun_5502022 = $this->db->select('pb.*, pb.tanggal_transaksi, pdb.deskripsi, pdb.debit as debit')
+						->from('pmm_jurnal_umum pb ')
+						->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+						->join('pmm_coa c','pdb.akun = c.id','left')
+						->where("pdb.akun = 161")
+						->where("pb.status = 'PAID'")
+						->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+						->group_by('pdb.id')
+						->order_by('pb.tanggal_transaksi','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction34()" class="btn btn-info"><b>(5-50202.2) Maintenance Truck Mixer<b></button>
+						<div id="myDIV34" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_5502022_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_5502022_lalu < 0 ? "(".number_format(-$akun_5502022_lalu,0,',','.').")" : number_format($akun_5502022_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_5502022_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_5502022 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">JURNAL UMUM</th>
+									<th width="20%" class="text-left"></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50202.2) Maintenance Truck Mixer | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_5502022_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_5502022 = ($akun_5502022_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_5502022 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_5502022 < 0 ? "(".number_format(-$saldo_5502022,0,',','.').")" : number_format($saldo_5502022,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_5502024_pembelian_lalu = $this->db->select('prm.price as total')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+						->join('produk p', 'prm.material_id = p.id','left')
+						->join('penerima pn', 'po.supplier_id = pn.id','left')
+						->where("prm.date_receipt between '$date3' and '$date4'")
+						->where("p.kategori_alat = '2'")
+						->where("po.status in ('PUBLISH','CLOSED')")
+						->get()->row_array();
+
+						$akun_5502024_pembelian = $this->db->select('prm.date_receipt as tanggal_transaksi, prm.memo as deskripsi, prm.price as debit')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+						->join('produk p', 'prm.material_id = p.id','left')
+						->join('penerima pn', 'po.supplier_id = pn.id','left')
+						->where("prm.date_receipt between '$date1' and '$date2'")
+						->where("p.kategori_alat = '2'")
+						->where("po.status in ('PUBLISH','CLOSED')")
+						->group_by('prm.id')
+						->order_by('prm.date_receipt','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction35()" class="btn btn-info"><b>(5-50202.4) Sewa Truck Mixer<b></button>
+						<div id="myDIV35" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_5502024_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_5502024_lalu < 0 ? "(".number_format(-$akun_5502024_lalu,0,',','.').")" : number_format($akun_5502024_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_5502024_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_5502024 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">JURNAL UMUM</th>
+									<th width="20%" class="text-left"></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50202.4) Sewa Truck Mixer | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_5502024_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_5502024 = ($akun_5502024_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_5502024 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_5502024 < 0 ? "(".number_format(-$saldo_5502024,0,',','.').")" : number_format($saldo_5502024,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_550203_pembelian_lalu = $this->db->select('prm.price as total')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+						->join('produk p', 'prm.material_id = p.id','left')
+						->join('penerima pn', 'po.supplier_id = pn.id','left')
+						->where("prm.date_receipt between '$date3' and '$date4'")
+						->where("p.kategori_alat = '3'")
+						->where("po.status in ('PUBLISH','CLOSED')")
+						->get()->row_array();
+
+						$akun_550203_pembelian = $this->db->select('prm.date_receipt as tanggal_transaksi, prm.memo as deskripsi, prm.price as debit')
+						->from('pmm_receipt_material prm')
+						->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+						->join('produk p', 'prm.material_id = p.id','left')
+						->join('penerima pn', 'po.supplier_id = pn.id','left')
+						->where("prm.date_receipt between '$date1' and '$date2'")
+						->where("p.kategori_alat = '3'")
+						->where("po.status in ('PUBLISH','CLOSED')")
+						->group_by('prm.id')
+						->order_by('prm.date_receipt','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction36()" class="btn btn-info"><b>(5-50203) Biaya Alat Wheel Loader<b></button>
+						<div id="myDIV36" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_550203_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550203_lalu < 0 ? "(".number_format(-$akun_550203_lalu,0,',','.').")" : number_format($akun_550203_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_550203_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_550203 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">JURNAL UMUM</th>
+									<th width="20%" class="text-left"></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50203) Biaya Alat Wheel Loader | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550203_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_550203 = ($akun_550203_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_550203 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550203 < 0 ? "(".number_format(-$saldo_550203,0,',','.').")" : number_format($saldo_550203,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_5502032_lalu = $this->db->select('sum(pdb.debit) as total')
+						->from('pmm_jurnal_umum pb ')
+						->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+						->join('pmm_coa c','pdb.akun = c.id','left')
+						->where("pdb.akun = 140")
+						->where("pb.status = 'PAID'")
+						->where("(pb.tanggal_transaksi between '$date3' and '$date4')")
+						->get()->row_array();
+						$akun_5502032_lalu = $akun_5502032_lalu['total'];
+
+						$akun_5502032 = $this->db->select('pb.*, pb.tanggal_transaksi, pdb.deskripsi, pdb.debit as debit')
+						->from('pmm_jurnal_umum pb ')
+						->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+						->join('pmm_coa c','pdb.akun = c.id','left')
+						->where("pdb.akun = 140")
+						->where("pb.status = 'PAID'")
+						->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+						->group_by('pdb.id')
+						->order_by('pb.tanggal_transaksi','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction37()" class="btn btn-info"><b>(5-50203.2) Maintenance Wheel Loader<b></button>
+						<div id="myDIV37" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_5502032_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_5502032_lalu < 0 ? "(".number_format(-$akun_5502032_lalu,0,',','.').")" : number_format($akun_5502032_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_5502032_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_5502032 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">JURNAL UMUM</th>
+									<th width="20%" class="text-left"></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50203.2) Maintenance Wheel Loader | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_5502032_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_5502032 = ($akun_5502032_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_5502032 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_5502032 < 0 ? "(".number_format(-$saldo_5502032,0,',','.').")" : number_format($saldo_5502032,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_55020333_lalu = $this->db->select('sum(pdb.debit) as total')
+						->from('pmm_jurnal_umum pb ')
+						->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+						->join('pmm_coa c','pdb.akun = c.id','left')
+						->where("pdb.akun = 160")
+						->where("pb.status = 'PAID'")
+						->where("(pb.tanggal_transaksi between '$date3' and '$date4')")
+						->get()->row_array();
+						$akun_55020333_lalu = $akun_55020333_lalu['total'];
+
+						$akun_55020333 = $this->db->select('pb.*, pb.tanggal_transaksi, pdb.deskripsi, pdb.debit as debit')
+						->from('pmm_jurnal_umum pb ')
+						->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+						->join('pmm_coa c','pdb.akun = c.id','left')
+						->where("pdb.akun = 160")
+						->where("pb.status = 'PAID'")
+						->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+						->group_by('pdb.id')
+						->order_by('pb.tanggal_transaksi','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction38()" class="btn btn-info"><b>(5-502033.3) Angsuran Wheel Loader<b></button>
+						<div id="myDIV38" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_55020333_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_55020333_lalu < 0 ? "(".number_format(-$akun_55020333_lalu,0,',','.').")" : number_format($akun_55020333_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_55020333_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_55020333 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">JURNAL UMUM</th>
+									<th width="20%" class="text-left"></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-502033.3) Angsuran Wheel Loader | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_55020333_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_55020333 = ($akun_55020333_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_55020333 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_55020333 < 0 ? "(".number_format(-$saldo_55020333,0,',','.').")" : number_format($saldo_55020333,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_550204_lalu = $this->db->select('nilai as total')
+						->from('pemakaian_bahan')
+						->where("date between '$date3' and '$date4'")
+						->where("status = 'PUBLISH'")
+						->where("material_id = 5")
+						->get()->row_array();
+						$akun_550204_lalu = $akun_550204_lalu['total'];
+
+						$akun_550204 = $this->db->select('pm.*, pm.date as tanggal_transaksi, p.nama_produk as deskripsi, pm.nilai as debit')
+						->from('pemakaian_bahan pm')
+						->join('produk p','pm.material_id = p.id','left')
+						->where("pm.date between '$date1' and '$date2'")
+						->where("pm.status = 'PUBLISH'")
+						->where("material_id = 5")
+						->group_by('pm.id')
+						->order_by('pm.date','asc')
+						->get()->result_array();
+						?>
+						<button onclick="myFunction39()" class="btn btn-info"><b>(5-50204) Biaya Solar<b></button>
+						<div id="myDIV39" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_550204_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550204_lalu < 0 ? "(".number_format(-$akun_550204_lalu,0,',','.').")" : number_format($akun_550204_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_550204_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_550204 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left">PEMAKAIAN SOLAR</th>
+									<th width="20%" class="text-left"></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['kredit'],0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50204) Biaya Solar | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550204_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_550204 = ($akun_550204_lalu + $total_debit) + $total_kredit;
+									$styleColor = $saldo_550204 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550204 < 0 ? "(".number_format(-$saldo_550204,0,',','.').")" : number_format($saldo_550204,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -11147,8 +12503,8 @@ class Reports extends CI_Controller {
 						$akun_550301 = array_merge($akun_550301_biaya,$akun_550301_jurnal);
 						usort($akun_550301, 'sortByOrder');
 						?>
-						<button onclick="myFunction11()" class="btn btn-info"><b>(5-50301) Konsumsi<b></button>
-						<div id="myDIV11" style="display:none;">
+						<button onclick="myFunction40()" class="btn btn-info"><b>(5-50301) Konsumsi<b></button>
+						<div id="myDIV40" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -11243,8 +12599,8 @@ class Reports extends CI_Controller {
 						$akun_550302 = array_merge($akun_550302_biaya,$akun_550302_jurnal);
 						usort($akun_550302, 'sortByOrder');
 						?>
-						<button onclick="myFunction12()" class="btn btn-info"><b>(5-50302) Listrik & Internet<b></button>
-						<div id="myDIV12" style="display:none;">
+						<button onclick="myFunction41()" class="btn btn-info"><b>(5-50302) Listrik & Internet<b></button>
+						<div id="myDIV41" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -11339,8 +12695,8 @@ class Reports extends CI_Controller {
 						$akun_550304 = array_merge($akun_550304_biaya,$akun_550304_jurnal);
 						usort($akun_550304, 'sortByOrder');
 						?>
-						<button onclick="myFunction13()" class="btn btn-info"><b>(5-50304) Gaji<b></button>
-						<div id="myDIV13" style="display:none;">
+						<button onclick="myFunction42()" class="btn btn-info"><b>(5-50304) Gaji<b></button>
+						<div id="myDIV42" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -11435,8 +12791,8 @@ class Reports extends CI_Controller {
 						$akun_550305 = array_merge($akun_550305_biaya,$akun_550305_jurnal);
 						usort($akun_550305, 'sortByOrder');
 						?>
-						<button onclick="myFunction14()" class="btn btn-info"><b>(5-50305) Akomodasi Tamu<b></button>
-						<div id="myDIV14" style="display:none;">
+						<button onclick="myFunction43()" class="btn btn-info"><b>(5-50305) Akomodasi Tamu<b></button>
+						<div id="myDIV43" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -11531,8 +12887,8 @@ class Reports extends CI_Controller {
 						$akun_550306 = array_merge($akun_550306_biaya,$akun_550306_jurnal);
 						usort($akun_550306, 'sortByOrder');
 						?>
-						<button onclick="myFunction15()" class="btn btn-info"><b>(5-50306) Biaya Maintenace Perbaikan & Pemeliharaan<b></button>
-						<div id="myDIV15" style="display:none;">
+						<button onclick="myFunction44()" class="btn btn-info"><b>(5-50306) Biaya Perbaikan & Pemeliharaan<b></button>
+						<div id="myDIV44" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -11574,7 +12930,7 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(5-50306) Biaya Maintenace Perbaikan & Pemeliharaan | Saldo Akhir</th>
+									<th class="text-right" width="70%">(5-50306) Biaya Perbaikan & Pemeliharaan | Saldo Akhir</th>
 									<th class="text-right" width="10%"><?php echo number_format($akun_550306_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
@@ -11582,6 +12938,102 @@ class Reports extends CI_Controller {
 									$styleColor = $saldo_550306 < 0 ? 'color:red' : 'color:black';
 									?>
 									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550306 < 0 ? "(".number_format(-$saldo_550306,0,',','.').")" : number_format($saldo_550306,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_550307_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						->from('pmm_biaya b')
+						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
+						->where("b.tanggal_transaksi between '$date3' and '$date4'")
+						->where("pdb.akun = 117")
+						->get()->row_array();
+
+						$akun_550307_jurnal = $this->db->select('sum(pdj.debit) as total')
+						->from('pmm_jurnal_umum j')
+						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+						->where("j.tanggal_transaksi between '$date3' and '$date4'")
+						->where("pdj.akun = 117")
+						->get()->row_array();
+						$akun_550307_lalu = $akun_550307_biaya_lalu['total'] + $akun_550307_jurnal['total'];
+
+						$akun_550307_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						->from('pmm_biaya b')
+						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
+						->where("b.tanggal_transaksi between '$date1' and '$date2'")
+						->where("pdb.akun = 117")
+						->group_by('pdb.id')
+						->order_by('b.tanggal_transaksi','asc')
+						->order_by('b.created_on','asc')
+						->get()->result_array();
+
+						$akun_550307_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						->from('pmm_jurnal_umum j')
+						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+						->where("j.tanggal_transaksi between '$date1' and '$date2'")
+						->where("pdj.akun = 117")
+						->group_by('pdj.id')
+						->order_by('j.tanggal_transaksi','asc')
+						->order_by('j.created_on','asc')
+						->get()->result_array();
+
+						$akun_550307 = array_merge($akun_550307_biaya,$akun_550307_jurnal);
+						usort($akun_550307, 'sortByOrder');
+						?>
+						<button onclick="myFunction45()" class="btn btn-info"><b>(5-50307) THR & Bonus<b></button>
+						<div id="myDIV45" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_550307_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550307_lalu < 0 ? "(".number_format(-$akun_550307_lalu,0,',','.').")" : number_format($akun_550307_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_550307_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_550307 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							 
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left"><?php echo $x['transaksi'];?></th>
+									<th width="20%" class="text-left"><?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format(0,0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50307) Gaji | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550307_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_550307 = ($akun_550307_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550307 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550307 < 0 ? "(".number_format(-$saldo_550307,0,',','.').")" : number_format($saldo_550307,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
@@ -11627,8 +13079,8 @@ class Reports extends CI_Controller {
 						$akun_550310 = array_merge($akun_550310_biaya,$akun_550310_jurnal);
 						usort($akun_550310, 'sortByOrder');
 						?>
-						<button onclick="myFunction16()" class="btn btn-info"><b>(5-50310) Sewa Kendaraan<b></button>
-						<div id="myDIV16" style="display:none;">
+						<button onclick="myFunction46()" class="btn btn-info"><b>(5-50310) Sewa Kendaraan<b></button>
+						<div id="myDIV46" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -11723,8 +13175,8 @@ class Reports extends CI_Controller {
 						$akun_550311 = array_merge($akun_550311_biaya,$akun_550311_jurnal);
 						usort($akun_550311, 'sortByOrder');
 						?>
-						<button onclick="myFunction17()" class="btn btn-info"><b>(5-50311) Bensin, Tol dan Parkir<b></button>
-						<div id="myDIV17" style="display:none;">
+						<button onclick="myFunction47()" class="btn btn-info"><b>(5-50311) Bensin, Tol dan Parkir<b></button>
+						<div id="myDIV47" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -11819,8 +13271,8 @@ class Reports extends CI_Controller {
 						$akun_550313 = array_merge($akun_550313_biaya,$akun_550313_jurnal);
 						usort($akun_550313, 'sortByOrder');
 						?>
-						<button onclick="myFunction18()" class="btn btn-info"><b>(5-50313) Pakaian Dinas & K3<b></button>
-						<div id="myDIV18" style="display:none;">
+						<button onclick="myFunction48()" class="btn btn-info"><b>(5-50313) Pakaian Dinas & K3<b></button>
+						<div id="myDIV48" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -11915,8 +13367,8 @@ class Reports extends CI_Controller {
 						$akun_550314 = array_merge($akun_550314_biaya,$akun_550314_jurnal);
 						usort($akun_550314, 'sortByOrder');
 						?>
-						<button onclick="myFunction19()" class="btn btn-info"><b>(5-50314) Perjalanan Dinas Umum<b></button>
-						<div id="myDIV19" style="display:none;">
+						<button onclick="myFunction49()" class="btn btn-info"><b>(5-50314) Perjalanan Dinas Umum<b></button>
+						<div id="myDIV49" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -12011,8 +13463,8 @@ class Reports extends CI_Controller {
 						$akun_550315 = array_merge($akun_550315_biaya,$akun_550315_jurnal);
 						usort($akun_550315, 'sortByOrder');
 						?>
-						<button onclick="myFunction20()" class="btn btn-info"><b>(5-50315) Perlengkapan Kantor<b></button>
-						<div id="myDIV20" style="display:none;">
+						<button onclick="myFunction50()" class="btn btn-info"><b>(5-50315) Perlengkapan Kantor<b></button>
+						<div id="myDIV50" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -12107,8 +13559,8 @@ class Reports extends CI_Controller {
 						$akun_550316 = array_merge($akun_550316_biaya,$akun_550316_jurnal);
 						usort($akun_550316, 'sortByOrder');
 						?>
-						<button onclick="myFunction21()" class="btn btn-info"><b>(5-50316) Pengobatan<b></button>
-						<div id="myDIV21" style="display:none;">
+						<button onclick="myFunction51()" class="btn btn-info"><b>(5-50316) Pengobatan<b></button>
+						<div id="myDIV51" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -12203,8 +13655,8 @@ class Reports extends CI_Controller {
 						$akun_550317 = array_merge($akun_550317_biaya,$akun_550317_jurnal);
 						usort($akun_550317, 'sortByOrder');
 						?>
-						<button onclick="myFunction22()" class="btn btn-info"><b>(5-50317) Alat Tulis Kantor & Printing<b></button>
-						<div id="myDIV22" style="display:none;">
+						<button onclick="myFunction52()" class="btn btn-info"><b>(5-50317) Alat Tulis Kantor & Printing<b></button>
+						<div id="myDIV52" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -12299,8 +13751,8 @@ class Reports extends CI_Controller {
 						$akun_550318 = array_merge($akun_550318_biaya,$akun_550318_jurnal);
 						usort($akun_550318, 'sortByOrder');
 						?>
-						<button onclick="myFunction23()" class="btn btn-info"><b>(5-50318) Keamanan dan Kebersihan<b></button>
-						<div id="myDIV23" style="display:none;">
+						<button onclick="myFunction53()" class="btn btn-info"><b>(5-50318) Keamanan dan Kebersihan<b></button>
+						<div id="myDIV53" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -12395,8 +13847,8 @@ class Reports extends CI_Controller {
 						$akun_550321 = array_merge($akun_550321_biaya,$akun_550321_jurnal);
 						usort($akun_550321, 'sortByOrder');
 						?>
-						<button onclick="myFunction24()" class="btn btn-info"><b>(5-50321) Biaya Lain-Lain<b></button>
-						<div id="myDIV24" style="display:none;">
+						<button onclick="myFunction54()" class="btn btn-info"><b>(5-50321) Biaya Lain-Lain<b></button>
+						<div id="myDIV54" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
 									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
@@ -12446,6 +13898,102 @@ class Reports extends CI_Controller {
 									$styleColor = $saldo_550321 < 0 ? 'color:red' : 'color:black';
 									?>
 									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550321 < 0 ? "(".number_format(-$saldo_550321,0,',','.').")" : number_format($saldo_550321,0,',','.');?></th>
+								</tr>
+							</table>
+						</div>
+					</div>
+					<br />
+					<div>
+						<?php
+						$akun_550400_biaya_lalu = $this->db->select('sum(pdb.jumlah) as total')
+						->from('pmm_biaya b')
+						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
+						->where("b.tanggal_transaksi between '$date3' and '$date4'")
+						->where("pdb.akun = 110")
+						->get()->row_array();
+
+						$akun_550400_jurnal = $this->db->select('sum(pdj.debit) as total')
+						->from('pmm_jurnal_umum j')
+						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+						->where("j.tanggal_transaksi between '$date3' and '$date4'")
+						->where("pdj.akun = 110")
+						->get()->row_array();
+						$akun_550400_lalu = $akun_550400_biaya_lalu['total'] + $akun_550400_jurnal['total'];
+
+						$akun_550400_biaya = $this->db->select('b.*, pdb.deskripsi, pdb.jumlah as debit')
+						->from('pmm_biaya b')
+						->join('pmm_detail_biaya pdb', 'b.id = pdb.biaya_id','left')
+						->where("b.tanggal_transaksi between '$date1' and '$date2'")
+						->where("pdb.akun = 110")
+						->group_by('pdb.id')
+						->order_by('b.tanggal_transaksi','asc')
+						->order_by('b.created_on','asc')
+						->get()->result_array();
+
+						$akun_550400_jurnal = $this->db->select('j.*,pdj.deskripsi, pdj.debit, pdj.kredit')
+						->from('pmm_jurnal_umum j')
+						->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+						->where("j.tanggal_transaksi between '$date1' and '$date2'")
+						->where("pdj.akun = 110")
+						->group_by('pdj.id')
+						->order_by('j.tanggal_transaksi','asc')
+						->order_by('j.created_on','asc')
+						->get()->result_array();
+
+						$akun_550400 = array_merge($akun_550400_biaya,$akun_550400_jurnal);
+						usort($akun_550400, 'sortByOrder');
+						?>
+						<button onclick="myFunction55()" class="btn btn-info"><b>(5-50400) Biaya Diskonto Bank<b></button>
+						<div id="myDIV55" style="display:none;">
+							<table width="100% "border="1">
+								<tr>
+									<th class="text-left" colspan="6" width="90%">Saldo Awal</th>
+									<?php
+									$styleColor = $akun_550400_lalu < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" style="<?php echo $styleColor ?>"><?php echo $akun_550400_lalu < 0 ? "(".number_format(-$akun_550400_lalu,0,',','.').")" : number_format($akun_550400_lalu,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php
+							$saldo = $akun_550400_lalu;
+							$total_debit = 0;
+							$total_kredit = 0;
+							foreach ($akun_550400 as $x): 
+							if ($x['debit']==0) { $saldo = $saldo + $x['debit'] - $x['kredit'] ;} else
+							{$saldo = $saldo + $x['debit'];}
+
+							$total_debit += $x['debit'];
+							$total_kredit += $x['kredit'];
+							$total_saldo = $total_debit - $total_kredit;
+							 
+							?>
+							<table width="100% "border="1">
+								<tr>
+									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
+									<th width="10%" class="text-left"><?php echo $x['transaksi'];?></th>
+									<th width="20%" class="text-left"><?php echo $x['nomor_transaksi'];?></th>
+									<th width="30%" class="text-left"><?php echo $x['deskripsi'];?></th>
+									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
+									<th width="10%" class="text-right"><?php echo number_format(0,0,',','.');?></th>
+									<?php
+									$styleColor = $saldo < 0 ? 'color:red' : 'color:black';
+									?>
+									<th width="10%" class="text-right" style="<?php echo $styleColor ?>"><?php echo $saldo < 0 ? "(".number_format(-$saldo,0,',','.').")" : number_format($saldo,0,',','.');?></th>
+								</tr>
+							</table>
+							<?php endforeach; ?>
+						</div>
+						<div>
+							<table width="100% "border="0">
+								<tr>
+									<th class="text-right" width="70%">(5-50400) Biaya Diskonto Bank | Saldo Akhir</th>
+									<th class="text-right" width="10%"><?php echo number_format($akun_550400_lalu + $total_debit,0,',','.');?></th>
+									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
+									<?php
+									$saldo_550400 = ($akun_550400_lalu + $total_debit) - $total_kredit;
+									$styleColor = $saldo_550400 < 0 ? 'color:red' : 'color:black';
+									?>
+									<th class="text-right" width="10%" style="<?php echo $styleColor ?>"><?php echo $saldo_550400 < 0 ? "(".number_format(-$saldo_550400,0,',','.').")" : number_format($saldo_550400,0,',','.');?></th>
 								</tr>
 							</table>
 						</div>
