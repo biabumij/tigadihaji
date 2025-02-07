@@ -3668,7 +3668,7 @@ class Pmm_model extends CI_Model {
     function TableMainBiaya($id)
     {
         $data = array();
-        $this->db->select('b.*, c.coa as bayar_dari, p.nama, lk.lampiran');
+        $this->db->select('b.*, c.coa as bayar_dari, p.nama, lk.lampiran,b.total as transactions_jumlah, b.bayar_dari as transactions_bayar_dari');
         $this->db->join('penerima p','b.penerima = p.id','left');
         $this->db->join('pmm_coa c','b.bayar_dari = c.id','left');
         $this->db->join('pmm_lampiran_biaya lk','b.id = lk.biaya_id','left');	
@@ -3685,7 +3685,7 @@ class Pmm_model extends CI_Model {
 				$row['total']= number_format($row['total'],0,',','.');
                 $row['memo']= $row['memo'];
                 $row['lampiran'] = "<a href=" . base_url('uploads/biaya/' . $row["lampiran"]) . ">" . $row["lampiran"] . "</a>";  
-                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;">UPDATE BIAYA</a>';
+                $row['actions'] = '<a href="javascript:void(0);" onclick="OpenFormMain('.$row['id'].','.$row['transactions_jumlah'].','.$row['transactions_bayar_dari'].')" class="btn btn-success" style="font-weight:bold; border-radius:10px;">UPDATE BIAYA</a>';
                 
                 $data[] = $row;
             }
@@ -3698,9 +3698,8 @@ class Pmm_model extends CI_Model {
     function TableDetailBiaya($id)
     {
         $data = array();
-        $this->db->select('pdb.*, c.coa as akun, t.id as transaction_id');
+        $this->db->select('pdb.*, c.coa as akun, pdb.biaya_id as transactions_id, pdb.akun as transactions_akun, pdb.jumlah as transactions_jumlah');
         $this->db->join('pmm_coa c','pdb.akun = c.id','left');
-        $this->db->join('transactions t','pdb.akun = t.akun','left');
         $this->db->where('pdb.biaya_id',$id);
         $this->db->order_by('pdb.id','asc');
         $query = $this->db->get('pmm_detail_biaya pdb');
@@ -3711,7 +3710,7 @@ class Pmm_model extends CI_Model {
                 $row['akun'] = $row['akun'];
                 $row['deskripsi']= $row['deskripsi'];
 				$row['jumlah']= number_format($row['jumlah'],0,',','.');
-                $row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].','.$row['transaction_id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a> <a href="javascript:void(0);" onclick="OpenForm('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
+                $row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].','.$row['transactions_id'].','.$row['transactions_akun'].','.$row['transactions_jumlah'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a> <a href="javascript:void(0);" onclick="OpenForm('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
                 
                 $data[] = $row;
             }
@@ -3770,9 +3769,8 @@ class Pmm_model extends CI_Model {
     function TableDetailJurnal($id)
     {
         $data = array();
-        $this->db->select('pdb.*, c.coa as akun, t.id as transaction_id');
+        $this->db->select('pdb.*, c.coa as akun, pdb.jurnal_id as transactions_id, pdb.akun as transactions_akun, pdb.debit as transactions_debit, pdb.kredit as transactions_kredit');
         $this->db->join('pmm_coa c','pdb.akun = c.id','left');
-        $this->db->join('transactions t','pdb.akun = t.akun','left');
         $this->db->where('pdb.jurnal_id',$id);
         $this->db->order_by('pdb.id','asc');
         $query = $this->db->get('pmm_detail_jurnal pdb');
@@ -3785,7 +3783,7 @@ class Pmm_model extends CI_Model {
                 $row['deskripsi']= $row['deskripsi'];
 				$row['debit']= number_format($row['debit'],0,',','.');
                 $row['kredit']= number_format($row['kredit'],0,',','.');
-                $row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].','.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a> <a href="javascript:void(0);" onclick="OpenForm('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
+                $row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].','.$row['transactions_id'].','.$row['transactions_akun'].','.$row['transactions_debit'].','.$row['transactions_kredit'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a> <a href="javascript:void(0);" onclick="OpenForm('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
                 
                 $data[] = $row;
             }

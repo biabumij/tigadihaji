@@ -630,18 +630,6 @@ class Pmm_finance extends CI_Model {
         $this->db->insert('transactions',$data);
     }
 
-    function UpdateTransactionsBiaya($transaction_id,$akun,$jumlah,$created_by,$created_on)
-    {
-        $data = array(
-            //'id' => $transaction_id,
-            'akun' => $akun,
-            'debit' => $jumlah,
-            'created_by' => $created_by,
-            'created_on' =>  $created_on
-        );
-        $this->db->update('transactions',$data);
-    }
-
     function InsertTransactionsJurnal($jurnal_id,$nomor_transaksi,$product,$debit,$kredit,$tanggal_transaksi,$created_by,$created_on)
     {
         $data = array(

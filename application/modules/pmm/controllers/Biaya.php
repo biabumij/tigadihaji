@@ -789,18 +789,27 @@ class Biaya extends CI_Controller {
 	{
 		$output['output'] = false;
 		$id = $this->input->post('id');
-        $transaction_id = $this->input->post('transaction_id');
+        $transactions_id = $this->input->post('transactions_id');
+        $transactions_akun = $this->input->post('transactions_akun');
+        $transactions_jumlah = $this->input->post('transactions_jumlah');
+        
+        /*Mencari ID Transactions*/
+        $transaction_id = $this->db->select('id')
+        ->from('transactions')
+        ->where("biaya_id = '$transactions_id'")
+        ->where("akun = '$transactions_akun'")
+        ->where("debit = '$transactions_jumlah'")
+        ->get()->row_array();
+        $transaction_id = $transaction_id['id'];
+
+        $this->db->delete('transactions',array('id'=>$transaction_id));
 
         if(!empty($id)){
-            
             if($this->db->delete('pmm_detail_biaya',array('id'=>$id))){
                 $output['output'] = true;
             }
-
-            
 		}
-
-        $this->db->delete('transactions',array('id'=>$transaction_id));
+       
 		echo json_encode($output);
 	}
 
@@ -820,8 +829,6 @@ class Biaya extends CI_Controller {
 			$output['output'] = false;
 			$output['err'] = 'Akun Sudah Ditambahkan !!!';
 		}else {
-            //$transaction_id = $this->pmm_model->GetNoEditBiaya();
-
 
 			$data_p = array(
 				'biaya_id' => $biaya_id,
@@ -849,7 +856,8 @@ class Biaya extends CI_Controller {
             $penerima = $biaya_main['penerima'];
             $created_by = $this->session->userdata('admin_id');
 			$created_on = date('Y-m-d H:i:s');
-            $this->pmm_finance->InsertTransactionsBiaya($biaya_id,$nomor_transaksi,$product,$jumlah,$tanggal_transaksi,$penerima,$created_by,$created_on);
+
+            $this->pmm_finance->InsertTransactionsBiaya($biaya_id,$nomor_transaksi,$deskripsi,$product,$jumlah,$tanggal_transaksi,$penerima,$created_by,$created_on);
 
 			if ($this->db->trans_status() === FALSE) {
 				# Something went wrong.
@@ -892,6 +900,27 @@ class Biaya extends CI_Controller {
         $memo = $this->input->post('memo');
 		$total = str_replace(',', '.', $this->input->post('total'));
         $total = $this->input->post('total');
+        $transactions_jumlah_main = str_replace(',', '.', $this->input->post('transactions_jumlah_main'));
+        $transactions_jumlah_main = $this->input->post('transactions_jumlah_main');
+        $transactions_bayar_dari = $this->input->post('transactions_bayar_dari');
+        
+
+         /*Mencari ID Transactions*/
+         $transaction_id = $this->db->select('id')
+         ->from('transactions')
+         ->where("biaya_id = '$form_id_biaya_main'")
+         ->where("debit = '$transactions_jumlah_main'")
+         ->where("kredit = '$transactions_jumlah_main'")
+         ->get()->row_array();
+         $transaction_id = $transaction_id['id'];
+
+         $transaction_id_bayar_dari = $this->db->select('id')
+         ->from('transactions')
+         ->where("biaya_id = '$form_id_biaya_main'")
+         ->where("akun = '$transactions_bayar_dari'")
+         ->where("kredit = '$transactions_jumlah_main'")
+         ->get()->row_array();
+         $transaction_id_bayar_dari = $transaction_id_bayar_dari['id'];
 
 		$data = array(
             'id' => $form_id_biaya_main,
@@ -903,9 +932,6 @@ class Biaya extends CI_Controller {
             'total' => $total
 		);
 
-        $this->pmm_finance->UpdateTransactionsBiaya($form_id_biaya_main,$bayar_dari,$total,$tanggal_transaksi);
-        $transaction_id = $this->db->insert_id();
-
 		if(!empty($id)){
 			if($this->db->update('pmm_biaya',$data,array('id'=>$form_id_biaya_main))){
 				$output['output'] = true;
@@ -916,6 +942,20 @@ class Biaya extends CI_Controller {
 				$output['output'] = true;
 			}
 		}
+
+        $this->db->set("kredit", $total);
+		$this->db->where("id", $transaction_id_bayar_dari);
+		$this->db->update("transactions");
+
+        $this->db->set("debit", $total);
+        $this->db->set("kredit", $total);
+		$this->db->where("id", $transaction_id);
+		$this->db->update("transactions");
+
+        $this->db->set("nomor_transaksi", $nomor_transaksi);
+        $this->db->set("tanggal_transaksi", $tanggal_transaksi);
+        $this->db->where("biaya_id", $form_id_biaya_main);
+        $this->db->update("transactions");
 		
 		echo json_encode($output);	
 	}
@@ -925,11 +965,21 @@ class Biaya extends CI_Controller {
 		$output['output'] = false;
 
 		$form_id_biaya = $this->input->post('form_id_biaya');
-        $transaction_id = $this->input->post('transaction_id');
-		$biaya_id = $this->input->post('biaya_id');
+        $biaya_id = $this->input->post('biaya_id');
 		$akun = $this->input->post('akun');
 		$deskripsi = $this->input->post('deskripsi');
 		$jumlah = str_replace(',', '.', $this->input->post('jumlah'));
+        $transactions_akun = $this->input->post('transactions_akun');
+        $transactions_jumlah = $this->input->post('transactions_jumlah');
+
+        /*Mencari ID Transactions*/
+        $transaction_id = $this->db->select('id')
+        ->from('transactions')
+        ->where("biaya_id = '$biaya_id'")
+        ->where("akun = '$transactions_akun'")
+        ->where("debit = '$transactions_jumlah'")
+        ->get()->row_array();
+        $transaction_id = $transaction_id['id'];
 
 		$data = array(
             'biaya_id' => $biaya_id,
@@ -949,20 +999,12 @@ class Biaya extends CI_Controller {
 			}
 		}
 
-        $arr_update = array(
-            'id' => $transaction_id,
-			'akun' => $akun,
-			//'deskripsi' => $deskripsi,
-			'debit' => $jumlah,
-            'created_by' => $this->session->userdata('admin_id'),
-            'created_on' => date('Y-m-d H:i:s')
-		);
+		$this->db->set("akun", $akun);
+        $this->db->set("deskripsi", $deskripsi);
+        $this->db->set("debit", $jumlah);
+		$this->db->where("id", $transaction_id);
+		$this->db->update("transactions");
 
-        $this->db->where('id', $transaction_id);
-        if ($this->db->update('transactions', $arr_update)) {
-            
-        }
-		
 		echo json_encode($output);	
 	}
 
@@ -971,7 +1013,7 @@ class Biaya extends CI_Controller {
 		$output['output'] = false;
 		$id = $this->input->post('id');
 		if(!empty($id)){
-            $data = $this->db->select('b.*, sum(pdb.jumlah) as total')
+            $data = $this->db->select('b.*, sum(pdb.jumlah) as total, b.total as transactions_jumlah_main, b.bayar_dari as transactions_bayar_dari')
             ->from('pmm_biaya b ')
             ->join('pmm_detail_biaya pdb','b.id = pdb.biaya_id','left')
             ->join('pmm_coa c','b.bayar_dari = c.id','left')
@@ -992,11 +1034,12 @@ class Biaya extends CI_Controller {
 		$id = $this->input->post('id');
 		if(!empty($id)){
 			//$data = $this->db->select('*')->get_where('pmm_detail_biaya',array('id'=>$id))->row_array();
-            $data = $this->db->select('pdb.*, t.id as transaction_id')
+            $data = $this->db->select('pdb.*, pdb.akun as transactions_akun, pdb.jumlah as transactions_jumlah')
             ->from('pmm_detail_biaya pdb')
             ->join('transactions t','pdb.akun = t.akun','left')
             ->where('pdb.id',$id)
             ->get()->row_array();
+
 			$output['output'] = $data;
 		}
 		echo json_encode($output);

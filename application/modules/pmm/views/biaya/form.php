@@ -122,7 +122,8 @@
                 <div class="modal-body">
                     <form class="form-horizontal" style="padding: 0 10px 0 20px;" >
                         <input type="hidden" name="biaya_id" id="id" value="<?= $data['id'] ?>">
-                        <input type="hidden" name="transaction_id" id="transaction_id" value="<?= $data['transaction_id'] ?>">
+                        <input type="hidden" name="transactions_akun" id="transactions_akun" value="<?= $data['transactions_akun'] ?>">
+                        <input type="hidden" name="transactions_jumlah" id="transactions_jumlah" value="<?= $data['transactions_jumlah'] ?>">
                         <input type="hidden" id="form_id_biaya" name="form_id_biaya" class="form-control" required="" autocomplete="off" />
                         <div class="form-group">
                             <label>Akun</label>
@@ -173,6 +174,8 @@
                         <input type="hidden" name="biaya_id" id="id" value="<?= $data['id'] ?>">
                         <input type="hidden" name="bayar_dari" id="id" value="<?= $data['bayar_dari'] ?>">
                         <input type="hidden" name="tanggal_transaksi" id="id" value="<?= $data['tanggal_transaksi'] ?>">
+                        <input type="hidden" name="transactions_jumlah_main" id="transactions_jumlah_main" value="<?= $data['transactions_jumlah_main'] ?>">
+                        <input type="hidden" name="transactions_bayar_dari" id="transactions_bayar_dari" value="<?= $data['transactions_bayar_dari'] ?>">
                         <input type="hidden" id="form_id_biaya_main" name="form_id_biaya_main" class="form-control" required="" autocomplete="off" />
                         <!--<div class="form-group">
                             <label>Dibayar Kepada</label>
@@ -338,7 +341,7 @@
             ],
         });
 
-        function DeleteData(id,transaction_id)
+        function DeleteData(id,transactions_id,transactions_akun,transactions_jumlah)
         {
             bootbox.confirm("Apakah anda yakin untuk proses data ini ?", function(result){ 
                 // console.log('This was logged in the callback: ' + result); 
@@ -347,7 +350,7 @@
                         type    : "POST",
                         url     : "<?php echo site_url('pmm/biaya/delete_detail'); ?>",
                         dataType : 'json',
-                        data: {id:id,transaction_id:transaction_id},
+                        data: {id:id,transactions_id:transactions_id,transactions_akun:transactions_akun,transactions_jumlah:transactions_jumlah},
                         success : function(result){
                             if(result.output){
                                 table.ajax.reload();
@@ -414,6 +417,8 @@
                         $('#bayar_dari').val(result.output.bayar_dari);
                         $('#memo').val(result.output.memo);
                         $('#total').val(result.output.total);
+                        $('#transactions_jumlah_main').val(result.output.transactions_jumlah_main);
+                        $('#transactions_bayar_dari').val(result.output.transactions_bayar_dari);
                         
                     }else if(result.err){
                         bootbox.alert(result.err);
@@ -467,10 +472,11 @@
                 success : function(result){
                     if(result.output){
                         $('#form_id_biaya').val(result.output.id).trigger('change');
-                        $('#transaction_id').val(result.output.transaction_id).trigger('transaction_id');
                         $('#akun').val(result.output.akun).trigger('change');
                         $('#deskripsi').val(result.output.deskripsi);
                         $('#jumlah').val(result.output.jumlah);
+                        $('#transactions_akun').val(result.output.transactions_akun);
+                        $('#transactions_jumlah').val(result.output.transactions_jumlah);
                         
                     }else if(result.err){
                         bootbox.alert(result.err);

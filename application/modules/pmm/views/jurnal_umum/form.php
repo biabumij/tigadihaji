@@ -54,6 +54,7 @@
                                 <input type="hidden" id="id" name="id" value="<?= $data['id'] ?>">
                                 <form id="form-product" class="form-horizontal" action="<?php echo site_url('pmm/jurnal_umum/product_process'); ?>" >
                                     <input type="hidden" id="jurnal_id" name="jurnal_id" value="<?= $data['id'] ?>">
+                                    <input type="hidden" id="transactions_tanggal_transaksi" name="transactions_tanggal_transaksi" value="<?= $data['tanggal_transaksi'] ?>">
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <select  class="form-control form-select2"  name="product" required="">
@@ -126,7 +127,9 @@
                 <div class="modal-body">
                     <form class="form-horizontal" style="padding: 0 10px 0 20px;" >
                         <input type="hidden" name="jurnal_id" id="jurnal_id" value="<?= $data['id'] ?>">
-                        <input type="hidden" name="transaction_id" id="transaction_id" value="<?= $data['transaction_id'] ?>">
+                        <input type="hidden" name="transactions_akun" id="transactions_akun" value="<?= $data['transactions_akun'] ?>">
+                        <input type="hidden" name="transactions_debit" id="transactions_debit" value="<?= $data['transactions_debit'] ?>">
+                        <input type="hidden" name="transactions_kredit" id="transactions_kredit" value="<?= $data['transactions_kredit'] ?>">
                         <input type="hidden" id="form_id_jurnal" name="form_id_jurnal" class="form-control" required="" autocomplete="off" />
                         <div class="form-group">
                             <label>Akun</label>
@@ -179,9 +182,9 @@
                 <div class="modal-body">
                     <form class="form-horizontal" style="padding: 0 10px 0 20px;" >
                         <input type="hidden" name="jurnal_umum" id="id" value="<?= $data['id'] ?>">
-                        <input type="text" name="transaction_id_main" id="transaction_id_main" value="<?= $data['transaction_id_main'] ?>">
-                        <input type="hidden" name="akun_jurnal" id="akun_jurnal" value="<?= $data['akun_jurnal'] ?>">
                         <input type="hidden" id="form_id_jurnal_main" name="form_id_jurnal_main" class="form-control" required="" autocomplete="off" />
+                        <input type="hidden" name="transactions_debit_main" id="transactions_debit_main" value="<?= $data['transactions_debit_main'] ?>">
+                        <input type="hidden" name="transactions_kredit_main" id="transactions_kredit_main" value="<?= $data['transactions_kredit_main'] ?>">
                         <div class="form-group">
                             <label>Nomor Transaksi</label>
                             <input type="text" id="nomor_transaksi" name="nomor_transaksi" class="form-control" required="" autocomplete="off" />
@@ -318,7 +321,7 @@
             ],
         });
 
-        function DeleteData(id,transaction_id)
+        function DeleteData(id,transactions_id,transactions_akun,transactions_debit,transactions_kredit)
         {
             bootbox.confirm("Apakah anda yakin untuk proses data ini ?", function(result){ 
                 // console.log('This was logged in the callback: ' + result); 
@@ -327,7 +330,7 @@
                         type    : "POST",
                         url     : "<?php echo site_url('pmm/jurnal_umum/delete_detail'); ?>",
                         dataType : 'json',
-                        data: {id:id,transaction_id:transaction_id},
+                        data: {id:id,transactions_id:transactions_id,transactions_akun:transactions_akun,transactions_debit:transactions_debit,transactions_kredit:transactions_kredit},
                         success : function(result){
                             if(result.output){
                                 table.ajax.reload();
@@ -390,13 +393,14 @@
                 success : function(result){
                     if(result.output){
                         $('#form_id_jurnal_main').val(result.output.id).trigger('change');
-                        $('#transaction_id_main').val(result.output.transaction_id_main).trigger('change');
                         $('#nomor_transaksi').val(result.output.nomor_transaksi);
                         $('#tanggal_transaksi').val(result.output.tanggal_transaksi);
                         $('#total').val(result.output.total);
                         $('#total_debit').val(result.output.total_debit);
                         $('#total_kredit').val(result.output.total_kredit);
                         $('#memo').val(result.output.memo);
+                        $('#transactions_debit_main').val(result.output.transactions_debit_main);
+                        $('#transactions_kredit_main').val(result.output.transactions_kredit_main);
                         
                     }else if(result.err){
                         bootbox.alert(result.err);
@@ -455,6 +459,9 @@
                         $('#deskripsi').val(result.output.deskripsi);
                         $('#debit').val(result.output.debit);
                         $('#kredit').val(result.output.kredit);
+                        $('#transactions_akun').val(result.output.transactions_akun);
+                        $('#transactions_debit').val(result.output.transactions_debit);
+                        $('#transactions_kredit').val(result.output.transactions_kredit);
                         
                     }else if(result.err){
                         bootbox.alert(result.err);
