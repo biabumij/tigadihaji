@@ -149,7 +149,6 @@
                                             <?php
                                             }
                                             ?>
-                                            
                                             <?php
                                              if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4){
                                             ?>
