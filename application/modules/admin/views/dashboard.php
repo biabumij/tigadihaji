@@ -275,7 +275,7 @@
                                     <th width="50%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="produksi">
                                             <?php
-                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
+                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8,10))){
                                             ?>
                                             <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 40%, #2ea4d7 80%);">
                                                 <a href="<?php echo site_url('admin/rap');?>">
