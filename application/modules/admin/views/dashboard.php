@@ -201,7 +201,7 @@
                         </figure>    
                     </div>
                     <?php
-                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,7,8))){
+                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,7,8,10))){
                     ?>
                     <div id="flippy">
                         <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}"><i class="fa-regular fa-hand-point-right"></i> GRAFIK</button>
@@ -302,7 +302,7 @@
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cart-shopping"></i><b>PEMBELIAN</b></span></a>
                                             </li>
                                             <?php
-                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
+                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8,10))){
                                             ?>
                                             <?php
                                             }
@@ -310,7 +310,7 @@
                                         </ul>
                                     </th>
                                     <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6,7,8))){
+                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6,7,8,10))){
                                     ?>
                                     <th width="50%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="keuangan">
@@ -434,7 +434,7 @@
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-users"></i><b>USER</b></span></a>
                                             </li>
                                             <?php
-                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,7,8))){
+                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,7,8,10))){
                                             ?>
                                             <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 40%, #b30f15 80%);">
                                                 <a href="<?php echo site_url('admin/perusahaan');?>">
