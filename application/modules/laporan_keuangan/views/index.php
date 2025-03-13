@@ -75,7 +75,7 @@
                                         <div class="row">
                                             <div width="100%">
                                                 <?php
-                                                if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,7,8,10))){
+                                                if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,7,8))){
                                                 ?>                             
                                                 <div class="col-sm-5">
                                                     <p><h5><b>Laporan Laba Rugi</b></h5></p>
@@ -86,7 +86,7 @@
                                                 ?>
 
                                                 <?php
-                                                if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6,7,8,10))){
+                                                if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6,7,8))){
                                                 ?>
                                                 <div class="col-sm-5">
                                                     <p><h5><b>Neraca</b></h5></p>
