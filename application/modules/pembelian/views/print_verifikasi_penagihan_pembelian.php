@@ -397,19 +397,19 @@
                         </tr>
                         <tr>
                             <td align="center" height="75px">
-								
+								<img src="<?= $verifikator['admin_ttd']?>" width="100px">
                             </td>
                             <td align="center">
-								
+								<img src="<?= $logistik['admin_ttd']?>" width="100px">
                             </td>
 							<td align="center">
-								
+								<img src="<?= $keu_pusat['admin_ttd']?>" width="100px">
                             </td>
                             <td align="center">
-								
+								<img src="<?= $unit_head['admin_ttd']?>" width="100px">
                             </td>
 							<td align="center">
-								
+								<img src="<?= $pusat['admin_ttd']?>" width="100px">
                             </td>
                         </tr>
                         <tr>
