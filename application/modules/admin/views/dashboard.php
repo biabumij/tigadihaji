@@ -454,7 +454,7 @@
                                     ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#settings" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 20%, #666666 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #757575 20%, #757575 20%, #666666 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-gear"></i><b>SETTINGS</b></span></a>
                                             </li>
@@ -479,15 +479,15 @@
                                 <tr>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="settings">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 20%, #666666 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #757575 20%, #757575 20%, #666666 80%);">
                                                 <a href="<?php echo site_url('admin/menu');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-bars"></i><b>MENU</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 20%, #666666 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #757575 20%, #757575 20%, #666666 80%);">
                                                 <a href="<?php echo site_url('admin/admin_access');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-eye"></i><b>ADMIN<br />ACCESS</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #848484 20%, #757575 20%, #666666 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #757575 20%, #757575 20%, #666666 80%);">
                                                 <a href="<?php echo site_url('admin/admin');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-user-secret"></i><b>ADMIN</b></span></a>
                                             </li>
