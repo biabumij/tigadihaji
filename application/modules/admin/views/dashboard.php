@@ -262,7 +262,7 @@
                                     </th>
                                     <th width="50%" class="text-center" data-toggle="collapse" data-target="#keuangan" aria-expanded="false" aria-controls="kp">
                                         <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
-                                            <li style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 20%, #57d762 80%);">
+                                            <li style="background: linear-gradient(110deg, #f1c232 20%, #f1c232 20%, #d8ae2d 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-money-bill"></i><b>KEUANGAN</b></span></a>
                                             </li>
@@ -314,21 +314,21 @@
                                     ?>
                                     <th width="50%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="keuangan">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 20%, #57d762 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #f1c232 20%, #f1c232 20%, #d8ae2d 80%);">
                                                 <a href="<?php echo site_url('admin/biaya_bua');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-dollar-sign"></i><b>BUA</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 20%, #57d762 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #f1c232 20%, #f1c232 20%, #d8ae2d 80%);">
                                                 <a href="<?php echo site_url('admin/jurnal_umum');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-scale-balanced"></i><b>JURNAL</b></span></a>
                                             </li>
                                             <br />
                                             <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 20%, #57d762 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #f1c232 20%, #f1c232 20%, #d8ae2d 80%);">
                                                 <a href="<?php echo site_url('admin/rencana_cash_flow');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cash-register"></i><b>CASH FLOW</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #8dea57 20%, #8dea57 20%, #57d762 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #f1c232 20%, #f1c232 20%, #d8ae2d 80%);">
                                                 <a href="<?php echo site_url('admin/kas_&_bank');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-building-columns"></i><b>KAS & BANK</b></span></a>
                                             </li>
