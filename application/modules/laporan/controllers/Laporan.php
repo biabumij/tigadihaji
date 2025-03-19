@@ -2373,8 +2373,6 @@ class Laporan extends Secure_Controller {
 		$this->db->order_by('ps.nama','asc');
 		$query = $this->db->get('pmm_penagihan_penjualan ppp');
 		
-		
-
 			$no = 1;
 			if($query->num_rows() > 0){
 
@@ -2382,7 +2380,7 @@ class Laporan extends Secure_Controller {
 
 				$mats = array();
 				$materials = $this->pmm_model->GetReceiptTagihanPenjualan($sups['client_id'],$start_date,$end_date);
-				
+				file_put_contents("D:\\test.txt", $this->db->last_query());
 				if(!empty($materials)){
 					foreach ($materials as $key => $row) {
 						$arr['no'] = $key + 1;

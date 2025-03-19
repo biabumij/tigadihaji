@@ -4300,8 +4300,8 @@ class Pmm_model extends CI_Model {
 		$this->db->join('pmm_penagihan_pembelian_detail ppd', 'ppp.id = ppd.penagihan_pembelian_id', 'left');
         
 		if(!empty($start_date) && !empty($end_date)){
-            $this->db->where('ppp.created_on >=',$start_date);
-            $this->db->where('ppp.created_on <=',$end_date);
+            $this->db->where('ppp.created_on  >=',date('Y-m-d',strtotime($start_date)));	
+			$this->db->where('ppp.created_on <=',date('Y-m-d',strtotime($end_date)));	
         }
 		
 		if(!empty($supplier_id)){
@@ -4324,8 +4324,8 @@ class Pmm_model extends CI_Model {
 		$this->db->join('pmm_penagihan_penjualan_detail ppd', 'ppp.id = ppd.penagihan_id', 'left');
         
 		if(!empty($start_date) && !empty($end_date)){
-            $this->db->where('ppp.created_on >=',$start_date);
-            $this->db->where('ppp.created_on <=',$end_date);
+            $this->db->where('ppp.created_on  >=',date('Y-m-d',strtotime($start_date)));	
+			$this->db->where('ppp.created_on <=',date('Y-m-d',strtotime($end_date)));	
         }
 		
 		if(!empty($supplier_id)){
