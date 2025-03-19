@@ -2357,11 +2357,6 @@ class Laporan extends Secure_Controller {
 		$total = 0;
 		$jumlah_all = 0;
 
-		$this->db->select('ppp.client_id, ps.nama');
-		if(!empty($start_date) && !empty($end_date)){
-            $this->db->where('ppp.created_on >=',$start_date);
-            $this->db->where('ppp.created_on <=',$end_date);
-        }
         if(!empty($supplier_id)){
             $this->db->where('ppp.client_id',$supplier_id);
         }
@@ -2369,10 +2364,10 @@ class Laporan extends Secure_Controller {
 			$arr_date = explode(' - ', $w_date);
 			$start_date = $arr_date[0];
 			$end_date = $arr_date[1];
-			$this->db->where('prm.date_receipt  >=',date('Y-m-d',strtotime($start_date)));	
-			$this->db->where('prm.date_receipt <=',date('Y-m-d',strtotime($end_date)));	
+			$this->db->where('ppp.created_on >=',$start_date);
+            $this->db->where('ppp.created_on <=',$end_date);
 		}
-		
+
 		$this->db->join('penerima ps', 'ppp.client_id = ps.id');
 		$this->db->group_by('ppp.client_id');
 		$this->db->order_by('ps.nama','asc');
