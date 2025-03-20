@@ -2264,17 +2264,15 @@ class Laporan extends Secure_Controller {
 		if(!empty($w_date)){
 			$arr_date = explode(' - ', $w_date);
 			$start_date = $arr_date[0];
-			$end_date = $arr_date[1];
-			$this->db->where('ppp.created_on  >=',date('Y-m-d',strtotime($start_date)));	
-			$this->db->where('ppp.created_on <=',date('Y-m-d',strtotime($end_date)));	
+			$end_date = $arr_date[1];	
+			$this->db->where('ppp.created_on  >=', date('Y-m-d h:i A', strtotime($start_date.' 23:59:59')));
+            $this->db->where('ppp.created_on <=', date('Y-m-d h:i A', strtotime($end_date.' 23:59:59')));
 		}
 		
-		$this->db->join('penerima ps', 'ppp.supplier_id = ps.id');
+		$this->db->join('penerima ps', 'ppp.supplier_id = ps.id','left');
 		$this->db->group_by('ppp.supplier_id');
 		$this->db->order_by('ps.nama','asc');
 		$query = $this->db->get('pmm_penagihan_pembelian ppp');
-		
-
 			$no = 1;
 			if($query->num_rows() > 0){
 
