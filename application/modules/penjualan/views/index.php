@@ -158,7 +158,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:10px;">Close</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -321,7 +321,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:10px;">Close</button>
                                                 </div>
                                             </div>
                                         </div>
