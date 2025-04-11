@@ -6052,6 +6052,26 @@ class Pmm_model extends CI_Model {
         }
         return $total;
     }
+    function get220201($date1,$date2)
+    {   
+        $total = 0;
+
+        $akun_220201 = $this->db->select('pdj.akun as id, sum(pdj.kredit) as total')
+        ->from('pmm_jurnal_umum j')
+        ->join('pmm_detail_jurnal pdj','j.id = pdj.jurnal_id','left')
+        ->where("j.tanggal_transaksi between '$date1' and '$date2'")
+        ->where("pdj.akun = 185")
+        ->group_by('pdj.akun')
+        ->get()->row_array();
+        $akun_220201 = $akun_220201['total'];
+        
+        $query = $akun_220201;
+        
+        if(!empty($query)){
+            $total = $query;
+        }
+        return $total;
+    }
 
     function get220505($date1,$date2)
     {   
