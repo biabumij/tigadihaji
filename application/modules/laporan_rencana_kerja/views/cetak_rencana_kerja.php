@@ -107,7 +107,7 @@
 		<table width="98%" border="0" cellpadding="3" border="0">
 		
 			<?php
-			$date_juni24_awal = date('2024-06-01');
+			/*$date_juni24_awal = date('2024-06-01');
 			$date_juni24_akhir = date('2024-06-30');
 			$date_juli24_awal = date('2024-07-01');
 			$date_juli24_akhir = date('2024-07-31');
@@ -120,7 +120,22 @@
 			$date_november24_awal = date('2024-11-01');
 			$date_november24_akhir = date('2024-11-30');
 			$date_desember24_awal = date('2024-12-01');
-			$date_desember24_akhir = date('2024-12-31');
+			$date_desember24_akhir = date('2024-12-31');*/
+
+			$date_juni24_awal = date('2025-01-01');
+			$date_juni24_akhir = date('2025-01-30');
+			$date_juli24_awal = date('2025-02-01');
+			$date_juli24_akhir = date('2025-02-28');
+			$date_agustus24_awal = date('2025-03-01');
+			$date_agustus24_akhir = date('2025-03-31');
+			$date_september24_awal = date('2025-04-01');
+			$date_september24_akhir = date('2025-04-30');
+			$date_oktober24_awal = date('2025-05-01');
+			$date_oktober24_akhir = date('2025-05-31');
+			$date_november24_awal = date('2025-06-01');
+			$date_november24_akhir = date('2025-06-30');
+			$date_desember24_awal = date('2025-07-01');
+			$date_desember24_akhir = date('2025-07-31');
 
 			//BETON K-125 SLUMP 10
 			$rak_1_K125 = $this->db->select('*, SUM(vol_produk_a) as vol_produk_a')
@@ -1327,18 +1342,25 @@
 			}
 			?>
 
-<tr class="table-judul">
+			<tr class="table-judul">
 				<th width="5%" align="center" rowspan="2" style="vertical-align:middle;">NO.</th>
 				<th align="center" rowspan="2" style="vertical-align:middle;">URAIAN</th>
 				<th align="center" rowspan="2" style="vertical-align:middle;">HARSAT</th>
 				<th align="center" rowspan="2" style="vertical-align:middle;">SATUAN</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">JUNI 2024</th>
+				<!--<th align="center" colspan="2" style="text-transform:uppercase;">JUNI 2024</th>
 				<th align="center" colspan="2" style="text-transform:uppercase;">JULI 2024</th>
 				<th align="center" colspan="2" style="text-transform:uppercase;">AGUSTUS 2024</th>
 				<th align="center" colspan="2" style="text-transform:uppercase;">SEPTEMBER 2024</th>
 				<th align="center" colspan="2" style="text-transform:uppercase;">OKTOBER 2024</th>
 				<th align="center" colspan="2" style="text-transform:uppercase;">NOVEMBER 2024</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">DESEMBER 2024</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">DESEMBER 2024</th>-->
+				<th align="center" colspan="2" style="text-transform:uppercase;">JANUARI 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">FEBRUARI 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">MARET 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">APRIL 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">MEI 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">JUNI 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">JULI 2025</th>
 				<th align="center" colspan="2">JUMLAH</th>
 	        </tr>
 			<tr class="table-judul">
@@ -1868,7 +1890,7 @@
 				
 				$realisasi_7 = $this->db->select('*')
 				->from('rak')
-				->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$V'")
+				->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
 				->get()->row_array();
 				$vol_realisasi_semen_7 = $realisasi_7['vol_realisasi_a'];
 				$nilai_realisasi_semen_7 = $realisasi_7['nilai_realisasi_a'];
