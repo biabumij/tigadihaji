@@ -490,13 +490,13 @@
 			</tr>
 			<tr>
 				<th align="center" width="20%">5-50320</th>
-				<th align="left" width="50%">Biaya Lain-Lain</th>
-				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_biaya_lain_lain?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($biaya_lain_lain,0,',','.');?></a></th>
+				<th align="left" width="50%">Biaya Adm Bank</th>
+				<th align="center" width="30%" align="right">0</th>
 			</tr>
 			<tr>
 				<th align="center" width="20%">5-50321</th>
-				<th align="left" width="50%">Biaya Adm Bank</th>
-				<th align="center" width="30%" align="right">0</th>
+				<th align="left" width="50%">Biaya Lain-Lain</th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_biaya_lain_lain?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($biaya_lain_lain,0,',','.');?></a></th>
 			</tr>
 			<tr>
 				<th align="center" width="20%">5-50322</th>
