@@ -11095,7 +11095,7 @@ class Reports extends CI_Controller {
 						$akun_220404 = array_merge($akun_220404_biaya,$akun_220404_jurnal);
 						usort($akun_220404, 'sortByOrder');
 						?>
-						<button onclick="myFunction56()" class="btn btn-info"><b>(2-20201) Hutang Gaji<b></button>
+						<button onclick="myFunction56()" class="btn btn-info"><b>(2-20201) Hutang Biaya<b></button>
 						<div id="myDIV56" style="display:none;">
 							<table width="100% "border="1">
 								<tr>
@@ -11122,7 +11122,7 @@ class Reports extends CI_Controller {
 							<table width="100% "border="1">
 								<tr>
 									<th width="10%" class="text-left"><?php echo $x['tanggal_transaksi'];?></th>
-									<th width="10%" class="text-left">HUTANG GAJI</th>
+									<th width="10%" class="text-left">HUTANG BIAYA</th>
 									<th width="20%" class="text-left"><?php echo $x['nomor_transaksi'];?></th>
 									<th width="30%" class="text-left">PO :<?php echo $x['deskripsi'];?></th>
 									<th width="10%" class="text-right"><?php echo number_format($x['debit'],0,',','.');?></th>
