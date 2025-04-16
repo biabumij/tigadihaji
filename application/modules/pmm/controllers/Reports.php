@@ -11138,7 +11138,7 @@ class Reports extends CI_Controller {
 						<div>
 							<table width="100% "border="0">
 								<tr>
-									<th class="text-right" width="70%">(2-20201) Hutang Gaji | Saldo Akhir</th>
+									<th class="text-right" width="70%">(2-20201) Hutang Biaya | Saldo Akhir</th>
 									<th class="text-right" width="10%"><?php echo number_format($akun_220404_lalu + $total_debit,0,',','.');?></th>
 									<th class="text-right" width="10%"><?php echo number_format($total_kredit,0,',','.');?></th>
 									<?php
@@ -14519,7 +14519,7 @@ class Reports extends CI_Controller {
 				?>
 			<tr class="table-active3">
 				<th width="10%" class="text-center">2-20201</th>
-				<th class="text-left">Hutang Gaji</th>
+				<th class="text-left">Hutang Biaya</th>
 				<?php
 				$styleColor = $akun_220201 < 0 ? 'color:red' : 'color:black';
 				?>
