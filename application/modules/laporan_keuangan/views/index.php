@@ -79,7 +79,7 @@
                                                     <a href="#laporan-laba-rugi" aria-controls="laporan-laba-rugi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
                                                 </div>
                                                 <?php
-                                                if(in_array($this->session->userdata('admin_group_id'), array(1,3,8))){
+                                                if(in_array($this->session->userdata('admin_id'), array(1,2,11))){
                                                 ?>
                                                 <div class="col-sm-5">
                                                     <p><h5><b>Neraca</b></h5></p>
