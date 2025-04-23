@@ -178,7 +178,7 @@
                                 ?>
                                 
                                 <?php
-                                if($this->session->userdata('admin_id') == 1){
+                                if($this->session->userdata('admin_group_id') == 1){
                                 ?>
                                 <a class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('kontak/hapus/'.$row['id']);?>')"> HAPUS</a>
                                 <?php
