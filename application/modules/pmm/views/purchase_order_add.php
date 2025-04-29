@@ -288,7 +288,7 @@
                                     <a href="<?= site_url('pmm/purchase_order/get_pdf_draft/'.$id);?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PRINT (DRAFT)</a>
                                     
                                     <?php
-                                    if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3){
+                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6){
                                         ?>
                                         <a onclick="CreatePO()" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:10px;"> SETUJUI</a>
                                         <a onclick="ProcessForm('<?php echo site_url('pmm/purchase_order/process/'.$id.'/2');?>')" class="btn btn-danger check-btn" style="width:150px; font-weight:bold; border-radius:10px;"> TOLAK</a>
@@ -305,7 +305,7 @@
                                     <a href="<?= site_url('pmm/receipt_material/manage/'.$id);?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> TERIMA PRODUK</a>
                                     
                                     <?php
-                                    if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3){
+                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6){
                                         ?>
                                         <form class="form-check" action="<?= base_url("pembelian/closed_po/".$id) ?>">
                                             <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> CLOSED</button>
@@ -322,7 +322,7 @@
                                     <a href="<?= site_url('pmm/purchase_order/get_pdf/'.$id);?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
                                     
                                     <?php
-                                    if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3){
+                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6){
                                         ?>
                                         <form class="form-check" action="<?= site_url("pmm/purchase_order/open_pesanan_pembelian/".$id);?>">
                                             <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> PUBLISH</button>
@@ -332,7 +332,7 @@
                                     }
                                     ?>
                                     <?php
-                                    if($this->session->userdata('admin_group_id') == 1){
+                                    if($this->session->userdata('admin_id') == 1){
                                         ?>
                                         <form class="form-check" action="<?= site_url("pmm/purchase_order/delete/".$id);?>">
                                             <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> HAPUS</button>        
@@ -344,7 +344,7 @@
 
                                 <?php if($data["status"] === "REJECTED") : ?>                             
                                     <?php
-                                    if($this->session->userdata('admin_group_id') == 1){
+                                    if($this->session->userdata('admin_id') == 1){
                                         ?>
                                         <form class="form-check" action="<?= site_url("pmm/purchase_order/delete/".$id);?>">
                                             <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> HAPUS</button>        

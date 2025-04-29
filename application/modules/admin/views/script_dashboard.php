@@ -48,6 +48,8 @@ $date_maret25_awal = date('2025-03-01');
 $date_maret25_akhir = date('2025-03-31');
 $date_april25_awal = date('2025-04-01');
 $date_april25_akhir = date('2025-04-30');
+$date_mei25_awal = date('2025-05-01');
+$date_mei25_akhir = date('2025-05-31');
 
 
 //REALISASI PRODUKSI
@@ -292,6 +294,28 @@ foreach ($penjualan_april25 as $x){
     $total_volume_penjualan_april25 += $x['volume'];
 }
 $realisasi_produksi_april25 = $total_volume_penjualan_april25;
+
+//MEI25
+$rak_mei25 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
+->from('rak r')
+->where("r.tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
+->get()->row_array();
+$rencana_produksi_mei25 = $rak_mei25['total_produksi'];
+
+$penjualan_mei25 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_mei25_awal' and '$date_mei25_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_volume_penjualan_mei25 = 0;
+foreach ($penjualan_mei25 as $x){
+    $total_volume_penjualan_mei25 += $x['volume'];
+}
+$realisasi_produksi_mei25 = $total_volume_penjualan_mei25;
 
 //LABA RUGI
 //JUNI24
