@@ -890,6 +890,58 @@ $laba_rugi_april25 = $total_penjualan_april25 - ($bahan_april25 + $alat_april25 
 $total_laba_rugi_april25 = ($total_penjualan_april25!=0)?($laba_rugi_april25 / $total_penjualan_april25) * 100:0;
 $persentase_laba_rugi_april25 = round($total_laba_rugi_april25,2);
 
+//MEI25
+$rak_mei25 = $this->db->select('*')
+->from('rak')
+->where("(tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir')")
+->get()->row_array();
+$nilai_produk_a_mei25 = $rak_mei25['vol_produk_a'] * $rak_mei25['price_a'];
+$nilai_produk_b_mei25 = $rak_mei25['vol_produk_b'] * $rak_mei25['price_b'];
+$nilai_produk_c_mei25 = $rak_mei25['vol_produk_c'] * $rak_mei25['price_c'];
+$nilai_produk_d_mei25 = $rak_mei25['vol_produk_d'] * $rak_mei25['price_d'];
+$nilai_produk_e_mei25 = $rak_mei25['vol_produk_e'] * $rak_mei25['price_e'];
+$nilai_produk_f_mei25 = $rak_mei25['vol_produk_f'] * $rak_mei25['price_f'];
+$nilai_rak_penjualan_mei25 = $nilai_produk_a_mei25 + $nilai_produk_b_mei25 + $nilai_produk_c_mei25 + $nilai_produk_d_mei25 + $nilai_produk_e_mei25 + $nilai_produk_f_mei25;
+
+$total_niai_komposisi_bahan_mei25 = $this->pmm_model->getKomposisiBahan($date_mei25_awal,$date_mei25_akhir);
+$total_niai_komposisi_alat_mei25 = $this->pmm_model->getKomposisiAlat($date_mei25_awal,$date_mei25_akhir);
+$total_niai_komposisi_bua_mei25 = $this->pmm_model->getKomposisiBUA($date_mei25_awal,$date_mei25_akhir);
+$total_rak_mei25 = $total_niai_komposisi_bahan_mei25 + $total_niai_komposisi_alat_mei25 + $total_niai_komposisi_bua_mei25;
+$total_presentase_rak_mei25 = $total_rak_mei25 / $nilai_rak_penjualan_mei25;
+$persentase_rak_mei25 = round($total_presentase_rak_mei25,2);
+
+$penjualan_mei25 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_mei25_awal' and '$date_mei25_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_penjualan_mei25 = 0;
+foreach ($penjualan_mei25 as $x){
+    $total_penjualan_mei25 += $x['price'];
+}
+
+$date1 = $date_mei25_awal;
+$date2 = $date_mei25_akhir;
+$bahan_mei25 = $this->pmm_model->getBahan($date_mei25_awal,$date_mei25_akhir);
+$alat_mei25 = $this->pmm_model->getAlat($date_mei25_awal,$date_mei25_akhir);
+$overhead_mei25 = $this->pmm_model->getOverheadLabaRugi($date_mei25_awal,$date_mei25_akhir);
+$diskonto_mei25 = $this->db->select('sum(pdb.jumlah) as total')
+->from('pmm_biaya pb ')
+->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+->join('pmm_coa c','pdb.akun = c.id','left')
+->where("pdb.akun = 110")
+->where("pb.status = 'PAID'")
+->where("(pb.tanggal_transaksi between '$date_mei25_awal' and '$date_mei25_akhir')")
+->get()->row_array();
+$diskonto_mei25 = $diskonto_mei25['total'];
+$laba_rugi_mei25 = $total_penjualan_mei25 - ($bahan_mei25 + $alat_mei25 + $overhead_mei25 + $diskonto_mei25);
+$total_laba_rugi_mei25 = ($total_penjualan_mei25!=0)?($laba_rugi_mei25 / $total_penjualan_mei25) * 100:0;
+$persentase_laba_rugi_mei25 = round($total_laba_rugi_mei25,2);
+
 //REALISASI PER MINGGU
 $rencana_kerja_now = $this->db->select('r.*, (r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
 ->from('rak r')
