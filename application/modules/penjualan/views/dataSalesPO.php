@@ -220,7 +220,7 @@
                                     <a href="<?= base_url("penjualan/cetak_sales_order_draft/".$sales_po["id"]) ?>" target="_blank" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> PRINT (DRAFT)</a>
                                     
                                     <?php
-                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6){
+                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6){
                                     ?>
                                         <a href="<?= site_url('penjualan/approvalSalesPO/' . $sales_po['id']); ?>" class="btn btn-success" style="margin-bottom:0px; width:150px; font-weight:bold; border-radius:10px;"> SETUJUI</a>
                                     <a href="<?= site_url('penjualan/rejectedSalesPO/' . $sales_po['id']); ?>" class="btn btn-danger" style="margin-bottom:0px; width:150px; font-weight:bold; border-radius:10px;"> TOLAK</a>
@@ -236,7 +236,7 @@
                                 <a href="<?= base_url("pmm/productions/add?po_id=".$sales_po["id"]) ?>"  class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> KIRIM PRODUK</a>
                                 
                                 <?php
-                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 10){
+                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 10){
                                     ?>
                                         <form class="form-approval" action="<?= base_url("penjualan/closed_sales_order/".$sales_po["id"]) ?>">
                                             <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> CLOSED</button>
@@ -252,7 +252,7 @@
                                 <?php if($sales_po["status"] === "CLOSED") : ?>
                                 <a href="<?= base_url("penjualan/cetak_sales_order/".$sales_po["id"]) ?>" target="_blank" class="btn btn-default" style="margin-bottom:0px; width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
                                     <?php
-                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 10){
+                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 10){
                                     ?>
                                         <a class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;" href="<?= base_url("penjualan/open_sales_order/".$sales_po["id"]) ?>"> OPEN</a>
                                         <a href="<?= site_url('penjualan/reject_sales_order/' . $sales_po["id"]); ?>" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> REJECT</a>

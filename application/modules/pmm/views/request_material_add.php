@@ -250,7 +250,7 @@
                                     <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/3');?>')" class="btn btn-success check-btn" style="width:200px; font-weight:bold; border-radius:10px;"> KIRIM PERMINTAAN</a>
                                     <?php
                                 }else if($data['status'] == 'WAITING'){
-                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 10){
+                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 10){
                                         ?>
                                         <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/1');?>')" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:10px;"> SETUJUI</a>
                                         <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/2');?>')" class="btn btn-danger check-btn" style="width:150px; font-weight:bold; border-radius:10px;"> TOLAK</a>
