@@ -4953,20 +4953,20 @@ class Pmm_model extends CI_Model {
         $pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
         
         //SPESIAL//
-        $total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
-        $total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
-        $total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
-        $total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant;
-        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer;
+		$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
+		$total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
+		$total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
+		$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
+		$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer;
 		$total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
-        $total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
-        $total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
-        $total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
-        $total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader;
-        $total_pemakaian_excavator = $total_nilai_excavator;
-        $total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
-        $total_pemakaian_bbm_solar = $total_akumulasi_bbm;
-        //SPESIAL//
+		$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
+		$total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
+		$total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
+		$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
+		$total_pemakaian_excavator = $total_nilai_excavator;
+		$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
+		$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
+		//SPESIAL//
 
         $total_vol_evaluasi_batching_plant = ($pemakaian_vol_batching_plant!=0)?$vol_batching_plant - $pemakaian_vol_batching_plant * 1:0;
         $total_nilai_evaluasi_batching_plant = ($total_pemakaian_batching_plant!=0)?$batching_plant - $total_pemakaian_batching_plant * 1:0;
@@ -5352,20 +5352,20 @@ class Pmm_model extends CI_Model {
         $pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
         
         //SPESIAL//
-        $total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
-        $total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
-        $total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
-        $total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant;
-        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer;
+		$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
+		$total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
+		$total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
+		$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
+		$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer;
 		$total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
-        $total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
-        $total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
-        $total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
-        $total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader;
-        $total_pemakaian_excavator = $total_nilai_excavator;
-        $total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
-        $total_pemakaian_bbm_solar = $total_akumulasi_bbm;
-        //SPESIAL//
+		$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
+		$total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
+		$total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
+		$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
+		$total_pemakaian_excavator = $total_nilai_excavator;
+		$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
+		$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
+		//SPESIAL//
 
         $total_vol_evaluasi_batching_plant = ($pemakaian_vol_batching_plant!=0)?$vol_batching_plant - $pemakaian_vol_batching_plant * 1:0;
         $total_nilai_evaluasi_batching_plant = ($total_pemakaian_batching_plant!=0)?$batching_plant - $total_pemakaian_batching_plant * 1:0;

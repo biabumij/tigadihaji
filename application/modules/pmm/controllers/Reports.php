@@ -15426,17 +15426,18 @@ class Reports extends CI_Controller {
 			$pemakaian_vol_transfer_semen = $total_vol_transfer_semen;
 			$pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
 			
+
 			//SPESIAL//
 			$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
-			$total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
+			$total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
 			$total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
-			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant;
+			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
 			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer;
 			$total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
 			$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
-			$total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
+			$total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
 			$total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
-			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader;
+			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
 			$total_pemakaian_excavator = $total_nilai_excavator;
 			$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
 			$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
@@ -16298,7 +16299,6 @@ class Reports extends CI_Controller {
 			foreach ($pembelian_transfer_semen as $x){
 				$total_nilai_transfer_semen += $x['price'];
 			}
-			$total_vol_transfer_semen = $pembelian_transfer_semen['volume'];
 
 			$pembelian_excavator = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
@@ -16317,18 +16317,59 @@ class Reports extends CI_Controller {
 			foreach ($pembelian_excavator as $x){
 				$total_nilai_excavator += $x['price'];
 			}
-			$total_vol_excavator = $pembelian_excavator['volume'];
 
-			$pemakaian_solar = $this->db->select('sum(volume) as volume, sum(nilai) as nilai')
-			->from('pemakaian_bahan')
-			->where("date between '$date1' and '$date2'")
-			->where("material_id = 5")
-			->where("status = 'PUBLISH'")
+			$date1_ago = date('2020-01-01');
+			$date2_ago = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+			$date3_ago = date('Y-m-d', strtotime('-1 months', strtotime($date1)));
+			$tanggal_opening_balance = date('Y-m-d', strtotime('-1 days', strtotime($date1)));
+
+			$stock_opname_solar_ago = $this->db->select('cat.volume as volume, cat.total as nilai')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$tanggal_opening_balance')")
+			->where("cat.material_id = 5")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
 			->get()->row_array();
 
-			$pemakaian_volume_solar = $pemakaian_solar['volume'];
-			$pemakaian_nilai_solar = $pemakaian_solar['nilai'];
-			$pemakaian_harsat_solar = ($pemakaian_volume_solar!=0)?$pemakaian_nilai_solar / $pemakaian_volume_solar * 1:0;
+			$stok_volume_solar_lalu = $stock_opname_solar_ago['volume'];
+			$stok_nilai_solar_lalu = $stock_opname_solar_ago['nilai'];
+			$stok_harsat_solar_lalu = (round($stok_volume_solar_lalu,2)!=0)?$stok_nilai_solar_lalu / round($stok_volume_solar_lalu,2) * 1:0;
+
+			$pembelian_solar = $this->db->select('prm.display_measure as satuan, SUM(prm.display_volume) as volume, (prm.display_price / prm.display_volume) as harga, SUM(prm.display_price) as nilai')
+			->from('pmm_receipt_material prm')
+			->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+			->join('produk p', 'prm.material_id = p.id','left')
+			->where("prm.date_receipt between '$date1' and '$date2'")
+			->where("p.kategori_bahan = 5")
+			->get()->row_array();
+		
+			$pembelian_volume_solar = $pembelian_solar['volume'];
+			$pembelian_nilai_solar = $pembelian_solar['nilai'];
+			$pembelian_harga_solar = (round($pembelian_volume_solar,2)!=0)?$pembelian_nilai_solar / round($pembelian_volume_solar,2) * 1:0;
+
+			$total_stok_volume_solar = $stok_volume_solar_lalu + $pembelian_volume_solar;
+			$total_stok_nilai_solar = $stok_nilai_solar_lalu + $pembelian_nilai_solar;
+
+			$stock_opname_solar_now = $this->db->select('cat.volume as volume, cat.total as nilai, cat.pemakaian_custom, cat.reset, cat.reset_pemakaian')
+			->from('pmm_remaining_materials_cat cat ')
+			->where("(cat.date <= '$date2')")
+			->where("cat.material_id = 5")
+			->where("cat.status = 'PUBLISH'")
+			->order_by('date','desc')->limit(1)
+			->get()->row_array();
+
+			$volume_stock_opname_solar_now = $stock_opname_solar_now['volume'];
+			$nilai_stock_opname_solar_now = $stock_opname_solar_now['nilai'];
+
+			$vol_pemakaian_solar_now = ($stok_volume_solar_lalu + $pembelian_volume_solar) - $volume_stock_opname_solar_now;
+			$nilai_pemakaian_solar_now = $stock_opname_solar_now['nilai'];
+
+			$pemakaian_volume_solar = $vol_pemakaian_solar_now;
+			$pemakaian_nilai_solar = (($total_stok_nilai_solar - $nilai_stock_opname_solar_now) * $stock_opname_solar_now['reset']) + ($stock_opname_solar_now['pemakaian_custom'] * $stock_opname_solar_now['reset_pemakaian']);
+			$pemakaian_harsat_solar = $pemakaian_nilai_solar / $pemakaian_volume_solar;	
+
+			$total_vol_excavator = $pembelian_excavator['volume'];
+			$total_vol_transfer_semen = $pembelian_transfer_semen['volume'];
 
 			$penjualan = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
 			->from('pmm_productions pp')
@@ -16386,7 +16427,7 @@ class Reports extends CI_Controller {
 
 			$batching_plant = $harsat_batching_plant * $total_volume;
 			$pemeliharaan_batching_plant = $harsat_pemeliharaan_batching_plant * $total_volume;
-			$penyusutan_batching_plant = $batching_plant - $pemeliharaan_batching_plant;
+			$penyusutan_batching_plant = $vol_batching_plant * $harsat_penyusutan_batching_plant;
 			$wheel_loader = ($harsat_wheel_loader * $vol_wheel_loader) + $total_nilai_pemeliharaan_wheel_loader;
 			$pemeliharaan_wheel_loader = $harsat_pemeliharaan_wheel_loader * $vol_pemeliharaan_wheel_loader;
 			$penyusutan_wheel_loader = $wheel_loader - $pemeliharaan_wheel_loader;
@@ -16416,13 +16457,15 @@ class Reports extends CI_Controller {
 			
 			//SPESIAL//
 			$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
-			$total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
-			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant;
+			$total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
+			$total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
+			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
 			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer;
 			$total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
 			$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
-			$total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
-			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader;
+			$total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
+			$total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
+			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
 			$total_pemakaian_excavator = $total_nilai_excavator;
 			$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
 			$total_pemakaian_bbm_solar = $total_akumulasi_bbm;

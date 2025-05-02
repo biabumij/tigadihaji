@@ -455,7 +455,7 @@
 
 			$batching_plant = $harsat_batching_plant * $total_volume;
 			$pemeliharaan_batching_plant = $harsat_pemeliharaan_batching_plant * $total_volume;
-			$penyusutan_batching_plant = $batching_plant - $pemeliharaan_batching_plant;
+			$penyusutan_batching_plant = $vol_batching_plant * $harsat_penyusutan_batching_plant;
 			$wheel_loader = ($harsat_wheel_loader * $vol_wheel_loader) + $total_nilai_pemeliharaan_wheel_loader;
 			$pemeliharaan_wheel_loader = $harsat_pemeliharaan_wheel_loader * $vol_pemeliharaan_wheel_loader;
 			$penyusutan_wheel_loader = $wheel_loader - $pemeliharaan_wheel_loader;
@@ -485,15 +485,15 @@
 			
 			//SPESIAL//
 			$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
-			$total_pemakaian_penyusutan_batching_plant = $penyusutan_batching_plant;
+			$total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
 			$total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
-			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant;
+			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
 			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer;
 			$total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
 			$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
-			$total_pemakaian_penyusutan_wheel_loader = $penyusutan_wheel_loader;
+			$total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
 			$total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
-			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader;
+			$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
 			$total_pemakaian_excavator = $total_nilai_excavator;
 			$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
 			$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
