@@ -801,7 +801,7 @@
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format(0,0,',','.');?></th>
 				<th align="right"><?php echo number_format(0,2,',','.');?></th>
 				<th align="right"><?php echo number_format(0,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black;"><?php echo number_format($total_pemakaian_angsuran_batching_plant,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_angsuran_bp?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_pemakaian_angsuran_batching_plant,0,',','.');?></a></th>
 				<th align="right"><?php echo number_format(0,2,',','.');?></th>
 				<th align="right" style="border-right:1px solid black;"><?php echo number_format(0,0,',','.');?></th>
 	        </tr>
