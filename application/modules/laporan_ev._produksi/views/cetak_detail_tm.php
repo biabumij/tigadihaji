@@ -541,6 +541,24 @@
 			->get()->row_array();
 			$total_nilai_pemeliharaan_truck_mixer = $pemeliharaan_truck_mixer_biaya['total'] + $pemeliharaan_truck_mixer_jurnal['total'];
 
+			$insentif_truck_mixer_biaya = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 186")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+
+			$insentif_truck_mixer_jurnal = $this->db->select('sum(pdb.debit) as total')
+			->from('pmm_jurnal_umum pb ')
+			->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+			->where("pdb.akun = 186")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$total_nilai_insentif_truck_mixer = $insentif_truck_mixer_biaya['total'] + $insentif_truck_mixer_jurnal['total'];
+
 			$pembelian_transfer_semen = $this->db->select('
 			pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
 			->from('pmm_receipt_material prm')
@@ -677,7 +695,7 @@
 			$total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
 			$total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
 			$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
-			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer;
+			$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer;
 			$total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
 			$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
 			$total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
@@ -757,22 +775,34 @@
 				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black;"><?php echo $total_nilai_evaluasi_truck_mixer < 0 ? "(".number_format(-$total_nilai_evaluasi_truck_mixer,0,',','.').")" : number_format($total_nilai_evaluasi_truck_mixer,0,',','.');?></th>
 	        </tr>
 			<tr class="table-baris1">			
-				<th align="left" style="border-left:1px solid black; border-bottom:1px solid black;">&nbsp;&nbsp;Pemeliharaan</th>
-				<th align="center" style="border-right:1px solid black; border-bottom:1px solid black;">M3</th>
-				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format($vol_pemeliharaan_truck_mixer,2,',','.');?></th>
-				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format($harsat_pemeliharaan_truck_mixer,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black; border-bottom:1px solid black;"><?php echo number_format($pemeliharaan_truck_mixer,0,',','.');?></th>
-				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format(0,2,',','.');?></th>
-				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format(0,0,',','.');?></th>
-				<th align="right" style="border-right:1px solid black; border-bottom:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_pemeliharaan_tm?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_pemakaian_pemeliharaan_truck_mixer,0,',','.');?></a></th>
+				<th align="left" style="border-left:1px solid black;">&nbsp;&nbsp;Pemeliharaan</th>
+				<th align="center" style="border-right:1px solid black;">M3</th>
+				<th align="right"><?php echo number_format($vol_pemeliharaan_truck_mixer,2,',','.');?></th>
+				<th align="right"><?php echo number_format($harsat_pemeliharaan_truck_mixer,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><?php echo number_format($pemeliharaan_truck_mixer,0,',','.');?></th>
+				<th align="right"><?php echo number_format(0,2,',','.');?></th>
+				<th align="right"><?php echo number_format(0,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_pemeliharaan_tm?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_pemakaian_pemeliharaan_truck_mixer,0,',','.');?></a></th>
 				<?php
 				$styleColor = $total_vol_evaluasi_pemeliharaan_truck_mixer < 0 ? 'color:red' : 'color:black';
 				?>
-				<th align="right" style="<?php echo $styleColor ?>; border-bottom:1px solid black;"><?php echo $total_vol_evaluasi_pemeliharaan_truck_mixer < 0 ? "(".number_format(-$total_vol_evaluasi_pemeliharaan_truck_mixer,2,',','.').")" : number_format($total_vol_evaluasi_pemeliharaan_truck_mixer,2,',','.');?></th>
+				<th align="right" style="<?php echo $styleColor ?>;"><?php echo $total_vol_evaluasi_pemeliharaan_truck_mixer < 0 ? "(".number_format(-$total_vol_evaluasi_pemeliharaan_truck_mixer,2,',','.').")" : number_format($total_vol_evaluasi_pemeliharaan_truck_mixer,2,',','.');?></th>
 				<?php
 				$styleColor = $total_nilai_evaluasi_pemeliharaan_truck_mixer < 0 ? 'color:red' : 'color:black';
 				?>
-				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black; border-bottom:1px solid black;"><?php echo $total_nilai_evaluasi_pemeliharaan_truck_mixer < 0 ? "(".number_format(-$total_nilai_evaluasi_pemeliharaan_truck_mixer,0,',','.').")" : number_format($total_nilai_evaluasi_pemeliharaan_truck_mixer,0,',','.');?></th>
+				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black;"><?php echo $total_nilai_evaluasi_pemeliharaan_truck_mixer < 0 ? "(".number_format(-$total_nilai_evaluasi_pemeliharaan_truck_mixer,0,',','.').")" : number_format($total_nilai_evaluasi_pemeliharaan_truck_mixer,0,',','.');?></th>
+	        </tr>
+			<tr class="table-baris1">			
+				<th align="left" style="border-left:1px solid black; border-bottom:1px solid black;">&nbsp;&nbsp;Insentif</th>
+				<th align="center" style="border-right:1px solid black; border-bottom:1px solid black;">M3</th>
+				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format(0,2,',','.');?></th>
+				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format(0,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black; border-bottom:1px solid black;"><?php echo number_format(0,0,',','.');?></th>
+				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format(0,2,',','.');?></th>
+				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format(0,0,',','.');?></th>
+				<th align="right" style="border-right:1px solid black; border-bottom:1px solid black;"><a target="_blank" href="<?= base_url("laporan/cetak_detail_insentif_tm?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_pemakaian_insentif_truck_mixer,0,',','.');?></a></th>
+				<th align="right" style="border-bottom:1px solid black;"><?php echo number_format(0,2,',','.');?></th>
+				<th align="right" style="border-right:1px solid black; border-bottom:1px solid black;"><?php echo number_format(0,0,',','.');?></th>
 	        </tr>
 	    </table>
 	</body>
