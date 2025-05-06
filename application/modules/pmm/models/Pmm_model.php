@@ -5160,20 +5160,21 @@ class Pmm_model extends CI_Model {
 		$pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
 		
 		//SPESIAL//
-		$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
-		$total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
-		$total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
-		$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
-		$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer;
-		$total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
-		$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
-		$total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
-		$total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
-		$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
-		$total_pemakaian_excavator = $total_nilai_excavator;
-		$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
-		$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
-		//SPESIAL//
+        $total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
+        $total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
+        $total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
+        $total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
+        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer;
+        $total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
+        $total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
+        $total_pemakaian_insentif_truck_mixer =  $total_nilai_insentif_truck_mixer;
+        $total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
+        $total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
+        $total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
+        $total_pemakaian_excavator = $total_nilai_excavator;
+        $total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
+        $total_pemakaian_bbm_solar = $total_akumulasi_bbm;
+        //SPESIAL//
 
 		$total_vol_evaluasi_batching_plant = ($pemakaian_vol_batching_plant!=0)?$vol_batching_plant - $pemakaian_vol_batching_plant * 1:0;
 		$total_nilai_evaluasi_batching_plant = ($total_pemakaian_batching_plant!=0)?$batching_plant - $total_pemakaian_batching_plant * 1:0;
@@ -5577,20 +5578,21 @@ class Pmm_model extends CI_Model {
         $pemakaian_vol_bbm_solar = $total_volume_pemakaian_solar;
         
         //SPESIAL//
-		$total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
-		$total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
-		$total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
-		$total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
-		$total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer;
-		$total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
-		$total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
-		$total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
-		$total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
-		$total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
-		$total_pemakaian_excavator = $total_nilai_excavator;
-		$total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
-		$total_pemakaian_bbm_solar = $total_akumulasi_bbm;
-		//SPESIAL//
+        $total_pemakaian_pemeliharaan_batching_plant = $total_nilai_pemeliharaan_batching_plant;
+        $total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
+        $total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
+        $total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
+        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer;
+        $total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
+        $total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
+        $total_pemakaian_insentif_truck_mixer =  $total_nilai_insentif_truck_mixer;
+        $total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
+        $total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
+        $total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
+        $total_pemakaian_excavator = $total_nilai_excavator;
+        $total_pemakaian_transfer_semen = $total_nilai_transfer_semen;
+        $total_pemakaian_bbm_solar = $total_akumulasi_bbm;
+        //SPESIAL//
 
         $total_vol_evaluasi_batching_plant = ($pemakaian_vol_batching_plant!=0)?$vol_batching_plant - $pemakaian_vol_batching_plant * 1:0;
         $total_nilai_evaluasi_batching_plant = ($total_pemakaian_batching_plant!=0)?$batching_plant - $total_pemakaian_batching_plant * 1:0;
@@ -6403,7 +6405,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
         ->join('produk p', 'prm.material_id = p.id','left')
         ->join('penerima pn', 'po.supplier_id = pn.id','left')
-		->where("(prm.date_receipt <= '$date_tahun_lalu')")
+        ->where("(prm.date_receipt <= '$date_tahun_lalu')")
         ->where("p.kategori_alat = '1'")
         ->where("po.status in ('PUBLISH','CLOSED')")
         ->group_by('prm.harga_satuan')
@@ -6421,6 +6423,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 138")
         ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $pemeliharaan_batching_plant_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6439,7 +6442,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 137")
         ->where("pb.status = 'PAID'")
-       	->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $penyusutan_batching_plant_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6451,15 +6454,108 @@ class Pmm_model extends CI_Model {
         ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
         ->get()->row_array();
         $total_nilai_penyusutan_batching_plant = $penyusutan_batching_plant_biaya['total'] + $penyusutan_batching_plant_jurnal['total'];
-        $total_nilai_batching_plant = $total_nilai_batching_plant + $total_nilai_pemeliharaan_batching_plant + $total_nilai_penyusutan_batching_plant;
-        
+
+        $angsuran_batching_plant_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 159")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $angsuran_batching_plant_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 159")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $total_nilai_angsuran_batching_plant = $angsuran_batching_plant_biaya['total'] + $angsuran_batching_plant_jurnal['total'];
+
+        $pembelian_wheel_loader = $this->db->select('
+        pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
+        ->from('pmm_receipt_material prm')
+        ->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+        ->join('produk p', 'prm.material_id = p.id','left')
+        ->join('penerima pn', 'po.supplier_id = pn.id','left')
+        ->where("(prm.date_receipt <= '$date_tahun_lalu')")
+        ->where("p.kategori_alat = '3'")
+        ->where("po.status in ('PUBLISH','CLOSED')")
+        ->group_by('prm.harga_satuan')
+        ->order_by('pn.nama','asc')
+        ->get()->result_array();
+
+        $total_nilai_wheel_loader = 0;
+        foreach ($pembelian_wheel_loader as $x){
+            $total_nilai_wheel_loader += $x['price'];
+        }
+
+        $pemeliharaan_wheel_loader_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 140")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $pemeliharaan_wheel_loader_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 140")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $total_nilai_pemeliharaan_wheel_loader = $pemeliharaan_wheel_loader_biaya['total'] + $pemeliharaan_wheel_loader_jurnal['total'];
+
+        $penyusutan_wheel_loader_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 139")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $penyusutan_wheel_loader_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 139")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $total_nilai_penyusutan_wheel_loader = $penyusutan_wheel_loader_biaya['total'] + $penyusutan_wheel_loader_jurnal['total'];
+
+        $angsuran_wheel_loader_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 160")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $angsuran_wheel_loader_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 160")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $total_nilai_angsuran_wheel_loader = $angsuran_wheel_loader_biaya['total'] + $angsuran_wheel_loader_jurnal['total'];
+
         $pembelian_truck_mixer = $this->db->select('
         pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
         ->from('pmm_receipt_material prm')
         ->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
         ->join('produk p', 'prm.material_id = p.id','left')
         ->join('penerima pn', 'po.supplier_id = pn.id','left')
-		->where("(prm.date_receipt <= '$date_tahun_lalu')")
+        ->where("(prm.date_receipt <= '$date_tahun_lalu')")
         ->where("p.kategori_alat = '2'")
         ->where("po.status in ('PUBLISH','CLOSED')")
         ->group_by('prm.harga_satuan')
@@ -6467,8 +6563,10 @@ class Pmm_model extends CI_Model {
         ->get()->result_array();
 
         $total_nilai_truck_mixer = 0;
+        $total_vol_truck_mixer = 0;
         foreach ($pembelian_truck_mixer as $x){
             $total_nilai_truck_mixer += $x['price'];
+            $total_vol_truck_mixer += $x['volume'];
         }
 
         $alat_truck_mixer_biaya = $this->db->select('sum(pdb.jumlah) as total')
@@ -6507,13 +6605,113 @@ class Pmm_model extends CI_Model {
         ->get()->row_array();
         $total_nilai_pemeliharaan_truck_mixer = $pemeliharaan_truck_mixer_biaya['total'] + $pemeliharaan_truck_mixer_jurnal['total'];
 
+        $pembelian_transfer_semen = $this->db->select('
+        pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
+        ->from('pmm_receipt_material prm')
+        ->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+        ->join('produk p', 'prm.material_id = p.id','left')
+        ->join('penerima pn', 'po.supplier_id = pn.id','left')
+        ->where("prm.date_receipt between '$date1' and '$date2'")
+        ->where("p.kategori_alat = '4'")
+        ->where("po.status in ('PUBLISH','CLOSED')")
+        ->group_by('prm.harga_satuan')
+        ->order_by('pn.nama','asc')
+        ->get()->result_array();
+
+        $total_nilai_transfer_semen = 0;
+        foreach ($pembelian_transfer_semen as $x){
+            $total_nilai_transfer_semen += $x['price'];
+        }
+        $total_vol_transfer_semen = $pembelian_transfer_semen['volume'];
+
+        $pembelian_excavator = $this->db->select('
+        pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
+        ->from('pmm_receipt_material prm')
+        ->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
+        ->join('produk p', 'prm.material_id = p.id','left')
+        ->join('penerima pn', 'po.supplier_id = pn.id','left')
+        ->where("prm.date_receipt between '$date1' and '$date2'")
+        ->where("p.kategori_alat = '5'")
+        ->where("po.status in ('PUBLISH','CLOSED')")
+        ->group_by('prm.harga_satuan')
+        ->order_by('pn.nama','asc')
+        ->get()->result_array();
+
+        $total_nilai_excavator = 0;
+        foreach ($pembelian_excavator as $x){
+            $total_nilai_excavator += $x['price'];
+        }
+        $total_vol_excavator = $pembelian_excavator['volume'];
+        
+        $total_nilai_batching_plant = 0;
+        foreach ($pembelian_batching_plant as $x){
+            $total_nilai_batching_plant += $x['price'];
+        }
+
+        $pemeliharaan_batching_plant_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 138")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $pemeliharaan_batching_plant_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 138")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $total_nilai_pemeliharaan_batching_plant = $pemeliharaan_batching_plant_biaya['total'] + $pemeliharaan_batching_plant_jurnal['total'];
+
+        $penyusutan_batching_plant_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 137")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $penyusutan_batching_plant_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 137")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $total_nilai_penyusutan_batching_plant = $penyusutan_batching_plant_biaya['total'] + $penyusutan_batching_plant_jurnal['total'];
+
+        $angsuran_batching_plant_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 159")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $angsuran_batching_plant_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 159")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $total_nilai_angsuran_batching_plant = $angsuran_batching_plant_biaya['total'] + $angsuran_batching_plant_jurnal['total'];
+
         $pembelian_wheel_loader = $this->db->select('
         pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
         ->from('pmm_receipt_material prm')
         ->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
         ->join('produk p', 'prm.material_id = p.id','left')
         ->join('penerima pn', 'po.supplier_id = pn.id','left')
-        ->where("(prm.date_receipt <= '$date_tahun_lalu')")
+        ->where("prm.date_receipt between '$date1' and '$date2'")
         ->where("p.kategori_alat = '3'")
         ->where("po.status in ('PUBLISH','CLOSED')")
         ->group_by('prm.harga_satuan')
@@ -6540,7 +6738,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 140")
         ->where("pb.status = 'PAID'")
-       ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
         ->get()->row_array();
         $total_nilai_pemeliharaan_wheel_loader = $pemeliharaan_wheel_loader_biaya['total'] + $pemeliharaan_wheel_loader_jurnal['total'];
 
@@ -6562,7 +6760,25 @@ class Pmm_model extends CI_Model {
         ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
         ->get()->row_array();
         $total_nilai_penyusutan_wheel_loader = $penyusutan_wheel_loader_biaya['total'] + $penyusutan_wheel_loader_jurnal['total'];
-        $total_nilai_wheel_loader = $total_nilai_wheel_loader + $total_nilai_pemeliharaan_wheel_loader + $total_nilai_penyusutan_wheel_loader;
+
+        $angsuran_wheel_loader_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 160")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $angsuran_wheel_loader_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 160")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $total_nilai_angsuran_wheel_loader = $angsuran_wheel_loader_biaya['total'] + $angsuran_wheel_loader_jurnal['total'];
 
         $pembelian_truck_mixer = $this->db->select('
         pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
@@ -6570,7 +6786,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
         ->join('produk p', 'prm.material_id = p.id','left')
         ->join('penerima pn', 'po.supplier_id = pn.id','left')
-		->where("(prm.date_receipt <= '$date_tahun_lalu')")
+        ->where("prm.date_receipt between '$date1' and '$date2'")
         ->where("p.kategori_alat = '2'")
         ->where("po.status in ('PUBLISH','CLOSED')")
         ->group_by('prm.harga_satuan')
@@ -6584,13 +6800,67 @@ class Pmm_model extends CI_Model {
             $total_vol_truck_mixer += $x['volume'];
         }
 
+        $alat_truck_mixer_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 124")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $alat_truck_mixer_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->where("pdb.akun = 124")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $total_nilai_alat_truck_mixer = $alat_truck_mixer_biaya['total'] + $alat_truck_mixer_jurnal['total'];
+
+        $pemeliharaan_truck_mixer_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 161")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $pemeliharaan_truck_mixer_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->where("pdb.akun = 161")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $total_nilai_pemeliharaan_truck_mixer = $pemeliharaan_truck_mixer_biaya['total'] + $pemeliharaan_truck_mixer_jurnal['total'];
+
+        $insentif_truck_mixer_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 186")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $insentif_truck_mixer_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->where("pdb.akun = 186")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi <= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $total_nilai_insentif_truck_mixer = $insentif_truck_mixer_biaya['total'] + $insentif_truck_mixer_jurnal['total'];
+
         $pembelian_transfer_semen = $this->db->select('
         pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
         ->from('pmm_receipt_material prm')
         ->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
         ->join('produk p', 'prm.material_id = p.id','left')
         ->join('penerima pn', 'po.supplier_id = pn.id','left')
-        ->where("(prm.date_receipt <= '$date_tahun_lalu')")
+        ->where("prm.date_receipt between '$date1' and '$date2'")
         ->where("p.kategori_alat = '4'")
         ->where("po.status in ('PUBLISH','CLOSED')")
         ->group_by('prm.harga_satuan')
@@ -6601,7 +6871,6 @@ class Pmm_model extends CI_Model {
         foreach ($pembelian_transfer_semen as $x){
             $total_nilai_transfer_semen += $x['price'];
         }
-        $total_vol_transfer_semen = $pembelian_transfer_semen['volume'];
 
         $pembelian_excavator = $this->db->select('
         pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
@@ -6609,7 +6878,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_purchase_order po', 'prm.purchase_order_id = po.id','left')
         ->join('produk p', 'prm.material_id = p.id','left')
         ->join('penerima pn', 'po.supplier_id = pn.id','left')
-        ->where("(prm.date_receipt <= '$date_tahun_lalu')")
+        ->where("prm.date_receipt between '$date1' and '$date2'")
         ->where("p.kategori_alat = '5'")
         ->where("po.status in ('PUBLISH','CLOSED')")
         ->group_by('prm.harga_satuan')
@@ -6620,7 +6889,6 @@ class Pmm_model extends CI_Model {
         foreach ($pembelian_excavator as $x){
             $total_nilai_excavator += $x['price'];
         }
-        $total_vol_excavator = $pembelian_excavator['volume'];
 
         //SPESIAL
         $pemakaian_solar = $this->db->select('date, SUM(volume) as vol_total, SUM(nilai) as total')
@@ -6722,9 +6990,10 @@ class Pmm_model extends CI_Model {
         $total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
         $total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
         $total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
-        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer;
+        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer;
         $total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
         $total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
+        $total_pemakaian_insentif_truck_mixer =  $total_nilai_insentif_truck_mixer;
         $total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
         $total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
         $total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
@@ -6771,7 +7040,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 116")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $konsumsi_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6780,7 +7049,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 116")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $konsumsi = $konsumsi_biaya['total'] + $konsumsi_jurnal['total'];
 
@@ -6790,7 +7059,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 118")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $listrik_internet_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6799,7 +7068,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 118")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $listrik_internet = $listrik_internet_biaya['total'] + $listrik_internet_jurnal['total'];
 
@@ -6809,7 +7078,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun in ('114','115')")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $gaji_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6818,7 +7087,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun in ('114','115')")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $gaji = $gaji_biaya['total'] + $gaji_jurnal['total'];
 
@@ -6828,7 +7097,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 143")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $akomodasi_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6837,7 +7106,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 143")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $akomodasi = $akomodasi_biaya['total'] + $akomodasi_jurnal['total'];
 
@@ -6847,7 +7116,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 141")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $biaya_maintenance_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6856,7 +7125,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 141")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $biaya_maintenance = $biaya_maintenance_biaya['total'] + $biaya_maintenance_jurnal['total'];
 
@@ -6866,7 +7135,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 117")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $thr_bonus_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6875,7 +7144,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 117")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $thr_bonus = $thr_bonus_biaya['total'] + $thr_bonus_jurnal['total'];
 
@@ -6885,7 +7154,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 100")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $biaya_sewa_kendaraan_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6894,7 +7163,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 100")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $biaya_sewa_kendaraan = $biaya_sewa_kendaraan_biaya['total'] + $biaya_sewa_kendaraan_jurnal['total'];
 
@@ -6904,7 +7173,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 78")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $bensin_tol_parkir_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6913,7 +7182,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 78")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $bensin_tol_parkir = $bensin_tol_parkir_biaya['total'] + $bensin_tol_parkir_jurnal['total'];
 
@@ -6923,7 +7192,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 87")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $pakaian_dinas_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6932,7 +7201,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 87")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $pakaian_dinas = $pakaian_dinas_biaya['total'] + $pakaian_dinas_jurnal['total'];
 
@@ -6942,7 +7211,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 62")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $perjalanan_dinas_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6951,7 +7220,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 62")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $perjalanan_dinas = $perjalanan_dinas_biaya['total'] + $perjalanan_dinas_jurnal['total'];
 
@@ -6961,7 +7230,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 98")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $perlengkapan_kantor_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6970,7 +7239,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 98")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $perlengkapan_kantor = $perlengkapan_kantor_biaya['total'] + $perlengkapan_kantor_jurnal['total'];
 
@@ -6980,7 +7249,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 70")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $pengobatan_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -6989,7 +7258,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 70")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $pengobatan = $pengobatan_biaya['total'] + $pengobatan_jurnal['total'];
 
@@ -6999,7 +7268,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 96")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $alat_tulis_kantor_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -7008,7 +7277,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 96")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $alat_tulis_kantor = $alat_tulis_kantor_biaya['total'] + $alat_tulis_kantor_jurnal['total'];
 
@@ -7018,7 +7287,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 97")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $keamanan_kebersihan_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -7027,9 +7296,28 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 97")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $keamanan_kebersihan = $keamanan_kebersihan_biaya['total'] + $keamanan_kebersihan_jurnal['total'];
+
+        $beban_adm_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 182")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
+        ->get()->row_array();
+
+        $beban_adm_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 182")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
+        ->get()->row_array();
+        $beban_adm = $beban_adm_biaya['total'] + $beban_adm_jurnal['total'];
 
         $biaya_lain_lain_biaya = $this->db->select('sum(pdb.jumlah) as total')
         ->from('pmm_biaya pb ')
@@ -7037,7 +7325,7 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 94")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+        ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
 
         $biaya_lain_lain_jurnal = $this->db->select('sum(pdb.debit) as total')
@@ -7046,10 +7334,11 @@ class Pmm_model extends CI_Model {
         ->join('pmm_coa c','pdb.akun = c.id','left')
         ->where("pdb.akun = 94")
         ->where("pb.status = 'PAID'")
-        ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+         ->where("(pb.tanggal_transaksi<= '$date_tahun_lalu')")
         ->get()->row_array();
         $biaya_lain_lain = $biaya_lain_lain_biaya['total'] + $biaya_lain_lain_jurnal['total'];
-        $total_nilai_realisasi_bua = $konsumsi + $listrik_internet + $gaji + $akomodasi + $biaya_maintenance + $thr_bonus + $biaya_sewa_kendaraan + $bensin_tol_parkir + $pakaian_dinas + $perjalanan_dinas + $perlengkapan_kantor + $pengobatan + $alat_tulis_kantor + $keamanan_kebersihan + $biaya_lain_lain;
+
+        $total_nilai_realisasi_bua = $konsumsi + $listrik_internet + $gaji + $akomodasi + $biaya_maintenance + $thr_bonus + $biaya_sewa_kendaraan + $bensin_tol_parkir + $pakaian_dinas + $perjalanan_dinas + $perlengkapan_kantor + $pengobatan + $alat_tulis_kantor + $keamanan_kebersihan + $beban_adm + $biaya_lain_lain;
 
         $diskonto = $this->db->select('sum(pdb.jumlah) as total')
         ->from('pmm_biaya pb ')
@@ -7284,6 +7573,24 @@ class Pmm_model extends CI_Model {
         ->get()->row_array();
         $total_nilai_pemeliharaan_truck_mixer = $pemeliharaan_truck_mixer_biaya['total'] + $pemeliharaan_truck_mixer_jurnal['total'];
 
+        $insentif_truck_mixer_biaya = $this->db->select('sum(pdb.jumlah) as total')
+        ->from('pmm_biaya pb ')
+        ->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+        ->join('pmm_coa c','pdb.akun = c.id','left')
+        ->where("pdb.akun = 186")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
+        ->get()->row_array();
+
+        $insentif_truck_mixer_jurnal = $this->db->select('sum(pdb.debit) as total')
+        ->from('pmm_jurnal_umum pb ')
+        ->join('pmm_detail_jurnal pdb','pb.id = pdb.jurnal_id','left')
+        ->where("pdb.akun = 186")
+        ->where("pb.status = 'PAID'")
+        ->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
+        ->get()->row_array();
+        $total_nilai_insentif_truck_mixer = $insentif_truck_mixer_biaya['total'] + $insentif_truck_mixer_jurnal['total'];
+
         $pembelian_transfer_semen = $this->db->select('
         pn.nama, po.no_po, po.subject, prm.measure, SUM(prm.volume) as volume, SUM(prm.price) / SUM(prm.volume) as harga_satuan, SUM(prm.price) as price')
         ->from('pmm_receipt_material prm')
@@ -7422,9 +7729,10 @@ class Pmm_model extends CI_Model {
         $total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
         $total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
         $total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
-        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer;
+        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer;
         $total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
         $total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
+        $total_pemakaian_insentif_truck_mixer =  $total_nilai_insentif_truck_mixer;
         $total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
         $total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
         $total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
