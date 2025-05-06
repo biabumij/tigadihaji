@@ -7350,7 +7350,7 @@ class Pmm_model extends CI_Model {
         ->get()->row_array();
         $diskonto = $diskonto['total'];
 
-        $query = $total_penjualan - ($bahan['total'] + $total_nilai_realisasi_alat + $total_nilai_realisasi_bua + $diskonto);
+        $query = $total_penjualan;
         
         if(!empty($query)){
             $total = $query;
