@@ -128,7 +128,16 @@
 			
 			usort($total_biaya, 'sortByOrder');
 			?>
-			<td align="center"><?= $x['transaksi'];?></td>
+			<tr class="table-active">
+				<th align="center" width="6%"><b>TANGGAL</b></th>
+				<th align="center" width="20%"><b>NOMOR BUKTI</b></th>
+				<th align="center" width="10%"><b>PENERIMA</b></th>
+				<th align="center" width="24%"><b>URAIAN</b></th>
+				<th align="center" width="10%"><b>KODE AKUN</b></th>
+				<th align="center" width="10%"><b>NAMA AKUN</b></th>
+				<th align="center" width="10%"><b>KATEGORI AKUN</b></th>
+				<th align="right" width="10%"><b>JUMLAH</b></th>
+			</tr>
 			<?php
 			if(!empty($total_biaya)){
 				foreach ($total_biaya as $key => $x) {
