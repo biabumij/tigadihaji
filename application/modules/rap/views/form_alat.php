@@ -61,6 +61,33 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
+                                                    <td class="text-center">4.</td>
+                                                    <td>BBM SOLAR</td>
+													<td>
+                                                    <input type="text" id="vol_bbm_solar" name="vol_bbm_solar" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
+                                                    </td>
+                                                    <td class="text-center">Liter</td>
+                                                    <td class="text-center">
+                                                        <select id="penawaran_bbm_solar" name="penawaran_bbm_solar" class="form-control" required="">
+                                                            <option value="">Pilih Penawaran</option>
+                                                            <?php
+
+                                                            foreach ($bbm_solar as $key => $bbm) {
+                                                                ?>
+                                                                <option value="<?php echo $bbm['penawaran_id'];?>" data-supplier_id="<?php echo $bbm['supplier_id'];?>" data-measure="<?php echo $bbm['measure'];?>" data-price="<?php echo $bbm['price'];?>" data-tax_id="<?php echo $bbm['tax_id'];?>" data-tax="<?php echo $bbm['tax'];?>" data-pajak_id="<?php echo $bbm['pajak_id'];?>" data-pajak="<?php echo $bbm['pajak'];?>" data-penawaran_id="<?php echo $bbm['penawaran_id'];?>" data-id_penawaran="<?php echo $bbm['id_penawaran'];?>"><?php echo $bbm['nama'];?> - <?php echo $bbm['nomor_penawaran'];?></option>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                    <input type="text" name="harsat_bbm_solar" id="harsat_bbm_solar" class="form-control rupiahformat text-right" onchange="changeData(1)" required="" readonly="" autocomplete="off"/>
+                                                    </td>
+                                                    <td>
+                                                    <input type="text" name="bbm_solar" id="bbm_solar" class="form-control rupiahformat text-right" readonly="" value="" required="" readonly="" autocomplete="off"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
                                                     <td class="text-center">1.</td>
                                                     <td>BATCHING PLANT + GENSET</td>
 													<td>
@@ -145,33 +172,6 @@
                                                     </td>
                                                     <td>
                                                     <input type="text" name="truck_mixer" id="truck_mixer" class="form-control rupiahformat text-right" readonly="" value="" required="" readonly="" autocomplete="off"/>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="text-center">4.</td>
-                                                    <td>BBM SOLAR</td>
-													<td>
-                                                    <input type="text" id="vol_bbm_solar" name="vol_bbm_solar" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
-                                                    </td>
-                                                    <td class="text-center">Liter</td>
-                                                    <td class="text-center">
-                                                        <select id="penawaran_bbm_solar" name="penawaran_bbm_solar" class="form-control" required="">
-                                                            <option value="">Pilih Penawaran</option>
-                                                            <?php
-
-                                                            foreach ($bbm_solar as $key => $bbm) {
-                                                                ?>
-                                                                <option value="<?php echo $bbm['penawaran_id'];?>" data-supplier_id="<?php echo $bbm['supplier_id'];?>" data-measure="<?php echo $bbm['measure'];?>" data-price="<?php echo $bbm['price'];?>" data-tax_id="<?php echo $bbm['tax_id'];?>" data-tax="<?php echo $bbm['tax'];?>" data-pajak_id="<?php echo $bbm['pajak_id'];?>" data-pajak="<?php echo $bbm['pajak'];?>" data-penawaran_id="<?php echo $bbm['penawaran_id'];?>" data-id_penawaran="<?php echo $bbm['id_penawaran'];?>"><?php echo $bbm['nama'];?> - <?php echo $bbm['nomor_penawaran'];?></option>
-                                                                <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                    <input type="text" name="harsat_bbm_solar" id="harsat_bbm_solar" class="form-control rupiahformat text-right" onchange="changeData(1)" required="" readonly="" autocomplete="off"/>
-                                                    </td>
-                                                    <td>
-                                                    <input type="text" name="bbm_solar" id="bbm_solar" class="form-control rupiahformat text-right" readonly="" value="" required="" readonly="" autocomplete="off"/>
                                                     </td>
                                                 </tr>				
                                             </tbody>
