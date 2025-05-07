@@ -282,6 +282,7 @@
     <script type="text/javascript">
 		
 		var table_rap_alat = $('#table_rap_alat').DataTable( {"bAutoWidth": false,
+            "displayLength":50,
             ajax: {
                 processing: true,
                 serverSide: true,
