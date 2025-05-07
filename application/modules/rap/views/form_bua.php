@@ -59,7 +59,7 @@
                                             </thead>
                                             <tbody>
                                             <tr>
-                                                <td>1.</td>
+                                                <td class="text-center">1.</td>
                                                 <td>
                                                     <select id="coa-1" class="form-control form-control form-select2" name="coa_1" onchange="changeData(1)" required="">
                                                         <option value="">Pilih Akun</option>

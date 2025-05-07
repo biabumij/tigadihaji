@@ -648,7 +648,7 @@ class Rap extends Secure_Controller {
 		$satuan = $this->db->order_by('measure_name', 'asc')->select('*')->get_where('pmm_measures', array('status' => 'PUBLISH'))->result_array();
 	?>
         <tr>
-            <td><?php echo $no; ?>.</td>
+            <td class="text-center"><?php echo $no; ?>.</td>
             <td>
 				<select id="coa-<?php echo $no; ?>" onchange="changeData(<?php echo $no; ?>)" class="form-control form-select2" name="coa_<?php echo $no; ?>">
 					<option value="">Pilih Akun</option>
