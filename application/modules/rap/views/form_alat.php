@@ -61,7 +61,34 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td class="text-center">4.</td>
+                                                    <td class="text-center">1.</td>
+                                                    <td>TRUCK MIXER</td>
+													<td>
+                                                    <input type="text" id="vol_truck_mixer" name="vol_truck_mixer" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
+                                                    </td>
+                                                    <td class="text-center">M3</td>
+                                                    <td class="text-center">
+                                                        <select id="penawaran_truck_mixer" name="penawaran_truck_mixer" class="form-control" required="">
+                                                            <option value="">Pilih Penawaran</option>
+                                                            <?php
+
+                                                            foreach ($truck_mixer as $key => $tm) {
+                                                                ?>
+                                                                <option value="<?php echo $tm['penawaran_id'];?>" data-supplier_id="<?php echo $tm['supplier_id'];?>" data-measure="<?php echo $tm['measure'];?>" data-price="<?php echo $tm['price'];?>" data-tax_id="<?php echo $tm['tax_id'];?>" data-tax="<?php echo $tm['tax'];?>" data-pajak_id="<?php echo $tm['pajak_id'];?>" data-pajak="<?php echo $tm['pajak'];?>" data-penawaran_id="<?php echo $tm['penawaran_id'];?>" data-id_penawaran="<?php echo $tm['id_penawaran'];?>"><?php echo $tm['nama'];?> - <?php echo $tm['nomor_penawaran'];?></option>
+                                                                <?php
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                    <input type="text" name="harsat_truck_mixer" id="harsat_truck_mixer" class="form-control rupiahformat text-right" onchange="changeData(1)" required="" readonly="" autocomplete="off"/>
+                                                    </td>
+                                                    <td>
+                                                    <input type="text" name="truck_mixer" id="truck_mixer" class="form-control rupiahformat text-right" readonly="" value="" required="" readonly="" autocomplete="off"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">2.</td>
                                                     <td>BBM SOLAR</td>
 													<td>
                                                     <input type="text" id="vol_bbm_solar" name="vol_bbm_solar" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
@@ -88,7 +115,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="text-center">1.</td>
+                                                    <td class="text-center">3.</td>
                                                     <td>BATCHING PLANT + GENSET</td>
 													<td>
                                                     <input type="text" id="vol_batching_plant" name="vol_batching_plant" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
@@ -118,7 +145,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="text-center">2.</td>
+                                                    <td class="text-center">4.</td>
                                                     <td>WHEEL LOADER</td>
 													<td>
                                                     <input type="text" id="vol_wheel_loader" name="vol_wheel_loader" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
@@ -147,33 +174,6 @@
                                                     <input type="text" name="pemeliharaan_wheel_loader" id="pemeliharaan_wheel_loader" class="form-control rupiahformat text-right" readonly="" value="" required=""  autocomplete="off"/>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td class="text-center">3.</td>
-                                                    <td>TRUCK MIXER</td>
-													<td>
-                                                    <input type="text" id="vol_truck_mixer" name="vol_truck_mixer" class="form-control numberformat text-right" value="" onchange="changeData(1)" required="" autocomplete="off">
-                                                    </td>
-                                                    <td class="text-center">M3</td>
-                                                    <td class="text-center">
-                                                        <select id="penawaran_truck_mixer" name="penawaran_truck_mixer" class="form-control" required="">
-                                                            <option value="">Pilih Penawaran</option>
-                                                            <?php
-
-                                                            foreach ($truck_mixer as $key => $tm) {
-                                                                ?>
-                                                                <option value="<?php echo $tm['penawaran_id'];?>" data-supplier_id="<?php echo $tm['supplier_id'];?>" data-measure="<?php echo $tm['measure'];?>" data-price="<?php echo $tm['price'];?>" data-tax_id="<?php echo $tm['tax_id'];?>" data-tax="<?php echo $tm['tax'];?>" data-pajak_id="<?php echo $tm['pajak_id'];?>" data-pajak="<?php echo $tm['pajak'];?>" data-penawaran_id="<?php echo $tm['penawaran_id'];?>" data-id_penawaran="<?php echo $tm['id_penawaran'];?>"><?php echo $tm['nama'];?> - <?php echo $tm['nomor_penawaran'];?></option>
-                                                                <?php
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                    <input type="text" name="harsat_truck_mixer" id="harsat_truck_mixer" class="form-control rupiahformat text-right" onchange="changeData(1)" required="" readonly="" autocomplete="off"/>
-                                                    </td>
-                                                    <td>
-                                                    <input type="text" name="truck_mixer" id="truck_mixer" class="form-control rupiahformat text-right" readonly="" value="" required="" readonly="" autocomplete="off"/>
-                                                    </td>
-                                                </tr>				
                                             </tbody>
                                             <tfoot>
                                                 <tr>
