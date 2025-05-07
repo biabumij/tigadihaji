@@ -467,7 +467,8 @@ class Rap extends Secure_Controller {
 			'pemeliharaan_batching_plant' => $pemeliharaan_batching_plant,
 			'wheel_loader' => $wheel_loader,
 			'pemeliharaan_wheel_loader' => $pemeliharaan_wheel_loader,
-			'truck_mixer' => $vol_truck_mixer * ($harsat_truck_mixer / 200),
+			//'truck_mixer' => $vol_truck_mixer * ($harsat_truck_mixer / 200),
+			'truck_mixer' => $vol_truck_mixer * $harsat_truck_mixer,
 			'bbm_solar' => $bbm_solar,
 
 			'penawaran_truck_mixer' => $penawaran_truck_mixer,
