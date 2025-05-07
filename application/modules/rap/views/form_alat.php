@@ -84,7 +84,7 @@
                                                     <input type="text" name="harsat_truck_mixer" id="harsat_truck_mixer" class="form-control rupiahformat text-right" onchange="changeData(1)" required="" readonly="" autocomplete="off"/>
                                                     </td>
                                                     <td>
-                                                    <input type="text" name="truck_mixer" id="truck_mixer" class="form-control rupiahformat text-right" value="" required="" readonly="" autocomplete="off"/>
+                                                    <input type="text" name="truck_mixer" class="form-control rupiahformat text-right" value="" required="" autocomplete="off"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
