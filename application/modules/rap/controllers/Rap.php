@@ -624,7 +624,7 @@ class Rap extends Secure_Controller {
 			$data['coa'] =  $this->db->select('*')
 			->from('pmm_coa c')
 			->where("c.status = 'PUBLISH'")
-			->where("c.coa_category = 15")
+			->where("c.id in ('116','118','114','115','143','141','117','100','78','87','62','98','70','96','97','94')")
 			->order_by('c.coa','asc')
 			->get()->result_array();
 			$data['satuan'] = $this->db->order_by('measure_name', 'asc')->select('*')->get_where('pmm_measures', array('status' => 'PUBLISH'))->result_array();
