@@ -549,10 +549,10 @@
 						</tr>
 						<tr>
 							<td align="center" height="55px">
-								
+								<img src="uploads/ttd_novel.png" width="50px">
 							</td>
 							<td align="center">
-								
+								<img src="uploads/ttd_avriani.png" width="50px">
 							</td>
 						</tr>
 						<tr>
