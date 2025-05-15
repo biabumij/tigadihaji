@@ -2845,6 +2845,47 @@ class Laporan extends Secure_Controller {
         $pdf->Output('truck_mixer.pdf', 'I');
 	}
 
+	public function cetak_surat_jalan_tm($date1,$date2)
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+        $pdf->SetTopMargin(5);
+        $pdf->SetFont('helvetica','',7); 
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		
+		// add a page
+		$pdf->AddPage('L');
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+		$pdf->SetMargins(10, 10);
+
+		$this->db->select('prm.*,ppo.no_po, (prm.price  * prm.volume) as biaya, ppo.supplier_id');
+		$this->db->join('pmm_purchase_order ppo','prm.purchase_order_id = ppo.id','left');
+		$this->db->join('produk p', 'prm.material_id = p.id','left');
+		$this->db->where("prm.date_receipt between '$date1' and '$date2'");
+		$this->db->where("p.kategori_alat = '2'");
+		$this->db->group_by('prm.id');
+		$this->db->order_by('prm.date_receipt','asc');
+		$this->db->order_by('prm.material_id','asc');
+		$query = $this->db->get('pmm_receipt_material prm');
+
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+		$data['data'] = $query->result_array();
+        $html = $this->load->view('laporan_ev._produksi/cetak_surat_jalan_tm',$data,TRUE);
+        
+        $pdf->SetTitle('BBJ - Truck Mixer');
+        $pdf->nsi_html($html);
+        $pdf->Output('truck_mixer.pdf', 'I');
+	}
+
 	public function cetak_detail_pemeliharaan_tm()
 	{
 		$this->load->library('pdf');
