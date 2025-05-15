@@ -921,7 +921,7 @@
 				<th align="right" style="<?php echo $styleColor ?>; border-right:1px solid black;"><?php echo $total_nilai_evaluasi_bbm_solar < 0 ? "(".number_format(-$total_nilai_evaluasi_bbm_solar,0,',','.').")" : number_format($total_nilai_evaluasi_bbm_solar,0,',','.');?></th>
 			</tr>
 			<tr class="table-total">		
-				<th align="right" colspan="3" style="border-left:1px solid black; border-bottom:1px solid black; border-right:1px solid black;">TOTAL</th>
+				<th align="right" colspan="3" style="border:1px solid black;">TOTAL</th>
 				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black;"></th>
 				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black;"></th>
 				<th align="right" style="border-top:1px solid black; border-bottom:1px solid black; border-right:1px solid black;"><?php echo number_format($total_nilai_rap_alat,0,',','.');?></th>
