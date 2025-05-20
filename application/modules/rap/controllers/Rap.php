@@ -380,6 +380,7 @@ class Rap extends Secure_Controller {
 		$pdf->AddPage('P');
 
 		$data['row'] = $this->db->get_where('pmm_agregat',array('id'=>$id))->row_array();
+		file_put_contents("D:\\test.txt", $this->db->last_query());
         $html = $this->load->view('rap/cetak_komposisi',$data,TRUE);
         $row = $this->db->get_where('pmm_agregat',array('id'=>$id))->row_array();
 

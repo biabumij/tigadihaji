@@ -102,6 +102,7 @@
 				?>
 				<?php
 				$total_bahan = $row['total_a'] + $row['total_b'] + $row['total_c'] + $row['total_d'] + $row['total_e'];
+				$harga_jual = $row['harga_jual'];
 				?>
 				<td align="center">1.</td>
 				<td align="left"><?= $row['produk_a'] = $this->crud_global->GetField('produk',array('id'=>$row['produk_a']),'nama_produk'); ?></td>
@@ -156,8 +157,10 @@
 				$total_alat = $row['batching_plant'] + $row['truck_mixer'] + $row['wheel_loader'] + $row['bbm_solar'];
 				$total_bua = 96774;
 				$total_persiapan = 67496;
-				$total_bank = 41250;
-				$total = $total_bahan + $total_alat + $total_bua + $total_persiapan + $total_bank;
+				$sub_total = $total_bahan + $total_alat + $total_bua + $total_persiapan;
+				
+				$total_diskonto = $harga_jual * 3 /100;
+				$total = $sub_total + $total_diskonto;
 				?>
 			<tr>
 				<td align="right" colspan="5"><b>JUMLAH HARGA BAHAN</b></td>
@@ -301,7 +304,7 @@
 				<td align="center"><?php echo number_format(3,2,',','.');?>%</td>
 				<td align="right"></td>
 				<td align="right"></td>
-				<td align="right"><?php echo number_format(41250,0,',','.');?></td>
+				<td align="right"><?php echo number_format($total_diskonto,0,',','.');?></td>
 			</tr>
 			<tr>
 				<td align="center">2.</td>
@@ -314,8 +317,8 @@
 			</tr>
 			<tr>
 				<td align="right" colspan="5"><b>JUMLAH BIAYA BANK</b></td>
-				<td align="right"><b><?php echo number_format(($total_bank / $total) * 100,2,',','.');?>%</b></td>
-				<td align="right"><b><?php echo number_format($total_bank,0,',','.');?></b></td>
+				<td align="right"><b><?php echo number_format(($total_diskonto / $total) * 100,2,',','.');?>%</b></td>
+				<td align="right"><b><?php echo number_format($total_diskonto,0,',','.');?></b></td>
 			</tr>
 			<tr>
 				<td align="right" colspan="5"><b>JUMLAH HARGA POKOK PENJUALAN (A+B+C+D+E)</b></td>
@@ -324,23 +327,23 @@
 			</tr>
 			<tr>
 				<td align="right" colspan="5"><b>LABA</b></td>
-				<td align="right"><b><?php echo number_format(13.29,2,',','.');?>%</b></td>
-				<td align="right"><b><?php echo number_format(($total * 13.29) / 100,0,',','.');?></b></td>
+				<td align="right"><b><?php echo number_format(($harga_jual - $total) / $total * 100,2,',','.');?>%</b></td>
+				<td align="right"><b><?php echo number_format($harga_jual - $total,0,',','.');?></b></td>
 			</tr>
 			<tr>
 				<td align="right" colspan="5"><b>HARGA JUAL</b></td>
 				<td align="right"></td>
-				<td align="right"><b><?php echo number_format((($total * 13.29) / 100) + $total,0,',','.');?></b></td>
+				<td align="right"><b><?php echo number_format($harga_jual,0,',','.');?></b></td>
 			</tr>
 			<tr>
 				<td align="right" colspan="5"><b>DISKONTO</b></td>
 				<td align="right"><b><?php echo number_format(3.00,2,',','.');?>%</b></td>
-				<td align="right"><b><?php echo number_format((((($total * 13.29) / 100) + $total) * 3) /100,0,',','.');?></b></td>
+				<td align="right"><b><?php echo number_format($harga_jual * 3 /100,0,',','.');?></b></td>
 			</tr>
 			<tr>
 			<td align="right" colspan="5"><b>HARGA JUAL</b></td>
 				<td align="right"></td>
-				<td align="right"><b><?php echo number_format(((((($total * 13.29) / 100) + $total) * 3) /100) + (($total * 13.29) / 100) + $total,0,',','.');?></b></td>
+				<td align="right"><b><?php echo number_format(((((($total * 15.32) / 100) + $total) * 3) /100) + (($total * 15.32) / 100) + $total,0,',','.');?></b></td>
 			</tr>
 		</table>
 	</body>
