@@ -14,6 +14,36 @@ class Laporan extends Secure_Controller {
 		$this->load->library('session');
 	}
 
+	public function cetak_laporan_laba_rugi_paket5()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(true); 
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		$pdf->AddPage('P');
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_keuangan/cetak_laporan_laba_rugi_paket5',$data,TRUE);
+        
+        $pdf->SetTitle('BBJ - Laporan Laba Rugi');
+        $pdf->nsi_html($html);
+        $pdf->Output('laporan-laba-rugi.pdf', 'I');
+	
+	}
+
 	public function cetak_laporan_laba_rugi()
 	{
 		$this->load->library('pdf');

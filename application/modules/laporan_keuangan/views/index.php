@@ -118,7 +118,7 @@
                                                 </div>
                                                 <div style="margin:20px">
                                                     <div class="row">
-                                                        <form action="<?php echo site_url('laporan/cetak_laporan_laba_rugi');?>" target="_blank">
+                                                        <form action="<?php echo site_url('laporan/cetak_laporan_laba_rugi_paket5');?>" target="_blank">
                                                             <div class="col-sm-3">
                                                                 <input type="text" id="filter_date_laba_rugi_paket5" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
                                                             </div>
