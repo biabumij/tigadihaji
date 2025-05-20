@@ -75,12 +75,16 @@
                                         <div class="row">
                                             <div width="100%">                           
                                                 <div class="col-sm-5">
-                                                    <p><h5><b>Laporan Laba Rugi</b></h5></p>
-                                                    <a href="#laporan-laba-rugi" aria-controls="laporan-laba-rugi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
+                                                    <p><h5><b>Laporan Laba Rugi (Paket 5)</b></h5></p>
+                                                    <a href="#laporan-laba-rugi-paket5" aria-controls="laporan-laba-rugi-paket5" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
                                                 </div>
                                                 <?php
                                                 if(in_array($this->session->userdata('admin_id'), array(1,2,3,11))){
                                                 ?>
+                                                <div class="col-sm-5">
+                                                    <p><h5><b>Laporan Laba Rugi (Paket 3)</b></h5></p>
+                                                    <a href="#laporan-laba-rugi" aria-controls="laporan-laba-rugi" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
+                                                </div>
                                                 <div class="col-sm-5">
                                                     <p><h5><b>Neraca</b></h5></p>
                                                     <a href="#neraca" aria-controls="neraca" role="tab" data-toggle="tab" class="btn btn-primary" style="border-radius:10px; font-weight:bold;">Lihat Laporan</a>										
@@ -100,6 +104,40 @@
                                                 <?php
                                                 }
                                                 ?>	
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Laporan Laba Rugi Paket 5-->
+                                    <div role="tabpanel" class="tab-pane" id="laporan-laba-rugi-paket5">
+                                        <div class="col-sm-15">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><b>Laporan Laba Rugi (Paket 5)</b></h3>
+                                                    <a href="laporan_keuangan">Kembali</a>
+                                                </div>
+                                                <div style="margin:20px">
+                                                    <div class="row">
+                                                        <form action="<?php echo site_url('laporan/cetak_laporan_laba_rugi');?>" target="_blank">
+                                                            <div class="col-sm-3">
+                                                                <input type="text" id="filter_date_laba_rugi_paket5" name="filter_date" class="form-control dtpicker"  autocomplete="off" placeholder="Filter By Date">
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
+                                                            </div>
+                                                        </form>	
+                                                    </div>
+                                                    <br />
+                                                    <div id="wait-laba-rugi-paket5" style=" text-align: center; align-content: center; display: none;">	
+                                                        <div>Mohon Tunggu</div>
+                                                        <div class="fa-3x">
+                                                        <i class="fa fa-spinner fa-spin"></i>
+                                                        </div>
+                                                    </div>				
+                                                    <div class="table-responsive" id="laba-rugi-paket5">
+                    
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -312,6 +350,52 @@
     <script type="text/javascript" src="//gyrocode.github.io/jquery-datatables-checkboxes/1.2.12/js/dataTables.checkboxes.min.js"></script>
     <script src="https://kit.fontawesome.com/591a1bf2f6.js" crossorigin="anonymous"></script>
     
+
+    <!-- Script Laba Rugi Paket 5 -->
+    <script type="text/javascript">
+        $('#filter_date_laba_rugi_paket5').daterangepicker({
+            autoUpdateInput : false,
+            showDropdowns: true,
+            locale: {
+            format: 'DD-MM-YYYY'
+            },
+            minDate: new Date(2025, 01, 01),
+            ranges: {
+            'Today': [moment(), moment()],
+            'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+            'Last 30 Days': [moment().subtract(30, 'days'), moment()],
+            'This Month': [moment().startOf('month'), moment().endOf('month')],
+            'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+            }
+        });
+
+        $('#filter_date_laba_rugi_paket5').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+            LabaRugiPaket5();
+        });
+
+
+        function LabaRugiPaket5()
+        {
+            $('#wait-laba-rugi-paket5').fadeIn('fast');   
+            $.ajax({
+                type    : "POST",
+                url     : "<?php echo site_url('pmm/reports/laba_rugi_paket5'); ?>/"+Math.random(),
+                dataType : 'html',
+                data: {
+                    filter_date : $('#filter_date_laba_rugi_paket5').val(),
+                },
+                success : function(result){
+                    $('#laba-rugi-paket5').html(result);
+                    $('#wait-laba-rugi-paket5').fadeOut('fast');
+                }
+            });
+        }
+
+        //LabaRugiPaket5();
+    </script>
+
     <!-- Script Laba Rugi -->
     <script type="text/javascript">
         $('#filter_date_laba_rugi').daterangepicker({
@@ -320,6 +404,8 @@
             locale: {
             format: 'DD-MM-YYYY'
             },
+            minDate: new Date(2024, 05, 01),	
+            maxDate: new Date(2024, 12, 31),	
             ranges: {
             'Today': [moment(), moment()],
             'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],

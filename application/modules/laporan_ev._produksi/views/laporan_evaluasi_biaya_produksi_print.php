@@ -891,6 +891,8 @@
 		->from('rap_alat rap')
 		->where("rap.tanggal_rap_alat <= '$date2'")
 		->where('rap.status','PUBLISH')
+		->group_by("rap.id")
+		->order_by('rap.tanggal_rap_alat','desc')->limit(1)
 		->get()->result_array();
 
 		foreach ($rap_alat as $x){
@@ -992,10 +994,10 @@
 		$rap_bua = $this->db->select('sum(det.jumlah) as total')
 		->from('rap_bua rap')
 		->join('rap_bua_detail det','rap.id = det.rap_bua_id','left')
-		->where("det.coa <> 131 ")
 		->where("rap.status = 'PUBLISH'")
 		->where("rap.tanggal_rap_bua < '$date2'")
-		->order_by('rap.tanggal_rap_bua','asc')->limit(1)
+		->group_by("rap.id")
+		->order_by('rap.tanggal_rap_bua','desc')->limit(1)
 		->get()->row_array();
 		$rap_bua = $rap_bua['total'];
 		
@@ -1287,7 +1289,7 @@
 		$total_nilai_realisasi_bua = $konsumsi + $listrik_internet + $gaji + $akomodasi + $biaya_maintenance + $thr_bonus + $biaya_sewa_kendaraan + $bensin_tol_parkir + $pakaian_dinas + $perjalanan_dinas + $perlengkapan_kantor + $pengobatan + $alat_tulis_kantor + $keamanan_kebersihan + $biaya_lain_lain;
 
 		$total_volume_rap_bua = $total_volume;
-		$total_nilai_rap_bua = $rap_bua / 24;
+		$total_nilai_rap_bua = $rap_bua / 12;
 		$total_harsat_rap_bua = $total_nilai_rap_bua / $total_volume_rap_bua;
 		
 		$total_volume_realisasi_bua = $total_volume;

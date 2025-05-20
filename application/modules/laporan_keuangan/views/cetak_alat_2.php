@@ -566,6 +566,8 @@
 			->from('rap_alat rap')
 			->where("rap.tanggal_rap_alat <= '$date2'")
 			->where('rap.status','PUBLISH')
+			->group_by("rap.id")
+			->order_by('rap.tanggal_rap_alat','desc')->limit(1)
 			->get()->result_array();
 
 			foreach ($rap_alat as $x){

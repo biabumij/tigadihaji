@@ -5015,6 +5015,8 @@ class Pmm_model extends CI_Model {
         ->from('rap_alat rap')
         ->where("rap.tanggal_rap_alat <= '$date2'")
         ->where('rap.status','PUBLISH')
+        ->group_by("rap.id")
+        ->order_by('rap.tanggal_rap_alat','desc')->limit(1)
         ->get()->result_array();
 
         foreach ($rap_alat as $x){
@@ -5565,6 +5567,8 @@ class Pmm_model extends CI_Model {
         ->from('rap_alat rap')
         ->where("rap.tanggal_rap_alat <= '$date2'")
         ->where('rap.status','PUBLISH')
+        ->group_by("rap.id")
+        ->order_by('rap.tanggal_rap_alat','desc')->limit(1)
         ->get()->result_array();
 
         foreach ($rap_alat as $x){
@@ -6670,6 +6674,8 @@ class Pmm_model extends CI_Model {
         ->from('rap_alat rap')
         ->where("rap.tanggal_rap_alat <= '$date_tahun_lalu'")
         ->where('rap.status','PUBLISH')
+        ->group_by("rap.id")
+        ->order_by('rap.tanggal_rap_alat','desc')->limit(1)
         ->get()->result_array();
 
         foreach ($rap_alat as $x){
@@ -7372,25 +7378,27 @@ class Pmm_model extends CI_Model {
         ->from('rap_alat rap')
         ->where("rap.tanggal_rap_alat <= '$date2'")
         ->where('rap.status','PUBLISH')
+        ->group_by("rap.id")
+        ->order_by('rap.tanggal_rap_alat','desc')->limit(1)
         ->get()->result_array();
 
         foreach ($rap_alat as $x){
-				$vol_rap_batching_plant = $x['vol_batching_plant'];
-				$vol_rap_pemeliharaan_batching_plant = $x['vol_pemeliharaan_batching_plant'];
-				$vol_rap_wheel_loader = $x['vol_wheel_loader'];
-				$vol_rap_pemeliharaan_wheel_loader = $x['vol_pemeliharaan_wheel_loader'];
-				$vol_rap_truck_mixer = $x['vol_truck_mixer'];
-				$vol_rap_bbm_solar = $x['vol_bbm_solar'];
-				$harsat_batching_plant = $x['batching_plant'];
-				$harsat_pemeliharaan_batching_plant = $x['pemeliharaan_batching_plant'];
-				$harsat_penyusutan_batching_plant = $x['batching_plant'] - $x['pemeliharaan_batching_plant'];
-				$harsat_pemeliharaan_wheel_loader = $x['pemeliharaan_wheel_loader'];
-				$harsat_penyusutan_wheel_loader = $x['wheel_loader'] - $x['pemeliharaan_wheel_loader'];
-				$harsat_wheel_loader = $x['wheel_loader'];
-				$harsat_truck_mixer = $x['truck_mixer'];
-				$harsat_bbm_solar = $x['vol_bbm_solar'] * $x['harsat_bbm_solar'];
-				
-			}
+            $vol_rap_batching_plant = $x['vol_batching_plant'];
+            $vol_rap_pemeliharaan_batching_plant = $x['vol_pemeliharaan_batching_plant'];
+            $vol_rap_wheel_loader = $x['vol_wheel_loader'];
+            $vol_rap_pemeliharaan_wheel_loader = $x['vol_pemeliharaan_wheel_loader'];
+            $vol_rap_truck_mixer = $x['vol_truck_mixer'];
+            $vol_rap_bbm_solar = $x['vol_bbm_solar'];
+            $harsat_batching_plant = $x['batching_plant'];
+            $harsat_pemeliharaan_batching_plant = $x['pemeliharaan_batching_plant'];
+            $harsat_penyusutan_batching_plant = $x['batching_plant'] - $x['pemeliharaan_batching_plant'];
+            $harsat_pemeliharaan_wheel_loader = $x['pemeliharaan_wheel_loader'];
+            $harsat_penyusutan_wheel_loader = $x['wheel_loader'] - $x['pemeliharaan_wheel_loader'];
+            $harsat_wheel_loader = $x['wheel_loader'];
+            $harsat_truck_mixer = $x['truck_mixer'];
+            $harsat_bbm_solar = $x['vol_bbm_solar'] * $x['harsat_bbm_solar'];
+            
+        }
 
         $vol_batching_plant = $total_volume;
         $vol_pemeliharaan_batching_plant = $total_volume;

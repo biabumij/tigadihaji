@@ -1270,6 +1270,528 @@ class Reports extends CI_Controller {
 	}
 
 	//BATAS RUMUS LAMA//
+	public function laba_rugi_paket5($arr_date)
+	{
+		$data = array();
+		
+		$arr_date = $this->input->post('filter_date');
+		$arr_filter_date = explode(' - ', $arr_date);
+		$date4 = '';
+		$date3 = '';
+		$date1 = '';
+		$date2 = '';
+
+		if(count($arr_filter_date) == 2){
+			$date3 	= date('2025-02-01',strtotime($date3));
+			$date1 	= date('Y-m-d',strtotime($arr_filter_date[0]));
+			$date2 	= date('Y-m-d',strtotime($arr_filter_date[1]));
+			$date4 = date('Y-m-d', strtotime('-1 days 0 months ', strtotime($date1)));
+			$filter_date = date('Y-m-d',strtotime($arr_filter_date[0])).' - '.date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date_2 = date('Y-m-d',strtotime($date3)).' - '.date('Y-m-d',strtotime($arr_filter_date[1]));
+		}
+		
+		?>
+		
+		<table class="table table-bordered" width="100%">
+		 <style type="text/css">
+			body {
+				font-family: helvetica;
+			}
+
+			table tr.table-active{
+				/*background: linear-gradient(90deg, #fdcd3b 20%, #fdcd3b 40%, #e69500 80%);*/
+				background-color: #eeeeee;
+				font-size: 12px;
+				font-weight: bold;
+			}
+				
+			table tr.table-active2{
+				background-color: #e69500;
+				font-size: 12px;
+				font-weight: bold;
+				color: white;
+			}
+				
+			table tr.table-active3{
+				font-size: 12px;
+			}
+				
+			table tr.table-active4{
+				/*background: linear-gradient(90deg, #eeeeee 5%, #cccccc 50%, #cccccc 100%);*/
+				font-weight: bold;
+				font-size: 12px;
+				color: black;
+			}
+		 </style>
+	        <tr class="table-active2">
+	            <th colspan="2">Periode</th>
+	            <th class="text-right" colspan="2"><?php echo $filter_date = $filter_date = date('d/m/Y',strtotime($arr_filter_date[0])).' - '.date('d/m/Y',strtotime($arr_filter_date[1]));?></th>
+				<th class="text-right" colspan="2">SD. <?php echo $filter_date_2 = date('d/m/Y',strtotime($arr_filter_date[1]));?></th>
+	        </tr>
+			
+			<?php
+			//PENJUALAN
+			$penjualan = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+			->from('pmm_productions pp')
+			->join('penerima p', 'pp.client_id = p.id','left')
+			->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+			->where("pp.date_production between '$date1' and '$date2'")
+			->where("pp.status = 'PUBLISH'")
+			->where("ppo.status in ('OPEN','CLOSED')")
+			->group_by("pp.client_id")
+			->get()->result_array();
+			
+			$total_penjualan = 0;
+			$total_volume = 0;
+
+			foreach ($penjualan as $x){
+				$total_penjualan += $x['price'];
+				$total_volume += $x['volume'];
+				$satuan = $x['measure'];
+			}
+
+			$total_penjualan_all = 0;
+			$total_penjualan_all = $total_penjualan;
+
+			//PENJUALAN_2
+			$penjualan_2 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+			->from('pmm_productions pp')
+			->join('penerima p', 'pp.client_id = p.id','left')
+			->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+			->where("pp.date_production between '$date3' and '$date2'")
+			->where("pp.status = 'PUBLISH'")
+			->where("ppo.status in ('OPEN','CLOSED')")
+			->group_by("pp.client_id")
+			->get()->result_array();
+
+			$total_penjualan_2 = 0;
+			$total_volume_2 = 0;
+
+			foreach ($penjualan_2 as $x){
+				$total_penjualan_2 += $x['price'];
+				$total_volume_2 += $x['volume'];
+				$satuan_2 = $x['measure'];
+			}
+
+			$total_penjualan_all_2 = 0;
+			$total_penjualan_all_2 = $total_penjualan_2;
+
+			//BAHAN
+			$bahan = $this->pmm_model->getBahan($date1,$date2);
+			$total_nilai = $bahan;
+
+			//BAHAN_2
+			$bahan_2 = $this->pmm_model->getBahan2($date3,$date2);
+			$total_nilai_2= $bahan_2;
+
+			//ALAT
+			$alat = $this->pmm_model->getAlat($date1,$date2);
+
+			//ALAT_2
+			$alat_2 = $this->pmm_model->getAkumulasiAlat($date3,$date2);
+
+			//OVERHEAD
+			$overhead = $this->pmm_model->getOverheadLabaRugi($date1,$date2);
+			$overhead = $overhead;
+
+			//OVERHEAD
+			$overhead_2 = $this->pmm_model->getOverheadAkumulasiLabaRugi($date3,$date2);
+			$overhead_2 = $overhead_2;
+
+			//DISKONTO
+			$diskonto = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 110")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
+			->get()->row_array();
+			$diskonto = $diskonto['total'];
+
+			//DISKONTO_2
+			$diskonto_2 = $this->db->select('sum(pdb.jumlah) as total')
+			->from('pmm_biaya pb ')
+			->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+			->join('pmm_coa c','pdb.akun = c.id','left')
+			->where("pdb.akun = 110")
+			->where("pb.status = 'PAID'")
+			->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
+			->get()->row_array();
+			$diskonto_2 = $diskonto_2['total'];
+
+			$bahan = $total_nilai;
+			$alat = $alat;
+			$overhead = $overhead;
+			$diskonto = $diskonto;
+			$total_biaya_operasional = $bahan + $alat + $overhead + $diskonto;
+			$laba_kotor = $total_penjualan_all - $total_biaya_operasional;
+			$laba_usaha = $laba_kotor;
+			$persentase_laba_sebelum_pajak = ($total_penjualan_all!=0)?($laba_usaha / $total_penjualan_all) * 100:0;
+
+			$bahan_2 = $total_nilai_2;
+			$alat_2 = $alat_2;
+			$overhead_2 = $overhead_2;
+			$diskonto_2 = $diskonto_2;
+			$total_biaya_operasional_2 = $bahan_2 + $alat_2 + $overhead_2 + $diskonto_2;
+			$laba_kotor_2 = $total_penjualan_all_2 - $total_biaya_operasional_2;
+			$laba_usaha_2 = $laba_kotor_2;
+			$persentase_laba_sebelum_pajak_2 = ($total_penjualan_all_2!=0)?($laba_usaha_2 / $total_penjualan_all_2) * 100:0;
+	        ?>
+
+			<tr class="table-active">
+	            <th width="100%" class="text-left" colspan="6">Pendapatan Penjualan</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th width="10%" class="text-center">4-40000</th>
+				<th width="90%" class="text-left" colspan="5">Pendapatan</th>
+	        </tr>
+			<?php foreach ($penjualan_2 as $i=>$x): ?>
+			<tr class="table-active3">
+	            <th width="10%"></th>
+				<th width="30%"><?= $penjualan[$i]['nama'] ?></th>
+				<th width="12%" class="text-right"><?php echo number_format($penjualan[$i]['volume'],2,',','.');?> (<?= $penjualan[$i]['measure'];?>)</th>
+	            <th width="18%" class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_pengiriman_penjualan?filter_date=".$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($penjualan[$i]['price'],0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+
+				<th width="12%" class="text-right"><?php echo number_format($penjualan_2[$i]['volume'],2,',','.');?> (<?= $penjualan_2[$i]['measure'];?>)</th>
+				
+				<th width="18%" class="text-right xxx">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_pengiriman_penjualan?filter_date=".$filter_date_2 = date('d F Y',strtotime($date3)).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($penjualan_2[$i]['price'],0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+	        </tr>
+			<?php endforeach; ?>
+			<tr class="table-active3">
+				<th class="text-left" colspan="2">Total Pendapatan</th>
+				<th class="text-right"><?php echo number_format($total_volume,2,',','.');?> (<?= $satuan;?>)</th>
+	            <th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_pengiriman_penjualan?filter_date=".$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($total_penjualan_all,0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+				<th class="text-right"><?php echo number_format($total_volume_2,2,',','.');?> (<?= $satuan_2;?>)</th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_pengiriman_penjualan?filter_date=".$filter_date_2 = date('d F Y',strtotime($date3)).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($total_penjualan_all_2,0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+	        </tr>
+			<tr class="table-active3">
+				<th colspan="6"></th>
+			</tr>
+			<tr class="table-active">
+				<th class="text-left" colspan="6">Beban Pokok Penjualan</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-center"></th>
+				<th class="text-left" colspan="2">Bahan</th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_bahan?filter_date=".$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($bahan,0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+				<th class="text-right"></th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+								<span><a target="_blank" href="<?= base_url("laporan/cetak_bahan_2?filter_date=".$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($bahan_2,0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-center"></th>
+				<th class="text-left" colspan="2">Alat</th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_alat?filter_date=".$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($alat,0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+				<th class="text-right"></th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_alat_2?filter_date=".$filter_date_2 = date('d F Y',strtotime($date3)).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($alat_2,0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-center"></th>
+				<th class="text-left" colspan="2">BUA</th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_overhead?filter_date=".$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($overhead,0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+				<th class="text-right"></th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_overhead?filter_date=".$filter_date_2 = date('d F Y',strtotime($date3)).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($overhead_2,0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-center"></th>
+				<th class="text-left" colspan="2">Diskonto</th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_diskonto?filter_date=".$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($diskonto,0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+				<th class="text-right"></th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><a target="_blank" href="<?= base_url("laporan/cetak_diskonto?filter_date=".$filter_date_2 = date('d F Y',strtotime($date3)).' - '.date('d F Y',strtotime($arr_filter_date[1]))) ?>"><?php echo number_format($diskonto_2,0,',','.');?></a></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+	        </tr>
+			<tr class="table-active3">
+				<th class="text-left" colspan="3">Total Beban Pokok Penjualan</th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left"width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><?php echo number_format($total_biaya_operasional,0,',','.');?></span>
+								</th>
+							</tr>
+					</table>				
+				</th>
+				<th class="text-right"></th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left"width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><?php echo number_format($total_biaya_operasional_2,0,',','.');?></span>
+								</th>
+							</tr>
+					</table>				
+				</th>
+	        </tr>
+			<tr class="table-active3">
+				<th colspan="6"></th>
+			</tr>
+			<?php
+				$styleColorLabaKotor = $laba_kotor < 0 ? 'color:red' : 'color:black';
+				$styleColorLabaKotor2 = $laba_kotor_2 < 0 ? 'color:red' : 'color:black';
+				$styleColorSebelumPajak = $laba_usaha < 0 ? 'color:red' : 'color:black';
+				$styleColorSebelumPajak2 = $laba_usaha_2 < 0 ? 'color:red' : 'color:black';
+				$styleColorPresentase = $persentase_laba_sebelum_pajak < 0 ? 'color:red' : 'color:black';
+				$styleColorPresentase2 = $persentase_laba_sebelum_pajak_2 < 0 ? 'color:red' : 'color:black';
+			?>
+			<tr class="table-active3">
+				<th class="text-left" colspan="3">Laba / Rugi Kotor</th>
+	            <th class="text-right" style="<?php echo $styleColorLabaKotor ?>">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><?php echo $laba_kotor < 0 ? "(".number_format(-$laba_kotor,0,',','.').")" : number_format($laba_kotor,0,',','.');?></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+				<th class="text-right"></th>
+				<th class="text-right" style="<?php echo $styleColorLabaKotor2 ?>">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><?php echo $laba_kotor_2 < 0 ? "(".number_format(-$laba_kotor_2,0,',','.').")" : number_format($laba_kotor_2,0,',','.');?></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+	        </tr>
+			<tr class="table-active3">
+				<th colspan="6"></th>
+			</tr>
+			<tr class="table-active3">
+				<th class="text-left" colspan="3">Biaya Umum & Administrasi</th>
+	            <th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span>-</span>
+								</th>
+							</tr>
+					</table>
+				</th>
+				<th class="text-right"></th>
+				<th class="text-right">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span>-</span>
+								</th>
+							</tr>
+					</table>
+				</th>
+	        </tr>
+			<tr class="table-active3">
+				<th colspan="6"></th>
+			</tr>
+			<tr class="table-active3">
+	            <th colspan="3" class="text-left">Laba / Rugi Usaha</th>
+	            <th class="text-right" style="<?php echo $styleColorSebelumPajak ?>">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><?php echo $laba_usaha < 0 ? "(".number_format(-$laba_usaha,0,',','.').")" : number_format($laba_usaha,0,',','.');?></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+				<th class="text-right"></th>
+				<th class="text-right" style="<?php echo $styleColorSebelumPajak2 ?>">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><?php echo $laba_usaha_2 < 0 ? "(".number_format(-$laba_usaha_2,0,',','.').")" : number_format($laba_usaha_2,0,',','.');?></span>
+								</th>
+							</tr>
+					</table>
+				</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th colspan="3" class="text-left">Presentase</th>
+	            <th class="text-right" style="<?php echo $styleColorPresentase ?>">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><?php echo $persentase_laba_sebelum_pajak < 0 ? "(".number_format(-$persentase_laba_sebelum_pajak,2,',','.').")" : number_format($persentase_laba_sebelum_pajak,2,',','.');?> %</span>
+								</th>
+							</tr>
+					</table>
+				</th>
+				<th class="text-right"></th>
+				<th class="text-right" style="<?php echo $styleColorPresentase2 ?>">
+					<table width="100%" border="0" cellpadding="0">
+						<tr>
+								<th class="text-left" width="10%">
+									<span>Rp.</span>
+								</th>
+								<th class="text-right" width="90%">
+									<span><?php echo $persentase_laba_sebelum_pajak_2 < 0 ? "(".number_format(-$persentase_laba_sebelum_pajak_2,2,',','.').")" : number_format($persentase_laba_sebelum_pajak_2,2,',','.');?> %</span>
+								</th>
+							</tr>
+					</table>
+				</th>
+	        </tr>
+	    </table>
+		<?php
+	}
+
 	public function laba_rugi($arr_date)
 	{
 		$data = array();
@@ -15528,6 +16050,8 @@ class Reports extends CI_Controller {
 			->from('rap_alat rap')
 			->where("rap.tanggal_rap_alat <= '$date2'")
 			->where('rap.status','PUBLISH')
+			->group_by("rap.id")
+			->order_by('rap.tanggal_rap_alat','desc')->limit(1)
 			->get()->result_array();
 
 			foreach ($rap_alat as $x){
@@ -15629,10 +16153,10 @@ class Reports extends CI_Controller {
 			$rap_bua = $this->db->select('sum(det.jumlah) as total')
 			->from('rap_bua rap')
 			->join('rap_bua_detail det','rap.id = det.rap_bua_id','left')
-			->where("det.coa <> 131 ")
 			->where("rap.status = 'PUBLISH'")
 			->where("rap.tanggal_rap_bua < '$date2'")
-			->order_by('rap.tanggal_rap_bua','asc')->limit(1)
+			->group_by("rap.id")
+			->order_by('rap.tanggal_rap_bua','desc')->limit(1)
 			->get()->row_array();
 			$rap_bua = $rap_bua['total'];
 			
@@ -15924,7 +16448,7 @@ class Reports extends CI_Controller {
 			$total_nilai_realisasi_bua = $konsumsi + $listrik_internet + $gaji + $akomodasi + $biaya_maintenance + $thr_bonus + $biaya_sewa_kendaraan + $bensin_tol_parkir + $pakaian_dinas + $perjalanan_dinas + $perlengkapan_kantor + $pengobatan + $alat_tulis_kantor + $keamanan_kebersihan + $biaya_lain_lain;
 
 			$total_volume_rap_bua = $total_volume;
-			$total_nilai_rap_bua = $rap_bua / 24;
+			$total_nilai_rap_bua = $rap_bua / 12;
 			$total_harsat_rap_bua = $total_nilai_rap_bua / $total_volume_rap_bua;
 			
 			$total_volume_realisasi_bua = $total_volume;
@@ -16667,7 +17191,10 @@ class Reports extends CI_Controller {
 			->from('rap_alat rap')
 			->where("rap.tanggal_rap_alat <= '$date2'")
 			->where('rap.status','PUBLISH')
+			->group_by("rap.id")
+			->order_by('rap.tanggal_rap_alat','desc')->limit(1)
 			->get()->result_array();
+			
 
 			foreach ($rap_alat as $x){
 				$vol_rap_batching_plant = $x['vol_batching_plant'];
@@ -16768,21 +17295,10 @@ class Reports extends CI_Controller {
 			$rap_bua = $this->db->select('sum(det.jumlah) as total')
 			->from('rap_bua rap')
 			->join('rap_bua_detail det','rap.id = det.rap_bua_id','left')
-			->where("det.coa <> 131 ")
 			->where("rap.status = 'PUBLISH'")
 			->where("rap.tanggal_rap_bua < '$date2'")
-			->order_by('rap.tanggal_rap_bua','asc')->limit(1)
-			->get()->row_array();
-			$rap_bua = $rap_bua['total'];
-			
-			//REALISASI
-			$rap_bua = $this->db->select('sum(det.jumlah) as total')
-			->from('rap_bua rap')
-			->join('rap_bua_detail det','rap.id = det.rap_bua_id','left')
-			->where("det.coa <> 131 ")
-			->where("rap.status = 'PUBLISH'")
-			->where("rap.tanggal_rap_bua < '$date2'")
-			->order_by('rap.tanggal_rap_bua','asc')->limit(1)
+			->group_by("rap.id")
+			->order_by('rap.tanggal_rap_bua','desc')->limit(1)
 			->get()->row_array();
 			$rap_bua = $rap_bua['total'];
 			
@@ -17074,7 +17590,7 @@ class Reports extends CI_Controller {
 			$total_nilai_realisasi_bua = $konsumsi + $listrik_internet + $gaji + $akomodasi + $biaya_maintenance + $thr_bonus + $biaya_sewa_kendaraan + $bensin_tol_parkir + $pakaian_dinas + $perjalanan_dinas + $perlengkapan_kantor + $pengobatan + $alat_tulis_kantor + $keamanan_kebersihan + $biaya_lain_lain;
 
 			$total_volume_rap_bua = $total_volume;
-			$total_nilai_rap_bua = $rap_bua / 24;
+			$total_nilai_rap_bua = $rap_bua / 12;
 			$total_harsat_rap_bua = $total_nilai_rap_bua / $total_volume_rap_bua;
 			
 			$total_volume_realisasi_bua = $total_volume;
