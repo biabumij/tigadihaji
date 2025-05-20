@@ -89,6 +89,10 @@
                                     <th>Keterangan</th>
                                     <td>: <?= $agregat["memo"] ?></td>
                                 </tr>
+                                <tr>
+                                    <th >Harga Jual</th>
+                                    <td>: <input type="text" name="harga_jual" class="form-control rupiahformat text-left" value="<?= $agregat['harga_jual'] ?>"></td>
+                                </tr>
                             </table>
                             
                             <table class="mytable table-bordered table-hover table-striped" width="100%">

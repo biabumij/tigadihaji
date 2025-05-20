@@ -320,6 +320,7 @@ class Rap extends Secure_Controller {
 			$total_c = str_replace('.', '', $this->input->post('total_c'));
 			$total_d = str_replace('.', '', $this->input->post('total_d'));
 			$total_e = str_replace('.', '', $this->input->post('total_e'));
+			$harga_jual = str_replace('.', '', $this->input->post('harga_jual'));
 
 
 			$arr_update = array(
@@ -343,6 +344,7 @@ class Rap extends Secure_Controller {
 				'total_c' => $total_c,
 				'total_d' => $total_d,
 				'total_e' => $total_e,
+				'harga_jual' => $harga_jual,
 				'status' => 'PUBLISH',
 				'updated_by' => $this->session->userdata('admin_id'),
 				'updated_on' => date('Y-m-d H:i:s')
