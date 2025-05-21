@@ -2734,7 +2734,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_detail_bp',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Batching Plant & Genset');
+        $pdf->SetTitle('Batching Plant & Genset');
         $pdf->nsi_html($html);
         $pdf->Output('batching_plant_genset.pdf', 'I');
 	}
@@ -2773,7 +2773,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_detail_wl',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Wheel Loader');
+        $pdf->SetTitle('Wheel Loader');
         $pdf->nsi_html($html);
         $pdf->Output('wheel-loader.pdf', 'I');
 	}
@@ -2812,7 +2812,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_detail_tm',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Truck Mixer');
+        $pdf->SetTitle('Truck Mixer');
         $pdf->nsi_html($html);
         $pdf->Output('truck_mixer.pdf', 'I');
 	}
@@ -2853,7 +2853,7 @@ class Laporan extends Secure_Controller {
 		$data['data'] = $query->result_array();
         $html = $this->load->view('laporan_ev._produksi/cetak_surat_jalan_tm',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Truck Mixer');
+        $pdf->SetTitle('Truck Mixer');
         $pdf->nsi_html($html);
         $pdf->Output('truck_mixer.pdf', 'I');
 	}
@@ -2892,7 +2892,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_detail_pemeliharaan_tm',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Truck Mixer');
+        $pdf->SetTitle('Truck Mixer');
         $pdf->nsi_html($html);
         $pdf->Output('truck_mixer.pdf', 'I');
 	}
@@ -2931,7 +2931,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_detail_insentif_tm',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Truck Mixer');
+        $pdf->SetTitle('Truck Mixer');
         $pdf->nsi_html($html);
         $pdf->Output('truck_mixer.pdf', 'I');
 	}
@@ -2970,7 +2970,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_detail_pemeliharaan_wl',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Wheel Loader');
+        $pdf->SetTitle('Wheel Loader');
         $pdf->nsi_html($html);
         $pdf->Output('wheel_loader.pdf', 'I');
 	}
@@ -3009,7 +3009,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_detail_pemeliharaan_bp',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Batching Plant');
+        $pdf->SetTitle('Batching Plant');
         $pdf->nsi_html($html);
         $pdf->Output('batching_plant.pdf', 'I');
 	}
@@ -3048,7 +3048,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_detail_angsuran_bp',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Batching Plant');
+        $pdf->SetTitle('Batching Plant');
         $pdf->nsi_html($html);
         $pdf->Output('batching_plant.pdf', 'I');
 	}
@@ -3087,7 +3087,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_detail_penyusutan_bp',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Batching Plant');
+        $pdf->SetTitle('Batching Plant');
         $pdf->nsi_html($html);
         $pdf->Output('batching_plant.pdf', 'I');
 	}
@@ -3126,7 +3126,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_detail_angsuran_wl',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Wheel Loader');
+        $pdf->SetTitle('Wheel Loader');
         $pdf->nsi_html($html);
         $pdf->Output('wheel_loader.pdf', 'I');
 	}
@@ -3165,7 +3165,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_detail_penyusutan_wl',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - Wheel Loader');
+        $pdf->SetTitle('Wheel Loader');
         $pdf->nsi_html($html);
         $pdf->Output('wheel_loader.pdf', 'I');
 	}
@@ -3195,7 +3195,7 @@ class Laporan extends Secure_Controller {
 		$data['date2'] = $end_date;
         $html = $this->load->view('laporan_ev._produksi/cetak_laporan_evaluasi_bua',$data,TRUE);
         
-        $pdf->SetTitle('BBJ - BUA');
+        $pdf->SetTitle('BUA');
         $pdf->nsi_html($html);
         $pdf->Output('bua.pdf', 'I');
 	}
@@ -3227,7 +3227,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_konsumsi',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Konsumsi');
         $pdf->nsi_html($html);
         $pdf->Output('konsumsi.pdf', 'I');
 	}
@@ -3259,7 +3259,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_listrik_internet',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Listrik & Internet');
         $pdf->nsi_html($html);
         $pdf->Output('listrik_internet.pdf', 'I');
 	}
@@ -3291,7 +3291,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_gaji',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Gaji');
         $pdf->nsi_html($html);
         $pdf->Output('gaji.pdf', 'I');
 	}
@@ -3323,7 +3323,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_akomodasi',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Akomodasi');
         $pdf->nsi_html($html);
         $pdf->Output('akomodasi.pdf', 'I');
 	}
@@ -3355,7 +3355,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_biaya_maintenance',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Maintenance');
         $pdf->nsi_html($html);
         $pdf->Output('biaya_maintenance.pdf', 'I');
 	}
@@ -3387,7 +3387,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_thr_bonus',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('THR & Bonus');
         $pdf->nsi_html($html);
         $pdf->Output('thr_bonus.pdf', 'I');
 	}
@@ -3419,7 +3419,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_biaya_sewa_kendaraan',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Sewa Kendaraan');
         $pdf->nsi_html($html);
         $pdf->Output('biaya_sewa_kendaraan.pdf', 'I');
 	}
@@ -3451,7 +3451,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_bensin_tol_parkir',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Bensin, Tol & Parkir');
         $pdf->nsi_html($html);
         $pdf->Output('bensin_tol_parkir.pdf', 'I');
 	}
@@ -3483,7 +3483,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_pakaian_dinas',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Pakaian Dinas');
         $pdf->nsi_html($html);
         $pdf->Output('pakaian_dinas.pdf', 'I');
 	}
@@ -3515,7 +3515,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_perjalanan_dinas',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Perjalanan Dinas');
         $pdf->nsi_html($html);
         $pdf->Output('perjalanan_dinas.pdf', 'I');
 	}
@@ -3547,7 +3547,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_perlengkapan_kantor',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Perlengkapan Kantor');
         $pdf->nsi_html($html);
         $pdf->Output('perlengkapan_kantor.pdf', 'I');
 	}
@@ -3579,7 +3579,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_pengobatan',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Pengobatan');
         $pdf->nsi_html($html);
         $pdf->Output('pengobatan.pdf', 'I');
 	}
@@ -3611,7 +3611,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_alat_tulis_kantor',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Alat Tulis Kantor');
         $pdf->nsi_html($html);
         $pdf->Output('alat_tulis_kantor.pdf', 'I');
 	}
@@ -3643,7 +3643,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_keamanan_kebersihan',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Keamanan & Kebersihan');
         $pdf->nsi_html($html);
         $pdf->Output('keamanan_kebersihan.pdf', 'I');
 	}
@@ -3675,7 +3675,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_beban_adm',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Beban Adm.');
         $pdf->nsi_html($html);
         $pdf->Output('beban_adm.pdf', 'I');
 	}
@@ -3707,7 +3707,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_biaya_lain_lain',$data,TRUE);
         
-        $pdf->SetTitle('');
+        $pdf->SetTitle('Biaya Lain-Lain');
         $pdf->nsi_html($html);
         $pdf->Output('biaya_lain_lain.pdf', 'I');
 	}
