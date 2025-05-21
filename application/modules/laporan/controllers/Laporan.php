@@ -157,7 +157,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_alat',$data,TRUE);
 
-        $pdf->SetTitle('Alat');
+        $pdf->SetTitle('Biaya Alat');
         $pdf->nsi_html($html);
         $pdf->Output('alat.pdf', 'I');
 	}
