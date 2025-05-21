@@ -98,7 +98,7 @@ class Laporan extends Secure_Controller {
 		$data['end_date'] = $end_date;
         $html = $this->load->view('laporan_keuangan/cetak_bahan',$data,TRUE);
         
-        $pdf->SetTitle('Bahan');
+        $pdf->SetTitle('Biaya Bahan');
         $pdf->nsi_html($html);
         $pdf->Output('bahan.pdf', 'I');
 	}
