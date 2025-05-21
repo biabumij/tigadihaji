@@ -75,10 +75,10 @@
 		<table width="98%" cellpadding="3">
 			<tr>
 				<td align="center"  width="100%">
-					<div style="display: block;font-weight: bold;font-size: 12px;">LAPORAN LABA RUGI<br/>
-					PROYEK BENDUNGAN TIGA DIHAJI<br/>
-					PT. BIA BUMI JAYENDRA<br/>
-					<div style="text-transform: uppercase;">PERIODE <?php echo str_replace($search, $replace, $subject);?></div></div>
+					<div style="display: block;font-weight: bold;font-size: 12px;">Laporan Laba Rugi<br/>
+					Proyek Bendungan Tiga Dihaji<br/>
+					PT. Bia Bumi Jayendra<br/>
+					<div style="text-transform: capitalize;">Periode <?php echo str_replace($search, $replace, $subject);?></div></div>
 				</td>
 			</tr>
 		</table>
