@@ -86,7 +86,7 @@
                                         <table class="data-table table table-striped table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>No.</th>
+                                                    <th width="5%">No.</th>
                                                     <th>Nama</th>
                                                     <th>Jabatan</th>
                                                     <th>Status</th>
