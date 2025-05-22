@@ -2350,7 +2350,6 @@ class Laporan extends Secure_Controller {
 
 				$mats = array();
 				$materials = $this->pmm_model->GetReceiptTagihanPenjualan($sups['client_id'],$start_date,$end_date);
-				file_put_contents("D:\\test.txt", $this->db->last_query());
 				if(!empty($materials)){
 					foreach ($materials as $key => $row) {
 						$arr['no'] = $key + 1;
