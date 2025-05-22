@@ -88,7 +88,6 @@
                                                 <tr>
                                                     <th>No.</th>
                                                     <th>Nama</th>
-                                                    <th>Email</th>
                                                     <th>Jabatan</th>
                                                     <th>Status</th>
                                                 </tr>

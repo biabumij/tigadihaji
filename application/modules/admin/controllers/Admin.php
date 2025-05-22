@@ -246,14 +246,15 @@ class Admin extends CI_Controller {
 			$table = 'tbl_admin';
 		    $column_order = array('admin_name','admin_email','admin_group_id','status',null); 
 		    $column_search = array('admin_name','admin_email','admin_group_id','status');
-		    $order = array('admin_id' => 'asc'); // default order
+		    $order = array('admin_name' => 'asc'); // default order
+			$arraywhere = array('status' => '1');
 
-		    $admin_group_id = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$this->session->userdata('admin_id')),'admin_group_id');
+		    /*$admin_group_id = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$this->session->userdata('admin_id')),'admin_group_id');
 		    if($admin_group_id != 1){
 		    	$arraywhere = array('status !=' => '0','admin_group_id !='=>'1');
 		    }else {
 		    	$arraywhere = array('status !=' => '0');
-		    }
+		    }*/
 			$list = $this->DB_model->get_datatables($table,$column_order,$column_search,$order,$arraywhere);
 	        $data = array();
 	        $no = $_POST['start'];
@@ -264,7 +265,7 @@ class Admin extends CI_Controller {
 	            $row = array();
 	            $row[] = $no;
 	            $row[] = $value->admin_name;
-	            $row[] = $value->admin_email;
+	            //$row[] = $value->admin_email;
 	            $row[] = $this->crud_global->GetField('tbl_admin_group',array('admin_group_id'=>$value->admin_group_id),'admin_group_name');
 	            $row[] = $this->general->GetStatus($value->status);
 				//$row[] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$value->update_by),'admin_name');
