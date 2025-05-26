@@ -573,7 +573,7 @@
 				<th align="right" class="table-border-spesial-kanan" style="<?php echo $styleColorW ?>"><?php echo $total_evaluasi < 0 ? "(".number_format(-$total_evaluasi,0,',','.').")" : number_format($total_evaluasi,0,',','.');?></th>
 	        </tr>
 	    </table>
-		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		<br /><br /><br /><br /><br /><br /><br />
 		<table width="98%" border="0" cellpadding="0">
 			<tr >
 				<td width="5%"></td>
