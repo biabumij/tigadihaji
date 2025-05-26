@@ -613,7 +613,7 @@
                                 format: '{value} M3'
                             },
                             min: 0,
-                            max: 3500,
+                            max: 4000,
                             tickInterval:500,
                         },
                         tooltip: {
