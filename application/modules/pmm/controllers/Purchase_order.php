@@ -221,7 +221,6 @@ class Purchase_order extends CI_Controller {
 		$data['row'] = $row;
 		$data['id'] = $id;
         $html = $this->load->view('pembelian/cetak_pesanan_pembelian',$data,TRUE);
-
         
         $pdf->SetTitle($row['no_po']);
         $pdf->nsi_html($html);
