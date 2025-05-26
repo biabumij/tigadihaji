@@ -227,7 +227,7 @@
 		<?php
         $ka_plant = $this->pmm_model->GetNameGroup(15);
         ?>
-		<table width="98%" border="0" cellpadding="10">
+		<table width="98%" border="0" cellpadding="40">
 			<tr >
 				<td width="5%"></td>
 				<td width="90%">

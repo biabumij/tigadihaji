@@ -198,14 +198,13 @@ class Purchase_order extends CI_Controller {
 	{
 		$this->load->library('pdf');
 	
-
 		$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-        $pdf->setPrintHeader(true);
-        $pdf->SetFont('helvetica','',7); 
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
-		$pdf->SetPrintFooter(true);
 		$pdf->AddPage('P');
+		$pdf->SetAutoPageBreak(TRUE, 0);    
 
         $id = $this->uri->segment(4);
 		$row = $this->db->get_where('pmm_purchase_order',array('id'=>$id))->row_array();
@@ -236,12 +235,12 @@ class Purchase_order extends CI_Controller {
 	
 
 		$pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
-        $pdf->setPrintHeader(true);
-        $pdf->SetFont('helvetica','',7); 
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
         $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
 		$pdf->setHtmlVSpace($tagvs);
-		$pdf->SetPrintFooter(false);
 		$pdf->AddPage('P');
+		$pdf->SetAutoPageBreak(TRUE, 0); 
 
         $id = $this->uri->segment(4);
 		$row = $this->db->get_where('pmm_purchase_order',array('id'=>$id))->row_array();
