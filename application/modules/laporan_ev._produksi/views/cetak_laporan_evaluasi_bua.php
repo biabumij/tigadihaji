@@ -574,7 +574,7 @@
 	        </tr>
 	    </table>
 		<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-		<table width="98%" border="0" cellpadding="30">
+		<table width="98%" border="0" cellpadding="0">
 			<tr >
 				<td width="5%"></td>
 				<td width="90%">
