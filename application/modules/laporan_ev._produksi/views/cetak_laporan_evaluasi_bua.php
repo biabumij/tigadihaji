@@ -4,40 +4,24 @@
 	  <title>LAPORAN EVALUASI BUA</title>
 	  
 	  <?php
-		$search = array(
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December'
-		);
-		
-		$replace = array(
-		'Januari',
-		'Februari',
-		'Maret',
-		'April',
-		'Mei',
-		'Juni',
-		'Juli',
-		'Agustus',
-		'September',
-		'Oktober',
-		'November',
-		'Desember'
-		);
-		
-		$subject = "$filter_date";
-
-		echo str_replace($search, $replace, $subject);
-
+		function tanggal_indo($tanggal)
+		{
+			$bulan = array (1 =>   'Januari',
+						'Februari',
+						'Maret',
+						'April',
+						'Mei',
+						'Juni',
+						'Juli',
+						'Agustus',
+						'September',
+						'Oktober',
+						'November',
+						'Desember'
+					);
+			$split = explode('-', $tanggal);
+			return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
+		}
 	  ?>
 	  
 	  <style type="text/css">
@@ -128,7 +112,7 @@
 	<body>
 		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">Evaluasi Biaya BUA</div>
 		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">Proyek Bendungan Tiga Dihaji</div>
-		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">Periode <?php echo str_replace($search, $replace, $subject);?></div>
+		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">Periode <?php echo tanggal_indo($date1,true);?> - <?php echo tanggal_indo($date2,true);?></div>
 		<br /><br /><br />
 		
 		

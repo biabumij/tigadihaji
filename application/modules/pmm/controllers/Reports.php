@@ -16671,7 +16671,7 @@ class Reports extends CI_Controller {
 				<th class="text-right"><a target="_blank" href="<?= base_url("rap/cetak_rap_bua/".$rap_bua) ?>"><?php echo number_format($total_nilai_rap_bua,0,',','.');?></a></th>
 				<th class="text-right"><?php echo number_format($total_volume_realisasi_bua,2,',','.');?></th>
 				<th class="text-right"><?php echo number_format($total_harsat_realisasi_bua,0,',','.');?></th>
-				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_evaluasi_bua?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($total_nilai_realisasi_bua,0,',','.');?></a></th>
+				<th class="text-right"><a target="_blank" href="<?= base_url("laporan/cetak_evaluasi_bua/".$date1."/".$date2."/".$rap_bua."") ?>"><?php echo number_format($total_nilai_realisasi_bua,0,',','.');?></a></th>
 				<?php
 				$styleColor = $total_volume_evaluasi_bua < 0 ? 'color:red' : 'color:black';
 				?>

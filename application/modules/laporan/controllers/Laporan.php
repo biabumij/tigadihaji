@@ -3582,6 +3582,9 @@ class Laporan extends Secure_Controller {
 			->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
 			->get()->row_array();
 
+			$data['date1'] = $date1;
+			$data['date2'] = $date2;
+
 			$html = $this->load->view('laporan_ev._produksi/cetak_laporan_evaluasi_bua',$data,$date1,$date2,TRUE);
 			
 			$pdf->SetTitle('BUA');
