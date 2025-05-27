@@ -408,7 +408,7 @@
                                             <br />
                                             <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 20%, #b30f15 80%);">
                                                 <a href="<?php echo site_url('admin/daftar_akun');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-hand-holding-dollar"></i><b>DAFTAR<br />AKUN</b></span></a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-hand-holding-dollar"></i><b>AKUN</b></span></a>
                                             </li>
                                             <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 20%, #b30f15 80%);">
                                                 <a href="<?php echo site_url('admin/satuan');?>">
