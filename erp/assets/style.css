@@ -196,7 +196,7 @@ p {
 	height: 7em;
 	/* border: 1px solid #e69500; */
 	padding: 0px;
-	border-radius: 13%;
+	border-radius: 12.5%;
 	margin: 0 1.25em;
 	line-height: 10em;
 	color: #e69500;
@@ -215,7 +215,8 @@ p {
 }
 
 .process ul li span i {
-	font-size: 3em;
+	font-size: 2.5em;
+	margin-bottom: 0.2em;
 }
 
 .process ul li span b {

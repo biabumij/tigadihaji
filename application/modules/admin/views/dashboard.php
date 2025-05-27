@@ -124,19 +124,6 @@
 			box-shadow: 0 0 4px #999;
 			outline: none;
 		}
-
-		.ripple {
-			background-position: center;
-			transition: background 0.8s;
-		}
-		.ripple:hover {
-			background: #eeeeee radial-gradient(circle, transparent 1%, #eeeeee 1%) center/15000%;
-		}
-		.ripple:active {
-			background-color: #e1e1e1;
-			background-size: 100%;
-			transition: background 0s;
-		}
     </style>
     <body onload = "JavaScript:AutoRefresh(360000);">
     <body>
@@ -253,7 +240,7 @@
                             <table width="100%" style="margin-top:100px;">
                                 <tr>
                                     <th width="50%" class="text-center" data-toggle="collapse" data-target="#produksi" aria-expanded="false" aria-controls="sc">
-                                        <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
+                                        <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
                                             <li style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 20%, #2ea4d7 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-person-digging"></i><b>PRODUKSI</b></span></a>
@@ -261,8 +248,8 @@
                                         </ul>
                                     </th>
                                     <th width="50%" class="text-center" data-toggle="collapse" data-target="#keuangan" aria-expanded="false" aria-controls="kp">
-                                        <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
-                                            <li style="background: linear-gradient(110deg, #f1c232 20%, #f1c232 20%, #d8ae2d 80%);">
+                                        <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
+                                            <li style="background: linear-gradient(110deg, #ce7e00 20%, #ce7e00 20%, #a46400  80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-money-bill"></i><b>KEUANGAN</b></span></a>
                                             </li>
@@ -314,21 +301,21 @@
                                     ?>
                                     <th width="50%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="keuangan">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #f1c232 20%, #f1c232 20%, #d8ae2d 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7e00 20%, #ce7e00 20%, #a46400  80%);">
                                                 <a href="<?php echo site_url('admin/biaya_bua');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-dollar-sign"></i><b>BUA</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #f1c232 20%, #f1c232 20%, #d8ae2d 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7e00 20%, #ce7e00 20%, #a46400  80%);">
                                                 <a href="<?php echo site_url('admin/jurnal_umum');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-scale-balanced"></i><b>JURNAL</b></span></a>
                                             </li>
                                             <br />
                                             <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #f1c232 20%, #f1c232 20%, #d8ae2d 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7e00 20%, #ce7e00 20%, #a46400  80%);">
                                                 <a href="<?php echo site_url('admin/rencana_cash_flow');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cash-register"></i><b>CASH FLOW</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #f1c232 20%, #f1c232 20%, #d8ae2d 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7e00 20%, #ce7e00 20%, #a46400  80%);">
                                                 <a href="<?php echo site_url('admin/kas_&_bank');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-building-columns"></i><b>KAS & BANK</b></span></a>
                                             </li>
@@ -355,7 +342,7 @@
                             <table width="100%">
                                 <tr>
                                     <th width="50%" class="text-center" data-toggle="collapse" data-target="#laporan" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
+                                        <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
                                             <li style="background: linear-gradient(110deg, #38761d 20%, #38761d 20%, #6aa84f 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-line"></i><b>LAPORAN</b></span></a>
@@ -363,7 +350,7 @@
                                         </ul>
                                     </th>
                                     <th width="50%" class="text-center" data-toggle="collapse" data-target="#master" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
+                                        <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
                                             <li style="background: linear-gradient(110deg, #d11212 20%, #d11212 20%, #b30f15 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-database"></i><b>MASTER<br />DATA</b></span></a>
@@ -453,7 +440,7 @@
                                     if(in_array($this->session->userdata('admin_group_id'), array(1))){
                                     ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#settings" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
+                                        <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
                                             <li class="text-center" style="background: linear-gradient(110deg, #757575 20%, #757575 20%, #666666 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-gear"></i><b>SETTINGS</b></span></a>
@@ -466,7 +453,7 @@
 
                                     
                                     <!--<th width="25%" class="text-center" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn ripple" style="border-radius:20px;">
+                                        <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
                                             <li style="background: linear-gradient(110deg, #7163b8 20%, #7163b8 40%, #6252b1 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-book"></i><b>FORM</b></span></a>
