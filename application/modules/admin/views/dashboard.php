@@ -570,7 +570,7 @@
                                 fontSize: '14px',
                                 fontFamily: 'helvetica'
                             },
-                            text: 'PT. BIA BUMI JAYENDRA - TIGA DIHAJI',
+                            text: 'PT. BIA BUMI JAYENDRA - TIGA DIHAJI (PAKET 5)',
                             x: -20 //center text
                         },
                         xAxis: { //data bulan
@@ -582,7 +582,7 @@
                                     fontFamily: 'helvetica'
                                 }
                             },
-                            categories: ['Juni 24','Juli 24','Agustus 24','September 24','Oktober 24','November 24','Desember 24','Januari 25','Februari 25','Maret 25','April 25','Mei 25','Juni 25']
+                            categories: ['Februari 25','Maret 25','April 25','Mei 25','Juni 25','Juli 25','Agustus 25','September 25','Oktober 25','November 25','Desember 25',]
                         },
                         yAxis: {
                             //title: {  //label yAxis
@@ -654,7 +654,7 @@
                         series: [{  
                             name: 'Rencana',  
                             
-                            data: [<?php echo json_encode($rencana_produksi_juni24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_juli24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_agustus24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_september24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_oktober24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_november24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_desember24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_januari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_juni25, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode($rencana_produksi_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_juni25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_juli25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_agustus25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_september25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_oktober25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_november25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_desember25, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#000000',
                             fontWeight: 'bold',
@@ -664,7 +664,7 @@
                         {  
                             name: 'Realisasi',  
                             
-                            data: [<?php echo json_encode($realisasi_produksi_juni24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_juli24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_agustus24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_september24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_oktober24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_november24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_desember24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_januari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_juni25, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode($realisasi_produksi_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_juni25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_juli25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_agustus25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_september25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_oktober25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_november25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_desember25, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#FF0000',
                             fontWeight: 'bold',
@@ -737,7 +737,7 @@
                                 fontSize: '14px',
                                 fontFamily: 'helvetica'
                             },
-                            text: 'PT. BIA BUMI JAYENDRA - TIGA DIHAJI',
+                            text: 'PT. BIA BUMI JAYENDRA - TIGA DIHAJI (PAKET 5)',
                             x: -20
                         },
                         xAxis: { //X axis menampilkan data bulan
@@ -749,7 +749,7 @@
                                     fontFamily: 'helvetica'
                                 }
                             },
-                            categories: ['Juni 24','Juli 24','Agustus 24','September 24','Oktober 24','November 24','Desember 24','Januari 25','Februari 25','Maret 25','April 25','Mei 25','Juni 25']
+                            categories: ['Februari 25','Maret 25','April 25','Mei 25','Juni 25','Juli 25','Agustus 25','September 25','Oktober 25','November 25','Desember 25',]
                         },
                         yAxis: {
                             //title: {  //label yAxis
@@ -781,7 +781,7 @@
                             },
                             min: -100,
                             max: 100,
-                            tickInterval: 25,
+                            tickInterval: 20,
                         },
                         tooltip: { 
                         //fungsi tooltip, ini opsional, kegunaan dari fungsi ini 
@@ -819,20 +819,16 @@
                         },
                 
                         series: [{  
-                            name: 'Target %',  
-                            
-                            data: [<?php echo json_encode($persentase_rak_juni24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_juli24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_agustus24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_september24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_oktober24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_november24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_desember24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_januari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_juni25, JSON_NUMERIC_CHECK); ?>],
-
+                            name: 'Laba Rugi (RAP) %',  
+                            data: [<?php echo json_encode($persentase_rak_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_juni25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_juli25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_agustus25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_september25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_oktober25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_november25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_rak_desember25, JSON_NUMERIC_CHECK); ?>],
                             color: '#000000',
                             fontWeight: 'bold',
                             fontSize: '10px',
                             fontFamily: 'helvetica'
                         },
                         {  
-                            name: 'Laba Rugi %',  
-                            
-                            data: [<?php echo json_encode($persentase_laba_rugi_juni24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_juli24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_agustus24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_september24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_oktober24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_november24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_desember24, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_januari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_juni25, JSON_NUMERIC_CHECK); ?>],
-
+                            name: 'Laba Rugi (Realisasi)%',
+                            data: [<?php echo json_encode($persentase_laba_rugi_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_juni25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_juli25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_agustus25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_september25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_oktober25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_november25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_desember25, JSON_NUMERIC_CHECK); ?>],
                             color: '#FF0000',
                             fontWeight: 'bold',
                             fontSize: '10px',
