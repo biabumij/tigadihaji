@@ -80,7 +80,7 @@
                                                 </div>
 
                                                 <?php
-                                                if(in_array($this->session->userdata('admin_id'), array(1,2,3,6,11))){
+                                                if(in_array($this->session->userdata('admin_id'), array(1,2,3,6,8,11))){
                                                 ?>
                                                 <div class="col-sm-5">
                                                     <p><h5><b>Laporan Laba Rugi (Paket 3)</b></h5></p>
