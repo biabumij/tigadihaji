@@ -472,7 +472,7 @@
                                             </li>
                                             <li class="text-center" style="background: linear-gradient(110deg, #757575 20%, #757575 20%, #666666 80%);">
                                                 <a href="<?php echo site_url('admin/admin_access');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-eye"></i><b>ADMIN<br />ACCESS</b></span></a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-eye"></i><b>ACCESS</b></span></a>
                                             </li>
                                             <li class="text-center" style="background: linear-gradient(110deg, #757575 20%, #757575 20%, #666666 80%);">
                                                 <a href="<?php echo site_url('admin/admin');?>">
