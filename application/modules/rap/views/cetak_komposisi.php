@@ -335,16 +335,6 @@
 				<td align="right"></td>
 				<td align="right"><b><?php echo number_format($harga_jual,0,',','.');?></b></td>
 			</tr>
-			<tr>
-				<td align="right" colspan="5"><b>DISKONTO</b></td>
-				<td align="right"><b><?php echo number_format(3.00,2,',','.');?>%</b></td>
-				<td align="right"><b><?php echo number_format($harga_jual * 3 /100,0,',','.');?></b></td>
-			</tr>
-			<tr>
-			<td align="right" colspan="5"><b>HARGA JUAL</b></td>
-				<td align="right"></td>
-				<td align="right"><b><?php echo number_format(((((($total * 15.32) / 100) + $total) * 3) /100) + (($total * 15.32) / 100) + $total,0,',','.');?></b></td>
-			</tr>
 		</table>
 	</body>
 </html>
