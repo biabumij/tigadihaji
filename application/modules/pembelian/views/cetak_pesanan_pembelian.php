@@ -133,7 +133,7 @@
                ?>  
                <tr>
                    <td align="center"><?php echo $no;?></td>
-                   <td align="center"><?php echo $this->crud_global->GetField('produk',array('id'=>$dt['material_id']),'nama_produk');?></td>
+                   <td align="left"><?php echo $this->crud_global->GetField('produk',array('id'=>$dt['material_id']),'nama_produk');?></td>
                    <td align="center"><?php echo $dt['measure'];?></td>
                    <td align="center"><?php echo number_format($dt['total'],2,',','.');?></td>
                    <td align="right"><?php echo number_format($dt['price'],0,',','.');?></td>
