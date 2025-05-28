@@ -19,7 +19,7 @@
     <style type="text/css">
         body {
             font-family: helvetica;
-            background-color: #eeeeee !important;
+            background-color: #ffffff !important;
         }
 
         a:hover {
@@ -131,8 +131,7 @@
             <?php echo $this->Templates->PageHeader();?>
             <div class="page-body">
                 <div id="about" class="container spacer about">
-                    <div class="col-sm-12" style="background:#fff;background-image:linear-gradient(to right,#999999 0%,#333333 51%,#666666 100%); font-size:18px; border-radius: 10px; padding:10px; margin-bottom:50px;">
-                        <p style="text-align:center; font-weight:bold; color:white;">PROYEK BENDUNGAN TIGA DIHAJI</p>
+                    <div class="col-sm-12" style="background:#fff;background-image:linear-gradient(to top right, #999999 0%, #666666 100%); font-size:18px; border-radius: 5px; padding:10px; margin-bottom:50px;">
                         <?php
                         if(in_array($this->session->userdata('admin_group_id'), array(1,2,3))){
                         ?>
@@ -150,7 +149,7 @@
                             
                             $query = $query1['id'] + $query2['id'];
                             ?>
-                                <center><b><a target="_blank" href="<?= base_url("pmm/reports/detail_notification/") ?>"><i class="fa-solid fa-clipboard-check"></i> BUTUH PERSETUJUAN KANTOR PUSAT (<blink><?php echo number_format($query,0,',','.');?></blink>)</a><b></center>
+                                <center><b><a target="_blank" href="<?= base_url("pmm/reports/detail_notification/") ?>"><i class="fa-solid fa-clipboard-check"></i> VERIFIKASI PEMBELIAN (<blink><?php echo number_format($query,0,',','.');?></blink>)</a><b></center>
                             <?php
                             }
                             ?>
@@ -535,8 +534,8 @@
                             backgroundColor: {
                                 linearGradient: [0, 0, 700, 500],
                                 stops: [
-                                    [0, 'rgb(255,255,255)'],
-                                    [1, 'rgb(255,255,255)']
+                                    [0, 'rgb(242, 242, 242)'],
+                                    [1, 'rgb(242, 242, 242)']
                                 ]
                             },
                         },
@@ -702,8 +701,8 @@
                                 //linearGradient: [500, 0, 0, 700],
                                 linearGradient: [0, 0, 700, 500],
                                 stops: [
-                                    [0, 'rgb(255,255,255)'],
-                                    [1, 'rgb(255,255,255)']
+                                    [0, 'rgb(242, 242, 242)'],
+                                    [1, 'rgb(242, 242, 242)']
                                 ]
                             },
                         },
