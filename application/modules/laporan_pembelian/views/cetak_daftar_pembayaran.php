@@ -37,7 +37,6 @@
 		$subject = "$filter_date";
 
 		echo str_replace($search, $replace, $subject);
-
 	  ?>
 	  
 	  <style type="text/css">
