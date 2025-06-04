@@ -3,7 +3,6 @@
 	<head>
 	  <title>DAFTAR PEMBAYARAN</title>
 	  
-	  
 	  <?php
 		$search = array(
 		'January',
