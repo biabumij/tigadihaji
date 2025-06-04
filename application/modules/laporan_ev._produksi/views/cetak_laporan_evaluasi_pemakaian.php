@@ -626,9 +626,9 @@
 						<tr class="">
 							<td align="center" height="55px">
 							
-							</td>
+							</td> 
 							<td align="center">
-								
+								<img src="uploads/ttd_novel.png" width="50px">
 							</td>
 						</tr>
 						<tr>
