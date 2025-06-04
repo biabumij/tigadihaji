@@ -2935,6 +2935,45 @@ class Laporan extends Secure_Controller {
         $pdf->Output('truck_mixer.pdf', 'I');
 	}
 
+	public function cetak_detail_mobilisasi_tm()
+	{
+		$this->load->library('pdf');
+	
+		$pdf = new Pdf('L', 'mm', 'A4', true, 'UTF-8', false);
+        $pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+        $pdf->SetTopMargin(5);
+        $pdf->SetFont('helvetica','',7); 
+        $tagvs = array('div' => array(0 => array('h' => 0, 'n' => 0), 1 => array('h' => 0, 'n'=> 0)));
+		$pdf->setHtmlVSpace($tagvs);
+		
+		// add a page
+		$pdf->AddPage('L');
+		$pdf->setPrintHeader(false);
+		$pdf->setPrintFooter(false);
+		$pdf->SetY(5);
+		$pdf->SetX(5);
+		$pdf->SetMargins(10, 10);
+
+		$arr_date = $this->input->get('filter_date');
+		if(empty($arr_date)){
+			$filter_date = '-';
+		}else {
+			$arr_filter_date = explode(' - ', $arr_date);
+			$start_date = date('Y-m-d',strtotime($arr_filter_date[0]));
+			$end_date = date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d F Y',strtotime($arr_filter_date[0])).' - '.date('d F Y',strtotime($arr_filter_date[1]));
+		}
+		$data['filter_date'] = $filter_date;
+		$data['start_date'] = $start_date;
+		$data['end_date'] = $end_date;
+        $html = $this->load->view('laporan_ev._produksi/cetak_detail_mobilisasi_tm',$data,TRUE);
+        
+        $pdf->SetTitle('Truck Mixer');
+        $pdf->nsi_html($html);
+        $pdf->Output('truck_mixer.pdf', 'I');
+	}
+
 	public function cetak_detail_pemeliharaan_wl()
 	{
 		$this->load->library('pdf');
