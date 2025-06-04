@@ -599,7 +599,7 @@
                                 format: '{value} M3'
                             },
                             min: 0,
-                            max: 4000,
+                            max: 4500,
                             tickInterval:500,
                         },
                         tooltip: {
