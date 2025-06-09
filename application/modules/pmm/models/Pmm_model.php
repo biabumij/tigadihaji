@@ -4905,7 +4905,7 @@ class Pmm_model extends CI_Model {
         $total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
         $total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
         $total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
-        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer + $total_pemakaian_mobilisasi_truck_mixer;
+        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer + $total_nilai_mobilisasi_truck_mixer;
         $total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
         $total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
         $total_pemakaian_insentif_truck_mixer =  $total_nilai_insentif_truck_mixer;
@@ -5288,7 +5288,7 @@ class Pmm_model extends CI_Model {
         $total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
         $total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
         $total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
-        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer + $total_pemakaian_mobilisasi_truck_mixer;
+        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer + $total_nilai_mobilisasi_truck_mixer;
         $total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
         $total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
         $total_pemakaian_insentif_truck_mixer =  $total_nilai_insentif_truck_mixer;
@@ -5411,6 +5411,7 @@ class Pmm_model extends CI_Model {
         ->where("c.id <> 137 ") //Penyusutan Batching Plant
         ->where("c.id <> 139 ") //Penyusutan Wheel Loader
         ->where("c.id <> 186 ") //Insentif Truck Mixer
+        ->where("c.id <> 187 ") //Mobilisasi Truck Mixer
         ->where("pb.status = 'PAID'")
         ->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
         ->get()->row_array();
@@ -5431,6 +5432,7 @@ class Pmm_model extends CI_Model {
         ->where("c.id <> 137 ") //Penyusutan Batching Plant
         ->where("c.id <> 139 ") //Penyusutan Wheel Loader
         ->where("c.id <> 186 ") //Insentif Truck Mixer
+        ->where("c.id <> 187 ") //Mobilisasi Truck Mixer
         ->where("pb.status = 'PAID'")
         ->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
         ->get()->row_array();
@@ -6382,10 +6384,11 @@ class Pmm_model extends CI_Model {
         $total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
         $total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
         $total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
-        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer;
+        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer + $total_nilai_mobilisasi_truck_mixer;
         $total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
         $total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
         $total_pemakaian_insentif_truck_mixer =  $total_nilai_insentif_truck_mixer;
+        $total_pemakaian_mobilisasi_truck_mixer = $total_nilai_mobilisasi_truck_mixer;
         $total_pemakaian_penyusutan_wheel_loader = $total_nilai_penyusutan_wheel_loader;
         $total_pemakaian_angsuran_wheel_loader = $total_nilai_angsuran_wheel_loader;
         $total_pemakaian_wheel_loader = $total_nilai_wheel_loader + $total_pemakaian_pemeliharaan_wheel_loader + $total_nilai_angsuran_wheel_loader + $total_nilai_penyusutan_wheel_loader;
@@ -7205,7 +7208,7 @@ class Pmm_model extends CI_Model {
         $total_pemakaian_penyusutan_batching_plant = $total_nilai_penyusutan_batching_plant;
         $total_pemakaian_angsuran_batching_plant = $total_nilai_angsuran_batching_plant;
         $total_pemakaian_batching_plant = $total_nilai_batching_plant + $total_pemakaian_pemeliharaan_batching_plant + $total_nilai_angsuran_batching_plant + $total_nilai_penyusutan_batching_plant;
-        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer + $total_pemakaian_mobilisasi_truck_mixer;
+        $total_pemakaian_truck_mixer = $total_nilai_truck_mixer + $total_nilai_alat_truck_mixer + $total_nilai_pemeliharaan_truck_mixer + $total_nilai_insentif_truck_mixer + $total_nilai_mobilisasi_truck_mixer;
         $total_pemakaian_pemeliharaan_truck_mixer = $total_nilai_pemeliharaan_truck_mixer;
         $total_pemakaian_pemeliharaan_wheel_loader = $total_nilai_pemeliharaan_wheel_loader;
         $total_pemakaian_insentif_truck_mixer =  $total_nilai_insentif_truck_mixer;
