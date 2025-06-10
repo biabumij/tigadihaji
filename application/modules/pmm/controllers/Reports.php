@@ -5520,8 +5520,8 @@ class Reports extends CI_Controller {
 			</script>
 			<?php
 
-			$date_januari25_awal = date('2025-02-01');
-			$date_januari25_akhir = date('2025-02-28');
+			$date_januari25_awal = date('0000-00-00');
+			$date_januari25_akhir = date('0000-00-00');
 			$date_februari25_awal = date('2025-02-01');
 			$date_februari25_akhir = date('2025-02-28');
 			$date_maret25_awal = date('2025-03-01');
