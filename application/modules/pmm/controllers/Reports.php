@@ -5907,6 +5907,50 @@ class Reports extends CI_Controller {
 				$total_nilai_additive_175_5 = $x['nilai_komposisi_additive'];
 			}
 
+			$komposisi_175_6 = $this->db->select('(r.vol_produk_b * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_b * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_b * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_b * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_b * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_b * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_b * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_b * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_b * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_b * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
+			->from('rak r')
+			->join('pmm_agregat pk', 'r.komposisi_175 = pk.id','left')
+			->where("r.tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
+			->get()->result_array();
+
+			$total_volume_semen_175_6 = 0;
+			$total_nilai_semen_175_6 = 0;
+
+			foreach ($komposisi_175_6 as $x){
+				$total_volume_semen_175_6 = $x['vol_komposisi_semen'];
+				$total_nilai_semen_175_6 = $x['nilai_komposisi_semen'];
+				$total_volume_pasir_175_6 = $x['vol_komposisi_pasir'];
+				$total_nilai_pasir_175_6 = $x['nilai_komposisi_pasir'];
+				$total_volume_batu1020_175_6 = $x['vol_komposisi_batu1020'];
+				$total_nilai_batu1020_175_6 = $x['nilai_komposisi_batu1020'];
+				$total_volume_batu2030_175_6 = $x['vol_komposisi_batu2030'];
+				$total_nilai_batu2030_175_6 = $x['nilai_komposisi_batu2030'];
+				$total_volume_additive_175_6 = $x['vol_komposisi_additive'];
+				$total_nilai_additive_175_6 = $x['nilai_komposisi_additive'];
+			}
+
+			$komposisi_175_7 = $this->db->select('(r.vol_produk_b * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_b * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_b * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_b * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_b * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_b * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_b * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_b * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_b * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_b * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
+			->from('rak r')
+			->join('pmm_agregat pk', 'r.komposisi_175 = pk.id','left')
+			->where("r.tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
+			->get()->result_array();
+
+			$total_volume_semen_175_7 = 0;
+			$total_nilai_semen_175_7 = 0;
+
+			foreach ($komposisi_175_7 as $x){
+				$total_volume_semen_175_7 = $x['vol_komposisi_semen'];
+				$total_nilai_semen_175_7 = $x['nilai_komposisi_semen'];
+				$total_volume_pasir_175_7 = $x['vol_komposisi_pasir'];
+				$total_nilai_pasir_175_7 = $x['nilai_komposisi_pasir'];
+				$total_volume_batu1020_175_7 = $x['vol_komposisi_batu1020'];
+				$total_nilai_batu1020_175_7 = $x['nilai_komposisi_batu1020'];
+				$total_volume_batu2030_175_7 = $x['vol_komposisi_batu2030'];
+				$total_nilai_batu2030_175_7 = $x['nilai_komposisi_batu2030'];
+				$total_volume_additive_175_7 = $x['vol_komposisi_additive'];
+				$total_nilai_additive_175_7 = $x['nilai_komposisi_additive'];
+			}
+
 			//BETON K-225 SLUMP 10
 			$rak_1_K225 = $this->db->select('*, SUM(vol_produk_c) as vol_produk_c')
 			->from('rak')
