@@ -18186,4 +18186,83 @@ class Reports extends CI_Controller {
         }
     }
 
+	public function laporan_stock_harian($arr_date)
+	{
+		$data = array();
+		
+		$arr_date = $this->input->post('filter_date');
+		$arr_filter_date = explode(' - ', $arr_date);
+		$date3 = '';
+		$date1 = '';
+		$date2 = '';
+
+		if(count($arr_filter_date) == 2){
+			$date3 	= date('2023-08-01',strtotime($date3));
+			$date1 	= date('Y-m-d',strtotime($arr_filter_date[0]));
+			$date2 	= date('Y-m-d',strtotime($arr_filter_date[1]));
+			$filter_date = date('d/m/Y',strtotime($arr_filter_date[0])).' - '.date('d/m/Y',strtotime($arr_filter_date[1]));
+			$filter_date_2 = date('Y-m-d',strtotime($date3)).' - '.date('Y-m-d',strtotime($arr_filter_date[1]));
+		}
+		
+		?>
+		
+		<table class="table table-bordered" width="100%">
+		 <style type="text/css">
+			body {
+				font-family: helvetica;
+				font-size: 14px;
+			}
+
+			table tr.table-active{
+				background-color: #e69500;
+				font-size: 14px;
+				font-weight: bold;
+				color: white;
+			}
+				
+			table tr.table-active2{
+				background-color: #e69500;
+				font-size: 14px;
+				font-weight: bold;
+				color: white;
+			}
+				
+			table tr.table-active3{
+				font-size: 14px;
+			}
+				
+			table tr.table-active4{
+				background-color: #eeeeee;
+				font-weight: bold;
+				font-size: 14px;
+				color: black;
+			}
+		 </style>
+			<?php
+			?>
+			<tr class="table-active">
+	            <th class="text-center">No.</th>
+				<th class="text-center">Material</th>
+				<th class="text-center">Satuan</th>
+				<th class="text-center">Stock Sebelum Produksi</th>
+				<th class="text-center">Pemakaian Produksi BP</th>
+				<th class="text-center">Material Masuk</th>
+				<th class="text-center">Stock Setelah Produksi</th>
+				<th class="text-center">Konversi Beton K-250 (M3)</th>
+				<th class="text-center">Konversi Beton K-300 (M3)</th>
+	        </tr>
+			<tr class="table-active3">
+	            <th class="text-center">1</th>
+				<th class="text-left">Semen</th>
+				<th class="text-center">Ton</th>
+				<th class="text-right"></th>
+				<th class="text-right"></th>
+				<th class="text-right"></th>
+				<th class="text-right"></th>
+				<th class="text-right"><?php echo number_format(0,2,',','.');?></th>
+	        </tr>
+	    </table>
+		<?php
+	}
+
 }
