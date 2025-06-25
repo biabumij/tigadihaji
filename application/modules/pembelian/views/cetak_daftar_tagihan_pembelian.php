@@ -104,9 +104,9 @@
 	<table width="98%" border="0" cellpadding="15">
 		<tr>
 			<td width="100%" align="center">
-				<div align="center" style="display: block;font-weight: bold;font-size: 11px;">DAFTAR TAGIHAN PEMBELIAN</div>
-				<div align="center" style="display: block;font-weight: bold;font-size: 11px;">PROYEK BENDUNGAN TIGA DIHAJI</div>
-				<div align="center" style="display: block;font-weight: bold;font-size: 11px;">PT. BIA BUMI JAYENDRA</div>
+				<div align="center" style="display: block;font-weight: bold;font-size: 11px;">Daftar Tagihan Pembelian</div>
+				<div align="center" style="display: block;font-weight: bold;font-size: 11px;">Proyek Bendungan Tiga Dihaji</div>
+				<div align="center" style="display: block;font-weight: bold;font-size: 11px;">PT. Bia Bumi Jayendra</div>
 				<div align="center" style="display: block;font-weight: bold;font-size: 11px; text-transform: uppercase;"><?php echo str_replace($search, $replace, $subject);?></div>
 				</td>
 		</tr>

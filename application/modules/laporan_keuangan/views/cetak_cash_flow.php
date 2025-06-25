@@ -144,8 +144,8 @@
 		$stock_opname = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('pmm_remaining_materials_cat',array('status'=>'PUBLISH'))->row_array();
 		$last_opname =  date('Y-m-d', strtotime($stock_opname['date']));
 		?>
-		<div align="center" style="display: block;font-weight: bold;font-size: 12px;">CASH FLOW</div>
-		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">BENDUNGAN TIGA DIHAJI PAKET 3</div>
+		<div align="center" style="display: block;font-weight: bold;font-size: 12px;">Cash Flow</div>
+		<div align="center" style="display: block;font-weight: bold;font-size: 11px;">Proyek Bendungan Tiga Dihaji</div>
 		<br />
 		<?php
 		$data = array();

@@ -89,10 +89,10 @@
 		<table width="98%" border="0" cellpadding="3">
 			<tr>
 				<td align="center">
-					<div style="display: block;font-weight: bold;font-size: 11px;">LAPORAN BIAYA DISKONTO</div>
-					<div align="center" style="display: block;font-weight:bold; font-size: 11px;">PROYEK BENDUNGAN TIGA DIHAJI</div>
-					<div align="center" style="display: block;font-weight:bold; font-size: 11px;">PT. BIA BUMI JAYENDRA</div>
-					<div align="center" style="display: block;font-weight:bold; font-size: 11px; text-transform: uppercase;">PERIODE : <?php echo str_replace($search, $replace, $subject);?></div>
+					<div style="display: block;font-weight: bold;font-size: 11px;">Laporan Biaya Diskonto</div>
+					<div align="center" style="display: block;font-weight:bold; font-size: 11px;">Proyek Bendungan Tiga Dihaji</div>
+					<div align="center" style="display: block;font-weight:bold; font-size: 11px;">PT. Bia Bumi Jayendra</div>
+					<div align="center" style="display: block;font-weight:bold; font-size: 11px;">Periode : <?php echo str_replace($search, $replace, $subject);?></div>
 				</td>
 			</tr>
 		</table>
