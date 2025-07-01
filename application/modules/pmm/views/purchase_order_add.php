@@ -322,7 +322,7 @@
                                     <a href="<?= site_url('pmm/purchase_order/get_pdf/'.$id);?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
                                     
                                     <?php
-                                    if($s $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6){
+                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6){
                                         ?>
                                         <form class="form-check" action="<?= site_url("pmm/purchase_order/open_pesanan_pembelian/".$id);?>">
                                             <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> PUBLISH</button>
