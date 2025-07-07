@@ -19,7 +19,7 @@
     <style type="text/css">
         body {
             font-family: helvetica;
-            background-color: #ffffff !important;
+            /*background-color: #ffffff !important;*/
         }
 
         a:hover {
@@ -131,7 +131,7 @@
             <?php echo $this->Templates->PageHeader();?>
             <div class="page-body">
                 <div id="about" class="container spacer about">
-                    <div class="col-sm-12" style="background:#fff;background-image:linear-gradient(to top right, #666666 0%, #666666 100%); font-size:18px; border-radius: 5px; padding:10px; margin-bottom:50px;">
+                    <div class="col-sm-12" style="background-color: rgba(56,56,56, 0.8); font-size:18px; border-radius: 5px; padding:10px; margin-bottom:50px;">
                         <?php
                         if(in_array($this->session->userdata('admin_group_id'), array(1,2,3))){
                         ?>
@@ -534,8 +534,8 @@
                             backgroundColor: {
                                 linearGradient: [0, 0, 700, 500],
                                 stops: [
-                                    [0, 'rgb(242, 242, 242)'],
-                                    [1, 'rgb(242, 242, 242)']
+                                    [0, 'rgb(242, 242, 242, 0.5)'],
+                                    [1, 'rgb(242, 242, 242, 0.5)']
                                 ]
                             },
                         },
@@ -701,8 +701,8 @@
                                 //linearGradient: [500, 0, 0, 700],
                                 linearGradient: [0, 0, 700, 500],
                                 stops: [
-                                    [0, 'rgb(242, 242, 242)'],
-                                    [1, 'rgb(242, 242, 242)']
+                                    [0, 'rgb(242, 242, 242, 0.5)'],
+                                    [1, 'rgb(242, 242, 242, 0.5)']
                                 ]
                             },
                         },
@@ -765,8 +765,8 @@
                                 },
                                 format: '{value} %'
                             },
-                            min: -100,
-                            max: 100,
+                            min: -50,
+                            max: 120,
                             tickInterval: 20,
                         },
                         tooltip: { 
