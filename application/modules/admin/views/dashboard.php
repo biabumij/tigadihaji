@@ -240,7 +240,7 @@
                                 <tr>
                                     <th width="50%" class="text-center" data-toggle="collapse" data-target="#produksi" aria-expanded="false" aria-controls="sc">
                                         <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
-                                            <li style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 20%, #2ea4d7 80%);">
+                                            <li style="background: linear-gradient(110deg, #3b75a9 20%, #3b75a9 20%, #0B5394 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-person-digging"></i><b>PRODUKSI</b></span></a>
                                             </li>
@@ -248,7 +248,7 @@
                                     </th>
                                     <th width="50%" class="text-center" data-toggle="collapse" data-target="#keuangan" aria-expanded="false" aria-controls="kp">
                                         <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
-                                            <li style="background: linear-gradient(110deg, #ce7e00 20%, #ce7e00 20%, #a46400  80%);">
+                                            <li style="background: linear-gradient(110deg, #c37e37 20%, #c37e37 20%, #B45F06 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-money-bill"></i><b>KEUANGAN</b></span></a>
                                             </li>
@@ -263,15 +263,15 @@
                                             <?php
                                             if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
                                             ?>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 20%, #2ea4d7 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #3b75a9 20%, #3b75a9 20%, #0B5394 80%);">
                                                 <a href="<?php echo site_url('admin/rap');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-regular fa-calendar-check"></i><b>RAP</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 20%, #2ea4d7 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #3b75a9 20%, #3b75a9 20%, #0B5394 80%);">
                                                 <a href="<?php echo site_url('admin/rencana_kerja');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-calendar-days"></i><b>R. KERJA</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 20%, #2ea4d7 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #3b75a9 20%, #3b75a9 20%, #0B5394 80%);">
                                                 <a href="<?php echo site_url('admin/stock_opname');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cubes"></i><b>STOK</b></span></a>
                                             </li>
@@ -279,11 +279,11 @@
                                             <?php
                                             }
                                             ?>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 20%, #2ea4d7 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #3b75a9 20%, #3b75a9 20%, #0B5394 80%);">
                                                 <a href="<?php echo site_url('admin/penjualan');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-bag-shopping"></i><b>PENJUALAN</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #40c9fe 20%, #40c9fe 20%, #2ea4d7 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #3b75a9 20%, #3b75a9 20%, #0B5394 80%);">
                                                 <a href="<?php echo site_url('admin/pembelian');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cart-shopping"></i><b>PEMBELIAN</b></span></a>
                                             </li>
@@ -300,21 +300,21 @@
                                     ?>
                                     <th width="50%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="keuangan">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7e00 20%, #ce7e00 20%, #a46400  80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #c37e37 20%, #c37e37 20%, #B45F06 80%);">
                                                 <a href="<?php echo site_url('admin/biaya_bua');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-dollar-sign"></i><b>BUA</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7e00 20%, #ce7e00 20%, #a46400  80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #c37e37 20%, #c37e37 20%, #B45F06 80%);">
                                                 <a href="<?php echo site_url('admin/jurnal_umum');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-scale-balanced"></i><b>JURNAL</b></span></a>
                                             </li>
                                             <br />
                                             <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7e00 20%, #ce7e00 20%, #a46400  80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #c37e37 20%, #c37e37 20%, #B45F06 80%);">
                                                 <a href="<?php echo site_url('admin/rencana_cash_flow');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cash-register"></i><b>CASH FLOW</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #ce7e00 20%, #ce7e00 20%, #a46400  80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #c37e37 20%, #c37e37 20%, #B45F06 80%);">
                                                 <a href="<?php echo site_url('admin/kas_&_bank');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-building-columns"></i><b>KAS & BANK</b></span></a>
                                             </li>
@@ -342,7 +342,7 @@
                                 <tr>
                                     <th width="50%" class="text-center" data-toggle="collapse" data-target="#laporan" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
-                                            <li style="background: linear-gradient(110deg, #38761d 20%, #38761d 20%, #6aa84f 80%);">
+                                            <li style="background: linear-gradient(110deg, #5f914a 20%, #5f914a 20%, #38761D 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-line"></i><b>LAPORAN</b></span></a>
                                             </li>
@@ -350,7 +350,7 @@
                                     </th>
                                     <th width="50%" class="text-center" data-toggle="collapse" data-target="#master" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
-                                            <li style="background: linear-gradient(110deg, #d11212 20%, #d11212 20%, #b30f15 80%);">
+                                            <li style="background: linear-gradient(110deg, #ad3232 20%, #ad3232 20%, #990000 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-database"></i><b>MASTER<br />DATA</b></span></a>
                                             </li>
@@ -362,31 +362,31 @@
                                 <tr>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="laporan">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 20%, #6aa84f 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #5f914a 20%, #5f914a 20%, #38761D 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_produksi');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-person-digging"></i><b>PRODUKSI</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 20%, #6aa84f 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #5f914a 20%, #5f914a 20%, #38761D 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_keuangan');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-money-bill"></i><b>KEUANGAN</b></span></a>
                                             </li>
-                                            <!--<li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 20%, #6aa84f 80%);">
+                                            <!--<li class="text-center" style="background: linear-gradient(110deg, #5f914a 20%, #5f914a 20%, #38761D 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_pembelian');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cart-shopping"></i><b>PEMBELIAN</b></span></a>
                                             </li>
                                             <br />
                                             <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 20%, #6aa84f 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #5f914a 20%, #5f914a 20%, #38761D 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_penjualan');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-bag-shopping"></i><b>PENJUALAN</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 20%, #6aa84f 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #5f914a 20%, #5f914a 20%, #38761D 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_ev._produksi');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>EVALUASI</b></span></a>
                                             </li>
                                             <br />
                                             <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #38761d 20%, #38761d 20%, #6aa84f 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #5f914a 20%, #5f914a 20%, #38761D 80%);">
                                                 <a href="<?php echo site_url('admin/laporan_rencana_kerja');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-calendar-week"></i><b>RENCANA<br />KERJA</b></span></a>
                                             </li>-->
@@ -395,34 +395,34 @@
                                     
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="master">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 20%, #b30f15 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #ad3232 20%, #ad3232 20%, #990000 80%);">
                                                 <a href="<?php echo site_url('admin/kontak');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-address-book"></i><b>KONTAK</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 20%, #b30f15 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #ad3232 20%, #ad3232 20%, #990000 80%);">
                                                 <a href="<?php echo site_url('admin/produk');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cart-flatbed-suitcase"></i><b>PRODUK</b></span></a>
                                             </li>
                                             <br />
                                             <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 20%, #b30f15 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #ad3232 20%, #ad3232 20%, #990000 80%);">
                                                 <a href="<?php echo site_url('admin/daftar_akun');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-hand-holding-dollar"></i><b>AKUN</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 20%, #b30f15 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #ad3232 20%, #ad3232 20%, #990000 80%);">
                                                 <a href="<?php echo site_url('admin/satuan');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-ruler-vertical"></i><b>SATUAN</b></span></a>
                                             </li>
                                             <br />
                                             <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 20%, #b30f15 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #ad3232 20%, #ad3232 20%, #990000 80%);">
                                                 <a href="<?php echo site_url('admin/users');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-users"></i><b>USER</b></span></a>
                                             </li>
                                             <?php
                                             if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,7,8))){
                                             ?>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #d11212 20%, #d11212 20%, #b30f15 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #ad3232 20%, #ad3232 20%, #990000 80%);">
                                                 <a href="<?php echo site_url('admin/perusahaan');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-building"></i><b>PERUSAHAAN</b></span></a>
                                             </li>
@@ -440,7 +440,7 @@
                                     ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#settings" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #757575 20%, #757575 20%, #666666 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #696969 20%, #696969 20%, #444444 80%);">
                                                 <a>
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-gear"></i><b>SETTINGS</b></span></a>
                                             </li>
@@ -465,15 +465,15 @@
                                 <tr>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="settings">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #757575 20%, #757575 20%, #666666 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #696969 20%, #696969 20%, #444444 80%);">
                                                 <a href="<?php echo site_url('admin/menu');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-bars"></i><b>MENU</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #757575 20%, #757575 20%, #666666 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #696969 20%, #696969 20%, #444444 80%);">
                                                 <a href="<?php echo site_url('admin/admin_access');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-eye"></i><b>ACCESS</b></span></a>
                                             </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #757575 20%, #757575 20%, #666666 80%);">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #696969 20%, #696969 20%, #444444 80%);">
                                                 <a href="<?php echo site_url('admin/admin');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-user-secret"></i><b>ADMIN</b></span></a>
                                             </li>
