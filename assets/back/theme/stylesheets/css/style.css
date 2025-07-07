@@ -111,7 +111,10 @@ a:focus {
   vertical-align: top;
   margin-left: 0px;
   padding: 30px;
-  background: #ececec;
+  background: url("tema.jpg");
+   background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   min-height: 100vh;
 }
 
@@ -1213,7 +1216,7 @@ blockquote {
 .panel {
   border: none;
   /* box-shadow: 1px 1px 1px #cccccc; */
-  background-color: #ffffff;
+  background-color: rgba(255,255,255, 0.9);
   border-radius: 10px;
 }
 
@@ -1242,6 +1245,7 @@ blockquote {
   position: relative;
   border-radius: 4px 4px 0px 0px;
   border-bottom: 1px solid #cccccc;
+  margin: 10px;
 }
 
 .panel .panel-header .panel-title {
