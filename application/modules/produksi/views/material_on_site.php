@@ -9,7 +9,7 @@
 <?php
     if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
     ?>
-    <div class="col-sm-4">
+    <div class="col-sm-5">
     <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT STOCK OPNAME</a></button>
     </div>
     <?php
