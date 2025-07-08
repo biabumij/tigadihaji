@@ -18,6 +18,7 @@
 <br />
 <br />
 <br />
+<br />
 <div class="table-responsive">
     <table class="table table-striped table-hover table-center" id="table-pemakaian-bahan" width="100%">
         <thead>

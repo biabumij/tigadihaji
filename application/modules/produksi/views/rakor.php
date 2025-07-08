@@ -18,6 +18,7 @@
 <br />
 <br />
 <br />
+<br />
 <div class="table-responsive">
     <table class="table table-striped table-hover table-center" id="table-rakor" width="100%">
         <thead>
