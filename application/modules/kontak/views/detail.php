@@ -170,17 +170,20 @@
                                 <a href="<?= base_url('admin/kontak') ?>" class="btn btn-info" style="width:100px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
 
                                 <?php
-                                if($this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2  || $this->session->userdata('admin_id') == 6){
+                                $admin_id = $this->session->userdata('admin_id');
+                                $approval = $this->db->select('*')
+                                ->from('tbl_admin')
+                                ->where("admin_id = $admin_id ")
+                                ->get()->row_array();
+                                $menu_admin =  $approval['menu_admin'];
                                 ?>
+
                                 <a  href="<?= base_url('kontak/form/'.$row['id']) ?>" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"> EDIT</a>
-                                <?php
-                                }
-                                ?>
                                 
                                 <?php
-                                if($this->session->userdata('admin_group_id') == 1){
+                                if($menu_admin == 1){
                                 ?>
-                                <a class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('kontak/hapus/'.$row['id']);?>')"> HAPUS</a>
+                                <a class="btn btn-danger" style="width:100px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('kontak/hapus/'.$row['id']);?>')"> HAPUS</a>
                                 <?php
                                 }
                                 ?>
