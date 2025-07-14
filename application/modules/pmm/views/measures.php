@@ -73,16 +73,11 @@
                         </div>
                         <div class="panel-content">
                             <div class="row">
-                                <?php
-                                if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
-                                ?>
                                 <div class="col-sm-2">
                                 <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT SATUAN</a></button>
-                                <br /><br />
+                                <br />
+                                <br />
                                 </div>
-                                <?php
-                                }
-                                ?>
                                 <!--<form method="GET" target="_blank" action="<?php echo site_url('pmm/reports/measures_print');?>">
                                     <div class="col-sm-2">
                                         <button type="submit" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
