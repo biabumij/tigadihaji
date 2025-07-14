@@ -282,7 +282,7 @@ class Receipt_material extends CI_Controller {
 		$material_id = $this->input->post('material_id');
 		
 		$kunci_rakor = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('kunci_rakor')->row_array();
-        $last_opname = date('d-m-Y', strtotime('+1 days', strtotime($kunci_rakor['date'])));
+        $last_opname = date('Y-m-d', strtotime('+1 days', strtotime($kunci_rakor['date'])));
 
 		$this->db->select('prm.*,ppo.no_po,ps.nama as supplier_name');
 		if(!empty($supplier_id)){
@@ -310,6 +310,7 @@ class Receipt_material extends CI_Controller {
 		$this->db->where('prm.status_payment','UNCREATED');
 		$this->db->order_by('prm.date_receipt','DESC');
 		$query = $this->db->get('pmm_receipt_material prm');
+		file_put_contents("D:\\test.txt", $this->db->last_query());
 		
 		if($query->num_rows() > 0){
 			foreach ($query->result_array() as $key => $row) {
