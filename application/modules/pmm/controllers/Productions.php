@@ -50,7 +50,7 @@ class Productions extends Secure_Controller {
 		$w_date = $this->input->post('filter_date');
 
 		$kunci_rakor = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('kunci_rakor')->row_array();
-        $last_opname = date('d-m-Y', strtotime('+1 days', strtotime($kunci_rakor['date'])));
+        $last_opname = date('Y-m-d', strtotime('+1 days', strtotime($kunci_rakor['date'])));
 
 		$this->db->select('*');
 		if (!empty($client_id)) {
