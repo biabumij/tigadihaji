@@ -168,7 +168,6 @@
                                 <br />
                                 <br />
                                 <div class="col-sm-12 text-left">
-                                <a href="<?= base_url('admin/kontak') ?>" class="btn btn-info" style="width:100px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
 
                                 <?php
                                 $admin_id = $this->session->userdata('admin_id');
@@ -179,6 +178,8 @@
                                 $menu_admin =  $approval['menu_admin'];
                                 ?>
 
+                                <a href="<?= base_url('admin/kontak') ?>" class="btn btn-info" style="width:100px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
+                                
                                 <a  href="<?= base_url('kontak/form/'.$row['id']) ?>" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"> EDIT</a>
                                 
                                 <?php

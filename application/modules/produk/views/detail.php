@@ -229,12 +229,22 @@
                                 </div>
                                 <br /><br />
                                 <div class="col-sm-12 text-center">
+                                    
+                                    <?php
+                                    $admin_id = $this->session->userdata('admin_id');
+                                    $approval = $this->db->select('*')
+                                    ->from('tbl_admin')
+                                    ->where("admin_id = $admin_id ")
+                                    ->get()->row_array();
+                                    $menu_admin =  $approval['menu_admin'];
+                                    ?>
+
                                     <a href="<?= base_url('admin/produk') ?>" class="btn btn-info" style="width:10%; font-weight:bold; border-radius:10px;">KEMBALI</a>
                                     <?php
-                                    if($this->session->userdata('admin_group_id') == 1){
+                                    if($menu_admin == 1){
                                         ?>
                                         <a  href="<?= base_url('produk/buat_baru/'.$row['id']) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:10px;">EDIT</a>
-                                        <a class="btn btn-default" style="width:10%; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('produk/hapus/'.$row['id']);?>')">HAPUS</a>
+                                        <a class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('produk/hapus/'.$row['id']);?>')">HAPUS</a>
                                         <?php
                                     }
                                     ?>

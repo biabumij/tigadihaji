@@ -81,14 +81,8 @@
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="bahanbaku">
-                                    <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
-                                    ?>
                                     <br />
                                     <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
-                                	<?php
-                                    }
-                                    ?>
                                     <br /><br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="table-bahanbaku" style="width:100%;">
