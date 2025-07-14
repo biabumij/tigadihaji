@@ -80,7 +80,7 @@
                                                 </div>
 
                                                 <?php
-                                                if(in_array($this->session->userdata('admin_id'), array(1,2,3,6,8,11))){
+                                                if(in_array($this->session->userdata('admin_id'), array(1,2,3,4,5,6,7,8,9,10,11,12))){
                                                 ?>
                                                 <div class="col-sm-5">
                                                     <p><h5><b>Laporan Laba Rugi (Paket 3)</b></h5></p>
@@ -91,7 +91,7 @@
                                                 ?>
 
                                                 <?php
-                                                if(in_array($this->session->userdata('admin_id'), array(1,2,3,11))){
+                                                if(in_array($this->session->userdata('admin_id'), array(1,2,3,4,5,6,7,8,9,10,11,12))){
                                                 ?>
                                                 <div class="col-sm-5">
                                                     <p><h5><b>Neraca</b></h5></p>

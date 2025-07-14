@@ -131,7 +131,7 @@
             <?php echo $this->Templates->PageHeader();?>
             <div class="page-body">
                 <div id="about" class="container spacer about">
-                    <div class="col-sm-12" style="background-color: rgba(56,56,56, 0.8); font-size:18px; border-radius: 5px; padding:10px; margin-bottom:50px; color:white;">
+                    <!--<div class="col-sm-12" style="background-color: rgba(56,56,56, 0.8); font-size:18px; border-radius: 5px; padding:10px; margin-bottom:50px; color:white;">
                         <center><b>PROYEK BENDUNGAN TIGA DIHAJI</b></center>
                         <?php
                         if(in_array($this->session->userdata('admin_group_id'), array(1,2,3))){
@@ -170,7 +170,7 @@
                             <?php
                             }
                             ?>
-                            <!--<?php
+                            <?php
                             if(in_array($this->session->userdata('admin_group_id'), array(1))){
                             ?>
                             <?php
@@ -184,12 +184,9 @@
                                 <center><a target="_blank" href="<?= base_url("pmm/reports/detail_notification_3/") ?>"><i class="fa-solid fa-clipboard-check"></i> BUTUH PERSETUJUAN TI & SISTEM (<blink><?php echo number_format($query,0,',','.');?></blink>)</a></center>
                             <?php
                             }
-                            ?>-->
-                        </figure>    
-                    </div>
-                    <?php
-                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,7,8))){
-                    ?>
+                            ?>
+                        </figure>
+                    </div>--> 
                     <div id="flippy">
                         <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}"><i class="fa-regular fa-hand-point-right"></i> GRAFIK</button>
                     </div>
@@ -216,22 +213,18 @@
                                         </div>
                                     </th>
                                 </tr>
-                                <!--<tr>
-                                    <th colspan="2" class="text-center">
-                                        <div class="col-sm-12">
-                                            <figure class="highcharts-figure">
-                                                <div id="container_rencana_kerja_perminggu" style="border-radius:10px;"></div>
-                                            </figure>
-                                        </div>
-                                    </th>
-                                </tr>-->
                             </table>
                         </div>
                     </div>
-                    <?php
-                    }
-                    ?>
 
+                    <?php
+                    $admin_id = $this->session->userdata('admin_id');
+                    $approval = $this->db->select('*')
+                    ->from('tbl_admin')
+                    ->where("admin_id = $admin_id ")
+                    ->get()->row_array();
+                    $menu_admin =  $approval['menu_admin'];
+                    ?>
                     <div id="flippy_menu">
                         <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler_menu') .style.display=='none') {document.getElementById('spoiler_menu') .style.display=''}else{document.getElementById('spoiler_menu') .style.display='none'}"><i class="fa-regular fa-hand-point-right"></i> MENU</button>
                     </div>
@@ -261,9 +254,6 @@
                                 <tr>
                                     <th width="50%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="produksi">
-                                            <?php
-                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
-                                            ?>
                                             <li class="text-center" style="background: linear-gradient(110deg, #3b75a9 20%, #3b75a9 20%, #0B5394 80%);">
                                                 <a href="<?php echo site_url('admin/rap');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-regular fa-calendar-check"></i><b>RAP</b></span></a>
@@ -276,10 +266,8 @@
                                                 <a href="<?php echo site_url('admin/stock_opname');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cubes"></i><b>STOK</b></span></a>
                                             </li>
-                                            <br /><br />
-                                            <?php
-                                            }
-                                            ?>
+                                            <br />
+                                            <br />
                                             <li class="text-center" style="background: linear-gradient(110deg, #3b75a9 20%, #3b75a9 20%, #0B5394 80%);">
                                                 <a href="<?php echo site_url('admin/penjualan');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-bag-shopping"></i><b>PENJUALAN</b></span></a>
@@ -288,17 +276,8 @@
                                                 <a href="<?php echo site_url('admin/pembelian');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-cart-shopping"></i><b>PEMBELIAN</b></span></a>
                                             </li>
-                                            <?php
-                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5,7,8))){
-                                            ?>
-                                            <?php
-                                            }
-                                            ?>
                                         </ul>
                                     </th>
-                                    <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,6,7,8))){
-                                    ?>
                                     <th width="50%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="keuangan">
                                             <li class="text-center" style="background: linear-gradient(110deg, #c37e37 20%, #c37e37 20%, #B45F06 80%);">
@@ -321,22 +300,6 @@
                                             </li>
                                         </ul>
                                     </th>
-                                    <?php
-                                    }
-                                    ?>
-
-                                    <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(5))){
-                                    ?>
-                                    <th width="50%" class="text-center">
-                                        <ul class="row text-center list-inline  wowload bounceInUp collapse" id="keuangan">
-                        
-                                        </ul>
-                                    </th>
-                                    <?php
-                                    }
-                                    ?>
-                                    
                                 </tr>
                             </table>
                             <table width="100%">
@@ -371,26 +334,6 @@
                                                 <a href="<?php echo site_url('admin/laporan_keuangan');?>">
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-money-bill"></i><b>KEUANGAN</b></span></a>
                                             </li>
-                                            <!--<li class="text-center" style="background: linear-gradient(110deg, #5f914a 20%, #5f914a 20%, #38761D 80%);">
-                                                <a href="<?php echo site_url('admin/laporan_pembelian');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-cart-shopping"></i><b>PEMBELIAN</b></span></a>
-                                            </li>
-                                            <br />
-                                            <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #5f914a 20%, #5f914a 20%, #38761D 80%);">
-                                                <a href="<?php echo site_url('admin/laporan_penjualan');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-bag-shopping"></i><b>PENJUALAN</b></span></a>
-                                            </li>
-                                            <li class="text-center" style="background: linear-gradient(110deg, #5f914a 20%, #5f914a 20%, #38761D 80%);">
-                                                <a href="<?php echo site_url('admin/laporan_ev._produksi');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-chart-simple"></i><b>EVALUASI</b></span></a>
-                                            </li>
-                                            <br />
-                                            <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #5f914a 20%, #5f914a 20%, #38761D 80%);">
-                                                <a href="<?php echo site_url('admin/laporan_rencana_kerja');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-calendar-week"></i><b>RENCANA<br />KERJA</b></span></a>
-                                            </li>-->
                                         </ul>
                                     </th>
                                     
@@ -421,7 +364,7 @@
                                                 <span style="color:#fffdd0;"><i class="fa-solid fa-users"></i><b>USER</b></span></a>
                                             </li>
                                             <?php
-                                            if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,7,8))){
+                                            if($menu_admin == 1){
                                             ?>
                                             <li class="text-center" style="background: linear-gradient(110deg, #ad3232 20%, #ad3232 20%, #990000 80%);">
                                                 <a href="<?php echo site_url('admin/perusahaan');?>">
@@ -437,7 +380,7 @@
                             <table width="100%">
                                 <tr>
                                     <?php
-                                    if(in_array($this->session->userdata('admin_group_id'), array(1))){
+                                    if($menu_admin == 1){
                                     ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#settings" aria-expanded="false" aria-controls="beton">
                                         <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
@@ -450,16 +393,6 @@
                                     <?php
                                     }
                                     ?>
-
-                                    
-                                    <!--<th width="25%" class="text-center" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="beton">
-                                        <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
-                                            <li style="background: linear-gradient(110deg, #7163b8 20%, #7163b8 40%, #6252b1 80%);">
-                                                <a>
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-book"></i><b>FORM</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>-->
                                 </tr>
                             </table>
                             <table width="100%">
@@ -480,15 +413,6 @@
                                             </li>
                                         </ul>
                                     </th>
-
-                                    <!--<th width="25%" class="text-center">
-                                        <ul class="row text-center list-inline  wowload bounceInUp collapse" id="form">
-                                            <li class="text-center" style="background: linear-gradient(110deg, #7163b8 20%, #7163b8 20%, #6252b1 80%);">
-                                                <a href="<?php echo site_url('admin/form');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-file"></i><b>PERUBAHAN<br />SISTEM</b></span></a>
-                                            </li>
-                                        </ul>
-                                    </th>-->
                                 </tr>
                             </table>
                         </div>
@@ -816,155 +740,6 @@
                         {  
                             name: 'Laba Rugi (Realisasi)%',
                             data: [<?php echo json_encode($persentase_laba_rugi_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_juni25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_juli25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_agustus25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_september25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_oktober25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_november25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($persentase_laba_rugi_desember25, JSON_NUMERIC_CHECK); ?>],
-                            color: '#FF0000',
-                            fontWeight: 'bold',
-                            fontSize: '10px',
-                            fontFamily: 'helvetica',
-
-                            zones: [{
-                                
-                            }, {
-                                dashStyle: 'dot'
-                            }]
-                        }
-                        ]
-                    });
-                });
-                
-            });
-        </script>
-
-        <script type="text/javascript">
-            $(function () {
-                var chart;
-                $(document).ready(function() {
-                    chart = new Highcharts.Chart({
-                        chart: {
-                            renderTo: 'container_rencana_kerja_perminggu',
-                            type: 'column',
-                            marginRight: 130,
-                            marginBottom: 75,
-                            backgroundColor: {
-                                linearGradient: [0, 0, 700, 500],
-                                stops: [
-                                    [0, 'rgb(255,255,255)'],
-                                    [1, 'rgb(255,255,255)']
-                                ]
-                            },
-                        },
-                        title: {
-                            style: {
-                                color: '#000000',
-                                fontWeight: 'bold',
-                                fontSize: '14px',
-                                fontFamily: 'helvetica'
-                            },
-                            text: 'REALISASI RENCANA KERJA PERMINGGU',
-                            x: -20 //center            
-                        },
-                        subtitle: {
-                            style: {
-                                color: '#000000',
-                                fontWeight: 'bold',
-                                fontSize: '14px',
-                                fontFamily: 'helvetica'
-                            },
-                            text: '(<?php echo tgl_indo(date('-m-'));?>)'.toUpperCase(),
-                            x: -20
-                        },
-                        xAxis: { //X axis menampilkan data bulan
-                            labels: {
-                                style: {
-                                    color: '#000000',
-                                    fontWeight: 'bold',
-                                    fontSize: '10px',
-                                    fontFamily: 'helvetica'
-                                }
-                            },
-                            categories: ['Minggu 1 <br /><?php echo $date_minggu_1_awal = date('01 F Y', strtotime($date_now));?> - <?php echo $date_minggu_1_akhir = date('d F Y', strtotime($date_minggu_1_akhir));?>','Minggu 2 <br /><?php echo $date_minggu_2_awal = date('d F Y', strtotime('+1 days', strtotime($date_minggu_1_akhir)));?> - <?php echo $date_minggu_2_akhir = date('d F Y', strtotime($date_minggu_2_akhir));?>','Minggu 3 <br /><?php echo $date_minggu_3_awal = date('d F Y', strtotime('+1 days', strtotime($date_minggu_2_akhir)));?> - <?php echo $date_minggu_3_akhir = date('d F Y', strtotime($date_minggu_3_akhir));?>','Minggu 4 <br /><?php echo $date_minggu_4_awal = date('d F Y', strtotime('+1 days', strtotime($date_minggu_3_akhir)));?> - <?php echo $date_minggu_4_akhir = date('d F Y', strtotime($date_minggu_4_akhir));?>']
-                        },
-                        yAxis: {
-                            //title: {  //label yAxis
-                                //text: 'RAP <br /><?php echo number_format(0,0,',','.'); ?>'
-                                //text: 'Presentase'
-                            //},
-                            title: {
-                                style: {
-                                    color: '#000000',
-                                    fontWeight: 'bold',
-                                    fontSize: '10px',
-                                    fontFamily: 'helvetica'
-                                },
-                                text: 'Volume Produksi (M3)'           
-                            },
-                            plotLines: [{
-                                value: 0,
-                                width: 1,
-                                color: '#808080' //warna dari grafik line
-                            }],
-                            labels: {
-                                style: {
-                                    color: '#000000',
-                                    fontWeight: 'bold',
-                                    fontSize: '10px',
-                                    fontFamily: 'helvetica'
-                                },
-                                format: '{value}'
-                            },
-                            min: 0,
-                            max: 1000,
-                            tickInterval: 100,
-                        },
-                        tooltip: { 
-                        //fungsi tooltip, ini opsional, kegunaan dari fungsi ini 
-                        //akan menampikan data di titik tertentu di grafik saat mouseover
-                            formatter: function() {
-                                    return '<b>'+ this.series.name +'</b><br/>'+ 
-                                    ''+ 'Volume Produksi' +': '+ this.y + ' M3<br/>';
-                                    //''+ 'Vol' +': '+ this.x + '';
-
-                                    //'<b>'+ 'Presentase' +': '+ this.y +'%'</b><br/>'+ 
-                                    //'<b>'+ 'Penjualan' +': '+ this.y +'</b><br/>';
-                            }
-                        },
-                        legend: {
-                            layout: 'vertical',
-                            align: 'right',
-                            verticalAlign: 'top',
-                            x: -10,
-                            y: 100,
-                            borderWidth: 0
-                        },
-
-                        plotOptions: {
-                            spline: {
-                                lineWidth: 4,
-                                states: {
-                                    hover: {
-                                        lineWidth: 5
-                                    }
-                                },
-                                marker: {
-                                    enabled: true
-                                }
-                            }
-                        },
-                
-                        series: [{  
-                            name: 'Rencana Kerja',  
-                        
-                            data: [<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_kerja_perminggu_fix, JSON_NUMERIC_CHECK); ?>],
-
-                            color: '#000000 ',
-                            fontWeight: 'bold',
-                            fontSize: '10px',
-                            fontFamily: 'helvetica'
-                        },
-                        {  
-                            name: 'Realisasi',  
-                            
-                            data: [ <?php echo json_encode($penjualan_minggu_1_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($penjualan_minggu_2_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($penjualan_minggu_3_fix, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($penjualan_minggu_4_fix, JSON_NUMERIC_CHECK); ?>],
-
                             color: '#FF0000',
                             fontWeight: 'bold',
                             fontSize: '10px',
