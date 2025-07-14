@@ -359,10 +359,6 @@
                                             </li>
                                             <br />
                                             <br />
-                                            <li class="text-center" style="background: linear-gradient(110deg, #ad3232 20%, #ad3232 20%, #990000 80%);">
-                                                <a href="<?php echo site_url('admin/users');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-users"></i><b>USER</b></span></a>
-                                            </li>
                                             <?php
                                             if($menu_admin == 1){
                                             ?>
