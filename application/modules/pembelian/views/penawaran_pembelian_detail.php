@@ -236,14 +236,14 @@
                                         <?php
                                         if($approval_penawaran_pembelian == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/open_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> OPEN</a>
+                                            <a href="<?= site_url('pembelian/open_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-success" style="width:15%; font-weight:bold; border-radius:10px;"> OPEN</a>
                                         <?php
                                         }
                                         ?>
                                         <?php
                                         if($delete_penawaran_pembelian == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> HAPUS</a>
+                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:15%; font-weight:bold; border-radius:10px;"> HAPUS</a>
                                         <?php
                                         }
                                         ?>
@@ -253,7 +253,7 @@
                                         <?php
                                         if($delete_penawaran_pembelian == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> HAPUS</a>
+                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:15%; font-weight:bold; border-radius:10px;"> HAPUS</a>
                                         <?php
                                         }
                                         ?>
