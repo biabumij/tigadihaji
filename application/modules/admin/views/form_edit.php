@@ -102,6 +102,8 @@
                                 $approval_po =  $approval['approval_po'];
                                 $delete_po =  $approval['delete_po'];
                                 $surat_jalan_pembelian =  $approval['surat_jalan_pembelian'];
+                                $verifikasi =  $approval['verifikasi'];
+                                $delete_tagihan_pembelian =  $approval['delete_tagihan_pembelian'];
                                 ?>
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">Approval Penawaran<span class="required" aria-required="true">*</span></label>
@@ -138,8 +140,25 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-9">
+                                    <label for="name" class="col-sm-2 control-label">Verifikasi Tagihan<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="verifikasi" id="verifikasi" value="1"<?= (isset($verifikasi) && $verifikasi == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                    <label for="name" class="col-sm-2 control-label">Hapus Tagihan<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="delete_tagihan_pembelian" id="delete_tagihan_pembelian" value="1"<?= (isset($delete_tagihan_pembelian) && $delete_tagihan_pembelian == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                </div>
+                                <div class="form-group text-center">
+                                    <div>
+                                        <br />
+                                        <br />
+                                        <a href="<?php echo site_url('admin/admin'); ?>" class="btn btn-danger" style="width:5%; font-weight:bold; border-radius:10px; margin-top: 10px;"> KEMBALI</a>
                                         <button type="submit" name="submit" class="btn btn-success" id="btn-submit" data-loading-text="please wait.." style="font-weight:bold; border-radius:10px;">KIRIM</button>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
                                     </div>
                                 </div>
                             </form>
