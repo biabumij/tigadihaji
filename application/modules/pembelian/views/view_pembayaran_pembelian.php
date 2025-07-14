@@ -154,7 +154,17 @@
                                     <a href="<?= base_url('pembelian/cetak_pembayaran_penagihan_pembelian/' . $bayar["id"]) ?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
                                     
                                     <?php
-                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 8 || $this->session->userdata('admin_id') == 9){
+                                    $admin_id = $this->session->userdata('admin_id');
+                                    $approval = $this->db->select('*')
+                                    ->from('tbl_admin')
+                                    ->where("admin_id = $admin_id ")
+                                    ->get()->row_array();
+                                    $verifikasi =  $approval['verifikasi'];
+                                    $delete_tagihan_pembelian =  $approval['delete_tagihan_pembelian'];
+                                    ?>
+
+                                    <?php
+                                    if($verifikasi == 1){
                                     ?>
                                     <td width="10%"><a href="<?= base_url('pembelian/sunting_pembayaran_pembelian/' . $bayar["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> EDIT</a></td>
                                     <?php
@@ -162,7 +172,7 @@
                                     ?>
 
                                     <?php
-                                    if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 8 || $this->session->userdata('admin_id') == 9){
+                                    if($verifikasi == 1){
                                     ?>
                                     <button type="button" id="tombol_hapus" class="btn btn-default"style="width:150px; font-weight:bold; border-radius:10px;"> HAPUS</button>
                                     <?php
