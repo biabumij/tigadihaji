@@ -92,10 +92,10 @@ class Request_materials extends CI_Controller {
 				$row['status'] = $this->pmm_model->GetStatus($row['status']);
 				$row['actions'] = '<a href="'.site_url('pmm/request_materials/manage/'.$row['id']).'" class="btn btn-warning" style="border-radius:10px;"><i class="glyphicon glyphicon-folder-open"></i> </a>';
 				
-				$id = $this->session->userdata('admin_id');
+				$admin_id = $this->session->userdata('admin_id');
 				$approval = $this->db->select('*')
 				->from('tbl_admin')
-				->where("admin_id = $id ")
+				->where("admin_id = $admin_id ")
 				->get()->row_array();
 				$approval_permintaan_bahan_alat =  $approval['approval_permintaan_bahan_alat'];             
 				

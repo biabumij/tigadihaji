@@ -202,10 +202,10 @@
                                 <div class="text-center">
                                     <br /><br /><br />
                                     <?php
-                                    $id = $this->session->userdata('admin_id');
+                                    $admin_id = $this->session->userdata('admin_id');
                                     $approval = $this->db->select('*')
                                     ->from('tbl_admin')
-                                    ->where("admin_id = $id ")
+                                    ->where("admin_id = $admin_id ")
                                     ->get()->row_array();
                                     $approval_penawaran_pembelian =  $approval['approval_penawaran_pembelian'];
                                     $delete_penawaran_pembelian =  $approval['delete_penawaran_pembelian'];

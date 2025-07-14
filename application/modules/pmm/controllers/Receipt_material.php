@@ -336,10 +336,10 @@ class Receipt_material extends CI_Controller {
 					$row['edits'] = '-';
 				}*/
 
-				$id = $this->session->userdata('admin_id');
+				$admin_id = $this->session->userdata('admin_id');
 				$approval = $this->db->select('*')
 				->from('tbl_admin')
-				->where("admin_id = $id ")
+				->where("admin_id = $admin_id ")
 				->get()->row_array();
 				$surat_jalan_pembelian =  $approval['surat_jalan_pembelian'];
 

@@ -244,10 +244,10 @@
                             
                             <div class="text-center">
                                 <?php
-                                $id = $this->session->userdata('admin_id');
+                                $admin_id = $this->session->userdata('admin_id');
                                 $approval = $this->db->select('*')
                                 ->from('tbl_admin')
-                                ->where("admin_id = $id ")
+                                ->where("admin_id = $admin_id ")
                                 ->get()->row_array();
                                 $approval_permintaan_bahan_alat =  $approval['approval_permintaan_bahan_alat'];
                                 ?>
