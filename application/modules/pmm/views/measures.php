@@ -73,11 +73,11 @@
                         </div>
                         <div class="panel-content">
                             <div class="row">
-                                <div class="col-sm-2">
+                                <!--<div class="col-sm-2">
                                 <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT SATUAN</a></button>
                                 <br />
                                 <br />
-                                </div>
+                                </div>-->
                                 <!--<form method="GET" target="_blank" action="<?php echo site_url('pmm/reports/measures_print');?>">
                                     <div class="col-sm-2">
                                         <button type="submit" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
