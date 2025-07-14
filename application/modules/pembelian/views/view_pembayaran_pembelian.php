@@ -174,7 +174,7 @@
                                     <?php
                                     if($verifikasi == 1){
                                     ?>
-                                    <button type="button" id="tombol_hapus" class="btn btn-default"style="width:150px; font-weight:bold; border-radius:10px;"> HAPUS</button>
+                                    <button type="button" id="tombol_hapus" class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:10px;"> HAPUS</button>
                                     <?php
                                     }
                                     ?>  
