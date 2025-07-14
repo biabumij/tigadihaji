@@ -310,7 +310,6 @@ class Receipt_material extends CI_Controller {
 		$this->db->where('prm.status_payment','UNCREATED');
 		$this->db->order_by('prm.date_receipt','DESC');
 		$query = $this->db->get('pmm_receipt_material prm');
-		file_put_contents("D:\\test.txt", $this->db->last_query());
 		
 		if($query->num_rows() > 0){
 			foreach ($query->result_array() as $key => $row) {
