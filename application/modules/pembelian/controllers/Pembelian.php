@@ -286,7 +286,7 @@ class Pembelian extends Secure_Controller
         }
 
         $this->db->where("status <> 'REJECT'");
-        $this->db->order_by('status','DESC');
+        //$this->db->order_by('status','DESC');
         $this->db->order_by('created_on', 'DESC');
         $query = $this->db->get('pmm_penawaran_pembelian');
 

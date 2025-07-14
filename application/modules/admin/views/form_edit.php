@@ -24,7 +24,7 @@
                             <h3 class="section-subtitle"><b>EDIT PROFILE</b></h3>
                         </div>
                         <div class="panel-content">
-                            <form id="inline-validation" method="POST" class="form-horizontal form-stripe form-submit" novalidate="novalidate" data-button="#btn-submit" action="<?php echo site_url('admin/edit');?>" data-redirect="<?php echo site_url('admin/dashboard');?>">
+                            <form id="inline-validation" method="POST" class="form-horizontal form-stripe form-submit" novalidate="novalidate" data-button="#btn-submit" action="<?php echo site_url('admin/edit');?>" data-redirect="<?php echo site_url('admin/admin');?>">
                                 <input type="hidden" name="id" value="<?php echo $row[0]->admin_id;?>">
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">Name<span class="required" aria-required="true">*</span></label>
@@ -83,6 +83,58 @@
                                     <label for="name" class="col-sm-2 control-label">Status<span class="required" aria-required="true">*</span></label>
                                     <div class="col-sm-8">
                                         <?php $this->general->SelectStatus();?>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <center><label for="name" class="control-label">APPROVAL</label></center>
+                                </div>
+
+                                <?php
+                                $id = $row[0]->admin_id;
+                                $approval = $this->db->select('*')
+                                ->from('tbl_admin')
+                                ->where("admin_id = $id ")
+                                ->get()->row_array();
+                                $approval_penawaran_pembelian =  $approval['approval_penawaran_pembelian'];
+                                $delete_penawaran_pembelian =  $approval['delete_penawaran_pembelian'];
+                                $approval_permintaan_bahan_alat =  $approval['approval_permintaan_bahan_alat'];
+                                $delete_permintaan_bahan_alat =  $approval['delete_permintaan_bahan_alat'];
+                                $approval_po =  $approval['approval_po'];
+                                $delete_po =  $approval['delete_po'];
+                                $surat_jalan_pembelian =  $approval['surat_jalan_pembelian'];
+                                ?>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Approval Penawaran<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="approval_penawaran_pembelian" id="approval_penawaran_pembelian" value="1"<?= (isset($approval_penawaran_pembelian) && $approval_penawaran_pembelian == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                    <label for="name" class="col-sm-2 control-label">Delete Penawaran<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="delete_penawaran_pembelian" id="delete_penawaran_pembelian" value="1"<?= (isset($delete_penawaran_pembelian) && $delete_penawaran_pembelian == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Approval Permintaan Bahan & Alat<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="approval_permintaan_bahan_alat" id="approval_permintaan_bahan_alat" value="1"<?= (isset($approval_permintaan_bahan_alat) && $approval_permintaan_bahan_alat == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                    <label for="name" class="col-sm-2 control-label">Delete Permintaan Bahan & Alat<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="delete_permintaan_bahan_alat" id="delete_permintaan_bahan_alat" value="1"<?= (isset($delete_permintaan_bahan_alat) && $delete_permintaan_bahan_alat == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Approval PO Pembelian<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="approval_po" id="approval_po" value="1"<?= (isset($approval_po) && $approval_po == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                    <label for="name" class="col-sm-2 control-label">Delete PO Pembelian<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="delete_po" id="delete_po" value="1"<?= (isset($delete_po) && $delete_po == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                    <label for="name" class="col-sm-2 control-label">Hapus Surat Jalan<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="surat_jalan_pembelian" id="surat_jalan_pembelian" value="1"<?= (isset($surat_jalan_pembelian) && $surat_jalan_pembelian == 1) ? 'checked' : '' ;?> />
                                     </div>
                                 </div>
                                 <div class="form-group">

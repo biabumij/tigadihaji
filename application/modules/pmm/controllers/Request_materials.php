@@ -91,7 +91,15 @@ class Request_materials extends CI_Controller {
 				$delete = '<a href="javascript:void(0);" onclick="DeleteDataRequest('.$row['id'].')" class="btn btn-danger" style="border-radius:10px;"><i class="fa fa-close"></i> </a>';
 				$row['status'] = $this->pmm_model->GetStatus($row['status']);
 				$row['actions'] = '<a href="'.site_url('pmm/request_materials/manage/'.$row['id']).'" class="btn btn-warning" style="border-radius:10px;"><i class="glyphicon glyphicon-folder-open"></i> </a>';
-				if(in_array($this->session->userdata('admin_group_id'), array(1))){
+				
+				$id = $this->session->userdata('admin_id');
+				$approval = $this->db->select('*')
+				->from('tbl_admin')
+				->where("admin_id = $id ")
+				->get()->row_array();
+				$approval_permintaan_bahan_alat =  $approval['approval_permintaan_bahan_alat'];             
+				
+				if($approval_permintaan_bahan_alat == 1){
 				$row['delete'] = '<a href="'.site_url('pmm/request_materials/manage/'.$row['id']).'"></a> '.$delete.' ';
 				}else {
 					$row['delete'] = '-';

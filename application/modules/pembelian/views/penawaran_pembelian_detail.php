@@ -201,9 +201,18 @@
                                     
                                 <div class="text-center">
                                     <br /><br /><br />
+                                    <?php
+                                    $id = $this->session->userdata('admin_id');
+                                    $approval = $this->db->select('*')
+                                    ->from('tbl_admin')
+                                    ->where("admin_id = $id ")
+                                    ->get()->row_array();
+                                    $approval_penawaran_pembelian =  $approval['approval_penawaran_pembelian'];
+                                    $delete_penawaran_pembelian =  $approval['delete_penawaran_pembelian'];
+                                    ?>
                                     <?php if($row["status"] === "DRAFT") : ?>
                                         <?php
-                                        if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 10){
+                                        if($approval_penawaran_pembelian == 1){
                                         ?>
                                             <a href="<?= site_url('pembelian/approve_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-success" style="width:15%; font-weight:bold; border-radius:10px;"> SETUJUI</a>
                                             <a href="<?= site_url('pembelian/reject_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:15%; font-weight:bold; border-radius:10px;"> TOLAK</a>
@@ -214,7 +223,7 @@
 
                                     <?php if($row["status"] === "OPEN") : ?>
                                         <?php
-                                        if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 10){
+                                        if($approval_penawaran_pembelian == 1){
                                         ?>
                                             <a href="<?= site_url('pembelian/closed_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> CLOSED</a>
                                             <a href="<?= site_url('pembelian/reject_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> REJECT</a>
@@ -225,14 +234,14 @@
 
                                     <?php if($row["status"] === "CLOSED") : ?>
                                         <?php
-                                        if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 10){
+                                        if($approval_penawaran_pembelian == 1){
                                         ?>
                                             <a href="<?= site_url('pembelian/open_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> OPEN</a>
                                         <?php
                                         }
                                         ?>
                                         <?php
-                                        if($this->session->userdata('admin_id') == 1){
+                                        if($delete_penawaran_pembelian == 1){
                                         ?>
                                             <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> HAPUS</a>
                                         <?php
@@ -242,7 +251,7 @@
 
                                     <?php if($row["status"] === "REJECT") : ?>
                                         <?php
-                                        if($this->session->userdata('admin_id') == 1){
+                                        if($delete_penawaran_pembelian == 1){
                                         ?>
                                             <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:15%; font-weight:bold; border-radius:10px;"> HAPUS</a>
                                         <?php
