@@ -340,7 +340,7 @@
                                         ?>
                                         <form class="form-check" action="<?= site_url("pmm/purchase_order/open_pesanan_pembelian/".$id);?>">
                                             <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> PUBLISH</button>
-                                            <a href="<?= site_url('pembelian/reject_po/' . $id); ?>" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> REJECT</a>        
+                                            <a href="<?= site_url('pembelian/reject_po/' . $id); ?>" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> REJECT</a>        
                                         </form>	
                                         <?php
                                     }
@@ -349,7 +349,7 @@
                                     if($delete_po == 1){
                                         ?>
                                         <form class="form-check" action="<?= site_url("pmm/purchase_order/delete/".$id);?>">
-                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> HAPUS</button>        
+                                            <button type="submit" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> HAPUS</button>        
                                         </form>
                                         <?php
                                     }
@@ -361,7 +361,7 @@
                                     if($delete_po == 1){
                                         ?>
                                         <form class="form-check" action="<?= site_url("pmm/purchase_order/delete/".$id);?>">
-                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> HAPUS</button>        
+                                            <button type="submit" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> HAPUS</button>        
                                         </form>	
                                         <?php
                                     }
