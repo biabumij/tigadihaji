@@ -285,10 +285,10 @@
                                 <a href="<?php echo site_url('admin/pembelian');?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
                                 
                                 <?php
-                                $id = $this->session->userdata('admin_id');
+                                $admin_id = $this->session->userdata('admin_id');
                                 $approval = $this->db->select('*')
                                 ->from('tbl_admin')
-                                ->where("admin_id = $id ")
+                                ->where("admin_id = $admin_id ")
                                 ->get()->row_array();
                                 $approval_po =  $approval['approval_po'];
                                 $delete_po =  $approval['delete_po'];
