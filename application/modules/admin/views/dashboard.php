@@ -132,7 +132,7 @@
             <div class="page-body">
                 <div id="about" class="container spacer about">
                     <div class="col-sm-12" style="background-color: rgba(56,56,56, 0.8); font-size:18px; border-radius: 5px; padding:10px; margin-bottom:50px; color:white;">
-                        <center><b>PROYEK BENDUNGAN TIGA DIHAJI</b></center>
+                        <center><b>DIVISI STONE CRUSHER</b></center>
                         <?php
                         if(in_array($this->session->userdata('admin_group_id'), array(1,2,3))){
                         ?>
