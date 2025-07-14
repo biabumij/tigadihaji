@@ -46,9 +46,16 @@
                                         <?php $this->general->SelectStatus($row[0]->status);?>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-9">
-                                        <button type="submit" name="submit" class="btn btn-success" id="btn-submit" data-loading-text="please wait.." style="font-weight:bold; border-radius:10px;">KIRIM</button>
+                                <div class="form-group text-center">
+                                    <div>
+                                        <br />
+                                        <br />
+                                        <a href="<?php echo site_url('admin/admin_access'); ?>" class="btn btn-danger" style="width:5%; font-weight:bold; border-radius:10px; margin-top: 10px;"> KEMBALI</a>
+                                        <button type="submit" name="submit" class="btn btn-success" id="btn-submit" data-loading-text="please wait.." style="width:5%; font-weight:bold; border-radius:10px;">KIRIM</button>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <br />
                                     </div>
                                 </div>
                             </form>
