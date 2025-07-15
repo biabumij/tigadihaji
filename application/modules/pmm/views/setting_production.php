@@ -119,7 +119,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-2 col-sm-10">
-                                      <button type="submit" name="submit" class="btn btn-success" style="width:100px; font-weight:bold; border-radius:10px;" id="btn-submit">KIRIM</button>
+                                      <button type="submit" name="submit" class="btn btn-success" style="width:100px; font-weight:bold; border-radius:5px;" id="btn-submit">KIRIM</button>
                                     </div>
                                 </div>
                             </form>

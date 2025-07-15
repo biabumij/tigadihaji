@@ -73,16 +73,16 @@
                             </div>
                         </div>
                         <div class="panel-content">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#bahanbaku" aria-controls="bahanbaku" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">BAHAN BAKU</a></li>
-                                <li role="presentation"><a href="#betonreadymix" aria-controls="betonreadymix" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">BETON READY MIX</a></li>
-                                <li role="presentation"><a href="#jasa" aria-controls="jasa" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">JASA</a></li>
-                                <li role="presentation"><a href="#peralatan" aria-controls="peralatan" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PERALATAN</a></li>
+                            <ul class="nav nav-tabs" role="tablist" style="border-bottom:2px solid #e69500; padding-bottom:10px;">
+                                <li role="presentation" class="active"><a href="#bahanbaku" aria-controls="bahanbaku" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">BAHAN BAKU</a></li>
+                                <li role="presentation"><a href="#betonreadymix" aria-controls="betonreadymix" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">BETON READY MIX</a></li>
+                                <li role="presentation"><a href="#jasa" aria-controls="jasa" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">JASA</a></li>
+                                <li role="presentation"><a href="#peralatan" aria-controls="peralatan" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">PERALATAN</a></li>
                             </ul>
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="bahanbaku">
                                     <br />
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
                                     <br /><br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="table-bahanbaku" style="width:100%;">
@@ -103,7 +103,7 @@
                                 
                                 <div role="tabpanel" class="tab-pane" id="betonreadymix">
                                     <br />
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
                                 	<br /><br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="table-betonreadymix" style="width:100%;">
@@ -123,7 +123,7 @@
                                 
                                 <div role="tabpanel" class="tab-pane" id="jasa">
                                     <br />
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
                                 	<br /><br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="table-jasa" style="width:100%;">
@@ -143,7 +143,7 @@
                                 
                                 <div role="tabpanel" class="tab-pane" id="peralatan">
                                     <br />
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('produk/buat_baru'); ?>"><b style="color:white;">BUAT PRODUK</b></a></button>
                                 	<br /><br />
                                     <div class="table-responsive">
                                         <table class="table table-striped table-hover table-center" id="table-peralatan" style="width:100%;">

@@ -74,17 +74,17 @@
                         </div>
                         <div class="panel-content">
 
-                        	<ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PELANGGAN</a></li>
-                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">REKANAN</a></li>
-                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">KARYAWAN</a></li>
-                                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">LAIN-LAIN</a></li>
+                        	<ul class="nav nav-tabs" role="tablist" style="border-bottom:2px solid #e69500; padding-bottom:10px;">
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">PELANGGAN</a></li>
+                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">REKANAN</a></li>
+                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">KARYAWAN</a></li>
+                                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">LAIN-LAIN</a></li>
                             </ul>
                          
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="home">
                                     <br />
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('kontak/form'); ?>"><b style="color:white;">BUAT KONTAK</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('kontak/form'); ?>"><b style="color:white;">BUAT KONTAK</b></a></button>
                                     <br /><br />
                                 	<div class="table-responsive">
 		                                <table class="table table-striped table-hover table-center" id="table-pelanggan" style="width: 100%">
@@ -105,7 +105,7 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="profile">
                                     <br />
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('kontak/form'); ?>"><b style="color:white;">BUAT KONTAK</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('kontak/form'); ?>"><b style="color:white;">BUAT KONTAK</b></a></button>
                                 	<br /><br />
                                 	<div class="table-responsive">
 		                                <table class="table table-striped table-hover table-center" id="table-rekanan" style="width: 100%">
@@ -126,7 +126,7 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="messages">
                                     <br />
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('kontak/form'); ?>"><b style="color:white;">BUAT KONTAK</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('kontak/form'); ?>"><b style="color:white;">BUAT KONTAK</b></a></button>
                                 	<br /><br />
                                 	<div class="table-responsive">
 		                                <table class="table table-striped table-hover table-center" id="table-karyawan"  style="width: 100%">
@@ -147,7 +147,7 @@
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="settings">
                                     <br />
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('kontak/form'); ?>"><b style="color:white;">BUAT KONTAK</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('kontak/form'); ?>"><b style="color:white;">BUAT KONTAK</b></a></button>
                                 	<br /><br />
                                 	<div class="table-responsive">
 		                                <table class="table table-striped table-hover table-center" id="teble-lain" style="width: 100%">

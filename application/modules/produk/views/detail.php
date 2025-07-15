@@ -239,12 +239,12 @@
                                     $menu_admin =  $approval['menu_admin'];
                                     ?>
 
-                                    <a href="<?= base_url('admin/produk') ?>" class="btn btn-info" style="width:10%; font-weight:bold; border-radius:10px;">KEMBALI</a>
+                                    <a href="<?= base_url('admin/produk') ?>" class="btn btn-info" style="width:10%; font-weight:bold; border-radius:5px;">KEMBALI</a>
                                     <?php
                                     if($menu_admin == 1){
                                         ?>
-                                        <a  href="<?= base_url('produk/buat_baru/'.$row['id']) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:10px;">EDIT</a>
-                                        <a class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('produk/hapus/'.$row['id']);?>')">HAPUS</a>
+                                        <a  href="<?= base_url('produk/buat_baru/'.$row['id']) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:5px;">EDIT</a>
+                                        <a class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('produk/hapus/'.$row['id']);?>')">HAPUS</a>
                                         <?php
                                     }
                                     ?>

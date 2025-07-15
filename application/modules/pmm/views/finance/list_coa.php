@@ -77,7 +77,7 @@
                         <div class="panel-content">
                             <div class="row">
                                 <div class="col-sm-2">
-                                <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT DAFTAR AKUN</a></button>
+                                <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT DAFTAR AKUN</a></button>
                                 </div>
                                 <br /><br /><br />
                                 <form method="GET" target="_blank" action="<?php echo site_url('laporan/list_coa_print');?>">
@@ -96,7 +96,7 @@
                                         </select>
                                     </div>
                                     <div class="col-sm-2">
-                                        <button type="submit" class="btn btn-default" style="border-radius:10px;"><i class="fa fa-print"></i> <b>Print</b></button>
+                                        <button type="submit" class="btn btn-default" style="border-radius:5px;"><i class="fa fa-print"></i> <b>Print</b></button>
                                     </div>
                                     <br /><br />
                                 </form>
@@ -184,12 +184,12 @@
                             <input type="text" id="coa_number" name="coa_number" class="form-control"  autocomplete="off" />
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px;">KIRIM</button>
+                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:5px;">KIRIM</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">CLOSE</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:5px;">CLOSE</button>
                 </div>
             </div>
         </div>

@@ -178,14 +178,14 @@
                                 $menu_admin =  $approval['menu_admin'];
                                 ?>
 
-                                <a href="<?= base_url('admin/kontak') ?>" class="btn btn-info" style="width:100px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
+                                <a href="<?= base_url('admin/kontak') ?>" class="btn btn-info" style="width:100px; font-weight:bold; border-radius:5px;"> KEMBALI</a>
                                 
-                                <a  href="<?= base_url('kontak/form/'.$row['id']) ?>" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"> EDIT</a>
+                                <a  href="<?= base_url('kontak/form/'.$row['id']) ?>" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:5px;"> EDIT</a>
                                 
                                 <?php
                                 if($menu_admin == 1){
                                 ?>
-                                <a class="btn btn-danger" style="width:100px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('kontak/hapus/'.$row['id']);?>')"> HAPUS</a>
+                                <a class="btn btn-danger" style="width:100px; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('kontak/hapus/'.$row['id']);?>')"> HAPUS</a>
                                 <?php
                                 }
                                 ?>

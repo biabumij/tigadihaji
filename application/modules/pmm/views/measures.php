@@ -74,7 +74,7 @@
                         <div class="panel-content">
                             <div class="row">
                                 <!--<div class="col-sm-2">
-                                <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT SATUAN</a></button>
+                                <button style="background-color:#88b93c; border:1px solid black; border-radius:5px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT SATUAN</a></button>
                                 <br />
                                 <br />
                                 </div>-->
@@ -142,12 +142,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px;">KIRIM</button>
+                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:5px;">KIRIM</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">CLOSE</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:5px;">CLOSE</button>
                 </div>
             </div>
         </div>

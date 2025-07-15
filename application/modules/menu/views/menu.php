@@ -80,9 +80,9 @@ if($this->session->userdata('admin_group_id') == 1){
                         </div>
                         <div class="panel-content">
                             <div class="leftside-content-header">
-                                <ul class="nav nav-tabs ">
-                                    <li class="active"><a href="#table" data-toggle="tab" aria-expanded="true" style="border-radius:10px; font-weight:bold;">TABLE</a></li>
-                                    <li class=""><a href="#add" data-toggle="tab" aria-expanded="false" style="border-radius:10px; font-weight:bold;">ADD NEW</a></li>
+                                <ul class="nav nav-tabs" style="border-bottom:2px solid #e69500; padding-bottom:10px;">
+                                    <li class="active"><a href="#table" data-toggle="tab" aria-expanded="true" style="border-radius:5px; font-weight:bold;">TABLE</a></li>
+                                    <li class=""><a href="#add" data-toggle="tab" aria-expanded="false" style="border-radius:5px; font-weight:bold;">ADD NEW</a></li>
                                 </ul>
                                 <br />
                                 <div class="tab-content">
@@ -148,7 +148,7 @@ if($this->session->userdata('admin_group_id') == 1){
                                             </div>
                                             <div class="form-group">
                                                 <div class="col-sm-offset-2 col-sm-9">
-                                                    <button type="submit" name="submit" class="btn btn-success" id="btn-submit" data-loading-text="please wait.." style="font-weight:bold; border-radius:10px;">KIRIM</button>
+                                                    <button type="submit" name="submit" class="btn btn-success" id="btn-submit" data-loading-text="please wait.." style="font-weight:bold; border-radius:5px;">KIRIM</button>
                                                 </div>
                                             </div>
                                         </form>

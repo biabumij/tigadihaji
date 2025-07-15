@@ -43,7 +43,7 @@
                                 </div>
                                 <br /><br />
                                 <div class="text-center">
-                                    <a href="<?= site_url('pembelian/penagihan_pembelian_detail/'.$row['id']);?>" class="btn btn-info" style="width:15%; font-weight:bold; border-radius:5px;"> KEMBALI</a>
+                                    <a href="<?= site_url('pembelian/penagihan_pembelian_detail/'.$row['id']);?>" class="btn btn-info" style="width:10%; font-weight:bold; border-radius:5px;"> KEMBALI</a>
                                 </div>
                             </div>
                         </div>
