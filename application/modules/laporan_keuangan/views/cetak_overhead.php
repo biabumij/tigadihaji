@@ -624,7 +624,7 @@
 			<tr>
 				<th align="center" width="20%">5-50320</th>
 				<th align="left" width="50%">Biaya Adm Bank</th>
-				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_beban_adm?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($beban_adm,0,',','.');?></a></th>
+				<th align="center" width="30%" align="right"><a target="_blank" href="<?= base_url("laporan/cetak_beban_adm?filter_date=".$filter_date = date('d-m-Y',strtotime($date1)).' - '.date('d-m-Y',strtotime($date2))) ?>"><?php echo number_format($biaya_adm_bank,0,',','.');?></a></th>
 			</tr>
 			<tr>
 				<th align="center" width="20%">5-50321</th>
