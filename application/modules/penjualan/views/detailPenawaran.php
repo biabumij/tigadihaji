@@ -193,7 +193,7 @@
                                         }
                                         ?>
                                         <form class="form-check" action="<?= base_url("penjualan/rejectedPenawaran/".$penawaran["id"]) ?>">
-                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> REJECT</button>        
+                                            <button type="submit" class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:10px;"> REJECT</button>        
                                         </form>
                                     <?php endif; ?>
 
@@ -209,7 +209,7 @@
                                         <?php
                                         if($delete_penawaran_penjualan == 1){
                                         ?>
-                                        <a class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('penjualan/hapusPenawaranPenjualan/' . $penawaran['id']); ?>')"> HAPUS</a>	
+                                        <a class="btn btn-danger" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('penjualan/hapusPenawaranPenjualan/' . $penawaran['id']); ?>')"> HAPUS</a>	
                                         <?php
                                         }
                                         ?>
