@@ -378,7 +378,7 @@ class Rak extends Secure_Controller {
 				->where("admin_id = $admin_id ")
 				->get()->row_array();
 				$edit_rap =  $approval['edit_rap'];
-				$price_b =  $approval['delete_rap'];
+				$delete_rap =  $approval['delete_rap'];
 				
 				if($edit_rap == 1){
 					$row['edit'] = '<a href="'.site_url().'rak/sunting_rencana_kerja/'.$row['id'].'" class="btn btn-warning" style="border-radius:10px;"><i class="fa fa-edit"></i> </a>';

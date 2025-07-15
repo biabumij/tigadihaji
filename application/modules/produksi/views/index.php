@@ -72,8 +72,14 @@
                                         <li role="presentation" class="active"><a href="#material_on_site" aria-controls="material_on_site" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">STOCK OPNAME</a></li>
                                         <li role="presentation"><a href="#pemakaian_bahan" aria-controls="pemakaian_bahan" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PEMAKAIAN BAHAN</a></li>
                                         <?php
-                                        if(in_array($this->session->userdata('admin_group_id'), array(1))){
+                                        $admin_id = $this->session->userdata('admin_id');
+                                        $approval = $this->db->select('*')
+                                        ->from('tbl_admin')
+                                        ->where("admin_id = $admin_id ")
+                                        ->get()->row_array();
+                                        $kunci_rakor =  $approval['kunci_rakor'];
                                         ?>
+                                        <?php if($kunci_rakor == 1){?>
                                         <li role="presentation"><a href="#pemakaian" aria-controls="pemakaian" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">VERIFIKASI PEMAKAIAN BAHAN</a></li>
                                         <li role="presentation"><a href="#rakor" aria-controls="rakor" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">KUNCI DATA RAKOR</a></li>
                                         <?php

@@ -142,7 +142,14 @@ class Produksi extends Secure_Controller {
 				$row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 
-				if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4){
+				$admin_id = $this->session->userdata('admin_id');
+				$approval = $this->db->select('*')
+				->from('tbl_admin')
+				->where("admin_id = $admin_id ")
+				->get()->row_array();
+				$edit_rap =  $approval['edit_rap'];
+
+				if($edit_rap == 1){
 					$row['actions'] = '<a href="javascript:void(0);" onclick="DeleteDataPemakaian('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
 				}else {
 					$row['actions'] = '-';

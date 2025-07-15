@@ -192,6 +192,7 @@ class Admin extends CI_Controller {
         $status = $this->input->post('status');
         $datecreated = date("Y-m-d H:i:s");
 		$menu_admin = $this->input->post('menu_admin');
+		$kunci_rakor = $this->input->post('kunci_rakor');
 		$approval_penawaran_pembelian = $this->input->post('approval_penawaran_pembelian');
 		$delete_penawaran_pembelian = $this->input->post('delete_penawaran_pembelian');
 		$approval_permintaan_bahan_alat = $this->input->post('approval_permintaan_bahan_alat');
@@ -236,6 +237,7 @@ class Admin extends CI_Controller {
 	        		'update_by'=>$admin_id,
 	        		'dateupdate'=>$datecreated,
 					'menu_admin'=>$menu_admin,
+					'kunci_rakor'=>$kunci_rakor,
 					'approval_penawaran_pembelian'=>$approval_penawaran_pembelian,
 					'delete_penawaran_pembelian'=>$delete_penawaran_pembelian,
 					'approval_permintaan_bahan_alat'=>$approval_permintaan_bahan_alat,
@@ -266,6 +268,7 @@ class Admin extends CI_Controller {
 	        		'update_by'=>$admin_id,
 	        		'dateupdate'=>$datecreated,
 					'menu_admin'=>$menu_admin,
+					'kunci_rakor'=>$kunci_rakor,
 					'approval_penawaran_pembelian'=>$approval_penawaran_pembelian,
 					'delete_penawaran_pembelian'=>$delete_penawaran_pembelian,
 					'approval_permintaan_bahan_alat'=>$approval_permintaan_bahan_alat,

@@ -1406,7 +1406,14 @@ class Pmm extends CI_Controller {
 				$row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 				
-				if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4){
+				$admin_id = $this->session->userdata('admin_id');
+				$approval = $this->db->select('*')
+				->from('tbl_admin')
+				->where("admin_id = $admin_id ")
+				->get()->row_array();
+				$edit_rap =  $approval['edit_rap'];
+
+				if($edit_rap == 1){
 					$uploads_surat_jalan = '<a href="javascript:void(0);" onclick="UploadDocSuratJalan('.$row['id'].')" class="btn btn-success" title="Upload Lampiran" style="border-radius:10px;"><i class="fa fa-upload"></i> </a>';
 					$row['actions'] = $uploads_surat_jalan. '&nbsp;<a href="'.site_url().'produksi/sunting_stock_opname/'.$row['id'].'" class="btn btn-warning" style="border-radius:10px;"><i class="fa fa-edit"></i> </a> <a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="border-radius:10px;"><i class="fa fa-close"></i> </a>';
 				}else {

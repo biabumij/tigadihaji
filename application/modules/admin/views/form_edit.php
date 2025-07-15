@@ -96,6 +96,7 @@
                                 ->where("admin_id = $id ")
                                 ->get()->row_array();
                                 $menu_admin =  $approval['menu_admin'];
+                                $kunci_rakor =  $approval['kunci_rakor'];
                                 $approval_penawaran_pembelian =  $approval['approval_penawaran_pembelian'];
                                 $delete_penawaran_pembelian =  $approval['delete_penawaran_pembelian'];
                                 $approval_permintaan_bahan_alat =  $approval['approval_permintaan_bahan_alat'];
@@ -119,6 +120,10 @@
                                     <label for="name" class="col-sm-2 control-label">Menu Admin<span class="required" aria-required="true">*</span></label>
                                     <div class="col-sm-1">
                                         <input type="checkbox" name="menu_admin" id="menu_admin" value="1"<?= (isset($menu_admin) && $menu_admin == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                    <label for="name" class="col-sm-2 control-label">Kunci Rakor<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="kunci_rakor" id="kunci_rakor" value="1"<?= (isset($kunci_rakor) && $kunci_rakor == 1) ? 'checked' : '' ;?> />
                                     </div>
                                 </div>
                                 <div class="form-group">
