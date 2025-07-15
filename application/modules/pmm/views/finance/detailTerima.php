@@ -91,7 +91,7 @@
                                         <?php
                                         if($delete_biaya == 1){
                                             ?>
-                                            <a class="btn btn-default" style="border-radius:5px; font-weight:bold;" onclick="DeleteData('<?= site_url('pmm/finance/deleteTerimaCoa/'.$detail['id']);?>')">HAPUS</a>
+                                            <a class="btn btn-danger" style="border-radius:5px; font-weight:bold;" onclick="DeleteData('<?= site_url('pmm/finance/deleteTerimaCoa/'.$detail['id']);?>')">HAPUS</a>
                                             <?php
                                         }
                                         ?>

@@ -255,6 +255,9 @@
                     "className": 'text-right',
                 }
             ],
+            "columnDefs": [
+                { "width": "5%", "targets": [0], "className": 'text-center'},
+            ],
             responsive: true,
             searching: true,
         });
@@ -273,14 +276,7 @@
                 { "data": "tanggal_transaksi" },
             ],
             "columnDefs": [
-                {
-                    "targets": [0, 3],
-                    "className": 'text-center',
-                },
-                {
-                    "targets": [2],
-                    "className": 'text-right',
-                }
+                { "width": "5%", "targets": [0], "className": 'text-center'},
             ],
             responsive: true,
             searching: true,
