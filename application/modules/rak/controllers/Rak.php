@@ -377,7 +377,8 @@ class Rak extends Secure_Controller {
 				->from('tbl_admin')
 				->where("admin_id = $admin_id ")
 				->get()->row_array();
-				$edit_rap =  $approval['delete_rap'];
+				$edit_rap =  $approval['edit_rap'];
+				$price_b =  $approval['delete_rap'];
 				
 				if($edit_rap == 1){
 					$row['edit'] = '<a href="'.site_url().'rak/sunting_rencana_kerja/'.$row['id'].'" class="btn btn-warning" style="border-radius:10px;"><i class="fa fa-edit"></i> </a>';
@@ -385,7 +386,7 @@ class Rak extends Secure_Controller {
 					$row['edit'] = '-';
 				}
 
-				if($edit_rap == 1){
+				if($delete_rap == 1){
 					$row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="border-radius:10px;"><i class="fa fa-close"></i> </a>';
 				}else {
 					$row['actions'] = '-';
