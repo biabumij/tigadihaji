@@ -191,6 +191,8 @@ class Admin extends CI_Controller {
         $admin_id = $this->session->userdata('admin_id');
         $status = $this->input->post('status');
         $datecreated = date("Y-m-d H:i:s");
+		$akun_pusat = $this->input->post('akun_pusat');
+		$akun_proyek = $this->input->post('akun_proyek');
 		$menu_admin = $this->input->post('menu_admin');
 		$kunci_rakor = $this->input->post('kunci_rakor');
 		$approval_penawaran_pembelian = $this->input->post('approval_penawaran_pembelian');
@@ -211,6 +213,8 @@ class Admin extends CI_Controller {
 		$delete_tagihan_penjualan = $this->input->post('delete_tagihan_penjualan');
 		$edit_rap = $this->input->post('edit_rap');
 		$delete_rap = $this->input->post('delete_rap');
+		$edit_biaya = $this->input->post('edit_biaya');
+		$delete_biaya = $this->input->post('delete_biaya');
 
         // Update JSON
         // Get Data Old for Filter
@@ -236,6 +240,8 @@ class Admin extends CI_Controller {
 	        		'status'=>$status,
 	        		'update_by'=>$admin_id,
 	        		'dateupdate'=>$datecreated,
+					'akun_pusat'=>$akun_pusat,
+					'akun_proyek'=>$akun_proyek,
 					'menu_admin'=>$menu_admin,
 					'kunci_rakor'=>$kunci_rakor,
 					'approval_penawaran_pembelian'=>$approval_penawaran_pembelian,
@@ -256,6 +262,8 @@ class Admin extends CI_Controller {
 					'delete_tagihan_penjualan'=>$delete_tagihan_penjualan,
 					'edit_rap'=>$edit_rap,
 					'delete_rap'=>$delete_rap,
+					'edit_biaya'=>$edit_biaya,
+					'delete_biaya'=>$delete_biaya,
 	        	);
         	}else {
 	        	$arrayvalues = array(
@@ -267,6 +275,8 @@ class Admin extends CI_Controller {
 	        		'status'=>$status,
 	        		'update_by'=>$admin_id,
 	        		'dateupdate'=>$datecreated,
+					'akun_pusat'=>$akun_pusat,
+					'akun_proyek'=>$akun_proyek,
 					'menu_admin'=>$menu_admin,
 					'kunci_rakor'=>$kunci_rakor,
 					'approval_penawaran_pembelian'=>$approval_penawaran_pembelian,
@@ -287,6 +297,8 @@ class Admin extends CI_Controller {
 					'delete_tagihan_penjualan'=>$delete_tagihan_penjualan,
 					'edit_rap'=>$edit_rap,
 					'delete_rap'=>$delete_rap,
+					'edit_biaya'=>$edit_biaya,
+					'delete_biaya'=>$delete_biaya,
 	        	);
         	}
             $query=$this->crud_global->UpdateDefault('tbl_admin',$arrayvalues,$arraywhere);

@@ -128,9 +128,18 @@
                                 <br /> <br />
                                 <div class="row">
                                     <div class="col-sm-12 text-center">
+                                        <?php
+                                        $admin_id = $this->session->userdata('admin_id');
+                                        $approval = $this->db->select('*')
+                                        ->from('tbl_admin')
+                                        ->where("admin_id = $admin_id ")
+                                        ->get()->row_array();
+                                        $edit_biaya = $approval['edit_biaya'];
+                                        $delete_biaya = $approval['delete_biaya'];
+                                        ?>
                                         <a href="<?= base_url('admin/biaya_bua') ?>" class="btn btn-info" style="width:10%; font-weight:bold; border-radius:5px;"> KEMBALI</a>
 										<?php
-										if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 6){
+										if($edit_biaya == 1){
                                         ?>
 										<?php if($row["status"] === "UNPAID") : ?>
 											<a href="<?= base_url("pmm/biaya/approvalBiaya/".$row["id"]) ?>" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:5px;"> SETUJUI</a>
@@ -142,20 +151,20 @@
 
                                         <?php if($row["status"] === "PAID") : ?>
                                             <a target="_blank" href="<?= base_url('pmm/biaya/cetakBiaya/'.$row["id"]) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:5px;"><i class="fa fa-print"></i> PRINT</a>
-                                            <?php
-                                            if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3){
+                                            <!--<?php
+                                            if($delete_biaya == 1){
                                             ?>
                                             <a  href="<?= base_url('pmm/biaya/form/'.$row['id']) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:5px;"><i class="fa fa-edit"></i> EDIT</a>
                                             <?php
                                             }
                                             ?>
                                             <?php
-                                            if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3){
+                                            if($delete_biaya == 1){
                                             ?>
                                             <a class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('pmm/biaya/delete/'.$row['id']);?>')"><i class="fa fa-close"></i> HAPUS</a>
                                             <?php
                                             }
-                                            ?>
+                                            ?>-->
                                         <?php endif; ?>
                                         
                                     </div>
