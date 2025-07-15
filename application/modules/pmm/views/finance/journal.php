@@ -55,9 +55,18 @@
                             </div>
                         </div>
                         <div class="panel-content">
+                            <?php
+                            $admin_id = $this->session->userdata('admin_id');
+                            $approval = $this->db->select('*')
+                            ->from('tbl_admin')
+                            ->where("admin_id = $admin_id ")
+                            ->get()->row_array();
+                            $akun_pusat =  $approval['akun_pusat'];
+                            $akun_proyek =  $approval['akun_proyek'];
+                            ?>
                             <ul class="nav nav-tabs" role="tablist" style="border-bottom:2px solid #e69500; padding-bottom:10px;">
                                 <?php
-                                if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,7,8))){
+                                if($akun_pusat == 1){
                                 ?>
                                 <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">JURNAL UMUM</a></li>
                                 <?php
@@ -65,7 +74,7 @@
                                 ?>
 
                                 <?php
-                                if(in_array($this->session->userdata('admin_group_id'), array(4,5,6))){
+                                if($akun_proyek == 1){
                                 ?>
                                 <li role="presentation" class="active"><a href="#home_2" aria-controls="home_2" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold; text-transform:uppercase;">BULAN INI</a></li>
                                 <li role="presentation"><a href="#home_3" aria-controls="home_3" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold; text-transform:uppercase;">SEMUA</a></li>
@@ -75,7 +84,7 @@
                             </ul>
                             <div class="tab-content">
                                 <?php
-                                if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,7,8))){
+                                if($akun_pusat == 1){
                                 ?>
                                 <div role="tabpanel" class="tab-pane active" id="home">
                                     <br />
@@ -108,7 +117,7 @@
                                 ?>
 
                                 <?php
-                                if(in_array($this->session->userdata('admin_group_id'), array(4,5,6))){
+                                if($akun_proyek == 1){
                                 ?>
                                 <div role="tabpanel" class="tab-pane active" id="home_2">
                                     <br />

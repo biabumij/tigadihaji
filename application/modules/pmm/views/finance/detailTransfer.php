@@ -78,10 +78,18 @@
                                         </table>
                                     </div>
                                     <div class="col-sm-12 text-right">
+                                        <?php
+                                        $admin_id = $this->session->userdata('admin_id');
+                                        $approval = $this->db->select('*')
+                                        ->from('tbl_admin')
+                                        ->where("admin_id = $admin_id ")
+                                        ->get()->row_array();
+                                        $delete_biaya = $approval['delete_biaya'];
+                                        ?>
                                         <a href="<?= base_url('admin/kas_&_bank') ?>" class="btn btn-info" style="border-radius:5px; font-weight:bold;">KEMBALI</a>
                                         <a target="_blank" href="<?= base_url('pmm/finance/cetakTransferCoa/'.$detail["id"]) ?>" class="btn btn-default" style="border-radius:5px; font-weight:bold;">CETAK</a>
                                         <?php
-                                        if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 6){
+                                         if($delete_biaya == 1){
                                             ?>
                                             <a class="btn btn-default" style="border-radius:5px; font-weight:bold;" onclick="DeleteData('<?= site_url('pmm/finance/deleteTransferCoa/'.$detail['id']);?>')">HAPUS</a>
                                             <?php

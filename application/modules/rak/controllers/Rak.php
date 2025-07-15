@@ -849,14 +849,22 @@ class Rak extends Secure_Controller {
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 				$row['updated_by'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['updated_by']),'admin_name');
                 $row['updated_on'] = date('d/m/Y H:i:s',strtotime($row['updated_on']));
+
+				$admin_id = $this->session->userdata('admin_id');
+				$approval = $this->db->select('*')
+				->from('tbl_admin')
+				->where("admin_id = $admin_id ")
+				->get()->row_array();
+				$edit_rap =  $approval['edit_rap'];
+				$delete_rap =  $approval['delete_rap'];
 				
-				if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 5 || $this->session->userdata('admin_group_id') == 6 || $this->session->userdata('admin_group_id') == 16){
+				if($edit_rap == 1){
 					$row['edit'] = '<a href="'.site_url().'rak/sunting_rencana_cash_flow/'.$row['id'].'" class="btn btn-warning" style="border-radius:5px;"><i class="fa fa-edit"></i> </a>';
 				}else {
 					$row['edit'] = '-';
 				}
 
-				if($this->session->userdata('admin_group_id') == 1){
+				if($delete_rap == 1){
 					$row['delete'] = '<a href="javascript:void(0);" onclick="DeleteDataRencanaCashFlow('.$row['id'].')" class="btn btn-danger" style="border-radius:5px;"><i class="fa fa-close"></i> </a>';
 				}else {
 					$row['delete'] = '-';
