@@ -49,7 +49,7 @@
                                 $url = htmlspecialchars($_SERVER['HTTP_REFERER']);
                                 ?>
                                 <div class="text-center">
-                                    <a href="<?=$url?>" class="btn btn-info" style="font-weight:bold; border-radius:10px;"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                    <a href="<?=$url?>" class="btn btn-info" style="font-weight:bold; border-radius:5px;"><i class="fa fa-arrow-left"></i> Kembali</a>
                                 </div>
 
 
@@ -111,12 +111,12 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Update Komposisi</button>
+                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:5px;"><i class="fa fa-send"></i> Update Komposisi</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:5px;">Close</button>
                 </div>
             </div>
         </div>

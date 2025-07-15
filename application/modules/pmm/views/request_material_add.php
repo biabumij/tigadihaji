@@ -204,7 +204,7 @@
                                             <input type="text" id="volume" name="volume" class="form-control numberformat" required="" autocomplete="off" placeholder="Volume" />
                                         </div>
                                         <div class="col-sm-3">
-                                            <button type="submit" class="btn btn-warning" id="btn-form" style="width:200px; font-weight:bold; border-radius:10px;"><i class="fa fa-plus"></i> TAMBAH PRODUK</button>
+                                            <button type="submit" class="btn btn-warning" id="btn-form" style="width:200px; font-weight:bold; border-radius:5px;"><i class="fa fa-plus"></i> TAMBAH PRODUK</button>
                                         </div>
 
                                         <input type="hidden" id="tax_id" name="tax_id" class="form-control" required="" autocomplete="off" placeholder="Tax ID" readonly=""/>
@@ -255,13 +255,13 @@
                                 <?php
                                 if($data['status'] == 'DRAFT'){
                                     ?>
-                                    <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/3');?>')" class="btn btn-success check-btn" style="width:200px; font-weight:bold; border-radius:10px;"> KIRIM PERMINTAAN</a>
+                                    <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/3');?>')" class="btn btn-success check-btn" style="width:200px; font-weight:bold; border-radius:5px;"> KIRIM PERMINTAAN</a>
                                     <?php
                                 }else if($data['status'] == 'WAITING'){
                                      if($approval_permintaan_bahan_alat == 1){
                                         ?>
-                                        <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/1');?>')" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:10px;"> SETUJUI</a>
-                                        <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/2');?>')" class="btn btn-danger check-btn" style="width:150px; font-weight:bold; border-radius:10px;"> TOLAK</a>
+                                        <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/1');?>')" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:5px;"> SETUJUI</a>
+                                        <a onclick="ProcessForm('<?php echo site_url('pmm/request_materials/process/'.$id.'/2');?>')" class="btn btn-danger check-btn" style="width:150px; font-weight:bold; border-radius:5px;"> TOLAK</a>
                                         <?php
                                     }
                                 }
@@ -269,7 +269,7 @@
                                 ?>
 
                                 <br /><br /><br />
-                                <a href="<?php echo site_url('admin/pembelian#chart');?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
+                                <a href="<?php echo site_url('admin/pembelian#chart');?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:5px;"> KEMBALI</a>
                             </div>
                             
                         </div>

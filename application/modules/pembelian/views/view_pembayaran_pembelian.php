@@ -150,8 +150,8 @@
                                     </div>
                                     <br /><br />
                                     <div class="text-center">
-                                    <a href="<?= base_url('pembelian/penagihan_pembelian_detail/' . $bayar["penagihan_pembelian_id"]) ?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
-                                    <a href="<?= base_url('pembelian/cetak_pembayaran_penagihan_pembelian/' . $bayar["id"]) ?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
+                                    <a href="<?= base_url('pembelian/penagihan_pembelian_detail/' . $bayar["penagihan_pembelian_id"]) ?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:5px;"> KEMBALI</a>
+                                    <a href="<?= base_url('pembelian/cetak_pembayaran_penagihan_pembelian/' . $bayar["id"]) ?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;"> PRINT</a>
                                     
                                     <?php
                                     $admin_id = $this->session->userdata('admin_id');
@@ -166,7 +166,7 @@
                                     <?php
                                     if($verifikasi == 1){
                                     ?>
-                                    <td width="10%"><a href="<?= base_url('pembelian/sunting_pembayaran_pembelian/' . $bayar["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> EDIT</a></td>
+                                    <td width="10%"><a href="<?= base_url('pembelian/sunting_pembayaran_pembelian/' . $bayar["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;"> EDIT</a></td>
                                     <?php
                                     }
                                     ?>
@@ -174,7 +174,7 @@
                                     <?php
                                     if($verifikasi == 1){
                                     ?>
-                                    <button type="button" id="tombol_hapus" class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:10px;"> HAPUS</button>
+                                    <button type="button" id="tombol_hapus" class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:5px;"> HAPUS</button>
                                     <?php
                                     }
                                     ?>  

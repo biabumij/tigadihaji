@@ -119,12 +119,12 @@
                                 $suppliers  = $this->db->order_by('nama', 'asc')->select('*')->get_where('penerima', array('status' => 'PUBLISH', 'rekanan' => 1))->result_array();
                                 $kategori  = $this->db->order_by('nama_kategori_produk', 'asc')->select('*')->get_where('kategori_produk', array('status' => 'PUBLISH'))->result_array();
                                 ?>
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PENAWARAN</a></li>
-									<li role="presentation"><a href="#chart" aria-controls="chart" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PERMINTAAN BAHAN & ALAT</a></li>
-                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PESANAN</a></li>
-                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PENERIMAAN</a></li>
-                                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">TAGIHAN</a></li>
+                                <ul class="nav nav-tabs" role="tablist" style="border-bottom:2px solid #e69500; padding-bottom:10px;">
+                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">PENAWARAN</a></li>
+									<li role="presentation"><a href="#chart" aria-controls="chart" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">PERMINTAAN BAHAN & ALAT</a></li>
+                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">PESANAN</a></li>
+                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">PENERIMAAN</a></li>
+                                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">TAGIHAN</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -135,7 +135,7 @@
                                             <div class="col-sm-3">
                                                 <input type="text" id="filter_date_2" name="filter_date" class="form-control dtpicker input-sm " value="" placeholder="Filter by Date" autocomplete="off">
                                             </div>
-                                            <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('pembelian/penawaran_pembelian'); ?>"><b style="color:white;">BUAT PENAWARAN</b></a></button>
+                                            <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('pembelian/penawaran_pembelian'); ?>"><b style="color:white;">BUAT PENAWARAN</b></a></button>
                                             <br />
                                             <br />
                                             <table class="table table-striped table-hover" id="guest-table" style="width:100%;">
@@ -178,7 +178,7 @@
                                                 ?>
                                             </select>
                                         </div>
-                                        <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenFormRequest()"><b style="color:white;">BUAT PERMINTAAN BAHAN & ALAT</b></a></button>
+                                        <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenFormRequest()"><b style="color:white;">BUAT PERMINTAAN BAHAN & ALAT</b></a></button>
                                     </div>
                                     <br />
                                     <div class="table-responsive">
@@ -272,12 +272,12 @@
 													</div>
 													
 													<div class="form-group">
-														<button type="submit" onclick="tinyMCE.triggerSave(true,true);" class="btn btn-success" id="btn-form" style="font-weight:bold; width;10%; border-radius:10px;"> KIRIM</button>
+														<button type="submit" onclick="tinyMCE.triggerSave(true,true);" class="btn btn-success" id="btn-form" style="font-weight:bold; width;10%; border-radius:5px;"> KIRIM</button>
 													</div>
 												</form>
 											</div>
 											<div class="modal-footer">
-												<button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:10px;">CLOSE</button>
+												<button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:5px;">CLOSE</button>
 											</div>
 										</div>
 									</div>
@@ -332,12 +332,12 @@
                                                         <input type="file" id="file" name="file" class="form-control" required="" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <button type="submit" class="btn btn-success" id="btn-form-doc" style="font-weight:bold; width;10%; border-radius:10px;"> KIRIM</button>
+                                                        <button type="submit" class="btn btn-success" id="btn-form-doc" style="font-weight:bold; width;10%; border-radius:5px;"> KIRIM</button>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:10px;">CLOSE</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:5px;">CLOSE</button>
                                             </div>
                                         </div>
                                     </div>
@@ -393,7 +393,7 @@
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; border-radius:10px;"><b>CLOSE</b></button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; border-radius:5px;"><b>CLOSE</b></button>
                                             </div>
                                         </div>
                                     </div>
@@ -448,8 +448,8 @@
                                             <div class="col-sm-6">
                                                 <div class="text-left">
                                                     <input type="hidden" id="val-receipt-id" name="">
-                                                    <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;">PRINT</button>
-                                                    <button type="button" id="btn_production" class="btn btn-success" style="background-color:#88b93c; border:1px solid black; border-radius:10px;">BUAT PENAGIHAN</button>
+                                                    <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:5px;">PRINT</button>
+                                                    <button type="button" id="btn_production" class="btn btn-success" style="background-color:#88b93c; border-radius:5px;">BUAT PENAGIHAN</button>
                                                 </div>
                                             </div>
                                             <br />
@@ -498,12 +498,12 @@
                                                         <input type="file" id="file" name="file" class="form-control" required="" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <button type="submit" class="btn btn-success" id="btn-form-doc-surat-jalan" style="font-weight:bold; width;10%; border-radius:10px;"> KIRIM</button>
+                                                        <button type="submit" class="btn btn-success" id="btn-form-doc-surat-jalan" style="font-weight:bold; width;10%; border-radius:5px;"> KIRIM</button>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:10px;"> CLOSE</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:5px;"> CLOSE</button>
                                             </div>
                                         </div>
                                     </div>
@@ -529,7 +529,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="text-left">
-                                                <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"><i class="fa fa-print"></i> Print</button>
+                                                <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:5px;"><i class="fa fa-print"></i> Print</button>
                                             </div>
                                         </div>
                                     </form>   
@@ -577,12 +577,12 @@
                                                         <input type="file" id="file" name="file" class="form-control" required="" />
                                                     </div>
                                                     <div class="form-group">
-                                                        <button type="submit" class="btn btn-success" id="btn-form-doc-surat-jalan" style="font-weight:bold; width;10%; border-radius:10px;"> KIRIM</button>
+                                                        <button type="submit" class="btn btn-success" id="btn-form-doc-surat-jalan" style="font-weight:bold; width;10%; border-radius:5px;"> KIRIM</button>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:10px;"> CLOSE</button>
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:5px;"> CLOSE</button>
                                             </div>
                                         </div>
                                     </div>
@@ -813,8 +813,8 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12 text-right">
-                                <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm" id="btn-form" style="font-weight:bold; width;10%; border-radius:10px;"> BATAL</button>
-                                <button type="submit" class="btn btn-success btn-sm" id="btn-form" style="font-weight:bold; width;10%; border-radius:10px;"> KIRIM</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm" id="btn-form" style="font-weight:bold; width;10%; border-radius:5px;"> BATAL</button>
+                                <button type="submit" class="btn btn-success btn-sm" id="btn-form" style="font-weight:bold; width;10%; border-radius:5px;"> KIRIM</button>
                             </div>
                         </div>
                     </form>
@@ -982,7 +982,7 @@
                     <form method="GET" target="_blank" action="<?php echo site_url('pembelian/print_verifikasi_penagihan_pembelian'); ?>">
                         <input type="hidden" name="id" id="verifikasi_penagihan_pembelian_id">
                         <div class="text-right">
-                            <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
+                            <button type="submit" class="btn btn-default" style="border-radius:5px; font-weight:bold;"><i class="fa fa-print"></i> Print</button>
                         </div>
                     </form>
                 </div>

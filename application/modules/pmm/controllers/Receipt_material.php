@@ -170,7 +170,7 @@ class Receipt_material extends CI_Controller {
 				$row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 				
-				$uploads_surat_jalan = '<a href="javascript:void(0);" onclick="UploadDocSuratJalan('.$row['id'].')" class="btn btn-primary" style="border-radius:10px;" title="Upload Surat Jalan" ><i class="fa fa-upload"></i> </a>';
+				$uploads_surat_jalan = '<a href="javascript:void(0);" onclick="UploadDocSuratJalan('.$row['id'].')" class="btn btn-primary" style="border-radius:5px;" title="Upload Surat Jalan" ><i class="fa fa-upload"></i> </a>';
 				$row['uploads_surat_jalan'] = $uploads_surat_jalan.' ';
 				
 				$data[] = $row;
@@ -328,10 +328,10 @@ class Receipt_material extends CI_Controller {
 				$row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 				$edit = false;
-				$edit = '<a href="javascript:void(0);" onclick="EditData('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
+				$edit = '<a href="javascript:void(0);" onclick="EditData('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:5px;"><i class="fa fa-edit"></i> </a>';
 
 				/*if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 5){
-					$row['edits'] = '<a href="javascript:void(0);" onclick="EditData('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
+					$row['edits'] = '<a href="javascript:void(0);" onclick="EditData('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:5px;"><i class="fa fa-edit"></i> </a>';
 				}else {
 					$row['edits'] = '-';
 				}*/
@@ -344,8 +344,8 @@ class Receipt_material extends CI_Controller {
 				$surat_jalan_pembelian =  $approval['surat_jalan_pembelian'];
 
 				if($surat_jalan_pembelian == 1){
-					$row['actions'] = $edit.' <a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
-					//$row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
+					$row['actions'] = $edit.' <a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:5px;"><i class="fa fa-close"></i> </a>';
+					//$row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:5px;"><i class="fa fa-close"></i> </a>';
 				}else {
 					$row['actions'] = '-';
 				}

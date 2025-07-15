@@ -66,11 +66,11 @@
                                 </div>
                             </div>
                             <div class="panel-content">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PENAWARAN</a></li>
-                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">SALES ORDER</a></li>
-                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PENGIRIMAN</a></li>
-                                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">TAGIHAN</a></li>
+                                <ul class="nav nav-tabs" role="tablist" style="border-bottom:2px solid #e69500; padding-bottom:10px;">
+                                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">PENAWARAN</a></li>
+                                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">SALES ORDER</a></li>
+                                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">PENGIRIMAN</a></li>
+                                    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">TAGIHAN</a></li>
                                 </ul>
 
                                 <div class="tab-content">
@@ -81,7 +81,7 @@
                                             <div class="col-sm-3">
                                                 <input type="text" id="filter_date_penawaran" name="filter_date" class="form-control dtpicker input-sm" value="" placeholder="Filter by Date" autocomplete="off">
                                             </div>
-                                            <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('penjualan/penawaran_penjualan'); ?>"><b style="color:white;">BUAT PENAWARAN</b></a></button>
+                                            <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('penjualan/penawaran_penjualan'); ?>"><b style="color:white;">BUAT PENAWARAN</b></a></button>
                                             <br />
                                             <br />
                                             <table class="table table-striped table-hover" id="table_penawaran" style="width:100%">
@@ -109,7 +109,7 @@
                                             <div class="col-sm-3">
                                                 <input type="text" id="filter_date_sales_order" name="filter_date" class="form-control dtpicker input-sm" value="" placeholder="Filter by Date" autocomplete="off">
                                             </div>
-                                            <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('penjualan/sales_po'); ?>"><b style="color:white;">BUAT SALES ORDER</b></a></button>
+                                            <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('penjualan/sales_po'); ?>"><b style="color:white;">BUAT SALES ORDER</b></a></button>
                                             <br />
                                             <br />
                                             <table class="table table-striped table-hover" id="guest-table" style="width:100%">
@@ -158,7 +158,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:10px;">Close</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:5px;">Close</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,7 +213,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; border-radius:10px;"><b>CLOSE</b></button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; border-radius:5px;"><b>CLOSE</b></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -266,8 +266,8 @@
                                                 <br />
                                                 <div class="col-sm-6">
                                                     <div class="text-left">
-                                                        <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"> PRINT</button>
-                                                        <button type="button" id="btn_production" class="btn btn-success" style="background-color:#88b93c; border:1px solid black; border-radius:10px;"> BUAT PENAGIHAN</button>
+                                                        <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:5px;"> PRINT</button>
+                                                        <button type="button" id="btn_production" class="btn btn-success" style="background-color:#88b93c; border-radius:5px;"> BUAT PENAGIHAN</button>
                                                     </div>
                                                 </div>
                                                 <br /><br />
@@ -321,7 +321,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:10px;">Close</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; font-weight:bold; width;10%; border-radius:5px;">Close</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -348,7 +348,7 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="text-left">
-                                                    <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"> PRINT</button>
+                                                    <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:5px;"> PRINT</button>
                                                 </div>
                                             </div>
                                         </form>

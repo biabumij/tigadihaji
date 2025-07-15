@@ -161,15 +161,15 @@
                                     </div>
                                     <div class="row">
                                             <div class="col-sm-12 text-right">
-                                                <a href="<?php echo site_url('pmm/purchase_order/manage/' .$id); ?>" class="btn btn-info" style="margin-top:10px; width:100px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
-                                                <button type="submit" name="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;"> KIRIM</button>
+                                                <a href="<?php echo site_url('pmm/purchase_order/manage/' .$id); ?>" class="btn btn-info" style="margin-top:10px; width:100px; font-weight:bold; border-radius:5px;"> KEMBALI</a>
+                                                <button type="submit" name="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:5px;"> KIRIM</button>
                                                 <!-- <button type="button" id="btn-unedit" class="btn btn-info" style="display:none"><i class="fa fa-undo" ></i></button> -->
                                             </div>
                                     </div>
                                 </form>
                                 <br />
                                 <div class="text-right">
-                                    <button class="btn btn-default" id="btn-view" style="width:250px; font-weight:bold; font-weight:bold; border-radius:10px;"> EDIT & HAPUS SURAT JALAN</button>
+                                    <button class="btn btn-default" id="btn-view" style="width:250px; font-weight:bold; font-weight:bold; border-radius:5px;"> EDIT & HAPUS SURAT JALAN</button>
                                 </div>
                                 <div id="box-view" style="display:none;">
                                     <div style="color:red; font-weight:bold;"> * Data yang tampil adalah data surat jalan dengan status UNCREATED / belum ditagihkan.<br />
@@ -190,7 +190,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-sm-6">
-                                                <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:10px;">PRINT</button>
+                                                <button type="submit" class="btn btn-default" style="width:100px; font-weight:bold; border-radius:5px;">PRINT</button>
                                             </div>
                                         </form>
                                     </div>
@@ -308,12 +308,12 @@
                             <input type="text" id="edit_memo" name="edit_memo" class="form-control" autocomplete="off" />
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px"> Kirim</button>
+                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:5px"> Kirim</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:5px">Close</button>
                 </div>
             </div>
         </div>

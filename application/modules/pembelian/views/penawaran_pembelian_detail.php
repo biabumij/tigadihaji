@@ -214,8 +214,8 @@
                                         <?php
                                         if($approval_penawaran_pembelian == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/approve_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:10px;"> SETUJUI</a>
-                                            <a href="<?= site_url('pembelian/reject_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:10px;"> TOLAK</a>
+                                            <a href="<?= site_url('pembelian/approve_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:5px;"> SETUJUI</a>
+                                            <a href="<?= site_url('pembelian/reject_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;"> TOLAK</a>
                                         <?php
                                         }
                                         ?>
@@ -225,8 +225,8 @@
                                         <?php
                                         if($approval_penawaran_pembelian == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/closed_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:10px;"> CLOSED</a>
-                                            <a href="<?= site_url('pembelian/reject_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:10px;"> REJECT</a>
+                                            <a href="<?= site_url('pembelian/closed_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:5px;"> CLOSED</a>
+                                            <a href="<?= site_url('pembelian/reject_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;"> REJECT</a>
                                         <?php
                                         }
                                         ?>
@@ -236,14 +236,14 @@
                                         <?php
                                         if($approval_penawaran_pembelian == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/open_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:10px;"> OPEN</a>
+                                            <a href="<?= site_url('pembelian/open_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:5px;"> OPEN</a>
                                         <?php
                                         }
                                         ?>
                                         <?php
                                         if($delete_penawaran_pembelian == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:10px;"> HAPUS</a>
+                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;"> HAPUS</a>
                                         <?php
                                         }
                                         ?>
@@ -253,14 +253,14 @@
                                         <?php
                                         if($delete_penawaran_pembelian == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:10px;"> HAPUS</a>
+                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;"> HAPUS</a>
                                         <?php
                                         }
                                         ?>
                                     <?php endif; ?>
 
                                     <br /><br />
-                                    <a href="<?php echo site_url('admin/pembelian');?>" class="btn btn-info" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
+                                    <a href="<?php echo site_url('admin/pembelian');?>" class="btn btn-info" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> KEMBALI</a>
                                 </div>
                                 
                             </div>

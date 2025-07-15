@@ -356,7 +356,7 @@
                                     <?php
                                     if($verifikasi == 1){
                                     ?>
-                                    <a class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')"> HAPUS</a>
+                                    <a class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')"> HAPUS</a>
                                     <?php
                                     }
                                 }
@@ -366,8 +366,8 @@
                                     <?php
                                     if($verifikasi == 1){
                                     ?>
-                                    <a href="<?= site_url('pembelian/pembayaran_panagihan/' . $row['id']); ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> KIRIM PEMBAYARAN</a>
-                                    <a href="<?= site_url('pembelian/closed_pembayaran_penagihan/' . $row['id']); ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PEMBAYARAN LUNAS</a>
+                                    <a href="<?= site_url('pembelian/pembayaran_panagihan/' . $row['id']); ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;"> KIRIM PEMBAYARAN</a>
+                                    <a href="<?= site_url('pembelian/closed_pembayaran_penagihan/' . $row['id']); ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;"> PEMBAYARAN LUNAS</a>
                                     <?php
                                     }
                                     ?>
@@ -375,15 +375,15 @@
                                     <?php
                                     if($verifikasi == 1){
                                     ?>
-                                    <a href="<?= base_url('pembelian/sunting_tagihan/' . $row["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> EDIT TAGIHAN</a>
-                                    <a href="<?= base_url('pembelian/sunting_verifikasi/' . $row["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> EDIT VERIFIKASI</a>
+                                    <a href="<?= base_url('pembelian/sunting_tagihan/' . $row["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;"> EDIT TAGIHAN</a>
+                                    <a href="<?= base_url('pembelian/sunting_verifikasi/' . $row["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;"> EDIT VERIFIKASI</a>
                                     <?php
                                     }
                                     ?>
                                     <?php
                                     if($verifikasi == 1){
                                     ?>
-                                    <a class="btn btn-danger" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')"  style="width:150px; font-weight:bold; border-radius:10px;"> HAPUS</a>
+                                    <a class="btn btn-danger" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')"  style="width:150px; font-weight:bold; border-radius:5px;"> HAPUS</a>
                                     <?php
                                     }
                                     ?>
@@ -394,7 +394,7 @@
                                     <?php
                                     if($verifikasi == 1){
                                     ?>
-                                    <a href="<?= site_url('pembelian/open_penagihan/' . $row['id']); ?>" class="btn btn-default" style="width:20%; font-weight:bold; border-radius:10px;"> PEMBAYARAN BELUM LUNAS</a>
+                                    <a href="<?= site_url('pembelian/open_penagihan/' . $row['id']); ?>" class="btn btn-default" style="width:20%; font-weight:bold; border-radius:5px;"> PEMBAYARAN BELUM LUNAS</a>
                                     <?php
                                     }
                                     ?>
@@ -402,7 +402,7 @@
                                     <?php
                                     if($delete_tagihan_pembelian == 1){
                                     ?>
-                                    <a class="btn btn-danger" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')" style="width:150px; font-weight:bold; border-radius:10px;"> HAPUS</a>
+                                    <a class="btn btn-danger" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')" style="width:150px; font-weight:bold; border-radius:5px;"> HAPUS</a>
                                     <?php
                                     }
                                     ?>
@@ -410,12 +410,12 @@
                                 ?>
                             </div>
                             <div class="text-center">
-                                <a href="<?php echo site_url('admin/pembelian#settings'); ?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
+                                <a href="<?php echo site_url('admin/pembelian#settings'); ?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:5px;"> KEMBALI</a>
                             </div>
                             <div class="container-fluid">
                                 <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#menu1" aria-controls="menu2" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">DAFTAR SURAT JALAN</a></li>
-                                    <li role="presentation"><a href="#menu2" aria-controls="menu2" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">DAFTAR PEMBAYARAN</a></li>
+                                    <li role="presentation" class="active"><a href="#menu1" aria-controls="menu2" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">DAFTAR SURAT JALAN</a></li>
+                                    <li role="presentation"><a href="#menu2" aria-controls="menu2" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">DAFTAR PEMBAYARAN</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="menu1">

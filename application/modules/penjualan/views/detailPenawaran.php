@@ -176,24 +176,24 @@
                                         <?php
                                         if($approval_penawaran_penjualan == 1){
                                             ?>
-                                                <a href="<?= site_url('penjualan/approvalPenawaran/' . $penawaran['id']); ?>" class="btn btn-success" style="width:100px; font-weight:bold; border-radius:10px;"> SETUJUI</a>
-                                                <a href="<?= site_url('penjualan/rejectedPenawaran/' . $penawaran['id']); ?>" class="btn btn-danger" style="width:100px; font-weight:bold; border-radius:10px;"> TOLAK</a>
+                                                <a href="<?= site_url('penjualan/approvalPenawaran/' . $penawaran['id']); ?>" class="btn btn-success" style="width:100px; font-weight:bold; border-radius:5px;"> SETUJUI</a>
+                                                <a href="<?= site_url('penjualan/rejectedPenawaran/' . $penawaran['id']); ?>" class="btn btn-danger" style="width:100px; font-weight:bold; border-radius:5px;"> TOLAK</a>
                                             <?php
                                         }
                                         ?>
                                     <?php endif; ?>
 
                                     <?php if($penawaran["status"] === "OPEN") : ?>
-                                        <a href="<?= base_url("penjualan/cetak_penawaran_penjualan/".$penawaran["id"]) ?>" target="_blank" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
+                                        <a href="<?= base_url("penjualan/cetak_penawaran_penjualan/".$penawaran["id"]) ?>" target="_blank" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> PRINT</a>
                                         <?php
                                         if($approval_penawaran_penjualan == 1){
                                             ?>
-                                            <a href="<?= base_url("penjualan/closed_penawaran_penjualan/".$penawaran["id"]) ?>" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> CLOSED</a>			
+                                            <a href="<?= base_url("penjualan/closed_penawaran_penjualan/".$penawaran["id"]) ?>" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> CLOSED</a>			
                                             <?php
                                         }
                                         ?>
                                         <form class="form-check" action="<?= base_url("penjualan/rejectedPenawaran/".$penawaran["id"]) ?>">
-                                            <button type="submit" class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:10px;"> REJECT</button>        
+                                            <button type="submit" class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:5px;"> REJECT</button>        
                                         </form>
                                     <?php endif; ?>
 
@@ -201,7 +201,7 @@
                                         <?php
                                         if($approval_penawaran_penjualan == 1){
                                         ?>
-                                        <a href="<?= base_url("penjualan/open_penawaran_penjualan/".$penawaran["id"]) ?>" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> OPEN</a>	
+                                        <a href="<?= base_url("penjualan/open_penawaran_penjualan/".$penawaran["id"]) ?>" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> OPEN</a>	
                                         <?php
                                         }
                                         ?>
@@ -209,7 +209,7 @@
                                         <?php
                                         if($delete_penawaran_penjualan == 1){
                                         ?>
-                                        <a class="btn btn-danger" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('penjualan/hapusPenawaranPenjualan/' . $penawaran['id']); ?>')"> HAPUS</a>	
+                                        <a class="btn btn-danger" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('penjualan/hapusPenawaranPenjualan/' . $penawaran['id']); ?>')"> HAPUS</a>	
                                         <?php
                                         }
                                         ?>
@@ -219,14 +219,14 @@
                                         <?php
                                         if($delete_penawaran_penjualan == 1){
                                         ?>
-                                        <a class="btn btn-danger" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('penjualan/hapusPenawaranPenjualan/' . $penawaran['id']); ?>')"> HAPUS</a>		
+                                        <a class="btn btn-danger" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('penjualan/hapusPenawaranPenjualan/' . $penawaran['id']); ?>')"> HAPUS</a>		
                                         <?php
                                         }
                                         ?>
                                     <?php endif; ?>
 
                                     <br /><br /><br />
-                                    <a href="<?php echo site_url('admin/penjualan');?>" class="btn btn-info" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
+                                    <a href="<?php echo site_url('admin/penjualan');?>" class="btn btn-info" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> KEMBALI</a>
                                 </div>
 
                             </div>

@@ -43,7 +43,7 @@
                                 </div>
                                 <br /><br />
                                 <div class="text-center">
-                                    <a href="<?= site_url('pembelian/penagihan_pembelian_detail/'.$row['penagihan_pembelian_id']);?>" class="btn btn-info" style="width:15%; font-weight:bold; border-radius:10px;"> KEMBALI</a>
+                                    <a href="<?= site_url('pembelian/penagihan_pembelian_detail/'.$row['penagihan_pembelian_id']);?>" class="btn btn-info" style="width:15%; font-weight:bold; border-radius:5px;"> KEMBALI</a>
                                 </div>
                             </div>
                         </div>
@@ -272,12 +272,12 @@
                             <tbody>
                         </table>    
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px;"> UPDATE VERIFIKASI</button>
+                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:5px;"> UPDATE VERIFIKASI</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">CLOSE</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:5px;">CLOSE</button>
                 </div>
             </div>
         </div>

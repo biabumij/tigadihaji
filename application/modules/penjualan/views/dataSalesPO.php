@@ -223,16 +223,16 @@
                                 $approval_so_penjualan =  $approval['approval_so_penjualan'];
                                 $delete_so_penjualan =  $approval['delete_so_penjualan'];
                                 ?>
-                                <a href="<?php echo site_url('admin/penjualan#profile'); ?>" class="btn btn-info" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
+                                <a href="<?php echo site_url('admin/penjualan#profile'); ?>" class="btn btn-info" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> KEMBALI</a>
 
                                 <?php if($sales_po["status"] === "DRAFT") : ?>
-                                    <a href="<?= base_url("penjualan/cetak_sales_order_draft/".$sales_po["id"]) ?>" target="_blank" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> PRINT (DRAFT)</a>
+                                    <a href="<?= base_url("penjualan/cetak_sales_order_draft/".$sales_po["id"]) ?>" target="_blank" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> PRINT (DRAFT)</a>
                                     
                                     <?php
                                     if($approval_so_penjualan == 1){
                                     ?>
-                                        <a href="<?= site_url('penjualan/approvalSalesPO/' . $sales_po['id']); ?>" class="btn btn-success" style="margin-bottom:0px; width:150px; font-weight:bold; border-radius:10px;"> SETUJUI</a>
-                                    <a href="<?= site_url('penjualan/rejectedSalesPO/' . $sales_po['id']); ?>" class="btn btn-danger" style="margin-bottom:0px; width:150px; font-weight:bold; border-radius:10px;"> TOLAK</a>
+                                        <a href="<?= site_url('penjualan/approvalSalesPO/' . $sales_po['id']); ?>" class="btn btn-success" style="margin-bottom:0px; width:150px; font-weight:bold; border-radius:5px;"> SETUJUI</a>
+                                    <a href="<?= site_url('penjualan/rejectedSalesPO/' . $sales_po['id']); ?>" class="btn btn-danger" style="margin-bottom:0px; width:150px; font-weight:bold; border-radius:5px;"> TOLAK</a>
                                     <?php
                                     }
                                     ?>
@@ -240,16 +240,16 @@
                                 ?>
 
                                 <?php if($sales_po["status"] === "OPEN") : ?>
-                                <a href="<?= base_url("penjualan/cetak_sales_order/".$sales_po["id"]) ?>" target="_blank" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
+                                <a href="<?= base_url("penjualan/cetak_sales_order/".$sales_po["id"]) ?>" target="_blank" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> PRINT</a>
                                 
-                                <a href="<?= base_url("pmm/productions/add?po_id=".$sales_po["id"]) ?>"  class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;"> KIRIM PRODUK</a>
+                                <a href="<?= base_url("pmm/productions/add?po_id=".$sales_po["id"]) ?>"  class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> KIRIM PRODUK</a>
                                 
                                 <?php
                                     if($approval_so_penjualan == 1){
                                     ?>
                                         <form class="form-approval" action="<?= base_url("penjualan/closed_sales_order/".$sales_po["id"]) ?>">
-                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> CLOSED</button>
-                                            <a href="<?= site_url('penjualan/reject_sales_order/' . $sales_po["id"]); ?>" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> REJECT</a>      
+                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;"> CLOSED</button>
+                                            <a href="<?= site_url('penjualan/reject_sales_order/' . $sales_po["id"]); ?>" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:5px;"> REJECT</a>      
                                         </form>
                                         				
                                     <?php
@@ -259,19 +259,19 @@
                                 ?>
                             
                                 <?php if($sales_po["status"] === "CLOSED") : ?>
-                                <a href="<?= base_url("penjualan/cetak_sales_order/".$sales_po["id"]) ?>" target="_blank" class="btn btn-default" style="margin-bottom:0px; width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
+                                <a href="<?= base_url("penjualan/cetak_sales_order/".$sales_po["id"]) ?>" target="_blank" class="btn btn-default" style="margin-bottom:0px; width:150px; font-weight:bold; border-radius:5px;"> PRINT</a>
                                     <?php
                                     if($approval_so_penjualan == 1){
                                     ?>
-                                        <a class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;" href="<?= base_url("penjualan/open_sales_order/".$sales_po["id"]) ?>"> OPEN</a>
-                                        <a href="<?= site_url('penjualan/reject_sales_order/' . $sales_po["id"]); ?>" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> REJECT</a>
+                                        <a class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;" href="<?= base_url("penjualan/open_sales_order/".$sales_po["id"]) ?>"> OPEN</a>
+                                        <a href="<?= site_url('penjualan/reject_sales_order/' . $sales_po["id"]); ?>" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:5px;"> REJECT</a>
                                     <?php
                                     }
                                     ?>
                                     <?php
                                     if($delete_so_penjualan == 1){
                                     ?>
-                                        <a class="btn btn-danger" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('penjualan/hapus_sales_po/'.$sales_po['id']);?>')"> HAPUS</a>
+                                        <a class="btn btn-danger" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('penjualan/hapus_sales_po/'.$sales_po['id']);?>')"> HAPUS</a>
                                     <?php
                                     }
                                     ?>
@@ -281,7 +281,7 @@
                                     <?php
                                     if($delete_so_penjualan == 1){
                                         ?>
-                                        <a class="btn btn-danger" style="margin-top:10px; width:150px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('penjualan/hapus_sales_po/'.$sales_po['id']);?>')"> HAPUS</a>
+                                        <a class="btn btn-danger" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('penjualan/hapus_sales_po/'.$sales_po['id']);?>')"> HAPUS</a>
                                                         
                                     <?php
                                     }

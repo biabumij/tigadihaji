@@ -63,7 +63,7 @@
                                 <h3>Detail Transaksi</h3>
                                 <div class="text-left">
                                     <a href="<?php echo site_url('admin/laporan_keuangan');?>">
-                                    <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:10px; line-height:30px;"><b>KEMBALI KE LAPORAN KEUANGAN</b></button></a>
+                                    <button style="color:white; background-color:#5bc0de; border:1px solid black; border-radius:5px; line-height:30px;"><b>KEMBALI KE LAPORAN KEUANGAN</b></button></a>
                                 </div>
                             </div>
                             <div class="panel-content">

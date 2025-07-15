@@ -128,12 +128,12 @@
                                         $verifikasi_penjualan =  $approval['verifikasi_penjualan'];
                                         $delete_tagihan_penjualan =  $approval['delete_tagihan_penjualan'];
                                         ?>
-                                        <a href="<?= base_url('penjualan/detailPenagihan/' . $bayar["penagihan_id"]) ?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
-                                        <a href="<?= base_url('penjualan/cetak_pembayaran/' . $bayar["id"]) ?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
+                                        <a href="<?= base_url('penjualan/detailPenagihan/' . $bayar["penagihan_id"]) ?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:5px;"> KEMBALI</a>
+                                        <a href="<?= base_url('penjualan/cetak_pembayaran/' . $bayar["id"]) ?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;"> PRINT</a>
                                         <?php
                                         if($verifikasi_penjualan == 1){
                                         ?>
-                                        <a href="<?= base_url('penjualan/sunting_pembayaran/' . $bayar["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> EDIT</a>
+                                        <a href="<?= base_url('penjualan/sunting_pembayaran/' . $bayar["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;"> EDIT</a>
                                         <?php
                                         }
                                         ?>
@@ -141,7 +141,7 @@
                                         <?php
                                         if($verifikasi_penjualan == 1){
                                         ?>
-                                        <button type="button" id="tombol_hapus" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> HAPUS</button>
+                                        <button type="button" id="tombol_hapus" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:5px;"> HAPUS</button>
                                         <?php
                                         }
                                         ?>  
