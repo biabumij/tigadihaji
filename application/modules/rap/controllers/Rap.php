@@ -568,7 +568,14 @@ class Rap extends Secure_Controller {
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 				$row['print'] = '<a href="'.site_url().'rap/cetak_rap_alat/'.$row['id'].'" target="_blank" class="btn btn-info" style="border-radius:10px;"><i class="fa fa-print"></i> </a>';
 				
-				if(in_array($this->session->userdata('admin_id'), array(1,6))){
+				$admin_id = $this->session->userdata('admin_id');
+				$approval = $this->db->select('*')
+				->from('tbl_admin')
+				->where("admin_id = $admin_id ")
+				->get()->row_array();
+				$delete_rap =  $approval['delete_rap'];
+				
+				if($delete_rap == 1){
 					$row['actions'] = '<a href="javascript:void(0);" onclick="DeleteDataAlat('.$row['id'].')" class="btn btn-danger" style="border-radius:10px;"><i class="fa fa-close"></i> </a>';
 				}else {
 					$row['actions'] = '-';
@@ -954,7 +961,14 @@ class Rap extends Secure_Controller {
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 				$row['print'] = '<a href="'.site_url().'rap/cetak_rap_bua/'.$row['id'].'" target="_blank" class="btn btn-info" style="border-radius:10px;"><i class="fa fa-print"></i> </a>';
 				
-				if(in_array($this->session->userdata('admin_id'), array(1,6))){
+				$admin_id = $this->session->userdata('admin_id');
+				$approval = $this->db->select('*')
+				->from('tbl_admin')
+				->where("admin_id = $admin_id ")
+				->get()->row_array();
+				$delete_rap =  $approval['delete_rap'];
+
+				if($delete_rap == 1){
 					$row['actions'] = '<a href="javascript:void(0);" onclick="DeleteDataBUA('.$row['id'].')" class="btn btn-danger" style="border-radius:10px;"><i class="fa fa-close"></i> </a>';
 				}else {
 					$row['actions'] = '-';
