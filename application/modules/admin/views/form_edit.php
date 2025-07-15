@@ -110,6 +110,8 @@
                                 $approval_so_penjualan =  $approval['approval_so_penjualan'];
                                 $delete_so_penjualan =  $approval['delete_so_penjualan'];
                                 $surat_jalan_penjualan =  $approval['surat_jalan_penjualan'];
+                                $verifikasi_penjualan =  $approval['verifikasi_penjualan'];
+                                $delete_tagihan_penjualan =  $approval['delete_tagihan_penjualan'];
                                 ?>
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">Menu Admin<span class="required" aria-required="true">*</span></label>
@@ -152,11 +154,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name" class="col-sm-2 control-label">Verifikasi Tagihan<span class="required" aria-required="true">*</span></label>
+                                    <label for="name" class="col-sm-2 control-label">Verifikasi Tagihan Pemebelian<span class="required" aria-required="true">*</span></label>
                                     <div class="col-sm-1">
                                         <input type="checkbox" name="verifikasi" id="verifikasi" value="1"<?= (isset($verifikasi) && $verifikasi == 1) ? 'checked' : '' ;?> />
                                     </div>
-                                    <label for="name" class="col-sm-2 control-label">Hapus Tagihan<span class="required" aria-required="true">*</span></label>
+                                    <label for="name" class="col-sm-2 control-label">Hapus Tagihan Pemebelian<span class="required" aria-required="true">*</span></label>
                                     <div class="col-sm-1">
                                         <input type="checkbox" name="delete_tagihan_pembelian" id="delete_tagihan_pembelian" value="1"<?= (isset($delete_tagihan_pembelian) && $delete_tagihan_pembelian == 1) ? 'checked' : '' ;?> />
                                     </div>
@@ -183,6 +185,16 @@
                                     <label for="name" class="col-sm-2 control-label">Hapus Surat Jalan Penjualan<span class="required" aria-required="true">*</span></label>
                                     <div class="col-sm-1">
                                         <input type="checkbox" name="surat_jalan_penjualan" id="surat_jalan_penjualan" value="1"<?= (isset($surat_jalan_penjualan) && $surat_jalan_penjualan == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Verifikasi Tagihan Penjualan<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="verifikasi_penjualan" id="verifikasi_penjualan" value="1"<?= (isset($verifikasi_penjualan) && $verifikasi_penjualan == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                    <label for="name" class="col-sm-2 control-label">Hapus Tagihan Penjualan<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="delete_tagihan_penjualan" id="delete_tagihan_penjualan" value="1"<?= (isset($delete_tagihan_penjualan) && $delete_tagihan_penjualan == 1) ? 'checked' : '' ;?> />
                                     </div>
                                 </div>
                                 <div class="form-group text-center">

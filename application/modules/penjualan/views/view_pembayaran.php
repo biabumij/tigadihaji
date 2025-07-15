@@ -119,10 +119,19 @@
                                     </div>
                                     <br /><br />
                                     <div class="text-center">
+                                        <?php
+                                        $admin_id = $this->session->userdata('admin_id');
+                                        $approval = $this->db->select('*')
+                                        ->from('tbl_admin')
+                                        ->where("admin_id = $admin_id ")
+                                        ->get()->row_array();
+                                        $verifikasi_penjualan =  $approval['verifikasi_penjualan'];
+                                        $delete_tagihan_penjualan =  $approval['delete_tagihan_penjualan'];
+                                        ?>
                                         <a href="<?= base_url('penjualan/detailPenagihan/' . $bayar["penagihan_id"]) ?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:10px;"> KEMBALI</a>
                                         <a href="<?= base_url('penjualan/cetak_pembayaran/' . $bayar["id"]) ?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> PRINT</a>
                                         <?php
-                                        if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 8 || $this->session->userdata('admin_id') == 9){
+                                        if($verifikasi_penjualan == 1){
                                         ?>
                                         <a href="<?= base_url('penjualan/sunting_pembayaran/' . $bayar["id"]) ?>" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;"> EDIT</a>
                                         <?php
@@ -130,7 +139,7 @@
                                         ?>
 
                                         <?php
-                                        if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6 || $this->session->userdata('admin_id') == 8 || $this->session->userdata('admin_id') == 9){
+                                        if($verifikasi_penjualan == 1){
                                         ?>
                                         <button type="button" id="tombol_hapus" class="btn btn-default" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:10px;"> HAPUS</button>
                                         <?php

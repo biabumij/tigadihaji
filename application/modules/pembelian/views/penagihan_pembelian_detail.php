@@ -381,7 +381,7 @@
                                     }
                                     ?>
                                     <?php
-                                    if($delete_tagihan_pembelian == 1){
+                                    if($verifikasi == 1){
                                     ?>
                                     <a class="btn btn-danger" onclick="DeleteData('<?= site_url('pembelian/delete_penagihan_pembelian/' . $row['id']); ?>')"  style="width:150px; font-weight:bold; border-radius:10px;"> HAPUS</a>
                                     <?php
