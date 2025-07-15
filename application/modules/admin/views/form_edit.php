@@ -154,11 +154,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name" class="col-sm-2 control-label">Verifikasi Tagihan Pemebelian<span class="required" aria-required="true">*</span></label>
+                                    <label for="name" class="col-sm-2 control-label">Verifikasi Tagihan Pembelian<span class="required" aria-required="true">*</span></label>
                                     <div class="col-sm-1">
                                         <input type="checkbox" name="verifikasi" id="verifikasi" value="1"<?= (isset($verifikasi) && $verifikasi == 1) ? 'checked' : '' ;?> />
                                     </div>
-                                    <label for="name" class="col-sm-2 control-label">Hapus Tagihan Pemebelian<span class="required" aria-required="true">*</span></label>
+                                    <label for="name" class="col-sm-2 control-label">Hapus Tagihan PemebPembelianelian<span class="required" aria-required="true">*</span></label>
                                     <div class="col-sm-1">
                                         <input type="checkbox" name="delete_tagihan_pembelian" id="delete_tagihan_pembelian" value="1"<?= (isset($delete_tagihan_pembelian) && $delete_tagihan_pembelian == 1) ? 'checked' : '' ;?> />
                                     </div>
