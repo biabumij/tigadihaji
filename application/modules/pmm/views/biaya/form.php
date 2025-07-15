@@ -76,7 +76,7 @@
                                             <input type="text" class="form-control numberformat" name="jumlah" placeholder="Jumlah">
                                         </div>
                                         <div class="col-sm-3">
-                                            <button type="submit" class="btn btn-warning" id="btn-form" style="font-weight:bold; border-radius:10px;"><i class="fa fa-plus"></i> TAMBAH</button>
+                                            <button type="submit" class="btn btn-warning" id="btn-form" style="font-weight:bold; border-radius:5px;"><i class="fa fa-plus"></i> TAMBAH</button>
                                         </div>
                                     </div>
                                 </form>
@@ -100,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a href="<?= base_url('admin/biaya_bua') ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:10px;"> BATAL</a>
+                                <a href="<?= base_url('admin/biaya_bua') ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;"> BATAL</a>
                             </div>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">CLOSE</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:5px;">CLOSE</button>
                 </div>
             </div>
         </div>
@@ -224,12 +224,12 @@
                             <input type="text" id="total" name="total" class="form-control numberformat" required="" readonly="" autocomplete="off" />
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:10px;"><i class="fa fa-send"></i> Update Biaya</button>
+                            <button type="submit" class="btn btn-success" id="btn-form" style="font-weight:bold; border-radius:5px;"><i class="fa fa-send"></i> Update Biaya</button>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:10px;">Close</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="font-weight:bold; border-radius:5px;">Close</button>
                 </div>
             </div>
         </div>

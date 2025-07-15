@@ -53,11 +53,11 @@
                                     </div>
                                 </div>
                                 <div class="panel-content">
-                                    <ul class="nav nav-tabs" role="tablist">
+                                    <ul class="nav nav-tabs" role="tablist" style="border-bottom:2px solid #e69500; padding-bottom:10px;">
                                         <?php
                                         if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,7,8))){
                                         ?>
-                                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">BIAYA BUA</a></li>
+                                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">BIAYA BUA</a></li>
                                         <?php
                                         }
                                         ?>
@@ -65,8 +65,8 @@
                                         <?php
                                         if(in_array($this->session->userdata('admin_group_id'), array(4,5,6))){
                                         ?>
-                                        <li role="presentation" class="active"><a href="#home_2" aria-controls="home_2" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold; text-transform:uppercase;">BULAN INI</a></li>
-                                        <li role="presentation"><a href="#home_3" aria-controls="home_3" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold; text-transform:uppercase;">SEMUA</a></li>
+                                        <li role="presentation" class="active"><a href="#home_2" aria-controls="home_2" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold; text-transform:uppercase;">BULAN INI</a></li>
+                                        <li role="presentation"><a href="#home_3" aria-controls="home_3" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold; text-transform:uppercase;">SEMUA</a></li>
                                         <?php
                                         }
                                         ?>
@@ -81,7 +81,7 @@
                                             <div class="col-sm-3">
                                                 <input type="text" id="filter_date_biaya" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
                                             </div>
-                                            <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('pmm/biaya/tambah_biaya'); ?>"><b style="color:white;">BUAT BIAYA BUA</b></a></button>
+                                            <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('pmm/biaya/tambah_biaya'); ?>"><b style="color:white;">BUAT BIAYA BUA</b></a></button>
                                             <br />
                                             <br />
                                             <h3 class="text-center"></h3>
@@ -115,7 +115,7 @@
                                             <div class="col-sm-3">
                                                 <input type="text" id="filter_date_biaya_2" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
                                             </div>
-                                            <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('pmm/biaya/tambah_biaya'); ?>"><b style="color:white;">BUAT BIAYA BUA</b></a></button>
+                                            <button style="background-color:#88b93c; border:1px solid black; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('pmm/biaya/tambah_biaya'); ?>"><b style="color:white;">BUAT BIAYA BUA</b></a></button>
                                             <br />
                                             <br />
                                             <h3 class="text-center"></h3>
@@ -143,7 +143,7 @@
                                             <div class="col-sm-3">
                                                 <input type="text" id="filter_date_biaya_3" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
                                             </div>
-                                            <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('pmm/biaya/tambah_biaya'); ?>"><b style="color:white;">BUAT BIAYA BUA</b></a></button>
+                                            <button style="background-color:#88b93c; border:1px solid black; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('pmm/biaya/tambah_biaya'); ?>"><b style="color:white;">BUAT BIAYA BUA</b></a></button>
                                             <br />
                                             <br />
                                             <h3 class="text-center"></h3>

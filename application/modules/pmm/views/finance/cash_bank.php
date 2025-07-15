@@ -71,10 +71,10 @@
                             
                         </div>
                         <div class="panel-content">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">DAFTAR AKUN</a></li>
-                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">TRANSFER UANG</a></li>
-                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">DITERIMA UANG</a></li>
+                            <ul class="nav nav-tabs" role="tablist" style="border-bottom:2px solid #e69500; padding-bottom:10px;">
+                                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">DAFTAR AKUN</a></li>
+                                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">TRANSFER UANG</a></li>
+                                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">DITERIMA UANG</a></li>
                             </ul>
                          
                             <div class="tab-content">
@@ -100,7 +100,7 @@
 
                                 <div role="tabpanel" class="tab-pane" id="profile">
                                     <br>
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?= site_url("pmm/finance/transfer_uang") ?>"><b style="color:white;">BUAT TRANSFER UANG</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?= site_url("pmm/finance/transfer_uang") ?>"><b style="color:white;">BUAT TRANSFER UANG</b></a></button>
                                     <br />
                                     <br />
                                     <div class="table-responsive">
@@ -122,7 +122,7 @@
 
                                 <div role="tabpanel" class="tab-pane" id="messages">
                                     <br>
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?= site_url("pmm/finance/terima_uang") ?>"><b style="color:white;">BUAT TERIMA UANG</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?= site_url("pmm/finance/terima_uang") ?>"><b style="color:white;">BUAT TERIMA UANG</b></a></button>
                                     <br />
                                     <br />
                                     <div class="table-responsive">

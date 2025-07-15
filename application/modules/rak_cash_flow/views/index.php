@@ -51,13 +51,13 @@
                                 </div>
                             </div>
                             <div class="panel-content">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#rencana_cash_flow" aria-controls="rencana_cash_flow" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">RENCANA CASH FLOW</a></li>
+                                <ul class="nav nav-tabs" role="tablist" style="border-bottom:2px solid #e69500; padding-bottom:10px;">
+                                    <li role="presentation" class="active"><a href="#rencana_cash_flow" aria-controls="rencana_cash_flow" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">RENCANA CASH FLOW</a></li>
                                 </ul>
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane active" id="rencana_cash_flow">
                                         <br />
-                                        <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('rak/form_rencana_cash_flow'); ?>"><b style="color:white;">BUAT RENCANA CASH FLOW</b></a></button>								
+                                        <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('rak/form_rencana_cash_flow'); ?>"><b style="color:white;">BUAT RENCANA CASH FLOW</b></a></button>								
                                         <div class="table-responsive">
                                             <table class="table table-striped table-hover" id="table_rencana_cash_flow" style="width:100%">
                                                 <thead>

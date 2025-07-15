@@ -78,12 +78,12 @@
                                         </table>
                                     </div>
                                     <div class="col-sm-12 text-right">
-                                        <a href="<?= base_url('admin/kas_&_bank') ?>" class="btn btn-info" style="border-radius:10px; font-weight:bold;">KEMBALI</a>
-                                        <a target="_blank" href="<?= base_url('pmm/finance/cetakTerimaCoa/'.$detail["id"]) ?>" class="btn btn-default" style="border-radius:10px; font-weight:bold;">CETAK</a>
+                                        <a href="<?= base_url('admin/kas_&_bank') ?>" class="btn btn-info" style="border-radius:5px; font-weight:bold;">KEMBALI</a>
+                                        <a target="_blank" href="<?= base_url('pmm/finance/cetakTerimaCoa/'.$detail["id"]) ?>" class="btn btn-default" style="border-radius:5px; font-weight:bold;">CETAK</a>
                                         <?php
                                         if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 6){
                                             ?>
-                                            <a class="btn btn-default" style="border-radius:10px; font-weight:bold;" onclick="DeleteData('<?= site_url('pmm/finance/deleteTerimaCoa/'.$detail['id']);?>')">HAPUS</a>
+                                            <a class="btn btn-default" style="border-radius:5px; font-weight:bold;" onclick="DeleteData('<?= site_url('pmm/finance/deleteTerimaCoa/'.$detail['id']);?>')">HAPUS</a>
                                             <?php
                                         }
                                         ?>
