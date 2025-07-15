@@ -105,6 +105,8 @@
                                 $surat_jalan_pembelian =  $approval['surat_jalan_pembelian'];
                                 $verifikasi =  $approval['verifikasi'];
                                 $delete_tagihan_pembelian =  $approval['delete_tagihan_pembelian'];
+                                $approval_penawaran_penjualan =  $approval['approval_penawaran_penjualan'];
+                                $delete_penawaran_penjualan =  $approval['delete_penawaran_penjualan'];
                                 ?>
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">Menu Admin<span class="required" aria-required="true">*</span></label>
