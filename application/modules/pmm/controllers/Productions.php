@@ -96,7 +96,15 @@ class Productions extends Secure_Controller {
 				$edit = '<a href="javascript:void(0);" onclick="EditData('.$row['id'].')" class="btn btn-warning" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';	
 				$edit_new = false;
 				$edit_new = '<a href="javascript:void(0);" onclick="EditDataNew('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
-				if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4 || $this->session->userdata('admin_group_id') == 5){
+				
+				$admin_id = $this->session->userdata('admin_id');
+				$approval = $this->db->select('*')
+				->from('tbl_admin')
+				->where("admin_id = $admin_id ")
+				->get()->row_array();
+				$surat_jalan_penjualan =  $approval['surat_jalan_penjualan'];
+
+				if($surat_jalan_pembelian == 1){
 					$row['delete'] = $edit_new.' <a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
 					//$row['delete'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
 				}else {

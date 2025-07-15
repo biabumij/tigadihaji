@@ -107,6 +107,9 @@
                                 $delete_tagihan_pembelian =  $approval['delete_tagihan_pembelian'];
                                 $approval_penawaran_penjualan =  $approval['approval_penawaran_penjualan'];
                                 $delete_penawaran_penjualan =  $approval['delete_penawaran_penjualan'];
+                                $approval_so_penjualan =  $approval['approval_so_penjualan'];
+                                $delete_so_penjualan =  $approval['delete_so_penjualan'];
+                                $surat_jalan_penjualan =  $approval['surat_jalan_penjualan'];
                                 ?>
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">Menu Admin<span class="required" aria-required="true">*</span></label>
@@ -143,7 +146,7 @@
                                     <div class="col-sm-1">
                                         <input type="checkbox" name="delete_po" id="delete_po" value="1"<?= (isset($delete_po) && $delete_po == 1) ? 'checked' : '' ;?> />
                                     </div>
-                                    <label for="name" class="col-sm-2 control-label">Hapus Surat Jalan<span class="required" aria-required="true">*</span></label>
+                                    <label for="name" class="col-sm-2 control-label">Hapus Surat Jalan Pembelian<span class="required" aria-required="true">*</span></label>
                                     <div class="col-sm-1">
                                         <input type="checkbox" name="surat_jalan_pembelian" id="surat_jalan_pembelian" value="1"<?= (isset($surat_jalan_pembelian) && $surat_jalan_pembelian == 1) ? 'checked' : '' ;?> />
                                     </div>
@@ -166,6 +169,20 @@
                                     <label for="name" class="col-sm-2 control-label">Delete Penawaran Penjualan<span class="required" aria-required="true">*</span></label>
                                     <div class="col-sm-1">
                                         <input type="checkbox" name="delete_penawaran_penjualan" id="delete_penawaran_penjualan" value="1"<?= (isset($delete_penawaran_penjualan) && $delete_penawaran_penjualan == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Approval SO Penjualan<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="approval_so_penjualan" id="approval_so_penjualan" value="1"<?= (isset($approval_so_penjualan) && $approval_so_penjualan == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                    <label for="name" class="col-sm-2 control-label">Delete SO Penjualan<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="delete_so_penjualan" id="delete_so_penjualan" value="1"<?= (isset($delete_so_penjualan) && $delete_so_penjualan == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                    <label for="name" class="col-sm-2 control-label">Hapus Surat Jalan Penjualan<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="surat_jalan_penjualan" id="surat_jalan_penjualan" value="1"<?= (isset($surat_jalan_penjualan) && $surat_jalan_penjualan == 1) ? 'checked' : '' ;?> />
                                     </div>
                                 </div>
                                 <div class="form-group text-center">

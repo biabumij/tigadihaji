@@ -203,6 +203,9 @@ class Admin extends CI_Controller {
 		$delete_tagihan_pembelian = $this->input->post('delete_tagihan_pembelian');
 		$approval_penawaran_penjualan = $this->input->post('approval_penawaran_penjualan');
 		$delete_penawaran_penjualan = $this->input->post('delete_penawaran_penjualan');
+		$approval_so_penjualan = $this->input->post('approval_so_penjualan');
+		$delete_so_penjualan = $this->input->post('delete_so_penjualan');
+		$surat_jalan_penjualan = $this->input->post('surat_jalan_penjualan');
 
         // Update JSON
         // Get Data Old for Filter
@@ -240,6 +243,9 @@ class Admin extends CI_Controller {
 					'delete_tagihan_pembelian'=>$delete_tagihan_pembelian,
 					'approval_penawaran_penjualan'=>$approval_penawaran_penjualan,
 					'delete_penawaran_penjualan'=>$delete_penawaran_penjualan,
+					'approval_so_penjualan'=>$approval_so_penjualan,
+					'delete_so_penjualan'=>$delete_so_penjualan,
+					'surat_jalan_penjualan'=>$surat_jalan_penjualan,
 	        	);
         	}else {
 	        	$arrayvalues = array(
@@ -263,6 +269,9 @@ class Admin extends CI_Controller {
 					'delete_tagihan_pembelian'=>$delete_tagihan_pembelian,
 					'approval_penawaran_penjualan'=>$approval_penawaran_penjualan,
 					'delete_penawaran_penjualan'=>$delete_penawaran_penjualan,
+					'approval_so_penjualan'=>$approval_so_penjualan,
+					'delete_so_penjualan'=>$delete_so_penjualan,
+					'surat_jalan_penjualan'=>$surat_jalan_penjualan,
 	        	);
         	}
             $query=$this->crud_global->UpdateDefault('tbl_admin',$arrayvalues,$arraywhere);
