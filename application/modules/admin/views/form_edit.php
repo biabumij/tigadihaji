@@ -200,7 +200,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="name" class="col-sm-2 control-label">Edit RAP<span class="required" aria-required="true">*</span></label>
+                                    <label for="name" class="col-sm-2 control-label">Edit RAP, Rencana Kerja<span class="required" aria-required="true">*</span></label>
                                     <div class="col-sm-1">
                                         <input type="checkbox" name="edit_rap" id="edit_rap" value="1"<?= (isset($edit_rap) && $edit_rap == 1) ? 'checked' : '' ;?> />
                                     </div>

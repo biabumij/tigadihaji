@@ -371,14 +371,21 @@ class Rak extends Secure_Controller {
                 $row['created_on'] = date('d/m/Y H:i:s',strtotime($row['created_on']));
 				$row['updated_by'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['updated_by']),'admin_name');
                 $row['updated_on'] = date('d/m/Y H:i:s',strtotime($row['updated_on']));
+
+				$admin_id = $this->session->userdata('admin_id');
+				$approval = $this->db->select('*')
+				->from('tbl_admin')
+				->where("admin_id = $admin_id ")
+				->get()->row_array();
+				$edit_rap =  $approval['delete_rap'];
 				
-				if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4){
+				if($edit_rap == 1){
 					$row['edit'] = '<a href="'.site_url().'rak/sunting_rencana_kerja/'.$row['id'].'" class="btn btn-warning" style="border-radius:10px;"><i class="fa fa-edit"></i> </a>';
 				}else {
 					$row['edit'] = '-';
 				}
 
-				if($this->session->userdata('admin_group_id') == 1 || $this->session->userdata('admin_group_id') == 2 || $this->session->userdata('admin_group_id') == 3 || $this->session->userdata('admin_group_id') == 4){
+				if($edit_rap == 1){
 					$row['actions'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="border-radius:10px;"><i class="fa fa-close"></i> </a>';
 				}else {
 					$row['actions'] = '-';
