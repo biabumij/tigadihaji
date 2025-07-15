@@ -310,7 +310,7 @@
                                             if($verifikasi_penjualan == 1){
                                             ?>
                                             <a class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;" href="<?= base_url('penjualan/sunting_tagihan/' . $penagihan["id"]) ?>"> EDIT</a>
-                                            <a class="btn btn-default" style="width:150px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('penjualan/delete_penagihan_penjualan/' . $penagihan['id']); ?>')"> HAPUS</a>	
+                                            <a class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:10px;" onclick="DeleteData('<?= site_url('penjualan/delete_penagihan_penjualan/' . $penagihan['id']); ?>')"> HAPUS</a>	
                                             <?php
                                             }
                                             ?>
