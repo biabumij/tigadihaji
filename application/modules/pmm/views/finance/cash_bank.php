@@ -223,10 +223,7 @@
                 //{ "data": "saldo" },
             ],
             "columnDefs": [
-                {
-                    "targets": [0],
-                    "className": 'text-center',
-                }
+                { "width": "5%", "targets": [0], "className": 'text-center'},
             ],
             responsive: true,
             searching: true,
