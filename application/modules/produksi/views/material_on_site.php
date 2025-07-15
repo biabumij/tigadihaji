@@ -3,18 +3,12 @@
         <input type="text" id="filter_date" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
     </div>
     <div class="col-sm-1">
-        <button type="submit" class="btn btn-default" style="border-radius:10px; font-weight:bold;">PRINT</button>
+        <button type="submit" class="btn btn-default" style="border-radius:5px; font-weight:bold;">PRINT</button>
     </div>
 </form>
-<?php
-    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
-    ?>
-    <div class="col-sm-5">
-    <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT STOCK OPNAME</a></button>
-    </div>
-    <?php
-    }
-    ?>
+<div class="col-sm-5">
+<button style="background-color:#88b93c; border-radius:5px;"><a href="javascript:void(0);" onclick="OpenForm()" style="color:white; font-weight:bold;">BUAT STOCK OPNAME</a></button>
+</div>
 <br />
 <br />
 <div class="table-responsive">
@@ -117,12 +111,12 @@
                         <textarea id="notes" name="notes" class="form-control" autocomplete="off" rows="5" data-required="false"></textarea>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-success" id="btn-form" style="border-radius:10px; font-weight:bold;">KIRIM</button>
+                        <button type="submit" class="btn btn-success" id="btn-form" style="border-radius:5px; font-weight:bold;">KIRIM</button>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; border-radius:10px; font-weight:bold;">CLOSE</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" style="color:black; border-radius:5px; font-weight:bold;">CLOSE</button>
             </div>
         </div>
     </div>

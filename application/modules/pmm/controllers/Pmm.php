@@ -306,13 +306,13 @@ class Pmm extends CI_Controller {
 				$menu_admin =  $approval['menu_admin'];
 
 				if($menu_admin == 1){
-					$row['edit'] = '<a href="javascript:void(0);" onclick="OpenForm('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:10px;"><i class="fa fa-edit"></i> </a>';
+					$row['edit'] = '<a href="javascript:void(0);" onclick="OpenForm('.$row['id'].')" class="btn btn-primary" style="font-weight:bold; border-radius:5px;"><i class="fa fa-edit"></i> </a>';
 				}else {
 					$row['edit'] = '-';
 				}
 
 				if($menu_admin == 1){
-					$row['delete'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:10px;"><i class="fa fa-close"></i> </a>';
+					$row['delete'] = '<a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="font-weight:bold; border-radius:5px;"><i class="fa fa-close"></i> </a>';
 				}else {
 					$row['delete'] = '-';
 				}
@@ -1414,8 +1414,8 @@ class Pmm extends CI_Controller {
 				$edit_rap =  $approval['edit_rap'];
 
 				if($edit_rap == 1){
-					$uploads_surat_jalan = '<a href="javascript:void(0);" onclick="UploadDocSuratJalan('.$row['id'].')" class="btn btn-success" title="Upload Lampiran" style="border-radius:10px;"><i class="fa fa-upload"></i> </a>';
-					$row['actions'] = $uploads_surat_jalan. '&nbsp;<a href="'.site_url().'produksi/sunting_stock_opname/'.$row['id'].'" class="btn btn-warning" style="border-radius:10px;"><i class="fa fa-edit"></i> </a> <a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="border-radius:10px;"><i class="fa fa-close"></i> </a>';
+					$uploads_surat_jalan = '<a href="javascript:void(0);" onclick="UploadDocSuratJalan('.$row['id'].')" class="btn btn-success" title="Upload Lampiran" style="border-radius:5px;"><i class="fa fa-upload"></i> </a>';
+					$row['actions'] = $uploads_surat_jalan. '&nbsp;<a href="'.site_url().'produksi/sunting_stock_opname/'.$row['id'].'" class="btn btn-warning" style="border-radius:5px;"><i class="fa fa-edit"></i> </a> <a href="javascript:void(0);" onclick="DeleteData('.$row['id'].')" class="btn btn-danger" style="border-radius:5px;"><i class="fa fa-close"></i> </a>';
 				}else {
 					$row['actions'] = '-';
 				}

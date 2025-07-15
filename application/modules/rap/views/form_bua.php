@@ -111,7 +111,7 @@
                                         </table>    
                                     </div>
                                     <div class="col-sm-12">
-                                        <button type="button" class="btn btn-primary" onclick="tambahData()" style="font-weight:bold; border-radius:10px;">
+                                        <button type="button" class="btn btn-primary" onclick="tambahData()" style="font-weight:bold; border-radius:5px;">
                                             <i class="fa fa-plus"></i> Tambah Data
                                         </button>
                                     </div>
@@ -133,8 +133,8 @@
                                     </div>
                                     <br /><br />
                                     <div class="text-center">
-                                        <a href="<?= site_url('admin/rap#bua');?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:10px;">BATAL</a>
-                                        <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;">KIRIM</button>
+                                        <a href="<?= site_url('admin/rap#bua');?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:5px;">BATAL</a>
+                                        <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:5px;">KIRIM</button>
                                     </div>
                                 </form>
                             </div>

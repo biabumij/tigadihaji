@@ -621,8 +621,8 @@
                                     </div>
                                     <br /><br />
                                     <div class="text-center">
-                                        <a href="<?= site_url('admin/rencana_kerja#rencana_kerja');?>" class="btn btn-danger" style="margin-bottom:0px; width:10%; font-weight:bold; border-radius:10px;">BATAL</a>
-                                        <button type="submit" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:10px;">KIRIM</button>
+                                        <a href="<?= site_url('admin/rencana_kerja#rencana_kerja');?>" class="btn btn-danger" style="margin-bottom:0px; width:10%; font-weight:bold; border-radius:5px;">BATAL</a>
+                                        <button type="submit" class="btn btn-success" style="width:10%; font-weight:bold; border-radius:5px;">KIRIM</button>
                                     </div>
                                     <br /><br />
                                 </form>

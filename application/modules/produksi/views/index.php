@@ -68,9 +68,9 @@
                                     </div>
                                 </div>
                                 <div class="panel-content">
-                                    <ul class="nav nav-tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#material_on_site" aria-controls="material_on_site" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">STOCK OPNAME</a></li>
-                                        <li role="presentation"><a href="#pemakaian_bahan" aria-controls="pemakaian_bahan" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">PEMAKAIAN BAHAN</a></li>
+                                    <ul class="nav nav-tabs" role="tablist" style="border-bottom:2px solid #e69500; padding-bottom:10px;">
+                                        <li role="presentation" class="active"><a href="#material_on_site" aria-controls="material_on_site" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">STOCK OPNAME</a></li>
+                                        <li role="presentation"><a href="#pemakaian_bahan" aria-controls="pemakaian_bahan" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">PEMAKAIAN BAHAN</a></li>
                                         <?php
                                         $admin_id = $this->session->userdata('admin_id');
                                         $approval = $this->db->select('*')
@@ -80,8 +80,8 @@
                                         $kunci_rakor =  $approval['kunci_rakor'];
                                         ?>
                                         <?php if($kunci_rakor == 1){?>
-                                        <li role="presentation"><a href="#pemakaian" aria-controls="pemakaian" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">VERIFIKASI PEMAKAIAN BAHAN</a></li>
-                                        <li role="presentation"><a href="#rakor" aria-controls="rakor" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">KUNCI DATA RAKOR</a></li>
+                                        <li role="presentation"><a href="#pemakaian" aria-controls="pemakaian" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">VERIFIKASI PEMAKAIAN BAHAN</a></li>
+                                        <li role="presentation"><a href="#rakor" aria-controls="rakor" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">KUNCI DATA RAKOR</a></li>
                                         <?php
                                         }
                                         ?>

@@ -73,10 +73,10 @@
                                 </div>
                             </div>
                             <div class="panel-content">
-                                <ul class="nav nav-tabs" role="tablist">
-                                    <li role="presentation" class="active"><a href="#bahan" aria-controls="bahan" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">BAHAN</a></li>
-                                    <li role="presentation"><a href="#alat" aria-controls="alat" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">ALAT</a></li>
-                                    <li role="presentation"><a href="#bua" aria-controls="bua" role="tab" data-toggle="tab" style="border-radius:10px; font-weight:bold;">BUA</a></li>
+                                <ul class="nav nav-tabs" role="tablist" style="border-bottom:2px solid #e69500; padding-bottom:10px;">
+                                    <li role="presentation" class="active"><a href="#bahan" aria-controls="bahan" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">BAHAN</a></li>
+                                    <li role="presentation"><a href="#alat" aria-controls="alat" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">ALAT</a></li>
+                                    <li role="presentation"><a href="#bua" aria-controls="bua" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">BUA</a></li>
                                 </ul>
                                 <div class="tab-content">
                                 <br />
@@ -85,7 +85,7 @@
 										<!--<div class="col-sm-3">
 											<input type="text" id="filter_date_agregat" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
 										</div>-->
-                                        <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('rap/form_bahan'); ?>"><b style="color:white;">BUAT BAHAN</b></a></button>
+                                        <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('rap/form_bahan'); ?>"><b style="color:white;">BUAT BAHAN</b></a></button>
                                         <br />									
                                         <div class="table-responsive">
                                             <table class="table table-striped table-hover" id="table_agregat" style="width:100%">
@@ -111,7 +111,7 @@
 										
 									<!-- Table Alat -->
                                     <div role="tabpanel" class="tab-pane" id="alat">
-                                        <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('rap/form_alat'); ?>"><b style="color:white;">BUAT ALAT</b></a></button>
+                                        <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('rap/form_alat'); ?>"><b style="color:white;">BUAT ALAT</b></a></button>
                                         <br /><br />								
                                         <div class="table-responsive">
                                             <table class="table table-striped table-hover" id="table_rap_alat" style="width:100%">
@@ -135,7 +135,7 @@
 
                                     <!-- Table BUA -->
                                     <div role="tabpanel" class="tab-pane" id="bua">		
-                                        <button style="background-color:#88b93c; border:1px solid black; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('rap/form_bua'); ?>"><b style="color:white;">BUAT BUA</b></a></button>
+                                        <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('rap/form_bua'); ?>"><b style="color:white;">BUAT BUA</b></a></button>
                                         <br /><br />							
                                         <div class="table-responsive">
                                             <table class="table table-striped table-hover" id="table_rap_bua" style="width:100%">

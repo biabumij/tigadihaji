@@ -195,8 +195,8 @@
                                     </div>
                                     <br /><br />
                                     <div class="text-center">
-                                        <a href="<?= site_url('admin/rap#alat');?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:10px;">BATAL</a>
-                                        <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:10px;">KIRIM</button>
+                                        <a href="<?= site_url('admin/rap#alat');?>" class="btn btn-danger" style="margin-bottom:0; font-weight:bold; border-radius:5px;">BATAL</a>
+                                        <button type="submit" class="btn btn-success" style="font-weight:bold; border-radius:5px;">KIRIM</button>
                                     </div>
                                     <br /><br />
                                 </form>
