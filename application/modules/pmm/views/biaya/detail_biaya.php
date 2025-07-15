@@ -161,7 +161,7 @@
                                             }
                                             ?>
                                             <?php
-                                            if($akun_proyek == 1 && $edit_biaya == 1){
+                                            if($akun_proyek == 1 && $delete_biaya == 1){
                                             ?>
                                             <a class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('pmm/biaya/delete/'.$row['id']);?>')"><i class="fa fa-close"></i> HAPUS</a>
                                             <?php
