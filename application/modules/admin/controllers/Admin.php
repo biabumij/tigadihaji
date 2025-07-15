@@ -208,6 +208,8 @@ class Admin extends CI_Controller {
 		$surat_jalan_penjualan = $this->input->post('surat_jalan_penjualan');
 		$verifikasi_penjualan = $this->input->post('verifikasi_penjualan');
 		$delete_tagihan_penjualan = $this->input->post('delete_tagihan_penjualan');
+		$edit_rap = $this->input->post('edit_rap');
+		$delete_rap = $this->input->post('delete_rap');
 
         // Update JSON
         // Get Data Old for Filter
@@ -250,6 +252,8 @@ class Admin extends CI_Controller {
 					'surat_jalan_penjualan'=>$surat_jalan_penjualan,
 					'verifikasi_penjualan'=>$verifikasi_penjualan,
 					'delete_tagihan_penjualan'=>$delete_tagihan_penjualan,
+					'edit_rap'=>$edit_rap,
+					'delete_rap'=>$delete_rap,
 	        	);
         	}else {
 	        	$arrayvalues = array(
@@ -278,6 +282,8 @@ class Admin extends CI_Controller {
 					'surat_jalan_penjualan'=>$surat_jalan_penjualan,
 					'verifikasi_penjualan'=>$verifikasi_penjualan,
 					'delete_tagihan_penjualan'=>$delete_tagihan_penjualan,
+					'edit_rap'=>$edit_rap,
+					'delete_rap'=>$delete_rap,
 	        	);
         	}
             $query=$this->crud_global->UpdateDefault('tbl_admin',$arrayvalues,$arraywhere);

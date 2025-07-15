@@ -112,6 +112,8 @@
                                 $surat_jalan_penjualan =  $approval['surat_jalan_penjualan'];
                                 $verifikasi_penjualan =  $approval['verifikasi_penjualan'];
                                 $delete_tagihan_penjualan =  $approval['delete_tagihan_penjualan'];
+                                $edit_rap =  $approval['edit_rap'];
+                                $delete_rap =  $approval['delete_rap'];
                                 ?>
                                 <div class="form-group">
                                     <label for="name" class="col-sm-2 control-label">Menu Admin<span class="required" aria-required="true">*</span></label>
@@ -195,6 +197,16 @@
                                     <label for="name" class="col-sm-2 control-label">Hapus Tagihan Penjualan<span class="required" aria-required="true">*</span></label>
                                     <div class="col-sm-1">
                                         <input type="checkbox" name="delete_tagihan_penjualan" id="delete_tagihan_penjualan" value="1"<?= (isset($delete_tagihan_penjualan) && $delete_tagihan_penjualan == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="name" class="col-sm-2 control-label">Edit RAP<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="edit_rap" id="edit_rap" value="1"<?= (isset($edit_rap) && $edit_rap == 1) ? 'checked' : '' ;?> />
+                                    </div>
+                                    <label for="name" class="col-sm-2 control-label">Hapus RAP<span class="required" aria-required="true">*</span></label>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" name="delete_rap" id="delete_rap" value="1"<?= (isset($delete_rap) && $delete_rap == 1) ? 'checked' : '' ;?> />
                                     </div>
                                 </div>
                                 <div class="form-group text-center">
