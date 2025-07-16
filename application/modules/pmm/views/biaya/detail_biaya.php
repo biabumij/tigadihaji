@@ -137,6 +137,7 @@
                                         $edit_biaya = $approval['edit_biaya'];
                                         $delete_biaya = $approval['delete_biaya'];
                                         $akun_proyek = $approval['akun_proyek'];
+                                        $akun_pusat = $approval['akun_pusat'];
                                         $menu_admin = $approval['menu_admin'];
                                         ?>
                                         <a href="<?= base_url('admin/biaya_bua') ?>" class="btn btn-info" style="width:10%; font-weight:bold; border-radius:5px;"> KEMBALI</a>
@@ -169,14 +170,14 @@
                                             ?>
 
                                             <?php
-                                            if($menu_admin == 1){
+                                            if($akun_pusat == 1){
                                             ?>
                                             <a  href="<?= base_url('pmm/biaya/form/'.$row['id']) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:5px;"><i class="fa fa-edit"></i> EDIT</a>
                                             <?php
                                             }
                                             ?>
                                             <?php
-                                            if($menu_admin == 1){
+                                            if($akun_pusat == 1){
                                             ?>
                                             <a class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('pmm/biaya/delete/'.$row['id']);?>')"><i class="fa fa-close"></i> HAPUS</a>
                                             <?php
