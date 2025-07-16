@@ -184,6 +184,21 @@
                                             <?php
                                             }
                                             ?>
+
+                                            <?php
+                                            if($menu_admin == 1){
+                                            ?>
+                                            <a  href="<?= base_url('pmm/biaya/form/'.$row['id']) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:5px;"><i class="fa fa-edit"></i> EDIT</a>
+                                            <?php
+                                            }
+                                            ?>
+                                            <?php
+                                            if($menu_admin == 1){
+                                            ?>
+                                            <a class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('pmm/biaya/delete/'.$row['id']);?>')"><i class="fa fa-close"></i> HAPUS</a>
+                                            <?php
+                                            }
+                                            ?>
                                         <?php endif; ?>
                                         
                                     </div>
