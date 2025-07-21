@@ -124,7 +124,7 @@
                                     <div class="col-sm-3">
                                         <input type="text" id="filter_date_jurnal_2" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
                                     </div>
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('pmm/jurnal_umum/tambah_jurnal'); ?>"><b style="color:white;">BUAT JURNAL UMUM</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('pmm/jurnal_umum/tambah_jurnal'); ?>"><b style="color:white;">BUAT JURNAL UMUM</b></a></button>
                                     <br />
                                     <br />
                                     <h3 class="text-center"></h3>
@@ -151,7 +151,7 @@
                                     <div class="col-sm-3">
                                         <input type="text" id="filter_date_jurnal_3" name="filter_date" class="form-control dtpickerange" autocomplete="off" placeholder="Filter By Date">
                                     </div>
-                                    <button style="background-color:#88b93c; border:1px solid black; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('pmm/jurnal_umum/tambah_jurnal'); ?>"><b style="color:white;">BUAT JURNAL UMUM</b></a></button>
+                                    <button style="background-color:#88b93c; border-radius:5px; line-height:30px;"><a href="<?php echo site_url('pmm/jurnal_umum/tambah_jurnal'); ?>"><b style="color:white;">BUAT JURNAL UMUM</b></a></button>
                                     <br />
                                     <br />
                                     <h3 class="text-center"></h3>
