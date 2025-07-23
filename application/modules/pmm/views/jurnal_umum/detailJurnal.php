@@ -129,6 +129,7 @@
                                             ->get()->row_array();
                                             $edit_biaya = $approval['edit_biaya'];
                                             $delete_biaya = $approval['delete_biaya'];
+                                            $akun_pusat = $approval['akun_pusat'];
                                             $akun_proyek = $approval['akun_proyek'];
                                             $menu_admin = $approval['menu_admin'];
                                             ?>
@@ -155,6 +156,21 @@
                                                 ?>
                                                 <?php
                                                 if($akun_proyek == 1 && $delete_biaya == 1){
+                                                ?>
+                                                <a class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('pmm/jurnal_umum/delete/'.$detail['id']);?>')"> HAPUS</a>
+                                                <?php
+                                                }
+                                                ?>
+
+                                                <?php
+                                                if($akun_pusat == 1 && $erika == 2){
+                                                ?>
+                                                <a  href="<?= base_url('pmm/jurnal_umum/form/'.$detail['id']) ?>" class="btn btn-default" style="width:10%; font-weight:bold; border-radius:5px;"> EDIT</a>
+                                                <?php
+                                                }
+                                                ?>
+                                                <?php
+                                                if($akun_pusat == 1 && $erika == 2){
                                                 ?>
                                                 <a class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;" onclick="DeleteData('<?= site_url('pmm/jurnal_umum/delete/'.$detail['id']);?>')"> HAPUS</a>
                                                 <?php
