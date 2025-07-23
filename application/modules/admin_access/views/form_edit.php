@@ -50,7 +50,7 @@
                                     <div>
                                         <br />
                                         <br />
-                                        <a href="<?php echo site_url('admin/admin_access'); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px; margin-top: 10px;"> KEMBALI</a>
+                                        <a href="<?php echo site_url('admin/admin_access'); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px; margin-top: 10px;"> BATAL</a>
                                         <button type="submit" name="submit" class="btn btn-success" id="btn-submit" data-loading-text="please wait.." style="width:10%; font-weight:bold; border-radius:5px;">KIRIM</button>
                                         <br />
                                         <br />
