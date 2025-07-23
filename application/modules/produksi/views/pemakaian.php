@@ -7,14 +7,20 @@
     </div>-->
 </form>
 <?php
-    if(in_array($this->session->userdata('admin_group_id'), array(1,2,3,4,5))){
-    ?>
+$admin_id = $this->session->userdata('admin_id');
+$approval = $this->db->select('*')
+->from('tbl_admin')
+->where("admin_id = $admin_id ")
+->get()->row_array();
+$kunci_rakor =  $approval['kunci_rakor'];
+?>
+<?php if($kunci_rakor == 1){?>
     <div class="col-sm-5">
     <button style="background-color:#88b93c; border-radius:10px; line-height:30px;"><a href="<?php echo site_url('produksi/form_pemakaian'); ?>"><b style="color:white;">BUAT VERIFIKASI</b></a></button>
     </div>
-    <?php
-    }
-    ?>
+<?php
+}
+?>
 <br />
 <br />
 <div class="table-responsive">
