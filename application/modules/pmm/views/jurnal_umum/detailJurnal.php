@@ -132,6 +132,7 @@
                                             $akun_pusat = $approval['akun_pusat'];
                                             $akun_proyek = $approval['akun_proyek'];
                                             $menu_admin = $approval['menu_admin'];
+                                            $erika = $approval['admin_id'];
                                             ?>
                                             <a href="<?= base_url('admin/jurnal_umum') ?>" class="btn btn-info" style="width:10%; font-weight:bold; border-radius:5px;"> KEMBALI</a>
                                             <?php
