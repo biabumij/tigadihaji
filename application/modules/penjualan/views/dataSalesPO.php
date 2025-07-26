@@ -213,7 +213,7 @@
                                 </tfoot>
                             </table>
                             
-                            <div class="text-right">
+                            <div class="text-center">
                                 <?php
                                 $admin_id = $this->session->userdata('admin_id');
                                 $approval = $this->db->select('*')
