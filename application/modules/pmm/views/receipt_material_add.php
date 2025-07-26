@@ -256,11 +256,11 @@
                         <div class="form-group">
                             <label>Pesanan Pembelian</label>
                             <input type="text" id="edit_no_po" name="edit_no_po" class="form-control" autocomplete="off" readonly="" />
-                        </div>-->
+                        </div>
                         <div class="form-group">
                             <label>No. Surat Jalan</label>
                             <input type="text" id="edit_surat_jalan" name="edit_surat_jalan" class="form-control" autocomplete="off" readonly="" />
-                        </div>
+                        </div>-->
                         <div class="form-group">
                             <label>Tanggal</label>
                             <input type="text" id="edit_date" name="edit_date" class="form-control dtpicker" required="" autocomplete="off" />
