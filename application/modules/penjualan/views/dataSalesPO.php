@@ -213,7 +213,7 @@
                                 </tfoot>
                             </table>
                             
-                            <div class="text-center">
+                            <div class="text-right">
                                 <?php
                                 $admin_id = $this->session->userdata('admin_id');
                                 $approval = $this->db->select('*')
@@ -264,7 +264,7 @@
                                     if($approval_so_penjualan == 1){
                                     ?>
                                         <a class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;" href="<?= base_url("penjualan/open_sales_order/".$sales_po["id"]) ?>"> OPEN</a>
-                                        <a href="<?= site_url('penjualan/reject_sales_order/' . $sales_po["id"]); ?>" class="btn btn-danger" style="width:150px; margin-top:10px; font-weight:bold; border-radius:5px;"> REJECT</a>
+                                        <a href="<?= site_url('penjualan/reject_sales_order/' . $sales_po["id"]); ?>" class="btn btn-danger" style="width:150px; margin-bottom:10px; font-weight:bold; border-radius:5px;"> REJECT</a>
                                     <?php
                                     }
                                     ?>
