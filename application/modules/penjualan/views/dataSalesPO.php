@@ -241,14 +241,13 @@
 
                                 <?php if($sales_po["status"] === "OPEN") : ?>
                                 <a href="<?= base_url("penjualan/cetak_sales_order/".$sales_po["id"]) ?>" target="_blank" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> PRINT</a>
-                                
                                 <a href="<?= base_url("pmm/productions/add?po_id=".$sales_po["id"]) ?>"  class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> KIRIM PRODUK</a>
                                 
                                 <?php
                                     if($approval_so_penjualan == 1){
                                     ?>
                                         <form class="form-approval" action="<?= base_url("penjualan/closed_sales_order/".$sales_po["id"]) ?>">
-                                            <button type="submit" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;"> CLOSED</button>
+                                            <button type="submit" class="btn btn-default" style="width:150px; margin-bottom:10px; font-weight:bold; border-radius:5px;"> CLOSED</button>
                                             <a href="<?= site_url('penjualan/reject_sales_order/' . $sales_po["id"]); ?>" class="btn btn-danger" style="width:150px; font-weight:bold; margin-bottom:10px; border-radius:5px;"> REJECT</a>      
                                         </form>
                                         				
