@@ -279,7 +279,7 @@
                             </div>
                             </table>
                                 
-                            <div class="text-center">
+                            <div class="text-right">
                                 <br />
                                 <br />
                                 <a href="<?php echo site_url('admin/pembelian');?>" class="btn btn-info" style="width:150px; font-weight:bold; border-radius:5px;"> KEMBALI</a>
