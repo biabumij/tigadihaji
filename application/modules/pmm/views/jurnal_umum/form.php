@@ -249,7 +249,7 @@
         });
 		
         $('.dtpicker').on('apply.daterangepicker', function(ev, picker) {
-              $(this).val(picker.startDate.format('DD-MM-YYYY'));
+            $(this).val(picker.startDate.format('DD-MM-YYYY'));
         });
 
         var table = $('#main-table').DataTable( {
