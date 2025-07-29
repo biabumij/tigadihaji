@@ -234,7 +234,6 @@
     <script src="<?php echo base_url();?>assets/back/theme/vendor/daterangepicker/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/back/theme/vendor/daterangepicker/daterangepicker.css">
     <script src="<?php echo base_url();?>assets/back/theme/vendor/bootbox.min.js"></script>
-
     <script type="text/javascript">
         <?php
         $kunci_rakor = $this->db->select('date')->order_by('date','desc')->limit(1)->get_where('kunci_rakor')->row_array();
@@ -293,12 +292,9 @@
                     if(result){
                         currentForm.submit();
                     }
-                    
                 }
             });
-            
         }); 
-
 
         function getJumlah(th){
             let input_jumlah = 0;
@@ -331,12 +327,8 @@
                     }
                 }
             });
-
             event.preventDefault();
-            
         });
     </script>
-
-
 </body>
 </html>
