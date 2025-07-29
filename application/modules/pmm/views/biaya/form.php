@@ -258,9 +258,9 @@
               format: 'DD-MM-YYYY'
             },
             minDate: '<?php echo $last_opname;?>',
-			//maxDate: moment().add(+0, 'd').toDate(),
+			maxDate: moment().add(+0, 'd').toDate(),
             //minDate: moment().startOf('month').toDate(),
-			maxDate: moment().endOf('month').toDate(),
+			//maxDate: moment().endOf('month').toDate(),
         });
         $('.dtpicker').on('apply.daterangepicker', function(ev, picker) {
               $(this).val(picker.startDate.format('DD-MM-YYYY'));
