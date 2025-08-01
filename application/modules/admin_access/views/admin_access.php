@@ -1,5 +1,13 @@
 <?php
-if($this->session->userdata('admin_group_id') == 1){
+$admin_id = $this->session->userdata('admin_id');
+$approval = $this->db->select('*')
+->from('tbl_admin')
+->where("admin_id = $admin_id ")
+->get()->row_array();
+$menu_admin =  $approval['menu_admin'];
+?>
+<?php
+if($menu_admin == 1){
 ?>
 <!doctype html>
 <html lang="en" class="fixed">
