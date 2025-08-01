@@ -1,3 +1,6 @@
+<?php
+if($this->session->userdata('admin_group_id') == 1){
+?>
 <!doctype html>
 <html lang="en" class="fixed">
 <head>
@@ -178,3 +181,6 @@
 
 </body>
 </html>
+<?php
+}
+?>
