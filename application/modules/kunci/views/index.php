@@ -79,22 +79,22 @@
                                         $kunci_rakor =  $approval['kunci_rakor'];
                                         ?>
                                         <?php if($menu_admin == 1){?>
-                                        <li role="presentation"  class="active"><a href="#pemakaian" aria-controls="pemakaian" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">VERIFIKASI PEMAKAIAN BAHAN</a></li>
+                                        <li role="presentation"><a href="#pemakaian" aria-controls="pemakaian" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">VERIFIKASI PEMAKAIAN BAHAN</a></li>
                                         <?php
                                         }
                                         ?>
                                         <?php if($kunci_rakor == 1){?>
-                                        <li role="presentation"><a href="#rakor" aria-controls="rakor" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">KUNCI DATA RAKOR</a></li>
+                                        <li role="presentation" class="active"><a href="#rakor" aria-controls="rakor" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">KUNCI DATA RAKOR</a></li>
                                         <?php
                                         }
                                         ?>
                                     </ul>
                                     <div class="tab-content">
                                         <br />
-                                        <div role="tabpanel" class="tab-pane active" id="pemakaian">
+                                        <div role="tabpanel" class="tab-pane" id="pemakaian">
                                             <?php include_once "pemakaian.php"; ?>
                                         </div>
-                                        <div role="tabpanel" class="tab-pane" id="rakor">
+                                        <div role="tabpanel" class="tab-pane active" id="rakor">
                                             <?php include_once "rakor.php"; ?>
                                         </div>
                                     </div>
