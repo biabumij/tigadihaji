@@ -272,30 +272,30 @@
                                     </div>
                                 </div>
                                 <br /><br />
+                                <?php
+                                $admin_id = $this->session->userdata('admin_id');
+                                $approval = $this->db->select('*')
+                                ->from('tbl_admin')
+                                ->where("admin_id = $admin_id ")
+                                ->get()->row_array();
+                                $verifikasi_penjualan =  $approval['verifikasi_penjualan'];
+                                $delete_tagihan_penjualan =  $approval['delete_tagihan_penjualan'];
+                                ?>
                                 <div class="text-center">
-                                    <div class="col-sm-12 text-center">
-                                        <?php if ($penagihan["status"] === "DRAFT") : ?>
-                                            <?php
-                                            if($this->session->userdata('admin_id') == 13 || $this->session->userdata('admin_id') == 1 || $this->session->userdata('admin_id') == 2 || $this->session->userdata('admin_id') == 6){
-                                            ?>
-                                                <a href="<?= site_url('penjualan/approvePenagihan/' . $penagihan['id']); ?>" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:5px;"> SETUJUI</a>
-                                                <a href="<?= site_url('penjualan/rejectPenagihan/' . $penagihan['id']); ?>" class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:5px;"> TOLAK</a>
-                                            <?php
-                                            }
-                                            ?>
-                                        <?php endif; ?>
+                                    <div class="text-center">
+                                        <?php
+                                        if($delete_tagihan_penjualan == 1){
+                                        ?>
+                                        <div class="col-sm-12 text-center">
+                                            <a href="<?= site_url('penjualan/approvePenagihan/' . $penagihan['id']); ?>" class="btn btn-success" style="width:150px; font-weight:bold; border-radius:5px;"> SETUJUI</a>
+                                            <a href="<?= site_url('penjualan/rejectPenagihan/' . $penagihan['id']); ?>" class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:5px;"> TOLAK</a>
+                                        </div>
+                                        <?php
+                                        }
+                                        ?>
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <?php
-                                    $admin_id = $this->session->userdata('admin_id');
-                                    $approval = $this->db->select('*')
-                                    ->from('tbl_admin')
-                                    ->where("admin_id = $admin_id ")
-                                    ->get()->row_array();
-                                    $verifikasi_penjualan =  $approval['verifikasi_penjualan'];
-                                    $delete_tagihan_penjualan =  $approval['delete_tagihan_penjualan'];
-                                    ?>
                                     <?php if ($penagihan["status"] === "OPEN") : ?>
                                         <a href="<?= base_url("penjualan/cetak_penagihan_penjualan/".$penagihan["id"]) ?>" target="_blank" class="btn btn-default" style="width:150px; font-weight:bold; border-radius:5px;">PRINT</a>
                                             <?php
