@@ -376,6 +376,21 @@
                             <table width="100%">
                                 <tr>
                                     <?php
+                                    if($kunci_rakor == 1){
+                                    ?>
+                                    <th width="25%" class="text-center" data-toggle="collapse" data-target="#kunci" aria-expanded="false" aria-controls="beton">
+                                        <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
+                                            <li class="text-center" style="background: linear-gradient(110deg, #696969 20%, #696969 20%, #444444 80%);">
+                                                <a href="<?php echo site_url('admin/kunci');?>">
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-key"></i><b>KUNCI DATA</b></span></a>
+                                            </li>
+                                        </ul>
+                                    </th>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    <?php
                                     if($menu_admin == 1){
                                     ?>
                                     <th width="25%" class="text-center" data-toggle="collapse" data-target="#settings" aria-expanded="false" aria-controls="beton">
@@ -393,6 +408,7 @@
                             </table>
                             <table width="100%">
                                 <tr>
+                                    <th width="25%" class="text-center"></th>
                                     <th width="25%" class="text-center">
                                         <ul class="row text-center list-inline  wowload bounceInUp collapse" id="settings">
                                             <li class="text-center" style="background: linear-gradient(110deg, #696969 20%, #696969 20%, #444444 80%);">
