@@ -72,7 +72,12 @@ class Pdf extends TCPDF {
 
     public function Footer() {
         $style = array();
-        //$this->SetFont('times', 'I', 8);
-        //$this->Cell(0, 10, 'Do Something Big Today', 0, 0,'C');
+        $date = date("Y-m-d H:i:s");
+        $date = date('d-m-Y H:i', strtotime($date));
+        $this->SetTextColor(192,192,192);
+        $this->SetFont('helvetica', 'I', 5);
+        $this->SetMargins(5, 5, 5, true);
+        $this->Cell(0, 10, 'Dicetak pada'.'.'.$date.'', 0, 0,'R');
+       
     }
 } 
