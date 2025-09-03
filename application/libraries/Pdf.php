@@ -78,6 +78,5 @@ class Pdf extends TCPDF {
         $this->SetFont('helvetica', 'I', 5);
         $this->SetMargins(23, 23, 23, true);
         $this->Cell(0, 10, 'Dicetak pada :'.'.'.$date.'', 0, 0,'R');
-       
     }
 } 
