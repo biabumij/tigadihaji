@@ -224,6 +224,7 @@
                     ->where("admin_id = $admin_id ")
                     ->get()->row_array();
                     $menu_admin =  $approval['menu_admin'];
+                    $kunci_rakor =  $approval['kunci_rakor'];
                     ?>
                     <div id="flippy_menu">
                         <button title="Click to show/hide content" type="button" onclick="if(document.getElementById('spoiler_menu') .style.display=='none') {document.getElementById('spoiler_menu') .style.display=''}else{document.getElementById('spoiler_menu') .style.display='none'}"><i class="fa-regular fa-hand-point-right"></i> MENU</button>
