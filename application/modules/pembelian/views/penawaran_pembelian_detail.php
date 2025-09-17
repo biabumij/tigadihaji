@@ -243,7 +243,7 @@
                                         <?php
                                         if($delete_penawaran_pembelian == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;"> HAPUS</a>
+                                            <a onClick="return confirm('Apakah Anda yakin untuk menghapus penawaran ini?')" href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;"> HAPUS</a>
                                         <?php
                                         }
                                         ?>
@@ -253,7 +253,7 @@
                                         <?php
                                         if($delete_penawaran_pembelian == 1){
                                         ?>
-                                            <a href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;"> HAPUS</a>
+                                            <a onClick="return confirm('Apakah Anda yakin untuk menghapus penawaran ini?')" href="<?= site_url('pembelian/hapus_penawaran_pembelian/' . $row['id']); ?>" class="btn btn-danger" style="width:10%; font-weight:bold; border-radius:5px;"> HAPUS</a>
                                         <?php
                                         }
                                         ?>

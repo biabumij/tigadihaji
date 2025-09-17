@@ -204,5 +204,47 @@ class Kunci extends Secure_Controller {
 		}
 	}
 
+	public function table_akses()
+	{   
+        $data = array();
+		$filter_date = $this->input->post('filter_date');
+		if(!empty($filter_date)){
+			$arr_date = explode(' - ', $filter_date);
+			$this->db->where('date >=',date('Y-m-d',strtotime($arr_date[0])));
+			$this->db->where('date <=',date('Y-m-d',strtotime($arr_date[1])));
+		}
+        $this->db->select('*');
+		$this->db->where("admin_name <> 'Administrator'");
+		$this->db->where('status','1');
+		$this->db->order_by('admin_name','asc');
+		$query = $this->db->get('tbl_admin');
+		
+       if($query->num_rows() > 0){
+			foreach ($query->result_array() as $key => $row) {
+                $row['no'] = $key+1;
+				$row['admin_name'] = $row['admin_name'];
+				$row['actions'] = '<a href="'.site_url().'kunci/form_edit_akses/'.$row['admin_id'].'" class="btn btn-warning" style="border-radius:5px;"><i class="fa fa-edit"></i> </a>';
+
+                $data[] = $row;
+            }
+
+        }
+        echo json_encode(array('data'=>$data));
+    }
+
+	function form_edit_akses()
+	{
+		$check = $this->m_admin->check_login();
+		if($check == true){		
+			$uri3=$this->uri->segment(3);
+			if(!empty($uri3)){
+				$data['id']=$uri3;
+				$data['row'] = $this->crud_global->ShowTableNew('tbl_admin',array('admin_id'=>$uri3));
+				$this->load->view('kunci/form_edit_akses',$data);
+			}
+		}else {
+			redirect('admin/kunci');
+		}
+	}
 }
 ?>

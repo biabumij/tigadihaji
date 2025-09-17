@@ -97,9 +97,9 @@ class Request_materials extends CI_Controller {
 				->from('tbl_admin')
 				->where("admin_id = $admin_id ")
 				->get()->row_array();
-				$approval_permintaan_bahan_alat =  $approval['approval_permintaan_bahan_alat'];             
+				$delete_permintaan_bahan_alat =  $approval['delete_permintaan_bahan_alat'];             
 				
-				if($approval_permintaan_bahan_alat == 1){
+				if($delete_permintaan_bahan_alat == 1){
 				$row['delete'] = '<a href="'.site_url('pmm/request_materials/manage/'.$row['id']).'"></a> '.$delete.' ';
 				}else {
 					$row['delete'] = '-';
