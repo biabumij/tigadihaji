@@ -79,7 +79,7 @@
                                         $kunci_rakor =  $approval['kunci_rakor'];
                                         ?>
                                         <?php if($menu_admin == 1){?>
-                                        <li role="presentation"><a href="#pemakaian" aria-controls="pemakaian" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">VERIFIKASI PEMAKAIAN BAHAN</a></li>
+                                        <li role="presentation"><a href="#pemakaian" aria-controls="pemakaian" role="tab" data-toggle="tab" style="border-radius:5px; font-weight:bold;">VERIFIKASI ADMINISTRATOR</a></li>
                                         <?php
                                         }
                                         ?>

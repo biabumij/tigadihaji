@@ -383,7 +383,7 @@
                                         <ul class="row text-center list-inline  wowload bounceIn" style="border-radius:20px;">
                                             <li class="text-center" style="background: linear-gradient(110deg, #696969 20%, #696969 20%, #444444 80%);">
                                                 <a href="<?php echo site_url('admin/kunci');?>">
-                                                <span style="color:#fffdd0;"><i class="fa-solid fa-key"></i><b>KUNCI DATA</b></span></a>
+                                                <span style="color:#fffdd0;"><i class="fa-solid fa-key"></i><b>KUNCI DATA & AKSES</b></span></a>
                                             </li>
                                         </ul>
                                     </th>

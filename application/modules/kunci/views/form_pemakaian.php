@@ -20,7 +20,7 @@
 					<div class="panel">
 						<div class="panel-header"> 
 							<div>
-								<h3><b>VERIFIKASI PEMAKAIAN BAHAN</b></h3>                                
+								<h3><b>VERIFIKASI ADMINISTRATOR</b></h3>                                
 							</div>
 						</div>
 						<div class="panel-content">

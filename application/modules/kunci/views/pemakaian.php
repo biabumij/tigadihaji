@@ -23,8 +23,6 @@ $kunci_rakor =  $approval['kunci_rakor'];
 ?>
 <br />
 <br />
-<br />
-<br />
 <div class="table-responsive">
     <table class="table table-striped table-hover table-center" id="table-pemakaian" width="100%">
         <thead>
