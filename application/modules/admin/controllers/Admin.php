@@ -311,6 +311,121 @@ class Admin extends CI_Controller {
         echo json_encode($output);
 	}
 
+	function edit_akses()
+	{
+		$output=array('output'=>'false');
+
+		// Get data
+		$id=$this->input->post('id');
+        $admin_id = $this->session->userdata('admin_id');
+        $datecreated = date("Y-m-d H:i:s");
+		$akun_pusat = $this->input->post('akun_pusat');
+		$akun_proyek = $this->input->post('akun_proyek');
+		$menu_admin = $this->input->post('menu_admin');
+		$kunci_rakor = $this->input->post('kunci_rakor');
+		$approval_penawaran_pembelian = $this->input->post('approval_penawaran_pembelian');
+		$delete_penawaran_pembelian = $this->input->post('delete_penawaran_pembelian');
+		$approval_permintaan_bahan_alat = $this->input->post('approval_permintaan_bahan_alat');
+		$delete_permintaan_bahan_alat = $this->input->post('delete_permintaan_bahan_alat');
+		$approval_po = $this->input->post('approval_po');
+		$delete_po = $this->input->post('delete_po');
+		$surat_jalan_pembelian = $this->input->post('surat_jalan_pembelian');
+		$verifikasi = $this->input->post('verifikasi');
+		$delete_tagihan_pembelian = $this->input->post('delete_tagihan_pembelian');
+		$approval_penawaran_penjualan = $this->input->post('approval_penawaran_penjualan');
+		$delete_penawaran_penjualan = $this->input->post('delete_penawaran_penjualan');
+		$approval_so_penjualan = $this->input->post('approval_so_penjualan');
+		$delete_so_penjualan = $this->input->post('delete_so_penjualan');
+		$surat_jalan_penjualan = $this->input->post('surat_jalan_penjualan');
+		$verifikasi_penjualan = $this->input->post('verifikasi_penjualan');
+		$delete_tagihan_penjualan = $this->input->post('delete_tagihan_penjualan');
+		$edit_rap = $this->input->post('edit_rap');
+		$delete_rap = $this->input->post('delete_rap');
+		$edit_biaya = $this->input->post('edit_biaya');
+		$delete_biaya = $this->input->post('delete_biaya');
+
+        // Update JSON
+        // Get Data Old for Filter
+        $email_old = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$id),'admin_email');
+        if($email_old == $admin_email){
+        	$chek_email = false;
+        }else{
+        	$chek_email = $this->crud_global->CheckNum('tbl_admin',array('admin_email'=>$admin_email,'status !='=>0));
+        }
+        if($chek_email == true){
+        	$output=array('output'=>'Your Email has been registered');
+        }else {
+        	$arraywhere = array('admin_id'=>$id);
+        	if(!empty($admin_password)){
+        		$enkrip_pass = $this->enkrip->EnkripPasswordAdmin($admin_password);
+	        	$arrayvalues = array(
+	        		'update_by'=>$admin_id,
+	        		'dateupdate'=>$datecreated,
+					'akun_pusat'=>$akun_pusat,
+					'akun_proyek'=>$akun_proyek,
+					'menu_admin'=>$menu_admin,
+					'kunci_rakor'=>$kunci_rakor,
+					'approval_penawaran_pembelian'=>$approval_penawaran_pembelian,
+					'delete_penawaran_pembelian'=>$delete_penawaran_pembelian,
+					'approval_permintaan_bahan_alat'=>$approval_permintaan_bahan_alat,
+					'delete_permintaan_bahan_alat'=>$delete_permintaan_bahan_alat,
+					'approval_po'=>$approval_po,
+					'delete_po'=>$delete_po,
+					'surat_jalan_pembelian'=>$surat_jalan_pembelian,
+					'verifikasi'=>$verifikasi,
+					'delete_tagihan_pembelian'=>$delete_tagihan_pembelian,
+					'approval_penawaran_penjualan'=>$approval_penawaran_penjualan,
+					'delete_penawaran_penjualan'=>$delete_penawaran_penjualan,
+					'approval_so_penjualan'=>$approval_so_penjualan,
+					'delete_so_penjualan'=>$delete_so_penjualan,
+					'surat_jalan_penjualan'=>$surat_jalan_penjualan,
+					'verifikasi_penjualan'=>$verifikasi_penjualan,
+					'delete_tagihan_penjualan'=>$delete_tagihan_penjualan,
+					'edit_rap'=>$edit_rap,
+					'delete_rap'=>$delete_rap,
+					'edit_biaya'=>$edit_biaya,
+					'delete_biaya'=>$delete_biaya,
+	        	);
+        	}else {
+	        	$arrayvalues = array(
+	        		'update_by'=>$admin_id,
+	        		'dateupdate'=>$datecreated,
+					'akun_pusat'=>$akun_pusat,
+					'akun_proyek'=>$akun_proyek,
+					'menu_admin'=>$menu_admin,
+					'kunci_rakor'=>$kunci_rakor,
+					'approval_penawaran_pembelian'=>$approval_penawaran_pembelian,
+					'delete_penawaran_pembelian'=>$delete_penawaran_pembelian,
+					'approval_permintaan_bahan_alat'=>$approval_permintaan_bahan_alat,
+					'delete_permintaan_bahan_alat'=>$delete_permintaan_bahan_alat,
+					'approval_po'=>$approval_po,
+					'delete_po'=>$delete_po,
+					'surat_jalan_pembelian'=>$surat_jalan_pembelian,
+					'verifikasi'=>$verifikasi,
+					'delete_tagihan_pembelian'=>$delete_tagihan_pembelian,
+					'approval_penawaran_penjualan'=>$approval_penawaran_penjualan,
+					'delete_penawaran_penjualan'=>$delete_penawaran_penjualan,
+					'approval_so_penjualan'=>$approval_so_penjualan,
+					'delete_so_penjualan'=>$delete_so_penjualan,
+					'surat_jalan_penjualan'=>$surat_jalan_penjualan,
+					'verifikasi_penjualan'=>$verifikasi_penjualan,
+					'delete_tagihan_penjualan'=>$delete_tagihan_penjualan,
+					'edit_rap'=>$edit_rap,
+					'delete_rap'=>$delete_rap,
+					'edit_biaya'=>$edit_biaya,
+					'delete_biaya'=>$delete_biaya,
+	        	);
+        	}
+            $query=$this->crud_global->UpdateDefault('tbl_admin',$arrayvalues,$arraywhere);
+            if($query){
+            	$output=array('output'=>'true');
+            }else {
+            	$output=array('output'=>'false');
+            }
+        }
+        echo json_encode($output);
+	}
+
 	function users()
 	{
 		$check = $this->m_admin->check_login();
