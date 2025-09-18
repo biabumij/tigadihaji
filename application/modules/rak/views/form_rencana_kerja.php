@@ -107,7 +107,7 @@
                                                     <input type="text" id="vol_produk_c" name="vol_produk_c" class="form-control numberformat text-right" value="" onchange="changeData(1)" autocomplete="off" required="">
                                                     </td>
                                                     <td>
-                                                    <input type="text" id="price_c" name="price_c" class="form-control rupiahformat text-right" value="1065000" autocomplete="off">
+                                                    <input type="text" id="price_c" name="price_c" class="form-control rupiahformat text-right" value="1225000" autocomplete="off">
                                                     </td>
                                                     <td class="text-center">M3</td>
                                                     <td class="text-center">
@@ -182,7 +182,7 @@
                                                     <input type="text" id="vol_produk_f" name="vol_produk_f" class="form-control numberformat text-right" value="" onchange="changeData(1)" autocomplete="off" required="">
                                                     </td>
                                                     <td>
-                                                    <input type="text" id="price_f" name="price_f" class="form-control rupiahformat text-right" value="1455000" autocomplete="off">
+                                                    <input type="text" id="price_f" name="price_f" class="form-control rupiahformat text-right" value="1550000" autocomplete="off">
                                                     </td>
                                                     <td class="text-center">M3</td>
                                                     <td class="text-center">
@@ -579,7 +579,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center">2.</td>
-                                                    <td class="text-left">Wheel Loader</td>
+                                                    <td class="text-left">Truck Mixer</td>
                                                     <td>
                                                         <input type="text" id="vol_realisasi_tm" name="vol_realisasi_tm" class="form-control numberformat text-right" value="0" autocomplete="off">
                                                     </td>
@@ -589,7 +589,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center">3.</td>
-                                                    <td class="text-left">Truck Mixer</td>
+                                                    <td class="text-left">Wheel Loader</td>
                                                     <td>
                                                         <input type="text" id="vol_realisasi_wl" name="vol_realisasi_wl" class="form-control numberformat text-right" value="0" autocomplete="off">
                                                     </td>

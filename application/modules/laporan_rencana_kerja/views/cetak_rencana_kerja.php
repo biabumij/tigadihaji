@@ -1347,20 +1347,13 @@
 				<th align="center" rowspan="2" style="vertical-align:middle;">URAIAN</th>
 				<th align="center" rowspan="2" style="vertical-align:middle;">HARSAT</th>
 				<th align="center" rowspan="2" style="vertical-align:middle;">SATUAN</th>
-				<!--<th align="center" colspan="2" style="text-transform:uppercase;">JUNI 2024</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">JULI 2024</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">AGUSTUS 2024</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">SEPTEMBER 2024</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">OKTOBER 2024</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">NOVEMBER 2024</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">DESEMBER 2024</th>-->
-				<th align="center" colspan="2" style="text-transform:uppercase;">JANUARI 2025</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">FEBRUARI 2025</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">MARET 2025</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">APRIL 2025</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">MEI 2025</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">JUNI 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">JAN - JUN 2025</th>
 				<th align="center" colspan="2" style="text-transform:uppercase;">JULI 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">AGUSTUS 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">SEPTEMBER 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">OKTOBER 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">NOVEMBER 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">DESEMBER 2025</th>
 				<th align="center" colspan="2">JUMLAH</th>
 	        </tr>
 			<tr class="table-judul">

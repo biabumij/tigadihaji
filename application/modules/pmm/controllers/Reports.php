@@ -5520,20 +5520,20 @@ class Reports extends CI_Controller {
 			</script>
 			<?php
 
-			$date_januari25_awal = date('0000-00-00');
-			$date_januari25_akhir = date('0000-00-00');
-			$date_februari25_awal = date('2025-02-01');
-			$date_februari25_akhir = date('2025-02-28');
-			$date_maret25_awal = date('2025-03-01');
-			$date_maret25_akhir = date('2025-03-31');
-			$date_april25_awal = date('2025-04-01');
-			$date_april25_akhir = date('2025-04-30');
-			$date_mei25_awal = date('2025-05-01');
-			$date_mei25_akhir = date('2025-05-31');
-			$date_juni25_awal = date('2025-06-01');
-			$date_juni25_akhir = date('2025-06-30');
-			$date_juli25_awal = date('2025-07-01');
-			$date_juli25_akhir = date('2025-07-31');
+			$date_januari25_awal = date('2025-01-01');
+			$date_januari25_akhir = date('2025-06-30');
+			$date_februari25_awal = date('2025-07-01');
+			$date_februari25_akhir = date('2025-07-31');
+			$date_maret25_awal = date('2025-08-01');
+			$date_maret25_akhir = date('2025-08-31');
+			$date_april25_awal = date('2025-09-01');
+			$date_april25_akhir = date('2025-09-30');
+			$date_mei25_awal = date('2025-10-01');
+			$date_mei25_akhir = date('2025-10-31');
+			$date_juni25_awal = date('2025-11-01');
+			$date_juni25_akhir = date('2025-11-30');
+			$date_juli25_awal = date('2025-12-01');
+			$date_juli25_akhir = date('2025-12-31');
 
 			//BETON K-125 SLUMP 10
 			$rak_1_K125 = $this->db->select('*, SUM(vol_produk_a) as vol_produk_a')
@@ -6789,20 +6789,13 @@ class Reports extends CI_Controller {
 				<th class="text-center" rowspan="2" style="vertical-align:middle;">URAIAN</th>
 				<th class="text-center" rowspan="2" style="vertical-align:middle;">HARSAT</th>
 				<th class="text-center" rowspan="2" style="vertical-align:middle;">SATUAN</th>
-				<!--<th class="text-center" colspan="2" style="text-transform:uppercase;">JUNI 2024</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">JULI 2024</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">AGUSTUS 2024</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">SEPTEMBER 2024</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">OKTOBER 2024</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">NOVEMBER 2024</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">DESEMBER 2024</th>-->
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">JANUARI 2025</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">FEBRUARI 2025</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">MARET 2025</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">APRIL 2025</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">MEI 2025</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">JUNI 2025</th>
+				<th class="text-center" colspan="2" style="text-transform:uppercase;">JAN - JUN 2025</th>
 				<th class="text-center" colspan="2" style="text-transform:uppercase;">JULI 2025</th>
+				<th class="text-center" colspan="2" style="text-transform:uppercase;">AGUSTUS 2025</th>
+				<th class="text-center" colspan="2" style="text-transform:uppercase;">SEPTEMBER 2025</th>
+				<th class="text-center" colspan="2" style="text-transform:uppercase;">OKTOBER 2025</th>
+				<th class="text-center" colspan="2" style="text-transform:uppercase;">NOVEMBER 2025</th>
+				<th class="text-center" colspan="2" style="text-transform:uppercase;">DESEMBER 2025</th>
 				<th class="text-center" colspan="2">JUMLAH</th>
 	        </tr>
 			<tr class="table-judul">
@@ -7993,7 +7986,7 @@ class Reports extends CI_Controller {
 			</tr>
 			<tr class="table-baris">
 				<?php
-				$realisasi_1 = $this->db->select('*')
+				$realisasi_1 = $this->db->select('*,SUM(vol_realisasi_a) as vol_realisasi_a, SUM(nilai_realisasi_a) as nilai_realisasi_a, SUM(vol_realisasi_b) as vol_realisasi_b, SUM(nilai_realisasi_b) as nilai_realisasi_b, SUM(vol_realisasi_c) as vol_realisasi_c, SUM(nilai_realisasi_c) as nilai_realisasi_c, SUM(vol_realisasi_d) as vol_realisasi_d, SUM(nilai_realisasi_d) as nilai_realisasi_d, SUM(vol_realisasi_e) as vol_realisasi_e, SUM(nilai_realisasi_e) as nilai_realisasi_e')
 				->from('rak')
 				->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 				->get()->row_array();
@@ -8467,7 +8460,7 @@ class Reports extends CI_Controller {
 				<th class="text-left" colspan="20"><b>D. TOTAL BIAYA PERALATAN</b></th>
 			</tr>
 			<?php
-			$realisasi_1 = $this->db->select('*')
+			$realisasi_1 = $this->db->select('*, SUM(vol_realisasi_bp) as vol_realisasi_bp, SUM(nilai_realisasi_bp) as nilai_realisasi_bp, SUM(vol_realisasi_tm) as vol_realisasi_tm, SUM(nilai_realisasi_tm) as nilai_realisasi_tm, SUM(vol_realisasi_wl) as vol_realisasi_wl, SUM(nilai_realisasi_wl) as nilai_realisasi_wl, SUM(vol_realisasi_solar) as vol_realisasi_solar, SUM(nilai_realisasi_solar) as nilai_realisasi_solar')
 			->from('rak')
 			->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->row_array();

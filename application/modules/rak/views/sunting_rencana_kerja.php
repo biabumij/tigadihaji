@@ -561,7 +561,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center">2.</td>
-                                                    <td class="text-left">Wheel Loader</td>
+                                                    <td class="text-left">Truck Mixer</td>
                                                     <td>
                                                         <input type="text" id="vol_realisasi_tm" name="vol_realisasi_tm" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_realisasi_tm"],2,',','.');?>" readonly="" autocomplete="off">
                                                     </td>
@@ -571,7 +571,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="text-center">3.</td>
-                                                    <td class="text-left">Truck Mixer</td>
+                                                    <td class="text-left">Wheel Loader</td>
                                                     <td>
                                                         <input type="text" id="vol_realisasi_wl" name="vol_realisasi_wl" class="form-control numberformat text-right" value="<?php echo number_format($rak["vol_realisasi_wl"],2,',','.');?>" readonly="" autocomplete="off">
                                                     </td>
