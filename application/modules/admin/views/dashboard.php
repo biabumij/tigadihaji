@@ -227,6 +227,7 @@
 
                                         $jenis_transaksi = $this->db->select('transaksi')
                                         ->from('transactions')
+                                         ->where("transaksi <> 'Total'")
                                         ->group_by('transaksi')
                                         ->order_by('id','asc')
                                         ->get()->result_array();
