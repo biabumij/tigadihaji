@@ -5519,8 +5519,7 @@ class Reports extends CI_Controller {
 				}
 			</script>
 			<?php
-
-			$date_januari25_awal = date('2025-01-01');
+			$date_januari25_awal = date('2025-02-01');
 			$date_januari25_akhir = date('2025-06-30');
 			$date_februari25_awal = date('2025-07-01');
 			$date_februari25_akhir = date('2025-07-31');
@@ -6789,7 +6788,7 @@ class Reports extends CI_Controller {
 				<th class="text-center" rowspan="2" style="vertical-align:middle;">URAIAN</th>
 				<th class="text-center" rowspan="2" style="vertical-align:middle;">HARSAT</th>
 				<th class="text-center" rowspan="2" style="vertical-align:middle;">SATUAN</th>
-				<th class="text-center" colspan="2" style="text-transform:uppercase;">JAN - JUN 2025</th>
+				<th class="text-center" colspan="2" style="text-transform:uppercase;">FEB - JUN 2025</th>
 				<th class="text-center" colspan="2" style="text-transform:uppercase;">JULI 2025</th>
 				<th class="text-center" colspan="2" style="text-transform:uppercase;">AGUSTUS 2025</th>
 				<th class="text-center" colspan="2" style="text-transform:uppercase;">SEPTEMBER 2025</th>

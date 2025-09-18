@@ -6,7 +6,7 @@
 	  <style type="text/css">
 		body {
 			font-family: helvetica;
-			font-size: 5px;
+			font-size: 4.5px;
 		}
 
 		table.table-border-pojok-kiri, th.table-border-pojok-kiri, td.table-border-pojok-kiri {
@@ -107,82 +107,67 @@
 		<table width="98%" border="0" cellpadding="3" border="0">
 		
 			<?php
-			/*$date_juni24_awal = date('2024-06-01');
-			$date_juni24_akhir = date('2024-06-30');
-			$date_juli24_awal = date('2024-07-01');
-			$date_juli24_akhir = date('2024-07-31');
-			$date_agustus24_awal = date('2024-08-01');
-			$date_agustus24_akhir = date('2024-08-31');
-			$date_september24_awal = date('2024-09-01');
-			$date_september24_akhir = date('2024-09-30');
-			$date_oktober24_awal = date('2024-10-01');
-			$date_oktober24_akhir = date('2024-10-31');
-			$date_november24_awal = date('2024-11-01');
-			$date_november24_akhir = date('2024-11-30');
-			$date_desember24_awal = date('2024-12-01');
-			$date_desember24_akhir = date('2024-12-31');*/
-
-			$date_juni24_awal = date('2025-01-01');
-			$date_juni24_akhir = date('2025-01-30');
-			$date_juli24_awal = date('2025-02-01');
-			$date_juli24_akhir = date('2025-02-28');
-			$date_agustus24_awal = date('2025-03-01');
-			$date_agustus24_akhir = date('2025-03-31');
-			$date_september24_awal = date('2025-04-01');
-			$date_september24_akhir = date('2025-04-30');
-			$date_oktober24_awal = date('2025-05-01');
-			$date_oktober24_akhir = date('2025-05-31');
-			$date_november24_awal = date('2025-06-01');
-			$date_november24_akhir = date('2025-06-30');
-			$date_desember24_awal = date('2025-07-01');
-			$date_desember24_akhir = date('2025-07-31');
+			$date_januari25_awal = date('2025-02-01');
+			$date_januari25_akhir = date('2025-06-30');
+			$date_februari25_awal = date('2025-07-01');
+			$date_februari25_akhir = date('2025-07-31');
+			$date_maret25_awal = date('2025-08-01');
+			$date_maret25_akhir = date('2025-08-31');
+			$date_april25_awal = date('2025-09-01');
+			$date_april25_akhir = date('2025-09-30');
+			$date_mei25_awal = date('2025-10-01');
+			$date_mei25_akhir = date('2025-10-31');
+			$date_juni25_awal = date('2025-11-01');
+			$date_juni25_akhir = date('2025-11-30');
+			$date_juli25_awal = date('2025-12-01');
+			$date_juli25_akhir = date('2025-12-31');
 
 			//BETON K-125 SLUMP 10
 			$rak_1_K125 = $this->db->select('*, SUM(vol_produk_a) as vol_produk_a')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->row_array();
 			$rak_1_vol_K125 = $rak_1_K125['vol_produk_a'];
 			$rak_1_nilai_K125 = $rak_1_vol_K125 * $rak_1_K125['price_a'];
 
 			$rak_2_K125 = $this->db->select('*, SUM(vol_produk_a) as vol_produk_a')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->row_array();
 			$rak_2_vol_K125 = $rak_2_K125['vol_produk_a'];
 			$rak_2_nilai_K125 = $rak_2_vol_K125 * $rak_2_K125['price_a'];
 
 			$rak_3_K125 = $this->db->select('*, SUM(vol_produk_a) as vol_produk_a')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->row_array();
 			$rak_3_vol_K125 = $rak_3_K125['vol_produk_a'];
 			$rak_3_nilai_K125 = $rak_3_vol_K125 * $rak_3_K125['price_a'];
 
 			$rak_4_K125 = $this->db->select('*, SUM(vol_produk_a) as vol_produk_a')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->row_array();
 			$rak_4_vol_K125 = $rak_4_K125['vol_produk_a'];
 			$rak_4_nilai_K125 = $rak_4_vol_K125 * $rak_4_K125['price_a'];
 
 			$rak_5_K125 = $this->db->select('*, SUM(vol_produk_a) as vol_produk_a')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->row_array();
 			$rak_5_vol_K125 = $rak_5_K125['vol_produk_a'];
 			$rak_5_nilai_K125 = $rak_5_vol_K125 * $rak_5_K125['price_a'];
 
 			$rak_6_K125 = $this->db->select('*, SUM(vol_produk_a) as vol_produk_a')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->row_array();
 			$rak_6_vol_K125 = $rak_6_K125['vol_produk_a'];
 			$rak_6_nilai_K125 = $rak_6_vol_K125 * $rak_6_K125['price_a'];
 
 			$rak_7_K125 = $this->db->select('*, SUM(vol_produk_a) as vol_produk_a')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->row_array();
 			$rak_7_vol_K125 = $rak_7_K125['vol_produk_a'];
 			$rak_7_nilai_K125 = $rak_7_vol_K125 * $rak_7_K125['price_a'];
@@ -194,7 +179,7 @@
 			$komposisi_125_1 = $this->db->select('(r.vol_produk_a * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_a * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_a * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_a * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_a * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_a * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_a * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_a * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_a * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_a * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_125 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_125_1 = 0;
@@ -216,7 +201,7 @@
 			$komposisi_125_2 = $this->db->select('(r.vol_produk_a * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_a * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_a * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_a * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_a * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_a * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_a * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_a * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_a * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_a * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_125 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_125_2 = 0;
@@ -238,7 +223,7 @@
 			$komposisi_125_3 = $this->db->select('(r.vol_produk_a * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_a * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_a * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_a * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_a * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_a * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_a * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_a * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_a * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_a * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_125 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_125_3 = 0;
@@ -260,7 +245,7 @@
 			$komposisi_125_4 = $this->db->select('(r.vol_produk_a * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_a * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_a * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_a * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_a * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_a * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_a * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_a * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_a * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_a * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_125 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_125_4 = 0;
@@ -282,7 +267,7 @@
 			$komposisi_125_5 = $this->db->select('(r.vol_produk_a * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_a * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_a * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_a * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_a * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_a * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_a * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_a * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_a * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_a * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_125 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_125_5 = 0;
@@ -304,7 +289,7 @@
 			$komposisi_125_6 = $this->db->select('(r.vol_produk_a * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_a * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_a * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_a * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_a * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_a * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_a * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_a * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_a * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_a * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_125 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_125_6 = 0;
@@ -326,7 +311,7 @@
 			$komposisi_125_7 = $this->db->select('(r.vol_produk_a * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_a * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_a * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_a * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_a * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_a * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_a * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_a * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_a * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_a * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_125 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_125_7 = 0;
@@ -348,49 +333,49 @@
 			//BETON K-175 SLUMP 10
 			$rak_1_K175 = $this->db->select('*, SUM(vol_produk_b) as vol_produk_b')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->row_array();
 			$rak_1_vol_K175 = $rak_1_K175['vol_produk_b'];
 			$rak_1_nilai_K175 = $rak_1_vol_K175 * $rak_1_K175['price_b'];
 
 			$rak_2_K175 = $this->db->select('*, SUM(vol_produk_b) as vol_produk_b')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->row_array();
 			$rak_2_vol_K175 = $rak_2_K175['vol_produk_b'];
 			$rak_2_nilai_K175 = $rak_2_vol_K175 * $rak_2_K175['price_b'];
 
 			$rak_3_K175 = $this->db->select('*, SUM(vol_produk_b) as vol_produk_b')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->row_array();
 			$rak_3_vol_K175 = $rak_3_K175['vol_produk_b'];
 			$rak_3_nilai_K175 = $rak_3_vol_K175 * $rak_3_K175['price_b'];
 
 			$rak_4_K175 = $this->db->select('*, SUM(vol_produk_b) as vol_produk_b')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->row_array();
 			$rak_4_vol_K175 = $rak_4_K175['vol_produk_b'];
 			$rak_4_nilai_K175 = $rak_4_vol_K175 * $rak_4_K175['price_b'];
 
 			$rak_5_K175 = $this->db->select('*, SUM(vol_produk_b) as vol_produk_b')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->row_array();
 			$rak_5_vol_K175 = $rak_5_K175['vol_produk_b'];
 			$rak_5_nilai_K175 = $rak_5_vol_K175 * $rak_5_K175['price_b'];
 
 			$rak_6_K175 = $this->db->select('*, SUM(vol_produk_b) as vol_produk_b')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->row_array();
 			$rak_6_vol_K175 = $rak_6_K175['vol_produk_b'];
 			$rak_6_nilai_K175 = $rak_6_vol_K175 * $rak_6_K175['price_b'];
 
 			$rak_7_K175 = $this->db->select('*, SUM(vol_produk_b) as vol_produk_b')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->row_array();
 			$rak_7_vol_K175 = $rak_7_K175['vol_produk_b'];
 			$rak_7_nilai_K175 = $rak_7_vol_K175 * $rak_7_K175['price_b'];
@@ -402,7 +387,7 @@
 			$komposisi_175_1 = $this->db->select('(r.vol_produk_b * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_b * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_b * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_b * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_b * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_b * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_b * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_b * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_b * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_b * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_175 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_175_1 = 0;
@@ -424,7 +409,7 @@
 			$komposisi_175_2 = $this->db->select('(r.vol_produk_b * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_b * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_b * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_b * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_b * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_b * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_b * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_b * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_b * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_b * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_175 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_175_2 = 0;
@@ -446,7 +431,7 @@
 			$komposisi_175_3 = $this->db->select('(r.vol_produk_b * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_b * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_b * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_b * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_b * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_b * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_b * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_b * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_b * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_b * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_175 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_175_3 = 0;
@@ -468,7 +453,7 @@
 			$komposisi_175_4 = $this->db->select('(r.vol_produk_b * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_b * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_b * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_b * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_b * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_b * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_b * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_b * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_b * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_b * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_175 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_175_4 = 0;
@@ -490,7 +475,7 @@
 			$komposisi_175_5 = $this->db->select('(r.vol_produk_b * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_b * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_b * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_b * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_b * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_b * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_b * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_b * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_b * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_b * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_175 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_175_5 = 0;
@@ -509,52 +494,96 @@
 				$total_nilai_additive_175_5 = $x['nilai_komposisi_additive'];
 			}
 
+			$komposisi_175_6 = $this->db->select('(r.vol_produk_b * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_b * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_b * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_b * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_b * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_b * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_b * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_b * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_b * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_b * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
+			->from('rak r')
+			->join('pmm_agregat pk', 'r.komposisi_175 = pk.id','left')
+			->where("r.tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
+			->get()->result_array();
+
+			$total_volume_semen_175_6 = 0;
+			$total_nilai_semen_175_6 = 0;
+
+			foreach ($komposisi_175_6 as $x){
+				$total_volume_semen_175_6 = $x['vol_komposisi_semen'];
+				$total_nilai_semen_175_6 = $x['nilai_komposisi_semen'];
+				$total_volume_pasir_175_6 = $x['vol_komposisi_pasir'];
+				$total_nilai_pasir_175_6 = $x['nilai_komposisi_pasir'];
+				$total_volume_batu1020_175_6 = $x['vol_komposisi_batu1020'];
+				$total_nilai_batu1020_175_6 = $x['nilai_komposisi_batu1020'];
+				$total_volume_batu2030_175_6 = $x['vol_komposisi_batu2030'];
+				$total_nilai_batu2030_175_6 = $x['nilai_komposisi_batu2030'];
+				$total_volume_additive_175_6 = $x['vol_komposisi_additive'];
+				$total_nilai_additive_175_6 = $x['nilai_komposisi_additive'];
+			}
+
+			$komposisi_175_7 = $this->db->select('(r.vol_produk_b * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_b * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_b * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_b * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_b * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_b * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_b * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_b * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_b * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_b * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
+			->from('rak r')
+			->join('pmm_agregat pk', 'r.komposisi_175 = pk.id','left')
+			->where("r.tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
+			->get()->result_array();
+
+			$total_volume_semen_175_7 = 0;
+			$total_nilai_semen_175_7 = 0;
+
+			foreach ($komposisi_175_7 as $x){
+				$total_volume_semen_175_7 = $x['vol_komposisi_semen'];
+				$total_nilai_semen_175_7 = $x['nilai_komposisi_semen'];
+				$total_volume_pasir_175_7 = $x['vol_komposisi_pasir'];
+				$total_nilai_pasir_175_7 = $x['nilai_komposisi_pasir'];
+				$total_volume_batu1020_175_7 = $x['vol_komposisi_batu1020'];
+				$total_nilai_batu1020_175_7 = $x['nilai_komposisi_batu1020'];
+				$total_volume_batu2030_175_7 = $x['vol_komposisi_batu2030'];
+				$total_nilai_batu2030_175_7 = $x['nilai_komposisi_batu2030'];
+				$total_volume_additive_175_7 = $x['vol_komposisi_additive'];
+				$total_nilai_additive_175_7 = $x['nilai_komposisi_additive'];
+			}
+
 			//BETON K-225 SLUMP 10
 			$rak_1_K225 = $this->db->select('*, SUM(vol_produk_c) as vol_produk_c')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->row_array();
 			$rak_1_vol_K225 = $rak_1_K225['vol_produk_c'];
 			$rak_1_nilai_K225 = $rak_1_vol_K225 * $rak_1_K225['price_c'];
 
 			$rak_2_K225 = $this->db->select('*, SUM(vol_produk_c) as vol_produk_c')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->row_array();
 			$rak_2_vol_K225 = $rak_2_K225['vol_produk_c'];
 			$rak_2_nilai_K225 = $rak_2_vol_K225 * $rak_2_K225['price_c'];
 
 			$rak_3_K225 = $this->db->select('*, SUM(vol_produk_c) as vol_produk_c')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->row_array();
 			$rak_3_vol_K225 = $rak_3_K225['vol_produk_c'];
 			$rak_3_nilai_K225 = $rak_3_vol_K225 * $rak_3_K225['price_c'];
 
 			$rak_4_K225 = $this->db->select('*, SUM(vol_produk_c) as vol_produk_c')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->row_array();
 			$rak_4_vol_K225 = $rak_4_K225['vol_produk_c'];
 			$rak_4_nilai_K225 = $rak_4_vol_K225 * $rak_4_K225['price_c'];
 
 			$rak_5_K225 = $this->db->select('*, SUM(vol_produk_c) as vol_produk_c')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->row_array();
 			$rak_5_vol_K225 = $rak_5_K225['vol_produk_c'];
 			$rak_5_nilai_K225 = $rak_5_vol_K225 * $rak_5_K225['price_c'];
 
 			$rak_6_K225 = $this->db->select('*, SUM(vol_produk_c) as vol_produk_c')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->row_array();
 			$rak_6_vol_K225 = $rak_6_K225['vol_produk_c'];
 			$rak_6_nilai_K225 = $rak_6_vol_K225 * $rak_6_K225['price_c'];
 
 			$rak_7_K225 = $this->db->select('*, SUM(vol_produk_c) as vol_produk_c')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->row_array();
 			$rak_7_vol_K225 = $rak_7_K225['vol_produk_c'];
 			$rak_7_nilai_K225 = $rak_7_vol_K225 * $rak_7_K225['price_c'];
@@ -566,7 +595,7 @@
 			$komposisi_225_1 = $this->db->select('(r.vol_produk_c * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_c * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_c * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_c * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_c * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_c * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_c * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_c * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_c * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_c * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_225 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_225_1 = 0;
@@ -588,7 +617,7 @@
 			$komposisi_225_2 = $this->db->select('(r.vol_produk_c * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_c * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_c * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_c * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_c * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_c * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_c * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_c * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_c * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_c * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_225 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_225_2 = 0;
@@ -610,7 +639,7 @@
 			$komposisi_225_3 = $this->db->select('(r.vol_produk_c * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_c * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_c * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_c * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_c * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_c * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_c * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_c * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_c * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_c * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_225 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_225_3 = 0;
@@ -632,7 +661,7 @@
 			$komposisi_225_4 = $this->db->select('(r.vol_produk_c * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_c * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_c * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_c * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_c * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_c * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_c * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_c * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_c * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_c * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_225 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_225_4 = 0;
@@ -654,7 +683,7 @@
 			$komposisi_225_5 = $this->db->select('(r.vol_produk_c * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_c * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_c * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_c * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_c * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_c * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_c * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_c * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_c * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_c * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_225 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_225_5 = 0;
@@ -676,7 +705,7 @@
 			$komposisi_225_6 = $this->db->select('(r.vol_produk_c * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_c * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_c * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_c * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_c * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_c * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_c * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_c * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_c * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_c * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_225 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_225_6 = 0;
@@ -698,7 +727,7 @@
 			$komposisi_225_7 = $this->db->select('(r.vol_produk_c * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_c * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_c * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_c * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_c * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_c * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_c * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_c * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_c * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_c * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_225 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_225_7 = 0;
@@ -720,49 +749,49 @@
 			//BETON K-250 SLUMP 10
 			$rak_1_K250 = $this->db->select('*, SUM(vol_produk_d) as vol_produk_d')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->row_array();
 			$rak_1_vol_K250 = $rak_1_K250['vol_produk_d'];
 			$rak_1_nilai_K250 = $rak_1_vol_K250 * $rak_1_K250['price_d'];
 
 			$rak_2_K250 = $this->db->select('*, SUM(vol_produk_d) as vol_produk_d')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->row_array();
 			$rak_2_vol_K250 = $rak_2_K250['vol_produk_d'];
 			$rak_2_nilai_K250 = $rak_2_vol_K250 * $rak_2_K250['price_d'];
 
 			$rak_3_K250 = $this->db->select('*, SUM(vol_produk_d) as vol_produk_d')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->row_array();
 			$rak_3_vol_K250 = $rak_3_K250['vol_produk_d'];
 			$rak_3_nilai_K250 = $rak_3_vol_K250 * $rak_3_K250['price_d'];
 
 			$rak_4_K250 = $this->db->select('*, SUM(vol_produk_d) as vol_produk_d')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->row_array();
 			$rak_4_vol_K250 = $rak_4_K250['vol_produk_d'];
 			$rak_4_nilai_K250 = $rak_4_vol_K250 * $rak_4_K250['price_d'];
 
 			$rak_5_K250 = $this->db->select('*, SUM(vol_produk_d) as vol_produk_d')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->row_array();
 			$rak_5_vol_K250 = $rak_5_K250['vol_produk_d'];
 			$rak_5_nilai_K250 = $rak_5_vol_K250 * $rak_5_K250['price_d'];
 
 			$rak_6_K250 = $this->db->select('*, SUM(vol_produk_d) as vol_produk_d')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->row_array();
 			$rak_6_vol_K250 = $rak_6_K250['vol_produk_d'];
 			$rak_6_nilai_K250 = $rak_6_vol_K250 * $rak_6_K250['price_d'];
 
 			$rak_7_K250 = $this->db->select('*, SUM(vol_produk_d) as vol_produk_d')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->row_array();
 			$rak_7_vol_K250 = $rak_7_K250['vol_produk_d'];
 			$rak_7_nilai_K250 = $rak_7_vol_K250 * $rak_7_K250['price_d'];
@@ -774,7 +803,7 @@
 			$komposisi_250_1 = $this->db->select('(r.vol_produk_d * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_d * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_d * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_d * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_d * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_d * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_d * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_d * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_d * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_d * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_250 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_250_1 = 0;
@@ -796,7 +825,7 @@
 			$komposisi_250_2 = $this->db->select('(r.vol_produk_d * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_d * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_d * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_d * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_d * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_d * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_d * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_d * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_d * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_d * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_250 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_250_2 = 0;
@@ -818,7 +847,7 @@
 			$komposisi_250_3 = $this->db->select('(r.vol_produk_d * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_d * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_d * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_d * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_d * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_d * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_d * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_d * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_d * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_d * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_250 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_250_3 = 0;
@@ -840,7 +869,7 @@
 			$komposisi_250_4 = $this->db->select('(r.vol_produk_d * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_d * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_d * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_d * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_d * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_d * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_d * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_d * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_d * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_d * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_250 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_250_4 = 0;
@@ -862,7 +891,7 @@
 			$komposisi_250_5 = $this->db->select('(r.vol_produk_d * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_d * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_d * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_d * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_d * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_d * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_d * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_d * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_d * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_d * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_250 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_250_5 = 0;
@@ -884,7 +913,7 @@
 			$komposisi_250_6 = $this->db->select('(r.vol_produk_d * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_d * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_d * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_d * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_d * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_d * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_d * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_d * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_d * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_d * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_250 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_250_6 = 0;
@@ -906,7 +935,7 @@
 			$komposisi_250_7 = $this->db->select('(r.vol_produk_d * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_d * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_d * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_d * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_d * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_d * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_d * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_d * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_d * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_d * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_250 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_250_7 = 0;
@@ -928,49 +957,49 @@
 			//BETON K-300 SLUMP 10
 			$rak_1_K300 = $this->db->select('*, SUM(vol_produk_e) as vol_produk_e')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->row_array();
 			$rak_1_vol_K300 = $rak_1_K300['vol_produk_e'];
 			$rak_1_nilai_K300 = $rak_1_vol_K300 * $rak_1_K300['price_e'];
 
 			$rak_2_K300 = $this->db->select('*, SUM(vol_produk_e) as vol_produk_e')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->row_array();
 			$rak_2_vol_K300 = $rak_2_K300['vol_produk_e'];
 			$rak_2_nilai_K300 = $rak_2_vol_K300 * $rak_2_K300['price_e'];
 
 			$rak_3_K300 = $this->db->select('*, SUM(vol_produk_e) as vol_produk_e')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->row_array();
 			$rak_3_vol_K300 = $rak_3_K300['vol_produk_e'];
 			$rak_3_nilai_K300 = $rak_3_vol_K300 * $rak_3_K300['price_e'];
 
 			$rak_4_K300 = $this->db->select('*, SUM(vol_produk_e) as vol_produk_e')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->row_array();
 			$rak_4_vol_K300 = $rak_4_K300['vol_produk_e'];
 			$rak_4_nilai_K300 = $rak_4_vol_K300 * $rak_4_K300['price_e'];
 
 			$rak_5_K300 = $this->db->select('*, SUM(vol_produk_e) as vol_produk_e')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->row_array();
 			$rak_5_vol_K300 = $rak_5_K300['vol_produk_e'];
 			$rak_5_nilai_K300 = $rak_5_vol_K300 * $rak_5_K300['price_e'];
 
 			$rak_6_K300 = $this->db->select('*, SUM(vol_produk_e) as vol_produk_e')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->row_array();
 			$rak_6_vol_K300 = $rak_6_K300['vol_produk_e'];
 			$rak_6_nilai_K300 = $rak_6_vol_K300 * $rak_6_K300['price_e'];
 
 			$rak_7_K300 = $this->db->select('*, SUM(vol_produk_e) as vol_produk_e')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->row_array();
 			$rak_7_vol_K300 = $rak_7_K300['vol_produk_e'];
 			$rak_7_nilai_K300 = $rak_7_vol_K300 * $rak_7_K300['price_e'];
@@ -982,7 +1011,7 @@
 			$komposisi_300_1 = $this->db->select('(r.vol_produk_e * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_e * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_e * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_e * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_e * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_e * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_e * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_e * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_e * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_e * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_300 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_300_1 = 0;
@@ -1004,7 +1033,7 @@
 			$komposisi_300_2 = $this->db->select('(r.vol_produk_e * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_e * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_e * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_e * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_e * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_e * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_e * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_e * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_e * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_e * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_300 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_300_2 = 0;
@@ -1026,7 +1055,7 @@
 			$komposisi_300_3 = $this->db->select('(r.vol_produk_e * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_e * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_e * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_e * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_e * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_e * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_e * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_e * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_e * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_e * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_300 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_300_3 = 0;
@@ -1048,7 +1077,7 @@
 			$komposisi_300_4 = $this->db->select('(r.vol_produk_e * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_e * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_e * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_e * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_e * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_e * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_e * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_e * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_e * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_e * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_300 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_300_4 = 0;
@@ -1070,7 +1099,7 @@
 			$komposisi_300_5 = $this->db->select('(r.vol_produk_e * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_e * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_e * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_e * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_e * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_e * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_e * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_e * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_e * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_e * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_300 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_300_5 = 0;
@@ -1092,7 +1121,7 @@
 			$komposisi_300_6 = $this->db->select('(r.vol_produk_e * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_e * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_e * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_e * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_e * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_e * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_e * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_e * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_e * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_e * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_300 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_300_6 = 0;
@@ -1114,7 +1143,7 @@
 			$komposisi_300_7 = $this->db->select('(r.vol_produk_e * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_e * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_e * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_e * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_e * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_e * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_e * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_e * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_e * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_e * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_300 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_300_7 = 0;
@@ -1136,49 +1165,49 @@
 			//BETON K-350 SLUMP 10
 			$rak_1_K350 = $this->db->select('*, SUM(vol_produk_f) as vol_produk_f')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->row_array();
 			$rak_1_vol_K350 = $rak_1_K350['vol_produk_f'];
 			$rak_1_nilai_K350 = $rak_1_vol_K350 * $rak_1_K350['price_f'];
 
 			$rak_2_K350 = $this->db->select('*, SUM(vol_produk_f) as vol_produk_f')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->row_array();
 			$rak_2_vol_K350 = $rak_2_K350['vol_produk_f'];
 			$rak_2_nilai_K350 = $rak_2_vol_K350 * $rak_2_K350['price_f'];
 
 			$rak_3_K350 = $this->db->select('*, SUM(vol_produk_f) as vol_produk_f')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->row_array();
 			$rak_3_vol_K350 = $rak_3_K350['vol_produk_f'];
 			$rak_3_nilai_K350 = $rak_3_vol_K350 * $rak_3_K350['price_f'];
 
 			$rak_4_K350 = $this->db->select('*, SUM(vol_produk_f) as vol_produk_f')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->row_array();
 			$rak_4_vol_K350 = $rak_4_K350['vol_produk_f'];
 			$rak_4_nilai_K350 = $rak_4_vol_K350 * $rak_4_K350['price_f'];
 
 			$rak_5_K350 = $this->db->select('*, SUM(vol_produk_f) as vol_produk_f')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->row_array();
 			$rak_5_vol_K350 = $rak_5_K350['vol_produk_f'];
 			$rak_5_nilai_K350 = $rak_5_vol_K350 * $rak_5_K350['price_f'];
 
 			$rak_6_K350 = $this->db->select('*, SUM(vol_produk_f) as vol_produk_f')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->row_array();
 			$rak_6_vol_K350 = $rak_6_K350['vol_produk_f'];
 			$rak_6_nilai_K350 = $rak_6_vol_K350 * $rak_6_K350['price_f'];
 
 			$rak_7_K350 = $this->db->select('*, SUM(vol_produk_f) as vol_produk_f')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->row_array();
 			$rak_7_vol_K350 = $rak_7_K350['vol_produk_f'];
 			$rak_7_nilai_K350 = $rak_7_vol_K350 * $rak_7_K350['price_f'];
@@ -1190,7 +1219,7 @@
 			$komposisi_350_1 = $this->db->select('(r.vol_produk_f * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_f * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_f * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_f * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_f * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_f * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_f * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_f * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_f * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_f * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_350 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_350_1 = 0;
@@ -1212,7 +1241,7 @@
 			$komposisi_350_2 = $this->db->select('(r.vol_produk_f * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_f * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_f * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_f * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_f * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_f * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_f * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_f * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_f * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_f * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_350 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_350_2 = 0;
@@ -1234,7 +1263,7 @@
 			$komposisi_350_3 = $this->db->select('(r.vol_produk_f * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_f * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_f * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_f * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_f * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_f * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_f * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_f * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_f * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_f * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_350 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_350_3 = 0;
@@ -1256,7 +1285,7 @@
 			$komposisi_350_4 = $this->db->select('(r.vol_produk_f * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_f * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_f * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_f * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_f * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_f * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_f * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_f * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_f * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_f * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_350 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_350_4 = 0;
@@ -1278,7 +1307,7 @@
 			$komposisi_350_5 = $this->db->select('(r.vol_produk_f * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_f * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_f * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_f * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_f * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_f * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_f * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_f * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_f * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_f * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_350 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_350_5 = 0;
@@ -1300,7 +1329,7 @@
 			$komposisi_350_6 = $this->db->select('(r.vol_produk_f * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_f * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_f * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_f * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_f * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_f * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_f * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_f * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_f * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_f * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_350 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_350_6 = 0;
@@ -1322,7 +1351,7 @@
 			$komposisi_350_7 = $this->db->select('(r.vol_produk_f * pk.presentase_a) as vol_komposisi_semen, (r.vol_produk_f * pk.presentase_a) * pk.price_a as nilai_komposisi_semen, (r.vol_produk_f * pk.presentase_b) as vol_komposisi_pasir, (r.vol_produk_f * pk.presentase_b) * pk.price_b as nilai_komposisi_pasir, (r.vol_produk_f * pk.presentase_c) as vol_komposisi_batu1020, (r.vol_produk_f * pk.presentase_c) * pk.price_c as nilai_komposisi_batu1020, (r.vol_produk_f * pk.presentase_d) as vol_komposisi_batu2030, (r.vol_produk_f * pk.presentase_d) * pk.price_d as nilai_komposisi_batu2030, (r.vol_produk_f * pk.presentase_e) as vol_komposisi_additive, (r.vol_produk_f * pk.presentase_e) * pk.price_e as nilai_komposisi_additive')
 			->from('rak r')
 			->join('pmm_agregat pk', 'r.komposisi_350 = pk.id','left')
-			->where("r.tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("r.tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->result_array();
 
 			$total_volume_semen_350_7 = 0;
@@ -1347,7 +1376,7 @@
 				<th align="center" rowspan="2" style="vertical-align:middle;">URAIAN</th>
 				<th align="center" rowspan="2" style="vertical-align:middle;">HARSAT</th>
 				<th align="center" rowspan="2" style="vertical-align:middle;">SATUAN</th>
-				<th align="center" colspan="2" style="text-transform:uppercase;">JAN - JUN 2025</th>
+				<th align="center" colspan="2" style="text-transform:uppercase;">FEB - JUN 2025</th>
 				<th align="center" colspan="2" style="text-transform:uppercase;">JULI 2025</th>
 				<th align="center" colspan="2" style="text-transform:uppercase;">AGUSTUS 2025</th>
 				<th align="center" colspan="2" style="text-transform:uppercase;">SEPTEMBER 2025</th>
@@ -1707,9 +1736,9 @@
 			</tr>
 			<tr class="table-baris">
 				<?php
-				$realisasi_1 = $this->db->select('*')
+				$realisasi_1 = $this->db->select('*,SUM(vol_realisasi_a) as vol_realisasi_a, SUM(nilai_realisasi_a) as nilai_realisasi_a, SUM(vol_realisasi_b) as vol_realisasi_b, SUM(nilai_realisasi_b) as nilai_realisasi_b, SUM(vol_realisasi_c) as vol_realisasi_c, SUM(nilai_realisasi_c) as nilai_realisasi_c, SUM(vol_realisasi_d) as vol_realisasi_d, SUM(nilai_realisasi_d) as nilai_realisasi_d, SUM(vol_realisasi_e) as vol_realisasi_e, SUM(nilai_realisasi_e) as nilai_realisasi_e')
 				->from('rak')
-				->where("tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+				->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 				->get()->row_array();
 				$vol_realisasi_semen_1 = $realisasi_1['vol_realisasi_a'];
 				$nilai_realisasi_semen_1 = $realisasi_1['nilai_realisasi_a'];
@@ -1738,7 +1767,7 @@
 
 				$realisasi_2 = $this->db->select('*')
 				->from('rak')
-				->where("tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+				->where("tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 				->get()->row_array();
 				$vol_realisasi_semen_2 = $realisasi_2['vol_realisasi_a'];
 				$nilai_realisasi_semen_2 = $realisasi_2['nilai_realisasi_a'];
@@ -1767,7 +1796,7 @@
 		
 				$realisasi_3 = $this->db->select('*')
 				->from('rak')
-				->where("tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+				->where("tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 				->get()->row_array();
 				$vol_realisasi_semen_3 = $realisasi_3['vol_realisasi_a'];
 				$nilai_realisasi_semen_3 = $realisasi_3['nilai_realisasi_a'];
@@ -1796,7 +1825,7 @@
 
 				$realisasi_4 = $this->db->select('*')
 				->from('rak')
-				->where("tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+				->where("tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 				->get()->row_array();
 				$vol_realisasi_semen_4 = $realisasi_4['vol_realisasi_a'];
 				$nilai_realisasi_semen_4 = $realisasi_4['nilai_realisasi_a'];
@@ -1825,7 +1854,7 @@
 
 				$realisasi_5 = $this->db->select('*')
 				->from('rak')
-				->where("tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+				->where("tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 				->get()->row_array();
 				$vol_realisasi_semen_5 = $realisasi_5['vol_realisasi_a'];
 				$nilai_realisasi_semen_5 = $realisasi_5['nilai_realisasi_a'];
@@ -1854,7 +1883,7 @@
 				
 				$realisasi_6 = $this->db->select('*')
 				->from('rak')
-				->where("tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+				->where("tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 				->get()->row_array();
 				$vol_realisasi_semen_6 = $realisasi_6['vol_realisasi_a'];
 				$nilai_realisasi_semen_6 = $realisasi_6['nilai_realisasi_a'];
@@ -1883,7 +1912,7 @@
 				
 				$realisasi_7 = $this->db->select('*')
 				->from('rak')
-				->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+				->where("tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 				->get()->row_array();
 				$vol_realisasi_semen_7 = $realisasi_7['vol_realisasi_a'];
 				$nilai_realisasi_semen_7 = $realisasi_7['nilai_realisasi_a'];
@@ -2071,37 +2100,37 @@
 			<?php
 			$volume_rak_1 = $this->db->select('*, sum(vol_produk_a + vol_produk_b + vol_produk_c + vol_produk_d + vol_produk_e + vol_produk_f) as volume')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->row_array();
 
 			$volume_rak_2 = $this->db->select('*, sum(vol_produk_a + vol_produk_b + vol_produk_c + vol_produk_d + vol_produk_e + vol_produk_f) as volume')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->row_array();
 
 			$volume_rak_3 = $this->db->select('*, sum(vol_produk_a + vol_produk_b + vol_produk_c + vol_produk_d + vol_produk_e + vol_produk_f) as volume')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->row_array();
 
 			$volume_rak_4 = $this->db->select('*, sum(vol_produk_a + vol_produk_b + vol_produk_c + vol_produk_d + vol_produk_e + vol_produk_f) as volume')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->row_array();
 
 			$volume_rak_5 = $this->db->select('*, sum(vol_produk_a + vol_produk_b + vol_produk_c + vol_produk_d + vol_produk_e + vol_produk_f) as volume')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->row_array();
 
 			$volume_rak_6 = $this->db->select('*, sum(vol_produk_a + vol_produk_b + vol_produk_c + vol_produk_d + vol_produk_e + vol_produk_f) as volume')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->row_array();
 
 			$volume_rak_7 = $this->db->select('*, sum(vol_produk_a + vol_produk_b + vol_produk_c + vol_produk_d + vol_produk_e + vol_produk_f) as volume')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->row_array();
 
 			$harsat_rap_alat = $this->db->select('*')
@@ -2181,9 +2210,9 @@
 				<th align="left" colspan="20"><b>C. TOTAL BIAYA PERALATAN</b></th>
 			</tr>
 			<?php
-			$realisasi_1 = $this->db->select('*')
+			$realisasi_1 = $this->db->select('*, SUM(vol_realisasi_bp) as vol_realisasi_bp, SUM(nilai_realisasi_bp) as nilai_realisasi_bp, SUM(vol_realisasi_tm) as vol_realisasi_tm, SUM(nilai_realisasi_tm) as nilai_realisasi_tm, SUM(vol_realisasi_wl) as vol_realisasi_wl, SUM(nilai_realisasi_wl) as nilai_realisasi_wl, SUM(vol_realisasi_solar) as vol_realisasi_solar, SUM(nilai_realisasi_solar) as nilai_realisasi_solar')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->row_array();
 			$vol_realisasi_bp_1 = $realisasi_1['vol_realisasi_bp'];
 			$nilai_realisasi_bp_1 = $realisasi_1['nilai_realisasi_bp'];
@@ -2207,7 +2236,7 @@
 
 			$realisasi_2 = $this->db->select('*')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->row_array();
 			$vol_realisasi_bp_2 = $realisasi_2['vol_realisasi_bp'];
 			$nilai_realisasi_bp_2 = $realisasi_2['nilai_realisasi_bp'];
@@ -2231,7 +2260,7 @@
 
 			$realisasi_3 = $this->db->select('*')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->row_array();
 			$vol_realisasi_bp_3 = $realisasi_3['vol_realisasi_bp'];
 			$nilai_realisasi_bp_3 = $realisasi_3['nilai_realisasi_bp'];
@@ -2255,7 +2284,7 @@
 
 			$realisasi_4 = $this->db->select('*')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->row_array();
 			$vol_realisasi_bp_4 = $realisasi_4['vol_realisasi_bp'];
 			$nilai_realisasi_bp_4 = $realisasi_4['nilai_realisasi_bp'];
@@ -2279,7 +2308,7 @@
 
 			$realisasi_5 = $this->db->select('*')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->row_array();
 			$vol_realisasi_bp_5 = $realisasi_5['vol_realisasi_bp'];
 			$nilai_realisasi_bp_5 = $realisasi_5['nilai_realisasi_bp'];
@@ -2303,7 +2332,7 @@
 
 			$realisasi_6 = $this->db->select('*')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->row_array();
 			$vol_realisasi_bp_6 = $realisasi_6['vol_realisasi_bp'];
 			$nilai_realisasi_bp_6 = $realisasi_6['nilai_realisasi_bp'];
@@ -2327,7 +2356,7 @@
 
 			$realisasi_7 = $this->db->select('*')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->row_array();
 			$vol_realisasi_bp_7 = $realisasi_7['vol_realisasi_bp'];
 			$nilai_realisasi_bp_7 = $realisasi_7['nilai_realisasi_bp'];
@@ -2485,37 +2514,37 @@
 			<?php
 			$overhead_rak_1 = $this->db->select('sum(overhead) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->row_array();
 			
 			$overhead_rak_2 = $this->db->select('sum(overhead) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->row_array();
 
 			$overhead_rak_3 = $this->db->select('sum(overhead) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->row_array();
 
 			$overhead_rak_4 = $this->db->select('sum(overhead) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->row_array();
 			
 			$overhead_rak_5 = $this->db->select('sum(overhead) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->row_array();
 
 			$overhead_rak_6 = $this->db->select('sum(overhead) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->row_array();
 
 			$overhead_rak_7 = $this->db->select('sum(overhead) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->row_array();
 
 			$total_nilai_overhead_1 = $overhead_rak_1['nilai'];
@@ -2557,37 +2586,37 @@
 			<?php
 			$diskonto_rak_1 = $this->db->select('sum(diskonto) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juni24_awal' and '$date_juni24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_januari25_awal' and '$date_januari25_akhir'")
 			->get()->row_array();
 
 			$diskonto_rak_2 = $this->db->select('sum(diskonto) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_juli24_awal' and '$date_juli24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_februari25_awal' and '$date_februari25_akhir'")
 			->get()->row_array();
 			
 			$diskonto_rak_3 = $this->db->select('sum(diskonto) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_agustus24_awal' and '$date_agustus24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_maret25_awal' and '$date_maret25_akhir'")
 			->get()->row_array();
 
 			$diskonto_rak_4 = $this->db->select('sum(diskonto) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_september24_awal' and '$date_september24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_april25_awal' and '$date_april25_akhir'")
 			->get()->row_array();
 			
 			$diskonto_rak_5 = $this->db->select('sum(diskonto) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_oktober24_awal' and '$date_oktober24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_mei25_awal' and '$date_mei25_akhir'")
 			->get()->row_array();
 
 			$diskonto_rak_6 = $this->db->select('sum(diskonto) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_november24_awal' and '$date_november24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juni25_awal' and '$date_juni25_akhir'")
 			->get()->row_array();
 
 			$diskonto_rak_7 = $this->db->select('sum(diskonto) as nilai')
 			->from('rak')
-			->where("tanggal_rencana_kerja between '$date_desember24_awal' and '$date_desember24_akhir'")
+			->where("tanggal_rencana_kerja between '$date_juli25_awal' and '$date_juli25_akhir'")
 			->get()->row_array();
 
 			$total_nilai_diskonto_1 = $diskonto_rak_1['nilai'];
