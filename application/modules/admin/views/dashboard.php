@@ -213,6 +213,75 @@
                                         </div>
                                     </th>
                                 </tr>
+                                <tr>
+                                    <th width="50%" class="text-center">
+                                        <?php
+                                        $admin_name = $this->db->select('admin_name')
+                                        ->from('tbl_admin')
+                                        ->where("admin_id <> '1'")
+                                        ->where("admin_id <> '5'")
+                                        ->where("admin_id <> '12'")
+                                        ->group_by('admin_id')
+                                        ->order_by('admin_name','asc')
+                                        ->get()->result_array();
+
+                                        $jenis_transaksi = $this->db->select('transaksi')
+                                        ->from('transactions')
+                                        ->group_by('transaksi')
+                                        ->order_by('id','asc')
+                                        ->get()->result_array();
+                                        ?>
+                                        <div class="col-sm-12" style="background:rgb(242, 242, 242, 0.8); border-radius:5px;">
+                                            <br />
+                                            <center>LAST TRANSACTIONS</center>
+                                            <br />
+                                            <div class="col-sm-4">
+                                                <input type="text" id="filter_date_transactions" name="filter_date" class="form-control dtpicker input-sm" value="" placeholder="Pilih Tanggal Input" autocomplete="off">
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select id="filter_jenis_transaksi" name="filter_jenis_transaksi" class="form-control select2">
+                                                    <option value="">Pilih Jenis Transkasi</option>
+                                                    <?php
+                                                    foreach ($jenis_transaksi as $key => $x) {
+                                                    ?>
+                                                        <option value="<?php echo $x['transaksi']; ?>"><?php echo $x['transaksi']; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select id="filter_admin_name" name="filter_admin_name" class="form-control select2">
+                                                    <option value="">Pilih Penginput</option>
+                                                    <?php
+                                                    foreach ($admin_name as $key => $x) {
+                                                    ?>
+                                                        <option value="<?php echo $x['admin_name']; ?>"><?php echo $x['admin_name']; ?></option>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <table class="table table-striped table-hover" id="table-transactions" style="width:100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No.</th>
+                                                        <th>Dibuat Tanggal</th>
+                                                        <th>Dibuat Oleh</th>
+                                                        <th>Jenis Transaksi</th>
+                                                        <th>Tanggal Transaksi</th>
+                                                        <th>Nomor Transaksi</th> 
+                                                        <th>Debit</th>
+                                                        <th>Kredit</th>                                               
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </th>
+                                </tr>
                             </table>
                         </div>
                     </div>
@@ -769,6 +838,87 @@
                 });
                 
             });
+
+            $('.dtpicker').daterangepicker({
+                autoUpdateInput: false,
+                locale: {
+                    format: 'DD/MM/YYYY'
+                },
+                ranges: {
+                    'Today': [moment(), moment()],
+                    'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                    'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                    'This Month': [moment().startOf('month'), moment().endOf('month')],
+                    'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                showDropdowns: true,
+            });
+
+            var table_transactions = $('#table-transactions').DataTable( {"bAutoWidth": false,
+            ajax: {
+                processing: true,
+                serverSide: true,
+                url: '<?php echo site_url('pmm/reports/table_transactions'); ?>',
+                type: 'POST',
+                data: function(d) {
+                    d.filter_date = $('#filter_date_transactions').val();
+                    d.filter_admin_name = $('#filter_admin_name').val();
+                    d.filter_jenis_transaksi = $('#filter_jenis_transaksi').val();
+                }
+            },
+            "language": {
+                processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+            },
+            columns: [{
+                    "data": "no"
+                },
+                {
+                    "data": "created_on"
+                },
+                {
+                    "data": "admin_name"
+                },
+                {
+                    "data": "jenis_transaksi"
+                },
+                {
+                    "data": "tanggal_transaksi"
+                },
+                {
+                    "data": "nomor_transaksi"
+                },
+                {
+                    "data": "debit"
+                },
+                {
+                    "data": "kredit"
+                },
+            ],
+            "columnDefs": [
+                { "width": "5%", "targets": [0], "className": 'text-left'},
+                { "targets": [1,2,3,4,5], "className": 'text-left'},
+                { "targets": [6,7], "className": 'text-right'},
+            ],
+            responsive: true,
+            pageLength: 10,
+            searching: false,
+            lengthChange: false,
+        });
+
+        $('#filter_date_transactions').on('apply.daterangepicker', function(ev, picker) {
+            $(this).val(picker.startDate.format('DD-MM-YYYY') + ' - ' + picker.endDate.format('DD-MM-YYYY'));
+            table_transactions.ajax.reload();
+        });
+
+        $('#filter_admin_name').change(function() {
+            table_transactions.ajax.reload();
+        });
+
+        $('#filter_jenis_transaksi').change(function() {
+            table_transactions.ajax.reload();
+        });
+
         </script>
     </body>
 </html>

@@ -18186,4 +18186,47 @@ class Reports extends CI_Controller {
         }
     }
 
+	public function table_transactions()
+	{	
+		$data = array();
+		$w_date = $this->input->post('filter_date');
+		$filter_admin_name = $this->input->post('filter_admin_name');
+		$filter_jenis_transaksi = $this->input->post('filter_jenis_transaksi');
+		$this->db->select('t.*,tba.admin_name');
+		if(!empty($w_date)){
+			$arr_date = explode(' - ', $w_date);
+			$start_date = $arr_date[0];
+			$end_date = $arr_date[1];
+			$this->db->where('t.created_on  >=',date('Y-m-d',strtotime($start_date)));	
+			$this->db->where('t.created_on <=',date('Y-m-d',strtotime($end_date)));	
+		}
+		if(!empty($filter_jenis_transaksi)){
+			$this->db->where('t.transaksi',$filter_jenis_transaksi);
+		}
+		if(!empty($filter_admin_name)){
+			$this->db->where('tba.admin_name',$filter_admin_name);
+		}
+		$this->db->join('tbl_admin tba','t.created_by = tba.admin_id','left');
+		$this->db->where("t.transaksi in ('Biaya','Jurnal Umum','Invoice Pembelian','Invoice Penjualan','Pembayaran Pembelian','Pembayaran Penjualan','Penerimaan Pembelian','Pengiriman Penjualan','Terima Uang','Transfer Uang')");
+		$this->db->order_by('t.created_on','DESC');
+		$query = $this->db->get('transactions t');
+	
+		if($query->num_rows() > 0){
+			foreach ($query->result_array() as $key => $row) {
+				$row['no'] = $key+1;
+				$row['tanggal_transaksi'] = date('d F Y',strtotime($row['tanggal_transaksi']));
+				$row['admin_name'] = $this->crud_global->GetField('tbl_admin',array('admin_id'=>$row['created_by']),'admin_name');
+                $row['created_on'] = date('d F Y H:i:s',strtotime($row['created_on']));
+				$row['jenis_transaksi'] = $row['transaksi'];
+				$row['nomor_transaksi'] = $row['nomor_transaksi'];
+				$row['debit'] = number_format($row['debit'],0,',','.');
+				$row['kredit'] = number_format($row['kredit'],0,',','.');
+				
+				$data[] = $row;
+			}
+
+		}
+		echo json_encode(array('data'=>$data));
+	}
+
 }
