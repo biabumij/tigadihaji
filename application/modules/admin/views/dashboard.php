@@ -225,10 +225,9 @@
                                         ->order_by('admin_name','asc')
                                         ->get()->result_array();
 
-                                        $jenis_transaksi = $this->db->select('transaksi')
-                                        ->from('transactions')
-                                        ->group_by('transaksi')
-                                        ->order_by('id','asc')
+                                        $jenis_transaksi = $this->db->select('kategori_transaksi')
+                                        ->from('kategori_transaksi')
+                                        ->order_by('kategori_transaksi','asc')
                                         ->get()->result_array();
                                         ?>
                                         <div class="col-sm-12" style="background:rgb(242, 242, 242, 0.8); border-radius:5px;">
@@ -244,7 +243,7 @@
                                                     <?php
                                                     foreach ($jenis_transaksi as $key => $x) {
                                                     ?>
-                                                        <option value="<?php echo $x['transaksi']; ?>"><?php echo $x['transaksi']; ?></option>
+                                                        <option value="<?php echo $x['kategori_transaksi']; ?>"><?php echo $x['kategori_transaksi']; ?></option>
                                                     <?php
                                                     }
                                                     ?>
