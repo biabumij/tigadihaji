@@ -1470,6 +1470,7 @@ class Pmm extends CI_Controller {
 			'notes' => $notes,
 			//'price' => $last_price,
 			//'total' => $volume * $last_price,
+			'price' => $total / $volume,
 			'total' => $total,
 			'pemakaian_custom' => 0,
 			'reset' => 1,
