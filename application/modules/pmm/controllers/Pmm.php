@@ -1437,6 +1437,7 @@ class Pmm extends CI_Controller {
 		$date = date('Y-m-d',strtotime($this->input->post('date')));
 		$material_id = $this->input->post('material_id');
 		$volume = $this->input->post('volume');
+		$total =  str_replace('.', '', $this->input->post('total'));
 		$measure = $this->input->post('measure');
 		$convert = $this->input->post('convert');
 		$display_volume = $this->input->post('display_volume');
@@ -1467,8 +1468,9 @@ class Pmm extends CI_Controller {
 			'display_volume' => $display_volume,
 			'display_measure' => $display_measure,
 			'notes' => $notes,
-			'price' => $last_price,
-			'total' => $volume * $last_price,
+			//'price' => $last_price,
+			//'total' => $volume * $last_price,
+			'total' => $total,
 			'pemakaian_custom' => 0,
 			'reset' => 1,
 			'status' => 'PUBLISH'

@@ -69,7 +69,7 @@
                     </div>
                     <tr>
                         <label>Nilai<span class="required" aria-required="true">*</span></label>
-                        <td><input type="text" id="total" class="form-control text-left" name="total"  value="" /></td>
+                        <td><input type="text" id="total" name="total" class="form-control text-left" value=""/></td>
                     </tr>
                     <div class="form-group">
                         <label>Satuan<span class="required" aria-required="true">*</span></label>
