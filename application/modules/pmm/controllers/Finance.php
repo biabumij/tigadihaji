@@ -1201,7 +1201,7 @@ class Finance extends CI_Controller {
 		if($check == true){		
 			$this->db->select('c.*');
 			//$this->db->where('c.coa_category',3);
-			$this->db->where("c.id in (1,147)");
+			//$this->db->where("c.id in (1,147)");
 			$this->db->where('c.status','PUBLISH');
 			$this->db->order_by('c.coa_number','asc'); 
 			$data['akun'] = $this->db->get('pmm_coa c')->result_array();
@@ -1216,7 +1216,7 @@ class Finance extends CI_Controller {
 		if($check == true){		
 			$this->db->select('c.*');
 			//$this->db->where('c.coa_category',3);
-			$this->db->where("c.id in (1,147)");
+			//$this->db->where("c.id in (1,147)");
 			$this->db->where('c.status','PUBLISH');
 			$this->db->order_by('c.coa_number','asc'); 
 			$data['akun'] = $this->db->get('pmm_coa c')->result_array();
