@@ -67,6 +67,10 @@
                         <label>Volume<span class="required" aria-required="true">*</span></label>
                         <input type="text" id="volume" name="volume" class="form-control numberformat" autocomplete="off" required=""/>
                     </div>
+                    <tr>
+                        <label>Nilai<span class="required" aria-required="true">*</span></label>
+                        <td><input type="text" id="total" class="form-control text-left" name="total"  value="" /></td>
+                    </tr>
                     <div class="form-group">
                         <label>Satuan<span class="required" aria-required="true">*</span></label>
                         <select id="measure" name="measure" class="form-control" required="">
