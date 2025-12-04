@@ -189,12 +189,12 @@
                                         if($approval_penawaran_penjualan == 1){
                                             ?>
                                             <a href="<?= base_url("penjualan/closed_penawaran_penjualan/".$penawaran["id"]) ?>" class="btn btn-default" style="margin-top:10px; width:150px; font-weight:bold; border-radius:5px;"> CLOSED</a>			
+                                            <form class="form-check" action="<?= base_url("penjualan/rejectedPenawaran/".$penawaran["id"]) ?>">
+                                                <button type="submit" class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:5px;"> REJECT</button>        
+                                            </form>
                                             <?php
                                         }
                                         ?>
-                                        <form class="form-check" action="<?= base_url("penjualan/rejectedPenawaran/".$penawaran["id"]) ?>">
-                                            <button type="submit" class="btn btn-danger" style="width:150px; font-weight:bold; border-radius:5px;"> REJECT</button>        
-                                        </form>
                                     <?php endif; ?>
 
                                     <?php if($penawaran["status"] === "CLOSED") : ?>
