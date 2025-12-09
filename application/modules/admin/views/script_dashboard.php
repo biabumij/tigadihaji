@@ -24,7 +24,6 @@ function tgl_indo($date_minggu_1_awal){
 }
 
 $date_now = date('Y-m-d');
-
 $date_januari25_awal = date('2025-01-01');
 $date_januari25_akhir = date('2025-01-31');
 $date_februari25_awal = date('2025-02-01');
