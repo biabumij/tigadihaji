@@ -110,7 +110,7 @@
                   <td style="text-align:left;"><?php echo $row['surat_jalan'];?></td>
                   <td style="text-align:left;"><?php echo $row['no_kendaraan'];?></td>
                   <td style="text-align:left;"><?php echo $row['driver'];?></td>
-                  <td><?php echo $this->crud_global->GetField('produk',array('id'=>$row['material_id']),'nama_produk');?></td>
+                  <td style="text-align:left;"><?php echo $this->crud_global->GetField('produk',array('id'=>$row['material_id']),'nama_produk');?></td>
                   <td><?php echo $row['measure'];?></td>
                   <td><?php echo number_format($row['volume'],2,',','.');?></td>
                   <td style="text-align:right;"><?php echo number_format($row['harga_satuan'],0,',','.');?></td>
