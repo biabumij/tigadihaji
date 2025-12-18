@@ -62,11 +62,11 @@
       <tr>
                 <th align="center" width="3%">No</th>
                 <th align="center" width="7%">Tanggal</th>
-                <th align="center" width="7%">Rekanan</th>
+                <th align="center" width="10%">Rekanan</th>
 				        <th align="left" width="15%">No. Pesanan Pembelian</th>
                 <th align="left" width="10%">No. Surat Jalan</th>
                 <th align="left" width="10%">No. Kendaraan</th>
-                <th align="left" width="10%">Supir</th>
+                <th align="left" width="7%">Supir</th>
                 <th align="center" width="10%">Produk</th>
                 <th align="center" width="6%">Satuan</th>
                 <th align="center" width="6%">Volume</th>
@@ -105,7 +105,7 @@
                 <tr>
                   <td><?php echo $key + 1 ;?></td>
                   <td><?php echo date('d-m-Y',strtotime($row['date_receipt']));?></td>
-                  <td><?php echo $this->crud_global->GetField('penerima',array('id'=>$row['supplier_id']),'nama');?></td>
+                  <td style="text-align:left;"><?php echo $this->crud_global->GetField('penerima',array('id'=>$row['supplier_id']),'nama');?></td>
                   <td style="text-align:left;"><?php echo $row['no_po'];?></td>
                   <td style="text-align:left;"><?php echo $row['surat_jalan'];?></td>
                   <td style="text-align:left;"><?php echo $row['no_kendaraan'];?></td>
@@ -121,7 +121,7 @@
                 if($key == count($data) - 1){
                   ?>
                   <tr>
-                      <th colspan="8" style="text-align:right;"><div style="text-transform:uppercase;">TOTAL (<?php echo date('d-m-Y',strtotime($date));?>)</div></th>
+                      <th colspan="9" style="text-align:right;"><div style="text-transform:uppercase;">TOTAL (<?php echo date('d-m-Y',strtotime($date));?>)</div></th>
                       <th style="text-align:center;"><?php echo number_format($total_by_date,2,',','.');?></th>
                       <th></th>
                       <th style="text-align:right;"><?php echo number_format($total_biaya_by_date,0,',','.');?></th>
