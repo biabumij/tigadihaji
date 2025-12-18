@@ -62,7 +62,8 @@
       <tr>
                 <th align="center" width="3%">No</th>
                 <th align="center" width="7%">Tanggal</th>
-				        <th align="left" width="22%">No. Pesanan Pembelian</th>
+                <th align="center" width="7%">Rekanan</th>
+				        <th align="left" width="15%">No. Pesanan Pembelian</th>
                 <th align="left" width="10%">No. Surat Jalan</th>
                 <th align="left" width="10%">No. Kendaraan</th>
                 <th align="left" width="10%">Supir</th>
@@ -104,6 +105,7 @@
                 <tr>
                   <td><?php echo $key + 1 ;?></td>
                   <td><?php echo date('d-m-Y',strtotime($row['date_receipt']));?></td>
+                  <td><?php echo $this->crud_global->GetField('penerima',array('id'=>$row['supplier_id']),'nama');?></td>
                   <td style="text-align:left;"><?php echo $row['no_po'];?></td>
                   <td style="text-align:left;"><?php echo $row['surat_jalan'];?></td>
                   <td style="text-align:left;"><?php echo $row['no_kendaraan'];?></td>
