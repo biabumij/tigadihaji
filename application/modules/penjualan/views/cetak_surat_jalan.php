@@ -70,8 +70,9 @@
                 <th align="center" width="5%">No</th>
 				<th align="center" width="10%">Hari</th>
                 <th align="center" width="10%">Tanggal</th>
-				<th align="center" width="20%">Produk</th>
-				<th align="center" width="35%">No. Kendaraan</th>
+				<th align="center" width="15%">Rekanan</th>
+				<th align="center" width="10%">Produk</th>
+				<th align="center" width="30%">No. Kendaraan</th>
 				<th align="center" width="15%">Volume</th>
 				<th align="center" width="5%">Satuan</th>
             </tr>
@@ -86,7 +87,7 @@
             		if($date !== false && $row['date_production'] != $date){
             			?>
 	            		<tr>
-	            			<th colspan="5" style="text-align:right;">Jumlah</th>
+	            			<th colspan="6" style="text-align:right;">Jumlah</th>
               				<th style="text-align:center;"><?php echo number_format($total_by_date,2,',','.');?></th>
 							<th style="text-align:center;">M3</th>
 	            		</tr>
@@ -101,8 +102,9 @@
             			<td><?php echo $key + 1 ;?></td>
             			<td><?php echo tglIndonesia(date('D',strtotime($row['date_production'])));?></td>
 						<td><?php echo date('d-m-Y',strtotime($row['date_production']));?></td>
+						<td style="text-align:left;"><?php echo $row['nama'];?></td>
 						<td><?php echo $row['product_id'] = $this->crud_global->GetField('produk',array('id'=>$row['product_id']),'nama_produk');?></td>
-						<td align="left"><?php echo $row['nopol_truck'];?></td>
+						<td style="text-align:left;"><?php echo $row['nopol_truck'];?></td>
 						<td><?php echo number_format($row['volume'],2,',','.');?></td>
 						<td><?php echo $row['measure'];?></td>
             		</tr>
@@ -110,7 +112,7 @@
             		if($key == count($data) - 1){
             			?>
 	            		<tr>
-						<th colspan="5" style="text-align:right;">Jumlah</th>
+						<th colspan="6" style="text-align:right;">Jumlah</th>
               				<th style="text-align:center;"><?php echo number_format($total_by_date,2,',','.');?></th>
 							<th style="text-align:center;">M3</th>
 	            		</tr>
@@ -126,7 +128,7 @@
             }
             ?>	
            	<tr>
-               <th colspan="5" style="text-align:right;">Total</th>
+               <th colspan="6" style="text-align:right;">Total</th>
                <th style="text-align:center;"><?php echo number_format($total,2,',','.');?></th>
 			   <th style="text-align:center;">M3</th>
            </tr>
