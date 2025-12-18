@@ -88,7 +88,7 @@
                 if($date !== false && $row['date_receipt'] != $date){
                   ?>
                   <tr>
-                    <th colspan="8" style="text-align:right;"><div style="text-transform:uppercase;">TOTAL (<?php echo date('d-m-Y',strtotime($date));?>)</div></th>
+                    <th colspan="9" style="text-align:right;"><div style="text-transform:uppercase;">TOTAL (<?php echo date('d-m-Y',strtotime($date));?>)</div></th>
                       <th style="text-align:center;"><?php echo number_format($total_by_date,2,',','.');?></th>
                       <th></th>
                       <th style="text-align:right;"><?php echo number_format($total_biaya_by_date,0,',','.');?></th>
@@ -142,7 +142,7 @@
             }
             ?>  
             <tr>
-            <th colspan="8" style="text-align:right;">TOTAL</th>
+            <th colspan="9" style="text-align:right;">TOTAL</th>
                <th style="text-align:center;"><?php echo number_format($total,2,',','.');?></th>
                <th></th>
                <th style="text-align:right;"><?php echo number_format($total_biaya,0,',','.');?></th>
