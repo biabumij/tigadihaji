@@ -68,11 +68,11 @@
 		<table class="minimalistBlack" cellpadding="1" width="98%">
 			<tr>
                 <th align="center" width="5%">No</th>
-				<th align="center" width="10%">Hari</th>
+				<th align="center" width="7%">Hari</th>
                 <th align="center" width="10%">Tanggal</th>
-				<th align="center" width="15%">Rekanan</th>
+				<th align="center" width="20%">Rekanan</th>
 				<th align="center" width="10%">Produk</th>
-				<th align="center" width="30%">No. Kendaraan</th>
+				<th align="center" width="28%">No. Kendaraan</th>
 				<th align="center" width="15%">Volume</th>
 				<th align="center" width="5%">Satuan</th>
             </tr>
