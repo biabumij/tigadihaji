@@ -50,6 +50,31 @@ $date_november25_akhir = date('2025-11-30');
 $date_desember25_awal = date('2025-12-01');
 $date_desember25_akhir = date('2025-12-31');
 
+$date_januari26_awal = date('2026-01-01');
+$date_januari26_akhir = date('2026-01-31');
+$date_februari26_awal = date('2026-02-01');
+$date_februari26_akhir = date('2026-02-28');
+$date_maret26_awal = date('2026-03-01');
+$date_maret26_akhir = date('2026-03-31');
+$date_april26_awal = date('2026-04-01');
+$date_april26_akhir = date('2026-04-30');
+$date_mei26_awal = date('2026-05-01');
+$date_mei26_akhir = date('2026-05-31');
+$date_juni26_awal = date('2026-06-01');
+$date_juni26_akhir = date('2026-06-30');
+$date_juli26_awal = date('2026-07-01');
+$date_juli26_akhir = date('2026-07-31');
+$date_agustus26_awal = date('2026-08-01');
+$date_agustus26_akhir = date('2026-08-31');
+$date_september26_awal = date('2026-09-01');
+$date_september26_akhir = date('2026-09-30');
+$date_oktober26_awal = date('2026-10-01');
+$date_oktober26_akhir = date('2026-10-31');
+$date_november26_awal = date('2026-11-01');
+$date_november26_akhir = date('2026-11-30');
+$date_desember26_awal = date('2026-12-01');
+$date_desember26_akhir = date('2026-12-31');
+
 
 //REALISASI PRODUKSI
 //FEBRUARI25
@@ -756,6 +781,48 @@ $diskonto_desember25 = $diskonto_desember25['total'];
 $laba_rugi_desember25 = $total_penjualan_desember25 - ($bahan_desember25 + $alat_desember25 + $overhead_desember25 + $diskonto_desember25);
 $total_laba_rugi_desember25 = ($total_penjualan_desember25!=0)?($laba_rugi_desember25 / $total_penjualan_desember25) * 100:0;
 $persentase_laba_rugi_desember25 = round($total_laba_rugi_desember25,2);
+
+//JANUARI26
+$total_niai_komposisi_bahan_januari26 = $this->pmm_model->getKomposisiBahan($date_januari26_awal,$date_januari26_akhir);
+$total_niai_komposisi_alat_januari26 = $this->pmm_model->getKomposisiAlat($date_januari26_awal,$date_januari26_akhir);
+$total_niai_komposisi_bua_januari26 = $this->pmm_model->getKomposisiBUA($date_januari26_awal,$date_januari26_akhir);
+$total_rak_januari26 = $total_niai_komposisi_bahan_januari26 + $total_niai_komposisi_alat_januari26 + $total_niai_komposisi_bua_januari26;
+
+$penjualan_januari26 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_januari26_awal' and '$date_januari26_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_penjualan_januari26 = 0;
+foreach ($penjualan_januari26 as $x){
+    $total_penjualan_januari26 += $x['price'];
+}
+
+$rak_laba_rugi_januari26 = $total_penjualan_januari26 - $total_rak_januari26;
+$total_presentase_rak_januari26 = ($total_penjualan_januari26!=0)?($rak_laba_rugi_januari26 / $total_penjualan_januari26) * 100:0;
+$persentase_rak_januari26 = round($total_presentase_rak_januari26,2);
+
+$date1 = $date_januari26_awal;
+$date2 = $date_januari26_akhir;
+$bahan_januari26 = $this->pmm_model->getBahan($date_januari26_awal,$date_januari26_akhir);
+$alat_januari26 = $this->pmm_model->getAlat($date_januari26_awal,$date_januari26_akhir);
+$overhead_januari26 = $this->pmm_model->getOverheadLabaRugi($date_januari26_awal,$date_januari26_akhir);
+$diskonto_januari26 = $this->db->select('sum(pdb.jumlah) as total')
+->from('pmm_biaya pb ')
+->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+->join('pmm_coa c','pdb.akun = c.id','left')
+->where("pdb.akun = 110")
+->where("pb.status = 'PAID'")
+->where("(pb.tanggal_transaksi between '$date_januari26_awal' and '$date_januari26_akhir')")
+->get()->row_array();
+$diskonto_januari26 = $diskonto_januari26['total'];
+$laba_rugi_januari26 = $total_penjualan_januari26 - ($bahan_januari26 + $alat_januari26 + $overhead_januari26 + $diskonto_januari26);
+$total_laba_rugi_januari26 = ($total_penjualan_januari26!=0)?($laba_rugi_januari26 / $total_penjualan_januari26) * 100:0;
+$persentase_laba_rugi_januari26 = round($total_laba_rugi_januari26,2);
 
 //REALISASI PER MINGGU
 $rencana_kerja_now = $this->db->select('r.*, (r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
