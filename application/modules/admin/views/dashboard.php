@@ -574,7 +574,7 @@
                                     fontFamily: 'helvetica'
                                 }
                             },
-                            categories: ['Februari 25','Maret 25','April 25','Mei 25','Juni 25','Juli 25','Agustus 25','September 25','Oktober 25','November 25','Desember 25',]
+                            categories: ['Februari 25','Maret 25','April 25','Mei 25','Juni 25','Juli 25','Agustus 25','September 25','Oktober 25','November 25','Desember 25','Januari 26']
                         },
                         yAxis: {
                             //title: {  //label yAxis
@@ -646,7 +646,7 @@
                         series: [{  
                             name: 'Rencana',  
                             
-                            data: [<?php echo json_encode($rencana_produksi_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_juni25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_juli25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_agustus25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_september25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_oktober25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_november25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_desember25, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode($rencana_produksi_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_juni25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_juli25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_agustus25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_september25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_oktober25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_november25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_desember25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($rencana_produksi_januari26, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#000000',
                             fontWeight: 'bold',
@@ -656,7 +656,7 @@
                         {  
                             name: 'Realisasi',  
                             
-                            data: [<?php echo json_encode($realisasi_produksi_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_juni25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_juli25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_agustus25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_september25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_oktober25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_november25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_desember25, JSON_NUMERIC_CHECK); ?>],
+                            data: [<?php echo json_encode($realisasi_produksi_februari25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_maret25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_april25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_mei25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_juni25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_juli25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_agustus25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_september25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_oktober25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_november25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_desember25, JSON_NUMERIC_CHECK); ?>,<?php echo json_encode($realisasi_produksi_januari26, JSON_NUMERIC_CHECK); ?>],
 
                             color: '#FF0000',
                             fontWeight: 'bold',
