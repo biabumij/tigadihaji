@@ -72,7 +72,7 @@
                 <th align="center" width="10%">Tanggal</th>
 				<th align="center" width="20%">Rekanan</th>
 				<th align="center" width="10%">Produk</th>
-				<th align="center" width="28%">No. Sales Ordet</th>
+				<th align="center" width="28%">No. Sales Order</th>
 				<th align="center" width="15%">Volume</th>
 				<th align="center" width="5%">Satuan</th>
             </tr>
