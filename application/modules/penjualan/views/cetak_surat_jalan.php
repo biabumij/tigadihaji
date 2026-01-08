@@ -72,7 +72,7 @@
                 <th align="center" width="10%">Tanggal</th>
 				<th align="center" width="20%">Rekanan</th>
 				<th align="center" width="10%">Produk</th>
-				<th align="center" width="28%">No. Kendaraan</th>
+				<th align="center" width="28%">No. Sales Ordet</th>
 				<th align="center" width="15%">Volume</th>
 				<th align="center" width="5%">Satuan</th>
             </tr>
@@ -104,7 +104,7 @@
 						<td><?php echo date('d-m-Y',strtotime($row['date_production']));?></td>
 						<td style="text-align:left;"><?php echo $row['nama'];?></td>
 						<td><?php echo $row['product_id'] = $this->crud_global->GetField('produk',array('id'=>$row['product_id']),'nama_produk');?></td>
-						<td style="text-align:left;"><?php echo $row['nopol_truck'];?></td>
+						<td style="text-align:left;"><?php echo $row['contract_number'];?></td>
 						<td><?php echo number_format($row['volume'],2,',','.');?></td>
 						<td><?php echo $row['measure'];?></td>
             		</tr>

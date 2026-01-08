@@ -1167,7 +1167,7 @@ class Productions extends Secure_Controller {
 		$salesPo_id = $this->input->get('sales_po_id');
 		$filter_date = false;
 
-		$this->db->select('pp.*, pc.nama, p.nama_produk');
+		$this->db->select('pp.*, pc.nama, p.nama_produk, ppo.contract_number');
 		if(!empty($client_id) || $client_id != 0){
 			$this->db->where('pp.client_id',$client_id);
 		}
@@ -1187,6 +1187,7 @@ class Productions extends Secure_Controller {
 		}
 		$this->db->join('penerima pc','pp.client_id = pc.id','left');
 		$this->db->join('produk p','pp.product_id = p.id','left');
+		$this->db->join('pmm_sales_po ppo','pp.salesPo_id = ppo.id','left');
 		$this->db->group_by('pp.id');
 		$this->db->order_by('pp.date_production','asc');
 		$this->db->order_by('p.nama_produk','asc');
