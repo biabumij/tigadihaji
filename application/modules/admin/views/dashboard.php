@@ -741,7 +741,7 @@
                                     fontFamily: 'helvetica'
                                 }
                             },
-                            categories: ['Februari 25','Maret 25','April 25','Mei 25','Juni 25','Juli 25','Agustus 25','September 25','Oktober 25','November 25','Desember 25',,'Januari 26','Februari 26','Maret 26']
+                            categories: ['Februari 25','Maret 25','April 25','Mei 25','Juni 25','Juli 25','Agustus 25','September 25','Oktober 25','November 25','Desember 25','Januari 26','Februari 26','Maret 26']
                         },
                         yAxis: {
                             //title: {  //label yAxis
