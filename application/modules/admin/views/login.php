@@ -27,6 +27,11 @@
 				color: #ffffff;
 				font-weight: bold;
 			}
+
+			#togglePassword {
+				/* Tambahkan ini untuk memperbesar ukuran */
+				font-size: 1.25rem; /* Atau gunakan pixel, contoh: 20px */
+			}
 	    	<?php include "assets/back/theme/stylesheets/css/style.css" ?>
 	    </style>
 	</head>
@@ -57,7 +62,7 @@
 											<div class="form-group">
 												<span class="input-with-icon">
 													<input type="password" class="form-control-login" id="password" placeholder="Password" name="password">
-													<i class="fa fa-key"></i>
+													<i class="fa fa-eye" id="togglePassword" ></i>
 												</span>
 											</div>
 											<div class="form-group" style="margin:auto; width:auto;">
@@ -72,7 +77,7 @@
 							</th>
 						</tr>
 						<tr>
-							<th colspan="2" class="text-center" style="font-size:90%;">&copy; PT BIA BUMI JAYENDRA, 2024</th>
+							<th colspan="2" class="text-center" style="font-size:90%;">&copy; PT BIA BUMI JAYENDRA, <span id="year"></span></th>
 						</tr>
 					</table>
 					<!--SIGN IN FORM-->
@@ -99,6 +104,7 @@
 		<!-- ========================================================= -->
 
 		<script type="text/javascript">
+		document.getElementById("year").textContent = new Date().getFullYear();
 		$(document).ready(function(){
 			$(".alert").hide();
 			$("#loginform").validate({
@@ -147,6 +153,18 @@
 					return false;
 				}
 			});
+		});
+
+		// Toggle Password Visibility
+		$("#togglePassword").click(function () {
+			var passwordInput = $("#password");
+			if (passwordInput.attr("type") == "password") {
+				passwordInput.attr("type", "text");
+				$(this).removeClass("fa-eye").addClass("fa-eye-slash");
+			} else {
+				passwordInput.attr("type", "password");
+				$(this).removeClass("fa-eye-slash").addClass("fa-eye");
+			}
 		});
 		</script>
 	</body>
