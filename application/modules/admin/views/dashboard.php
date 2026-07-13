@@ -230,7 +230,7 @@
                                         ->order_by('kategori_transaksi','asc')
                                         ->get()->result_array();
                                         ?>
-                                        <div class="col-sm-12" style="background:rgb(105, 105, 105, 0.8); border-radius:5px;">
+                                        <div class="col-sm-12" style="background:rgb(242, 242, 242, 0.8); border-radius:5px;">
                                             <br />
                                             <center>LAST TRANSACTIONS</center>
                                             <br />
