@@ -771,7 +771,7 @@
                                 },
                                 format: '{value} %'
                             },
-                            min: -50,
+                            min: -100,
                             max: 120,
                             tickInterval: 20,
                         },
