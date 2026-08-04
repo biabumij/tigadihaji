@@ -5356,6 +5356,7 @@ class Pmm_model extends CI_Model {
         ->where("c.id <> 139 ") //Penyusutan Wheel Loader
         ->where("c.id <> 186 ") //Insentif Truck Mixer
         ->where("c.id <> 187 ") //Mobilisasi Truck Mixer
+        ->where("c.id <> 176 ") //Sewa Truck Mixer
         ->where("pb.status = 'PAID'")
         ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
         ->get()->row_array();
@@ -5377,6 +5378,7 @@ class Pmm_model extends CI_Model {
         ->where("c.id <> 139 ") //Penyusutan Wheel Loader
         ->where("c.id <> 186 ") //Insentif Truck Mixer
         ->where("c.id <> 187 ") //Mobilisasi Truck Mixer
+         ->where("c.id <> 176 ") //Sewa Truck Mixer
         ->where("pb.status = 'PAID'")
         ->where("(pb.tanggal_transaksi between '$date1' and '$date2')")
         ->get()->row_array();
@@ -5412,6 +5414,7 @@ class Pmm_model extends CI_Model {
         ->where("c.id <> 139 ") //Penyusutan Wheel Loader
         ->where("c.id <> 186 ") //Insentif Truck Mixer
         ->where("c.id <> 187 ") //Mobilisasi Truck Mixer
+        ->where("c.id <> 176 ") //Sewa Truck Mixer
         ->where("pb.status = 'PAID'")
         ->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
         ->get()->row_array();
@@ -5433,6 +5436,7 @@ class Pmm_model extends CI_Model {
         ->where("c.id <> 139 ") //Penyusutan Wheel Loader
         ->where("c.id <> 186 ") //Insentif Truck Mixer
         ->where("c.id <> 187 ") //Mobilisasi Truck Mixer
+        ->where("c.id <> 176 ") //Sewa Truck Mixer
         ->where("pb.status = 'PAID'")
         ->where("(pb.tanggal_transaksi between '$date3' and '$date2')")
         ->get()->row_array();
