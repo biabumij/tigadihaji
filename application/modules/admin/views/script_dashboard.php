@@ -1316,6 +1316,48 @@ $laba_rugi_agustus26 = $total_penjualan_agustus26 - ($bahan_agustus26 + $alat_ag
 $total_laba_rugi_agustus26 = ($total_penjualan_agustus26!=0)?($laba_rugi_agustus26 / $total_penjualan_agustus26) * 100:0;
 $persentase_laba_rugi_agustus26 = round($total_laba_rugi_agustus26,2);
 
+//SEPTEMBER26
+$total_niai_komposisi_bahan_september26 = $this->pmm_model->getKomposisiBahan($date_september26_awal,$date_september26_akhir);
+$total_niai_komposisi_alat_september26 = $this->pmm_model->getKomposisiAlat($date_september26_awal,$date_september26_akhir);
+$total_niai_komposisi_bua_september26 = $this->pmm_model->getKomposisiBUA($date_september26_awal,$date_september26_akhir);
+$total_rak_september26 = $total_niai_komposisi_bahan_september26 + $total_niai_komposisi_alat_september26 + $total_niai_komposisi_bua_september26;
+
+$penjualan_september26 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_september26_awal' and '$date_september26_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_penjualan_september26 = 0;
+foreach ($penjualan_september26 as $x){
+    $total_penjualan_september26 += $x['price'];
+}
+
+$rak_laba_rugi_september26 = $total_penjualan_september26 - $total_rak_september26;
+$total_presentase_rak_september26 = ($total_penjualan_september26!=0)?($rak_laba_rugi_september26 / $total_penjualan_september26) * 100:0;
+$persentase_rak_september26 = round($total_presentase_rak_september26,2);
+
+$date1 = $date_september26_awal;
+$date2 = $date_september26_akhir;
+$bahan_september26 = $this->pmm_model->getBahan($date_september26_awal,$date_september26_akhir);
+$alat_september26 = $this->pmm_model->getAlat($date_september26_awal,$date_september26_akhir);
+$overhead_september26 = $this->pmm_model->getOverheadLabaRugi($date_september26_awal,$date_september26_akhir);
+$diskonto_september26 = $this->db->select('sum(pdb.jumlah) as total')
+->from('pmm_biaya pb ')
+->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+->join('pmm_coa c','pdb.akun = c.id','left')
+->where("pdb.akun = 110")
+->where("pb.status = 'PAID'")
+->where("(pb.tanggal_transaksi between '$date_september26_awal' and '$date_september26_akhir')")
+->get()->row_array();
+$diskonto_september26 = $diskonto_september26['total'];
+$laba_rugi_september26 = $total_penjualan_september26 - ($bahan_september26 + $alat_september26 + $overhead_september26 + $diskonto_september26);
+$total_laba_rugi_september26 = ($total_penjualan_september26!=0)?($laba_rugi_september26 / $total_penjualan_september26) * 100:0;
+$persentase_laba_rugi_september26 = round($total_laba_rugi_september26,2);
+
 //REALISASI PER MINGGU
 $rencana_kerja_now = $this->db->select('r.*, (r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
 ->from('rak r')
