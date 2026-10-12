@@ -539,6 +539,50 @@ foreach ($penjualan_oktober26 as $x){
 }
 $realisasi_produksi_oktober26 = $total_volume_penjualan_oktober26;
 
+//NOVEMBER26
+$rak_november26 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
+->from('rak r')
+->where("r.tanggal_rencana_kerja between '$date_november26_awal' and '$date_november26_akhir'")
+->get()->row_array();
+$rencana_produksi_november26 = $rak_november26['total_produksi'];
+
+$penjualan_november26 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_november26_awal' and '$date_november26_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_volume_penjualan_november26 = 0;
+foreach ($penjualan_november26 as $x){
+    $total_volume_penjualan_november26 += $x['volume'];
+}
+$realisasi_produksi_november26 = $total_volume_penjualan_november26;
+
+//DESEMBER26
+$rak_desember26 = $this->db->select('(r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
+->from('rak r')
+->where("r.tanggal_rencana_kerja between '$date_desember26_awal' and '$date_desember26_akhir'")
+->get()->row_array();
+$rencana_produksi_desember26 = $rak_desember26['total_produksi'];
+
+$penjualan_desember26 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_desember26_awal' and '$date_desember26_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_volume_penjualan_desember26 = 0;
+foreach ($penjualan_desember26 as $x){
+    $total_volume_penjualan_desember26 += $x['volume'];
+}
+$realisasi_produksi_desember26 = $total_volume_penjualan_desember26;
+
 //LABA RUGI
 //FEBRUARI25
 $total_niai_komposisi_bahan_februari25 = $this->pmm_model->getKomposisiBahan($date_februari25_awal,$date_februari25_akhir);
@@ -1421,6 +1465,90 @@ $diskonto_oktober26 = $diskonto_oktober26['total'];
 $laba_rugi_oktober26 = $total_penjualan_oktober26 - ($bahan_oktober26 + $alat_oktober26 + $overhead_oktober26 + $diskonto_oktober26);
 $total_laba_rugi_oktober26 = ($total_penjualan_oktober26!=0)?($laba_rugi_oktober26 / $total_penjualan_oktober26) * 100:0;
 $persentase_laba_rugi_oktober26 = round($total_laba_rugi_oktober26,2);
+
+//NOVEMBER26
+$total_niai_komposisi_bahan_november26 = $this->pmm_model->getKomposisiBahan($date_november26_awal,$date_november26_akhir);
+$total_niai_komposisi_alat_november26 = $this->pmm_model->getKomposisiAlat($date_november26_awal,$date_november26_akhir);
+$total_niai_komposisi_bua_november26 = $this->pmm_model->getKomposisiBUA($date_november26_awal,$date_november26_akhir);
+$total_rak_november26 = $total_niai_komposisi_bahan_november26 + $total_niai_komposisi_alat_november26 + $total_niai_komposisi_bua_november26;
+
+$penjualan_november26 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_november26_awal' and '$date_november26_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_penjualan_november26 = 0;
+foreach ($penjualan_november26 as $x){
+    $total_penjualan_november26 += $x['price'];
+}
+
+$rak_laba_rugi_november26 = $total_penjualan_november26 - $total_rak_november26;
+$total_presentase_rak_november26 = ($total_penjualan_november26!=0)?($rak_laba_rugi_november26 / $total_penjualan_november26) * 100:0;
+$persentase_rak_november26 = round($total_presentase_rak_november26,2);
+
+$date1 = $date_november26_awal;
+$date2 = $date_november26_akhir;
+$bahan_november26 = $this->pmm_model->getBahan($date_november26_awal,$date_november26_akhir);
+$alat_november26 = $this->pmm_model->getAlat($date_november26_awal,$date_november26_akhir);
+$overhead_november26 = $this->pmm_model->getOverheadLabaRugi($date_november26_awal,$date_november26_akhir);
+$diskonto_november26 = $this->db->select('sum(pdb.jumlah) as total')
+->from('pmm_biaya pb ')
+->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+->join('pmm_coa c','pdb.akun = c.id','left')
+->where("pdb.akun = 110")
+->where("pb.status = 'PAID'")
+->where("(pb.tanggal_transaksi between '$date_november26_awal' and '$date_november26_akhir')")
+->get()->row_array();
+$diskonto_november26 = $diskonto_november26['total'];
+$laba_rugi_november26 = $total_penjualan_november26 - ($bahan_november26 + $alat_november26 + $overhead_november26 + $diskonto_november26);
+$total_laba_rugi_november26 = ($total_penjualan_november26!=0)?($laba_rugi_november26 / $total_penjualan_november26) * 100:0;
+$persentase_laba_rugi_november26 = round($total_laba_rugi_november26,2);
+
+//DESEMBER26
+$total_niai_komposisi_bahan_desember26 = $this->pmm_model->getKomposisiBahan($date_desember26_awal,$date_desember26_akhir);
+$total_niai_komposisi_alat_desember26 = $this->pmm_model->getKomposisiAlat($date_desember26_awal,$date_desember26_akhir);
+$total_niai_komposisi_bua_desember26 = $this->pmm_model->getKomposisiBUA($date_desember26_awal,$date_desember26_akhir);
+$total_rak_desember26 = $total_niai_komposisi_bahan_desember26 + $total_niai_komposisi_alat_desember26 + $total_niai_komposisi_bua_desember26;
+
+$penjualan_desember26 = $this->db->select('p.nama, pp.client_id, SUM(pp.display_price) as price, SUM(pp.display_volume) as volume, pp.convert_measure as measure')
+->from('pmm_productions pp')
+->join('penerima p', 'pp.client_id = p.id','left')
+->join('pmm_sales_po ppo', 'pp.salesPo_id = ppo.id','left')
+->where("pp.date_production between '$date_desember26_awal' and '$date_desember26_akhir'")
+->where("pp.status = 'PUBLISH'")
+->where("ppo.status in ('OPEN','CLOSED')")
+->group_by("pp.client_id")
+->get()->result_array();
+$total_penjualan_desember26 = 0;
+foreach ($penjualan_desember26 as $x){
+    $total_penjualan_desember26 += $x['price'];
+}
+
+$rak_laba_rugi_desember26 = $total_penjualan_desember26 - $total_rak_desember26;
+$total_presentase_rak_desember26 = ($total_penjualan_desember26!=0)?($rak_laba_rugi_desember26 / $total_penjualan_desember26) * 100:0;
+$persentase_rak_desember26 = round($total_presentase_rak_desember26,2);
+
+$date1 = $date_desember26_awal;
+$date2 = $date_desember26_akhir;
+$bahan_desember26 = $this->pmm_model->getBahan($date_desember26_awal,$date_desember26_akhir);
+$alat_desember26 = $this->pmm_model->getAlat($date_desember26_awal,$date_desember26_akhir);
+$overhead_desember26 = $this->pmm_model->getOverheadLabaRugi($date_desember26_awal,$date_desember26_akhir);
+$diskonto_desember26 = $this->db->select('sum(pdb.jumlah) as total')
+->from('pmm_biaya pb ')
+->join('pmm_detail_biaya pdb','pb.id = pdb.biaya_id','left')
+->join('pmm_coa c','pdb.akun = c.id','left')
+->where("pdb.akun = 110")
+->where("pb.status = 'PAID'")
+->where("(pb.tanggal_transaksi between '$date_desember26_awal' and '$date_desember26_akhir')")
+->get()->row_array();
+$diskonto_desember26 = $diskonto_desember26['total'];
+$laba_rugi_desember26 = $total_penjualan_desember26 - ($bahan_desember26 + $alat_desember26 + $overhead_desember26 + $diskonto_desember26);
+$total_laba_rugi_desember26 = ($total_penjualan_desember26!=0)?($laba_rugi_desember26 / $total_penjualan_desember26) * 100:0;
+$persentase_laba_rugi_desember26 = round($total_laba_rugi_desember26,2);
 
 //REALISASI PER MINGGU
 $rencana_kerja_now = $this->db->select('r.*, (r.vol_produk_a + r.vol_produk_b + r.vol_produk_c + r.vol_produk_d + r.vol_produk_e + r.vol_produk_f) as total_produksi')
